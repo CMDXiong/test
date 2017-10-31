@@ -1,0 +1,435 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class TextinsDialog"
+>
+
+<META-DATA>
+	<NAME>TextinsDialog</NAME>
+	<AUTHOR>A.Rona</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Wed Oct 20  9:03:03 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>wx/textdlg.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>chandbas.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>mainwin.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>string.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>gdsapp.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>text.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>toolcont.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>tool.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>elemlst.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>command.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>textinsdlg.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> Class TextinsDialog. This class is used in the class TextTool to show an edit-/inserttext dialog in which a textvalue, a textheight and unitsetting can be given or edited.</PARA>
+</DESCRIPTION>
+
+<INHERITANCE>
+	<PARENT-CLASS
+		SCOPE="public"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>wxDialog</NAME>
+	</PARENT-CLASS>
+</INHERITANCE>
+
+
+
+<RELATED-TYPES>
+	<RELATED-TYPE TYPE="class">
+		<NAME>TextTool</NAME>
+	</RELATED-TYPE>
+</RELATED-TYPES>
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="TextinsDialog(GDSMainWindow* parent)"
+		INLINE="NO"
+	>
+		<NAME>TextinsDialog</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>constructor.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetupWindow()"
+		INLINE="NO"
+	>
+		<NAME>SetupWindow</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Windows initialization.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmOk(wxEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>CmOk</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Close window if OK-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void OnCloseWindow(wxCloseEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnCloseWindow</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Close window if EXIT-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetText(char*)"
+		INLINE="NO"
+	>
+		<NAME>SetText</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Set a selected textvalue in edit-/inserttext dialog.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void SetHeight(double the_height)"
+		INLINE="NO"
+	>
+		<NAME>SetHeight</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>the_height</NAME>
+				<DESCRIPTION><PARA>a string which contains a given heightvalue.</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA> Set heightvalue in edit-/inserttext dialog, the heightsetting depends on the unitsetting.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void SetUnit(char* buf)"
+		INLINE="NO"
+	>
+		<NAME>SetUnit</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>buf</NAME>
+				<DESCRIPTION><PARA>a string which temporary contains a given unitsetting.</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA> Set unitvalue in edit-/inserttext dialog, this value will also be copied into the string "_units", which is described earlier.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char* "
+		DECLARATION="char* GetUnit()"
+		INLINE="NO"
+	>
+		<NAME>GetUnit</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Get and return selected unitvalue from edit-/inserttext dialog, this value will be copied into the string "_units", which is described earlier.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetText()"
+		INLINE="NO"
+	>
+		<NAME>GetText</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Get and return textvalue from edit-/inserttext dialog.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double GetHeight()"
+		INLINE="NO"
+	>
+		<NAME>GetHeight</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Get heightvalue and unitssetting from edit-/inserttext dialog and return heightvalue depending on chosen unitsetting.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DECLARE_EVENT_TABLE()"
+		INLINE="NO"
+	>
+		<NAME>DECLARE_EVENT_TABLE</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Declare used events.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="GDSMainWindow*	"
+		DECLARATION="GDSMainWindow*	_parent"
+	>
+		<NAME>_parent</NAME>
+		<DESCRIPTION>
+			<PARA> Pointer to mainwindow.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _text[190]"
+	>
+		<NAME>_text[190]</NAME>
+		<DESCRIPTION>
+			<PARA> string which contains textvalue.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _units[30]"
+	>
+		<NAME>_units[30]</NAME>
+		<DESCRIPTION>
+			<PARA> string which contains unitsetting.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxPanel*	"
+		DECLARATION="wxPanel*	_panel"
+	>
+		<NAME>_panel</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticBox* "
+		DECLARATION="wxStaticBox* _textbox"
+	>
+		<NAME>_textbox</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticBox* "
+		DECLARATION="wxStaticBox* _heightbox"
+	>
+		<NAME>_heightbox</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxTextCtrl*	"
+		DECLARATION="wxTextCtrl*	_text_insert"
+	>
+		<NAME>_text_insert</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxTextCtrl*	"
+		DECLARATION="wxTextCtrl*	_text_height"
+	>
+		<NAME>_text_height</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxChoice* "
+		DECLARATION="wxChoice* _text_units"
+	>
+		<NAME>_text_units</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton* "
+		DECLARATION="wxButton* _ok"
+	>
+		<NAME>_ok</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_cancel"
+	>
+		<NAME>_cancel</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxString "
+		DECLARATION="wxString _choices[9]"
+	>
+		<NAME>_choices[9]</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

@@ -1,0 +1,247 @@
+<HTML>
+  <HEAD>
+    <TITLE>GDS-II Postprocessing Tool Help: Operations menu</TITLE>
+  </HEAD>
+
+  <BODY bgcolor="#66FFFF" text="#000000" link="#6666ff" alink="#999900" vlink="009999">
+
+    <A name="top"></A>
+
+    <TABLE width=100% border=0 cellpadding=6 cellspacing=2>
+    <TR><TD bgcolor="#000000" align=middle valign=top>
+    <FONT color="#FFFF00" size=+3 face="Impact, Arial, Helvetica">Operations menu</FONT>
+    </TD></TR>
+    </TABLE>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Overview</FONT>
+    </TD></TR></TABLE>
+
+    With the <I>Operations</I> menu the structures in the drawing can
+    be modified. Click on one of the commands in the figure below
+    for an explanation of it.
+
+
+    <map name="mainwindow">
+      <area shape="rect" href="#selectall"   coords="48, 52 200, 71" OnMouseOver="window.status='Select all command'; return true" OnMouseOut="window.status=''; return true">
+      <area shape="rect" href="#deselectall" coords="48, 71 200, 90" OnMouseOver="window.status='Un Select all command'; return true" OnMouseOut="window.status=''; return true">
+      <area shape="rect" href="#selected"    coords="48, 90 200,117" OnMouseOver="window.status='Selected only command'; return true" OnMouseOut="window.status=''; return true">
+      <area shape="rect" href="#delete"      coords="48,117 200,139" OnMouseOver="window.status='Delete command'; return true" OnMouseOut="window.status=''; return true">
+      <area shape="rect" href="#flatten"     coords="48,139 200,156" OnMouseOver="window.status='Flatten command'; return true" OnMouseOut="window.status=''; return true">
+      <area shape="rect" href="#validate"    coords="48,156 200,172" OnMouseOver="window.status='Validate Structure Command'; return true" OnMouseOut="window.status=''; return true">
+      <area shape="rect" href="#transform"   coords="48,172 200,191" OnMouseOver="window.status='Transform command'; return true" OnMouseOut="window.status=''; return true">
+      <area shape="rect" href="#undo"        coords="48,191 200,208" OnMouseOver="window.status='Undo last transformation'; return true" OnMouseOut="window.status=''; return true">
+    </map>
+
+    <CENTER>
+    <TABLE border=5 cellspacing=1 cellpadding=10 bgcolor="#FFFFFF">
+      <TR><TD align=middle valign=middle>
+
+      <A name="operatemenu">
+      <IMG src="pics/operatemenu.gif" USEMAP="#mainwindow" width=265 height=224 border=0 alt="Operations menu">
+      </A>
+
+    </TD></TR>
+    </TABLE>
+    </CENTER>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+    <A name="selectall">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Select All</FONT>
+    </TD></TR></TABLE>
+
+    This will select all elements on the displayed structure, this includes references to other structures.
+    If the <A href="#selected">selected only</A>" flag is on, the operations in this menu will only be performed on 
+    the selected elements, else on all elements.
+    <P>
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_select">select</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+    <A name="deselectall">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Un Select All</FONT>
+    </TD></TR></TABLE>
+
+    This will Un Select all elements on the displayed structure, this includes references to other structures.
+    If the <A href="#selected">selected only</A>" flag is on, the operations in this menu will only be performed on 
+    the selected elements, else on all elements.
+    <P>
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_select">select</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+    <A name="selected">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Selected Only</FONT>
+    </TD></TR></TABLE>
+
+    The selected only menu-item is a flag that can be turned on or off.
+    When the flag is turned on, it menu-item is checked as can be seen in
+    the <A href="#operatemenu">picture</A> above.
+    <P>
+    This flag specifies wether or not each operation in the Operations
+    menu is performed on selected elements and referenced structures only. When the flag is
+    checked, but nothing is selected, the operations do not modify
+    the anything.
+    <P>
+    See <A href="index.html#workingwith">selecting elements</A> for info on how to select
+    elements.
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_selected">selected</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+    <A name="delete">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Delete</FONT>
+    </TD></TR></TABLE>
+
+    A datafile can consist of several structures and structure-references. The structures contain elements.
+    The <I>Delete</I> operation deletes (selected if only selected is on) elements and references to structures. 
+    In fact references to other structures are first exploded (made unique), and then the elements in it are deleted.
+    This may lead to empty structures.
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_delete">delete</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+    <A name="flatten">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Flatten</FONT>
+    </TD></TR></TABLE>
+
+    A datafile can consist of several structures and structure-references.
+    The <I>Flatten</I> operation expands all references to structures and
+    move all structures to the top level, which results in only one structure,
+    which is the new top-structure.
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_flatten">flatten</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+    <A name="validate"></A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Validate Structure</FONT>
+    </TD></TR></TABLE>
+    Will be removed....
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_validate">validate</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+    <A name="transform">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Transform</FONT>
+    </TD></TR></TABLE>
+
+    The transformation operation can modify structures in different ways.
+    Clicking the transform item in the menu will display the dialog below.
+    Specify the values for the transformation you want to perform. Values for
+    moving can be specified in pm, nm, um, mm, cm, dm, m (default), inch and
+    foot. Values for moving, scaling and rotating can be positive or negative.
+    Integers are not required. Clicking Ok will execute the transformation.
+    <P>
+    When Reset is clicked, all values are reset at their defaults. Mirroring in
+    both directions will be off, the move values will both be 0 (units), scaling
+    will be 1, rotating 0 and the direction will be "Clockwise".
+    <P>
+    When leaving the program, the values last used are saved to a settings
+    file. They will be loaded next time the program is started.
+    <P>
+    To transform only structures in a specific layer, use the transform operation
+    from the <A href="***">Operate (A)</A> menu.
+    <P>
+    <CENTER>
+      <IMG src="pics/transform.gif" width=303 height=336 alt="Transformation dialog"></TD></TR>
+    </CENTER>
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_transform">transform</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+    <A name="undo">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Undo last transformation</FONT>
+    </TD></TR></TABLE>
+
+    Undo last transformation can be used to restore the old situation. Undo can
+    be used only once, and must be used before any other menu-item is
+    selected. When an other item is selected, undo is disabled. This is done
+    because in meantime structures can be selected, deselected, deleted or even
+    a new file can be loaded.
+    <P>
+    This item is used for undoing the transformation performed in the same menu.
+    To undo a transformation on group A, use the undo operation from the
+    <A href="***">Operate (A)</A> menu.
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_undotrans">undotrans</A>
+    </TD></TR></TABLE>
+
+
+    <P>
+
+    <TABLE width=100% border=0 cellpadding=6 cellspacing=0>
+    <TR>
+    <TD bgcolor="#000000" align=left valign=top>
+    <A href="index.html"><FONT size=+1 face="Impact, Arial, Helvetica">Index</FONT></A>
+    </TD>
+    <TD bgcolor="#000000" align=right valign=top>
+    <A href="#top"><FONT size=+1 face="Impact, Arial, Helvetica">Top of page</FONT></A>
+    </TD>
+    </TR>
+    </TABLE>
+  </BODY>
+</HTML>
+

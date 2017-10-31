@@ -1,0 +1,12 @@
+input layer  1 diff; 2 p; 10 well; 3 wires; 6 contacts;
+scratch layer xs; PGATE;
+output layer 20 bad_gate;
+pgate = p and diff;
+xs = diff and not pgate;
+connect wires xs by contacts
+transistor transistor1 id=pgate, err=bad_gate {
+    gate= p;
+    s$d=xs /POLY
+    BULK=well;
+    }
+

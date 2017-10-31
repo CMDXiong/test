@@ -1,0 +1,41 @@
+2000-11-02  Norman Walsh  <ndw@nwalsh.com>
+
+	* documentation.xml: Reorganized pointer to reference documentation
+
+	* publishing.xml: Changed some literallayouts to programlistings
+
+2000-10-30  Norman Walsh  <ndw@nwalsh.com>
+
+	* jrefhtml.xsl: Turn of labelling of parts/references
+
+2000-10-29  Norman Walsh  <ndw@nwalsh.com>
+
+	* xsl2jref.xsl: Remove extra spaces in front of params
+
+2000-10-20  Norman Walsh  <ndw@nwalsh.com>
+
+	* Makefile, documentation.xml, reference.xml, template-example.xml, template-example.xsl, templates.xml, xsl2jref.xsl: 
+	Documentation updates
+
+2000-10-19  Norman Walsh  <ndw@nwalsh.com>
+
+	* copyright.xml, documentation.xml, publishing.xml, reference.xml, warranty.xml: 
+	Documentation changes
+
+2000-10-17  Norman Walsh  <ndw@nwalsh.com>
+
+	* jrefhtml.xsl, legalnotice.xml, reference.xml, xsl2jref.xsl: 
+	Documentation system updates
+
+2000-10-16  Norman Walsh  <ndw@nwalsh.com>
+
+	* Makefile: New file.
+
+	* jrefhtml.xsl: Add an HR between refentrys
+
+	* xsl2jref.xsl: Support doc:reference, doc:param, and doc:attribute-set
+
+2000-10-09  Norman Walsh  <ndw@nwalsh.com>
+
+	* LostLog, jrefhtml.xsl, xsl2jref.xsl: New file.
+

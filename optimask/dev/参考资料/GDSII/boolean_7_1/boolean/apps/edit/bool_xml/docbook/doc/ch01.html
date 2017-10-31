@@ -1,0 +1,54 @@
+<html><head><title>1. DocBook XSL</title><link rel="stylesheet" href="reference.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.22"><link rel="home" href="index.html" title="DocBook XSL Stylesheet Documentation"><link rel="up" href="index.html" title="DocBook XSL Stylesheet Documentation"><link rel="previous" href="pr01.html" title="Preface"><link rel="next" href="ch01s02.html" title="A brief introduction to XSL"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div id="c38ab2" class="chapter"><div class="titlepage"><h2 class="title"><a name="c38ab2">1. DocBook XSL</a></h2><h3 class="author">Bob Stayton</h3><span class="releaseinfo">
+$Id: publishing.xml,v 1.2 2000/11/02 02:02:47 ndw Exp $
+<br></span><p class="copyright">Copyright &copy; 2000 by Bob Stayton</p></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt> <a href="ch01.html#c38ab2b2">Using XSL tools to publish DocBook
+   documents</a></dt><dt> <a href="ch01s02.html">A brief introduction to XSL</a></dt><dt> <a href="ch01s03.html">XSL processing model</a></dt><dt> <a href="ch01s04.html">Customizing DocBook XSL stylesheets</a></dt></dl></div><div id="c38ab2b2" class="sect1"><div class="titlepage"><h2 class="title" style="clear: all"><a name="c38ab2b2"></a>Using XSL tools to publish DocBook
+   documents</h2></div><p>There is a growing list of tools to process DocBook
+   documents using XSL stylesheets. Each tool implements parts
+   or all of the XSL standard, which actually has several
+   components:
+   <div class="variablelist"><dl><dt><a name="c38ab2b2b1b1a"></a><span class="term">Extensible Stylesheet Language (XSL)</span></dt><dd><p>A language for expressing stylesheets written
+       in XML. It includes the formatting object language, but
+       refers to separate documents for the transformation
+       language and the path language.</p></dd><dt><a name="c38ab2b2b1b1b1"></a><span class="term">XSL Transformation (XSLT)</span></dt><dd><p>The part of XSL for transforming XML documents
+       into other XML documents, HTML, or text. It can be used to
+       rearrange the content and generate new content.</p></dd><dt><a name="c38ab2b2b1b1b2"></a><span class="term">XML Path Language (XPath)</span></dt><dd><p>A language for addressing parts of an XML
+       document. It is used to find the parts of your document to
+       apply different styles to. All XSL processors use this
+       component.</p></dd></dl></div></p><p>To publish HTML from your XML documents, you just
+   need an XSLT engine. To get to print, you need an XSLT
+   engine to produce formatting objects (FO), which then must
+   be processed with a formatting object processor to produce
+   PostScript or PDF output.</p><p>James Clark's XT was the first useful XSLT engine,
+   and it is still in wide use. It is written in Java, so it
+   runs on many platforms, and it is free (
+   <a href="http://www.jclark.com">http://www.jclark.com</a>).
+   XT comes with James Clark's nonvalidating parser XP, but
+   you can substitute a different Java parser. Here is a
+   simple example of using XT from the Unix command line to
+   produce HTML: You'll need to alter your
+   <i><tt>CLASSPATH</tt></i> environment variable to
+   include the path to where you put the
+   <tt>.jar</tt> files from the XT
+   distribution.</p><pre class="screen">CLASSPATH=xt.jar:xp.jar:sax.jar
+export CLASSPATH
+java  com.jclark.xsl.sax.Driver <i><tt>filename.xml</tt></i> <i><tt>docbook/html/docbook.xsl</tt></i> > <i><tt>output.html</tt></i></pre><p>If you replace the HTML stylesheet with a
+   formatting object stylesheet, XT will produce a formatting
+   object file. Then you can convert that to PDF using FOP, a
+   formatting object processor available for free from the
+   Apache XML Project (
+   <a href="http://xml.apache.org">http://xml.apache.org</a>).
+   Here is an example of that two stage processing:</p><pre class="screen">CLASSPATH=xt.jar:xp.jar:sax.jar:fop.jar
+export CLASSPATH
+java  com.jclark.xsl.sax.Driver <i><tt>filename.xml</tt></i> <i><tt>docbook/fo/docbook.xsl</tt></i> > <i><tt>output.fo</tt></i>
+java  org.apache.fop.apps.CommandLine <i><tt>output.fo</tt></i> <i><tt>output.pdf</tt></i></pre><p>As of this writing, some other XSLT processors to
+   choose from include:</p><div class="itemizedlist"><ul><li><a name="c38ab2b2b8a"></a><p>4XSLT, written in Python, from FourThought LLC (
+     <a href="http://www.fourthought.com">http://www.fourthought.com</a>)</p></li><li><a name="c38ab2b2b8b1"></a><p>Sablotron, written in C++, from Ginger Alliance (
+
+     <a href="http://www.gingerall.com">http://www.gingerall.com</a>)</p></li><li><a name="c38ab2b2b8b2"></a><p>Saxon, written in Java, from Michael Kay (
+     <a href="http://users.iclway.co.uk/mhkay/saxon">http://users.iclway.co.uk/mhkay/saxon</a>)</p></li><li><a name="c38ab2b2b8b3"></a><p>Xalan, written in Java, from the Apache XML
+     Project (
+     <a href="http://xml.apache.org">http://xml.apache.org</a>)</p></li><li><a name="c38ab2b2b8b4"></a><p>XML::XSLT,written in Perl, from Geert Josten and
+     Egon Willighagen (
+     <a href="http://www.cpan.org">http://www.cpan.org</a>)</p></li></ul></div><p>For print output, these additional tools are available for processing formatting objects:</p><div class="itemizedlist"><ul><li><a name="c38ab2b2c10a"></a><p>XEP (written in Java) from
+   RenderX (
+  <a href="http://www.renderx.com">http://www.renderx.com</a>).</p></li><li><a name="c38ab2b2c10b1"></a><p>PassiveTeX from Sebastian Rahtz (<a href="http://users.ox.ac.uk/~rahtz/passivetex/">http://users.ox.ac.uk/~rahtz/passivetex/</a>).</p></li></ul></div></div><div class="footnotes"><br><hr width="100" align="left"><div class="footnote"><p><sup>[<a name="ftn.c38ab2b4b7b4b9b3" href="#c38ab2b4b7b4b9b3">1</a>] </sup>Technically, the scope extends to the end tag of the parent of the <tt>&lt;xsl:variable></tt> element. That is effectively the last sibling.</p></div></div></div></body></html>

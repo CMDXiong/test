@@ -1,0 +1,774 @@
+
+
+MAIN_SOURCE=layMain.cc 
+
+SOURCES=\
+  antConfig.cc \
+  antObject.cc \
+  antPlugin.cc \
+  antService.cc \
+  antTemplate.cc \
+  dbArray.cc \
+  dbBox.cc \
+  dbBoxConvert.cc \
+  dbBoxScanner.cc \
+  dbCell.cc \
+  dbCellGraphUtils.cc \
+  dbCellHullGenerator.cc \
+  dbCellInst.cc \
+  dbCellMapping.cc \
+  dbCIF.cc \
+  dbCIFReader.cc \
+  dbCIFWriter.cc \
+  dbClipboard.cc \
+  dbClipboardData.cc \
+  dbClip.cc \
+  dbDXF.cc \
+  dbDXFReader.cc \
+  dbDXFWriter.cc \
+  dbEdge.cc \
+  dbEdgePair.cc \
+  dbEdges.cc \
+  dbEdgePairRelations.cc \
+  dbEdgePairs.cc \
+  dbEdgeProcessor.cc \
+  dbFuzzyCellMapping.cc \
+  dbGDS2.cc \
+  dbGDS2ReaderBase.cc \
+  dbGDS2Reader.cc \
+  dbGDS2WriterBase.cc \
+  dbGDS2Writer.cc \
+  dbHershey.cc \
+  dbInstances.cc \
+  dbInstElement.cc \
+  dbLayerMapping.cc \
+  dbLayerProperties.cc \
+  dbLayout.cc \
+  dbLayoutDiff.cc \
+  dbLayoutQuery.cc \
+  dbLayoutStateModel.cc \
+  dbLayoutUtils.cc \
+  dbLibrary.cc \
+  dbLibraryManager.cc \
+  dbLibraryProxy.cc \
+  dbLoadLayoutOptions.cc \
+  dbManager.cc \
+  dbMatrix.cc \
+  dbMemStatistics.cc \
+  dbOASIS.cc \
+  dbOASISReader.cc \
+  dbOASISWriter.cc \
+  dbObject.cc \
+  dbPath.cc \
+  dbPCellDeclaration.cc \
+  dbPCellHeader.cc \
+  dbPCellVariant.cc \
+  dbPoint.cc \
+  dbPolygon.cc \
+  dbFillTool.cc \
+  dbPolygonTools.cc \
+  dbPropertiesRepository.cc \
+  dbRecursiveShapeIterator.cc \
+  dbReader.cc \
+  dbRegion.cc \
+  dbSaveLayoutOptions.cc \
+  dbShape.cc \
+  dbShapes2.cc \
+  dbShapes.cc \
+  dbStatic.cc \
+  dbStream.cc \
+  dbStreamLayers.cc \
+  dbText.cc \
+  dbTextWriter.cc \
+  dbTilingProcessor.cc \
+  dbTrans.cc \
+  dbUserObject.cc \
+  dbVector.cc \
+  dbWriter.cc \
+  dbWriterTools.cc \
+  edtConfig.cc \
+  edtMainService.cc \
+  edtPlugin.cc \
+  edtService.cc \
+  edtServiceImpl.cc \
+  edtUtils.cc \
+  extDiffPlugin.cc \
+  extGerberDrillFileReader.cc \
+  extGerberImport.cc \
+  extGerberImporter.cc \
+  extNetTracer.cc \
+  extRS274XApertures.cc \
+  extRS274XReader.cc \
+  extLEFDEFImport.cc \
+  extLEFDEFImporter.cc \
+  extLEFImporter.cc \
+  extDEFImporter.cc \
+  extStreamImport.cc \
+  extStreamImporter.cc \
+  extBooleanOperationsPlugin.cc \
+  extXORPlugin.cc \
+  gsi.cc \
+  gsiExternalMain.cc \
+  gsiTypes.cc \
+  gsiClassBase.cc \
+  gsiClass.cc \
+  gsiMethods.cc \
+  gsiInterpreter.cc \
+  gsiObject.cc \
+  gsiRuntimeError.cc \
+  gsiDeclAnt.cc \
+  gsiDeclBasic.cc \
+  gsiDeclDbBox.cc \
+  gsiDeclDbCell.cc \
+  gsiDeclDbCellMapping.cc \
+  gsiDeclDbEdge.cc \
+  gsiDeclDbEdges.cc \
+  gsiDeclDbEdgePair.cc \
+  gsiDeclDbEdgePairs.cc \
+  gsiDeclDbEdgeProcessor.cc \
+  gsiDeclDbInstElement.cc \
+  gsiDeclDbLayerMapping.cc \
+  gsiDeclDbLayout.cc \
+  gsiDeclDbLayoutUtils.cc \
+  gsiDeclDbLibrary.cc \
+  gsiDeclDbManager.cc \
+  gsiDeclDbMatrix.cc \
+  gsiDeclDbPath.cc \
+  gsiDeclDbPoint.cc \
+  gsiDeclDbPolygon.cc \
+  gsiDeclDbRecursiveShapeIterator.cc \
+  gsiDeclDbRegion.cc \
+  gsiDeclDbReader.cc \
+  gsiDeclDbShape.cc \
+  gsiDeclDbShapeProcessor.cc \
+  gsiDeclDbShapes.cc \
+  gsiDeclDbText.cc \
+  gsiDeclDbTrans.cc \
+  gsiDeclDbTilingProcessor.cc \
+  gsiDeclEdt.cc \
+  gsiDeclImg.cc \
+  gsiDeclInternal.cc \
+  gsiDeclLayApplication.cc \
+  gsiDeclLayDialogs.cc \
+  gsiDeclLayLayers.cc \
+  gsiDeclLayLayoutView.cc \
+  gsiDeclLayMainWindow.cc \
+  gsiDeclLayPlugin.cc \
+  gsiDeclLayMacro.cc \
+  gsiDeclLayMarker.cc \
+  gsiDeclLayMenu.cc \
+  gsiDeclRdb.cc \
+  gsiDeclTl.cc \
+  gsiExpression.cc \
+  imgObject.cc \
+  imgPlugin.cc \
+  imgService.cc \
+  layAnnotationShapes.cc \
+  layApplication.cc \
+  layBitmap.cc \
+  layBitmapRenderer.cc \
+  layBitmapsToImage.cc \
+  layBrowser.cc \
+  layCanvasPlane.cc \
+  layCellTreeModel.cc \
+  layCellView.cc \
+  layColorPalette.cc \
+  layConverters.cc \
+  layCursor.cc \
+  layDrawing.cc \
+  layEditable.cc \
+  layExceptions.cc \
+  layFileDialog.cc \
+  layFinder.cc \
+  layFixedFont.cc \
+  layGenericSyntaxHighlighter.cc \
+  layLayerProperties.cc \
+  layLayoutViewConfig.cc \
+  layMarker.cc \
+  layMouseTracker.cc \
+  layHelpSource.cc \
+  layHelpProvider.cc \
+  layGSIHelpProvider.cc \
+  layResourceHelpProvider.cc \
+  layObjectInstPath.cc \
+  layParsedLayerSource.cc \
+  layPlugin.cc \
+  layProgress.cc \
+  layProperties.cc \
+  layQtTools.cc \
+  layRedrawLayerInfo.cc \
+  layRedrawThreadCanvas.cc \
+  layRedrawThread.cc \
+  layRedrawThreadWorker.cc \
+  layRenderer.cc \
+  layRubberBox.cc \
+  laySearchReplacePlugin.cc \
+  laySnap.cc \
+  layStipplePalette.cc \
+  layStream.cc \
+  layTechnology.cc \
+  layTechnologySelector.cc \
+  layTextProgress.cc \
+  layVersion.cc \
+  layViewObject.cc \
+  layViewOp.cc \
+  layViewport.cc \
+  layZoomBox.cc \
+  libBasic.cc \
+  libBasicArc.cc \
+  libBasicText.cc \
+  libBasicCircle.cc \
+  libBasicEllipse.cc \
+  libBasicPie.cc \
+  libBasicDonut.cc \
+  libBasicRoundPath.cc \
+  libBasicRoundPolygon.cc \
+  libBasicStrokedPolygon.cc \
+  pya.cc \
+  pyaConvert.cc \
+  pyaInspector.cc \
+  pyaMarshal.cc \
+  pyaObject.cc \
+  pyaRefs.cc \
+  pyaUtils.cc \
+  pyaHelpers.cc \
+  rba.cc \
+  rdb.cc \
+  rdbFile.cc \
+  rdbUtils.cc \
+  rdbReader.cc \
+  rdbRVEReader.cc \
+  tlAssert.cc \
+  tlCollection.cc \
+  tlDataMapping.cc \
+  tlDeflate.cc \
+  tlException.cc \
+  tlExpression.cc \
+  tlGlobPattern.cc \
+  tlHeap.cc \
+  tlInternational.cc \
+  tlLog.cc \
+  tlObserver.cc \
+  tlProgress.cc \
+  tlStaticObjects.cc \
+  tlStream.cc \
+  tlString.cc \
+  tlThreadedWorkers.cc \
+  tlTimer.cc \
+  tlVariant.cc \
+  tlXMLParser.cc \
+  tlXMLWriter.cc \
+
+MOC_SOURCES=\
+  tlHttpStream.cc \
+  antConfigPage.cc \
+  antPropertiesPage.cc \
+  edtDialogs.cc \
+  edtEditorOptionsPages.cc \
+  edtPCellParametersPage.cc \
+  edtInstPropertiesPage.cc \
+  edtPartialService.cc \
+  edtPropertiesPages.cc \
+  edtPropertiesPageUtils.cc \
+  extDiffToolDialog.cc \
+  extGerberImportDialog.cc \
+  extLEFDEFImportDialogs.cc \
+  extNetTracerConfig.cc \
+  extNetTracerDialog.cc \
+  extStreamImportDialog.cc \
+  extXORToolDialog.cc \
+  extBooleanOperationsDialogs.cc \
+  gtf.cc \
+  imgLandmarksDialog.cc \
+  imgNavigator.cc \
+  imgPropertiesPage.cc \
+  imgWidgets.cc \
+  layAbstractMenu.cc \
+  layBookmarkList.cc \
+  layBookmarkManagementForm.cc \
+  layBrowseInstancesForm.cc \
+  layBrowserDialog.cc \
+  layBrowserPanel.cc \
+  layBrowseShapesForm.cc \
+  layCellSelectionForm.cc \
+  layCIFReaderPlugin.cc \
+  layCIFWriterPlugin.cc \
+  layClipDialog.cc \
+  layCrashMessage.cc \
+  layConfigurationDialog.cc \
+  layDialogs.cc \
+  layDisplayState.cc \
+  layDitherPattern.cc \
+  layDXFReaderPlugin.cc \
+  layDXFWriterPlugin.cc \
+  layEditStipplesForm.cc \
+  layEditStippleWidget.cc \
+  layFillDialog.cc \
+  layGDS2ReaderPlugin.cc \
+  layGDS2WriterPlugin.cc \
+  layGridNet.cc \
+  layHelpDialog.cc \
+  layHierarchyControlPanel.cc \
+  layLayerControlPanel.cc \
+  layLayerMappingWidget.cc \
+  layLayerToolbox.cc \
+  layLayerTreeModel.cc \
+  layLayoutCanvas.cc \
+  layLayoutPropertiesForm.cc \
+  layLayoutStatisticsForm.cc \
+  layLayoutView.cc \
+  layLayoutViewConfigPages.cc \
+  layLoadLayoutOptionsDialog.cc \
+  layLogViewerDialog.cc \
+  layMacroVariableView.cc \
+  layMacroEditorDialog.cc \
+  layMacroEditorPage.cc \
+  layMacroEditorSetupDialog.cc \
+  layMacro.cc \
+  layMacroInterpreter.cc \
+  layMacroPropertiesDialog.cc \
+  layMacroEditorTree.cc \
+  layMainConfigPages.cc \
+  layMainWindow.cc \
+  layMove.cc \
+  layNavigator.cc \
+  layOASISWriterPlugin.cc \
+  layProgressWidget.cc \
+  layPropertiesDialog.cc \
+  laySaveLayoutOptionsDialog.cc \
+  laySearchReplaceDialog.cc \
+  laySearchReplaceConfigPage.cc \
+  laySearchReplacePropertiesWidgets.cc \
+  laySelectCellViewForm.cc \
+  laySelector.cc \
+  laySelectStippleForm.cc \
+  laySession.cc \
+  laySettingsForm.cc \
+  layTechSetupDialog.cc \
+  layTipDialog.cc \
+  layWidgets.cc \
+  layRuntimeErrorForm.cc \
+  rdbInfoWidget.cc \
+  rdbMarkerBrowser.cc \
+  rdbMarkerBrowserDialog.cc \
+  rdbMarkerBrowserPage.cc \
+  tlDeferredExecution.cc \
+
+UI_SOURCES=\
+  AddNewImageDialog.ui \
+  AlignCellOptionsDialog.ui \
+  AlignOptionsDialog.ui \
+  BookmarkManagementForm.ui \
+  BooleanOptionsDialog.ui \
+  BoxPropertiesPage.ui \
+  BrowseInstancesConfigPage.ui \
+  BrowseInstancesForm.ui \
+  BrowserDialog.ui \
+  BrowseShapesConfigPage.ui \
+  BrowseShapesForm.ui \
+  CellSelectionForm.ui \
+  SimpleCellSelectionForm.ui \
+  ChangeLayerOptionsDialog.ui \
+  CIFReaderOptionPage.ui \
+  CIFWriterOptionPage.ui \
+  ClearLayerModeDialog.ui \
+  ClipDialog.ui \
+  ConfigurationDialog.ui \
+  Console.ui \
+  CopyModeDialog.ui \
+  CopyCellModeDialog.ui \
+  CrashMessage.ui \
+  DeleteCellModeDialog.ui \
+  ReplaceCellOptionsDialog.ui \
+  DeleteModeDialog.ui \
+  DiffToolDialog.ui \
+  DuplicateLayerDialog.ui \
+  DXFReaderOptionPage.ui \
+  DXFWriterOptionPage.ui \
+  EditablePathPropertiesPage.ui \
+  EditorOptionsDialog.ui \
+  EditorOptionsGeneric.ui \
+  EditorOptionsInst.ui \
+  EditorOptionsPath.ui \
+  EditorOptionsText.ui \
+  EditStipplesForm.ui \
+  FillDialog.ui \
+  FlattenInstOptionsDialog.ui \
+  GDS2ReaderOptionPage.ui \
+  GDS2WriterOptionPage.ui \
+  GerberImportDialog.ui \
+  GridNetConfigPage.ui \
+  HelpAboutDialog.ui \
+  ImageLandmarksDialog.ui \
+  ImagePropertiesPage.ui \
+  InstantiationForm.ui \
+  InstPropertiesPage.ui \
+  KeyBindingsConfigPage.ui \
+  LayerMappingWidget.ui \
+  LayerSourceDialog.ui \
+  LayoutProperties.ui \
+  LayoutStatistics.ui \
+  LayoutViewConfigPage1.ui \
+  LayoutViewConfigPage2a.ui \
+  LayoutViewConfigPage2b.ui \
+  LayoutViewConfigPage2c.ui \
+  LayoutViewConfigPage3a.ui \
+  LayoutViewConfigPage3b.ui \
+  LayoutViewConfigPage3c.ui \
+  LayoutViewConfigPage3f.ui \
+  LayoutViewConfigPage4.ui \
+  LayoutViewConfigPage5.ui \
+  LayoutViewConfigPage6.ui \
+  LayoutViewConfigPage7.ui \
+  LayoutViewConfigPage.ui \
+  LEFDEFImportOptionsDialog.ui \
+  LEFDEFTechnologyComponentEditor.ui \
+  LoadLayoutOptionsDialog.ui \
+  LogViewerDialog.ui \
+  MainConfigPage2.ui \
+  MainConfigPage3.ui \
+  MainConfigPage4.ui \
+  MainConfigPage5.ui \
+  MainConfigPage6.ui \
+  MainConfigPage.ui \
+  MakeArrayOptionsDialog.ui \
+  MakeCellOptionsDialog.ui \
+  MacroEditorDialog.ui \
+  MacroEditorSetupDialog.ui \
+  MacroTemplateSelectionDialog.ui \
+  MacroPropertiesDialog.ui \
+  MarkerBrowserConfigPage2.ui \
+  MarkerBrowserConfigPage.ui \
+  MarkerBrowserDialog.ui \
+  MarkerBrowserPage.ui \
+  MarkerBrowserSnapshotView.ui \
+  MergeOptionsDialog.ui \
+  MoveOptionsDialog.ui \
+  MoveToOptionsDialog.ui \
+  NetTracerConfigPage.ui \
+  NetTracerDialog.ui \
+  NetTracerTechComponentEditor.ui \
+  NewCellPropertiesDialog.ui \
+  NewLayerPropertiesDialog.ui \
+  NewLayerPropertiesDialog.ui \
+  NewLayoutPropertiesDialog.ui \
+  OASISWriterOptionPage.ui \
+  OpenLayoutModeDialog.ui \
+  PasswordDialog.ui \
+  PathPropertiesPage.ui \
+  PolygonPropertiesPage.ui \
+  PropertiesDialog.ui \
+  RenameCellDialog.ui \
+  RoundCornerOptionsDialog.ui \
+  RuntimeErrorForm.ui \
+  RulerConfigPage2.ui \
+  RulerConfigPage3.ui \
+  RulerConfigPage4.ui \
+  RulerConfigPage.ui \
+  RulerPropertiesPage.ui \
+  SaveLayoutOptionsDialog.ui \
+  SaveLayoutAsOptionsDialog.ui \
+  SelectCellViewForm.ui \
+  SelectStippleForm.ui \
+  SettingsForm.ui \
+  SizingOptionsDialog.ui \
+  TechBaseEditorPage.ui \
+  TechMacrosPage.ui \
+  TechComponentSetupDialog.ui \
+  TechLayerMappingEditorPage.ui \
+  TechSetupDialog.ui \
+  TextPropertiesPage.ui \
+  TipDialog.ui \
+  UserPropertiesEditForm.ui \
+  UserPropertiesForm.ui \
+  XORToolDialog.ui \
+  ReplacePropertiesBox.ui \
+  ReplacePropertiesInstance.ui \
+  ReplacePropertiesPath.ui \
+  ReplacePropertiesShape.ui \
+  ReplacePropertiesText.ui \
+  SearchReplaceConfigPage.ui \
+  SearchPropertiesBox.ui \
+  SearchPropertiesInstance.ui \
+  SearchPropertiesPath.ui \
+  SearchPropertiesShape.ui \
+  SearchPropertiesText.ui \
+  SearchReplaceDialog.ui \
+
+RESOURCES=\
+  layResources.qrc \
+  layLayoutStatistics.qrc \
+  layHelpResources.qrc \
+  layMacroTemplates.qrc \
+  layBuildInMacros.qrc \
+  libResources.qrc \
+  gtf.qrc \
+
+TESTS=\
+  dbArray.ut \
+  dbBoxScanner.ut \
+  dbBoxTree.ut \
+  dbBox.ut \
+  dbCellGraphUtils.ut \
+  dbCellHullGenerator.ut \
+  dbCellMapping.ut \
+  dbCell.ut \
+  dbClip.ut \
+  dbDXFReader.ut \
+  dbCIFReader.ut \
+  dbEdgeProcessor.ut \
+  dbEdgesToContours.ut \
+  dbEdge.ut \
+  dbEdgePair.ut \
+  dbEdges.ut \
+  dbEdgePairRelations.ut \
+  dbEdgePairs.ut \
+  dbGDS2Reader.ut \
+  dbGDS2Writer.ut \
+  dbLayer.ut \
+  dbLayerMapping.ut \
+  dbLayoutQuery.ut \
+  dbLayout.ut \
+  dbRecursiveShapeIterator.ut \
+  dbLayoutUtils.ut \
+  dbLibraries.ut \
+  dbMatrix.ut \
+  dbOASISReader.ut \
+  dbOASISWriter2.ut \
+  dbOASISWriter.ut \
+  dbObject.ut \
+  dbPath.ut \
+  dbPCells.ut \
+  dbPoint.ut \
+  dbPolygonTools.ut \
+  dbPolygon.ut \
+  dbPropertiesRepository.ut \
+  dbRegion.ut \
+  dbShapeArray.ut \
+  dbShapeRepository.ut \
+  dbShapes.ut \
+  dbShape.ut \
+  dbStreamLayers.ut \
+  dbTilingProcessor.ut \
+  dbText.ut \
+  dbTrans.ut \
+  dbVector.ut \
+  dbWriterTools.ut \
+  extGerberImport.ut \
+  extNetTracer.ut \
+  extLEFDEFImport.ut \
+  gsiExpression.ut \
+  imgObject.ut \
+  layAnnotationShapes.ut \
+  layBitmap.ut \
+  layLayerProperties.ut \
+  layParsedLayerSource.ut \
+  layRenderer.ut \
+  rdb.ut \
+  tlAlgorithm.ut \
+  tlClassRegistry.ut \
+  tlCollection.ut \
+  tlDataMapping.ut \
+  tlDeferredExecution.ut \
+  tlDeflate.ut \
+  tlExpression.ut \
+  tlIntervalMap.ut \
+  tlIntervalSet.ut \
+  tlKDTree.ut \
+  tlObserver.ut \
+  tlReuseVector.ut \
+  tlStableVector.ut \
+  tlString.ut \
+  tlThreadedWorkers.ut \
+  tlUtils.ut \
+  tlVariant.ut \
+  tlXMLParser.ut \
+  rba.ut \
+  pya.ut \
+
+RUBYTESTS = \
+  antTest.rb \
+  dbBooleanTest.rb \
+  dbLayout.rb \
+  dbMatrix.rb \
+  dbSimplePolygonTest.rb \
+  dbInstanceTest.rb \
+  dbEdgeTest.rb \
+  dbCellInstArrayTest.rb \
+  dbInstElementTest.rb \
+  dbPolygonTest.rb \
+  dbTilingProcessorTest.rb \
+  dbTransTest.rb \
+  dbPathTest.rb \
+  dbLayoutTest.rb \
+  dbShapesTest.rb \
+  dbTextTest.rb \
+  dbBoxTest.rb \
+  dbPointTest.rb \
+  dbPCells.rb \
+  dbCellMapping.rb \
+  dbLayerMapping.rb \
+  imgObject.rb \
+  layLayers.rb \
+  layMarkers.rb \
+  layMenuTest.rb \
+  laySession.rb \
+  rdbTest.rb \
+
+PYTHONTESTS = \
+             
+ifneq ($(HAVE_RUBY),0) 
+
+# special build for rba.cc for compatibility with Python 2.6 - 
+# put the Ruby path in from of Python to fetch the right node.h
+rba.o: rba.cc rba.d
+	$(CXX) -I$(RUBYINCLUDE) $(INC) $(CXXOPTS_PROD) $@ $(<)
+
+endif
+
+ifneq ($(HAVE_QTBINDINGS),0)
+
+RUBYTESTS += \
+  qtbinding.rb \
+
+PYTHONTESTS += \
+  qtbinding.py \
+
+endif
+
+ADD_SOURCES=\
+  fontgen.cc \
+  strmclip.cc \
+  strm2gds.cc \
+  strm2gdstxt.cc \
+  strm2oas.cc \
+  strm2txt.cc \
+  strm2dxf.cc \
+  strm2cif.cc \
+  strmcmp.cc \
+  strmxor.cc \
+  gtfui.cc \
+
+ADD_MOC_SOURCES=\
+  gtfUiDialog.cc \
+
+UI_SOURCES+=\
+  gtfUiDialogUI.ui \
+
+
+# because we have libklayout.so/.dll we always build for shared objects
+BUILD_SO=1
+
+ifneq ($(HAVE_QTBINDINGS),0)
+
+SOURCES += \
+  gsiQt.cc \
+  gsiQtEvents.cc \
+  gsiDeclQtBasic.cc \
+  gsiDeclQtAdditional.cc \
+
+  # Qt declarations if requested
+  include $(SOURCE)/Makefile.qtdecl
+
+endif
+
+# contributions
+include $(SOURCE)/contrib/gds2_txt/Makefile.body
+
+ifeq ($(NO_SYSTEM_ZLIB),1)
+  include $(SOURCE)/contrib/zlib/Makefile.body
+endif
+
+ifneq ($(WIN_MINGW),1)
+
+LIBKLAYOUT=libklayout.so
+EXEC_TARGET=klayout
+
+all: $(EXEC_TARGET) strm2gds strm2oas strm2gdstxt strm2txt strm2cif strm2dxf strmcmp strmclip strmxor
+
+include $(SOURCE)/Makefile.rules
+
+$(EXEC_TARGET): $(MAIN_SOURCE:%.cc=%.o) $(COMMON_OBJS)
+	$(LINK) $(LOPT) $@ $+ $(ALL_LIBS) $(LIBS_EXE)
+
+else
+
+LIBKLAYOUT=libklayout.dll
+EXEC_TARGET=klayout.exe
+
+all: $(EXEC_TARGET) strm2gds.exe strm2oas.exe strm2gdstxt.exe strm2txt.exe strm2cif.exe strm2dxf.exe strmcmp.exe strmclip.exe strmxor.exe
+
+include $(SOURCE)/Makefile.rules
+
+klayout.rco: $(SOURCE)/klayout.rc $(SOURCE)/logo.ico
+	cp $+ .
+	windres -i klayout.rc -o $@
+
+$(EXEC_TARGET): $(MAIN_SOURCE:%.cc=%.o) klayout.rco $(LIBKLAYOUT)
+	$(LINK) $(LOPT) $@ $+ $(ALL_LIBS) $(LIBS_EXE)
+
+endif
+
+NMOC_COMMON_SOURCES=$(SOURCES) $(MOC_SOURCES) resources.cc
+NMOC_COMMON_OBJS=$(patsubst %.c,%.o,$(NMOC_COMMON_SOURCES:%cc=%o)) 
+
+$(LIBKLAYOUT): $(COMMON_OBJS)
+	$(AR) libmoc.a $(MOC_SOURCES:%.cc=%_moc.o)
+	sh -c '$(LINK) $(LOPT_SO) $@ $(NMOC_COMMON_OBJS) libmoc.a $(ALL_LIBS)'
+
+fontgen: fontgen.o
+	$(LINK) $(LOPT) $@ $+ $(ALL_LIBS) $(LIBS_EXE)
+
+strm2gds: strm2gds.o $(LIBKLAYOUT)
+	$(LINK) $(LOPT) $@ $+ $(ALL_LIBS) $(LIBS_EXE)
+
+strm2oas: strm2oas.o $(LIBKLAYOUT)
+	$(LINK) $(LOPT) $@ $+ $(ALL_LIBS) $(LIBS_EXE)
+
+strm2txt: strm2txt.o $(LIBKLAYOUT)
+	$(LINK) $(LOPT) $@ $+ $(ALL_LIBS) $(LIBS_EXE)
+
+strm2gdstxt: strm2gdstxt.o $(LIBKLAYOUT)
+	$(LINK) $(LOPT) $@ $+ $(ALL_LIBS) $(LIBS_EXE)
+
+strm2dxf: strm2dxf.o $(LIBKLAYOUT)
+	$(LINK) $(LOPT) $@ $+ $(ALL_LIBS) $(LIBS_EXE)
+
+strm2cif: strm2cif.o $(LIBKLAYOUT)
+	$(LINK) $(LOPT) $@ $+ $(ALL_LIBS) $(LIBS_EXE)
+
+strmcmp: strmcmp.o $(LIBKLAYOUT)
+	$(LINK) $(LOPT) $@ $+ $(ALL_LIBS) $(LIBS_EXE)
+
+strmxor: strmxor.o $(LIBKLAYOUT)
+	$(LINK) $(LOPT) $@ $+ $(ALL_LIBS) $(LIBS_EXE)
+
+strmclip: strmclip.o $(LIBKLAYOUT)
+	$(LINK) $(LOPT) $@ $+ $(ALL_LIBS) $(LIBS_EXE)
+
+gtfui: gtfui.o gtfUiDialog.o gtfUiDialog_moc.o 
+	$(LINK) $(LOPT) $@ $+ $(ALL_LIBS) $(LIBS_EXE)
+
+ifneq ($(HAVE_RUBY),0) 
+.PHONY: rubytests 
+rubytests: $(EXEC_TARGET) 
+	for t in $(RUBYTESTS); do ./$(EXEC_TARGET) -z -rx -c $(RUBYTESTSRC)/config.xml -t -r $(RUBYTESTSRC)/$$t || exit $$?; ./$(EXEC_TARGET) -z -rx -c $(RUBYTESTSRC)/config.xml -t -e -r $(RUBYTESTSRC)/$$t || exit $$?; done
+
+.PHONY: rubytests_valgrind 
+rubytests_valgrind: $(EXEC_TARGET) 
+	for t in $(RUBYTESTS); do valgrind ./$(EXEC_TARGET) -z -rx -c $(RUBYTESTSRC)/config.xml -t -r $(RUBYTESTSRC)/$$t || exit $$?; ./$(EXEC_TARGET) -z -rx -c $(RUBYTESTSRC)/config.xml -t -e -r $(RUBYTESTSRC)/$$t || exit $$?; done
+endif
+
+ifneq ($(HAVE_PYTHON),0) 
+.PHONY: pythontests 
+pythontests: $(EXEC_TARGET) 
+	for t in $(PYTHONTESTS); do ./$(EXEC_TARGET) -z -rx -c $(PYTHONTESTSRC)/config.xml -t -r $(PYTHONTESTSRC)/$$t || exit $$?; ./$(EXEC_TARGET) -z -rx -c $(PYTHONTESTSRC)/config.xml -t -e -r $(PYTHONTESTSRC)/$$t || exit $$?; done
+
+.PHONY: pythontests_valgrind 
+pythontests_valgrind: $(EXEC_TARGET) 
+	for t in $(PYTHONTESTS); do valgrind ./$(EXEC_TARGET) -z -rx -c $(PYTHONTESTSRC)/config.xml -t -r $(PYTHONTESTSRC)/$$t || exit $$?; ./$(EXEC_TARGET) -z -rx -c $(PYTHONTESTSRC)/config.xml -t -e -r $(PYTHONTESTSRC)/$$t || exit $$?; done
+endif
+
+include .dep
+
+

@@ -1,0 +1,35 @@
+
+.PHONY: default
+default: all
+
+include Makefile.env
+include Makefile.conf
+
+SHELL=sh
+
+.PHONY: all
+all: 
+	for d in main $(PLUGINS); do ($(MAKE) -C $$d .dep ; $(MAKE) -C $$d all) || exit 1; done
+
+.PHONY: cleandep
+cleandep: 
+	for d in main $(PLUGINS); do ($(MAKE) -C $$d .dep ; $(MAKE) -C $$d cleandep) || exit 1; done
+
+.PHONY: clean
+clean: 
+	for d in main $(PLUGINS); do ($(MAKE) -C $$d .dep ; $(MAKE) -C $$d clean) || exit 1; done
+
+.PHONY: rubytests
+rubytests: 
+	$(MAKE) -C main .dep
+	$(MAKE) -C main rubytests
+
+.PHONY: tests_build
+tests_build:
+	$(MAKE) -C main test_prep
+	for d in main $(PLUGINS); do ($(MAKE) -C $$d .dep ; $(MAKE) -C $$d tests_build) || exit 1; done
+
+.PHONY: tests
+tests: tests_build
+	for d in main $(PLUGINS); do ($(MAKE) -C $$d .dep ; $(MAKE) -C $$d tests_exec) || exit 1; done
+

@@ -1,0 +1,13 @@
+# Process file for GDS-II postprocessing tool
+
+addfile  @{gdsroot}default/process/autom.prs prs
+addfile  @{gdsroot}default/data/democal/demo.prs prs
+addfile  @{gdsroot}default/data/democal/demo2.prs prs
+addfile  @{gdsroot}default/data/one.cal gds-ii
+addfile  @{gdsroot}default/data/lev3.cal gds-ii
+addfile  @{gdsroot}default/data/d3337509.cal gds-ii
+addfile  @{gdsroot}default/data/d1110118.cal gds-ii
+addfile  @{gdsroot}default/data/drieh.key key
+addfile   @{gdsroot}/default/data/zeshoek.key key
+addfile   @{gdsroot}/default/data/m782506.cal gds-ii
+

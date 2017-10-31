@@ -1,0 +1,250 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class group"
+>
+
+<META-DATA>
+	<NAME>group</NAME>
+	<AUTHOR>klaas</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Thu Oct 21 10:53:51 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>group.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>misc.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>group.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> maintains a list of layer numbers, that will be used in boolean operations if the onlyselected flag is set, only the selected primitives will be taken from the layers</PARA>
+</DESCRIPTION>
+
+
+
+
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="group()"
+		INLINE="NO"
+	>
+		<NAME>group</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> constructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~group()"
+		INLINE="NO"
+	>
+		<NAME>~group</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> destructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="group&	"
+		DECLARATION="group&amp;	operator=(group&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator=</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Clear()"
+		INLINE="NO"
+	>
+		<NAME>Clear</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> clears the group (no layers selected)</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetLayer(int, G_BOOL)"
+		INLINE="NO"
+	>
+		<NAME>SetLayer</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> add or remove a layer from the group</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	GetLayer(int)"
+		INLINE="NO"
+	>
+		<NAME>GetLayer</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> check if a layer belongs to the group</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	GetNumberOfLayers()"
+		INLINE="NO"
+	>
+		<NAME>GetNumberOfLayers</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> returns the number of layers in this group</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetOnlySelected(G_BOOL)"
+		INLINE="NO"
+	>
+		<NAME>SetOnlySelected</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> indicate if only selected objects should be used</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	GetOnlySelected()"
+		INLINE="NO"
+	>
+		<NAME>GetOnlySelected</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> check if only selected objects should be used</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	layer[MAX_LAYERS]"
+	>
+		<NAME>layer[MAX_LAYERS]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	_onlySelected"
+	>
+		<NAME>_onlySelected</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	_numberOfLayers"
+	>
+		<NAME>_numberOfLayers</NAME>
+		<DESCRIPTION>
+			<PARA> counts how many layers are in this group</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

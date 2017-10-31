@@ -1,0 +1,19 @@
+input layer 2 n; 3 p; 11 contacts
+output layer 10 n_too_close; 10 p_too_close;
+badpoly 0
+
+n_too_close=minspacing(contacts/in, n/in, 10);
+!   Look toward the INSIDE of layer CONTACTS polygons, for the INSIDE of 
+! layer N polygons.  Look toward the INSIDE of layer N polygons, for the
+! INSIDE of layer CONTACTS polygons.
+
+p_too_close=minspacing(contacts/in, p/in, 10);
+! Repeat for CONTACTS and P
+
+!   In the example, note that to long contact would have been too close to 
+! edges of both N and P had the test been for simple spacing.
+!  You can see the error marks on N or P by looking IN from the error marks
+! on CONTACTS.  You can see the error marks on CONTACTS by looking IN
+! from an error mark on N or P.
+3ONLY
+ALL_SAFE

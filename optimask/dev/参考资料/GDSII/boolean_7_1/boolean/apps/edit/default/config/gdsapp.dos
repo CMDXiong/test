@@ -1,0 +1,25 @@
+# Directories
+# GDSROOT is set by $GDSROOT
+setalias setupdir	@{gdsroot}default/config/
+
+setalias datadir	@{gdsroot}default/data/
+
+setalias procdir	@{gdsroot}default/process/
+
+
+setalias setup_ext	set
+
+setalias file_name	"   "
+
+setalias file_path	@{gdsroot}
+
+setalias file_ext		cal
+
+# Filenames
+
+setalias setupfile	@{setupdir}default.set
+
+setalias historyfile	@{setupdir}history.set
+
+
+setalias gdsuser		@{gdsroot}gdsuser/

@@ -1,0 +1,474 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class ToolControl"
+>
+
+<META-DATA>
+	<NAME>ToolControl</NAME>
+	<AUTHOR>klaas</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Mon Oct 18  9:57:28 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>wxwin.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>misc.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>windrv.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>tool.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>toolcont.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> all interactive drawing using tools is handled through this class. All mouse and key events on the canvas/client window are redirected to this class. Depending on the tool that is active, those events are redirected to the right tool. A stack of tools is maintained in order to allow drawing and zooming at the same time. Shortcuts to start tools/certain commands are also handled here. Undo while a tool is in action (busy drawing), is handled by the tool itself. The toolcontroller will receive the undo command, and redirects it to the active tool. The default tool will always be the ZOOMIN_TOOL. If the stack becomes empty, this tool will be started again.</PARA>
+</DESCRIPTION>
+
+
+
+
+
+<RELATED-TYPES>
+	<RELATED-TYPE TYPE="class">
+		<NAME>BaseTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>DrawDriver</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>WindowsDriver</NAME>
+	</RELATED-TYPE>
+</RELATED-TYPES>
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="ToolControl()"
+		INLINE="NO"
+	>
+		<NAME>ToolControl</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>constructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~ToolControl()"
+		INLINE="NO"
+	>
+		<NAME>~ToolControl</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>destructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void OnMouseEvent(wxMouseEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnMouseEvent</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>called on mouse events</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void OnChar(wxKeyEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnChar</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>called on key events</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void OnKeyDown(wxKeyEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnKeyDown</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>called on keydown events</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void OnKeyUp(wxKeyEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnKeyUp</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>called on keyup events</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="ToolSet "
+		DECLARATION="ToolSet GetActiveType()"
+		INLINE="NO"
+	>
+		<NAME>GetActiveType</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>what tool is active at the moment</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="BaseTool* "
+		DECLARATION="BaseTool* GetActiveTool()"
+		INLINE="NO"
+	>
+		<NAME>GetActiveTool</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL PopTool()"
+		INLINE="NO"
+	>
+		<NAME>PopTool</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL PushTool(BaseTool* a_tool)"
+		INLINE="NO"
+	>
+		<NAME>PushTool</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL StartTool(ToolSet a_tool,G_BOOL onlyonce)"
+		INLINE="NO"
+	>
+		<NAME>StartTool</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL EndTool(G_BOOL now=False)"
+		INLINE="NO"
+	>
+		<NAME>EndTool</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL StopTool()"
+		INLINE="NO"
+	>
+		<NAME>StopTool</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void CalculateCurrent()"
+		INLINE="NO"
+	>
+		<NAME>CalculateCurrent</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int NumberOfTools()"
+		INLINE="NO"
+	>
+		<NAME>NumberOfTools</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Undo()"
+		INLINE="NO"
+	>
+		<NAME>Undo</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Draw()"
+		INLINE="NO"
+	>
+		<NAME>Draw</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Begin()"
+		INLINE="NO"
+	>
+		<NAME>Begin</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL End()"
+		INLINE="NO"
+	>
+		<NAME>End</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL _toolactive"
+	>
+		<NAME>_toolactive</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="DL_List<void*>* "
+		DECLARATION="DL_List&lt;void*&gt;* _tool_stack"
+	>
+		<NAME>_tool_stack</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="BaseTool* "
+		DECLARATION="BaseTool* _tool"
+	>
+		<NAME>_tool</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="long	"
+		DECLARATION="long	_currentX"
+	>
+		<NAME>_currentX</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="long	"
+		DECLARATION="long	_currentY"
+	>
+		<NAME>_currentY</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _realcurrentX"
+	>
+		<NAME>_realcurrentX</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _realcurrentY"
+	>
+		<NAME>_realcurrentY</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

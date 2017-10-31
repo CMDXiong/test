@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE reference
+  PUBLIC "-//Norman Walsh//DTD JRefEntry V1.0//EN" "http://nwalsh.com/docbook/jrefentry/1.0/jrefentry.dtd">
+<reference>
+<referenceinfo>
+<releaseinfo role="meta">
+$Id: lib.xsl,v 1.4 2000/10/19 20:56:08 ndw Exp $
+</releaseinfo>
+<author><surname>Walsh</surname>
+<firstname>Norman</firstname></author>
+<copyright><year>1999</year><year>2000</year>
+<holder>Norman Walsh</holder>
+</copyright>
+</referenceinfo>
+<title>Library Template Reference</title>
+
+<partintro>
+<section><title>Introduction</title>
+
+
+<para>This is technical reference documentation for the DocBook XSL
+Stylesheets; it documents (some of) the parameters, templates, and
+other elements of the stylesheets.</para>
+
+
+
+<para>This is not intended to be <quote>user</quote> documentation.
+It is provided for developers writing customization layers for the
+stylesheets, and for anyone who's interested in <quote>how it
+works</quote>.</para>
+
+
+
+<para>Although I am trying to be thorough, this documentation is known
+to be incomplete. Don't forget to read the source, too :-)</para>
+
+</section>
+</partintro>
+
+<refentry id="template.xpointer.idref">
+<refnamediv>
+<refname>xpointer.idref</refname>
+<refpurpose>Extract IDREF from an XPointer</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<synopsis>&lt;xsl:template name="xpointer.idref"&gt;
+&lt;xsl:param name="xpointer"&gt;http://...&lt;/xsl:param&gt;
+  ...
+&lt;/xsl:template&gt;</synopsis>
+</refsynopsisdiv>
+<refdescription>
+
+<para>The <function>xpointer.idref</function> template returns the
+ID portion of an XPointer which is a pointer to an ID within the current
+document, or the empty string if it is not.</para>
+
+
+<para>In other words, <function>xpointer.idref</function> returns
+<quote>foo</quote> when passed either <literal>#foo</literal>
+or <literal>#xpointer(id('foo'))</literal>, otherwise it returns
+the empty string.</para>
+
+</refdescription></refentry>
+</reference>

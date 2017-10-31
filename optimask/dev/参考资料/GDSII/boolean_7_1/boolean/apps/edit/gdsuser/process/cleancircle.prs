@@ -1,0 +1,157 @@
+# Process file for GDS-II postprocessing tool
+#setenv HOME c:/masker/vcsel
+#loadsetup $HOME/gdsuser/config/vcsel3.set
+setlayer 31
+loadfile $HOME/gdsuser/process/Unit_a11.em emask 
+
+viewstructure myStructure
+select -10000.0 -2000.0 10000.0 140.0 true
+
+begin   
+#box 2                                                                                                                                                                                                                                                                                                                                                                                
+ keystring {BOX; LAYER 20;  BOXTYPE 0;  WIDTH 0;  XY 5;
+  X -1000.000; Y -200.000;X 1000.000;Y -200.00000;
+  X 1000.000; Y 12.0000;  X -1000.000; Y 12.000;
+  X -1000.000; Y -200.000; ENDEL;}          
+end
+draw 
+
+group_a empty
+group_a 31 true
+destination 10
+move_a
+
+setlayer 0
+select all false
+
+group_a empty
+group_a 10 false
+movehor 0um
+movever -12um
+transform_a
+destination 2
+copy_a
+
+group_a empty
+group_a 10 false
+mirrorx 1
+movever 0um
+transform_a
+destination 2
+move_a
+
+group_a empty
+group_a 2 false
+mirrorx 0
+movehor 0um
+movever +12um
+transform_a
+destination 3
+move_a
+
+select -10000.0 1400.0 10000.0 3190.0 true
+
+begin   
+#box 1                                                                                                                                                                                                                                                                                                                                                                               
+ keystring {BOX; LAYER 20;  BOXTYPE 0;  WIDTH 0;  XY 5;
+  X -1000.000; Y 140.000;X 1000.000;Y 140.00000;
+  X 1000.000; Y 317.0000;  X -1000.000; Y 317.000;
+  X -1000.000; Y 140.000; ENDEL;}          
+end
+draw 
+
+draw
+group_a empty
+group_a 31 true
+destination 10
+move_a
+
+setlayer 0
+select all false
+
+group_a empty
+group_a 10 false
+movehor 0um
+movever -317um
+transform_a
+destination 2
+copy_a
+
+group_a empty
+group_a 10 false
+mirrorx 1
+movever 0um
+transform_a
+destination 2
+move_a
+
+group_a empty
+group_a 20 false
+delete_a
+
+group_a empty
+group_a 2 false
+mirrorx 0
+movehor 0um
+movever +317um
+transform_a
+destination 3
+move_a
+
+select -10000.0 -4680.0 10000.0 -2910.0 true
+
+begin   
+#box 3                                                                                                                                                                                                                                                                                                                                                                               
+ keystring {BOX; LAYER 20;  BOXTYPE 0;  WIDTH 0;  XY 5;
+  X -1000.000; Y -470.000;X 1000.000;Y -470.00000;
+  X 1000.000; Y -293.0000;  X -1000.000; Y -293.000;
+  X -1000.000; Y -470.000; ENDEL;}          
+end
+draw 
+
+draw
+group_a empty
+group_a 31 true
+destination 10
+move_a
+
+setlayer 0
+select all false
+
+group_a empty
+group_a 10 false
+movehor 0um
+movever +293um
+transform_a
+destination 2
+copy_a
+
+group_a empty
+group_a 10 false
+mirrorx 1
+movever 0um
+transform_a
+destination 2
+move_a
+
+group_a empty
+group_a 20 false
+delete_a
+
+group_a empty
+group_a 2 false
+mirrorx 0
+movehor 0um
+movever -293um
+transform_a
+destination 3
+move_a
+
+group_a empty
+group_a 0 false
+delete_a
+
+group_a empty
+group_a 3 false
+destination 31
+copy_a

@@ -1,0 +1,482 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class Reference"
+>
+
+<META-DATA>
+	<NAME>Reference</NAME>
+	<AUTHOR></AUTHOR>
+	<VERSION></VERSION>
+	<DATE>Thu Oct 21 14:44:14 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME></NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME></NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+<DESCRIPTION>
+	<PARA></PARA>
+</DESCRIPTION>
+
+<INHERITANCE>
+	<PARENT-CLASS
+		SCOPE="public"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>Element</NAME>
+	</PARENT-CLASS>
+</INHERITANCE>
+
+
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="Reference()"
+		INLINE="NO"
+	>
+		<NAME>Reference</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> contructors and destructors</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="Reference(Structure*)"
+		INLINE="NO"
+	>
+		<NAME>Reference</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~Reference()"
+		INLINE="NO"
+	>
+		<NAME>~Reference</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual G_BOOL "
+		DECLARATION="virtual G_BOOL Recurse(DOWHAT dothis,...)"
+		INLINE="NO"
+	>
+		<NAME>Recurse</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual BoundingBox*	"
+		DECLARATION="virtual BoundingBox*	CalcBoundingBox()"
+		INLINE="NO"
+	>
+		<NAME>CalcBoundingBox</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual BoundingBox*	"
+		DECLARATION="virtual BoundingBox*	GetBoundingBox()"
+		INLINE="NO"
+	>
+		<NAME>GetBoundingBox</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual Reference* "
+		DECLARATION="virtual Reference* Duplicate()"
+		INLINE="NO"
+	>
+		<NAME>Duplicate</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> assgnment operator</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" Structure*	"
+		DECLARATION=" Structure*	GetStructure()"
+		INLINE="YES"
+	>
+		<NAME>GetStructure</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> inline get and set functions</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void	"
+		DECLARATION=" void	SetStructure(Structure*)"
+		INLINE="YES"
+	>
+		<NAME>SetStructure</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void	"
+		DECLARATION=" void	SetElflags(Elflags*)"
+		INLINE="YES"
+	>
+		<NAME>SetElflags</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" Elflags*	"
+		DECLARATION=" Elflags*	GetElflags()"
+		INLINE="YES"
+	>
+		<NAME>GetElflags</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void	"
+		DECLARATION=" void	SetStructureReferenceName(char*)"
+		INLINE="YES"
+	>
+		<NAME>SetStructureReferenceName</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" char*	"
+		DECLARATION=" char*	GetStructureReferenceName()"
+		INLINE="YES"
+	>
+		<NAME>GetStructureReferenceName</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" G_BOOL	"
+		DECLARATION=" G_BOOL	GetStrans()"
+		INLINE="YES"
+	>
+		<NAME>GetStrans</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void	"
+		DECLARATION=" void	GetPoint(Point&amp; offsetpoint)"
+		INLINE="YES"
+	>
+		<NAME>GetPoint</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" Matrix<double>*	"
+		DECLARATION=" Matrix&lt;double&gt;*	GetRelativeMatrix()"
+		INLINE="YES"
+	>
+		<NAME>GetRelativeMatrix</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void	"
+		DECLARATION=" void	SetRelativeMatrix(Matrix&lt;double&gt;*)"
+		INLINE="YES"
+	>
+		<NAME>SetRelativeMatrix</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void CalculateRelativeMatrices()"
+		INLINE="NO"
+	>
+		<NAME>CalculateRelativeMatrices</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	MakeStrans(Strans*)"
+		INLINE="NO"
+	>
+		<NAME>MakeStrans</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetReferencesNr()"
+		INLINE="NO"
+	>
+		<NAME>SetReferencesNr</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetExplodeReferencesNr()"
+		INLINE="NO"
+	>
+		<NAME>SetExplodeReferencesNr</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Structure* "
+		DECLARATION="Structure* _structure"
+	>
+		<NAME>_structure</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	_strans"
+	>
+		<NAME>_strans</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Elflags*	"
+		DECLARATION="Elflags*	_elflags"
+	>
+		<NAME>_elflags</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char	"
+		DECLARATION="char	_structurereferencename[100]"
+	>
+		<NAME>_structurereferencename[100]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Matrix<double>*	"
+		DECLARATION="Matrix&lt;double&gt;*	_relative_matrix"
+	>
+		<NAME>_relative_matrix</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="BoundingBox*	"
+		DECLARATION="BoundingBox*	_boundingbox"
+	>
+		<NAME>_boundingbox</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

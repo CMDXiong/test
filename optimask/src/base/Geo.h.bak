@@ -1,0 +1,981 @@
+/* ========================================================================== */
+/* GEO.H -- 基本图形定义头文件
+ *
+ * REFERENCE: 
+ *
+ * COPYRIGHT 2017 Optixera.
+ * -------------------------------------------------------------------------- */
+/* $REVISION: 1.00$ (20171001 Chaohong Liu) */
+/* HISTORY: 20171001(v1.00) Initial Version;
+ * ========================================================================== */
+
+#ifndef _GEOOBJ_H
+#define _GEOOBJ_H
+
+#include <string>
+#include <vector>
+#include <map>
+#include "Referenced.h"
+#include <math.h>
+#include <time.h>
+
+#ifndef M_PI
+#define   M_PI      3.1415926535897932
+#endif
+
+//地物类型
+#define     GEO_TYPE_NONE       0      //未定义的任何类型
+#define     GEO_TYPE_POINT      1      //点
+#define     GEO_TYPE_LINE       2	   //线
+#define     GEO_TYPE_CIRCLE     3      //圆
+#define     GEO_TYPE_ARC        4      //圆弧
+#define     GEO_TYPE_LWPOLYLINE 5      //折线
+#define     GEO_TYPE_ELLIPSE    6      //椭圆
+#define     GEO_TYPE_TEXT       7      //纯显示文本
+#define     GEO_TYPE_RECT       8     // 矩形
+#define     GEO_TYPE_PATH       9    // 路径
+#define     GEO_TYPE_POLYGON    10    // 多边形
+
+#define     GEO_TYPE_MULRIPLER  20    //复合对象
+#define     GEO_TYPE_TRANSFORM  21     //transform节点
+#define     GEO_TYPE_ARRAY      22     //阵列节点
+//以下针对GDS格式数据/////////////////////
+#define     GEO_TYPE_STRUCT     100     //GDS模块Struct节点
+
+#define     GEO_TYPE_ELEMENT    110     //Base Element type begin
+#define     GEO_TYPE_BOUNDARY   111     //BOUNDARY
+#define     GEO_TYPE_PATH       112     //PATH
+#define     GEO_TYPE_SREF       113     
+#define     GEO_TYPE_AREF       114     
+#define     GEO_TYPE_GDS_TEXT   115     
+#define     GEO_TYPE_NODE       116     
+#define     GEO_TYPE_BOX        117 
+#define     GEO_TYPE_ELEM_END   149     //Element Type Define end
+/////////////////////////////////////////
+
+
+
+//层类型
+#define     LAYER_TYPE_LINE	   1		//线路层
+
+//层标志
+#define     LAYER_FLAG_NONE         0       //初始状态
+#define     LAYER_FLAG_LOCK         1       //锁定，不能修改
+#define     LAYER_FLAG_HIDE         2       //隐藏
+#define     LAYER_FLAG_PROTECT      4       //保护，不能选择
+#define     LAYER_FLAG_FILL         8       //填充
+
+#ifdef EMBED_ARM
+#define FLOAT_T	float
+#define ULLong  unsigned long long
+#else
+#define FLOAT_T	double
+#define ULLong  unsigned __int64
+#endif
+
+#define     MIN_PRECISION       1e-6
+
+#pragma pack(4)//设定为4字节对齐 
+
+//编译器在解构对齐时采用四字节
+//地理范围结构
+typedef struct TAG_RECT
+{
+	FLOAT_T m_dLeft, m_dTop, m_dRight, m_dBottom;
+	TAG_RECT(){ m_dLeft = m_dRight = m_dTop = m_dBottom = 0; }
+    TAG_RECT(FLOAT_T dLeft, FLOAT_T dTop, FLOAT_T dRight, FLOAT_T dBottom)
+    { 
+        m_dLeft = dLeft;
+        m_dRight = dRight;
+        m_dTop = dTop;
+        m_dBottom = dBottom;
+    }
+	FLOAT_T Width(){ return m_dRight - m_dLeft; }
+	FLOAT_T Height(){ return m_dTop - m_dBottom; }
+} CGeoRect;
+
+typedef struct TAG_PT
+{
+	FLOAT_T dx, dy;
+	TAG_PT(){ dx = dy = 0; }
+	TAG_PT(FLOAT_T x, FLOAT_T y)
+	{ 
+		dx = x; dy = y; 
+	}
+	TAG_PT(const TAG_PT& pt)
+	{
+		if (this == &pt)
+			return;
+
+		dx = pt.dx; dy = pt.dy;
+	}
+	TAG_PT& operator=(const TAG_PT& pt)
+	{
+		if (this != &pt)
+		{
+			dx = pt.dx; dy = pt.dy;
+		}
+		return *this;
+	}
+
+    bool operator<(const TAG_PT& pt) const
+    {
+        if (dx < pt.dx)
+            return true;
+        else if (fabs(dx - pt.dx) < MIN_PRECISION)
+        {
+            if (dy < pt.dy)
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
+    }
+
+} CGeoPt;
+
+class CGeoArc;
+extern bool GetLineProjectPoint(const CGeoPt& first, const CGeoPt& second, const CGeoPt& pt, CGeoPt* ptDist=0, CGeoPt* projPt=0);
+extern bool GetArcProjectPoint(const CGeoArc& arc, const CGeoPt& pt, CGeoPt* ptDist=0, CGeoPt* projPt=0);
+extern bool GetCircleProjectPoint(const CGeoPt& center, FLOAT_T radius, const CGeoPt& pt, FLOAT_T& dbDist, CGeoPt* projPt = 0);
+
+//基础对象类，方法多为虚函数，在派生类中实现
+class CGeoBase : public Referenced
+{
+protected:
+	unsigned long		m_dwID;			//编号
+	unsigned short		m_wType;		//类型
+    //mutable unsigned long  m_dwLen;		//对象占用空间大小。该字段也许会取消
+    //笔对象大小，如果对于点，则表示点的大小，如果对于线，就是表示线粗，如果为0，则表示采用系统默认的，如果为负数，则采用绝对大小
+    //对于复合对象，如果下面的子对象没有设置，则采用符合对象的值，否则采用自己专有的。
+    int                 m_nPenSize;   
+public:
+    CGeoBase() { m_dwID = 0; m_wType = GEO_TYPE_NONE;/* m_dwLen = 0;*/m_nPenSize = 0; }
+    inline void SetObjID(unsigned long ID){ m_dwID = ID; }
+	inline unsigned long GetObjID() const { return m_dwID; }                       //得到对象ID
+    inline unsigned short GetObjType() const { return m_wType; }                   //得到对象类型
+    inline void SetPenSize(int nSize) { m_nPenSize = nSize; }                      //设置基本单位大小
+    inline int GetPenSize() const { return m_nPenSize; }                           //获取基本单位大小
+	virtual int GetObjDataLen() const                                              //返回值表示写入到文件中数据大小
+    {
+        return sizeof(FLOAT_T)+ sizeof(unsigned long)+ sizeof(unsigned short);
+    }                    
+    virtual CGeoPt GetCentrePoint() const = 0;                                     //得到对象的中心点坐标
+    virtual CGeoRect GetBoundBox() const { return CGeoRect(); }                    //得到对象的包围盒
+};
+		
+typedef std::vector<ref_ptr<CGeoBase> >         GeoObjList;                        //地物列表
+//点地物
+class CGeoPoint : public CGeoBase
+{
+protected:
+	FLOAT_T m_dbX,m_dbY;		//点坐标
+public:
+    CGeoPoint() 
+    {
+        m_wType = GEO_TYPE_POINT; 
+        m_dbX   = m_dbY = 0; 
+    }
+	virtual int GetObjDataLen() const {return sizeof(FLOAT_T) * 2 + CGeoBase::GetObjDataLen();}
+    virtual CGeoPt GetCentrePoint() const
+    {
+       return  CGeoPt(m_dbX, m_dbY);
+    }
+    virtual CGeoRect GetBoundBox() const
+    {
+        return CGeoRect(m_dbX, m_dbY, m_dbX, m_dbY);
+    }
+
+    inline void SetPt(FLOAT_T x, FLOAT_T y){m_dbX = x;m_dbY = y;}
+    inline void GetPt(FLOAT_T& x, FLOAT_T& y) const { x=m_dbX;y=m_dbY; }
+    inline CGeoPt GetPt() const { return CGeoPt(m_dbX, m_dbY); } 
+};
+
+//线地物
+class CGeoLine : public CGeoBase
+{
+protected:
+	FLOAT_T	  m_dbBeginX,m_dbBeginY; //第一个点坐标
+	FLOAT_T   m_dbEndX,m_dbEndY;     //第二个点坐标
+public:	
+	CGeoLine()
+    {
+        m_wType = GEO_TYPE_LINE;
+        m_dbBeginX = m_dbBeginY = m_dbEndX = m_dbEndY = 0;
+    }
+	CGeoLine(CGeoPt begin, CGeoPt end) //Add by xiong 17/09/05
+    {
+        m_wType = GEO_TYPE_LINE;
+        m_dbBeginX = begin.dx;
+        m_dbBeginY = begin.dy;
+        m_dbEndX  = end.dx;
+        m_dbEndY = end.dy;
+    }
+	
+	virtual int GetObjDataLen() const {return sizeof(FLOAT_T) * 4 + CGeoBase::GetObjDataLen();}
+    virtual  CGeoPt GetCentrePoint() const
+    {
+        return CGeoPt((m_dbBeginX + m_dbEndX) / 2, (m_dbBeginY + m_dbEndY)/2);
+    }
+
+    virtual CGeoRect GetBoundBox() const
+    {
+        FLOAT_T dbMinX = m_dbBeginX > m_dbEndX ? m_dbEndX : m_dbBeginX;
+        FLOAT_T dbMaxX = m_dbBeginX < m_dbEndX ? m_dbEndX : m_dbBeginX;
+        FLOAT_T dbMinY = m_dbBeginY > m_dbEndY ? m_dbEndY : m_dbBeginY;
+        FLOAT_T dbMaxY = m_dbBeginY < m_dbEndY ? m_dbEndY : m_dbBeginY;
+        return CGeoRect(dbMinX, dbMinY, dbMaxX, dbMaxY);
+    }
+
+    //计算点到直线上的映射点
+    //参数pt表示实际的点，projPt参数表示映射点
+    //ptDist中的X分量表示映射点到该对象第一个点的距离（表示轴向距离），Y分量表示到该对象的距离
+    //如果点没法映射到地物上或者该函数没法计算，则返回值为false
+    //如果参数projPt为0，则表示不需要知道映射点，ptDist为0，表示不需要知道距离
+    virtual bool GetProjectPoint(const CGeoPt& pt, CGeoPt* ptDist = 0, CGeoPt* projPt = 0) const
+    {
+        return GetLineProjectPoint(CGeoPt(m_dbBeginX, m_dbBeginY), CGeoPt(m_dbEndX, m_dbEndY), pt, ptDist, projPt);
+    }
+
+    //设置坐标
+    inline void SetLinePt(const CGeoPt& first, const CGeoPt& second)
+    {
+        m_dbBeginX = first.dx;
+        m_dbBeginY = first.dy;
+        m_dbEndX = second.dx;
+        m_dbEndY = second.dy;
+    }
+    inline void SetFirstPt(const CGeoPt& pt)
+    {
+        m_dbBeginX = pt.dx;
+        m_dbBeginY = pt.dy;
+    }
+    inline void SetSecondPt(const CGeoPt& pt)
+    { 
+        m_dbEndX = pt.dx;
+        m_dbEndY = pt.dy;
+    }
+
+    inline void GetLinePt(CGeoPt& first, CGeoPt& second) const
+    {
+         first.dx= m_dbBeginX;
+         first.dy= m_dbBeginY;
+         second.dx= m_dbEndX;
+         second.dy= m_dbEndY;
+    }
+    inline CGeoPt GetFirstPt() const { return CGeoPt(m_dbBeginX, m_dbBeginY); }
+    inline CGeoPt GetSecondPt() const { return CGeoPt(m_dbEndX, m_dbEndY); }
+};
+
+class CGeoRectangle : public CGeoBase
+{
+public:
+    CGeoRectangle()
+    {
+        m_wType = GEO_TYPE_RECT;
+        m_dbBeginX = m_dbBeginY = m_dbEndX = m_dbEndY = 0;
+    }
+    virtual int GetObjDataLen() const {return sizeof(FLOAT_T) * 4 + CGeoBase::GetObjDataLen();}
+
+    virtual  CGeoPt GetCentrePoint() const
+    {
+        return CGeoPt((m_dbBeginX + m_dbEndX) / 2, (m_dbBeginY + m_dbEndY)/2);
+    }
+
+    virtual CGeoRect GetBoundBox() const
+    {
+        FLOAT_T dbMinX = m_dbBeginX > m_dbEndX ? m_dbEndX : m_dbBeginX;
+        FLOAT_T dbMaxX = m_dbBeginX < m_dbEndX ? m_dbEndX : m_dbBeginX;
+        FLOAT_T dbMinY = m_dbBeginY > m_dbEndY ? m_dbEndY : m_dbBeginY;
+        FLOAT_T dbMaxY = m_dbBeginY < m_dbEndY ? m_dbEndY : m_dbBeginY;
+        return CGeoRect(dbMinX, dbMinY, dbMaxX, dbMaxY);
+    }
+
+    inline void SetRectPt(const CGeoPt& first, const CGeoPt& second)
+    {
+        m_dbBeginX = first.dx;
+        m_dbBeginY = first.dy;
+        m_dbEndX = second.dx;
+        m_dbEndY = second.dy;
+    }
+    inline void SetTopLeftPt(const CGeoPt& pt)
+    {
+        m_dbBeginX = pt.dx;
+        m_dbBeginY = pt.dy;
+    }
+    inline void SetRightBottomPt(const CGeoPt& pt)
+    {
+        m_dbEndX = pt.dx;
+        m_dbEndY = pt.dy;
+    }
+
+    inline void GetRectPt(CGeoPt& first, CGeoPt& second) const
+    {
+         first.dx= m_dbBeginX;
+         first.dy= m_dbBeginY;
+         second.dx= m_dbEndX;
+         second.dy= m_dbEndY;
+    }
+    inline CGeoPt GetTopLeftPt() const { return CGeoPt(m_dbBeginX, m_dbBeginY); }
+    inline CGeoPt GetRightBottomPt() const { return CGeoPt(m_dbEndX, m_dbEndY); }
+
+protected:
+    FLOAT_T	  m_dbBeginX,m_dbBeginY; //第一个点坐标
+    FLOAT_T   m_dbEndX,m_dbEndY;     //第二个点坐标
+};
+
+//圆地物
+class CGeoCircle : public CGeoBase
+{
+protected:
+    FLOAT_T	  m_dbX, m_dbY; //圆心点坐标
+    FLOAT_T   m_dbRad;     //半径
+
+public:
+    CGeoCircle()
+    {
+        m_wType = GEO_TYPE_CIRCLE; 
+        m_dbX = m_dbY = m_dbRad = 0;
+    }
+    virtual int GetObjDataLen() const{return sizeof(FLOAT_T) * 3 + CGeoBase::GetObjDataLen(); }
+    virtual CGeoPt GetCentrePoint() const { return CGeoPt(m_dbX, m_dbY); }
+    virtual CGeoRect GetBoundBox() const
+    {
+        return CGeoRect(m_dbX- m_dbRad, m_dbY- m_dbRad, m_dbX + m_dbRad, m_dbY + m_dbRad);
+    }
+    //计算点到地物的距离和映射到地物上的映射点
+    //参数pt表示实际的点，projPt参数表示映射点
+    //ptDist中的X分量表示映射点到该对象第一个点的距离（圆弧为到第一个点的弧长），Y分量表示到该对象的距离
+    //如果点没法映射到地物上或者该函数没法计算，则返回值为false
+    //如果参数projPt为0，则表示不需要知道映射点，ptDist为0，表示不需要知道距离
+    virtual bool GetProjectPoint(const CGeoPt& pt, CGeoPt* ptDist = 0, CGeoPt* projPt = 0) const
+    {
+        FLOAT_T dbDist;
+        bool bRet = GetCircleProjectPoint(CGeoPt(m_dbX, m_dbY), m_dbRad, pt, dbDist, projPt);
+        if (bRet && ptDist != 0)
+        {
+            ptDist->dy = dbDist;
+            ptDist->dx = 0;
+        }
+        return bRet;
+    }
+
+    //设置坐标
+	inline void SetCenterPt(const CGeoPt& pt){m_dbX = pt.dx;m_dbY = pt.dy;}
+    inline void SetCenterPt(FLOAT_T x, FLOAT_T y) { m_dbX = x; m_dbY = y;}
+    inline void SetRadius(FLOAT_T tmp){ m_dbRad = tmp; }
+
+    inline CGeoPt GetCenterPt() const{ return CGeoPt(m_dbX,m_dbY); }
+    inline void GetCenterPt(FLOAT_T& x, FLOAT_T& y) const { x= m_dbX; y= m_dbY; }
+    inline FLOAT_T GetRadius() const { return m_dbRad; }
+};
+
+
+//圆弧地物
+class CGeoArc : public CGeoCircle
+{
+protected:
+	FLOAT_T   m_dbAngleS,m_dbAngleE;			//起始角度和终止角度,单位为度，不是弧度
+
+public:
+	CGeoArc()
+    {
+        m_wType = GEO_TYPE_ARC;
+        m_dbAngleS = m_dbAngleE = 0;
+    }
+
+    virtual int GetObjDataLen() const {return CGeoCircle::GetObjDataLen() + sizeof(FLOAT_T) * 2; }
+    virtual CGeoPt GetCentrePoint() const 
+    { 
+        FLOAT_T dbBaseAngle = m_dbAngleE - m_dbAngleS;
+        if (dbBaseAngle < 0)
+            dbBaseAngle += 360;
+        dbBaseAngle = dbBaseAngle / 2 + m_dbAngleS;
+        if (dbBaseAngle > 360)
+            dbBaseAngle -= 360;
+
+        FLOAT_T dbBaseX = m_dbRad*cos(dbBaseAngle* M_PI / 180) + m_dbX;
+        FLOAT_T dbBaseY = m_dbRad*sin(dbBaseAngle* M_PI / 180) + m_dbY;
+
+       return CGeoPt(dbBaseX, dbBaseY);
+    }
+
+    virtual CGeoRect GetBoundBox() const;
+
+    //计算点到地物的距离和映射到地物上的映射点
+    //参数pt表示实际的点，projPt参数表示映射点
+    //ptDist中的X分量表示映射点到该对象第一个点的距离（圆弧为到第一个点的弧长），Y分量表示到该对象的距离
+    //如果点没法映射到地物上或者该函数没法计算，则返回值为false
+    //如果参数projPt为0，则表示不需要知道映射点，ptDist为0，表示不需要知道距离
+    virtual bool GetProjectPoint(const CGeoPt& pt, CGeoPt* ptDist = 0, CGeoPt* projPt = 0) const
+    {
+        return GetArcProjectPoint(*this, pt, ptDist,projPt);
+    }
+
+    //设置坐标
+    inline void SetAngleS(FLOAT_T tmp){ m_dbAngleS = tmp; }
+	inline FLOAT_T GetAngleS()const {return m_dbAngleS;}
+    inline void SetAngleE(FLOAT_T tmp){ m_dbAngleE = tmp; }
+	inline FLOAT_T GetAngleE() const {return m_dbAngleE;}
+    inline void GetFirstPt(CGeoPt& pt) const
+    {
+        pt.dx = m_dbX + m_dbRad*cos(m_dbAngleS / 180 * M_PI);
+        pt.dy = m_dbY + m_dbRad*sin(m_dbAngleS / 180 * M_PI);
+    }
+    inline void GetSecondPt(CGeoPt& pt) const
+    {
+        pt.dx = m_dbX + m_dbRad*cos(m_dbAngleE / 180 * M_PI);
+        pt.dy = m_dbY + m_dbRad*sin(m_dbAngleE / 180 * M_PI);
+    }
+};
+
+//多段线，保存所有点
+class CGeoLWPolyline : public CGeoBase
+{
+protected:
+	std::vector<CGeoPt> m_allPoint; //所有点
+    bool                m_bClose;   //表示起始点与结束点是否相连，如果为true，则画图时必须额外画一直线从起始点到终止点
+public:
+    CGeoLWPolyline(){ m_wType = GEO_TYPE_LWPOLYLINE; m_bClose = false; }
+	virtual int GetObjDataLen() const {return sizeof(FLOAT_T)* m_allPoint.size() * 2 + CGeoBase::GetObjDataLen()+sizeof(bool);}
+    virtual CGeoPt GetCentrePoint() const
+    {
+        return CGeoPt(); //目前没有实现，有时间必须实现
+    }
+
+    virtual CGeoRect GetBoundBox() const
+    {
+        return CGeoRect(); //目前没有实现，有时间必须实现
+    }
+
+    //设置坐标
+    void AddPt(FLOAT_T x, FLOAT_T y){ AddPt(CGeoPt(x,y)); }
+    void AddPt(const CGeoPt& pt){ m_allPoint.push_back(pt);}
+    bool GetPt(unsigned nIndex, CGeoPt& pt) const
+    {
+        if (nIndex > m_allPoint.size())
+            return false;
+        else
+        {
+            pt = m_allPoint[nIndex];
+            return true;
+        }
+    }
+    CGeoPt GetPt(unsigned nIndex) const
+    {
+        if (nIndex > m_allPoint.size())
+            return CGeoPt();
+        else
+            return  m_allPoint[nIndex];
+    }
+    //update point
+    bool UpdatePt(unsigned nIndex, const CGeoPt& pt)
+    {
+        if (nIndex >= m_allPoint.size())
+            return false;
+        m_allPoint[nIndex] = pt;
+        return true;
+    }
+
+    inline void SetClose(bool bClose){ m_bClose = bClose; }
+    inline bool IsClosed() const { return m_bClose; }
+
+    inline unsigned GetPtNum() const { return m_allPoint.size(); }
+    inline const std::vector<CGeoPt>& GetPtList() const { return m_allPoint; }
+};
+
+//矩形地物
+class CGeoEllipse : public CGeoBase
+{
+protected:
+    FLOAT_T	  m_dbX, m_dbY;        //圆心点坐标
+    FLOAT_T   m_dbEllipticity;     //椭圆率，短轴与长轴的比例
+    FLOAT_T	  m_dbEndX, m_dbEndY;  //长轴端点之一的坐标
+
+public:
+    CGeoEllipse()
+    { 
+        m_wType = GEO_TYPE_ELLIPSE; 
+        m_dbX = m_dbY = m_dbEndX = m_dbEndY = 0;
+        m_dbEllipticity = 1.0;
+    }
+    virtual int GetObjDataLen() const{return sizeof(FLOAT_T) * 5 + CGeoBase::GetObjDataLen();}
+    virtual CGeoPt GetCentrePoint() const { return CGeoPt(m_dbX, m_dbY); }
+    virtual CGeoRect GetBoundBox() const
+    {
+        return CGeoRect(); //目前没有实现，有时间必须实现
+    }
+
+    //设置坐标
+    inline void SetCenterPt(FLOAT_T x, FLOAT_T y) { m_dbX = x; m_dbY = y; }
+    inline void SetCenterPt(const CGeoPt& pt){ m_dbX = pt.dx; m_dbY = pt.dy; }
+    inline CGeoPt GetCenterPt() const { return CGeoPt(m_dbX, m_dbY); }
+    inline void SetEndPt(FLOAT_T x, FLOAT_T y){ m_dbEndX = x; m_dbEndY = y; }
+    inline void SetEndPt(const CGeoPt& pt){ m_dbEndX = pt.dx; m_dbEndY = pt.dy; }
+    inline CGeoPt GetEndPt() const { return CGeoPt(m_dbEndX, m_dbEndY); }
+    inline void SetEllipticity(FLOAT_T tmp){ m_dbEllipticity = tmp; }
+    inline FLOAT_T GetEllipticity() const { return m_dbEllipticity;}
+};
+
+//单行文本地物
+class CGeoText : public CGeoBase
+{
+protected:
+	FLOAT_T	  m_dbX, m_dbY; 					//文本起始坐标
+	FLOAT_T   m_dbDirX, m_dbDirY; 				//文本的方向
+    FLOAT_T   m_dbHeight;                       //文本高度，暂不采用
+    int       m_nFont;                          //字体编号，目前针对GDS
+    unsigned char m_byAlignVer;                 //垂直对齐方式，0->top, 1->middle, 2->bottom
+    unsigned char m_byAlignHor;                 //水平对齐方式，0->left, 1->center, 2->right
+	std::string  m_strName;                     //文本数据
+public:
+	CGeoText()
+    { 
+        m_wType = GEO_TYPE_TEXT;
+        m_dbX = m_dbY = m_dbDirX = m_dbDirY = m_dbHeight = 0;
+        m_nFont = 0;
+        m_byAlignHor= m_byAlignVer = 0;
+    }
+	virtual int GetObjDataLen() const{return sizeof(FLOAT_T) * 4 + m_strName.size() + 1;}
+    virtual CGeoPt GetCentrePoint() const 
+    { 
+        return CGeoPt(); //目前没有实现，有时间必须实现
+    }
+    virtual CGeoRect GetBoundBox() const
+    {
+        return CGeoRect(); //目前没有实现，有时间必须实现
+    }
+
+    inline void SetText(const std::string& strText){ m_strName = strText; }
+    const std::string& GetText() {return m_strName;}
+
+    void SetAlignHor(unsigned char byVal) { m_byAlignHor = byVal;}
+    void SetAlignVer(unsigned char byVal) { m_byAlignVer = byVal;}
+    void SetFontIndex(int nVal) {m_nFont = nVal; }
+
+    inline void SetStartPt(FLOAT_T x, FLOAT_T y) { m_dbX = x; m_dbY = y; }
+    inline void SetStartPt(const CGeoPt& pt) { m_dbX = pt.dx; m_dbY = pt.dy; }
+    CGeoPt GetStartPt() { return CGeoPt(m_dbX, m_dbY);}
+    void GetStartPt(FLOAT_T& x, FLOAT_T& y) { x= m_dbX; y= m_dbY; }
+    inline void SetDir(FLOAT_T x, FLOAT_T y){ m_dbDirX = x; m_dbDirY = y; }
+    inline void SetHeight(FLOAT_T tmp){ m_dbHeight = tmp; }
+    FLOAT_T GetHeight() {return m_dbHeight;}
+};
+
+//复合地物
+class CGeoMulripler : public CGeoBase
+{
+protected:
+    GeoObjList          m_vecChildren;       //所有子地物列表
+public:
+	CGeoMulripler(){ m_wType = GEO_TYPE_MULRIPLER; }
+	virtual int GetObjDataLen() const
+	{
+        int nLen = 0;
+		for (unsigned i = 0; i < m_vecChildren.size(); i++)
+            nLen += m_vecChildren.at(i)->GetObjDataLen();
+        nLen += CGeoBase::GetObjDataLen();
+        return  nLen;
+	}
+    virtual CGeoPt GetCentrePoint() const 
+    { 
+        return CGeoPt(); //目前没有实现，有时间必须实现
+    }
+    virtual CGeoRect GetBoundBox() const
+    {
+        return CGeoRect(); //目前没有实现，有时间必须实现
+    }
+    unsigned GetChildCount() const { return m_vecChildren.size(); } 
+    bool IsEmpty() const { return m_vecChildren.empty(); }
+    void AddChild(CGeoBase* pElement){ if (pElement != 0) m_vecChildren.push_back(pElement);}
+    CGeoBase* GetChild(unsigned uIndex)
+    {
+        if (uIndex >= m_vecChildren.size())
+            return 0;
+        else
+            return m_vecChildren.at(uIndex).get();
+    }
+    CGeoBase* FrontChild()
+    {
+        if (m_vecChildren.empty())
+            return 0;
+        else
+            return m_vecChildren.front().get();
+    }
+    CGeoBase* BackChild()
+    {
+        if (m_vecChildren.empty())
+            return 0;
+        else
+            return m_vecChildren.back().get();
+    }
+};
+
+//阵列节点
+class CGeoArray : public CGeoMulripler
+{
+protected:
+    FLOAT_T        m_dbRefX, m_dbRefY;               //参考点
+    FLOAT_T        m_dbRowEndX, m_dbRowEndY;         //行方向的端点
+    FLOAT_T        m_dbColEndX, m_dbColEndY;         //列方向的端点
+    int            m_nRows, nCols;                   //行、列方向的个数，如果这两者为1，则行列方向的端点只是作为方向使用
+public:
+    CGeoArray()
+    {
+        m_wType = GEO_TYPE_ARRAY;
+        m_nRows = nCols = 1;
+        m_dbColEndX = m_dbColEndY = m_dbRowEndX = m_dbRowEndY = m_dbRefX = m_dbRefY = 0.0;
+    }
+    void SetRowAndCol(int nRow, int nCol) { m_nRows = nRow; nCols = nCols; }
+};
+
+//矩阵
+class CMatrix
+{
+protected:
+    FLOAT_T                            m_mat[3][3];        //3*3矩阵
+public:
+    CMatrix() { makeIdentity(); }
+    //设置单位矩阵
+    void makeIdentity();
+    //设置缩放
+    void makeScale(FLOAT_T x, FLOAT_T y);
+    //设置平移
+    void makeTranslate(FLOAT_T x, FLOAT_T y);
+    //设置旋转，angle为弧度
+    void makeRotate(FLOAT_T angle);
+};
+
+//矩阵节点
+class CGeoTransform : public CGeoMulripler
+{
+protected:
+    CMatrix        m_mat;               //3*3矩阵
+public:
+    CGeoTransform()
+    {
+        m_wType = GEO_TYPE_TRANSFORM;
+    }
+    virtual int GetObjDataLen() const
+    {
+        return 0;
+    }
+};
+
+
+//GDS文件的中的图元
+class CGeoGDSElement : public CGeoTransform
+{
+protected:
+    const static int    GDS_MAX_LAYER = 64;
+    const static int    GDS_MAX_COL = 32767;
+    const static int    GDS_MAX_ROW = 32767;
+    const static int    GDS_MAX_DATA_TYPE = 64;
+protected:
+    unsigned short  m_wLayer;
+    unsigned short  m_wDataType;
+    unsigned short  m_wFlags;
+    unsigned        m_dwPlex;
+    std::map<unsigned short, std::string> m_mapProperty;
+    ref_ptr<CGeoBase>   m_parentStruct;
+public:
+    CGeoGDSElement()
+    {
+        m_dwPlex = 0;
+        m_wFlags = 0;
+        m_wLayer = m_wDataType = 0;
+        m_wType = GEO_TYPE_ELEMENT;
+    }
+    CGeoBase* GetParent() { return m_parentStruct.get(); }
+    void SetParent(CGeoBase* pParent) { if (pParent != 0) m_parentStruct = pParent; }
+
+    void SetLayerNo(unsigned short  wLayer) { m_wLayer = wLayer < GDS_MAX_LAYER ? wLayer : 0; }
+    unsigned short GetLayerNo()const { return m_wLayer; }
+
+    void SetDataType(unsigned short  wType) { m_wDataType = wType < GDS_MAX_DATA_TYPE ? wType : 0; }
+    unsigned short GetDataType()const { return m_wDataType; }
+
+    void SetPlex(unsigned  dwPlex) { m_dwPlex = dwPlex; }
+    unsigned GetPlex()const { return m_dwPlex; }
+
+    void SetFlags(unsigned short  wFlag) { m_wFlags = wFlag; }
+    unsigned short GetFlags()const { return m_wFlags; }
+
+    void AddProperty(unsigned short wNum, const std::string& value) { m_mapProperty.insert(std::pair<unsigned short, std::string>(wNum, value)); }
+
+    virtual void AddCoordPt(FLOAT_T x, FLOAT_T y) {}
+};
+
+//GDS2 Struce
+class CGeoGDSStruct : public CGeoMulripler
+{
+protected:
+    std::string                        m_strName; 
+    time_t                             m_tCreateTime;
+    time_t                             m_tLastModifyTime;
+
+private:
+    void InitData();
+
+public:
+    CGeoGDSStruct()
+    {
+        m_wType = GEO_TYPE_STRUCT; 
+        InitData();
+    }
+    virtual int GetObjDataLen() const
+    {
+        return  CGeoMulripler::GetObjDataLen();
+    }
+    virtual CGeoPt GetCentrePoint() const
+    {
+        return CGeoPt(); //目前没有实现，有时间必须实现
+    }
+    virtual CGeoRect GetBoundBox() const
+    {
+        return CGeoRect(); //目前没有实现，有时间必须实现
+    }
+
+    //
+    void SetName(const std::string& name) { m_strName = name; }
+    const std::string& GetName() {return m_strName;}
+    void SetCreateTime(time_t tTime) { m_tCreateTime = tTime;}
+    void SetLastModifyTime(time_t tTime) { m_tLastModifyTime = tTime; }
+    void AddElement(CGeoGDSElement* pElement) { AddChild(pElement);}
+    CGeoGDSElement* BackElement()
+    { 
+        CGeoBase* pTemp = BackChild();
+        if (0== pTemp)
+            return 0;
+        else
+            return dynamic_cast<CGeoGDSElement*>(pTemp);
+    }
+    CGeoGDSElement* FrontElement()
+    {
+        CGeoBase* pTemp = FrontChild();
+        if (0 == pTemp)
+            return 0;
+        else
+            return dynamic_cast<CGeoGDSElement*>(pTemp);
+    }
+};
+
+class CGeoGDSBoundary : public CGeoGDSElement
+{
+public:
+    CGeoGDSBoundary()
+    {
+        m_wType = GEO_TYPE_BOUNDARY;
+        CGeoLWPolyline *pTemp = new CGeoLWPolyline;
+        pTemp->SetClose(true);  //必须闭合
+        AddChild(pTemp);
+    }
+    virtual void AddCoordPt(FLOAT_T x, FLOAT_T y) {static_cast<CGeoLWPolyline*>(m_vecChildren.front().get())->AddPt(x,y);}
+};
+
+class CGeoGDSPath : public CGeoGDSBoundary
+{
+public:
+    enum PATHTYPE { SQUARE_END_TYPE, ROUND_END_TYPE, SQUARE_END_EXT_TYPE, PATHTYPE_MAX };
+
+protected:
+    PATHTYPE    m_ePathType;
+
+public:
+    CGeoGDSPath()
+    {
+        m_ePathType = SQUARE_END_TYPE;
+        m_wType = GEO_TYPE_PATH;
+        static_cast<CGeoLWPolyline*>(m_vecChildren.front().get())->SetClose(false);
+    }
+    void SetPathType(PATHTYPE eType) { m_ePathType = eType; }
+    PATHTYPE GetPathType() const { return m_ePathType; }
+};
+
+class CGeoGDSBox : public CGeoGDSBoundary
+{
+protected:
+    unsigned    m_uBoxType;
+public:
+    CGeoGDSBox()
+    {
+        m_uBoxType = 0;
+        m_wType = GEO_TYPE_BOX;
+    }
+    void SetBoxType(unsigned uType) { m_uBoxType = uType; }
+    unsigned GetBoxType() const { return m_uBoxType; }
+};
+
+class CGeoGDSNode : public CGeoGDSElement
+{
+protected:
+    unsigned    m_uNodeType;
+public:
+    CGeoGDSNode()
+    {
+        m_uNodeType = 0;
+        m_wType = GEO_TYPE_NODE;
+    }
+    void SetNodeType(unsigned uType) { m_uNodeType = uType; }
+    unsigned GetNodeType() const { return m_uNodeType; }
+};
+
+class CGeoGDSRef : public CGeoGDSElement
+{
+protected:
+    std::string     m_strRefStructName;
+    unsigned short  m_wTransOption;
+    FLOAT_T         m_dbMagnification;
+    FLOAT_T         m_dbAngle;
+public:
+    CGeoGDSRef()
+    {
+        m_wType = GEO_TYPE_SREF;
+        m_wTransOption = 0;
+        m_dbMagnification = 1.0;
+        m_dbAngle = 0;
+    }
+    void SetRefName(const std::string& strName) { m_strRefStructName = strName; }
+    const std::string& GetRefName() { return m_strRefStructName; }
+
+    void SetTransOption(unsigned short wData) { m_wTransOption = wData; }
+    unsigned short GetTransOption() {return m_wTransOption;}
+
+    void SetMagnification(FLOAT_T dbData) { m_dbMagnification = dbData; }
+    FLOAT_T GetMagnification() { return m_dbMagnification; }
+
+    void SetAngle(FLOAT_T dbData) { m_dbAngle = dbData; }
+    FLOAT_T GetMagnificatio() { return m_dbAngle; }
+};
+
+class CGeoGDSText : public CGeoGDSRef
+{
+protected:
+    unsigned short  m_wTextType;
+
+public:
+    CGeoGDSText()
+    {
+        m_wType = GEO_TYPE_GDS_TEXT;
+        m_wTextType = 0;
+        CGeoText *pTemp = new CGeoText;
+        AddChild(pTemp);
+    }
+    void SetText(const std::string& strName) { static_cast<CGeoText*>(m_vecChildren.front().get())->SetText(strName); }
+    const std::string& GetText() { return static_cast<CGeoText*>(m_vecChildren.front().get())->GetText(); }
+
+    void SetTextType(unsigned short wData) { m_wTextType = wData; }
+    unsigned short GetTextType() { return m_wTextType; }
+
+    void SetPresentation(unsigned short wVal)
+    {
+        CGeoText* pTemp = static_cast<CGeoText*>(m_vecChildren.front().get());
+        pTemp->SetFontIndex(wVal & 0XC00);
+        pTemp->SetAlignVer(wVal & 0X3000);
+        pTemp->SetAlignHor(wVal & 0XC000);
+    }
+};
+
+//图层
+class CGeoLayer : public Referenced
+{
+protected:
+	//层类型，0表示未定义，1表示线路层
+    unsigned long		m_dwType;
+    unsigned long       m_dwLayerFlag;  //层标志，具体标志含义参考LAYER_FLAG_*的宏定义
+    unsigned long       m_dwSize;       //在保存数据时，该数据充当长度，其他情况不用
+
+    FLOAT_T		m_dbMinX, m_dbMinY, m_dbMaxX, m_dbMaxY; //层范围
+    std::string m_strName;                              //层名字
+    std::string m_strAnnotation;                        //层注记
+    GeoObjList m_lstChildList;                          //数据列表
+
+public:
+    CGeoLayer()
+    {
+        m_dwType = 1; m_dwSize = 0;
+        m_dbMinX = m_dbMinY = m_dbMaxX = m_dbMaxY = 0;
+        m_dwLayerFlag = LAYER_FLAG_NONE;
+    }
+    virtual ~CGeoLayer(){}
+public:
+    unsigned long GetObjDataLen() const
+    {
+        unsigned long dwLen = m_strName.size() + m_strAnnotation.size() + sizeof(FLOAT_T)* 4 + 2 + sizeof(unsigned long)*3;
+        for (unsigned i = 0; i < m_lstChildList.size(); i++)
+        {
+            dwLen += m_lstChildList.at(i)->GetObjDataLen();
+        }
+        return dwLen;
+    }
+	const GeoObjList& GetObjList(){ return m_lstChildList; }
+	unsigned GetLayperType(){ return m_dwType; }
+    virtual void AddObj(CGeoBase* lpObj){ m_lstChildList.push_back(lpObj); }    //以后添加删除更新图元时要自动计算出中心点和包围盒,注意，不要添加局部变量的指针
+    virtual bool DelObj(unsigned nIndex);    //按照索引删除
+    inline void SetType(unsigned long dwType) { m_dwType = dwType;}
+    inline void SetName(const std::string& strName){ m_strName = strName; }
+    inline const std::string& GetName(){ return m_strName; }
+
+    //标志相关
+    inline void SetLock(bool bSet = true) { m_dwLayerFlag = bSet ? m_dwLayerFlag | LAYER_FLAG_LOCK : m_dwLayerFlag &(~LAYER_FLAG_LOCK);}
+    inline bool IsLock() const { return (m_dwLayerFlag & LAYER_FLAG_LOCK) != 0;}
+    inline void SetHide(bool bSet = true) { m_dwLayerFlag = bSet ? m_dwLayerFlag | LAYER_FLAG_HIDE : m_dwLayerFlag &(~LAYER_FLAG_HIDE); }
+    inline bool IsHide() const { return (m_dwLayerFlag & LAYER_FLAG_HIDE) != 0; }
+
+    inline void SetSelect(bool bSet = true) { m_dwLayerFlag = bSet ? m_dwLayerFlag | LAYER_FLAG_PROTECT : m_dwLayerFlag &(~LAYER_FLAG_PROTECT); }
+    inline bool IsSelectable() const { return (m_dwLayerFlag & LAYER_FLAG_PROTECT) != 0; }
+    inline void SetFill(bool bSet = true) { m_dwLayerFlag = bSet ? m_dwLayerFlag | LAYER_FLAG_FILL : m_dwLayerFlag &(~LAYER_FLAG_FILL); }
+    inline bool IsFill() const { return (m_dwLayerFlag & LAYER_FLAG_FILL) != 0; }
+};
+
+typedef std::vector<ref_ptr<CGeoLayer> >        GeoLayerList;   //层列表
+typedef std::vector<ref_ptr<CGeoGDSElement> >   GeoElementList;
+typedef std::vector<ref_ptr<CGeoGDSStruct> >    GeoStructList;
+//地图类型
+class CGeoScene : public Referenced
+{
+protected:
+	CGeoRect mapRect;                           //地图范围
+    unsigned long   m_nDataVer;                   //地图文件数据版本
+    unsigned long   m_dwLastNo;                   //最后的编号
+    std::string     m_strName;                    //地图名
+    time_t          m_tCreate;
+    time_t          m_tLastModify;
+    time_t          m_tLastAcess;
+    GeoStructList   m_vecGdsStructList;
+    GeoLayerList    m_layerList;
+
+public:
+    CGeoScene();
+    virtual ~CGeoScene(){}
+    unsigned long GetObjDataLen() const
+    {
+        unsigned long dwLen = m_strName.size() + 1 + sizeof(CGeoRect)+sizeof(unsigned)* 2;
+        for (unsigned i = 0; i < m_layerList.size(); i++)
+        {
+            dwLen += m_layerList.at(i)->GetObjDataLen();
+        }
+        return dwLen;
+    }
+    GeoLayerList GetLayerList() const {return m_layerList;}
+    void AddLayer(CGeoLayer* pLayer){m_layerList.push_back(pLayer);}
+	int GetLayerNum() const{ return m_layerList.size(); }
+	//获取图层
+	CGeoLayer* GetLayerByIndex(int nIndex)
+	{
+		if (nIndex < 0 || nIndex >= m_layerList.size())
+			return 0;
+		else
+			return m_layerList.at(nIndex).get();
+	}
+
+    //version data
+    unsigned long GetVersion() const {return m_nDataVer;}
+    void SetVersion(unsigned long dwVer) { m_nDataVer= dwVer; }
+};
+
+#pragma pack()//恢复对齐状态
+
+#endif
+

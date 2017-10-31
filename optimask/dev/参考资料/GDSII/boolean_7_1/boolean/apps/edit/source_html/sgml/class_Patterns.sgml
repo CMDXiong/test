@@ -1,0 +1,186 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class Patterns"
+>
+
+<META-DATA>
+	<NAME>Patterns</NAME>
+	<AUTHOR>klaas holwerda</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Wed Oct 20  9:18:53 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>wxwin.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>gdserr.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>scrndrv.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>lsetup.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>gdsii.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>mainwin.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>windrv.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> low level drawing for drawing patterns in a polygon</PARA>
+</DESCRIPTION>
+
+
+
+
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="Patterns()"
+		INLINE="NO"
+	>
+		<NAME>Patterns</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> constructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~Patterns()"
+		INLINE="NO"
+	>
+		<NAME>~Patterns</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> destructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Init()"
+		INLINE="NO"
+	>
+		<NAME>Init</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="wxBitmap* "
+		DECLARATION="wxBitmap* GetPattern(short patternnr)"
+		INLINE="NO"
+	>
+		<NAME>GetPattern</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="bool "
+		DECLARATION="bool Draw(long x,long y,short patternnr,long &amp;displacement)"
+		INLINE="NO"
+	>
+		<NAME>Draw</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="short	"
+		DECLARATION="short	_screenwidth"
+	>
+		<NAME>_screenwidth</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+
+
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxBitmap*	"
+		DECLARATION="wxBitmap*	patternbitmap[NR_PATTERNS]"
+	>
+		<NAME>patternbitmap[NR_PATTERNS]</NAME>
+		<DESCRIPTION>
+			<PARA> array for the different patterns.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+
+
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

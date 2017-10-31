@@ -1,0 +1,210 @@
+
+/*
+
+  KLayout Layout Viewer
+  Copyright (C) 2006-2016 Matthias Koefferlein
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+*/
+
+
+#include "tlCollection.h"
+#include "utHead.h"
+
+//  This namespace separates the test structs from other objects
+namespace
+{
+
+class A 
+  : public tl::Collectable
+{
+public:
+  A (int _a) : a (_a) { ++count; }
+  ~A () { --count; }
+  int a;
+
+  static int count;
+};
+
+int A::count = 0;
+
+class M 
+  : public tl::CollectionMonitor
+{
+public:
+  M () : count (0) { }
+
+  virtual void added (tl::CollectionBase *, tl::Collectable *) { ++count; }
+  virtual void removed (tl::CollectionBase *, tl::Collectable *) { --count; }
+  
+  int count;
+};
+
+TEST(1) 
+{
+  M m;
+  tl::Collection<A> coll (&m);
+
+  EXPECT_EQ (coll.begin () == coll.end (), true);
+
+  A *a1;
+  coll.insert (a1 = new A (10));
+  EXPECT_EQ (coll.begin ()->a, 10);
+  EXPECT_EQ ((*coll.begin ()).a, 10);
+  EXPECT_EQ ((++coll.begin ()) == coll.end (), true);
+  EXPECT_EQ (m.count, 1);
+
+  A *a2;
+  coll.insert (a2 = new A (11));
+  EXPECT_EQ (coll.begin ()->a, 10);
+  EXPECT_EQ ((++coll.begin ())->a, 11);
+  EXPECT_EQ ((++(++coll.begin ())) == coll.end (), true);
+  EXPECT_EQ (m.count, 2);
+
+  delete a1;
+  EXPECT_EQ (coll.begin ()->a, 11);
+  EXPECT_EQ ((++coll.begin ()) == coll.end (), true);
+  EXPECT_EQ (m.count, 1);
+
+  delete a2;
+  EXPECT_EQ (coll.begin () == coll.end (), true);
+  EXPECT_EQ (m.count, 0);
+
+}
+
+TEST(2) 
+{
+  EXPECT_EQ (A::count, 0);
+
+  {
+    tl::Collection<A> coll;
+
+    EXPECT_EQ (coll.begin () == coll.end (), true);
+
+    A *a1;
+    coll.insert (a1 = new A (10));
+    EXPECT_EQ (A::count, 1);
+  }
+
+  EXPECT_EQ (A::count, 0);
+}
+
+TEST(3) 
+{
+  EXPECT_EQ (A::count, 0);
+  A *a1;
+
+  {
+    tl::Collection<A> coll;
+
+    EXPECT_EQ (coll.begin () == coll.end (), true);
+
+    coll.insert (a1 = new A (10));
+    EXPECT_EQ (A::count, 1);
+    EXPECT_EQ (++coll.begin () == coll.end (), true);
+
+    coll.remove (a1);
+    EXPECT_EQ (coll.begin () == coll.end (), true);
+  }
+
+  EXPECT_EQ (A::count, 1);
+  delete a1;
+  EXPECT_EQ (A::count, 0);
+}
+
+class A1 : public tl::Collectable
+{
+  // ..
+};
+
+class A2 : public tl::Collectable
+{
+  // ..
+};
+
+class B : public A1, public A2
+{
+public:
+  B () { ++count; }
+  ~B () { --count; }
+  // ..
+  static int count;
+};
+
+int B::count = 0;
+
+TEST(4) 
+{
+  EXPECT_EQ (B::count, 0);
+  B *b;
+
+  {
+    tl::Collection<A1> coll;
+
+    EXPECT_EQ (coll.begin () == coll.end (), true);
+
+    coll.insert (b = new B ());
+    EXPECT_EQ (B::count, 1);
+    EXPECT_EQ (++coll.begin () == coll.end (), true);
+
+    coll.remove (b);
+    EXPECT_EQ (coll.begin () == coll.end (), true);
+    EXPECT_EQ (B::count, 1);
+    delete b;
+
+    coll.insert (b = new B ());
+  }
+
+  EXPECT_EQ (B::count, 0);
+
+  {
+    tl::Collection<A2> coll;
+
+    EXPECT_EQ (coll.begin () == coll.end (), true);
+
+    coll.insert (b = new B ());
+    EXPECT_EQ (B::count, 1);
+    EXPECT_EQ (++coll.begin () == coll.end (), true);
+
+    coll.remove (b);
+    EXPECT_EQ (coll.begin () == coll.end (), true);
+    EXPECT_EQ (B::count, 1);
+    delete b;
+
+    coll.insert (b = new B ());
+  }
+
+  EXPECT_EQ (B::count, 0);
+
+  {
+    tl::Collection<A1> coll1;
+    coll1.insert (b = new B ());
+    EXPECT_EQ (++coll1.begin () == coll1.end (), true);
+
+    {
+      tl::Collection<A2> coll2;
+
+      coll2.insert (b);
+      EXPECT_EQ (B::count, 1);
+      EXPECT_EQ (++coll2.begin () == coll2.end (), true);
+    }
+
+    EXPECT_EQ (B::count, 0);
+    EXPECT_EQ (coll1.begin () == coll1.end (), true);
+  }
+}
+
+}

@@ -1,0 +1,11 @@
+This directory contains the source for the internal database structures
+used by boolean, booleanC, booleanT.
+It is based on the structure used within GDSII files.
+But understands more types of primitives.
+
+Files to start with:
+
+structure: a drawing is a tree of structures that are referencing each other
+elemlst: list of all elements with in one structure
+element: base class for shape and reference classes.
+shape :  derived from element, all primitives are derived from shape.

@@ -1,0 +1,2357 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (WinNT; I) [Netscape]">
+   <TITLE> CHAPTER 1 GDSII format </TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#66FFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><B><FONT COLOR="#FFFF00"><FONT SIZE=+3>GDSII format</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><B><FONT COLOR="#FFFF00"><FONT SIZE=+1>INDEX</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+&nbsp;
+<OL>
+<LI>
+<I><A HREF="gdsformat.html#intro">introduction</A></I></LI>
+
+<LI>
+<I><A HREF="gdsformat.html#bnfforms">bachus nauer forms</A></I></LI>
+
+<LI>
+<I><A HREF="gdsformat.html#GDSBNF">GDSII BNF</A></I></LI>
+
+<LI>
+<I><A HREF="gdsformat.html#recordheader">Record header</A></I></LI>
+
+<LI>
+<I><A HREF="gdsformat.html#datatypes">Data types</A></I></LI>
+
+<LI>
+<I><A HREF="gdsformat.html#recordover">record types overview</A></I></LI>
+
+<LI>
+<I><A HREF="gdsformat.html#recordtypes">record types description</A></I></LI>
+
+<LI>
+<I><A HREF="#example">example file</A></I></LI>
+</OL>
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><A NAME="example"></A><B><FONT COLOR="#FFFF00"><FONT SIZE=+1>example</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+<A HREF="example.gif"><IMG SRC="example.gif" BORDER=3 HEIGHT=550 WIDTH=717></A>
+<BR>&nbsp;
+<BR>&nbsp;
+<OL>
+<LI>
+<A HREF="example.html#keyfile">text presentation of GDSII file in&nbsp;
+KEYformat</A></LI>
+
+<LI>
+<A HREF="example.html#hexdump">hex presentation of same file</A></LI>
+
+<LI>
+<A HREF="example.cal">GDSII file</A></LI>
+</OL>
+&nbsp;
+<BR>&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><A NAME="intro"></A><B><FONT COLOR="#FFFF00"><FONT SIZE=+1>introduction</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+GDSII Stream format is the standard file format for transfering/archiving
+2D graphical design data. It contains a hiearchy of structures, each structure
+containing elements (boundary/polygon, path/polyline, text,box, structure
+references, structure array references). The elements are situated on layers.
+It is a binary format that is platform independent, because it uses internally
+defined formats for its data types. While reading GDSII files, the GDSII
+internal data types (like reals, integers etc.) need to be converted to
+the platform/CAE package datatypes that are used.The GDSII format is a
+sequential list of records, each record contains a header to tell what
+information is in the record.The order of the record needs to be according
+to the GDSII BNF, because of this strict organization it is relativly easy
+to parse. The maximum number of vertixes is officially only 200 x,y pairs,
+but many packages can read up to the absolute maximum of 64k/2=32k, simple
+because this is the maximum record lenght that can be specified (two bytes).The
+format is hard to read, since it is binary, for that viewers are available
+to view (boolean)&nbsp; the contents as ASCII. Also an ASCII format has
+been developed (KEY format) which is more than just a text representation.
+It is possible to convert GDSIIformat&nbsp; to&nbsp; KEYformat and back.
+KEYformat has extended the basic primitives to contain cicrles, arcs, polygons/polylines
+with arc segments.
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><A NAME="bnfforms"></A><B><FONT COLOR="#FFFF00"><FONT SIZE=+1>Bachus
+Nauer Forms</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+The Bachus Nauer Form uses the following symbols:
+<TABLE BORDER=3 BGCOLOR="#FF99FF" >
+<TR BGCOLOR="#CC66CC">
+<TH>Symbol Name</TH>
+
+<TH>Symbol</TH>
+
+<TH>Meaning</TH>
+</TR>
+
+<TR>
+<TD>Double Colon</TD>
+
+<TD>::</TD>
+
+<TD>"Is composed of."</TD>
+</TR>
+
+<TR>
+<TD>Square brackets</TD>
+
+<TD>[ ]</TD>
+
+<TD>An element which can occor zero or one time.</TD>
+</TR>
+
+<TR>
+<TD>Braces</TD>
+
+<TD>{ }</TD>
+
+<TD>Choose one of the elements within the braces.</TD>
+</TR>
+
+<TR>
+<TD>Braces with an asteriks</TD>
+
+<TD>{ }*</TD>
+
+<TD>The elements within the braces can occur zero or more times.</TD>
+</TR>
+
+<TR>
+<TD>Braces with a plus</TD>
+
+<TD>{ }+</TD>
+
+<TD>The elements within braces must occur one or more times.</TD>
+</TR>
+
+<TR>
+<TD>Angle brackets</TD>
+
+<TD>&lt; ></TD>
+
+<TD>These elements are further defined as a seperate entitie in the syntax
+list.</TD>
+</TR>
+
+<TR>
+<TD>Vertical bar</TD>
+
+<TD>|</TD>
+
+<TD>Or</TD>
+</TR>
+</TABLE>
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><A NAME="GDSBNF"></A><FONT COLOR="#FFFF00"><FONT SIZE=+1>GDSII BNF</FONT></FONT></TD>
+</TR>
+</TABLE>
+The following is the Bachus Naur Form of the GDSI format, the words in
+capital are the names of <I><A HREF="gdsformat.html#recordover">RECORDS</A></I>
+<TABLE BORDER=3 CELLSPACING=0 CELLPADDING=0 COLS=3 WIDTH="88%" BGCOLOR="#FF99FF" >
+<TR>
+<TD WIDTH="10%">&lt;stream format></TD>
+
+<TD WIDTH="2%">::=</TD>
+
+<TD><A HREF="#rec_header">HEADER</A> <A HREF="#rec_bgnlib">BGNLIB</A> <A HREF="#rec_libname">LIBNAME</A>
+[<A HREF="#rec_reflibs">REFLIBS</A>] [<A HREF="#rec_fonts">FONTS</A>]&nbsp;
+<BR>[<A HREF="#rec_attrtable">ATTRTABLE</A>] [<A HREF="#rec_generations">GENERATIONS</A>]
+[&lt;FormatType>]&nbsp;
+<BR><A HREF="#rec_units">UNITS</A> {&lt;structure>}* <A HREF="#rec_endlib">ENDLIB</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;FormatType></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_format">FORMAT</A> | <A HREF="#rec_format">FORMAT</A>
+{<A HREF="#rec_mask">MASK</A>}+ <A HREF="#rec_endmasks">ENDMASKS</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;structure></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_bgnstr">BGNSTR</A> <A HREF="#rec_strname">STRNAME</A>
+[<A HREF="#rec_strclass">STRCLASS</A>] {&lt;element>}* <A HREF="#rec_endstr">ENDSTR</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;element></TD>
+
+<TD>::=</TD>
+
+<TD>{&lt;boundary> | &lt;path> | &lt;sref> | &lt;aref> | &lt;text> | &lt;node>
+| &lt;box>} {&lt;property>}* <A HREF="#rec_endel">ENDEL</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;boundary></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_boundary">BOUNDARY</A> [<A HREF="#rec_elflags">ELFLAGS</A>]
+[<A HREF="#rec_plex">PLEX</A>] <A HREF="#rec_layer">LAYER</A> <A HREF="#rec_datatype">DATATYPE</A>
+<A HREF="#rec_xy">XY</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;path></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_path">PATH</A> [<A HREF="#rec_elflags">ELFLAGS</A>] [<A HREF="#rec_plex">PLEX</A>]
+<A HREF="#rec_layer">LAYER</A> <A HREF="#rec_datatype">DATATYPE</A> [<A HREF="#rec_pathtype">PATHTYPE</A>][<A HREF="#rec_width">WIDTH</A>]
+<A HREF="#rec_xy">XY</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;sref></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_sref">SREF</A> [<A HREF="#rec_elflags">ELFLAGS</A>] [<A HREF="#rec_plex">PLEX</A>]
+<A HREF="#rec_sname">SNAME</A> [&lt;strans>] <A HREF="#rec_xy">XY</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;aref></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_aref">AREF</A> [<A HREF="#rec_elflags">ELFLAGS</A>] [<A HREF="#rec_plex">PLEX</A>]
+<A HREF="#rec_sname">SNAME</A> [&lt;strans>] <A HREF="#rec_colrow">COLROW</A>
+<A HREF="#rec_xy">XY</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;text></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_text">TEXT</A> [<A HREF="#rec_elflags">ELFLAGS</A>] [<A HREF="#rec_plex">PLEX</A>]
+<A HREF="#rec_layer">LAYER</A> &lt;textbody></TD>
+</TR>
+
+<TR>
+<TD>&lt;node></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_node">NODE</A> [<A HREF="#rec_elflags">ELFLAGS</A>].
+[<A HREF="#rec_plex">PLEX</A>] <A HREF="#rec_layer">LAYER </A><A HREF="#rec_nodetype">NODETYPE</A>
+<A HREF="#rec_xy">XY</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;box></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_box">BOX</A> [<A HREF="#rec_elflags">ELFLAGS</A>] [<A HREF="#rec_plex">PLEX</A>]
+<A HREF="#rec_layer">LAYER</A> <A HREF="#rec_boxtype">BOXTYPE</A> <A HREF="#rec_xy">XY</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;textbody></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_texttype">TEXTYPE</A> [<A HREF="#rec_presentation">PRESENTATION</A>]
+[<A HREF="#rec_pathtype">PATHTYPE</A>] [<A HREF="#rec_width">WIDTH</A>]
+[&lt;strans>] <A HREF="#rec_xy">XY</A> <A HREF="#rec_string">STRING</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;strans></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_strans">STRANS</A> [<A HREF="#rec_mag">MAG</A>] [<A HREF="#rec_angle">ANGLE</A>]</TD>
+</TR>
+
+<TR>
+<TD>&lt;property></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_propattr">PROPATTR</A> <A HREF="#rec_propvalue">PROPVALUE</A></TD>
+</TR>
+</TABLE>
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><A NAME="recordheader"></A><FONT COLOR="#FFFF00"><FONT SIZE=+1>Record
+header</FONT></FONT></TD>
+</TR>
+</TABLE>
+The Stream format output file is composed of variable length records. Record
+length is measured in bytes. The minimum record length is four bytes. Within
+the record, two bytes (16 bits) is a word. The 16 bits in a word are numbered
+0 to 15, left to right.The first four bytes of a record compose the recordheader.
+The first two bytes of the recordheader contain a count (in eight-bit bytes)
+of the total record length, so the maximum length is 65536 (64k). The next
+record starts immediately after the last byte of the previous record.The
+third byte of the header is the record type. The fourth byte of the header
+identifies the type of data contained within the record. The fifth until
+count bytes of a record contain the data.
+<TABLE BORDER=3 BGCOLOR="#FF99FF" >
+<TR BGCOLOR="#CC66CC">
+<TH><FONT COLOR="#000000">Bitnr</FONT></TH>
+
+<TD><FONT COLOR="#000000">0</FONT></TD>
+
+<TD><FONT COLOR="#000000">1</FONT></TD>
+
+<TD><FONT COLOR="#000000">2</FONT></TD>
+
+<TH><FONT COLOR="#000000">3</FONT></TH>
+
+<TH><FONT COLOR="#000000">4</FONT></TH>
+
+<TH><FONT COLOR="#000000">5</FONT></TH>
+
+<TH><FONT COLOR="#000000">6</FONT></TH>
+
+<TH><FONT COLOR="#000000">7</FONT></TH>
+
+<TH><FONT COLOR="#000000">8</FONT></TH>
+
+<TH><FONT COLOR="#000000">9</FONT></TH>
+
+<TH><FONT COLOR="#000000">10</FONT></TH>
+
+<TH><FONT COLOR="#000000">11</FONT></TH>
+
+<TH><FONT COLOR="#000000">12</FONT></TH>
+
+<TH><FONT COLOR="#000000">13</FONT></TH>
+
+<TH><FONT COLOR="#000000">14</FONT></TH>
+
+<TH><FONT COLOR="#000000">15</FONT></TH>
+</TR>
+
+<TR>
+<TD><FONT COLOR="#FF0000">Word1</FONT></TD>
+
+<TD COLSPAN="16">Total Record length in bytes</TD>
+</TR>
+
+<TR>
+<TD><FONT COLOR="#FF0000">Word2</FONT></TD>
+
+<TD COLSPAN="8"><I><A HREF="gdsformat.html#recordover">Record Type</A></I></TD>
+
+<TD COLSPAN="8"><I><A HREF="gdsformat.html#datatypes">Data type</A></I></TD>
+</TR>
+
+<TR>
+<TD>Word3</TD>
+
+<TD COLSPAN="16">Data until Word n (total record length/2)</TD>
+</TR>
+</TABLE>
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><A NAME="datatypes"></A><FONT COLOR="#FFFF00"><FONT SIZE=+1>Data Types</FONT></FONT></TD>
+</TR>
+</TABLE>
+The fourth byte in the record header contains the data type for the rest
+of the record. The record length is used to find the number of&nbsp; items
+of the specified datatype.
+<TABLE BORDER=3 BGCOLOR="#FF99FF" >
+<TR BGCOLOR="#CC66CC">
+<TH>Data Type</TH>
+
+<TH>Value</TH>
+</TR>
+
+<TR>
+<TD>No Data</TD>
+
+<TD>0</TD>
+</TR>
+
+<TR>
+<TD>Bit Array</TD>
+
+<TD>1</TD>
+</TR>
+
+<TR>
+<TD>Two Byte Signed Integer</TD>
+
+<TD>2</TD>
+</TR>
+
+<TR>
+<TD>Four Byte Signed Integer</TD>
+
+<TD>3</TD>
+</TR>
+
+<TR>
+<TD>Four Byte Real</TD>
+
+<TD>4 (not used)</TD>
+</TR>
+
+<TR>
+<TD>Eight Byte Real</TD>
+
+<TD>5</TD>
+</TR>
+
+<TR>
+<TD>ASCII string</TD>
+
+<TD>6</TD>
+</TR>
+</TABLE>
+&nbsp;
+<OL>
+<LI CLASS="Numbered1">
+<B><FONT COLOR="#FF0000">Bit Array:</FONT></B></LI>
+
+<BR>A bit array is a word which uses the value of a particular bit or group
+of bits to represent data. A bit array allows oneword to represent a number
+of simple pieces of information.
+<BR>&nbsp;
+<LI>
+<B><FONT COLOR="#FF0000">Two-Byte Signed Integer:</FONT></B></LI>
+
+<BR>2-byte integer = 1 word 2s-complement representation. The range of
+two-byte signed integers is -32,768 to 32,767.
+
+<P>The following is a representation of a two-byte integer, where S is
+the sign and M is the magnitude.
+
+<P><I><FONT COLOR="#CC66CC"><FONT SIZE=+1>smmmmmmm mmmmmmmm</FONT></FONT></I>
+
+<P>The following are examples of two-byte integers:
+
+<P><I><FONT COLOR="#CC66CC">00000000 00000001 = 1</FONT></I>
+<BR><I><FONT COLOR="#CC66CC">00000000 00000010 = 2</FONT></I>
+<BR><I><FONT COLOR="#CC66CC">00000000 10001001 = 137</FONT></I>
+<BR><I><FONT COLOR="#CC66CC">11111111 11111111 = -1</FONT></I>
+<BR><I><FONT COLOR="#CC66CC">11111111 11111110 = -2</FONT></I>
+<BR><I><FONT COLOR="#CC66CC">11111111 01110111 = -137</FONT></I>
+<BR>&nbsp;
+<LI>
+<B><FONT COLOR="#FF0000">Four-Byte Signed Integer:</FONT></B></LI>
+
+<BR>4-byte integer = 2 word 2s-complement representation
+
+<P>The range of four-byte signed integers is -2,147,483,648 to 2,147,483,647.
+
+<P>The following is a representation of a four-byte integer, where S is
+the sign and M is the magnitude.
+
+<P><I><FONT COLOR="#CC33CC">smmmmmmm mmmmmmmm mmmmmmmm mmmmmmmm</FONT></I>
+
+<P>The following are examples of four-byte integers:
+
+<P><I><FONT COLOR="#CC33CC">00000000 00000000 00000000 00000001 = 1</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">00000000 00000000 00000000 00000010 = 2</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">00000000 00000000 00000000 10001001 = 137</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">11111111 11111111 11111111 11111111 = -1</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">11111111 11111111 11111111 11111110 = -2</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">11111111 11111111 11111111 01110111 = -137</FONT></I>
+<BR>&nbsp;
+<LI>
+<B><FONT COLOR="#FF0000">Four-Byte Real</FONT></B></LI>
+
+<BR>4-byte real = 2-word floating point representation
+
+<P>(See 5.)
+<BR>&nbsp;
+<LI>
+<B><FONT COLOR="#FF0000">Eight-Byte Real</FONT></B></LI>
+
+<BR>8-byte real = 4-word floating point representation
+
+<P><FONT COLOR="#FF0000">For all non-zero values:</FONT>
+<OL>
+<UL>
+<LI>
+A floating point number has three parts: the sign, the exponent, and the
+mantissa.</LI>
+
+<LI>
+The value of a floating point number is defined as:</LI>
+
+<LI>
+(Mantissa) x (16 raised to the true value of the exponent field).</LI>
+
+<LI>
+The exponent field (bits 1-7) is in Excess-64 representation.</LI>
+
+<LI>
+The 7-bit field shows a number that is 64 greater than the actual exponent.</LI>
+
+<LI>
+The mantissa is always a positive fraction >=1/16 and &lt;1. For a 4-byte
+real, the mantissa is bits 8-31. For an 8-byte real, the mantissa is bits
+8-63.</LI>
+
+<LI>
+The binary point is just to the left of bit 8.</LI>
+
+<LI>
+Bit 8 represents the value 1/2, bit 9 represents 1/4, etc.</LI>
+
+<LI>
+In order to keep the mantissa in the range of 1/16 to 1, the results of
+floating point arithmetic are normalized. Normalization is a process where
+by the mantissa is shifted left one hex digit at a time until its left
+FOUR bits represent a non-zero quantity. For every hex digit shifted, the
+exponent is decreased by one. Since the mantissa is shifted four bits at
+a time, it is possible for the left three bits of the normalized mantissa
+to be zero. A zero value, also called true zero, is represented by a number
+with all bits zero.</LI>
+</UL>
+</OL>
+The following are representations of 4-byte and 8-byte reals, where S is
+the sign, E is the exponent, and M is the magnitude. Examples of 4-byte
+reals are included in the following pages, but 4-byte reals are not used
+currently. The representation of the negative values of real numbers is
+exactly the same as the positive, except that the highest order bit is
+1, not 0. In the eight-byte real representation, the first four bytes are
+exactly the same as in the four-byte real representation. The last four
+bytes contain additional binary places for more resolution.
+
+<P>4-byte real:
+
+<P><I><FONT COLOR="#CC33CC">SEEEEEEE MMMMMMMM MMMMMMMM MMMMMMMM</FONT></I>
+
+<P>8-byte real:
+
+<P><I><FONT COLOR="#CC33CC">SEEEEEEE MMMMMMMM MMMMMMMM MMMMMMMM MMMMMMMM
+MMMMMMMM MMMMMMMM</FONT></I>
+
+<P>Examples of 4-byte real:
+
+<P>Note: In the first six lines of the following example, the 7-bit exponent
+field = 65. The actual exponent is 65-64=1.
+
+<P><I><FONT COLOR="#CC33CC">01000001 00010000 00000000 00000000 = 1</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">01000001 00100000 00000000 00000000 = 2</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">01000001 00110000 00000000 00000000 = 3</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">11000001 00010000 00000000 00000000 = -1</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">11000001 00100000 00000000 00000000 = -2</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">11000001 00110000 00000000 00000000 = -3</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">01000000 10000000 00000000 0000000 = 0 .5</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">01000000 10011001 10011001 1001100 = 1 .6</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">01000000 10110011 00110011 0011001 = 1 .7</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">01000001 00011000 00000000 00000000 = 1.5</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">01000001 00011001 10011001 10011001 = 1.6</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">01000001 00011011 00110011 00110011 = 1.7</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">00000000 00000000 00000000 00000000 = 0</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">01000001 00010000 00000000 00000000 = 1</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">01000001 10100000 00000000 00000000 = 10</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">01000010 01100100 00000000 00000000 = 100</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">01000011 00111110 00000001 00000000 = 1000</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">01000100 00100111 00010000 00000000 = 10000</FONT></I>
+<BR><I><FONT COLOR="#CC33CC">01000101 00011000 01101010 00000000 = 100000</FONT></I>
+<BR>&nbsp;
+<LI>
+<B><FONT COLOR="#FF0000">ASCII String</FONT></B></LI>
+
+<BR>A collection of ASCII characters, where each character is represented
+by one byte. All odd length strings must be padded with a null character
+(the number zero), and the byte count for the record containing the ASCII
+string must include this null character. Stream read-in programs must look
+for the null character and decrease the length of the string by one if
+the null character is present.</OL>
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><A NAME="recordover"></A><B><FONT COLOR="#FFFF00"><FONT SIZE=+1>Record
+Types Overview</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+The following table gives an overview of all the record that are used within
+a GDSII file.
+<TABLE BORDER=3 BGCOLOR="#FF99FF" >
+<TR BGCOLOR="#CC66CC">
+<TH>Nr.</TH>
+
+<TH>Code</TH>
+
+<TH>Mnemonic</TH>
+
+<TH>Data Type</TH>
+
+<TH>description</TH>
+</TR>
+
+<TR>
+<TD>0</TD>
+
+<TD>0002</TD>
+
+<TD><A HREF="gdsformat.html#rec_header">HEADER</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>version number</TD>
+</TR>
+
+<TR>
+<TD>1</TD>
+
+<TD>0102</TD>
+
+<TD><A HREF="gdsformat.html#rec_bgnlib">BGNLIB</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>begin of library, last modification date and time</TD>
+</TR>
+
+<TR>
+<TD>2</TD>
+
+<TD>0206</TD>
+
+<TD><A HREF="gdsformat.html#rec_libname">LIBNAME</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>name of library</TD>
+</TR>
+
+<TR>
+<TD>3</TD>
+
+<TD>0305</TD>
+
+<TD><A HREF="gdsformat.html#rec_units">UNITS</A></TD>
+
+<TD>Eight-Byte Real</TD>
+
+<TD>user and database units</TD>
+</TR>
+
+<TR>
+<TD>4</TD>
+
+<TD>0400</TD>
+
+<TD><A HREF="gdsformat.html#rec_endlib">ENDLIB</A></TD>
+
+<TD>No Data</TD>
+
+<TD>end of library</TD>
+</TR>
+
+<TR>
+<TD>5</TD>
+
+<TD>0502</TD>
+
+<TD><A HREF="gdsformat.html#rec_bgnstr">BGNSTR</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>begin of structure + creation and modification time</TD>
+</TR>
+
+<TR>
+<TD>6</TD>
+
+<TD>0606</TD>
+
+<TD><A HREF="gdsformat.html#rec_strname">STRNAME</A></TD>
+
+<TD>ASCII string</TD>
+
+<TD>name of structure</TD>
+</TR>
+
+<TR>
+<TD>7</TD>
+
+<TD>0700</TD>
+
+<TD><A HREF="gdsformat.html#rec_endstr">ENDSTR</A></TD>
+
+<TD>No Data</TD>
+
+<TD>end of structure</TD>
+</TR>
+
+<TR>
+<TD>8</TD>
+
+<TD>0800</TD>
+
+<TD><A HREF="gdsformat.html#rec_boundary">BOUNDARY</A></TD>
+
+<TD>No Data</TD>
+
+<TD>begin of boundary element</TD>
+</TR>
+
+<TR>
+<TD>9</TD>
+
+<TD>0900</TD>
+
+<TD><A HREF="gdsformat.html#rec_path">PATH</A></TD>
+
+<TD>No Data</TD>
+
+<TD>begin of path element</TD>
+</TR>
+
+<TR>
+<TD>10</TD>
+
+<TD>0A00</TD>
+
+<TD><A HREF="gdsformat.html#rec_sref">SREF</A></TD>
+
+<TD>No Data</TD>
+
+<TD>begin of structure reference element</TD>
+</TR>
+
+<TR>
+<TD>11</TD>
+
+<TD>0B00</TD>
+
+<TD><A HREF="gdsformat.html#rec_aref">AREF</A></TD>
+
+<TD>No Data</TD>
+
+<TD>begin of array reference element</TD>
+</TR>
+
+<TR>
+<TD>12</TD>
+
+<TD>0C00</TD>
+
+<TD><A HREF="gdsformat.html#rec_text">TEXT</A></TD>
+
+<TD>No Data</TD>
+
+<TD>begin of text element</TD>
+</TR>
+
+<TR>
+<TD>13</TD>
+
+<TD>0D02</TD>
+
+<TD><A HREF="gdsformat.html#rec_layer">LAYER</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>layer number of element</TD>
+</TR>
+
+<TR>
+<TD>14</TD>
+
+<TD>0E02</TD>
+
+<TD><A HREF="gdsformat.html#rec_datatype">DATATYPE</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>Datatype number of element&nbsp;</TD>
+</TR>
+
+<TR>
+<TD>15</TD>
+
+<TD>0F03</TD>
+
+<TD><A HREF="gdsformat.html#rec_width">WIDTH</A></TD>
+
+<TD>Four-Byte Signed Integer</TD>
+
+<TD>width of element in db units</TD>
+</TR>
+
+<TR>
+<TD>16</TD>
+
+<TD>1003</TD>
+
+<TD><A HREF="gdsformat.html#rec_xy">XY</A></TD>
+
+<TD>Four-Byte Signed Integer</TD>
+
+<TD>list of xy coordinates in db units</TD>
+</TR>
+
+<TR>
+<TD>17</TD>
+
+<TD>1100</TD>
+
+<TD><A HREF="gdsformat.html#rec_endel">ENDEL</A></TD>
+
+<TD>No Data</TD>
+
+<TD>end of element</TD>
+</TR>
+
+<TR>
+<TD>18</TD>
+
+<TD>1206</TD>
+
+<TD><A HREF="gdsformat.html#rec_sname">SNAME</A></TD>
+
+<TD>ASCII string</TD>
+
+<TD>name of structure reference</TD>
+</TR>
+
+<TR>
+<TD>19</TD>
+
+<TD>1302</TD>
+
+<TD><A HREF="gdsformat.html#rec_colrow">COLROW</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>number of colomns and rows in array reference</TD>
+</TR>
+
+<TR>
+<TD>21</TD>
+
+<TD>1500</TD>
+
+<TD><A HREF="gdsformat.html#rec_node">NODE</A></TD>
+
+<TD>No Data</TD>
+
+<TD>begin of node element</TD>
+</TR>
+
+<TR>
+<TD>22</TD>
+
+<TD>1602</TD>
+
+<TD><A HREF="gdsformat.html#rec_texttype">TEXTTYPE</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>texttype number</TD>
+</TR>
+
+<TR>
+<TD>23</TD>
+
+<TD>1701</TD>
+
+<TD><A HREF="gdsformat.html#rec_presentation">PRESENTATION</A></TD>
+
+<TD>Bit Array</TD>
+
+<TD>text presentation, font</TD>
+</TR>
+
+<TR>
+<TD>25</TD>
+
+<TD>1906</TD>
+
+<TD><A HREF="gdsformat.html#rec_string">STRING</A></TD>
+
+<TD>ASCII string</TD>
+
+<TD>character string for text element</TD>
+</TR>
+
+<TR>
+<TD>26</TD>
+
+<TD>1A01</TD>
+
+<TD><A HREF="gdsformat.html#rec_strans">STRANS</A></TD>
+
+<TD>Bit Array</TD>
+
+<TD>array reference, structure reference and text transform flags</TD>
+</TR>
+
+<TR>
+<TD>27</TD>
+
+<TD>1B05</TD>
+
+<TD><A HREF="gdsformat.html#rec_mag">MAG</A></TD>
+
+<TD>Eight Byte Real</TD>
+
+<TD>magnification factor for text and references</TD>
+</TR>
+
+<TR>
+<TD>28</TD>
+
+<TD>1C05</TD>
+
+<TD><A HREF="gdsformat.html#rec_angle">ANGLE</A></TD>
+
+<TD>Eight Byte Real</TD>
+
+<TD>rotation angle for text and references</TD>
+</TR>
+
+<TR>
+<TD>31</TD>
+
+<TD>1F06</TD>
+
+<TD><A HREF="gdsformat.html#rec_reflibs">REFLIBS</A></TD>
+
+<TD>ASCII string</TD>
+
+<TD>name of referenced libraries</TD>
+</TR>
+
+<TR>
+<TD>32</TD>
+
+<TD>2006</TD>
+
+<TD><A HREF="gdsformat.html#rec_fonts">FONTS</A></TD>
+
+<TD>ASCII string</TD>
+
+<TD>name of text fonts definition files</TD>
+</TR>
+
+<TR>
+<TD>33</TD>
+
+<TD>2102</TD>
+
+<TD><A HREF="gdsformat.html#rec_pathtype">PATHTYPE</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>type of PATH element end ( rounded, square)</TD>
+</TR>
+
+<TR>
+<TD>34</TD>
+
+<TD>2202</TD>
+
+<TD><A HREF="gdsformat.html#rec_generations">GENERATIONS</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>number of deleted structure ?????</TD>
+</TR>
+
+<TR>
+<TD>35</TD>
+
+<TD>2306</TD>
+
+<TD><A HREF="gdsformat.html#rec_attrtable">ATTRTABLE</A></TD>
+
+<TD>ASCII string</TD>
+
+<TD>attribute table, used in combination with element properties</TD>
+</TR>
+
+<TR>
+<TD>38</TD>
+
+<TD>2601</TD>
+
+<TD><A HREF="gdsformat.html#rec_elflags">ELFLAGS</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>template data</TD>
+</TR>
+
+<TR>
+<TD>42</TD>
+
+<TD>2A02</TD>
+
+<TD><A HREF="gdsformat.html#rec_nodetype">NODETYPE</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>node type number for NODE element</TD>
+</TR>
+
+<TR>
+<TD>43</TD>
+
+<TD>2B02</TD>
+
+<TD><A HREF="gdsformat.html#rec_propattr">PROPATTR</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>attribute number</TD>
+</TR>
+
+<TR>
+<TD>44</TD>
+
+<TD>2C06</TD>
+
+<TD><A HREF="gdsformat.html#rec_propvalue">PROPVALUE</A></TD>
+
+<TD>ASCII string</TD>
+
+<TD>attribute name</TD>
+</TR>
+
+<TR>
+<TD>45</TD>
+
+<TD>2D00</TD>
+
+<TD><A HREF="gdsformat.html#rec_box">BOX</A></TD>
+
+<TD>No Data</TD>
+
+<TD>begin of box element</TD>
+</TR>
+
+<TR>
+<TD>46</TD>
+
+<TD>2E02</TD>
+
+<TD><A HREF="gdsformat.html#rec_boxtype">BOXTYPE</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>boxtype for box element</TD>
+</TR>
+
+<TR>
+<TD>47</TD>
+
+<TD>2F03</TD>
+
+<TD><A HREF="gdsformat.html#rec_plex">PLEX</A></TD>
+
+<TD>Four-Byte Signed Integer</TD>
+
+<TD>plex number</TD>
+</TR>
+
+<TR>
+<TD>50</TD>
+
+<TD>3202</TD>
+
+<TD><A HREF="gdsformat.html#rec_tapenum">TAPENUM</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>Tape Number</TD>
+</TR>
+
+<TR>
+<TD>51</TD>
+
+<TD>3302</TD>
+
+<TD><A HREF="gdsformat.html#rec_tapecode">TAPECODE</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>Tape code</TD>
+</TR>
+
+<TR>
+<TD>54</TD>
+
+<TD>3602</TD>
+
+<TD><A HREF="gdsformat.html#rec_format">FORMAT</A></TD>
+
+<TD>Two-Byte Signed Integer</TD>
+
+<TD>format type</TD>
+</TR>
+
+<TR>
+<TD>55</TD>
+
+<TD>3706</TD>
+
+<TD><A HREF="gdsformat.html#rec_mask">MASK</A></TD>
+
+<TD>ASCII string</TD>
+
+<TD>list of layers</TD>
+</TR>
+
+<TR>
+<TD>56</TD>
+
+<TD>3800</TD>
+
+<TD><A HREF="gdsformat.html#rec_endmasks">ENDMASKS</A></TD>
+
+<TD>No Data</TD>
+
+<TD>end of MASK</TD>
+</TR>
+</TABLE>
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><A NAME="recordtypes"></A><B><FONT COLOR="#FFFF00"><FONT SIZE=+1>Record
+types description</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+Records are always an even number of bytes long. The first four bytes of
+a record are the&nbsp; <I><A HREF="gdsformat.html#recordheader">record
+header</A></I>. If a record contains ASCII string data and the ASCII string
+is an odd number of bytes long, the data is padded with a null character.
+This paragraph lists the record types with a brief description of each.
+The descriptions include the record name and a four-digit number in brackets.
+The first two numbers within the brackets are the record type, and the
+last two numbers in brackets are the data type. All record numbers are
+expressed in hexadecimal.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">0</TD>
+
+<TD WIDTH="100"><A NAME="rec_header"></A>HEADER</TD>
+
+<TD WIDTH="40">0002</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Contains two bytes of data representing the Stream version number.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">1</TD>
+
+<TD WIDTH="100"><A NAME="rec_bgnlib"></A>BGNLIB</TD>
+
+<TD WIDTH="40">0102</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Contains the last modification time of a library (two bytes each for year,
+month, day, hour, minute, and second), the time of last access (same format),
+and marks the beginning of a library.
+<TABLE BORDER=3 COLS=17 WIDTH="50%" BGCOLOR="#33FF33" >
+<TR BGCOLOR="#CC66CC">
+<TD WIDTH="40">Bit</TD>
+
+<TD WIDTH="20">0</TD>
+
+<TD WIDTH="20">1</TD>
+
+<TD WIDTH="20">2</TD>
+
+<TD WIDTH="20">3</TD>
+
+<TD WIDTH="20">4</TD>
+
+<TD WIDTH="20">5</TD>
+
+<TD WIDTH="20">6</TD>
+
+<TD WIDTH="20">7</TD>
+
+<TD WIDTH="20">8</TD>
+
+<TD WIDTH="20">9</TD>
+
+<TD WIDTH="20">10</TD>
+
+<TD WIDTH="20">11</TD>
+
+<TD WIDTH="20">12</TD>
+
+<TD WIDTH="20">13</TD>
+
+<TD WIDTH="20">14</TD>
+
+<TD WIDTH="20">15</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word1</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="501">l C (hex) # of bytes in record</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word2</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="501">01 (hex) 02 (hex)</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word3</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="411">year (lastmodification time)</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word4</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="411">month</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word5</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="411">day</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word6</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="411">hour</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word7</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="411">minute</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word8</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="411">second</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word9</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="411">year (last access time)</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word10</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="411">month</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word11</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="411">day</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word12</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="411">hour</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word13</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="411">minute</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word14</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="411">second</TD>
+</TR>
+</TABLE>
+&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">2</TD>
+
+<TD WIDTH="100"><A NAME="rec_libname"></A>LIBNAME</TD>
+
+<TD WIDTH="40">0206</TD>
+
+<TD>ASCII String</TD>
+</TR>
+</TABLE>
+Contains a string which is the library name. The library name must follow
+UNIX filename conventions for length and valid characters. The library
+name may include the file extension (.sf or db in most cases).
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">3</TD>
+
+<TD WIDTH="100"><A NAME="rec_units"></A>UNITS</TD>
+
+<TD WIDTH="40">0305</TD>
+
+<TD WIDTH="200">Eight-Byte Real</TD>
+</TR>
+</TABLE>
+Contains two eight-byte real numbers. The first number is the size of a
+database unit in user units. The second number is the size of a database
+unit in meters. For example, if you create a library with the default units
+(user unit = 1 micron and 1000 database units per user unit), the first
+number is .001, and the second number is 1E-9. Typically, the first number
+is less than 1, since you use more than 1 database unit per user unit.
+To calculate the size of a user unit in meters, divide the second number
+by the first.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">4</TD>
+
+<TD WIDTH="100"><A NAME="rec_endlib"></A>ENDLIB</TD>
+
+<TD WIDTH="40">0400</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the end of a library.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">5</TD>
+
+<TD WIDTH="100"><A NAME="rec_bgnstr"></A>BGNSTR</TD>
+
+<TD WIDTH="40">0502</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Contains the creation time and last modification time of a structure (in
+the same format as the BGNLIB record), and marks the beginning of a structure.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">6</TD>
+
+<TD WIDTH="100"><A NAME="rec_strname"></A>STRNAME</TD>
+
+<TD WIDTH="40">0606</TD>
+
+<TD>ASCII String</TD>
+</TR>
+</TABLE>
+Contains a string which is the structure name. A structurename may be up
+to 32 characters long. Legal structurename characters are:
+<UL>
+<LI>
+A through Z</LI>
+
+<LI>
+a through z</LI>
+
+<LI>
+0 through 9</LI>
+
+<LI>
+Underscore (_)</LI>
+
+<LI>
+Question mark (?)</LI>
+
+<LI>
+Dollar sign ($)</LI>
+</UL>
+&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">7</TD>
+
+<TD WIDTH="100"><A NAME="rec_endstr"></A>ENDSTR</TD>
+
+<TD WIDTH="40">0700</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the end of a structure.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">8</TD>
+
+<TD WIDTH="100"><A NAME="rec_boundary"></A>BOUNDARY</TD>
+
+<TD WIDTH="40">0800</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the beginning of a boundary element.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">9</TD>
+
+<TD WIDTH="100"><A NAME="rec_path"></A>PATH</TD>
+
+<TD WIDTH="40">0900</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the beginning of a path element.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">10</TD>
+
+<TD WIDTH="100"><A NAME="rec_sref"></A>SREF</TD>
+
+<TD WIDTH="40">0A00</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the beginning of an Sref (structure reference) element.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">11</TD>
+
+<TD WIDTH="100"><A NAME="rec_aref"></A>AREF</TD>
+
+<TD WIDTH="40">0B00</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the beginning of an Aref (array reference) element.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">12</TD>
+
+<TD WIDTH="100"><A NAME="rec_text"></A>TEXT</TD>
+
+<TD WIDTH="20">0C00</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the beginning of a text element.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">13</TD>
+
+<TD WIDTH="100"><A NAME="rec_layer"></A>LAYER</TD>
+
+<TD WIDTH="40">0D02</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Contains two bytes which specify the layer. The value of the layer must
+be in the range of 0 to 255.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">14</TD>
+
+<TD WIDTH="100"><A NAME="rec_datatype"></A>DATATYPE</TD>
+
+<TD WIDTH="40">OEO2</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Contains two bytes which specify the datatype. The value of the datatype
+must be in the range of 0 to 255.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">15</TD>
+
+<TD WIDTH="100"><A NAME="rec_width"></A>WIDTH</TD>
+
+<TD WIDTH="40">0F03</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Contains four bytes which specify the width of a path or text lines in
+database units. A negative value for width means that the width is absolute,
+that is, the width is not affected by the magnification factor of any parent
+reference. If omitted, zero is assumed.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">16</TD>
+
+<TD WIDTH="100"><A NAME="rec_xy"></A>XY</TD>
+
+<TD WIDTH="40">1003</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+&nbsp;
+<UL>
+<LI>
+Contains an array of XY coordinates in database units. Each X or Y coordinate
+is four bytes long. Path elements may have a minimum of 2 and a maximum
+of 200 coordinates. Boundary and border elements may have a minimum of
+4 and a maximum of 200 coordinates. The first and last coordinates of a
+boundary or border must coincide.</LI>
+
+<LI>
+A text, or Sref element may have only one coordinate.</LI>
+
+<LI>
+An Aref has exactly three coordinates. In an Aref, the first coordinate
+is the array reference point (origin point). The other two coordinates
+are already rotated, reflected as specified in the STRANS record (if specified).
+So in order to calculate the intercolomn and interrow spacing, the coordinates
+must be mapped back to their original position, or the vector lenght (x1,y1->
+x3,y3) must be divided by the number of row etc. . The second coordinate
+locates a position which is displaced from the reference point by the inter-column
+spacing times the number of columns. The third coordinate locates a position
+which is displaced from the reference point by the inter-row spacing times
+the number of rows. For an example of an array lattice see the next picture.</LI>
+
+<BR><IMG SRC="arrayref.gif" BORDER=3 HEIGHT=418 WIDTH=455>Aref rotated
+-30 degrees.
+<LI>
+A node may have from one to 50 coordinates.</LI>
+
+<LI>
+A box must have five coordinates, with the first and last coordinates being
+the same.</LI>
+</UL>
+&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">17</TD>
+
+<TD WIDTH="100"><A NAME="rec_endel"></A>ENDEL</TD>
+
+<TD WIDTH="40">1100</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the end of an element.
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">18</TD>
+
+<TD WIDTH="100"><A NAME="rec_sname"></A>SNAME</TD>
+
+<TD WIDTH="40">1206</TD>
+
+<TD>ASCII string</TD>
+</TR>
+</TABLE>
+Contains the name of a referenced structure.See also <A HREF="#rec_sname">STRNAME</A>.
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">19</TD>
+
+<TD WIDTH="100"><A NAME="rec_colrow"></A>COLROW</TD>
+
+<TD WIDTH="40">1302</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Contains four bytes. The first two bytes contain the number of columns
+in the array. The third and fourth bytes contain the number of rows. Neither
+the number of columns nor the number of rows may exceed 32,767 (decimal),
+and both are positive. See also <A HREF="#rec_aref">AREF.</A>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">21</TD>
+
+<TD WIDTH="100"><A NAME="rec_node"></A>NODE</TD>
+
+<TD WIDTH="40">1500</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Present Marks the beginning of a node
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">22</TD>
+
+<TD WIDTH="100"><A NAME="rec_texttype"></A>TEXTTYPE</TD>
+
+<TD WIDTH="40">1602</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Contains two bytes representing texttype. The value of the texttype must
+be in the range 0 to 255.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">23</TD>
+
+<TD WIDTH="100"><A NAME="rec_presentation"></A>PRESENTATION</TD>
+
+<TD WIDTH="40">1701</TD>
+
+<TD>Bit Array</TD>
+</TR>
+</TABLE>
+Contains one word (two bytes) of bit flags for text presentation. Bits
+10 and 11, taken together as a binary number, specify the font (00 means
+font 0, 01 rneans font 1, 10 means font 2, and 11 means font 3). Bits 12
+and 13 specify the vertical justification (00 means top, 01 means middle,
+and 10 means bottom). Bits 14 and 15 specify the horizontal justification
+(00 means left, 01 means center, and 10 means right). Bits 0 through 9
+are reserved for future use and must be cleared. If this record is omitted,
+then top-left justification and font 0 are assumed. The following shows
+a PRESENTATION record.
+<BR>&nbsp;
+<TABLE BORDER=3 COLS=17 WIDTH="50%" BGCOLOR="#33FF33" >
+<TR BGCOLOR="#CC66CC">
+<TD WIDTH="40">Bit</TD>
+
+<TD WIDTH="20">0</TD>
+
+<TD WIDTH="20">1</TD>
+
+<TD WIDTH="20">2</TD>
+
+<TD WIDTH="20">3</TD>
+
+<TD WIDTH="20">4</TD>
+
+<TD WIDTH="20">5</TD>
+
+<TD WIDTH="20">6</TD>
+
+<TD WIDTH="20">7</TD>
+
+<TD WIDTH="20">8</TD>
+
+<TD WIDTH="20">9</TD>
+
+<TD WIDTH="20">10</TD>
+
+<TD WIDTH="20">11</TD>
+
+<TD WIDTH="20">12</TD>
+
+<TD WIDTH="20">13</TD>
+
+<TD WIDTH="20">14</TD>
+
+<TD WIDTH="20">15</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word1</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="501">6 (hex) # of bytes in record</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word2</TD>
+
+<TD ALIGN=CENTER COLSPAN="8" WIDTH="501">17 (hex)&nbsp;</TD>
+
+<TD COLSPAN="8">01 (hex)</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word3</TD>
+
+<TD ALIGN=CENTER COLSPAN="10" WIDTH="501">unused&nbsp;</TD>
+
+<TD COLSPAN="2">font number</TD>
+
+<TD COLSPAN="2">vertical&nbsp;
+<BR>presentaion</TD>
+
+<TD COLSPAN="2">horizontal presentation</TD>
+</TR>
+</TABLE>
+&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">25</TD>
+
+<TD WIDTH="100"><A NAME="rec_string"></A>STRING</TD>
+
+<TD WIDTH="40">1906</TD>
+
+<TD>ASCII String</TD>
+</TR>
+</TABLE>
+Contains a character string, up to 512 characters long, for text presentation.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">26</TD>
+
+<TD WIDTH="100"><A NAME="rec_strans"></A>STRANS</TD>
+
+<TD WIDTH="40">1A01</TD>
+
+<TD>Bit Array</TD>
+</TR>
+</TABLE>
+Contains two bytes of bit flags for Sref, Aref, and text transforrnation.
+Bit 0 (the leftmost bit) specifies reflection. If bit 0 is set, the element
+is reflected about the X-axis before angular rotation. For an Aref, the
+entire array is reflected, with the individual array members rigidly attached.
+Bit 13 flags absolute magnification. Bit 14 flags absolute angle. Bit 15
+(the rightmost bit) and all remaining bits are reserved for future use
+and must be cleared. If this record is omitted, the element is assumed
+to have no reflection, non-absolute magnification, and non- absolute angle.
+<BR>The following shows a STRANS record.
+<BR>&nbsp;
+<TABLE BORDER=3 COLS=17 WIDTH="50%" BGCOLOR="#33FF33" >
+<TR BGCOLOR="#CC66CC">
+<TD WIDTH="40">Bit</TD>
+
+<TD WIDTH="20">0</TD>
+
+<TD WIDTH="20">1</TD>
+
+<TD WIDTH="20">2</TD>
+
+<TD WIDTH="20">3</TD>
+
+<TD WIDTH="20">4</TD>
+
+<TD WIDTH="20">5</TD>
+
+<TD WIDTH="20">6</TD>
+
+<TD WIDTH="20">7</TD>
+
+<TD WIDTH="20">8</TD>
+
+<TD WIDTH="20">9</TD>
+
+<TD WIDTH="20">10</TD>
+
+<TD WIDTH="20">11</TD>
+
+<TD WIDTH="20">12</TD>
+
+<TD WIDTH="20">13</TD>
+
+<TD WIDTH="20">14</TD>
+
+<TD WIDTH="20">15</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word1</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="501">6 (hex) # of bytes in record</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word2</TD>
+
+<TD ALIGN=CENTER COLSPAN="8" WIDTH="501">1A (hex)&nbsp;</TD>
+
+<TD COLSPAN="8">01 (hex)</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word3</TD>
+
+<TD ALIGN=CENTER WIDTH="501">reflection&nbsp;</TD>
+
+<TD ALIGN=CENTER COLSPAN="12">unused</TD>
+
+<TD>absolute&nbsp;
+<BR>magnification</TD>
+
+<TD>absolute angle</TD>
+
+<TD>unused</TD>
+</TR>
+</TABLE>
+&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">27</TD>
+
+<TD WIDTH="100"><A NAME="rec_mag"></A>MAG</TD>
+
+<TD WIDTH="40">1B05</TD>
+
+<TD>Eight Byte Real</TD>
+</TR>
+</TABLE>
+Eight-Byte Real Contains a double-precision real number (8 bytes), which
+is the magnification factor. If this record is omitted, a magnification
+factor of one is assumed.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">28</TD>
+
+<TD WIDTH="100"><A NAME="rec_angle"></A>ANGLE</TD>
+
+<TD WIDTH="40">1C05</TD>
+
+<TD>Eight Byte Real</TD>
+</TR>
+</TABLE>
+Eight-Byte Real Contains a double-precision real number (8 bytes), which
+is the angular rotation factor. The angle of rotation is measured in degrees
+and in the counterclockwise direction. For an <A HREF="#rec_aref">Aref</A>,
+the ANGLE rotates the entire array (with the individual array members rigidly
+attached) about the array reference point. For <A HREF="#rec_colrow">COLROW</A>
+record information, the angle of rotation is already inlcuded in the coordinates.
+If this record is omitted, an angle of zero degrees is assumed.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">31</TD>
+
+<TD WIDTH="100"><A NAME="rec_reflibs"></A>REFLIBS</TD>
+
+<TD WIDTH="40">1F06</TD>
+
+<TD>ASCII String</TD>
+</TR>
+</TABLE>
+Contains the names of the reference libraries. This record must be present
+if any reference libraries are bound to the working library. The name of
+the first reference library starts at byte 5 (immediately following the
+record header) and continues for 44 bytes. The next 44 bytes contain the
+name of the second library. The record is extended by 44 bytes for each
+additional library (up to 15) which is bound for reference. The reference
+library names may include directory specifiers (separated with "/") and
+an extension (separated with "."). If either the first or second library
+is not named, its place is filled with nulls.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">32</TD>
+
+<TD WIDTH="100"><A NAME="rec_fonts"></A>FONTS</TD>
+
+<TD WIDTH="40">2006</TD>
+
+<TD>ASCII String</TD>
+</TR>
+</TABLE>
+Contains the names of the textfont definition files. This record must be
+present if any of the four fonts have acorresponding textfont definition
+file. This record must not be present if none of the fonts have a textfont
+definition file. The textfont filename of font 0 starts the record, followed
+by the textfont files of the remaining three fonts.Each filename is 44
+bytes long. The filename is padded withnulls if the name is shorter than
+44 bytes. The filename is null if no textfont definition corresponds to
+the font. The textfont filenames may include directory specifiers (separated
+with "/" and an extension (separated with ".").
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">33</TD>
+
+<TD WIDTH="100"><A NAME="rec_pathtype"></A>PATHTYPE</TD>
+
+<TD WIDTH="40">2102</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+This record contains a value that describes the type of path endpoints.
+The value is
+<UL>
+<LI>
+0 for square-ended paths that endflush with their endpoints</LI>
+
+<LI>
+1 for round-ended paths</LI>
+
+<LI>
+2 for square-ended paths that extend a half-width beyond their endpoints</LI>
+</UL>
+If not specified, a Path-type of 0 is assumed.
+
+<P>The following picture shows the pathtypes
+<BR>&nbsp;
+<TABLE BORDER COLS=2 BGCOLOR="#FF99FF" >
+<TR>
+<TD ROWSPAN="3" WIDTH="190"><IMG SRC="pathtype.gif" BORDER=0 HEIGHT=567 WIDTH=190></TD>
+
+<TD WIDTH="200">Pathtype 0 produces a square-ended path, ending flush with
+thedigitized endpoints. This is the de-fault pathtype if none is specified</TD>
+</TR>
+
+<TR>
+<TD WIDTH="50%">Pathtype 1 produces a round-ended path. The two ends aresemicircular
+with center at thedigitized endpoints.</TD>
+</TR>
+
+<TR>
+<TD>Pathtype 2 produces a square-ended path. The ends of the pathextend
+beyond the digitized end-points by one-half the path width.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">34</TD>
+
+<TD WIDTH="100"><A NAME="rec_generations"></A>GENERATIONS</TD>
+
+<TD WIDTH="40">2202</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+This record contains a value to indicate the number of copies of deleted
+or back-up structures to retain. This numbermust be at least 2 and not
+more than 99. If the GENERATION record is omitted, a value of 3 is assumed.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">35</TD>
+
+<TD WIDTH="100"><A NAME="rec_attrtable"></A>ATTRTABLE</TD>
+
+<TD WIDTH="40">2306</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Contains the name of the attribute definition file. This record is present
+only if an attribute definition file is bound to the library. The attribute
+defenition filename may include directory specifiers (separated with "/")
+and an extension (separated with "."). Maximum record size is 44 bytes.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">36</TD>
+
+<TD WIDTH="100"><A NAME="rec_styptable"></A>STYPTABLE</TD>
+
+<TD WIDTH="40">2502</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Unrelesed Feature
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">37</TD>
+
+<TD WIDTH="100"><A NAME="rec_strtype"></A>STRTYPE</TD>
+
+<TD WIDTH="40">2502</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Unrelesed Feature
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">38</TD>
+
+<TD WIDTH="100"><A NAME="rec_elflags"></A>ELFLAGS</TD>
+
+<TD WIDTH="40">2601</TD>
+
+<TD>Bit Array</TD>
+</TR>
+</TABLE>
+Contains two bytes of bit flags. Bit 15 (the rightmost bit)specifies Template
+data. Bit 14 specifies External data(also referred to as Exterior data).
+All other bits are currently unused and must be cleared to 0. If this record
+isomitted, all bits are assumed to be 0. The following shows an ELFLAGS
+record.
+
+<P>For additional information on Template data, consult the GDSII Reference
+Manual. For additional information on External data, consult the CustomPlus
+User's Manual.
+<BR>&nbsp;
+<TABLE BORDER=3 COLS=17 WIDTH="50%" BGCOLOR="#33FF33" >
+<TR BGCOLOR="#CC66CC">
+<TD WIDTH="40">Bit</TD>
+
+<TD WIDTH="20">0</TD>
+
+<TD WIDTH="20">1</TD>
+
+<TD WIDTH="20">2</TD>
+
+<TD WIDTH="20">3</TD>
+
+<TD WIDTH="20">4</TD>
+
+<TD WIDTH="20">5</TD>
+
+<TD WIDTH="20">6</TD>
+
+<TD WIDTH="20">7</TD>
+
+<TD WIDTH="20">8</TD>
+
+<TD WIDTH="20">9</TD>
+
+<TD WIDTH="20">10</TD>
+
+<TD WIDTH="20">11</TD>
+
+<TD WIDTH="20">12</TD>
+
+<TD WIDTH="20">13</TD>
+
+<TD WIDTH="20">14</TD>
+
+<TD WIDTH="20">15</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word1</TD>
+
+<TD ALIGN=CENTER COLSPAN="16" WIDTH="501">6 (hex) # of bytes in record</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word2</TD>
+
+<TD ALIGN=CENTER COLSPAN="8" WIDTH="501">26 (hex)&nbsp;</TD>
+
+<TD COLSPAN="8">01 (hex)</TD>
+</TR>
+
+<TR>
+<TD WIDTH="101">word3</TD>
+
+<TD ALIGN=CENTER COLSPAN="14">unused</TD>
+
+<TD>external data</TD>
+
+<TD>template&nbsp;
+<BR>data</TD>
+</TR>
+</TABLE>
+&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">39</TD>
+
+<TD WIDTH="100"><A NAME="rec_elkey"></A>ELKEY</TD>
+
+<TD WIDTH="40">2703</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+(Unreleased feature)
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">40</TD>
+
+<TD WIDTH="100"><A NAME="rec_linktype"></A>LINKTYPE</TD>
+
+<TD WIDTH="40">28</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+(Unreleased feature)
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">41</TD>
+
+<TD WIDTH="100"><A NAME="rec_linkkeys"></A>LINKKEYS</TD>
+
+<TD WIDTH="40">29</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+(Unreleased feature)
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">42</TD>
+
+<TD WIDTH="100"><A NAME="rec_nodetype"></A>NODETYPE</TD>
+
+<TD WIDTH="40">2A02</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Contains two bytes which specify nodetype. The value ofthe nodetype must
+be in the range of 0 to 255.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">43</TD>
+
+<TD WIDTH="100"><A NAME="rec_propattr"></A>PROPATTR</TD>
+
+<TD WIDTH="40">2B02</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Contains two bytes which specify the attribute number. The attribute number
+is an integer from 1 to 127. Attribute numbers 126 and 127 are reserved
+for the user integer and userstring (CSD) properties which existed prior
+to Release 3.0.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">44</TD>
+
+<TD WIDTH="100"><A NAME="rec_propvalue"></A>PROPVALUE</TD>
+
+<TD WIDTH="40">2C06</TD>
+
+<TD>ASCII string</TD>
+</TR>
+</TABLE>
+Contains the string value associated with the attribute named in the preceding
+PROPATTR record. Maximumlength is 126 characters. The attribute-value pairs
+associated with any one element must all have distinct attribute numbers.
+Also, the total amount of property data that may be associated with any
+one element is limited: thetotal length of all the strings, plus twice
+the number of attribute-value pairs, must not exceed 128 (or 512 if the
+element is an Sref, Aref, contact, nodeport, or node).
+
+<P>For example, if a boundary element uses property attribute2 with property
+value "metal," and property attribute 10 with property value "property,"
+the total amount of property data is 18 bytes. This is 6 bytes for "metal"
+(odd-length strings must be padded with a null) + 8 for "property" + 2
+times the 2 attributes (4) = 18.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">45</TD>
+
+<TD WIDTH="100"><A NAME="rec_box"></A>BOX</TD>
+
+<TD WIDTH="40">2D00</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the beginning of a box element.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">46</TD>
+
+<TD WIDTH="100"><A NAME="rec_boxtype"></A>BOXTYPE</TD>
+
+<TD WIDTH="40">2E02</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Contains two bytes which specify boxtype. The value of the boxtype must
+be in the range of 0 to 255.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">47</TD>
+
+<TD WIDTH="100"><A NAME="rec_plex"></A>PLEX</TD>
+
+<TD WIDTH="40">2F03</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+A unique positive number which is common to all elementsof the plex to
+which this element belongs. The head of the plex is flagged by setting
+the seventh bit; therefore, plexnumbers should be small enough to occupy
+only the right-most 24 bits. If this record is not present, the element
+is not a plex member Applies to Pathtype 4.Contains four bytes which specify
+indatabase units the distance a path outline begins before orafter the
+last point of the path. Value can be negative.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">50</TD>
+
+<TD WIDTH="100"><A NAME="rec_tapenum"></A>TAPENUM</TD>
+
+<TD WIDTH="40">3202</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Contains two bytes which specify the number of the current reel of tape
+for a multi-reel Stream file. For the first tape, the TAPENUM is 1: for
+the second tape, the TAPENUM is 2. For each additional tape, increment
+the TAPENum by one.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">51</TD>
+
+<TD WIDTH="100"><A NAME="rec_tapecode"></A>TAPECODE</TD>
+
+<TD WIDTH="40">3302</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Contains 12 bytes. This is a unique 6-integer code which iscommon to all
+the reels of multi-reel Stream file. It verifies that the correct reels
+are being read.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">52</TD>
+
+<TD WIDTH="100"><A NAME="rec_strclass"></A>STRCLASS</TD>
+
+<TD WIDTH="40">3401</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Not used
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">53</TD>
+
+<TD WIDTH="100"><A NAME="rec_reserved"></A>RESERVED</TD>
+
+<TD WIDTH="40">3503</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+This record type was used for NUMTYPES but was not required.
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">54</TD>
+
+<TD WIDTH="100"><A NAME="rec_format"></A>FORMAT</TD>
+
+<TD WIDTH="40">3602</TD>
+
+<TD>Two-Byte Signed Integer</TD>
+</TR>
+</TABLE>
+Defines the format of a Stream tape in two bytes. The possible values are:
+<OL>
+<LI>
+for GDSII Archive format</LI>
+
+<LI>
+for GDSII Filtered format</LI>
+
+<LI>
+for EDSM Archive format</LI>
+
+<LI>
+for EDSHI Filtered forrnat</LI>
+</OL>
+An Archive Stream file contains elements for all the layers and data types.
+In an Archive Stream file, the FORMAT record is followed immediately by
+the UNITS record. A file which does not have the FORMAT record is assumed
+to be an Archive file.
+
+<P>A Filtered Stream file contains only the elements on the layers and
+with the datatypes you specify during creation ofthe Stream file. The list
+of layers and datatypes specified appear in MASK records. At least one
+MASK record must immediately follow the FORMAT record. The MASK records
+are terminated with the ENDMASKS record.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">55</TD>
+
+<TD WIDTH="100"><A NAME="rec_mask"></A>MASK</TD>
+
+<TD WIDTH="40">3706</TD>
+
+<TD>ASCII string</TD>
+</TR>
+</TABLE>
+(Required for and present only in FilteredStream file. )
+<BR>Contains the list of layers and datatypes specified by the user when
+creating the file. At least one MASK record must immediately follow the
+FORMAT record. More than one MASK record may occur. The last MASK record
+is followed by the ENDMASK record.
+<BR>In the MASK list, datatypes are separated from the layers with a semicolon.
+Individual layers or datatypes are sepa-rated with a space. A range of
+layers or datatypes is specified with a dash.
+
+<P>An example MASK list looks like this: 1 5 -7 10 ; 0- 255
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="20">56</TD>
+
+<TD WIDTH="100"><A NAME="rec_endmasks"></A>ENDMASKS</TD>
+
+<TD WIDTH="40">3800</TD>
+
+<TD>NoData</TD>
+</TR>
+</TABLE>
+(Required for and present only in FilteredStream file.)
+<BR>Marks the end of the MASK records. The ENDMASKS record must follow
+the last MASK record. ENDMASKS is immediately followed by the UNITS record.
+</BODY>
+</HTML>

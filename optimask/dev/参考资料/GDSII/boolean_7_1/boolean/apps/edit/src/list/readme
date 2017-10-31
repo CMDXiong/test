@@ -1,0 +1,7 @@
+This directory contains the source for the container/iterator/list implementation
+
+_dl_itr: is a set of template classes to be used for all types (int double, class pointers etc.)
+to generate a container as a double linked list, and to make iterators for it.
+		
+_lnk_itr: is a _dl_list derived class that uses void* pointers to point to the object in the list.
+it is used to limit the number of generated/instantiated template lists.

@@ -1,0 +1,12 @@
+orig=$1
+rep=$2
+shift
+shift
+
+for i in $*
+do
+	echo $i
+	cp $i /tmp/temp
+	sed "s/$orig/$rep/g" /tmp/temp >$i
+done
+

@@ -1,0 +1,6 @@
+# Process file for GDS-II postprocessing tool
+
+loadfile $HOME/gdsuser/process/test6.gds gds-ii
+
+viewstructure Unit_Square
+#loadprocess $HOME/gdsuser/process/procesunittest.prs

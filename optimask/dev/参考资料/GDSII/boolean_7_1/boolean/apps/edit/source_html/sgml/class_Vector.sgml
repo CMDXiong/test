@@ -1,0 +1,490 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="YES"
+	DECLARATION="template &lt;class Type&gt; class Vector"
+>
+
+<META-DATA>
+	<NAME>Vector</NAME>
+	<AUTHOR></AUTHOR>
+	<VERSION></VERSION>
+	<DATE>Wed Oct 20  9:03:07 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME></NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME></NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+<DESCRIPTION>
+	<PARA></PARA>
+</DESCRIPTION>
+
+
+
+<FRIEND-CLASSES>
+	<FRIEND-CLASS><NAME>operator<<</NAME></FRIEND-CLASS>
+	<FRIEND-CLASS><NAME>operator>></NAME></FRIEND-CLASS>
+</FRIEND-CLASSES>
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="Vector(int n)"
+		INLINE="NO"
+	>
+		<NAME>Vector</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> contructors and destructors create vector with n elements:</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="Vector(const Vector&amp;)"
+		INLINE="NO"
+	>
+		<NAME>Vector</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> copy contructor:</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="Vector(Type x1, Type x2)"
+		INLINE="NO"
+	>
+		<NAME>Vector</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> create vector with 2 elements</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="Vector(Type x1, Type x2, Type x3)"
+		INLINE="NO"
+	>
+		<NAME>Vector</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> create vector with 3 elements</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~Vector()"
+		INLINE="NO"
+	>
+		<NAME>~Vector</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> destructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Vector&	"
+		DECLARATION="Vector&amp;	operator=(const Vector&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator=</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> assignment operator</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Type&	"
+		DECLARATION="Type&amp;	operator[](int n)"
+		INLINE="NO"
+	>
+		<NAME>operator[]</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> index operator</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Vector&	"
+		DECLARATION="Vector&amp;	operator*=(const Type&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator*=</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>object changing operators</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Vector&	"
+		DECLARATION="Vector&amp;	operator/=(const Type&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator/=</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Vector&	"
+		DECLARATION="Vector&amp;	operator+=(const Vector&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator+=</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Vector&	"
+		DECLARATION="Vector&amp;	operator-=(const Vector&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator-=</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Vector	"
+		DECLARATION="Vector	operator-()"
+		INLINE="NO"
+	>
+		<NAME>operator-</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> constant operators</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Type	"
+		DECLARATION="Type	operator*(const Vector&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator*</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Vector	"
+		DECLARATION="Vector	operator/(const Type&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator/</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Type	"
+		DECLARATION="Type	operator*(const Vector&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator*</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Vector	"
+		DECLARATION="Vector	operator+(const Vector&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator+</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Vector	"
+		DECLARATION="Vector	operator-(const Vector&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator-</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	operator==(const Vector&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator==</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	operator!=(const Vector&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator!=</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="const Type&	"
+		DECLARATION="const Type&amp;	elem(int n)"
+		INLINE="NO"
+	>
+		<NAME>elem</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> readonly index operator</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Type	"
+		DECLARATION="Type	min()"
+		INLINE="NO"
+	>
+		<NAME>min</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> other functions</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Type	"
+		DECLARATION="Type	max()"
+		INLINE="NO"
+	>
+		<NAME>max</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="float	"
+		DECLARATION="float	mean()"
+		INLINE="NO"
+	>
+		<NAME>mean</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	nElems()"
+		INLINE="NO"
+	>
+		<NAME>nElems</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Type	*"
+		DECLARATION="Type	*a"
+	>
+		<NAME>a</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	size"
+	>
+		<NAME>size</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Type	"
+		DECLARATION="Type	ZERO"
+	>
+		<NAME>ZERO</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

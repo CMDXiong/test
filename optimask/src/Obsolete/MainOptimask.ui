@@ -1,0 +1,1078 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>709</width>
+    <height>618</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>709</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <widget class="QMenu" name="menuImport">
+     <property name="title">
+      <string>Import</string>
+     </property>
+     <addaction name="actionImportGDSII"/>
+     <addaction name="actionImportOASIS"/>
+     <addaction name="actionImportCIF"/>
+     <addaction name="actionImportDXF"/>
+     <addaction name="actionImportGerber"/>
+    </widget>
+    <widget class="QMenu" name="menuExport">
+     <property name="title">
+      <string>Export</string>
+     </property>
+     <addaction name="actionExportGDSII"/>
+     <addaction name="actionExportOASIS"/>
+     <addaction name="actionExportCIF"/>
+     <addaction name="actionExportDXF"/>
+     <addaction name="actionExportGerber"/>
+    </widget>
+    <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionClose"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSave_As"/>
+    <addaction name="separator"/>
+    <addaction name="actionOption"/>
+    <addaction name="menuImport"/>
+    <addaction name="menuExport"/>
+    <addaction name="separator"/>
+    <addaction name="actionLoad_Tech_File"/>
+    <addaction name="actionSave_Tech_File"/>
+    <addaction name="separator"/>
+    <addaction name="actionFile_Info"/>
+    <addaction name="separator"/>
+    <addaction name="actionPrint"/>
+    <addaction name="actionPrint_Preview"/>
+    <addaction name="actionPrint_Setup"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuEit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <widget class="QMenu" name="menuPaste_To">
+     <property name="title">
+      <string>Paste To</string>
+     </property>
+     <addaction name="actionSpecified_Origin"/>
+     <addaction name="actionSpecified_Layer"/>
+     <addaction name="actionSpecified_Cell"/>
+    </widget>
+    <widget class="QMenu" name="menuSelect">
+     <property name="title">
+      <string>Select</string>
+     </property>
+     <addaction name="actionLayer_2"/>
+     <addaction name="actionAll"/>
+    </widget>
+    <widget class="QMenu" name="menuUnselect">
+     <property name="title">
+      <string>Unselect</string>
+     </property>
+     <addaction name="actionLayer_3"/>
+     <addaction name="actionAll_2"/>
+    </widget>
+    <addaction name="actionUndo"/>
+    <addaction name="actionRedo"/>
+    <addaction name="separator"/>
+    <addaction name="actionCut"/>
+    <addaction name="actionCopy"/>
+    <addaction name="actionPaste"/>
+    <addaction name="menuPaste_To"/>
+    <addaction name="actionDuplicate"/>
+    <addaction name="actionDelete"/>
+    <addaction name="separator"/>
+    <addaction name="menuSelect"/>
+    <addaction name="menuUnselect"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionPreview"/>
+    <addaction name="actionRuler"/>
+    <addaction name="actionGrid"/>
+    <addaction name="actionFrame"/>
+    <addaction name="actionFill"/>
+    <addaction name="separator"/>
+    <addaction name="actionSructure"/>
+    <addaction name="separator"/>
+    <addaction name="actionHom"/>
+    <addaction name="actionGoTo"/>
+    <addaction name="actionZoom"/>
+    <addaction name="actionPan"/>
+    <addaction name="separator"/>
+    <addaction name="actionLayers"/>
+    <addaction name="actionObjects"/>
+    <addaction name="actionCells"/>
+    <addaction name="actionInstances"/>
+    <addaction name="separator"/>
+    <addaction name="actionToolboxes"/>
+    <addaction name="actionStatus_Bar"/>
+    <addaction name="actionError_Bar"/>
+   </widget>
+   <widget class="QMenu" name="menuDraw">
+    <property name="title">
+     <string>Draw</string>
+    </property>
+    <widget class="QMenu" name="menuTransform">
+     <property name="title">
+      <string>Transform</string>
+     </property>
+     <addaction name="actionMove"/>
+     <addaction name="actionRotate"/>
+     <addaction name="actionFlip"/>
+     <addaction name="actionMirror"/>
+     <addaction name="actionScaling"/>
+     <addaction name="separator"/>
+     <addaction name="actionComposition"/>
+    </widget>
+    <widget class="QMenu" name="menuLibrary">
+     <property name="title">
+      <string>Library</string>
+     </property>
+     <widget class="QMenu" name="menuPhotonics">
+      <property name="title">
+       <string>Photonics</string>
+      </property>
+      <addaction name="actionStraight"/>
+      <addaction name="actionTaper"/>
+      <addaction name="actionBend"/>
+      <addaction name="actionCoupler"/>
+      <addaction name="actionMMI"/>
+      <addaction name="actionMZI"/>
+      <addaction name="actionRing"/>
+      <addaction name="actionSpiral"/>
+      <addaction name="actionGrating"/>
+      <addaction name="actionAWG"/>
+      <addaction name="actionEchelle"/>
+     </widget>
+     <widget class="QMenu" name="menuType_Here">
+      <property name="title">
+       <string>Microwave</string>
+      </property>
+     </widget>
+     <widget class="QMenu" name="menuElectronics">
+      <property name="title">
+       <string>Electronics</string>
+      </property>
+      <addaction name="separator"/>
+     </widget>
+     <addaction name="actionCustom"/>
+     <addaction name="separator"/>
+     <addaction name="menuPhotonics"/>
+     <addaction name="menuType_Here"/>
+     <addaction name="menuElectronics"/>
+    </widget>
+    <addaction name="menuLibrary"/>
+    <addaction name="separator"/>
+    <addaction name="actionLine"/>
+    <addaction name="actionBox"/>
+    <addaction name="actionPolygon"/>
+    <addaction name="actionCircle"/>
+    <addaction name="actionMatrix"/>
+    <addaction name="separator"/>
+    <addaction name="actionAlign"/>
+    <addaction name="actionConvert"/>
+    <addaction name="actionSplit"/>
+    <addaction name="actionMerge"/>
+    <addaction name="separator"/>
+    <addaction name="actionGroup"/>
+    <addaction name="actionUngroup"/>
+    <addaction name="separator"/>
+    <addaction name="actionBoolean"/>
+    <addaction name="menuTransform"/>
+    <addaction name="actionCompute"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuTool">
+    <property name="title">
+     <string>Tool</string>
+    </property>
+    <widget class="QMenu" name="menuUtility">
+     <property name="title">
+      <string>Utility</string>
+     </property>
+     <addaction name="actionOptiEPI"/>
+     <addaction name="actionOptiAWG"/>
+     <addaction name="actionOptiEchelle"/>
+     <addaction name="actionOptiFONT"/>
+    </widget>
+    <widget class="QMenu" name="menuLayout_Statistics">
+     <property name="title">
+      <string>Layout Statistics</string>
+     </property>
+     <addaction name="actionTrace"/>
+     <addaction name="actionOptical_Path"/>
+    </widget>
+    <addaction name="menuLayout_Statistics"/>
+    <addaction name="actionLayout_Compare"/>
+    <addaction name="menuUtility"/>
+   </widget>
+   <widget class="QMenu" name="menuScript">
+    <property name="title">
+     <string>Script</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionManual"/>
+    <addaction name="actionExample"/>
+    <addaction name="actionLicense"/>
+    <addaction name="actionAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuWindow">
+    <property name="title">
+     <string>Window</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuCell">
+    <property name="title">
+     <string>Cell</string>
+    </property>
+    <addaction name="actionNew_3"/>
+    <addaction name="actionOpen_3"/>
+    <addaction name="actionCopy_3"/>
+    <addaction name="separator"/>
+    <addaction name="actionArrange"/>
+    <addaction name="actionInstance"/>
+    <addaction name="actionChange_Instance"/>
+    <addaction name="actionAssemble_2"/>
+    <addaction name="actionHierarchy"/>
+    <addaction name="separator"/>
+    <addaction name="actionFlatten"/>
+    <addaction name="actionFracture"/>
+    <addaction name="separator"/>
+    <addaction name="actionCell_Info"/>
+    <addaction name="actionCell_Statistics"/>
+    <addaction name="actionCell_Boundary"/>
+    <addaction name="actionWafer_Template"/>
+   </widget>
+   <widget class="QMenu" name="menuConfig">
+    <property name="title">
+     <string>Config</string>
+    </property>
+    <addaction name="actionOptions"/>
+    <addaction name="actionDRC"/>
+   </widget>
+   <widget class="QMenu" name="menuLayer_2">
+    <property name="title">
+     <string>Layer</string>
+    </property>
+    <addaction name="actionLoad_Layer_File_2"/>
+    <addaction name="actionSave_Layer_File_2"/>
+    <addaction name="separator"/>
+    <addaction name="actionLayer_Panel"/>
+    <addaction name="actionPanel_Setup"/>
+    <addaction name="actionLayer_Setup"/>
+    <addaction name="separator"/>
+    <addaction name="actionDensity"/>
+    <addaction name="actionDummy_Fill"/>
+    <addaction name="actionLayer_Statistics"/>
+    <addaction name="actionLayer_Translator"/>
+    <addaction name="separator"/>
+    <addaction name="actionSelect"/>
+    <addaction name="actionUnselect"/>
+    <addaction name="actionShow"/>
+    <addaction name="actionHide"/>
+    <addaction name="actionProtect"/>
+    <addaction name="actionUnprotect"/>
+    <addaction name="actionLock"/>
+    <addaction name="actionUnlock"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEit"/>
+   <addaction name="menuView"/>
+   <addaction name="menuDraw"/>
+   <addaction name="menuCell"/>
+   <addaction name="menuLayer_2"/>
+   <addaction name="menuScript"/>
+   <addaction name="menuConfig"/>
+   <addaction name="menuTool"/>
+   <addaction name="menuWindow"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionNew">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
+  <action name="actionClose_All">
+   <property name="text">
+    <string>Close All</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionSave_As">
+   <property name="text">
+    <string>Save As</string>
+   </property>
+  </action>
+  <action name="actionSave_All">
+   <property name="text">
+    <string>Save All</string>
+   </property>
+  </action>
+  <action name="actionLoad_Layer_File">
+   <property name="text">
+    <string>Load Layer File</string>
+   </property>
+  </action>
+  <action name="actionSave_Layer_File">
+   <property name="text">
+    <string>Save Layer File</string>
+   </property>
+  </action>
+  <action name="actionLayer_Summary">
+   <property name="text">
+    <string>Layer Summary</string>
+   </property>
+  </action>
+  <action name="actionFile_Info">
+   <property name="text">
+    <string>File Info</string>
+   </property>
+  </action>
+  <action name="actionLayout_Summary">
+   <property name="text">
+    <string>Layout Summary</string>
+   </property>
+  </action>
+  <action name="actionPrint">
+   <property name="text">
+    <string>Print</string>
+   </property>
+  </action>
+  <action name="actionPrint_Preview">
+   <property name="text">
+    <string>Print Preview</string>
+   </property>
+  </action>
+  <action name="actionPrint_Setup">
+   <property name="text">
+    <string>Print Setup</string>
+   </property>
+  </action>
+  <action name="actionOpen_Recent">
+   <property name="text">
+    <string>Open Recent</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="text">
+    <string>Undo</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="text">
+    <string>Redo</string>
+   </property>
+  </action>
+  <action name="actionCut">
+   <property name="text">
+    <string>Cut</string>
+   </property>
+  </action>
+  <action name="actionCopy">
+   <property name="text">
+    <string>Copy</string>
+   </property>
+  </action>
+  <action name="actionPaste">
+   <property name="text">
+    <string>Paste</string>
+   </property>
+  </action>
+  <action name="actionDelete">
+   <property name="text">
+    <string>Delete</string>
+   </property>
+  </action>
+  <action name="actionPreview">
+   <property name="text">
+    <string>Note</string>
+   </property>
+  </action>
+  <action name="actionImportGDSII">
+   <property name="text">
+    <string>GDSII</string>
+   </property>
+  </action>
+  <action name="actionImportOASIS">
+   <property name="text">
+    <string>OASIS</string>
+   </property>
+  </action>
+  <action name="actionImportCIF">
+   <property name="text">
+    <string>CIF</string>
+   </property>
+  </action>
+  <action name="actionImportDXF">
+   <property name="text">
+    <string>DXF</string>
+   </property>
+  </action>
+  <action name="actionImportGerber">
+   <property name="text">
+    <string>Gerber</string>
+   </property>
+  </action>
+  <action name="actionExportGDSII">
+   <property name="text">
+    <string>GDSII</string>
+   </property>
+  </action>
+  <action name="actionExportOASIS">
+   <property name="text">
+    <string>OASIS</string>
+   </property>
+  </action>
+  <action name="actionExportCIF">
+   <property name="text">
+    <string>CIF</string>
+   </property>
+  </action>
+  <action name="actionExportDXF">
+   <property name="text">
+    <string>DXF</string>
+   </property>
+  </action>
+  <action name="actionExportGerber">
+   <property name="text">
+    <string>Gerber</string>
+   </property>
+  </action>
+  <action name="actionDuplicate">
+   <property name="text">
+    <string>Duplicate</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="text">
+    <string>Clear</string>
+   </property>
+  </action>
+  <action name="actionSelect_Layer">
+   <property name="text">
+    <string>Select Layer</string>
+   </property>
+  </action>
+  <action name="actionSelect_All">
+   <property name="text">
+    <string>Select All</string>
+   </property>
+  </action>
+  <action name="actionMove">
+   <property name="text">
+    <string>Shift</string>
+   </property>
+  </action>
+  <action name="actionRotate">
+   <property name="text">
+    <string>Rotate</string>
+   </property>
+  </action>
+  <action name="actionMirror">
+   <property name="text">
+    <string>Mirror</string>
+   </property>
+  </action>
+  <action name="actionFlip">
+   <property name="text">
+    <string>Flip</string>
+   </property>
+  </action>
+  <action name="actionGrid">
+   <property name="text">
+    <string>Grid</string>
+   </property>
+  </action>
+  <action name="actionFrame">
+   <property name="text">
+    <string>Frame</string>
+   </property>
+  </action>
+  <action name="actionFill">
+   <property name="text">
+    <string>Fill</string>
+   </property>
+  </action>
+  <action name="actionLayers">
+   <property name="text">
+    <string>Layers</string>
+   </property>
+  </action>
+  <action name="actionObjects">
+   <property name="text">
+    <string>Objects</string>
+   </property>
+  </action>
+  <action name="actionCells">
+   <property name="text">
+    <string>Cells</string>
+   </property>
+  </action>
+  <action name="actionInstances">
+   <property name="text">
+    <string>Instances</string>
+   </property>
+  </action>
+  <action name="actionSructure">
+   <property name="text">
+    <string>Sructure</string>
+   </property>
+  </action>
+  <action name="actionToolboxes">
+   <property name="text">
+    <string>Toolboxes</string>
+   </property>
+  </action>
+  <action name="actionStatus_Bar">
+   <property name="text">
+    <string>Status Bar</string>
+   </property>
+  </action>
+  <action name="actionError_Bar">
+   <property name="text">
+    <string>Error Bar</string>
+   </property>
+  </action>
+  <action name="actionZoom">
+   <property name="text">
+    <string>Zoom</string>
+   </property>
+  </action>
+  <action name="actionPan">
+   <property name="text">
+    <string>Pan</string>
+   </property>
+  </action>
+  <action name="actionHom">
+   <property name="text">
+    <string>Home</string>
+   </property>
+  </action>
+  <action name="actionRuler">
+   <property name="text">
+    <string>Ruler</string>
+   </property>
+  </action>
+  <action name="actionPolygon">
+   <property name="text">
+    <string>Polygon</string>
+   </property>
+  </action>
+  <action name="actionCircle">
+   <property name="text">
+    <string>Curve</string>
+   </property>
+  </action>
+  <action name="actionBox">
+   <property name="text">
+    <string>Box</string>
+   </property>
+  </action>
+  <action name="actionMerge">
+   <property name="text">
+    <string>Merge</string>
+   </property>
+  </action>
+  <action name="actionSplit">
+   <property name="text">
+    <string>Split</string>
+   </property>
+  </action>
+  <action name="actionAlign">
+   <property name="text">
+    <string>Align</string>
+   </property>
+  </action>
+  <action name="actionMatrix">
+   <property name="text">
+    <string>Matrix</string>
+   </property>
+  </action>
+  <action name="actionConvert">
+   <property name="text">
+    <string>Convert</string>
+   </property>
+  </action>
+  <action name="actionGroup">
+   <property name="text">
+    <string>Group</string>
+   </property>
+  </action>
+  <action name="actionUngroup">
+   <property name="text">
+    <string>Ungroup</string>
+   </property>
+  </action>
+  <action name="actionBoolean">
+   <property name="text">
+    <string>Boolean</string>
+   </property>
+  </action>
+  <action name="actionNew_2">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionOpen_2">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionCopy_2">
+   <property name="text">
+    <string>Copy</string>
+   </property>
+  </action>
+  <action name="actionManual">
+   <property name="text">
+    <string>Manual</string>
+   </property>
+  </action>
+  <action name="actionExample">
+   <property name="text">
+    <string>Example</string>
+   </property>
+  </action>
+  <action name="actionLicense">
+   <property name="text">
+    <string>License</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionTransform">
+   <property name="text">
+    <string>Transform</string>
+   </property>
+  </action>
+  <action name="actionMove">
+   <property name="text">
+    <string>Move</string>
+   </property>
+  </action>
+  <action name="actionRotate">
+   <property name="text">
+    <string>Rotate</string>
+   </property>
+  </action>
+  <action name="actionFlip">
+   <property name="text">
+    <string>Flip</string>
+   </property>
+  </action>
+  <action name="actionMirror">
+   <property name="text">
+    <string>Mirror</string>
+   </property>
+  </action>
+  <action name="actionScaling">
+   <property name="text">
+    <string>Scaling</string>
+   </property>
+  </action>
+  <action name="actionComposition">
+   <property name="text">
+    <string>Composition</string>
+   </property>
+  </action>
+  <action name="actionCompute">
+   <property name="text">
+    <string>Compute</string>
+   </property>
+  </action>
+  <action name="actionOptiEPI">
+   <property name="text">
+    <string>OptiEPI</string>
+   </property>
+  </action>
+  <action name="actionOptiAWG">
+   <property name="text">
+    <string>OptiAWG</string>
+   </property>
+  </action>
+  <action name="actionDRC">
+   <property name="text">
+    <string>DRC</string>
+   </property>
+  </action>
+  <action name="actionOptiEchelle">
+   <property name="text">
+    <string>OptiEchelle</string>
+   </property>
+  </action>
+  <action name="actionLoad_Layer_File_2">
+   <property name="text">
+    <string>Load Layer File</string>
+   </property>
+  </action>
+  <action name="actionSave_Layer_File_2">
+   <property name="text">
+    <string>Save Layer File</string>
+   </property>
+  </action>
+  <action name="actionOption">
+   <property name="text">
+    <string>Option</string>
+   </property>
+  </action>
+  <action name="actionSpecified_Layer">
+   <property name="text">
+    <string>Specified Layer</string>
+   </property>
+  </action>
+  <action name="actionSpecified_Cell">
+   <property name="text">
+    <string>Specified Cell</string>
+   </property>
+  </action>
+  <action name="actionSpecified_Origin">
+   <property name="text">
+    <string>Specified Origin</string>
+   </property>
+  </action>
+  <action name="actionGoTo">
+   <property name="text">
+    <string>GoTo</string>
+   </property>
+  </action>
+  <action name="actionLayer_2">
+   <property name="text">
+    <string>Layer</string>
+   </property>
+  </action>
+  <action name="actionAll">
+   <property name="text">
+    <string>All</string>
+   </property>
+  </action>
+  <action name="actionLayer_3">
+   <property name="text">
+    <string>Layer</string>
+   </property>
+  </action>
+  <action name="actionAll_2">
+   <property name="text">
+    <string>All</string>
+   </property>
+  </action>
+  <action name="actionOptions">
+   <property name="text">
+    <string>Options</string>
+   </property>
+  </action>
+  <action name="actionDensity">
+   <property name="text">
+    <string>Density</string>
+   </property>
+  </action>
+  <action name="actionTrace">
+   <property name="text">
+    <string>Trace</string>
+   </property>
+  </action>
+  <action name="actionOptical_Path">
+   <property name="text">
+    <string>Optical Path</string>
+   </property>
+  </action>
+  <action name="actionLayer">
+   <property name="text">
+    <string>Layer</string>
+   </property>
+  </action>
+  <action name="actionOptiFONT">
+   <property name="text">
+    <string>OptiFONT</string>
+   </property>
+  </action>
+  <action name="actionNew_3">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionCopy_3">
+   <property name="text">
+    <string>Copy</string>
+   </property>
+  </action>
+  <action name="actionLayout_Compare">
+   <property name="text">
+    <string>Layout Compare</string>
+   </property>
+  </action>
+  <action name="actionLoad_Tech_File">
+   <property name="text">
+    <string>Load Tech File</string>
+   </property>
+  </action>
+  <action name="actionSave_Tech_File">
+   <property name="text">
+    <string>Save Tech File</string>
+   </property>
+  </action>
+  <action name="actionOpen_3">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionArrange">
+   <property name="text">
+    <string>Arrange</string>
+   </property>
+  </action>
+  <action name="actionInstance">
+   <property name="text">
+    <string>Instance</string>
+   </property>
+  </action>
+  <action name="actionChange_Instance">
+   <property name="text">
+    <string>Change Instance</string>
+   </property>
+  </action>
+  <action name="actionFlatten">
+   <property name="text">
+    <string>Flatten</string>
+   </property>
+  </action>
+  <action name="actionCell_Info">
+   <property name="text">
+    <string>Cell Info</string>
+   </property>
+  </action>
+  <action name="actionStraight">
+   <property name="text">
+    <string>Straight</string>
+   </property>
+  </action>
+  <action name="actionArc">
+   <property name="text">
+    <string>Arc</string>
+   </property>
+  </action>
+  <action name="actionBend">
+   <property name="text">
+    <string>Bend</string>
+   </property>
+  </action>
+  <action name="actionCoupler">
+   <property name="text">
+    <string>Coupler</string>
+   </property>
+  </action>
+  <action name="actionMMI">
+   <property name="text">
+    <string>MMI</string>
+   </property>
+  </action>
+  <action name="actionAWG">
+   <property name="text">
+    <string>AWG</string>
+   </property>
+  </action>
+  <action name="actionTaper">
+   <property name="text">
+    <string>Taper</string>
+   </property>
+  </action>
+  <action name="actionCustom">
+   <property name="text">
+    <string>Custom</string>
+   </property>
+  </action>
+  <action name="actionLayer_Panel">
+   <property name="text">
+    <string>Layer Panel</string>
+   </property>
+  </action>
+  <action name="actionLayer_Translator">
+   <property name="text">
+    <string>Layer Translator</string>
+   </property>
+  </action>
+  <action name="actionLayer_Statistics">
+   <property name="text">
+    <string>Layer Statistics</string>
+   </property>
+  </action>
+  <action name="actionLayer_Setup">
+   <property name="text">
+    <string>Layer Setup</string>
+   </property>
+  </action>
+  <action name="actionPanel_Setup">
+   <property name="text">
+    <string>Panel Setup</string>
+   </property>
+  </action>
+  <action name="actionShow">
+   <property name="text">
+    <string>Show</string>
+   </property>
+  </action>
+  <action name="actionHide">
+   <property name="text">
+    <string>Hide</string>
+   </property>
+  </action>
+  <action name="actionProtect">
+   <property name="text">
+    <string>Protect</string>
+   </property>
+  </action>
+  <action name="actionUnprotect">
+   <property name="text">
+    <string>Unprotect</string>
+   </property>
+  </action>
+  <action name="actionLock">
+   <property name="text">
+    <string>Lock</string>
+   </property>
+  </action>
+  <action name="actionUnlock">
+   <property name="text">
+    <string>Unlock</string>
+   </property>
+  </action>
+  <action name="actionCell_Boundary">
+   <property name="text">
+    <string>Cell Boundary</string>
+   </property>
+  </action>
+  <action name="actionFracture">
+   <property name="text">
+    <string>Fracture</string>
+   </property>
+  </action>
+  <action name="actionAssemble">
+   <property name="text">
+    <string>Assemble</string>
+   </property>
+  </action>
+  <action name="actionAssemble_2">
+   <property name="text">
+    <string>Assemble</string>
+   </property>
+  </action>
+  <action name="actionWafer_Template">
+   <property name="text">
+    <string>Wafer Template</string>
+   </property>
+  </action>
+  <action name="actionHierarchy">
+   <property name="text">
+    <string>Hierarchy</string>
+   </property>
+  </action>
+  <action name="actionCell_Statistics">
+   <property name="text">
+    <string>Cell Statistics</string>
+   </property>
+  </action>
+  <action name="actionRun_Script">
+   <property name="text">
+    <string>Run Script</string>
+   </property>
+  </action>
+  <action name="actionSelect">
+   <property name="text">
+    <string>Select</string>
+   </property>
+  </action>
+  <action name="actionUnselect">
+   <property name="text">
+    <string>Unselect</string>
+   </property>
+  </action>
+  <action name="actionDummy_Fill">
+   <property name="text">
+    <string>Dummy_Fill</string>
+   </property>
+  </action>
+  <action name="actionEchelle">
+   <property name="text">
+    <string>Echelle</string>
+   </property>
+  </action>
+  <action name="actionMZI">
+   <property name="text">
+    <string>MZI</string>
+   </property>
+  </action>
+  <action name="actionSpiral">
+   <property name="text">
+    <string>Spiral</string>
+   </property>
+  </action>
+  <action name="actionRing">
+   <property name="text">
+    <string>Ring</string>
+   </property>
+  </action>
+  <action name="actionGrating">
+   <property name="text">
+    <string>Grating</string>
+   </property>
+  </action>
+  <action name="actionLine">
+   <property name="text">
+    <string>Line</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

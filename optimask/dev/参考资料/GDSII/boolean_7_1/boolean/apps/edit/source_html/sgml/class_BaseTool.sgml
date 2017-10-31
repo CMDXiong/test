@@ -1,0 +1,700 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class BaseTool"
+>
+
+<META-DATA>
+	<NAME>BaseTool</NAME>
+	<AUTHOR>klaas"//! version="1.0</AUTHOR>
+	<VERSION></VERSION>
+	<DATE>Wed Oct 20  9:03:10 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>wxwin.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>windrv.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>tool.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>tool.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> all interactive drawing using tools are derived from this base class. All mouse and key events on the canvas/client window are redirected to this class, via the ToolControl class. The tool derived from this base class, defines what needs to be done with the events.</PARA>
+</DESCRIPTION>
+
+
+
+
+
+<RELATED-TYPES>
+	<RELATED-TYPE TYPE="class">
+		<NAME>ToolControl</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>DrawDriver</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>WindowsDriver</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>BoxTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>SelectTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>DeSelectTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>ZoomTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>RecTangleTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>PolyTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>CircleTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>DeleteTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>TextTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>MoveTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>CopyTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>RotateTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>PolyLineTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>EditTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>EditCircleTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>EditPolyTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>EditPolyLineTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>EditRectangleTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>EditPropertyTool</NAME>
+	</RELATED-TYPE>
+</RELATED-TYPES>
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="BaseTool(ToolControl* controller)"
+		INLINE="NO"
+	>
+		<NAME>BaseTool</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> constructor and destructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual "
+		DECLARATION="virtual ~BaseTool()"
+		INLINE="NO"
+	>
+		<NAME>~BaseTool</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void OnMouseEvent(wxMouseEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnMouseEvent</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void OnChar(wxKeyEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnChar</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void OnKeyDown(wxKeyEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnKeyDown</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void OnKeyUp(wxKeyEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnKeyUp</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="ToolSet "
+		DECLARATION="ToolSet GetType()"
+		INLINE="NO"
+	>
+		<NAME>GetType</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void SetStatusBar()"
+		INLINE="NO"
+	>
+		<NAME>SetStatusBar</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void Draw()"
+		INLINE="NO"
+	>
+		<NAME>Draw</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void Undo()"
+		INLINE="NO"
+	>
+		<NAME>Undo</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void AddPoint(double x,double y)"
+		INLINE="NO"
+	>
+		<NAME>AddPoint</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void RemovePoint()"
+		INLINE="NO"
+	>
+		<NAME>RemovePoint</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL GetOnlyOnce()"
+		INLINE="NO"
+	>
+		<NAME>GetOnlyOnce</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void SetOnlyOnce(G_BOOL onlyonce)"
+		INLINE="NO"
+	>
+		<NAME>SetOnlyOnce</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Get_Busy()"
+		INLINE="NO"
+	>
+		<NAME>Get_Busy</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void Begin()"
+		INLINE="NO"
+	>
+		<NAME>Begin</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void End()"
+		INLINE="NO"
+	>
+		<NAME>End</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void EvRD()"
+		INLINE="NO"
+	>
+		<NAME>EvRD</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void EvLeftDClick()"
+		INLINE="NO"
+	>
+		<NAME>EvLeftDClick</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void EvDrag()"
+		INLINE="NO"
+	>
+		<NAME>EvDrag</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void EvMove(int drag)"
+		INLINE="NO"
+	>
+		<NAME>EvMove</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void EvLD()"
+		INLINE="NO"
+	>
+		<NAME>EvLD</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void EvLU()"
+		INLINE="NO"
+	>
+		<NAME>EvLU</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Grid()"
+		INLINE="NO"
+	>
+		<NAME>Grid</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void CalculateCurrent()"
+		INLINE="NO"
+	>
+		<NAME>CalculateCurrent</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void CalcVirtual(long x,long y,double&amp; xr,double&amp; yr)"
+		INLINE="NO"
+	>
+		<NAME>CalcVirtual</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="ToolControl* "
+		DECLARATION="ToolControl* _controller"
+	>
+		<NAME>_controller</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxMouseEvent	"
+		DECLARATION="wxMouseEvent	_event"
+	>
+		<NAME>_event</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="long	"
+		DECLARATION="long	_grid_x"
+	>
+		<NAME>_grid_x</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="long	"
+		DECLARATION="long	_grid_y"
+	>
+		<NAME>_grid_y</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="long	"
+		DECLARATION="long	_currentX"
+	>
+		<NAME>_currentX</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="long	"
+		DECLARATION="long	_currentY"
+	>
+		<NAME>_currentY</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _realcurrentX"
+	>
+		<NAME>_realcurrentX</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _realcurrentY"
+	>
+		<NAME>_realcurrentY</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="ToolSet "
+		DECLARATION="ToolSet _tooltype"
+	>
+		<NAME>_tooltype</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="long "
+		DECLARATION="long _timeevent"
+	>
+		<NAME>_timeevent</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL _onlyonce"
+	>
+		<NAME>_onlyonce</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL _busy"
+	>
+		<NAME>_busy</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

@@ -1,0 +1,166 @@
+!***************************************************************************
+! $OLD tells MkMenu to generate a menu for ICED32 (DOS).  An OLD menu can
+!      be used by both ICED and ICED32 as a command menu but cannot be used 
+!      to set macro values.  Menus names in $OLD menus are case sensitive,
+!      that is PLOT_MENU and plot_menu are concidered distinct names.  This
+!      is not true for new menus.
+!***************************************************************************
+!
+$NO_TOP
+!
+!***************************************************************************
+! $NO_TOP implies there is no default top level menu and that the menu cannot 
+!      be used as a command menu. 
+!
+! It is an error to set both the $OLD and $NO_TOP options simultaneously.
+!***************************************************************************
+!
+$ROWS=27
+!
+!***************************************************************************
+! $ ROWS=max_row specifies that Menu rows are numbered 0 thru max_row.
+! The following keywords are obsolete but can still be used in place of the
+! $ROWS=max_row statement.
+! $ VGA    implies 640 by 450 VGA   --  Menu rows numbered 0 thru 27
+! $ SUPER  implies 800 by 600 VGA   --  Menu rows numbered 0 thru 34
+! $ R1024A implies 1024 by 768 VGA  --  Menu rows numbered 0 thru 45
+! Default: $ROWS=27
+!***************************************************************************
+!
+!************************************************************************
+!
+!                        REQUIRED TOP LEVEL MENUS
+!
+! Unless the $NO_TOP option is specified, all four top level submenus:
+!      "top_nosel_angles",
+!      "top_nosel_45",
+!      "top_sel_angles" and
+!      "top_sel_45"
+! must be defined.  However, one menu can be used to define more than one 
+! top level menu as follows:
+!      A menu named "top" defines all four top level menus.
+!      A menu named "top_nosel" defines "top_nosel_angles" and "top_nosel_45".
+!      A menu named "top_sel" defines "top_sel_angles" and "top_sel_45".
+!      A menu named "top_angles" defines "top_nosel_angles" and 
+!         "top_sel_angles".
+!      A menu named "top_45" defines "top_nosel_45" and "top_sel_45".
+!  
+! It is an error to use these names in a way that they define a top level 
+!      menu more than once.
+!
+!************************************************************************
+!
+!************************************************************************
+!
+!                            DRC Command
+!
+!************************************************************************
+
+#begin rules_list  0  DRC
+* 0  4  "NextPATH"
+* 1  5  "Nxt Pg"
+* 2  1  "KeyBrd"   "%"     RET
++3:-1     1        ""      RET
+*-0  5  "Nxt Pg"
+#end
+
+#begin option_levels 3
+* 1  0   "OPTIONS"
++ 3  1   "   none"   "0"   RET
++ 4  1   "   some"   "1"   RET
++ 5  1   "    all"   "3"   RET
+#end
+
+#begin ram 8
+* 1  0   "Use"
+* 2  0   "Megs"
+* 3  0   "RAM"
+* 5  1  "KeyBrd"   "%"        RET
++ 6  1   " 6"      "6144"     RET
++ 7  1   " 8"      "8192"     RET
++ 8  1   "16"      "16384"    RET
++ 9  1   "24"      "24576"    RET
++10  1   "32"      "32768"    RET
++11  1   "64"      "65536"    RET
++12  1  "128"      "131072"   RET
+*13  1  "KeyBrd"   "%"        RET
+#end
+
+#begin check_rules 6
+* 1  0  "CHECK"
+* 2  0  ".RUL"
+* 3  0  "FILE"
++ 5  1  "Yes"   ""       RET
++ 6  1  "No"    "norul"  RET
+#end
+
+#begin pass_modes 5
+* 1  0  "PASS"
+* 2  0  "MODE"
++ 4  1  "Quick"  "quick_pass" RET
++ 5  1  "Slow"   "slow"       RET
+#end
+
+#begin pok_modes  3
+* 1  0  "POK MODE"
++ 3  1  " All"      ""          RET
++ 4  1  " In"       "in"        RET
++ 5  1  " Select"   "select"    RET
+#end
+
+#begin rules_check_1 4
+* 1  0  " CHECK"
+* 2  0  "BBvsRUL?"
++ 4  1  " Yes"   ""          rules_check_2
++ 5  1  " No"    "force_rul"    RET
+#end
+
+#begin rules_check_2 5
+* 1  0  "WARN IF"
+* 2  0  "NO .RUL?"
++ 4  1  " Yes"   ""          RET
++ 5  1  " No"    "no_rul"    RET
+#end
+
+#begin pause_complete  5
+* 1  0  "PAUSE"
+* 2  0  "    WHEN"
++ 4  1  "Crashed"  "crash"  RET
++ 5  1  "Complete" "always" RET
++ 6  1  "Never"    "never"  RET
+#end
+
+#begin pause_never  6
+* 1  0  "PAUSE"
+* 2  0  "    WHEN"
++ 4  1  "Crash"    "crash"  RET
++ 5  1  "Complete" "always" RET
++ 6  1  "Never"    "never"  RET
+#end
+
+#begin  window_mode  4
+* 1  0  "WINDOW"
+* 2  0  " MODE"
++ 4  1  "Minimize"  "1"     RET
++ 5  1  "Console"   "0"     RET
+#end
+
+#begin  start_cmd 3
+* 1  0  "START.CMD"
+* 3  1  " none"   " "       RET
+* 4  1  " %.cmd"  " "       cmd_list
+#end
+
+#begin  end_cmd  3
+* 1  0  "END.CMD"
+* 3  1  " none"  " "        RET
+* 4  1  " %.cmd" " "        cmd_list
+#end
+
+#begin cmd_list  3  CMD
+* 0  4  "NextPATH"
+* 1  5  "Nxt Pg"
+* 2  1  "KeyBrd"   "%"         RET
++3:-1     1        ""          RET
+*-0  5  "Nxt Pg"
+#end

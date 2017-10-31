@@ -1,0 +1,22 @@
+# ring1.prs: creates ring of 2.5 micron around objects in layer 21
+# and adds it to layer 1. Meant to create a ring around circular holes
+# for proper inversion.  
+# Uses layer 11 and empties it.
+# Process file for GDS-II postprocessing tool
+# R.C. Strijbos TU Eindhoven 05/11/00
+
+group_a empty
+group_a 21 false
+destination 11
+correctionfactor {2.5um}
+makering
+
+group_b empty
+group_b 11 false
+destination 11
+b_subtract_a
+
+group_a empty
+group_a 11 false
+destination 01
+move_a

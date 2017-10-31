@@ -1,0 +1,305 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class Gdsio"
+>
+
+<META-DATA>
+	<NAME>Gdsio</NAME>
+	<AUTHOR></AUTHOR>
+	<VERSION></VERSION>
+	<DATE>Wed Oct 20  9:02:55 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME></NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME></NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+<DESCRIPTION>
+	<PARA> reading basic GDSII format datatypes</PARA>
+</DESCRIPTION>
+
+<INHERITANCE>
+	<PARENT-CLASS
+		SCOPE="public"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>fstream</NAME>
+	</PARENT-CLASS>
+</INHERITANCE>
+
+
+
+<RELATED-TYPES>
+	<RELATED-TYPE TYPE="class">
+		<NAME>GDS_driver_in</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>GDS_driver_out</NAME>
+	</RELATED-TYPE>
+</RELATED-TYPES>
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void gds2double(unsigned char *)"
+		INLINE="YES"
+	>
+		<NAME>gds2double</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> convert a gdsii real to a machine real</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void double2gds(unsigned char *)"
+		INLINE="YES"
+	>
+		<NAME>double2gds</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> convert a machine real to a gdsii real</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Gdsio& "
+		DECLARATION="Gdsio&amp; operator&gt;&gt;(G_BYTE *)"
+		INLINE="NO"
+	>
+		<NAME>operator&gt;&gt;</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> input overloading</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Gdsio& "
+		DECLARATION="Gdsio&amp; operator&gt;&gt;(TWO_G_BYTE_UNSIGNED_INTEGER *my_integer)"
+		INLINE="NO"
+	>
+		<NAME>operator&gt;&gt;</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> input overloading</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Gdsio& "
+		DECLARATION="Gdsio&amp; operator&gt;&gt;(TWO_G_BYTE_SIGNED_INTEGER *)"
+		INLINE="NO"
+	>
+		<NAME>operator&gt;&gt;</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> input overloading</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Gdsio& "
+		DECLARATION="Gdsio&amp; operator&gt;&gt;(FOUR_G_BYTE_SIGNED_INTEGER *)"
+		INLINE="NO"
+	>
+		<NAME>operator&gt;&gt;</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> input overloading</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Gdsio& "
+		DECLARATION="Gdsio&amp; operator&gt;&gt;(FOUR_G_BYTE_REAL *)"
+		INLINE="NO"
+	>
+		<NAME>operator&gt;&gt;</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> input overloading</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Gdsio& "
+		DECLARATION="Gdsio&amp; operator&gt;&gt;(EIGHT_G_BYTE_REAL *)"
+		INLINE="NO"
+	>
+		<NAME>operator&gt;&gt;</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> input overloading</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Gdsio& "
+		DECLARATION="Gdsio&amp; operator&lt;&lt;(G_BYTE )"
+		INLINE="NO"
+	>
+		<NAME>operator&lt;&lt;</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> output overloading</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Gdsio& "
+		DECLARATION="Gdsio&amp; operator&lt;&lt;(TWO_G_BYTE_UNSIGNED_INTEGER my_integer)"
+		INLINE="NO"
+	>
+		<NAME>operator&lt;&lt;</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> output overloading</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Gdsio& "
+		DECLARATION="Gdsio&amp; operator&lt;&lt;(TWO_G_BYTE_SIGNED_INTEGER )"
+		INLINE="NO"
+	>
+		<NAME>operator&lt;&lt;</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> output overloading</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Gdsio& "
+		DECLARATION="Gdsio&amp; operator&lt;&lt;(FOUR_G_BYTE_SIGNED_INTEGER )"
+		INLINE="NO"
+	>
+		<NAME>operator&lt;&lt;</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> output overloading</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Gdsio& "
+		DECLARATION="Gdsio&amp; operator&lt;&lt;(FOUR_G_BYTE_REAL )"
+		INLINE="NO"
+	>
+		<NAME>operator&lt;&lt;</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> output overloading</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Gdsio& "
+		DECLARATION="Gdsio&amp; operator&lt;&lt;(EIGHT_G_BYTE_REAL )"
+		INLINE="NO"
+	>
+		<NAME>operator&lt;&lt;</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> output overloading</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

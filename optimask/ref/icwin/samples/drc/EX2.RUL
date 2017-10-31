@@ -1,0 +1,11 @@
+3ONLY
+ALLSAFE
+input  layer 1 boxes; 3 one_box; 4 no_overlap_1; 5 no_overlap_2;            
+output error layer 20 too_close1; 21 too_close2;
+output error layer 20 narrow; 
+
+const min_distance=10;
+too_close1=minspacing(boxes, boxes, min_distance)
+too_close2=minspacing(boxes, one_box, 7)
+narrow=minwidth(boxes, min_distance);
+badpoly 0

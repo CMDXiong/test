@@ -1,0 +1,77 @@
+
+\chapter*{List of Symbols}
+%20041217 by Henghua Deng
+%Chapter style and no numbering, not included in the Table of Contents (TOC)
+%For smaller fonts: \begin{center} \Large \textbf{List of Acronyms} \end{center}
+
+%NOTE that the environments of {list, itemize, description, enumerate}
+% are not good for adjusting the spaces between an item and its description;
+%%And environment {tabular} can not span two pages.
+%%So environment {tabbing} is the best choice which adjusts spaces by tabs.
+%
+%\begin{tabbing} starts a columnar environment.
+%Use commands \= (set tab), \> (tab), \< (backtab), \+ (indent one
+%tab stop), \- (outdent one tab stop), \` (flush right), \' (flush
+%left), \pushtabs, \poptabs, \kill, \\.
+%
+%See Latex123.pdf by Edward G.J. Lee (Taiwan) and Latex209CommandSummary.pdf
+%
+%%Creat a List of Symbols using package {nomencl} (DHH 20041217) See FrontPagesDHH.tex.
+
+\begin{tabbing}
+%XXXXXXXXXXXXX\=XXXXXXXXXXXXXXX \kill %\kill means do not show this row; %Or USE:
+  \hspace{6em} \= \hspace{20em} \kill
+  $t$ \> time \\
+  ($i, j$) \> complex symbol ($ = \sqrt{-1}$) \\
+  ($x, y, z$) \> Cartesian coordinates ($x$-horizontal, $y$-vertical, $z$-longitudinal) \\
+  ($\emph{\textbf{i}}_{x}$, $\emph{\textbf{i}}_{y}$, $\emph{\textbf{i}}_{z}$)
+        \> unit vectors along ($x$, $y$, $z$) directions \\
+  $\nabla$ \> del (nabla) operator \\
+  {} \> (in Cartesian coordinates
+              $= \emph{\textbf{i}}_{x} \frac{\displaystyle \partial}{\displaystyle \partial x}
+              +\emph{\textbf{i}}_{y}\frac{\displaystyle \partial}{\displaystyle \partial y}
+              +\emph{\textbf{i}}_{z}\frac{\displaystyle \partial}{\displaystyle \partial z}
+              = \nabla_t+\emph{\textbf{i}}_{z}\frac{\displaystyle \partial}{\displaystyle \partial z}$) \\
+  $\nabla_t$ \> transversal del operator (in Cartesian coordinates
+              $= \emph{\textbf{i}}_{x} \frac{\displaystyle \partial}{\displaystyle \partial x}
+              +\emph{\textbf{i}}_{y}\frac{\displaystyle \partial}{\displaystyle \partial y}$) \\
+  $\nabla^2$ \> Laplacian operator (in Cartesian coordinates
+              $= \frac{\displaystyle \partial^2}{\displaystyle \partial x^2}
+              + \frac{\displaystyle \partial^2}{\displaystyle \partial y^2}
+              + \frac{\displaystyle \partial^2}{\displaystyle \partial z^2}$) \\
+  $\nabla,\; \nabla \cdot,\; \nabla \times $ \> grad, div, curl operations \\
+  $\Delta$ \> differential or waveguide index-contrast \\
+  ($\varepsilon$, $\mu$) \> (permittivity, permeability) of dielectric material
+                ($\varepsilon= \varepsilon_0 \varepsilon_r$, $ \mu = \mu_0 \mu_r$) \\
+  ($\varepsilon_r$, $\mu_r$) \> relative (permittivity, permeability) ($\mu_r=1$ for non-magnetic materials) \\
+  $\varepsilon_0$ \> free space permittivity ($=8.854187817 \times 10^{-12}{\ }\textrm{F/m}$) \\
+  $\mu_0$ \> free space permeability ($=4\pi\times10^{-7}{\ }\textrm{H/m}$) \\
+  ($\sigma_{E}$, $\sigma_{H}$) \> electric and magnetic conductibility \\
+  $Y_0$ \> free space admittance ($Y_0=\sqrt{\frac{\displaystyle \varepsilon_0}{\displaystyle \mu_0}}$) \\
+  $Z_0$ \> intrinsic impedance of vacuum ($Z_0=\sqrt{\frac{\displaystyle \mu_0}{\displaystyle \varepsilon_0}}
+           =376.7303134749689\Omega$) \\
+  $n_{eff}$ \> effective index \\
+  $N$ \> complex refractive index. $N = n + i \cdot k$. \\
+  $n$ \> refractive index (real part of the complex refractive index) \\
+  $k$ \> extinction coefficient (imaginary part of the complex refractive index)\\
+  %{} \> A finite value of $k$ for a medium denotes the presence of absorption. \\
+  ($p, m, d, 0$) \> subscripts to denote prism, metal, dielectric, and free space materials \\
+  \emph{\textbf{E}} \> electric field \\
+  \emph{\textbf{H}} \> magnetic field \\
+  \emph{R} \> reflectance \\
+  \emph{T} \> transmittance \\
+  $c$ \> velocity of the light in vacuum ($=\frac{\displaystyle 1}
+         {\sqrt{\displaystyle \mu_0\varepsilon_0}}=2.99792458 \times 10^{8} \, \textrm{m/s}$)\\
+  $\nu$ \> velocity of the light in dielectric materials
+         ($=\frac{\displaystyle 1}{\sqrt{\displaystyle \mu \varepsilon}}$)\\
+  $f$ \> frequency \\
+  $\omega$ \> angular frequency ($= 2 \pi f$)\\
+  $\lambda$ \> wavelength \\
+  $k$ \> wavenumber ($=2\pi/\lambda$); in free space denoted as $k_0$\\
+  $\beta$ \> propagation constant ($=n_{eff}k_0$) \\
+  $\eta$ \> optical admittance \\
+  $\theta$ \> angle of light beam \\
+  $\theta_b$ \> Brewster angle for \emph{p}-polarization (TM wave, total refraction) \\
+  $\theta_c$ \> critical angle for total internal reflection \\
+  $\hbar$ \> Planck constant ($=6.626075540 \times 10^{-34} \textrm{J sec}$)
+\end{tabbing}

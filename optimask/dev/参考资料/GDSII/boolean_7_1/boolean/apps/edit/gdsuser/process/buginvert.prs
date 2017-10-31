@@ -1,0 +1,21 @@
+# Process file for GDS-II postprocessing tool
+setenv HOME c:/masker/vcsel
+#loadsetup $GDSROOT/gdsuser/config/vcsel3.set
+loadfile $GDSROOT/gdsuser/process/buginvert.gds gds-ii
+viewstructure Cell0
+setlayer 0
+selectable 1 all
+visible 1 all
+drawoutline 1
+selected 0
+
+viewstructure Unit_S2_Circle
+loadprocess $GDSROOT/gdsuser/process/invert3.prs
+draw
+
+viewstructure Unit_AlignVVH
+
+loadprocess $GDSROOT/gdsuser/process/invert3.prs
+draw
+
+viewstructure Cell0

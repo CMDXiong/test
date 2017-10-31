@@ -1,0 +1,21 @@
+We have finally declared the DOS versions of the DRC, NLE, and LVS obsolete.  
+This has allowed us to simplify the file names for the windows versions of 
+these programs.  The name changes are as follows:
+
+                      Old Name   => New Name
+Released versions:
+                    DRC3-NT.EXE  => DRC3.EXE
+                    D3RUL-NT.EXE => D3RULES.EXE
+                    NLE-NT.EXE   => NLE.EXE
+                    NLERU-NT.EXE => RULESNLE.EXE
+                    LVS-NT.EXE   => LVS.EXE
+                    LPE-NT.EXE   => LPE.EXE
+Beta test versions:
+                    NLE-NTX.EXE  => NLEX.EXE
+                    NLER-NTX.EXE => RULESNLX.EXE
+                    DRC3-NTX.EXE => DRC3X.EXE
+                    D3RU-NTX.EXE => D3RULESX.EXE
+
+Since users may have the old names built into .CMD, .BAT, and .MEN files, we 
+have supplied a series of dummy routines with the old names.  The dummy 
+programs just call the renamed programs.

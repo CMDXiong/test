@@ -1,0 +1,39 @@
+ICED does not save your cell data bases until the end of an editing session.
+This file describes the sequence of steps ICED uses to save your data.  It
+is intended to be useful in error recovery if the process fails.
+
+ICED starts by creating a .TMP file for each cell being saved.  These files 
+are named cell_name.TMP and will eventually become the .CEL files.  Each .TMP 
+file is located in the appropriate directory for the corresponding .CEL file.  
+If something goes wrong during this step, ICED will "crash" and you must use 
+the journal file to recover your data.  
+
+After all the .TMP files are written, ICED goes through a series of steps for 
+each cell it is saving.  ICED completes all these steps for a given cell 
+before moving on to the next cell.  If one of these steps fails, ICED issues
+a "SAVE ERROR" message, skips the remaining steps for that cell, and goes on 
+to the next cell.  (The error messages are displayed on the screen and 
+recorded in the .JOU/.LOG file.)  If you get a warning message at this stage:
+
+            DO NOT TRY TO RECOVER USING THE .JOU FILE.  
+            DO NOT USE ICED ON ANY OF THE CELLS INVOLVED.
+
+Instead, you should complete the failed/skipped steps by hand.  If you need 
+help, call IC Editors' technical support.  So far no data has been lost, BUT 
+YOU CAN SCREW IT UP!  
+
+For each cell, ICED goes through the following steps:
+
+Step 1:  If the files cell_name.CEL and cell_name.CL1 both exist, 
+         cell_name.CL1 is deleted.
+
+Step 2:  If the file cell_name.CEL exists, it is renamed cell_name.CL1.
+
+Step 3:  The file cell_name.TMP is renamed cell_name.CEL.
+
+Step 4:  In addition, if the cell is being returned to a librarian 
+         controlled library, ICED deletes the file cell_name.OUT.  (ICED 
+         reads the contents of the file before deleting it.)
+
+After these steps have been completed for all cells ICED renames the session's 
+root_name.JOU file root_name.LOG. 

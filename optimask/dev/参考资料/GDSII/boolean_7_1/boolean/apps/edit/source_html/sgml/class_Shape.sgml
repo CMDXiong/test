@@ -1,0 +1,272 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class Shape"
+>
+
+<META-DATA>
+	<NAME>Shape</NAME>
+	<AUTHOR>klaas</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Thu Oct 21 14:44:14 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>shape.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>element.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>misc.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>bbox.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>matrix.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>gdserr.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>shape.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> virtual Base class for all primitive types. A shape is a primitive that can be drawn directly, without refrencing other shapes, also it has a boundingbox. Therefore a reference to a structure is not a shape. That kind of elements are derived from the class Element directly</PARA>
+</DESCRIPTION>
+
+<INHERITANCE>
+	<PARENT-CLASS
+		SCOPE="public"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>Element</NAME>
+	</PARENT-CLASS>
+</INHERITANCE>
+
+
+
+<RELATED-TYPES>
+	<RELATED-TYPE TYPE="class">
+		<NAME>Path</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>Text</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>Boundary</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>Box</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>Circle</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>Arcseg</NAME>
+	</RELATED-TYPE>
+</RELATED-TYPES>
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="Shape()"
+		INLINE="NO"
+	>
+		<NAME>Shape</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Constructors</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual BoundingBox*	"
+		DECLARATION="virtual BoundingBox*	GetBoundingBox()"
+		INLINE="NO"
+	>
+		<NAME>GetBoundingBox</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>calculate the boundingbox for the shape</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual int "
+		DECLARATION="virtual int GetLayer()"
+		INLINE="NO"
+	>
+		<NAME>GetLayer</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the layer of the shape</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void	"
+		DECLARATION="virtual void	SetLayer(int)"
+		INLINE="NO"
+	>
+		<NAME>SetLayer</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the layer of the shape</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual int	"
+		DECLARATION="virtual int	GetWidth()"
+		INLINE="NO"
+	>
+		<NAME>GetWidth</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the width of the shape</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void	"
+		DECLARATION="virtual void	SetWidth(int width)"
+		INLINE="NO"
+	>
+		<NAME>SetWidth</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the width of the shape</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual Shape*	"
+		DECLARATION="virtual Shape*	Duplicate()"
+		INLINE="NO"
+	>
+		<NAME>Duplicate</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>duplicate the primitive</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void Convert(G_Polygon*, double)"
+		INLINE="NO"
+	>
+		<NAME>Convert</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>convert primitive to polygon</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	_layer"
+	>
+		<NAME>_layer</NAME>
+		<DESCRIPTION>
+			<PARA>layer off primitive</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	_width"
+	>
+		<NAME>_width</NAME>
+		<DESCRIPTION>
+			<PARA>width of primitive</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="BoundingBox*	"
+		DECLARATION="BoundingBox*	_boundingbox"
+	>
+		<NAME>_boundingbox</NAME>
+		<DESCRIPTION>
+			<PARA>boundingbox of primitive</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

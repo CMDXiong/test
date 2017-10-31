@@ -1,0 +1,10 @@
+This directory contains the source for the drivers used 
+by boolean and booleanc.
+The drivers for output are based on one base class (drivout.h).
+So output to the screen, GDSII files , KEY files etc. all have their own driver class.
+
+For the input seperate parser classes are here to map the file contents
+to the internal data structures.
+
+
+

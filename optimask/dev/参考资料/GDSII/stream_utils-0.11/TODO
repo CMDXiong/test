@@ -1,0 +1,25 @@
+
+- Accept file names on command line
+
+- Clean up code a bit
+
+- Warning in ascii2sf if blocksize != 2048
+
+- Sometimes when reading in a corrupt stream file, all of the last
+recognized record can't be read. This is understandable, however the
+numbers reported aren't always plausible looking.
+
+- Use more efficient I/O
+
+- Does sf2ascii still put tabs in output instead of spaces sometimes?
+I can't remember whether I fixed this or not.
+
+- Code is kind of long and linear. It would be a good idea to break it
+up a bit and call more functions.
+
+- It would be nice if sf2ascii checked the records to ensure they are
+in a legal order
+
+- In ascii2sf, look for occurances of fgets reading into a fixed size
+buffer and replace with read_one_line and a pointer from pnews news
+software package.

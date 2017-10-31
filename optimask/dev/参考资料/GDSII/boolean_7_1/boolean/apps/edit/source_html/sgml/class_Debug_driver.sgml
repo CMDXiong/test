@@ -1,0 +1,426 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class Debug_driver"
+>
+
+<META-DATA>
+	<NAME>Debug_driver</NAME>
+	<AUTHOR></AUTHOR>
+	<VERSION></VERSION>
+	<DATE>Wed Aug 25 11:44:49 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME></NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME></NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+<DESCRIPTION>
+	<PARA></PARA>
+</DESCRIPTION>
+
+<INHERITANCE>
+	<PARENT-CLASS
+		SCOPE="public"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>wxWindow</NAME>
+	</PARENT-CLASS>
+</INHERITANCE>
+
+
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="Debug_driver(wxWindow*)"
+		INLINE="NO"
+	>
+		<NAME>Debug_driver</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> constructor and destructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~Debug_driver()"
+		INLINE="NO"
+	>
+		<NAME>~Debug_driver</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetMapping()"
+		INLINE="NO"
+	>
+		<NAME>SetMapping</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void On()"
+		INLINE="NO"
+	>
+		<NAME>On</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Off()"
+		INLINE="NO"
+	>
+		<NAME>Off</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	FlipStatus()"
+		INLINE="NO"
+	>
+		<NAME>FlipStatus</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void WriteCrossingsFile(GraphIter* I)"
+		INLINE="NO"
+	>
+		<NAME>WriteCrossingsFile</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void WriteLinksFile(GraphIter* I)"
+		INLINE="NO"
+	>
+		<NAME>WriteLinksFile</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void WriteLRFile(GraphIter* I)"
+		INLINE="NO"
+	>
+		<NAME>WriteLRFile</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Write(GraphIter* I)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Write(IGraph*, G_BOOL single = True)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetupWindow()"
+		INLINE="NO"
+	>
+		<NAME>SetupWindow</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> support functions for windows only</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	ClearScreen()"
+		INLINE="NO"
+	>
+		<NAME>ClearScreen</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void	"
+		DECLARATION=" void	MakeWindowCoordinates(double&amp;, double&amp;, double&amp;, double&amp;)"
+		INLINE="YES"
+	>
+		<NAME>MakeWindowCoordinates</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void	"
+		DECLARATION=" void	MakeWindowCoordinates(double&amp;, double&amp;, double&amp;, double&amp;)"
+		INLINE="YES"
+	>
+		<NAME>MakeWindowCoordinates</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void	"
+		DECLARATION=" void	DrawLine(double x1, double y1, double x2, double y2, int)"
+		INLINE="YES"
+	>
+		<NAME>DrawLine</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxPen*	"
+		DECLARATION="wxPen*	_pen"
+	>
+		<NAME>_pen</NAME>
+		<DESCRIPTION>
+			<PARA> the pen used for drawing</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxPen*	"
+		DECLARATION="wxPen*	_markpen"
+	>
+		<NAME>_markpen</NAME>
+		<DESCRIPTION>
+			<PARA> the pen used for marking</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxPen*	"
+		DECLARATION="wxPen*	_endpen"
+	>
+		<NAME>_endpen</NAME>
+		<DESCRIPTION>
+			<PARA> the pen used for line endings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	_write_on_off"
+	>
+		<NAME>_write_on_off</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	_window_status"
+	>
+		<NAME>_window_status</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="BoundingBox*	"
+		DECLARATION="BoundingBox*	_windowssize"
+	>
+		<NAME>_windowssize</NAME>
+		<DESCRIPTION>
+			<PARA> holds the size of the window</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="BoundingBox*	"
+		DECLARATION="BoundingBox*	_virtualsize"
+	>
+		<NAME>_virtualsize</NAME>
+		<DESCRIPTION>
+			<PARA> holds the size of the virtual window</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Matrix<double>*	"
+		DECLARATION="Matrix&lt;double&gt;*	_mapping_matrix"
+	>
+		<NAME>_mapping_matrix</NAME>
+		<DESCRIPTION>
+			<PARA> holds the matrix for mapping from virtual to real;</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

@@ -1,0 +1,362 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class StructuresDialog"
+>
+
+<META-DATA>
+	<NAME>StructuresDialog</NAME>
+	<AUTHOR>The unknown</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Tue Oct 26  9:41:39 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>struclst.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>strucdlg.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> Class StructuresDialog. This class is used to show a structures dialog. When a file is loaded, all structures are drawn on the screen. It's also possible to view the structures seperately. Select one of the structures and click Ok to view this structure.</PARA>
+</DESCRIPTION>
+
+<INHERITANCE>
+	<PARENT-CLASS
+		SCOPE="public"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>wxDialog</NAME>
+	</PARENT-CLASS>
+</INHERITANCE>
+
+
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="StructuresDialog(GDSMainWindow* parent, GdsII* gdsii,long style= &amp;&amp;BRAKOwxTHICK_FRAME | wxCAPTION&amp;&amp;BRAKC)"
+		INLINE="NO"
+	>
+		<NAME>StructuresDialog</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> constructor.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~StructuresDialog()"
+		INLINE="NO"
+	>
+		<NAME>~StructuresDialog</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> destructor.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Structure*	"
+		DECLARATION="Structure*	GetStructure()"
+		INLINE="NO"
+	>
+		<NAME>GetStructure</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Pointer to structure class.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void SetupWindow(GdsII* gdsii)"
+		INLINE="NO"
+	>
+		<NAME>SetupWindow</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Windows initialisation</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmOk()"
+		INLINE="NO"
+	>
+		<NAME>CmOk</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Close window if OK-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmCancel()"
+		INLINE="NO"
+	>
+		<NAME>CmCancel</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Close window if CANCEL-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmShow()"
+		INLINE="NO"
+	>
+		<NAME>CmShow</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> View selected structure.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void OnCloseWindow(wxCloseEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnCloseWindow</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Close window if EXIT \-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DECLARE_EVENT_TABLE()"
+		INLINE="NO"
+	>
+		<NAME>DECLARE_EVENT_TABLE</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Declare used events.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxPanel*	"
+		DECLARATION="wxPanel*	_panel"
+	>
+		<NAME>_panel</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticBox*	"
+		DECLARATION="wxStaticBox*	_gb"
+	>
+		<NAME>_gb</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticText*	"
+		DECLARATION="wxStaticText*	_mess1"
+	>
+		<NAME>_mess1</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticText*	"
+		DECLARATION="wxStaticText*	_mess2"
+	>
+		<NAME>_mess2</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxListBox*	"
+		DECLARATION="wxListBox*	_listbox"
+	>
+		<NAME>_listbox</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_button1"
+	>
+		<NAME>_button1</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_button2"
+	>
+		<NAME>_button2</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_buttonSHOW"
+	>
+		<NAME>_buttonSHOW</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="GDSMainWindow*	"
+		DECLARATION="GDSMainWindow*	_parent"
+	>
+		<NAME>_parent</NAME>
+		<DESCRIPTION>
+			<PARA> Pointer to mainwindow.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="GdsII*	"
+		DECLARATION="GdsII*	_gdsii"
+	>
+		<NAME>_gdsii</NAME>
+		<DESCRIPTION>
+			<PARA> Pointer to GDSII class</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="StructureList*	"
+		DECLARATION="StructureList*	_structurelist"
+	>
+		<NAME>_structurelist</NAME>
+		<DESCRIPTION>
+			<PARA> Pointer to structurelist class</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Structure*	"
+		DECLARATION="Structure*	_structure"
+	>
+		<NAME>_structure</NAME>
+		<DESCRIPTION>
+			<PARA> Pointer to structure class which holds the choosen structure.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

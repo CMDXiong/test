@@ -1,0 +1,724 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class GroupDialog"
+>
+
+<META-DATA>
+	<NAME>GroupDialog</NAME>
+	<AUTHOR>The Unknown</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Mon Oct 25 15:55:15 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>misc.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>gdsapp.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>lsetup.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>misc.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>mainwin.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>chandbas.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>wx/dynarray.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>groupdlg.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> Class GroupDialog. This class is used to show a groups dialog, in which the layers according to group A and Group B can be specified.</PARA>
+</DESCRIPTION>
+
+<INHERITANCE>
+	<PARENT-CLASS
+		SCOPE="public"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>wxDialog</NAME>
+	</PARENT-CLASS>
+</INHERITANCE>
+
+
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="GroupDialog(GDSMainWindow* parent,long style = &amp;&amp;BRAKOwxTHICK_FRAME | wxCAPTION&amp;&amp;BRAKC)"
+		INLINE="NO"
+	>
+		<NAME>GroupDialog</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Constructor.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~GroupDialog()"
+		INLINE="NO"
+	>
+		<NAME>~GroupDialog</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Destructor.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char* "
+		DECLARATION="char* Get_Group_A(char* group_str)"
+		INLINE="NO"
+	>
+		<NAME>Get_Group_A</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Return string group A.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char* "
+		DECLARATION="char* Get_Group_B(char* group_str)"
+		INLINE="NO"
+	>
+		<NAME>Get_Group_B</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Return string group B.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char* "
+		DECLARATION="char* Get_Destination(char* group_str)"
+		INLINE="NO"
+	>
+		<NAME>Get_Destination</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Return string destination.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmAdd_A()"
+		INLINE="NO"
+	>
+		<NAME>CmAdd_A</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> add item to group a.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmAdd_B()"
+		INLINE="NO"
+	>
+		<NAME>CmAdd_B</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> add item to group b.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmAdd_D()"
+		INLINE="NO"
+	>
+		<NAME>CmAdd_D</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> add item to destination.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmRemove_A()"
+		INLINE="NO"
+	>
+		<NAME>CmRemove_A</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> remove item from a.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmRemove_B()"
+		INLINE="NO"
+	>
+		<NAME>CmRemove_B</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> remove item from b.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmRemove_D()"
+		INLINE="NO"
+	>
+		<NAME>CmRemove_D</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> remove item from destination.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmClear_A()"
+		INLINE="NO"
+	>
+		<NAME>CmClear_A</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> remove all items from a.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmClear_B()"
+		INLINE="NO"
+	>
+		<NAME>CmClear_B</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> remove all items from b.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmOk()"
+		INLINE="NO"
+	>
+		<NAME>CmOk</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Close window if OK-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmCancel()"
+		INLINE="NO"
+	>
+		<NAME>CmCancel</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Close window if CANCEL-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetupWindow(Setup* setup, group* old_A, group* old_B, int old_D)"
+		INLINE="NO"
+	>
+		<NAME>SetupWindow</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Windows initialisation. for the dialog initialization</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void OnCloseWindow(wxCloseEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnCloseWindow</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Close window if EXIT-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	In_A(int)"
+		INLINE="NO"
+	>
+		<NAME>In_A</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> is the layer in a.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	In_B(int)"
+		INLINE="NO"
+	>
+		<NAME>In_B</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> is the layer in b.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DECLARE_EVENT_TABLE()"
+		INLINE="NO"
+	>
+		<NAME>DECLARE_EVENT_TABLE</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Declare used events.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxPanel*	"
+		DECLARATION="wxPanel*	_panel"
+	>
+		<NAME>_panel</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_ok"
+	>
+		<NAME>_ok</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_cancel"
+	>
+		<NAME>_cancel</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_adda"
+	>
+		<NAME>_adda</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_rema"
+	>
+		<NAME>_rema</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_clra"
+	>
+		<NAME>_clra</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_addb"
+	>
+		<NAME>_addb</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_remb"
+	>
+		<NAME>_remb</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_clrb"
+	>
+		<NAME>_clrb</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_addd"
+	>
+		<NAME>_addd</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_remd"
+	>
+		<NAME>_remd</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticBox*	"
+		DECLARATION="wxStaticBox*	_gb1"
+	>
+		<NAME>_gb1</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticBox*	"
+		DECLARATION="wxStaticBox*	_gb2"
+	>
+		<NAME>_gb2</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticBox*	"
+		DECLARATION="wxStaticBox*	_gb3"
+	>
+		<NAME>_gb3</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticBox*	"
+		DECLARATION="wxStaticBox*	_gb4"
+	>
+		<NAME>_gb4</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxCheckBox*	"
+		DECLARATION="wxCheckBox*	_onlyselect_A"
+	>
+		<NAME>_onlyselect_A</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxCheckBox*	"
+		DECLARATION="wxCheckBox*	_onlyselect_B"
+	>
+		<NAME>_onlyselect_B</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxListBox*	"
+		DECLARATION="wxListBox*	_listbox_main"
+	>
+		<NAME>_listbox_main</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, the main listbox control.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxListBox*	"
+		DECLARATION="wxListBox*	_listbox_a"
+	>
+		<NAME>_listbox_a</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, the a listbox control.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxListBox*	"
+		DECLARATION="wxListBox*	_listbox_b"
+	>
+		<NAME>_listbox_b</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, the b listbox control.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxTextCtrl*	"
+		DECLARATION="wxTextCtrl*	_destination"
+	>
+		<NAME>_destination</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, the destination edit control.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Setup*	"
+		DECLARATION="Setup*	_setup"
+	>
+		<NAME>_setup</NAME>
+		<DESCRIPTION>
+			<PARA> Pointer to class setup.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="GDSMainWindow*	"
+		DECLARATION="GDSMainWindow*	_parent"
+	>
+		<NAME>_parent</NAME>
+		<DESCRIPTION>
+			<PARA> Pointer to mainwindow.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="group*	"
+		DECLARATION="group*	group_A"
+	>
+		<NAME>group_A</NAME>
+		<DESCRIPTION>
+			<PARA> group a array (dynamic)</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="group*	"
+		DECLARATION="group*	group_B"
+	>
+		<NAME>group_B</NAME>
+		<DESCRIPTION>
+			<PARA> group b array (dynamic)</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	_destinationnr"
+	>
+		<NAME>_destinationnr</NAME>
+		<DESCRIPTION>
+			<PARA> the destination layer</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

@@ -1,0 +1,19 @@
+# invert3.prs: inverts layer 23 wih respect to frame on layer 0 and puts 
+# the result in layer 3.
+# no other layers used.
+# Process file for GDS-II postprocessing tool
+# R.C. Strijbos TU Eindhoven 05/11/00
+
+group_a empty
+group_a 23 false
+group_b empty
+destination 23
+merge    
+
+group_a empty
+group_a 23 false
+group_b empty
+group_b 00 false
+destination 03
+
+exor

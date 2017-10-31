@@ -1,0 +1,3 @@
+#keystring {SREF;  SNAME AAP; STRANS 0,0,0; MAG 100; ANGLE -90; XY 1;  X       100.000; Y       2685.000;ENDEL; }
+keystring {SREF;  SNAME AAP; STRANS 0,0,0;MAG 120; ANGLE -90; XY 1;  X       -200100.000; Y      22685.000;ENDEL; }
+

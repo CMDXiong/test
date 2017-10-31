@@ -1,0 +1,46 @@
+3ONLY! Tells DRC version 2 to ignore next line.
+ALL_SAFE !Will be explained later.   For now, use ALL_SAFE in all rule sets.
+input layer 1 boxes; 3 one_box;             
+!    ICED layer 1 will be referred to as "boxes" in the following rules.
+!    ICED layer 3 will be referred to as "one_box"
+!    The semi-colon between layers is required.  The semi-colon
+! at the end of any line is optional.
+
+output layer 20 too_close1; 20 too_close2;
+!      Two layers, referred to as "too_close1" and "too_close2" in
+! these rules, will be output to ICED layer 20.
+
+DETAIL ON
+!   This should NOT normally be used.  In most real runs, it will 
+! produce a too-long log file.  Use DETAIL ON only for small subsets 
+! of normal runs. 
+
+scratch layer dummy
+!Layer dummy will be created by the DRC, but will not be output to ICED.
+
+output layer 20 narrow; 
+!      Layer "narrow" will be output to ICED layer 20.
+
+const min_distance=10;
+!      The name "min_distance" can now be used instead of 10.
+
+too_close1=minspacing(boxes, boxes, min_distance)
+!      Check spacing between polygons in layer 1.
+
+dummy=boxes and one_box
+!      In a real rule set, dummy could be an intermediate layer used 
+! for further testing.   Here, it is not used further.  It is provided 
+! as an example of how RULES deletes useless operations.
+
+too_close2=minspacing(boxes, one_box, 7)
+!      Check spacing between layer 1 and layer 3.
+
+narrow=minwidth(boxes, min_distance);
+!      Check width.
+
+badpoly 0
+!      Bad polygon output is suppressed.  ("Bad polygons" will be 
+! explained later.)  A non-zero number would have copied bad polygons 
+! to an ICED layer.
+
+

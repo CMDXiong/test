@@ -1,0 +1,202 @@
+<HTML><HEAD>
+
+  <SCRIPT language="JavaScript">
+  </SCRIPT>
+
+
+  
+    <TITLE>GDS-II Postprocessing Tool Help: Automatic menu</TITLE>
+  </HEAD>
+
+  <BODY bgcolor="#66FFFF" text="#000000" link="#6666ff" alink="#999900" vlink="009999">
+
+    <A name="top"></A>
+
+    <TABLE width=100% border=0 cellpadding=6 cellspacing=2>
+    <TR><TD bgcolor="#000000" align=middle valign=top>
+    <FONT color="#FFFF00" size=+3 face="Impact, Arial, Helvetica">Automatic menu</FONT>
+    </TD></TR>
+    </TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Overview</FONT>
+    </TD></TR></TABLE>
+
+    With the automatic menu, different things can be done. It can be used
+    for creating and loading process files, getting info on the executed
+    operations and getting info on the file in memory.
+    
+<P> Click in the picture below on one of the menu-commands for info. <map name="automenu"> 
+    <area shape="rect" href="#load" coords="258,342,1085,430" OnMouseOver="window.status='Load process file'; return true" OnMouseOut="window.status=''; return true" alt="Loads a process file" title="Loads a process file"> 
+    <area shape="rect" href="#start" coords="158,535,985,633" OnMouseOver="window.status='Start process recording'; return true" OnMouseOut="window.status=''; return true" alt="Records a new process file" title="Records a new process file"> 
+    <area shape="rect" href="#execution" coords="191,702,1016,797" OnMouseOver="window.status='Show execution dialog'; return true" OnMouseOut="window.status=''; return true" alt="Shows the execution dialog" title="Shows the execution dialog"> 
+    <area shape="rect" href="#identification" coords="141,860,968,947" OnMouseOver="window.status='Show identification dialog'; return true" OnMouseOut="window.status=''; return true" alt="Shows the identification dialog" title="Shows the identification dialog"> 
+    <area shape="rect" href="#distance" coords="147,1123,991,1203" OnMouseOver="window.status='Show distance dialog'; return true" OnMouseOut="window.status=''; return true" alt="Shows the distance dialog" title="Shows the distance dialog"> 
+  </map> 
+<CENTER>
+    
+  <TABLE border=5 cellspacing=1 cellpadding=10 bgcolor="#FFFFFF" height="200">
+    <TR>
+      <TD align=middle valign=middle> <A name="autopic"> <IMG src="pics/automenu.gif" USEMAP="#automenu" width=152 height=95 border=0 alt="Automatic menu"> 
+        </A> </TD>
+    </TR>
+    </TABLE>
+    </CENTER>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="load">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Load process file</FONT>
+    </TD></TR></TABLE>
+
+    A process file can be used to perform a lot of actions at once. With the
+    <B>Load process file</B> item, an already recorded process file can be loaded.
+    All commands in the process file are executed when the file is loaded.
+    <P>
+    When the menu-item is clicked, the dialog in the picture below appears. All
+    files with the extension <B>*.prs</B> in the current directory are visible.
+    A single file can be chosen and will be loaded when <B>Open</B> is clicked.
+    <P>
+
+    <CENTER>
+    <IMG src="pics/openprocess.gif" width=426 height=285 alt="Open a process file">
+    </CENTER>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_loadprocess">loadprocess</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="start">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Start process recording</FONT>
+    </TD></TR></TABLE>
+
+    Clicking this item will show a dialog in which a file name must be
+    specified (see picture below). In this file the recorded commands will
+    be written. Selecting an existing file will overwrite the old file.
+    <P>
+    <CENTER>
+    <IMG src="pics/saveprocess.gif" width=426 height=285 border=0 alt="Record a process file">
+    </CENTER>
+    <P>
+    All commands given will be written in the process file. The menu-item <B>
+    Start process recording</B> is now changed in <B>Stop process recording</B>
+    (See picture below). Clicking this item will stop the recording.
+    <P>
+    <CENTER>
+    <TABLE border=5 cellspacing=1 cellpadding=10 bgcolor="#FFFFFF">
+      <TR><TD align=middle valign=middle>
+        <IMG src="pics/stopprocess.gif" width=163 height=70 border=0 hspace=5 alt="Stop process recording">
+      </TD></TR>
+    </TABLE>
+    </CENTER>
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_record">record</A>
+    </TD></TR></TABLE>
+
+    
+<P> <!-- New header --------------------------------------------------> <a name="execution"> 
+  </a>
+<TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Show execution dialog</FONT>
+    </TD></TR></TABLE>
+
+    This menu-item shows the execution dialog in the picture below. In this dialog
+    all commands executed by the user are displayed. A command can be executed again
+    by selecting it in the <B>History</B> list, clicking the <B>Copy</B> button
+    and clicking the <B>Execute</B> button.
+    <P>
+    <CENTER>
+    <IMG src="pics/execdlg.gif" width=400 height=200 border=0 alt="Exectution dialog"> 
+  </CENTER>
+    <P>
+    In the <B>command</B> edit box, a command can be typed and executed by clicking
+    the <B>Execute</B> button. This makes it possible to use the graphical interface
+    with commands typed in at the commandline. This can be very useful with, for
+    instance, the transform function. Since the transform values are stored in
+    memory, a transformation can be done with only typing <B>transform</B>.
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="identification">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Show identification dialog</FONT>
+    </TD></TR></TABLE>
+
+    The <B>Selected</B> list (see picture below) shows all selected structures,
+    polygons, etc. in the drawing. When some elements become (de)selected,
+    you'll have to click the <B>Update</B> button to get the actual information.
+    <P>
+    <CENTER>
+    <IMG src="pics/identdlg.gif" width=679 height=130 border=0 alt="Identification dialog"> 
+  </CENTER>
+
+    <P>
+    See <A href="index.html#workingwith">selecting structures</A> for info on how to select
+    strucutures.
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="distance">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Show distance dialog</FONT>
+    </TD></TR></TABLE>
+
+    Clicking this menu item will show the dialog below. Another way to show this
+    dialog is selecting a relative point with the <A href="mousemenu.html">mouse menu</A>.
+    <P>
+    <CENTER>
+    <IMG src="pics/distdlg.gif" width=402 height=170 border=0 alt="Distance dialog"> 
+  </CENTER>
+    <P>
+    This dialog shows the startpoint and a list of relative points, each with
+    info on the distance (x, y and total) and the angle between this point
+    and the startpoint.
+    <P>
+    Selecting a new startpoint, will clear all relative points.
+    <P>
+    When <B>Clear</B> is clicked, all relative points are removed and startpoint
+    is set at (0,0). This also happens when a the program is started or when
+    a new file is loaded.
+
+<!-- New header -------------------------------------------------->
+
+    <TABLE width=100% border=0 cellpadding=6 cellspacing=0>
+    <TR>
+    <TD bgcolor="#000000" align=left valign=top>
+    <A href="index.html"><FONT size=+1 face="Impact, Arial, Helvetica">Index</FONT></A>
+    </TD>
+    <TD bgcolor="#000000" align=right valign=top>
+    <A href="#top"><FONT size=+1 face="Impact, Arial, Helvetica">Top of page</FONT></A>
+    </TD>
+    </TR>
+    </TABLE>
+  </BODY>
+</HTML>
+

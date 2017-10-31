@@ -1,0 +1,959 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class WindowsDriver"
+>
+
+<META-DATA>
+	<NAME>WindowsDriver</NAME>
+	<AUTHOR>klaas holwerda</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Wed Oct 20  9:18:53 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>wxwin.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>gdserr.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>scrndrv.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>lsetup.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>gdsii.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>mainwin.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>windrv.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> low level drawing function for primitives to draw to the screen it is derived from wxWindow as well as the drawdriver. And therefore the mediator between the internal database and the screen device Because the inheretance from wxWindow, all mouse input and keyboard input to the window is also intercepted here, depending on the tool in action those events will be redirected to the right tool using the toolcontroller</PARA>
+</DESCRIPTION>
+
+<INHERITANCE>
+	<PARENT-CLASS
+		SCOPE="public"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>wxWindow</NAME>
+	</PARENT-CLASS>
+	<PARENT-CLASS
+		SCOPE="public"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>DrawDriver</NAME>
+	</PARENT-CLASS>
+</INHERITANCE>
+
+
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="WindowsDriver(GDSMainWindow* parent, int , int , int , int , long , char*)"
+		INLINE="NO"
+	>
+		<NAME>WindowsDriver</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> constructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~WindowsDriver(void)"
+		INLINE="NO"
+	>
+		<NAME>~WindowsDriver</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void GetClientWindowSize(int* dx, int* dy)"
+		INLINE="NO"
+	>
+		<NAME>GetClientWindowSize</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get size of client window in pixels</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL WindowsDriver::Pending()"
+		INLINE="NO"
+	>
+		<NAME>WindowsDriver::Pending</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>are there events in the queue</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	OnChar(wxKeyEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnChar</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>character events</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	OnKeyDown(wxKeyEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnKeyDown</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>keydown events</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	OnKeyUp(wxKeyEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnKeyUp</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>keyup events</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void OnMouseEvent(wxMouseEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnMouseEvent</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>mouse events</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	OnPaint(void)"
+		INLINE="NO"
+	>
+		<NAME>OnPaint</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>called by onpaint event</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void UpdateSize(void)"
+		INLINE="NO"
+	>
+		<NAME>UpdateSize</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>for updating size of window, reallocates buffer for dubbel buffering</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void SetBackGroundColor(long color)"
+		INLINE="NO"
+	>
+		<NAME>SetBackGroundColor</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the background color of the window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="wxBitmap* "
+		DECLARATION="wxBitmap* GetCanvasBitmap()"
+		INLINE="NO"
+	>
+		<NAME>GetCanvasBitmap</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>to write bitmap data to files</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Init(Setup* setup)"
+		INLINE="NO"
+	>
+		<NAME>Init</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>initialize colors patterns etc.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	ClearScreen()"
+		INLINE="NO"
+	>
+		<NAME>ClearScreen</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	DrawGrid(double,long,int)"
+		INLINE="NO"
+	>
+		<NAME>DrawGrid</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	GDSCanDrawLine(double x1, double y1, double x2, double y2)"
+		INLINE="NO"
+	>
+		<NAME>GDSCanDrawLine</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>draw directly on the window, without using a buffer</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void DrawRectCan(int x1, int y1, int x2, int y2)"
+		INLINE="NO"
+	>
+		<NAME>DrawRectCan</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>draw a rectangle to the window, without using a buffer</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double Check_int(double getal)"
+		INLINE="NO"
+	>
+		<NAME>Check_int</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DECLARE_EVENT_TABLE()"
+		INLINE="NO"
+	>
+		<NAME>DECLARE_EVENT_TABLE</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void OnEraseBackground(wxEraseEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnEraseBackground</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void DrawTransparentBitmap(wxDC* dc,long xStart,long yStart,long width,long displacement)"
+		INLINE="NO"
+	>
+		<NAME>DrawTransparentBitmap</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>used to draw transparant pattern fill lines in polygons</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void	"
+		DECLARATION=" void	SetLayer(int layer)"
+		INLINE="YES"
+	>
+		<NAME>SetLayer</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>see base class</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	UnSetLayer(int layer)"
+		INLINE="NO"
+	>
+		<NAME>UnSetLayer</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>see base class</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	GDSDrawText(char* text, double x, double y, double x2, double y2, Presentation*, Matrix&lt;double&gt;*)"
+		INLINE="NO"
+	>
+		<NAME>GDSDrawText</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>see base class</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	GDSDrawLine(double x1, double y1, double x2, double y2)"
+		INLINE="NO"
+	>
+		<NAME>GDSDrawLine</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>see base class</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	DrawLineSelected(double x1, double y1, double x2, double y2)"
+		INLINE="NO"
+	>
+		<NAME>DrawLineSelected</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>see base class</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void	"
+		DECLARATION=" void	GDSDrawPoint(double x, double y)"
+		INLINE="YES"
+	>
+		<NAME>GDSDrawPoint</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>see base class</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void WindowsPolygon(void)"
+		INLINE="NO"
+	>
+		<NAME>WindowsPolygon</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>see base class</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void WindowsPolyline(void)"
+		INLINE="NO"
+	>
+		<NAME>WindowsPolyline</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>see base class</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	DrawFillLine(double x1, double y1, double x2, double y2)"
+		INLINE="NO"
+	>
+		<NAME>DrawFillLine</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>see base class</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void ltowxc(long l,wxColour&amp; color)"
+		INLINE="NO"
+	>
+		<NAME>ltowxc</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>convert color to wxWindows color</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	DrawRect(int x1, int y1, int x2, int y2)"
+		INLINE="NO"
+	>
+		<NAME>DrawRect</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>see base class</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	DrawOriginLine(double x1, double y1, double x2, double y2)"
+		INLINE="NO"
+	>
+		<NAME>DrawOriginLine</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>see base class</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="GDSMainWindow*	"
+		DECLARATION="GDSMainWindow*	_parent"
+	>
+		<NAME>_parent</NAME>
+		<DESCRIPTION>
+			<PARA> holds a pointer to mainwindow</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxDC*	"
+		DECLARATION="wxDC*	_dc"
+	>
+		<NAME>_dc</NAME>
+		<DESCRIPTION>
+			<PARA> the device context for drawing to screen buffer or screen</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxMemoryDC*	"
+		DECLARATION="wxMemoryDC*	_memDC"
+	>
+		<NAME>_memDC</NAME>
+		<DESCRIPTION>
+			<PARA> the device context for drawing to screen buffer</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxBitmap*	"
+		DECLARATION="wxBitmap*	_backup"
+	>
+		<NAME>_backup</NAME>
+		<DESCRIPTION>
+			<PARA> screen buffer</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	_w, _h"
+	>
+		<NAME>_w, _h</NAME>
+		<DESCRIPTION>
+			<PARA>size of window</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	_visible"
+	>
+		<NAME>_visible</NAME>
+		<DESCRIPTION>
+			<PARA> if true then draw only</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxColour*	"
+		DECLARATION="wxColour*	_textColor"
+	>
+		<NAME>_textColor</NAME>
+		<DESCRIPTION>
+			<PARA> holds the drawing color for text</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxColour*	"
+		DECLARATION="wxColour*	_textSelectedColor"
+	>
+		<NAME>_textSelectedColor</NAME>
+		<DESCRIPTION>
+			<PARA> holds the drawing color selected text</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxColour*	"
+		DECLARATION="wxColour*	_fillcolor"
+	>
+		<NAME>_fillcolor</NAME>
+		<DESCRIPTION>
+			<PARA> holds the fill color</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxPen*	"
+		DECLARATION="wxPen*	_penSelected"
+	>
+		<NAME>_penSelected</NAME>
+		<DESCRIPTION>
+			<PARA> the pen used for drawing a border around selected elements</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxPen*	"
+		DECLARATION="wxPen*	_pen"
+	>
+		<NAME>_pen</NAME>
+		<DESCRIPTION>
+			<PARA> the pen used for drawing</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxPen*	"
+		DECLARATION="wxPen*	_pengrid"
+	>
+		<NAME>_pengrid</NAME>
+		<DESCRIPTION>
+			<PARA> the pen used for grid drawing</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxPen*	"
+		DECLARATION="wxPen*	_penorigin"
+	>
+		<NAME>_penorigin</NAME>
+		<DESCRIPTION>
+			<PARA> the pen used for origin drawing</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxPen*	"
+		DECLARATION="wxPen*	_fillpen"
+	>
+		<NAME>_fillpen</NAME>
+		<DESCRIPTION>
+			<PARA> the pen used for filling</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxBrush*	"
+		DECLARATION="wxBrush*	_brush"
+	>
+		<NAME>_brush</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxBrush*	"
+		DECLARATION="wxBrush*	_brushbitm"
+	>
+		<NAME>_brushbitm</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxBrush*	"
+		DECLARATION="wxBrush*	_brushnorm"
+	>
+		<NAME>_brushnorm</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxColour "
+		DECLARATION="wxColour _backgroundcolor"
+	>
+		<NAME>_backgroundcolor</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxFont*	"
+		DECLARATION="wxFont*	_font"
+	>
+		<NAME>_font</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxBitmap* "
+		DECLARATION="wxBitmap* _bitmap"
+	>
+		<NAME>_bitmap</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxPoint* "
+		DECLARATION="wxPoint* todraw"
+	>
+		<NAME>todraw</NAME>
+		<DESCRIPTION>
+			<PARA>array for points to draw as polygon or polyline</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxMemoryDC "
+		DECLARATION="wxMemoryDC pat_dc"
+	>
+		<NAME>pat_dc</NAME>
+		<DESCRIPTION>
+			<PARA> XPoint* todraw;	POINT * todraw;dc for monogrome pattern</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxBitmap* "
+		DECLARATION="wxBitmap* srcbitm"
+	>
+		<NAME>srcbitm</NAME>
+		<DESCRIPTION>
+			<PARA>the pattern in color</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxMemoryDC "
+		DECLARATION="wxMemoryDC src_dc"
+	>
+		<NAME>src_dc</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxBitmap* "
+		DECLARATION="wxBitmap* buffer"
+	>
+		<NAME>buffer</NAME>
+		<DESCRIPTION>
+			<PARA>buffer for blitting fill lines</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxMemoryDC "
+		DECLARATION="wxMemoryDC buf_dc"
+	>
+		<NAME>buf_dc</NAME>
+		<DESCRIPTION>
+			<PARA>dc for the buffer</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Patterns*	"
+		DECLARATION="Patterns*	_patterns"
+	>
+		<NAME>_patterns</NAME>
+		<DESCRIPTION>
+			<PARA>fill patterns for primitives</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int _layer"
+	>
+		<NAME>_layer</NAME>
+		<DESCRIPTION>
+			<PARA>active layer to optimize drawing</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

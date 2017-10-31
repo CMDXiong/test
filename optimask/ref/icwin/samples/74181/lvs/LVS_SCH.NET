@@ -1,0 +1,4 @@
+*
+.include schmodel.net
+*.schematic top181.cir
+.end

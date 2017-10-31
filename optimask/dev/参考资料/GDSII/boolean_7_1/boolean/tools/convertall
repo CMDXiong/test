@@ -1,0 +1,15 @@
+for i in *
+do
+	if test -d $i
+	then
+        echo "entering $i"
+		cd $i
+        convertall
+		cd ..
+    else    
+        dos2unix $i $i.unix
+        echo $i
+        cp $i.unix $i
+        rm $i.unix
+	fi
+done

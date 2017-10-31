@@ -1,0 +1,372 @@
+<HTML>
+
+  <SCRIPT language="JavaScript">
+  </SCRIPT>
+
+
+  <HEAD>
+    <TITLE>GDS-II Postprocessing Tool Help: File menu</TITLE>
+  </HEAD>
+
+  <BODY bgcolor="#66FFFF" text="#000000" link="#6666ff" alink="#999900" vlink="009999">
+
+    <A name="top"></A>
+
+    <TABLE width=100% border=0 cellpadding=6 cellspacing=2>
+    <TR><TD bgcolor="#000000" align=middle valign=top>
+    <FONT color="#FFFF00" size=+3 face="Impact, Arial, Helvetica">File menu</FONT>
+    </TD></TR>
+    </TABLE>
+
+    <P>
+
+<!-- New header ------------------------------------------------ -->
+
+
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Overview</FONT>
+    </TD></TR></TABLE>
+
+    With the File menu, data and setup files can be loaded, saved, merged,
+    printed and closed.
+    <P>
+    Click in the picture below on one of the menu-commands for info.
+
+    <MAP name="filemenu">
+    <AREA shape="rect" href="#open" coords="  7,48,242,58" OnMouseOver="window.status='Open...'; return true" OnMouseOut="window.status=''; return true" alt="Opens a file">
+    <AREA shape="rect" href="#save" coords="  7,65,242,75" OnMouseOver="window.status='Save'; return true" OnMouseOut="window.status=''; return true" alt="Saves current file">
+    <AREA shape="rect" href="#save_as" coords="  7,80,242,92" OnMouseOver="window.status='Save As...'; return true" OnMouseOut="window.status=''; return true" alt="Saves current file in specified format">
+    <AREA shape="rect" href="#import" coords="  7,98,242,109" OnMouseOver="window.status='Import...'; return true" OnMouseOut="window.status=''; return true" alt="Merges a file with the one in memory">
+    <AREA shape="rect" href="#close" coords="  7,113,242,126" OnMouseOver="window.status='Close'; return true" OnMouseOut="window.status=''; return true" alt="Closes current file">
+    <AREA shape="rect" href="#load_setup" coords="  7,140,242,152" OnMouseOver="window.status='Load setup file...'; return true" OnMouseOut="window.status=''; return true" alt="Loads new setup">
+    <AREA shape="rect" href="#save_setup" coords="  7,158,242,170" OnMouseOver="window.status='Save Setup file...'; return true" OnMouseOut="window.status=''; return true" alt="Saves current setup">
+    <AREA shape="rect" href="#print" coords="  7,181,242,195" OnMouseOver="window.status='Print...'; return true" OnMouseOut="window.status=''; return true" alt="Prints the current file">
+    <AREA shape="rect" href="#print_setup" coords="  7,200,242,213" OnMouseOver="window.status='Print setup...'; return true" OnMouseOut="window.status=''; return true" alt="Changes the printer setup">
+    <AREA shape="rect" href="#exit" coords="  7,225,242,239" OnMouseOver="window.status='Exit'; return true" OnMouseOut="window.status=''; return true" alt="Exits the program">
+    <AREA shape="rect" href="#history" coords="  7,249,242,333" OnMouseOver="window.status='File history'; return true" OnMouseOut="window.status=''; return true" alt="Loads this file">
+    </MAP>
+
+    <CENTER>
+    <TABLE border=5 cellspacing=1 cellpadding=10 bgcolor="#FFFFFF">
+      <TR><TD align=middle valign=middle>
+
+      <A name="filepic">
+        <IMG src="pics/filemenu.gif" USEMAP="#filemenu" width=369 height=362 border=0 alt="File menu">
+      </A>
+
+    </TD></TR>
+    </TABLE>
+    </CENTER>
+
+    <P>
+
+<!-- New header ------------------------------------------------ -->
+
+
+    <A name="open"></A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Open . . .</FONT>
+    </TD></TR></TABLE>
+
+    This menu can be used to open a datafile of a specific type. You can choose
+    one of the three types. The dialog below appears, showing only the files of
+    the type you choose. To view files of all types, as in the picture below,
+    choose the file open command from the <A href="index.html#speedbar">toolbar</A>.
+    <P>
+    <A name="openfilepic"></A>
+    <CENTER>
+        <IMG src="pics/openfiledlg.gif" width=426 height=285 border=0 alt="Open file">
+    </CENTER>
+    <P>
+
+    <A name="open_gdsii"></A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>GDS-II</B></FONT>
+    </TD></TR></TABLE>
+    This item is used to open GDS-II files. The dialog shows only files with
+    the extension <B>.cal</B>.
+
+    <A name="open_key"></A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Key</B></FONT>
+    </TD></TR></TABLE>
+    This item is used to open Key files. The dialog shows only files with
+    the extension <B>.key</B>.
+
+    <A name="open_flash"></A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Flash</B></FONT>
+    </TD></TR></TABLE>
+    This item is used to open Flash files. The dialog shows only files with
+    the extension <B>.??m</B>.
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_loadfile">loadfile</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+
+    <A name="save">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Save</FONT>
+    </TD></TR></TABLE>
+
+    Saves the file currently in memory.
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_savefile">savefile</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header ------------------------------------------------ -->
+
+
+    <A name="save_as">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Save As . . .</FONT>
+    </TD></TR></TABLE>
+    Saves the file currently in memory in one of the three file formats. A text
+    dump can also be chosen, to inspect the file manually.
+    The file in memory keeps the old name and type, also when a file is saved
+    in a different format or with a different name. The dialog shows only the
+    files of the type that was chosen in the menu. See dialog in picture below,
+    which was displayed when <B>Save As... -> GDS-II</B> was chosen.
+    <P>
+
+    <A name="savefilepic"></A>
+    <CENTER>
+    <IMG src="pics/savefiledlg.gif" with=426 height=285 border=0 alt="Save file">
+    </CENTER>
+
+    <A name="save_gdsii"></A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>GDS-II</B></FONT>
+    </TD></TR></TABLE>
+    Saves the current file in GDS-II format. The GDS-II format is not capable of
+    saving arcs. Polygons containing arcs are <I>not</I> saved.
+
+    <A name="save_key"></A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Key</B></FONT>
+    </TD></TR></TABLE>
+    Saves the file in memory in Key format.
+
+    <A name="save_flash"></A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Flash</B></FONT>
+    </TD></TR></TABLE>
+    Saves all rectangles in the file in memory in Flash format.
+
+    <A name="save_text"></A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Text dump</B></FONT>
+    </TD></TR></TABLE>
+    Saves the file in text format.
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_savefile">savefile</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header ------------------------------------------------ -->
+
+
+    <A name="import">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Import . . .</FONT>
+    </TD></TR></TABLE>
+    Import loads a new datafile and merges it with the one in memory. The filename
+    remains the one in memory. You can load three different file types. For more
+    info on loading files see <A href="#openfilepic">dialog</A> at
+    <A href="#open">Open file</A> topic.
+
+    <A name="import_gdsii"></A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>GDS-II</B></FONT>
+    </TD></TR></TABLE>
+    Imports a GDS-II file and merges it with the current file.
+
+    <A name="import_key"></A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Key</B></FONT>
+    </TD></TR></TABLE>
+    Imports a Key file and merges it with the current file.
+
+    <A name="import_flash"></A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Flash</B></FONT>
+    </TD></TR></TABLE>
+    Imports a Flash file and merges it with the current file.
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_mergefile">mergefile</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header ------------------------------------------------ -->
+
+
+    <A name="close">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Close</FONT>
+    </TD></TR></TABLE>
+    Closes the file in memory.
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_closefile">closefile</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header ------------------------------------------------ -->
+
+
+    <A name="load_setup">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Load setup file . . .</FONT>
+    </TD></TR></TABLE>
+
+    Loads an other setupfile. The setupfiles contain the factor settings,
+    the transformation settings, the gridsettings and the layer settings (colors,
+    patterns and names).
+    <P>
+    Clicking this menu-item brings up the next dialog, showing only <B>.set</B>
+    files.
+    <P>
+    <CENTER>
+    <IMG src="pics/opensetupdlg.gif" width=426 height=285 border=0 alt="Open setup file">
+    </CENTER>
+    <P>
+    
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_loadsetup">loadsetup</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header ------------------------------------------------ -->
+
+
+    <A name="save_setup">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Save setup file . . .</FONT>
+    </TD></TR></TABLE>
+
+    This menu-item saves the current setup to a file specified by the user. It
+    brings up the dialog below, showing only the <B>.set</B> files. The name
+    can be typed in the edit box <I>File name</I>. The extension <B>.set</B> is
+    automatically added, even if an other extension is specified.
+    <P>
+    <CENTER>
+    <IMG src="pics/savesetupdlg.gif" width=426 height=285 border=0 alt="Save setup file">
+    </CENTER>
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_savesetup">savesetup</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header ------------------------------------------------ -->
+
+
+    <A name="print">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Print . . .</FONT>
+    </TD></TR></TABLE>
+
+    Shows the dialog below with which the current file can be sent to a printer.
+
+    <P>
+    <CENTER>
+    <IMG src="pics/printdlg.gif" width=438 height=327 border=0 alt="Print dialog">
+    </CENTER>
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_print">print</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header ------------------------------------------------ -->
+
+
+    <A name="print_setup">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Print setup . . .</FONT>
+    </TD></TR></TABLE>
+
+    Show the dialog below to set up a printer for printing.
+
+    <P>
+    <CENTER>
+    <IMG src="pics/printsetupdlg.gif" width=438 height=314 border=0 alt="Printer setup">
+    </CENTER>
+
+    <P>
+
+<!-- New header ------------------------------------------------ -->
+
+
+    <A name="exit">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Exit</FONT>
+    </TD></TR></TABLE>
+
+    Closes file (if open) and exits the program.
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_exit">exit</A>, <A href="commands.html#T_quit">quit</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header ------------------------------------------------ -->
+
+
+    <A name="history">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>File history</FONT>
+    </TD></TR></TABLE>
+
+    Last five files used are in this history list. Selecting one of the files
+    immediately loads it.
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_addfile">addfile</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header ------------------------------------------------ -->
+
+    <TABLE width=100% border=0 cellpadding=6 cellspacing=0>
+    <TR>
+    <TD bgcolor="#000000" align=left valign=top>
+    <A href="index.html"><FONT size=+1 face="Impact, Arial, Helvetica">Index</FONT></A>
+    </TD>
+    <TD bgcolor="#000000" align=right valign=top>
+    <A href="#top"><FONT size=+1 face="Impact, Arial, Helvetica">Top of page</FONT></A>
+    </TD>
+    </TR>
+    </TABLE>
+  </BODY>
+</HTML>
+

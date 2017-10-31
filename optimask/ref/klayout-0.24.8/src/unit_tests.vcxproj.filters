@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="unit_tests_main.cc">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="rba.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlVariant.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlUtils.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlString.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlStableVector.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlReuseVector.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlObserver.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlKDTree.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlIntervalSet.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlIntervalMap.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlExpression.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlDeferredExecution.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlDataMapping.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlCollection.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlClassRegistry.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="rdb.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="layRenderer.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="layParsedLayerSource.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="layLayerProperties.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="layBitmapsToImage.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="layBitmap.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="layAnnotationShapes.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="imgObject.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbWriterTools.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbVector.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbTrans.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbText.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbStreamLayers.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbShapes.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbShapeRepository.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbShapeArray.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbShape.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbPropertiesRepository.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbPolygonTools.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbPolygon.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbPoint.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbPCells.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbPath.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbObject.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbOASISWriter2.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbOASISWriter.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbOASISReader.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbLibraries.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbLayoutUtils.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbLayout.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbLayer.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbGDS2Writer.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbGDS2Reader.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbEdgeProcessor.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbEdge.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbCellGraphUtils.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbCell.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbBoxTree.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbBox.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlXMLParser.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbArray.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlGlobPattern.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlDeflate.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="tlAlgorithm.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiExpression.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="extGerberImport.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbMatrix.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbLayoutQuery.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbEdgesToContours.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbDXFReader.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="dbCellMapping.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="pya.ut">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="utHead.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbBoxScanner.ut">
+      <Filter>Quelldateien</Filter>
+    </None>
+    <None Include="dbEdgePair.ut">
+      <Filter>Quelldateien</Filter>
+    </None>
+    <None Include="dbEdgePairRelations.ut">
+      <Filter>Quelldateien</Filter>
+    </None>
+    <None Include="dbEdgePairs.ut">
+      <Filter>Quelldateien</Filter>
+    </None>
+    <None Include="dbEdges.ut">
+      <Filter>Quelldateien</Filter>
+    </None>
+    <None Include="dbRegion.ut">
+      <Filter>Quelldateien</Filter>
+    </None>
+    <None Include="dbTilingProcessor.ut">
+      <Filter>Quelldateien</Filter>
+    </None>
+    <None Include="extNetTracer.ut">
+      <Filter>Quelldateien</Filter>
+    </None>
+    <None Include="dbCIFReader.ut">
+      <Filter>Quelldateien</Filter>
+    </None>
+    <None Include="dbLayerMapping.ut">
+      <Filter>Quelldateien</Filter>
+    </None>
+    <None Include="dbRecursiveShapeIterator.ut">
+      <Filter>Quelldateien</Filter>
+    </None>
+    <None Include="tlThreadedWorkers.ut">
+      <Filter>Quelldateien</Filter>
+    </None>
+    <None Include="dbClip.ut">
+      <Filter>Quelldateien</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,167 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="YES"
+	DECLARATION="template &lt;class Dtype&gt; class DL_Node"
+>
+
+<META-DATA>
+	<NAME>DL_Node</NAME>
+	<AUTHOR>klaasje</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Wed Oct 20  9:03:04 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>stdlib.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>misc.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>gdsmes.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>_dl_itr.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> Template class DL_Node This class is used in the class DL_List to contain the items of the list. This can be a pointer to an object or the object itself. The class contains a next and a previous pointer to connect the nodes in the list. class Dtype </PARA>
+			<PARA> Object stored at the node</PARA>
+</DESCRIPTION>
+
+
+
+<FRIEND-CLASSES>
+	<FRIEND-CLASS><NAME>DL_List</NAME></FRIEND-CLASS>
+	<FRIEND-CLASS><NAME>DL_Iter</NAME></FRIEND-CLASS>
+	<FRIEND-CLASS><NAME>DL_SortIter</NAME></FRIEND-CLASS>
+</FRIEND-CLASSES>
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DL_Node()"
+		INLINE="NO"
+	>
+		<NAME>DL_Node</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Public membersTemplate constructor no contentsConstruct a node for a list object</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DL_Node(Dtype n)"
+		INLINE="NO"
+	>
+		<NAME>DL_Node</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>n</NAME>
+				<DESCRIPTION><PARA>Object stored at the node</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>constructor with init of Dtype</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~DL_Node()"
+		INLINE="NO"
+	>
+		<NAME>~DL_Node</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Destructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Dtype "
+		DECLARATION="Dtype _item"
+	>
+		<NAME>_item</NAME>
+		<DESCRIPTION>
+			<PARA>Public membersdata in node</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="DL_Node* "
+		DECLARATION="DL_Node* _next"
+	>
+		<NAME>_next</NAME>
+		<DESCRIPTION>
+			<PARA>pointer to next node</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="DL_Node* "
+		DECLARATION="DL_Node* _prev"
+	>
+		<NAME>_prev</NAME>
+		<DESCRIPTION>
+			<PARA>pointer to previous node</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+
+
+
+
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

@@ -1,0 +1,739 @@
+# Process file for GDS-II postprocessing tool
+# Copyright 1998 Hollandse Signaal Apparaten
+
+record  c:/boolean/5.3/default/config/default.set
+# Startup
+showcoords        1
+drawoutline       0
+structhres        30
+primthres         5 true
+# Transformation
+mirrorx           0
+mirrory           0
+movehor           {0 um}
+movever           {0 mm}
+scale             1
+rotate            {40}
+direction         Clockwise
+# Factors
+selectmarge       {0.01}
+snapfactor        {1.0um}
+correctionfactor  {5.5um}
+roundfactor       {1.5}
+correctionaber    {1.0um}
+roundtype         {circle}
+toarcrmin         {50um}
+toarcrmax         {10cm}
+arcaccur          {25um}
+polyaccur         {1um}
+smoothaccur       {5um}
+maxlinemerge      {5000um}
+displayaber       {5um}
+# Grid settings
+showgrid          0
+gridspace         {100 um}
+gridcolour        0 0 0 
+gridplacement     0
+draw
+backgroundcolour  255 255 255 
+# Layer settings
+setlayer       0
+name           {condup}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 0 255
+brush          7
+order          9
+setlayer       1
+name           {barrier}
+visible        1
+bordercolor    0 0 255
+fillcolor      70 112 198
+brush          7
+order          28
+setlayer       2
+name           {ridges}
+visible        1
+bordercolor    255 0 0
+fillcolor      128 0 128
+brush          9
+order          15
+setlayer       3
+name           {conddown}
+visible        1
+bordercolor    255 255 0
+fillcolor      0 0 255
+brush          13
+order          16
+setlayer       4
+name           {resup}
+visible        1
+bordercolor    0 0 255
+fillcolor      0 255 255
+brush          15
+order          10
+setlayer       5
+name           {resdown}
+visible        1
+bordercolor    128 128 128
+fillcolor      0 0 0
+brush          12
+order          17
+setlayer       6
+name           {mvial}
+visible        1
+bordercolor    0 0 0
+fillcolor      0 128 0
+brush          7
+order          13
+setlayer       7
+name           {vial}
+visible        1
+bordercolor    0 0 128
+fillcolor      255 128 0
+brush          9
+order          14
+setlayer       8
+name           {bond}
+visible        1
+bordercolor    0 0 0
+fillcolor      0 255 0
+brush          7
+order          1
+setlayer       9
+name           {symbol}
+visible        1
+bordercolor    128 0 128
+fillcolor      0 0 255
+brush          10
+order          2
+setlayer       10
+name           {textl}
+visible        1
+bordercolor    255 0 0
+fillcolor      255 255 255
+brush          0
+order          0
+setlayer       11
+name           {dummy}
+visible        1
+bordercolor    128 128 0
+fillcolor      255 255 255
+brush          0
+order          29
+setlayer       12
+name           {error}
+visible        1
+bordercolor    128 0 0
+fillcolor      255 255 255
+brush          0
+order          18
+setlayer       13
+name           {border}
+visible        1
+bordercolor    128 128 128
+fillcolor      192 192 192
+brush          7
+order          27
+setlayer       14
+name           {substr}
+visible        1
+bordercolor    0 128 128
+fillcolor      255 255 255
+brush          0
+order          26
+setlayer       15
+name           {endobjbo}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          19
+setlayer       16
+name           {slot1}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          12
+setlayer       17
+name           {slot2}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          11
+setlayer       18
+name           {ballen}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          20
+setlayer       19
+name           {symbol2}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          3
+setlayer       20
+name           {symbol3}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          4
+setlayer       21
+name           {symbol4}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          5
+setlayer       22
+name           {symbol5}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          6
+setlayer       23
+name           {slotup}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          21
+setlayer       24
+name           {slotdown}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          22
+setlayer       25
+name           {bridge1}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          7
+setlayer       26
+name           {bridge2}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          8
+setlayer       27
+name           {sublev1}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          23
+setlayer       28
+name           {sublev2}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          24
+setlayer       29
+name           {sublev3}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          25
+setlayer       30
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          30
+setlayer       31
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          31
+setlayer       32
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          32
+setlayer       33
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          33
+setlayer       34
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          34
+setlayer       35
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          35
+setlayer       36
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          36
+setlayer       37
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          37
+setlayer       38
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          38
+setlayer       39
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          39
+setlayer       40
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          40
+setlayer       41
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          41
+setlayer       42
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          42
+setlayer       43
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          43
+setlayer       44
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          44
+setlayer       45
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          45
+setlayer       46
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          46
+setlayer       47
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          47
+setlayer       48
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          48
+setlayer       49
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          49
+setlayer       50
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          50
+setlayer       51
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          51
+setlayer       52
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          52
+setlayer       53
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          53
+setlayer       54
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          54
+setlayer       55
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          55
+setlayer       56
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          56
+setlayer       57
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          57
+setlayer       58
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          58
+setlayer       59
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          59
+setlayer       60
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          60
+setlayer       61
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          61
+setlayer       62
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          62
+setlayer       63
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          63
+setlayer       64
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          64
+setlayer       65
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          65
+setlayer       66
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          66
+setlayer       67
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          67
+setlayer       68
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          68
+setlayer       69
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          69
+setlayer       70
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          70
+setlayer       71
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          71
+setlayer       72
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          72
+setlayer       73
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          73
+setlayer       74
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          74
+setlayer       75
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          75
+setlayer       76
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          76
+setlayer       77
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          77
+setlayer       78
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          78
+setlayer       79
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          79
+setlayer       80
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          80
+setlayer       81
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          81
+setlayer       82
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          82
+setlayer       83
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          83
+setlayer       84
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          84
+setlayer       85
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          85
+setlayer       86
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          86
+setlayer       87
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          87
+setlayer       88
+name           {<not specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          88
+setlayer       89
+name           {<none specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          89
+setlayer       90
+name           {<none specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          90
+setlayer       91
+name           {<none specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          91
+setlayer       92
+name           {<none specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          92
+setlayer       93
+name           {<none specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          93
+setlayer       94
+name           {<none specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          94
+setlayer       95
+name           {<none specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          95
+setlayer       96
+name           {<none specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          96
+setlayer       97
+name           {<none specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          97
+setlayer       98
+name           {<none specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          98
+setlayer       99
+name           {<none specified>}
+visible        1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          99

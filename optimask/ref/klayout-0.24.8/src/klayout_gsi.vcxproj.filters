@@ -1,0 +1,3492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="UI Files">
+      <UniqueIdentifier>{ed489b93-7ac3-41c0-9316-3b936938f84e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QRC Files">
+      <UniqueIdentifier>{f9f3a391-5d64-4e08-a429-59c15124fec7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="generated">
+      <UniqueIdentifier>{e8db116e-769f-4d0f-9ace-969203d21c81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MOC Headers">
+      <UniqueIdentifier>{88161854-d0de-476b-901b-4d0a0fd7c68b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\gsi">
+      <UniqueIdentifier>{acff50dc-119e-406a-96bd-1b4cada2f249}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien\ant">
+      <UniqueIdentifier>{8851b28b-8d40-465f-983f-51404678911b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\db">
+      <UniqueIdentifier>{4d211d52-ef9d-4843-86b6-d6849fd43f3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\tl">
+      <UniqueIdentifier>{b4dc1c89-91d9-4133-ba14-687c4ea954ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\ext">
+      <UniqueIdentifier>{07033dca-f018-4745-8b62-ed8109eb9b2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\edt">
+      <UniqueIdentifier>{e2970cf7-53b0-488e-8c08-e9fe8378e1f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\gsi">
+      <UniqueIdentifier>{e6fae724-0cc5-4e4a-bf38-5602a3563fb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\gtf">
+      <UniqueIdentifier>{8e1b7dbd-2100-4a34-9d31-90795c2e4e7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\img">
+      <UniqueIdentifier>{a53ad229-934c-4eab-b817-f4f944ca726c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\lay">
+      <UniqueIdentifier>{588d3869-715e-464c-b4cd-5a3a67f79466}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\rdb">
+      <UniqueIdentifier>{9d9b2c29-82dd-45c5-8f8d-8bee9b395aa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\rba">
+      <UniqueIdentifier>{511465a2-9ee0-4392-8dea-398a4d13f1a8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="gsiDeclTl.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclAnt.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbBox.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbCell.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbCellMapping.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbEdge.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbEdgeProcessor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbInstElement.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbLayout.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbLayoutUtils.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbManager.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbPath.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbPoint.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbPolygon.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbReader.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbShape.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbShapeProcessor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbShapes.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbText.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbTrans.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclEdt.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclImg.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclInternal.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclLayApplication.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclLayDialogs.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclLayLayers.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclLayLayoutView.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclLayMainWindow.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclLayMarker.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclLayMenu.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclRdb.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiQt.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiQtEvents.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclBasic.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbLibrary.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbMatrix.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclLayPlugin.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractButton.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractButton_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractFormBuilder.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractGraphicsShapeItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractItemDelegate.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractItemDelegate_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractItemModel.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractItemModel_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractItemView.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractItemView_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractListModel.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractListModel_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractNetworkCache.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractNetworkCache_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractPrintDialog.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractPrintDialog_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractProxyModel.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractProxyModel_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractScrollArea.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractScrollArea_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractSlider.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractSlider_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractSocket.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractSocket_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractSpinBox.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractSpinBox_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractTableModel.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractTableModel_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractTextDocumentLayout.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractTextDocumentLayout_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAccessible.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAccessibleEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAccessibleInterface.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAccessibleObject.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAccessibleWidget.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAction.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAction_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQActionEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQActionGroup.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQActionGroup_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQApplication.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQApplication_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAuthenticator.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQBasicTimer.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQBitmap.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQBoxLayout.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQBoxLayout_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQBrush.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQBuffer.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQBuffer_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQButtonGroup.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQButtonGroup_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQByteArrayMatcher.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCalendarWidget.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCalendarWidget_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCDEStyle.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCDEStyle_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCheckBox.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCheckBox_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQChildEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCleanlooksStyle.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCleanlooksStyle_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQClipboard.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQClipboard_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCloseEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQColor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQColorDialog.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQColorDialog_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQColormap.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQColumnView.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQColumnView_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQComboBox.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQComboBox_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCommandLinkButton.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCommandLinkButton_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCommonStyle.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCommonStyle_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCompleter.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCompleter_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQConicalGradient.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQContextMenuEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCoreApplication.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCoreApplication_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCryptographicHash.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQCursor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDataStream.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDataWidgetMapper.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDataWidgetMapper_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDate.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDateEdit.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDateEdit_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDateTime.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDateTimeEdit.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDateTimeEdit_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDesktopServices.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDesktopWidget.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDesktopWidget_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDial.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDial_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDialog.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDialog_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDialogButtonBox.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDialogButtonBox_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDir.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDirModel.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDirModel_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDockWidget.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDockWidget_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomAttr.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomCDATASection.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomCharacterData.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomComment.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomDocument.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomDocumentFragment.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomDocumentType.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomElement.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomEntity.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomEntityReference.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomImplementation.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomNamedNodeMap.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomNode.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomNodeList.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomNotation.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomProcessingInstruction.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDomText.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDoubleSpinBox.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDoubleSpinBox_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDoubleValidator.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDoubleValidator_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDrag.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDrag_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDragEnterEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDragLeaveEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDragMoveEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDropEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQDynamicPropertyChangeEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQEasingCurve.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQErrorMessage.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQErrorMessage_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQEventLoop.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQEventLoop_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFactoryInterface.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFile.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFile_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFileDialog.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFileDialog_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFileIconProvider.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFileInfo.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFileOpenEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFileSystemModel.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFileSystemModel_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFileSystemWatcher.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFileSystemWatcher_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFocusEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFocusFrame.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFocusFrame_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFont.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFontComboBox.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFontComboBox_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFontDatabase.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFontDialog.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFontDialog_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFontInfo.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFontMetrics.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFontMetricsF.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFormBuilder.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFormLayout.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFormLayout_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFrame.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFrame_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFtp.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQFtp_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGesture.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGesture_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGestureEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGestureRecognizer.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGradient.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsAnchor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsAnchor_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsAnchorLayout.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsBlurEffect.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsBlurEffect_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsColorizeEffect.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsColorizeEffect_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsDropShadowEffect.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsDropShadowEffect_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsEffect.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsEffect_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsEllipseItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsGridLayout.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsItemAnimation.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsItemAnimation_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsItemGroup.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsLayout.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsLayoutItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsLinearLayout.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsLineItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsObject.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsObject_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsOpacityEffect.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsOpacityEffect_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsPathItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsPixmapItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsPolygonItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsProxyWidget.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsProxyWidget_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsRectItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsRotation.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsRotation_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsScale.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsScale_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsScene.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsScene_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsSceneContextMenuEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsSceneDragDropEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsSceneEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsSceneHelpEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsSceneHoverEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsSceneMouseEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsSceneMoveEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsSceneResizeEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsSceneWheelEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsSimpleTextItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsTextItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsTextItem_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsTransform.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsTransform_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsView.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsView_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsWidget.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGraphicsWidget_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGridLayout.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGridLayout_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGroupBox.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQGroupBox_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQHBoxLayout.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQHBoxLayout_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQHeaderView.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQHeaderView_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQHelpEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQHideEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQHostAddress.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQHostInfo.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQHoverEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQIcon.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQIconDragEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQIconEngine.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQIconEnginePlugin.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQIconEnginePlugin_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQIconEnginePluginV2.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQIconEnginePluginV2_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQIconEngineV2.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQImage.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQImageIOHandler.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQImageIOPlugin.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQImageIOPlugin_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQImageReader.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQImageTextKeyLang.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQImageWriter.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQInputContext.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQInputContext_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQInputContextFactory.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQInputContextPlugin.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQInputContextPlugin_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQInputDialog.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQInputDialog_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQInputEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQInputMethodEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQIntValidator.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQIntValidator_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQIODevice.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQIODevice_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQItemDelegate.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQItemDelegate_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQItemEditorCreatorBase.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQItemEditorFactory.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQItemSelection.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQItemSelectionModel.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQItemSelectionModel_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQItemSelectionRange.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQKeyEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQKeySequence.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLabel.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLabel_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLayout.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLayout_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLayoutItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLCDNumber.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLCDNumber_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLibrary.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLibrary_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLibraryInfo.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLine.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLinearGradient.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLineEdit.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLineEdit_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLineF.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQListView.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQListView_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQListWidget.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQListWidget_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQListWidgetItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLocale.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLocalServer.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLocalServer_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLocalSocket.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQLocalSocket_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMainWindow.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMainWindow_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMargins.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMatrix.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMatrix4x4.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMdiArea.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMdiArea_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMdiSubWindow.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMdiSubWindow_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMenu.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMenu_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMenuBar.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMenuBar_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMessageBox.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMessageBox_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMetaClassInfo.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMetaEnum.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMetaMethod.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMetaObject.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMetaProperty.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMetaType.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMimeData.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMimeData_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMimeSource.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQModelIndex.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMotifStyle.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMotifStyle_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMouseEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMoveEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMovie.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMovie_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQMutex.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQNetworkAccessManager.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQNetworkAccessManager_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQNetworkAddressEntry.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQNetworkCacheMetaData.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQNetworkCookie.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQNetworkCookieJar.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQNetworkCookieJar_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQNetworkDiskCache.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQNetworkDiskCache_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQNetworkInterface.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQNetworkProxy.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQNetworkProxyFactory.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQNetworkProxyQuery.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQNetworkReply.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQNetworkReply_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQNetworkRequest.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQObject.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQObject_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPageSetupDialog.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPaintDevice.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPaintEngine.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPaintEngineState.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPainter.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPainterPath.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPainterPathStroker.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPaintEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPalette.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPanGesture.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPanGesture_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPen.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPersistentModelIndex.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPicture.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPinchGesture.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPinchGesture_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPixmap.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPixmapCache.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPlainTextDocumentLayout.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPlainTextDocumentLayout_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPlainTextEdit.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPlainTextEdit_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPlastiqueStyle.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPlastiqueStyle_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPluginLoader.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPluginLoader_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPoint.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPointF.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPolygon.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPolygonF.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPrintDialog.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPrintDialog_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPrintEngine.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPrinter.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPrinterInfo.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPrintPreviewDialog.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPrintPreviewDialog_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPrintPreviewWidget.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPrintPreviewWidget_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQProcess.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQProcess_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQProcessEnvironment.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQProgressBar.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQProgressBar_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQProgressDialog.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQProgressDialog_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPushButton.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPushButton_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQQuaternion.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQRadialGradient.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQRadioButton.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQRadioButton_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQReadLocker.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQReadWriteLock.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQRect.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQRectF.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQRegExp.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQRegExpValidator.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQRegExpValidator_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQRegion.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQResizeEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQResource.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQRubberBand.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQRubberBand_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQScrollArea.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQScrollArea_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQScrollBar.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQScrollBar_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSemaphore.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSettings.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSettings_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQShortcut.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQShortcut_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQShortcutEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQShowEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSignalMapper.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSignalMapper_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSize.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSizeF.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSizeGrip.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSizeGrip_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSizePolicy.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSlider.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSlider_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSocketNotifier.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSocketNotifier_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSortFilterProxyModel.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSortFilterProxyModel_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSound.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSound_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSpacerItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSpinBox.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSpinBox_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSplashScreen.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSplashScreen_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSplitter.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSplitter_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSplitterHandle.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSplitterHandle_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSql.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlDatabase.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlDriver.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlDriver_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlDriverCreatorBase.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlError.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlField.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlIndex.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlQuery.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlQueryModel.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlQueryModel_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlRecord.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlRelation.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlRelationalTableModel.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlRelationalTableModel_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlResult.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlTableModel.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSqlTableModel_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStackedLayout.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStackedLayout_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStackedWidget.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStackedWidget_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStandardItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStandardItemModel.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStandardItemModel_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStatusBar.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStatusBar_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStatusTipEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStringListModel.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStringListModel_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStringMatcher.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyle.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyle_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyledItemDelegate.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyledItemDelegate_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleFactory.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleHintReturn.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleHintReturnMask.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleHintReturnVariant.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOption.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionButton.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionComboBox.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionComplex.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionDockWidget.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionFocusRect.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionFrame.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionFrameV2.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionFrameV3.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionGraphicsItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionGroupBox.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionHeader.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionMenuItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionProgressBar.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionProgressBarV2.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionQ3DockWindow.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionQ3ListView.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionQ3ListViewItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionRubberBand.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionSizeGrip.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionSlider.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionSpinBox.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionTab.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionTabBarBase.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionTabBarBaseV2.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionTabV2.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionTabV3.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionTabWidgetFrame.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionTitleBar.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionToolBar.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionToolBox.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionToolBoxV2.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionToolButton.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionViewItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionViewItemV2.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionViewItemV3.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStyleOptionViewItemV4.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStylePainter.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStylePlugin.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQStylePlugin_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSwipeGesture.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSwipeGesture_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSyntaxHighlighter.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSyntaxHighlighter_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSysInfo.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSystemLocale.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSystemTrayIcon.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSystemTrayIcon_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQt.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTabBar.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTabBar_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTabletEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTableView.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTableView_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTableWidget.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTableWidget_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTableWidgetItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTableWidgetSelectionRange.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTabWidget.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTabWidget_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQtAdditional.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTapAndHoldGesture.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTapAndHoldGesture_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTapGesture.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTapGesture_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQtBasic.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTcpServer.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTcpServer_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTcpSocket.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTcpSocket_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTemporaryFile.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTemporaryFile_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextBlock.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextBlockFormat.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextBlockGroup.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextBlockGroup_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextBlockUserData.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextBrowser.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextBrowser_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextCharFormat.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextCodec.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextCursor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextDecoder.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextDocument.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextDocument_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextDocumentFragment.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextDocumentWriter.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextEdit.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextEdit_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextEncoder.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextFormat.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextFragment.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextFrame.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextFrame_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextFrameFormat.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextImageFormat.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextInlineObject.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextLayout.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextLength.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextLine.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextList.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextList_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextListFormat.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextObject.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextObject_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextObjectInterface.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextOption.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextStream.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextTable.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextTable_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextTableCell.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextTableCellFormat.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextTableFormat.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQThread.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQThread_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTime.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTimeEdit.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTimeEdit_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTimeLine.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTimeLine_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTimer.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTimer_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTimerEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQToolBar.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQToolBar_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQToolBox.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQToolBox_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQToolButton.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQToolButton_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQToolTip.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTouchEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTouchEvent_TouchPoint.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTransform.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTranslator.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTranslator_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTreeView.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTreeView_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTreeWidget.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTreeWidget_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTreeWidgetItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTreeWidgetItemIterator.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQUdpSocket.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQUdpSocket_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQUndoCommand.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQUndoGroup.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQUndoGroup_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQUndoStack.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQUndoStack_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQUndoView.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQUndoView_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQUrl.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQUrlInfo.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQValidator.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQValidator_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQVariant.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQVBoxLayout.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQVBoxLayout_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQVector2D.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQVector3D.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQVector4D.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWaitCondition.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWhatsThis.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWhatsThisClickedEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWheelEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWidget.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWidget_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWidgetAction.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWidgetAction_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWidgetItem.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWindowsStyle.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWindowsStyle_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWindowStateChangeEvent.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWizard.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWizard_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWizardPage.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWizardPage_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQWriteLocker.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQXmlAttributes.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQXmlContentHandler.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQXmlDeclHandler.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQXmlDefaultHandler.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQXmlDTDHandler.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQXmlEntityResolver.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQXmlErrorHandler.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQXmlInputSource.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQXmlLexicalHandler.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQXmlLocator.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQXmlNamespaceSupport.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQXmlParseException.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQXmlReader.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQXmlSimpleReader.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQAbstractButton_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQAbstractItemDelegate_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQAbstractItemModel_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQAbstractItemView_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQAbstractListModel_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQAbstractNetworkCache_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQAbstractPrintDialog_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQAbstractProxyModel_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQAbstractScrollArea_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQAbstractSlider_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQAbstractSocket_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQAbstractSpinBox_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQAbstractTableModel_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQAbstractTextDocumentLayout_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQAction_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQActionGroup_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQApplication_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQBoxLayout_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQBuffer_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQButtonGroup_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQCalendarWidget_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQCDEStyle_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQCheckBox_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQCleanlooksStyle_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQClipboard_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQColorDialog_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQColumnView_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQComboBox_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQCommandLinkButton_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQCommonStyle_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQCompleter_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQCoreApplication_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQDataWidgetMapper_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQDateEdit_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQDateTimeEdit_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQDesktopWidget_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQDial_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQDialog_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQDialogButtonBox_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQDirModel_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQDockWidget_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQDoubleSpinBox_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQDoubleValidator_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQDrag_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQErrorMessage_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQEventLoop_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQFile_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQFileDialog_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQFileSystemModel_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQFileSystemWatcher_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQFocusFrame_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQFontComboBox_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQFontDialog_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQFormLayout_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQFrame_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQFtp_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGesture_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGraphicsAnchor_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGraphicsBlurEffect_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGraphicsColorizeEffect_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGraphicsDropShadowEffect_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGraphicsEffect_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGraphicsItemAnimation_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGraphicsObject_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGraphicsOpacityEffect_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGraphicsProxyWidget_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGraphicsRotation_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGraphicsScale_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGraphicsScene_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGraphicsTextItem_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGraphicsTransform_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGraphicsView_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGraphicsWidget_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGridLayout_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQGroupBox_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQHBoxLayout_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQHeaderView_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQIconEnginePlugin_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQIconEnginePluginV2_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQImageIOPlugin_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQInputContext_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQInputContextPlugin_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQInputDialog_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQIntValidator_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQIODevice_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQItemDelegate_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQItemSelectionModel_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQLabel_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQLayout_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQLCDNumber_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQLibrary_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQLineEdit_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQListView_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQListWidget_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQLocalServer_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQLocalSocket_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQMainWindow_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQMdiArea_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQMdiSubWindow_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQMenu_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQMenuBar_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQMessageBox_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQMimeData_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQMotifStyle_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQMovie_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQNetworkAccessManager_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQNetworkCookieJar_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQNetworkDiskCache_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQNetworkReply_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQObject_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQPanGesture_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQPinchGesture_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQPlainTextDocumentLayout_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQPlainTextEdit_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQPlastiqueStyle_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQPluginLoader_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQPrintDialog_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQPrintPreviewDialog_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQPrintPreviewWidget_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQProcess_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQProgressBar_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQProgressDialog_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQPushButton_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQRadioButton_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQRegExpValidator_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQRubberBand_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQScrollArea_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQScrollBar_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSettings_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQShortcut_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSignalMapper_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSizeGrip_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSlider_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSocketNotifier_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSortFilterProxyModel_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSound_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSpinBox_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSplashScreen_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSplitter_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSplitterHandle_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSqlDriver_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSqlQueryModel_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSqlRelationalTableModel_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSqlTableModel_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQStackedLayout_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQStackedWidget_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQStandardItemModel_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQStatusBar_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQStringListModel_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQStyle_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQStyledItemDelegate_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQStylePlugin_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSwipeGesture_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSyntaxHighlighter_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSystemTrayIcon_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTabBar_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTableView_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTableWidget_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTabWidget_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTapAndHoldGesture_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTapGesture_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTcpServer_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTcpSocket_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTemporaryFile_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTextBlockGroup_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTextBrowser_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTextDocument_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTextEdit_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTextFrame_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTextList_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTextObject_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTextTable_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQThread_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTimeEdit_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTimeLine_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTimer_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQToolBar_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQToolBox_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQToolButton_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTranslator_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTreeView_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQTreeWidget_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQUdpSocket_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQUndoGroup_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQUndoStack_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQUndoView_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQValidator_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQVBoxLayout_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQWidget_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQWidgetAction_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQWindowsStyle_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQWizard_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQWizardPage_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSsl.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSslCertificate.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSslCipher.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSslConfiguration.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSslError.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSslKey.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSslSocket.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQSslSocket_EventAdaptor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gsiDeclQSslSocket_EventAdaptor.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractTextDocumentLayout_PaintContext.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextOption_Tab.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQInputMethodEvent_Attribute.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQPainterPath_Element.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextCodec_ConverterState.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextEdit_ExtraSelection.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextLayout_FormatRange.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbRegion.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbRecursiveShapeIterator.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbEdges.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbEdgePairs.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbEdgePair.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbTilingProcessor.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclLayMacro.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclDbLayerMapping.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextFrame_iterator.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQTextBlock_iterator.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiDeclQAbstractTextDocumentLayout_Selection.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiExternalMain.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="gsiDeclQWizard_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQWindowsStyle_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQWidgetAction_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQWidget_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQVBoxLayout_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQValidator_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQUndoView_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQUndoStack_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQUndoGroup_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQUdpSocket_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTreeWidget_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTreeView_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTranslator_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQToolButton_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQToolBox_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQToolBar_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTimer_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTimeLine_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTimeEdit_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQThread_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTextTable_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTextObject_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTextList_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTextFrame_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTextEdit_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTextDocument_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTextBrowser_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTextBlockGroup_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTemporaryFile_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTcpSocket_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTcpServer_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTapGesture_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTapAndHoldGesture_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTabWidget_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTableWidget_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTableView_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQTabBar_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSystemTrayIcon_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSyntaxHighlighter_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSwipeGesture_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQStylePlugin_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQStyledItemDelegate_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQStyle_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQStringListModel_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQStatusBar_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQStandardItemModel_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQStackedWidget_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQStackedLayout_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSslSocket_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSqlTableModel_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSqlRelationalTableModel_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSqlQueryModel_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSqlDriver_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSplitterHandle_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSplitter_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSplashScreen_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSpinBox_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSound_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSortFilterProxyModel_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSocketNotifier_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSlider_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSizeGrip_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSignalMapper_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQShortcut_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQSettings_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQScrollBar_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQScrollArea_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQRubberBand_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQRegExpValidator_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQRadioButton_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQPushButton_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQProgressDialog_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQProgressBar_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQProcess_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQPrintPreviewWidget_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQPrintPreviewDialog_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQPrintDialog_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQPluginLoader_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQPlastiqueStyle_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQPlainTextEdit_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQPlainTextDocumentLayout_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQPinchGesture_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQPanGesture_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQObject_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQNetworkReply_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQNetworkDiskCache_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQNetworkCookieJar_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQNetworkAccessManager_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQMovie_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQMotifStyle_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQMimeData_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQMessageBox_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQMenuBar_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQMenu_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQMdiSubWindow_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQMdiArea_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQMainWindow_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQLocalSocket_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQLocalServer_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQListWidget_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQListView_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQLineEdit_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQLibrary_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQLCDNumber_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQLayout_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQLabel_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQItemSelectionModel_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQItemDelegate_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQIODevice_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQIntValidator_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQInputDialog_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQInputContextPlugin_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQInputContext_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQImageIOPlugin_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQIconEnginePluginV2_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQIconEnginePlugin_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQHeaderView_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQHBoxLayout_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGroupBox_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGridLayout_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGraphicsWidget_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGraphicsView_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGraphicsTransform_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGraphicsTextItem_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGraphicsScene_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGraphicsScale_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGraphicsRotation_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGraphicsProxyWidget_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGraphicsOpacityEffect_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGraphicsObject_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGraphicsItemAnimation_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGraphicsEffect_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGraphicsDropShadowEffect_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGraphicsColorizeEffect_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGraphicsBlurEffect_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGraphicsAnchor_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQGesture_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQFtp_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQFrame_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQFormLayout_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQFontDialog_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQFontComboBox_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQFocusFrame_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQFileSystemWatcher_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQFileSystemModel_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQFileDialog_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQFile_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQEventLoop_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQErrorMessage_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQDrag_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQDoubleValidator_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQDoubleSpinBox_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQDockWidget_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQDirModel_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQDialogButtonBox_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQDialog_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQDial_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQDesktopWidget_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQDateTimeEdit_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQDateEdit_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQDataWidgetMapper_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQCoreApplication_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQCompleter_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQCommonStyle_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQCommandLinkButton_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQComboBox_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQColumnView_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQColorDialog_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQClipboard_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQCleanlooksStyle_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQCheckBox_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQCDEStyle_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQCalendarWidget_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQButtonGroup_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQBuffer_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQBoxLayout_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQApplication_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQActionGroup_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQAction_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQAbstractTextDocumentLayout_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQAbstractTableModel_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQAbstractSpinBox_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQAbstractSocket_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQAbstractSlider_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQAbstractScrollArea_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQAbstractProxyModel_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQAbstractPrintDialog_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQAbstractNetworkCache_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQAbstractListModel_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQAbstractItemView_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQAbstractItemModel_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQAbstractItemDelegate_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQAbstractButton_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gsiDeclQWizardPage_EventAdaptor.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

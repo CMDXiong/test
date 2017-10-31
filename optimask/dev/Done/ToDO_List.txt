@@ -1,0 +1,45 @@
+ToDolist
+
+--------------------------------------------------------------
+To Do 20160226
+--------------------------------------------------------------
+a.	(iii) basic shapes and coordinates; 
+b.	Cell Structure
+c.	版图主视图区（需要允许多窗口）
+d.	数据结构，及自定义结构。
+
+--------------------------------------------------------------
+Working in progress 20160212
+--------------------------------------------------------------
+  Henghua: finish Doc for Requirement ( Layer Panel / Palette)
+      * 构层面板（Layer Panel）：主要是构层的列表。打开GDSII文档后可以准确更新构层列表。
+      * 构层配置(色板,格纹,动画,样式,能见度)
+
+  2. Students: GitLab / SmartGit use; Download New Optimask Version, and start on this Version.
+      准备和讲解Document（Deng Henghua / Docs： SmartGIT使用笔记.doc），郎量 2017-02-13
+      建一个练习项目，郎量 2017-02-13
+      答疑， 邓恒华 on demand
+
+  3. 完成代码：Coding Layer Panel/ Palette complete
+      在layertoolbox.cpp（.h）中分别调用
+      #include "./Layer/laycolorpalette.h" //构层色板(Layer Palette)
+      //CHECK!! 可能需要创建再包含这些头文件!! 可多个合并，视情况而优化。
+      //#include "./Layer/laypattern.h"      //构层格纹(Stipple, Pattern)
+      //#include "./Layer/layanimation.h"    //构层动画(Animation)
+      //#include "./Layer/laystyle.h"        //构层样式(Style)
+      //#include "./Layer/layvisibility.h"   //构层能见度(Visibility)
+
+  4. GDSII R/W
+     提供标准样本。比较KLayout和L-Edit打开后的显示结果。
+
+  5. Cell Structure 
+  6. 版图主视图区（需要允许多窗口）
+
+--------------------------------------------------------------
+To Do 20160212
+--------------------------------------------------------------
+  1. Henghua: finish Doc for Requirement
+  2. Students: GitLab / SmartGit use; Download New Optimask Version, and start on this Version.
+  3. Layer Panel/ Palette complete
+  4. GDSII R/W
+  5.

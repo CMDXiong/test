@@ -1,0 +1,17 @@
+2000-10-20  Norman Walsh  <ndw@nwalsh.com>
+
+	* book.xsl: Documentation updates
+
+2000-10-19  Norman Walsh  <ndw@nwalsh.com>
+
+	* Makefile, book.xsl, jrefhtml.xsl, reference.xsl: Documentation changes
+
+2000-10-17  Norman Walsh  <ndw@nwalsh.com>
+
+	* .cvsignore, Makefile, jrefhtml.xsl, reference.css, reference.xsl: 
+	Documentation system updates
+
+2000-10-16  Norman Walsh  <ndw@nwalsh.com>
+
+	* Makefile: New file.
+

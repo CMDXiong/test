@@ -1,0 +1,907 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class LayerPropertiesDialog"
+>
+
+<META-DATA>
+	<NAME>LayerPropertiesDialog</NAME>
+	<AUTHOR>Mollien J.C.</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Tue Oct 26 11:56:29 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>wxwin.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>mainwin.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>lsetup.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>misc.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>chandbas.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>lpdsizes.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>windrv.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>patdlg.h"</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>layprops.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> Class LayerProperties. This class is used to show a layerproperties dialog, in which the layernames, layernumber, visibility, select/read, fillcolour, border, pattern and mapping can be set.</PARA>
+</DESCRIPTION>
+
+<INHERITANCE>
+	<PARENT-CLASS
+		SCOPE="public"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>wxFrame</NAME>
+	</PARENT-CLASS>
+</INHERITANCE>
+
+
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="LayerPropertiesDialog(GDSMainWindow* parent,char* title,int x,int y,int width,int height,long style =0 ,char* name = &amp;&amp;QUOTDLayer_Properties_Dialog&amp;&amp;QUOTD)"
+		INLINE="NO"
+	>
+		<NAME>LayerPropertiesDialog</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Constructor.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~LayerPropertiesDialog()"
+		INLINE="NO"
+	>
+		<NAME>~LayerPropertiesDialog</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Destructor.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Setup* "
+		DECLARATION="Setup* Get_New_Setup()"
+		INLINE="NO"
+	>
+		<NAME>Get_New_Setup</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Redraw()"
+		INLINE="NO"
+	>
+		<NAME>Redraw</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Redraw layout.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	FillControls(int start)"
+		INLINE="NO"
+	>
+		<NAME>FillControls</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Set control properties.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	StoreControls(int start)"
+		INLINE="NO"
+	>
+		<NAME>StoreControls</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Store control settings.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetupWindow(Setup* prev_setup)"
+		INLINE="NO"
+	>
+		<NAME>SetupWindow</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Windows initialisarion.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void CmOk()"
+		INLINE="NO"
+	>
+		<NAME>CmOk</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Close window if OK-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void CmCancel()"
+		INLINE="NO"
+	>
+		<NAME>CmCancel</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Close window if CANCEL-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void CmHide()"
+		INLINE="NO"
+	>
+		<NAME>CmHide</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Hide window if HIDE-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void CmRead()"
+		INLINE="NO"
+	>
+		<NAME>CmRead</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Set read properties.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void CmPrev()"
+		INLINE="NO"
+	>
+		<NAME>CmPrev</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Go to previous set of layers if PREVIOUS-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void CmNext()"
+		INLINE="NO"
+	>
+		<NAME>CmNext</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Go to next set of layers if NEXT-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmSelect()"
+		INLINE="NO"
+	>
+		<NAME>CmSelect</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Select layer.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Cm_B_BitB(wxEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>Cm_B_BitB</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Cm_F_BitB(wxEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>Cm_F_BitB</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> </PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Cm_P_BitB(wxEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>Cm_P_BitB</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="wxColour* "
+		DECLARATION="wxColour* ltowxc(long colour)"
+		INLINE="NO"
+	>
+		<NAME>ltowxc</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="long "
+		DECLARATION="long wxctol(wxColour colour)"
+		INLINE="NO"
+	>
+		<NAME>wxctol</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DECLARE_EVENT_TABLE()"
+		INLINE="NO"
+	>
+		<NAME>DECLARE_EVENT_TABLE</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Declare used events.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Setup*	"
+		DECLARATION="Setup*	_prev_setup"
+	>
+		<NAME>_prev_setup</NAME>
+		<DESCRIPTION>
+			<PARA> pointer to the setup.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Setup*	"
+		DECLARATION="Setup*	_setup"
+	>
+		<NAME>_setup</NAME>
+		<DESCRIPTION>
+			<PARA> pointer to the setup.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	_startvalue"
+	>
+		<NAME>_startvalue</NAME>
+		<DESCRIPTION>
+			<PARA> will increase or decrease with 10 (ten layers on the screen).</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_buttonOK"
+	>
+		<NAME>_buttonOK</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_buttonCANCEL"
+	>
+		<NAME>_buttonCANCEL</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_buttonHIDE"
+	>
+		<NAME>_buttonHIDE</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_buttonREAD"
+	>
+		<NAME>_buttonREAD</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_buttonSELECT"
+	>
+		<NAME>_buttonSELECT</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_buttonPREV"
+	>
+		<NAME>_buttonPREV</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_buttonNEXT"
+	>
+		<NAME>_buttonNEXT</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="GDSMainWindow*	"
+		DECLARATION="GDSMainWindow*	_parent"
+	>
+		<NAME>_parent</NAME>
+		<DESCRIPTION>
+			<PARA> Pointer to mainwindow.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxPanel*	"
+		DECLARATION="wxPanel*	_panel1"
+	>
+		<NAME>_panel1</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticBox* "
+		DECLARATION="wxStaticBox* _groupbox1"
+	>
+		<NAME>_groupbox1</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticText*	"
+		DECLARATION="wxStaticText*	_numberbox[10]"
+	>
+		<NAME>_numberbox[10]</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, layer number edit control.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxTextCtrl*	"
+		DECLARATION="wxTextCtrl*	_namebox[10]"
+	>
+		<NAME>_namebox[10]</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, layer name edit control.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxCheckBox*	"
+		DECLARATION="wxCheckBox*	_availablebox[10]"
+	>
+		<NAME>_availablebox[10]</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, layer available checkbox control.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxCheckBox*	"
+		DECLARATION="wxCheckBox*	_visiblebox[10]"
+	>
+		<NAME>_visiblebox[10]</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, layer visible checkbox control.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxCheckBox*	"
+		DECLARATION="wxCheckBox*	_selectablebox[10]"
+	>
+		<NAME>_selectablebox[10]</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, layer selectable checkbox control.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxCheckBox*	"
+		DECLARATION="wxCheckBox*	_readlayerbox[10]"
+	>
+		<NAME>_readlayerbox[10]</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, layer readlayer checkbox control.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxBitmapButton* "
+		DECLARATION="wxBitmapButton* _fillbut[10]"
+	>
+		<NAME>_fillbut[10]</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, layer fill color buttons.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxBitmapButton* "
+		DECLARATION="wxBitmapButton* _borderbut[10]"
+	>
+		<NAME>_borderbut[10]</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, layer border color buttons.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxBitmapButton* "
+		DECLARATION="wxBitmapButton* _patternbut[10]"
+	>
+		<NAME>_patternbut[10]</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, layer pattern color buttons.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxTextCtrl*	"
+		DECLARATION="wxTextCtrl*	_gdsinmap[10]"
+	>
+		<NAME>_gdsinmap[10]</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, mapping for gds in.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxTextCtrl*	"
+		DECLARATION="wxTextCtrl*	_gdsoutmap[10]"
+	>
+		<NAME>_gdsoutmap[10]</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, mapping for gds out.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticText*	"
+		DECLARATION="wxStaticText*	_numberlabel"
+	>
+		<NAME>_numberlabel</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticText*	"
+		DECLARATION="wxStaticText*	_namelabel"
+	>
+		<NAME>_namelabel</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticText*	"
+		DECLARATION="wxStaticText*	_availablelabel"
+	>
+		<NAME>_availablelabel</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticText*	"
+		DECLARATION="wxStaticText*	_visiblelabel"
+	>
+		<NAME>_visiblelabel</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticText*	"
+		DECLARATION="wxStaticText*	_selectablelabel"
+	>
+		<NAME>_selectablelabel</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticText*	"
+		DECLARATION="wxStaticText*	_readlayerlabel"
+	>
+		<NAME>_readlayerlabel</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticText*	"
+		DECLARATION="wxStaticText*	_filllabel"
+	>
+		<NAME>_filllabel</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticText*	"
+		DECLARATION="wxStaticText*	_borderlabel"
+	>
+		<NAME>_borderlabel</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticText*	"
+		DECLARATION="wxStaticText*	_patternlabel"
+	>
+		<NAME>_patternlabel</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticText*	"
+		DECLARATION="wxStaticText*	_mappinglabel"
+	>
+		<NAME>_mappinglabel</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxBitmap* "
+		DECLARATION="wxBitmap* _f_bitm[10]"
+	>
+		<NAME>_f_bitm[10]</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxBitmap* "
+		DECLARATION="wxBitmap* _b_bitm[10]"
+	>
+		<NAME>_b_bitm[10]</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxBitmap* "
+		DECLARATION="wxBitmap* _p_bitm[10]"
+	>
+		<NAME>_p_bitm[10]</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="PatternDialog* "
+		DECLARATION="PatternDialog* _patternDialog"
+	>
+		<NAME>_patternDialog</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxBrush*	"
+		DECLARATION="wxBrush*	_brush"
+	>
+		<NAME>_brush</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, the brush.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxColourData* "
+		DECLARATION="wxColourData* _cdata"
+	>
+		<NAME>_cdata</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, to help construct the colour dialog.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxColourDialog* "
+		DECLARATION="wxColourDialog* _cd"
+	>
+		<NAME>_cd</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class, the colour dialog.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

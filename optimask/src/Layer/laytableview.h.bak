@@ -1,0 +1,24 @@
+#ifndef LAYTABLEVIEW
+#define LAYTABLEVIEW
+#include <QTableView>
+#include"laytablemodel.h"
+#include"./Draw/gdsdocument.h"
+class CGdsDocument;
+class LayTableView:public QTableView
+{
+    Q_OBJECT
+public:
+  explicit LayTableView();
+  void SetGdsDocument(CGdsDocument* doc);
+  CGdsDocument* GetGdsDocument()const;
+  //void ​sortByColumn(int column);//按列排序
+  void SetModeData();//设置对应model所需要的数据
+private:
+  LayTableModel *tableModel;//声明一个model对象
+  CGdsDocument *gdsdoc;
+  //int flagsort;//排序标志位，默认为0，当为0时，升序，为1降序
+};
+
+
+#endif // LAYTABLEVIEW
+

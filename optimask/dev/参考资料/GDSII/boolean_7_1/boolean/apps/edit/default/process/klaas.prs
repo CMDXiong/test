@@ -1,0 +1,12 @@
+# Process file for GDS-II postprocessing tool
+# Copyright 1998 Hollandse Signaal Apparaten
+
+record  @{processfile}
+loadfile  @{gdsroot}/default/data/bignext.cal gds-ii
+startpoint  0.000000 0.000000
+group_a 00 False
+group_b empty
+destination 00
+merge
+askfile {Save as KEY file} SAVE {*.key} @{file_path} key curfile
+savefile  @{curfile} key

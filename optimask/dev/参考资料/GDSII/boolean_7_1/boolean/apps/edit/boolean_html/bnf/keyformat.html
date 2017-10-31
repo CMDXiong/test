@@ -1,0 +1,1757 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (WinNT; I) [Netscape]">
+   <TITLE> CHAPTER 1 GDSII format </TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#66FFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><B><FONT COLOR="#FFFF00"><FONT SIZE=+3>KEY format</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><B><FONT COLOR="#FFFF00"><FONT SIZE=+1>INDEX</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+&nbsp;
+<OL>
+<LI>
+<I><A HREF="keyformat.html#intro">introduction</A></I></LI>
+
+<LI>
+<I><A HREF="keyformat.html#bnfforms">bachus nauer forms</A></I></LI>
+
+<LI>
+<I><A HREF="keyformat.html#GDSBNF">KEY BNF</A></I></LI>
+
+<LI>
+<I><A HREF="keyformat.html#recordheader">Records</A></I></LI>
+
+<LI>
+<I><A HREF="keyformat.html#recordover">record types overview</A></I></LI>
+
+<LI>
+<I><A HREF="keyformat.html#recordtypes">record types description</A></I></LI>
+
+<LI>
+<I><A HREF="#example">example file</A></I></LI>
+</OL>
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><A NAME="example"></A><B><FONT COLOR="#FFFF00"><FONT SIZE=+1>example</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+<A HREF="example.gif"><IMG SRC="example3.gif" BORDER=3 HEIGHT=511 WIDTH=750></A>
+<BR>&nbsp;
+<BR>&nbsp;
+<OL>
+<LI>
+<A HREF="example3.html#keyfile">KEYformat file example</A></LI>
+
+<LI>
+<A HREF="example3.key">KEYfile</A></LI>
+</OL>
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><A NAME="intro"></A><B><FONT COLOR="#FFFF00"><FONT SIZE=+1>introduction</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+The key format was designed to be an highly compatible format with GDSII.
+It is completely ASCII oriented. It supports all primitives that the GDSII
+format supports. Next to PATH, BOUNDARY, TEXT, BOX, SREF, AREF it supports
+more primitives like CIRCLE and ARC, BOUNDARIE’S AND PATH’S containing
+ARCSEGMENTS. The last is very important, since it offers a way to descibe
+(closed)contours with line and arc segments at the same time. The elements
+PATH, BOUNDARY, BOX, CIRCLE, ARC can have a WIDTH parameter added.
+<BR>The number of Vertexes for BOUNDARY and PATH elements is unlimited.
+
+<P>The KEY format is a file format for transfering/archiving 2D graphical
+design data. It contains a hiearchy of structures, each structure containing
+elements (boundary/polygon, path/polyline, text, box, circle, arc, structure
+references, structure array references).
+<BR>The elements are situated on layers within a structure.
+<BR>The file is composed of&nbsp; (two or one word) records seperated by
+endofline or ";".
+<BR>The order of the record needs to be according to the KEY BNF, because
+of this strict organization it is easy to parse.
+<BR>It is possible to convert KEYformat&nbsp; to GDSIIformat and back.
+New primitives not available in the GDSII format, will be converted.
+
+<P>Note: records in GDSII that are badly documented or old fashioned and
+therefore hardly used are not implemented.
+<BR>&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><A NAME="bnfforms"></A><B><FONT COLOR="#FFFF00"><FONT SIZE=+1>Bachus
+Nauer Forms</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+The Bachus Nauer Form uses the following symbols:
+<TABLE BORDER=3 BGCOLOR="#FF99FF" >
+<TR BGCOLOR="#CC66CC">
+<TH>Symbol Name</TH>
+
+<TH>Symbol</TH>
+
+<TH>Meaning</TH>
+</TR>
+
+<TR>
+<TD>Double Colon</TD>
+
+<TD>::</TD>
+
+<TD>"Is composed of."</TD>
+</TR>
+
+<TR>
+<TD>Square brackets</TD>
+
+<TD>[ ]</TD>
+
+<TD>An element which can occor zero or one time.</TD>
+</TR>
+
+<TR>
+<TD>Braces</TD>
+
+<TD>{ }</TD>
+
+<TD>Choose one of the elements within the braces.</TD>
+</TR>
+
+<TR>
+<TD>Braces with an asteriks</TD>
+
+<TD>{ }*</TD>
+
+<TD>The elements within the braces can occur zero or more times.</TD>
+</TR>
+
+<TR>
+<TD>Braces with a plus</TD>
+
+<TD>{ }+</TD>
+
+<TD>The elements within braces must occur one or more times.</TD>
+</TR>
+
+<TR>
+<TD>Angle brackets</TD>
+
+<TD>&lt; ></TD>
+
+<TD>These elements are further defined as a seperate entitie in the syntax
+list.</TD>
+</TR>
+
+<TR>
+<TD>Vertical bar</TD>
+
+<TD>|</TD>
+
+<TD>Or</TD>
+</TR>
+</TABLE>
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><A NAME="GDSBNF"></A><FONT COLOR="#FFFF00"><FONT SIZE=+1>KEY BNF</FONT></FONT></TD>
+</TR>
+</TABLE>
+The following is the Bachus Naur Form of the KEY format, the words in capital
+are the names of <I><A HREF="keyformat.html#recordover">RECORDS</A></I>
+<TABLE BORDER=3 CELLSPACING=0 CELLPADDING=0 COLS=3 WIDTH="88%" BGCOLOR="#FF99FF" >
+<TR>
+<TD WIDTH="10%">&lt;KEY format></TD>
+
+<TD WIDTH="2%">::=</TD>
+
+<TD><A HREF="#rec_header">HEADER</A>&nbsp;&nbsp; &lt;library> <A HREF="#rec_endlib">ENDLIB</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;bgnlib></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_bgnlib">BGNLIB</A> <A HREF="#rec_lastmod">LASTMOD</A>
+<A HREF="#rec_lastacc">LASTACC</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;library></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_libname">LIBNAME</A> &lt;units> {&lt;Structure>}* <A HREF="#rec_endlib">ENDLIB</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;units></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_units">UNITS</A> <A HREF="#rec_userunits">USERUNITS</A>
+<A HREF="#rec_physunits">PHYSUNITS</A>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD>&lt;structure></TD>
+
+<TD>::=</TD>
+
+<TD>&lt;bgnstr> <A HREF="#rec_strname">STRNAME</A> {&lt;element>}* <A HREF="#rec_endstr">ENDSTR</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;bgnstr></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_bgnstr">BGNSTR</A> <A HREF="#rec_creation">CREATION</A>
+<A HREF="#rec_lastmod">LASTMOD</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;element></TD>
+
+<TD>::=</TD>
+
+<TD>{&lt;boundary> | &lt;path> | &lt;sref> | &lt;aref> | &lt;text> | &lt;node>
+| &lt;box>| &lt;arc> | &lt;circle>} {&lt;property>}* <A HREF="#rec_endel">ENDEL</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;boundary></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_boundary">BOUNDARY</A> [<A HREF="#rec_elflags">ELFLAGS</A>]
+[<A HREF="#rec_plex">PLEX</A>] <A HREF="#rec_layer">LAYER</A> <A HREF="#rec_datatype">DATATYPE</A>
+[<A HREF="#rec_width">WIDTH</A>] <A HREF="#rec_xy">XY</A> {<A HREF="#rec_x">X</A>
+<A HREF="#rec_y">Y</A> [ <A HREF="#rec_xm">Xm</A> <A HREF="#rec_ym">Ym</A>
+<A HREF="#rec_xo">X0</A> <A HREF="#rec_yo">Y0 </A>]}+ <A HREF="#rec_x">X</A>
+<A HREF="#rec_y">Y</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;path></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_path">PATH</A> [<A HREF="#rec_elflags">ELFLAGS</A>] <A HREF="#rec_layer">LAYER</A>
+<A HREF="#rec_datatype">DATATYPE</A> [<A HREF="#rec_pathtype">PATHTYPE</A>][<A HREF="#rec_width">WIDTH</A>]
+<A HREF="#rec_xy">XY</A> {<A HREF="#rec_x">X</A> <A HREF="#rec_y">Y</A>
+[ <A HREF="#rec_xm">Xm</A> <A HREF="#rec_ym">Ym</A> <A HREF="#rec_xo">X0</A>
+<A HREF="#rec_yo">Y0</A> ]}+ <A HREF="#rec_x">X</A> <A HREF="#rec_y">Y</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;sref></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_sref">SREF</A> [<A HREF="#rec_elflags">ELFLAGS</A>] <A HREF="#rec_sname">SNAME</A>
+[&lt;strans>] <A HREF="#rec_xy">XY</A> <A HREF="#rec_x">X</A> <A HREF="#rec_y">Y</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;aref></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_aref">AREF</A> [<A HREF="#rec_elflags">ELFLAGS</A>] <A HREF="#rec_sname">SNAME</A>
+[&lt;strans>] <A HREF="#rec_colrow">COLROW</A> <A HREF="#rec_xy">XY</A>
+<A HREF="#rec_x">X</A> <A HREF="#rec_y">Y</A>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD>&lt;text></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_text">TEXT</A> [<A HREF="#rec_elflags">ELFLAGS</A>] <A HREF="#rec_layer">LAYER</A>&nbsp;
+&lt;textbody></TD>
+</TR>
+
+<TR>
+<TD>&lt;node></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_node">NODE</A> [<A HREF="#rec_elflags">ELFLAGS</A>] <A HREF="#rec_layer">LAYER
+</A><A HREF="#rec_nodetype">NODETYPE</A> [<A HREF="#rec_width">WIDTH</A>]&nbsp;
+<A HREF="#rec_xy">XY</A> <A HREF="#rec_x">X</A> <A HREF="#rec_y">Y</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;box></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_box">BOX</A> [<A HREF="#rec_elflags">ELFLAGS</A>]&nbsp;
+<A HREF="#rec_layer">LAYER</A> [<A HREF="#rec_width">WIDTH</A>] <A HREF="#rec_boxtype">BOXTYPE</A>
+<A HREF="#rec_xy">XY</A>&nbsp;
+<BR><A HREF="#rec_x">X</A> <A HREF="#rec_y">Y</A> <A HREF="#rec_x">X</A>
+<A HREF="#rec_y">Y</A> <A HREF="#rec_x">X</A> <A HREF="#rec_y">Y</A>&nbsp;
+<A HREF="#rec_x">X</A> <A HREF="#rec_y">Y</A> <A HREF="#rec_x">X</A> <A HREF="#rec_y">Y</A>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD>&lt;arc></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_arc">ARC</A> [<A HREF="#rec_elflags">ELFLAGS</A>] <A HREF="#rec_layer">LAYER</A>
+[<A HREF="#rec_datatype">DATATYPE</A>]&nbsp; [<A HREF="#rec_width">WIDTH</A>]
+<A HREF="#rec_xy">XY</A>&nbsp; <A HREF="#rec_x">X</A> <A HREF="#rec_y">Y</A>
+<A HREF="#rec_xm">Xm</A> <A HREF="#rec_ym">Ym</A> <A HREF="#rec_xo">X0</A>
+<A HREF="#rec_yo">Y0</A>&nbsp; <A HREF="#rec_x">X</A> <A HREF="#rec_y">Y</A>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD>&lt;circle></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_circle">CIRCLE</A> [<A HREF="#rec_elflags">ELFLAGS</A>]&nbsp;
+<A HREF="#rec_layer">LAYER</A> [<A HREF="#rec_datatype">DATATYPE</A>]&nbsp;
+[<A HREF="#rec_width">WIDTH</A>] <A HREF="#rec_xy">XY</A> <A HREF="#rec_x">X</A>
+<A HREF="#rec_y">Y</A> <A HREF="#rec_radius">RADIUS</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;textbody></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_texttype">TEXTYPE</A> [<A HREF="#rec_presentation">PRESENTATION</A>]
+[<A HREF="#rec_pathtype">PATHTYPE</A>] [<A HREF="#rec_width">WIDTH</A>]
+[&lt;strans>] <A HREF="#rec_xy">XY</A>&nbsp; <A HREF="#rec_x">X</A> <A HREF="#rec_y">Y</A>
+<A HREF="#rec_string">STRING</A></TD>
+</TR>
+
+<TR>
+<TD>&lt;strans></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_strans">STRANS</A> [<A HREF="#rec_mag">MAG</A>] [<A HREF="#rec_angle">ANGLE</A>]</TD>
+</TR>
+
+<TR>
+<TD>&lt;property></TD>
+
+<TD>::=</TD>
+
+<TD><A HREF="#rec_property">PROPERTY</A> <A HREF="#rec_propvalue">PROPTYPE</A>
+<A HREF="#rec_propvalue">PROPVALUE</A></TD>
+</TR>
+</TABLE>
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><A NAME="recordheader"></A><B><FONT COLOR="#FFFF00"><FONT SIZE=+1>record</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+A record in a KEYfile is always&nbsp; one or two words. The first word
+is the name of the record, the second if given, contains the information
+for the record. Records are seperated by endofline or ";". Records starting
+with "#", are seen as comments, and ignored. Lines ending with "\" continue
+on the next line. Although the second word is also an ASCII string, the
+interpretation of the data is defined for the recordname which is fixed.
+<BR>&nbsp;
+<BR><B><FONT SIZE=+1>Record Parser BNF</FONT></B>
+<BR>&nbsp;
+<TABLE BORDER=3 COLS=3 BGCOLOR="#FF99FF" >
+<TR>
+<TD WIDTH="150">&lt;records></TD>
+
+<TD WIDTH="20">::=</TD>
+
+<TD WIDTH="550">[&lt;blanks>] { { &lt;record> }* }</TD>
+</TR>
+
+<TR>
+<TD>&lt;record></TD>
+
+<TD>::=</TD>
+
+<TD>[&lt;blanks>] {&lt;comment> |&nbsp; &lt;word> &lt;blanks> [&lt;word>]
+&lt;blanks> &lt;endrecord> }*</TD>
+</TR>
+
+<TR>
+<TD>&lt;endrecord></TD>
+
+<TD>::=</TD>
+
+<TD>{';' | '\n' | '\0' }</TD>
+</TR>
+
+<TR>
+<TD>&lt;word></TD>
+
+<TD>::=</TD>
+
+<TD>{ &lt;quotedstring> | &lt;bracedstring> | &lt;multipartword> }</TD>
+</TR>
+
+<TR>
+<TD>&lt;quotedstring></TD>
+
+<TD>::=</TD>
+
+<TD>&nbsp;('"') {CHAR | '\"' | '\\n' | aliasref | envref }* ('"')</TD>
+</TR>
+
+<TR>
+<TD>&lt;bracedstring></TD>
+
+<TD>::=</TD>
+
+<TD>('{') {CHAR | '\{' | '\}' | '\\n'}* ('}')</TD>
+</TR>
+
+<TR>
+<TD>&lt;multipartword></TD>
+
+<TD>::=</TD>
+
+<TD>{ &lt;aliasref> | &lt;envref> | {CHAR | '\\n'}* }*</TD>
+</TR>
+
+<TR>
+<TD>&lt;aliasref></TD>
+
+<TD>::=</TD>
+
+<TD>('%') { &lt;name> &lt;blank> | ('{') &lt;name> ('}') }</TD>
+</TR>
+
+<TR>
+<TD>&lt;envref>&nbsp;</TD>
+
+<TD>::=</TD>
+
+<TD>('$') { &lt;name> &lt;blank> | ('{') &lt;name> ('}') }</TD>
+</TR>
+
+<TR>
+<TD>&lt;name></TD>
+
+<TD>::=</TD>
+
+<TD>{ LETTER | DIGIT | UNDERSCORE | MINUS }*</TD>
+</TR>
+
+<TR>
+<TD>&lt;blanks></TD>
+
+<TD>::=</TD>
+
+<TD>{ TAB | SPACE | '\\n'}*</TD>
+</TR>
+
+<TR>
+<TD>&lt;comment>&nbsp;</TD>
+
+<TD>::=</TD>
+
+<TD># {CHAR}* ('\0')</TD>
+</TR>
+</TABLE>
+<B><FONT SIZE=+1>Examples of records</FONT></B>
+
+<P>One word records:
+<UL>
+<LI>
+BOUNDARY</LI>
+
+<LI>
+ENDEL;</LI>
+</UL>
+Two word records:
+<UL>
+<LI>
+LASTMOD&nbsp; {98-7-20&nbsp; 14:46:14};</LI>
+
+<LI>
+STRNAME LAYOUT;</LI>
+
+<LI>
+PRESENTATION 0,2,0;</LI>
+
+<LI>
+Y&nbsp;&nbsp;&nbsp;&nbsp; -1666000.000;</LI>
+
+<LI>
+STRING "BOUNDARY with width";</LI>
+
+<LI>
+RADIUS 1.56e+06;</LI>
+</UL>
+More records on one line:
+<UL>
+<LI>
+BGNSTR; CREATION {98-7-20&nbsp; 14:46:14}; # creation time</LI>
+
+<LI>
+X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1000.000; Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.000;&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 163000.000; Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.000;</LI>
+</UL>
+Although not used at the moment it is possible to do the following.
+<BR>Using environment or alias variables (asume $B is set to BOUNDARY and
+%C is set to CIRCLE and %T is set to DATA ):
+<UL>
+<LI>
+$B;&nbsp; LAYER 0;&nbsp;&nbsp; %{T}TYPE 0;</LI>
+
+<LI>
+%C; LAYER 0;&nbsp; %{T}TYPE 0;</LI>
+</UL>
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><A NAME="recordover"></A><B><FONT COLOR="#FFFF00"><FONT SIZE=+1>Record
+Types Overview</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+The following table gives an overview of all the record that are used within
+a GDSII file.
+<TABLE BORDER=3 BGCOLOR="#FF99FF" >
+<TR BGCOLOR="#CC66CC">
+<TH>KEYword</TH>
+
+<TH>Data Type</TH>
+
+<TH>description</TH>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_header">HEADER</A></TD>
+
+<TD>Integer</TD>
+
+<TD>version number</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_bgnlib">BGNLIB</A></TD>
+
+<TD>Integer</TD>
+
+<TD>begin of library, last modification date and time</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_libname">LIBNAME</A></TD>
+
+<TD>Integer</TD>
+
+<TD>name of library</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_units">UNITS</A></TD>
+
+<TD>No Data</TD>
+
+<TD>marks begin of units info</TD>
+</TR>
+
+<TR>
+<TD><A HREF="#rec_userunits">USERUNITS</A>&nbsp;</TD>
+
+<TD>Real</TD>
+
+<TD>database units</TD>
+</TR>
+
+<TR>
+<TD><A HREF="#rec_physunits">PHYSUNITS</A></TD>
+
+<TD>Real</TD>
+
+<TD>user&nbsp; units</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_endlib">ENDLIB</A></TD>
+
+<TD>No Data</TD>
+
+<TD>end of library</TD>
+</TR>
+
+<TR>
+<TD><A HREF="#rec_lastmod">LASTMOD</A></TD>
+
+<TD>specific</TD>
+
+<TD>last modification time</TD>
+</TR>
+
+<TR>
+<TD><A HREF="#rec_lastacc">LASTACC</A></TD>
+
+<TD>specific</TD>
+
+<TD>last access time</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_bgnstr">BGNSTR</A></TD>
+
+<TD>NoData</TD>
+
+<TD>begin of structure&nbsp;</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_strname">STRNAME</A></TD>
+
+<TD>ASCII string</TD>
+
+<TD>name of structure</TD>
+</TR>
+
+<TR>
+<TD><A HREF="#rec_creation">CREATION</A>&nbsp;</TD>
+
+<TD>specific</TD>
+
+<TD>creation time</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_endstr">ENDSTR</A></TD>
+
+<TD>No Data</TD>
+
+<TD>end of structure</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_boundary">BOUNDARY</A></TD>
+
+<TD>No Data</TD>
+
+<TD>begin of boundary element</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_path">PATH</A></TD>
+
+<TD>No Data</TD>
+
+<TD>begin of path element</TD>
+</TR>
+
+<TR>
+<TD>CIRCLE</TD>
+
+<TD>No Data</TD>
+
+<TD>begin of CIRCLE</TD>
+</TR>
+
+<TR>
+<TD>ARC</TD>
+
+<TD>No Data</TD>
+
+<TD>begin of ARC</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_sref">SREF</A></TD>
+
+<TD>No Data</TD>
+
+<TD>begin of structure reference element</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_aref">AREF</A></TD>
+
+<TD>No Data</TD>
+
+<TD>begin of array reference element</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_text">TEXT</A></TD>
+
+<TD>No Data</TD>
+
+<TD>begin of text element</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_layer">LAYER</A></TD>
+
+<TD>Integer</TD>
+
+<TD>layer number of element</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_datatype">DATATYPE</A></TD>
+
+<TD>Integer</TD>
+
+<TD>datatype number of element</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_width">WIDTH</A></TD>
+
+<TD>Real&nbsp;</TD>
+
+<TD>width of element in db units</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_xy">XY</A></TD>
+
+<TD>Integer</TD>
+
+<TD>starts list of xy coordinates in db units</TD>
+</TR>
+
+<TR>
+<TD><A HREF="#rec_x">X</A></TD>
+
+<TD>Real</TD>
+
+<TD>x coordinate of vertex</TD>
+</TR>
+
+<TR>
+<TD><A HREF="#rec_y">Y</A></TD>
+
+<TD>Real</TD>
+
+<TD>y coordinate of vertex</TD>
+</TR>
+
+<TR>
+<TD><A HREF="#rec_xm">XM</A></TD>
+
+<TD>Real</TD>
+
+<TD>x of middle point on&nbsp; arc segment</TD>
+</TR>
+
+<TR>
+<TD><A HREF="#rec_ym">YM</A></TD>
+
+<TD>Real</TD>
+
+<TD>y of middle point on&nbsp; arc segment</TD>
+</TR>
+
+<TR>
+<TD><A HREF="#rec_xo">XO</A></TD>
+
+<TD>Real</TD>
+
+<TD>x centre point of&nbsp; arc segment</TD>
+</TR>
+
+<TR>
+<TD><A HREF="#rec_yo">YO</A></TD>
+
+<TD>Real</TD>
+
+<TD>y centre point of&nbsp; arc segment</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_endel">ENDEL</A></TD>
+
+<TD>No Data</TD>
+
+<TD>end of element</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_sname">SNAME</A></TD>
+
+<TD>ASCII string</TD>
+
+<TD>name of structure reference</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_colrow">COLROW</A></TD>
+
+<TD>Integer</TD>
+
+<TD>number of colomns and rows in array reference</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_node">NODE</A></TD>
+
+<TD>No Data</TD>
+
+<TD>begin of node element</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_texttype">TEXTTYPE</A></TD>
+
+<TD>Integer</TD>
+
+<TD>texttype number</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_presentation">PRESENTATION</A></TD>
+
+<TD>Integer</TD>
+
+<TD>text presentation, font</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_string">STRING</A></TD>
+
+<TD>ASCII string</TD>
+
+<TD>character string for text element</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_strans">STRANS</A></TD>
+
+<TD>Integer</TD>
+
+<TD>array reference, structure reference and text transform flags</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_mag">MAG</A></TD>
+
+<TD>Real</TD>
+
+<TD>magnification factor for text and references</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_angle">ANGLE</A></TD>
+
+<TD>Real</TD>
+
+<TD>rotation angle for text and references</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_pathtype">PATHTYPE</A></TD>
+
+<TD>Integer</TD>
+
+<TD>type of PATH element end ( rounded, square)</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_elflags">ELFLAGS</A></TD>
+
+<TD>Integer</TD>
+
+<TD>template data</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_nodetype">NODETYPE</A></TD>
+
+<TD>Integer</TD>
+
+<TD>node type number for NODE element</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_proptype">PROPERTY</A></TD>
+
+<TD>ASCII string</TD>
+
+<TD>property name</TD>
+</TR>
+
+<TR>
+<TD><A HREF="#rec_proptype">PROPTYPE</A></TD>
+
+<TD>Integer</TD>
+
+<TD>property datatype</TD>
+</TR>
+
+<TR>
+<TD><A HREF="#rec_propvalue">PROPVALUE</A></TD>
+
+<TD>ASCII string</TD>
+
+<TD>property value</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_box">BOX</A></TD>
+
+<TD>No Data</TD>
+
+<TD>begin of box element</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_boxtype">BOXTYPE</A></TD>
+
+<TD>Integer</TD>
+
+<TD>boxtype for box element</TD>
+</TR>
+
+<TR>
+<TD><A HREF="keyformat.html#rec_plex">PLEX</A></TD>
+
+<TD>Integer</TD>
+
+<TD>plex number</TD>
+</TR>
+</TABLE>
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" >
+<TR>
+<TD><A NAME="recordtypes"></A><B><FONT COLOR="#FFFF00"><FONT SIZE=+1>Record
+types description</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+&nbsp;
+<BR>In this part all records in the KEYformat are described, for the format
+of records see <A HREF="#recordheader">RECORD format</A>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_header"></A>HEADER</TD>
+
+<TD>&nbsp;Integer</TD>
+</TR>
+</TABLE>
+Contains integer data representing the KEY version number.
+
+<P><FONT COLOR="#FF0000">example: HEADER 5</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_bgnlib"></A>BGNLIB</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the beginning of a library.
+
+<P><FONT COLOR="#FF0000">example: BGNLIB</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_lastmod"></A>LASTMOD</TD>
+
+<TD>modification data of libray or structure</TD>
+</TR>
+</TABLE>
+The second word contains the last modification time of a library or structure
+(two digits each for year, month, day, hour, minute, and second).
+
+<P><FONT COLOR="#FF0000">example: LASTMOD {98-8-25&nbsp; 15:53:12}</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_lastacc"></A>LASTACC</TD>
+
+<TD>last access data of library</TD>
+</TR>
+</TABLE>
+The second word contains the last access time of a library (two digits
+each for year, month, day, hour, minute, and second).
+
+<P><FONT COLOR="#FF0000">example: LASTACC {98-8-25&nbsp; 15:53:12}</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_libname"></A>LIBNAME</TD>
+
+<TD>ASCII String</TD>
+</TR>
+</TABLE>
+Contains a string which is the library name.
+
+<P><FONT COLOR="#FF0000">example: LIBNAME TEMPEGS.DB</FONT>
+
+<P>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_units"></A>UNITS</TD>
+
+<TD WIDTH="200">No Data</TD>
+</TR>
+</TABLE>
+Marks begin of units information.
+
+<P><FONT COLOR="#FF0000">example: UNITS</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_userunits"></A>USERUNITS</TD>
+
+<TD WIDTH="200">Real</TD>
+</TR>
+</TABLE>
+Contains one real number. The number is the size of a database unit in
+user units. For example, if you create a library with the default units
+(user unit = 1 micron and 1000 database units per user unit), the number
+is .001. Typically, the USERUNITS&nbsp; is less than 1, since you use more
+than 1 database unit per user unit. To calculate the size of a user unit
+in meters, divide the PHYSUNITS by the USERUNITS.
+
+<P><FONT COLOR="#FF0000">example: USERUNITS 0.01</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_physunits"></A>PHYSUNITS</TD>
+
+<TD WIDTH="200">Real</TD>
+</TR>
+</TABLE>
+Contains one real number. The number is the size of a database unit in
+meters. For example, if you create a library with the default units (user
+unit = 1 micron and 1000 database units per user unit), the USERUNITS is
+.001, and the PHYSUNITS number is 1E-9. Typically, the USERUNITS&nbsp;
+is less than 1, since you use more than 1 database unit per user unit.
+To calculate the size of a user unit in meters, divide the PHYSUNITS by
+the USERUNITS.
+
+<P><FONT COLOR="#FF0000">example: PHYSUNITS 1e-08</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_endlib"></A>ENDLIB</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the end of a library.
+
+<P><FONT COLOR="#FF0000">example: ENDLIB</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_bgnstr"></A>BGNSTR</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the beginning of a structure.
+
+<P><FONT COLOR="#FF0000">example: BGNSTR</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_creation"></A>CREATION</TD>
+
+<TD>creation data of structure</TD>
+</TR>
+</TABLE>
+The second word contains the creation time of a library (two digits each
+for year, month, day, hour, minute, and second).
+<BR>&nbsp;
+<BR><FONT COLOR="#FF0000">example: CREATION {98-7-20&nbsp; 14:46:14}</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_strname"></A>STRNAME</TD>
+
+<TD>ASCII String</TD>
+</TR>
+</TABLE>
+Contains a string which is the structure name. A structurename may be up
+to 32 characters long. Legal structurename characters are:
+<UL>
+<LI>
+A through Z</LI>
+
+<LI>
+a through z</LI>
+
+<LI>
+0 through 9</LI>
+
+<LI>
+Underscore (_)</LI>
+
+<LI>
+Question mark (?)</LI>
+
+<LI>
+Dollar sign ($)</LI>
+</UL>
+&nbsp;<FONT COLOR="#FF0000">example: STRNAME cell4test</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_endstr"></A>ENDSTR</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the end of a structure.
+<BR>&nbsp;
+<BR>&nbsp;<FONT COLOR="#FF0000">example: ENDSTR</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_boundary"></A>BOUNDARY</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the beginning of a boundary element.
+
+<P><FONT COLOR="#FF0000">example of complete boundary element:</FONT>
+<BR><FONT COLOR="#FF0000">BOUNDARY; LAYER 0;&nbsp; DATATYPE 0;&nbsp; WIDTH
+50000;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; XY 7;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp; 1000000.000;
+Y&nbsp;&nbsp;&nbsp; -2471660.000;&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp;
+1000000.000; Y&nbsp;&nbsp;&nbsp; -2650000.000;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.000; Y&nbsp;&nbsp;&nbsp; -2650000.000;&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.000; Y&nbsp;&nbsp;&nbsp; -1650000.000;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp; 1000000.000;
+Y&nbsp;&nbsp;&nbsp; -1650000.000;&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp;
+1000000.000; Y&nbsp;&nbsp;&nbsp; -2075880.000;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; XM&nbsp;&nbsp;&nbsp;&nbsp; 1546200.000;
+YM&nbsp;&nbsp;&nbsp; -2204200.000;&nbsp;&nbsp; XO&nbsp;&nbsp;&nbsp;&nbsp;
+1241668.000; YO&nbsp;&nbsp;&nbsp; -2273770.000;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp; 1000000.000;
+Y&nbsp;&nbsp;&nbsp; -2471660.000;</FONT>
+<BR><FONT COLOR="#FF0000">ENDEL;</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_path"></A>PATH</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the beginning of a path element.
+<BR>&nbsp;
+<BR><FONT COLOR="#FF0000">example of complete PATH element:</FONT>
+<BR><FONT COLOR="#FF0000">PATH; LAYER 3; DATATYPE 0; WIDTH 100000;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; XY 4;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+891912.000; Y&nbsp;&nbsp;&nbsp;&nbsp; 2322024.000;&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+966537.000; Y&nbsp;&nbsp;&nbsp;&nbsp; 1854278.000;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp; 2599515.000;
+Y&nbsp;&nbsp;&nbsp;&nbsp; 2311647.000;&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp;
+2626485.000; Y&nbsp;&nbsp;&nbsp;&nbsp; 2005353.000;</FONT>
+<BR><FONT COLOR="#FF0000">ENDEL;</FONT>
+<BR>&nbsp;
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_sref"></A>SREF</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the beginning of an Sref (structure reference) element.
+
+<P><FONT COLOR="#FF0000">example of complete SREF element:</FONT>
+<BR><FONT COLOR="#FF0000">SREF;</FONT>
+<BR><FONT COLOR="#FF0000">SNAME AAP;</FONT>
+<BR><FONT COLOR="#FF0000">STRANS 0,0,0;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; XY 1;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp; -1112500.000;
+Y&nbsp;&nbsp;&nbsp; -1267000.000;</FONT>
+<BR><FONT COLOR="#FF0000">ENDEL;</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_aref"></A>AREF</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the beginning of an Aref (array reference) element.
+<BR>For coordinate information see <A HREF="keyformat.html#rec_xy">XY record</A>
+
+<P><FONT COLOR="#FF0000">example of complete AREF element:</FONT>
+<BR><FONT COLOR="#FF0000">AREF;</FONT>
+<BR><FONT COLOR="#FF0000">SNAME cell4test;&nbsp; STRANS 0,0,0; COLROW {7
+, 3};</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; XY 3;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-5114000.000; Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -3006000.000; X&nbsp;&nbsp;&nbsp;
+-3095600.000; Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -3006000.000;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-5114000.000; Y&nbsp;&nbsp;&nbsp;&nbsp; -1891800.000;</FONT>
+<BR><FONT COLOR="#FF0000">ENDEL;</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_text"></A>TEXT</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the beginning of a text element.
+
+<P><FONT COLOR="#FF0000">example complete TEXT element:</FONT>
+<BR><FONT COLOR="#FF0000">TEXT; LAYER 3;</FONT>
+<BR><FONT COLOR="#FF0000">TEXTTYPE 0; PRESENTATION 0,2,0; PATHTYPE 1; STRANS
+0,0,0; MAG 1875;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; XY 1;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp; -2256500.000;
+Y&nbsp;&nbsp;&nbsp;&nbsp; 1539500.000;</FONT>
+<BR><FONT COLOR="#FF0000">STRING "Whatever";</FONT>
+<BR><FONT COLOR="#FF0000">ENDEL;</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_box"></A>BOX</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the beginning of a box element.
+
+<P><FONT COLOR="#FF0000">example complete BOX element:</FONT>
+<BR><FONT COLOR="#FF0000">BOX; LAYER 2;&nbsp; BOXTYPE 0;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; XY 5;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp; 1526500.000;
+Y&nbsp;&nbsp;&nbsp; -1034500.000;&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp;
+2623500.000; Y&nbsp;&nbsp;&nbsp; -1034500.000;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp; 2623500.000;
+Y&nbsp;&nbsp;&nbsp;&nbsp; 1105500.000;&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp;
+1526500.000; Y&nbsp;&nbsp;&nbsp;&nbsp; 1105500.000;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp; 1526500.000;
+Y&nbsp;&nbsp;&nbsp; -1034500.000;</FONT>
+<BR><FONT COLOR="#FF0000">ENDEL;</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_boxtype"></A>BOXTYPE</TD>
+
+<TD>Integer</TD>
+</TR>
+</TABLE>
+Contains two bytes which specify boxtype. The value of the boxtype must
+be in the range of 0 to 255.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_circle"></A>CIRCLE</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the beginning of a CIRCLE element.
+
+<P><FONT COLOR="#FF0000">example complete CIRCLE element:</FONT>
+<BR><FONT COLOR="#FF0000">CIRCLE; LAYER 0;&nbsp; DATATYPE 0;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; XY 1;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp; -3844000.714;
+Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 18800.116;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; RADIUS 1.56e+06;</FONT>
+<BR><FONT COLOR="#FF0000">ENDEL;</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_radius"></A>RADIUS</TD>
+
+<TD>Real</TD>
+</TR>
+</TABLE>
+Gives the radius of the circle in a CIRCLE element.
+
+<P><FONT COLOR="#FF0000">example of <A HREF="#rec_circle">CIRCLE</A>:</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_arc"></A>ARC</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the beginning of a ARC element.
+
+<P><FONT COLOR="#FF0000">example complete an ARC element:</FONT>
+<BR><FONT COLOR="#FF0000">ARC; LAYER 0; DATATYPE 0; WIDTH 100000;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; XY 2;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp; 1500000.000;
+Y&nbsp;&nbsp;&nbsp; -1712940.000;&nbsp;&nbsp; XM&nbsp;&nbsp;&nbsp;&nbsp;
+1773100.000; YM&nbsp;&nbsp;&nbsp; -1777100.000;</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;&nbsp; XO&nbsp;&nbsp;&nbsp;&nbsp; 1620834.000;
+YO&nbsp;&nbsp;&nbsp; -1811885.000;&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp;
+1500000.000; Y&nbsp;&nbsp;&nbsp; -1910830.000;</FONT>
+<BR><FONT COLOR="#FF0000">ENDEL;</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_layer"></A>LAYER</TD>
+
+<TD>Integer</TD>
+</TR>
+</TABLE>
+Contains integer which specifies the layer.
+
+<P><FONT COLOR="#FF0000">example: LAYER 123</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_datatype"></A>DATATYPE</TD>
+
+<TD>Integer</TD>
+</TR>
+</TABLE>
+Contains integer which specifies the datatype. The value of the datatype
+must be in the range of 0 to 255.
+
+<P><FONT COLOR="#FF0000">example: DATATYPE 123</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_width"></A>WIDTH</TD>
+
+<TD>real</TD>
+</TR>
+</TABLE>
+Contains real which specifies the width of a path or text lines in database
+units.&nbsp; If omitted, zero is assumed.
+<BR>&nbsp;
+<BR><FONT COLOR="#FF0000">example: WIDTH 100000.000</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_xy"></A>XY</TD>
+
+<TD>Integer</TD>
+</TR>
+</TABLE>
+Marks begin of vertex list for elements like PATH and BOUNDARY etc. The
+second word specifies the number of line and arcsegments&nbsp; following,
+until the ENDEL record.
+
+<P>For the elements needing the XY record the definition for the X Y is
+as follows.
+<UL>
+<LI>
+Each X or Y coordinate is a real. Path elements may have a minimum of 2
+vertexes. Boundary and border elements may have a minimum of 4 vertexes.
+The first and last coordinates of a boundary must be the same.</LI>
+
+<BR>The PATH and BOUNDARY element may contain arcsegments also. If the
+record following an Y record is XM,
+<BR>it means that the distance to the next X and Y record is defined as
+an arcsegment.
+
+<P><FONT COLOR="#FF0000">example of arcsegment:</FONT>
+<BR><FONT COLOR="#FF0000">X&nbsp;&nbsp;&nbsp;&nbsp; 1000000.000; Y&nbsp;&nbsp;&nbsp;
+-2075880.000;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #last X and Y record
+parsed</FONT>
+<BR><FONT COLOR="#FF0000">XM&nbsp;&nbsp;&nbsp;&nbsp; 1546200.000; YM&nbsp;&nbsp;&nbsp;
+-2204200.000; #start of arcsegment, defines middle point on arcsegment</FONT>
+<BR><FONT COLOR="#FF0000">XO&nbsp;&nbsp;&nbsp;&nbsp; 1241668.000; YO&nbsp;&nbsp;&nbsp;
+-2273770.000;&nbsp; #defines centre point on arc segment</FONT>
+<BR><FONT COLOR="#FF0000">X&nbsp;&nbsp;&nbsp;&nbsp; 1000000.000; Y&nbsp;&nbsp;&nbsp;
+-2471660.000;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #defines endpoint
+of arc segment.</FONT>
+<BR>&nbsp;
+<LI>
+<FONT COLOR="#000000">An ARC element has only one definition of an arc
+segment after the XY record</FONT></LI>
+
+
+<P><FONT COLOR="#FF0000">example of <A HREF="#rec_arc">ARC</A>:</FONT>
+<BR>&nbsp;
+<LI>
+<FONT COLOR="#000000">A CIRCLE element has only X and one Y record XY record</FONT></LI>
+
+
+<P><FONT COLOR="#FF0000">example of <A HREF="#rec_circle">CIRCLE</A>:</FONT>
+<BR>&nbsp;
+<LI>
+A text, or Sref element may have only one coordinate.</LI>
+
+
+<P><FONT COLOR="#FF0000">example of <A HREF="#rec_sref">SREF</A>:</FONT>
+<BR><FONT COLOR="#FF0000">example of <A HREF="#rec_text">TEXT</A>:</FONT>
+<BR>&nbsp;
+<LI>
+An Aref has exactly three coordinates. In an Aref, the first coordinate
+is the array reference point (origin point). The other two coordinates
+are already rotated, reflected as specified in the STRANS record (if specified).
+So in order to calculate the intercolomn and interrow spacing, the coordinates
+must be mapped back to their original position, or the vector lenght (x1,y1->
+x3,y3) must be divided by the number of row etc. . The second coordinate
+locates a position which is displaced from the reference point by the inter-column
+spacing times the number of columns. The third coordinate locates a position
+which is displaced from the reference point by the inter-row spacing times
+the number of rows. For an example of an array lattice see the next picture.</LI>
+
+<BR><IMG SRC="arrayref.gif" BORDER=3 HEIGHT=418 WIDTH=455>Aref rotated
+-30 degrees.
+
+<P><FONT COLOR="#FF0000">example of <A HREF="#rec_aref">AREF</A>:</FONT>
+<BR>&nbsp;
+<LI>
+A node may have from one to 50 coordinates.</LI>
+
+<LI>
+A box must have five coordinates, with the first and last coordinates being
+the same.</LI>
+
+
+<P><FONT COLOR="#FF0000">example of <A HREF="#rec_box">BOX</A>:</FONT></UL>
+&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_x"></A>X</TD>
+
+<TD>Real</TD>
+</TR>
+</TABLE>
+X coordinate of vertex. For arcsegments this is the X coordinate of the
+first point starting the arcsegment.
+
+<P><FONT COLOR="#FF0000">example: X -2650000.000</FONT>
+<BR><FONT COLOR="#FF0000">example of <A HREF="#rec_xy">XY</A>:</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_y"></A>Y</TD>
+
+<TD>Real</TD>
+</TR>
+</TABLE>
+Y coordinate of vertex. For arcsegments this is the Y coordinate of the
+first point starting the arcsegment.
+<BR>&nbsp;
+<BR><FONT COLOR="#FF0000">example: Y -2650000.000</FONT>
+<BR><FONT COLOR="#FF0000">example of <A HREF="#rec_xy">XY</A>:</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_xm"></A>XM</TD>
+
+<TD>Real</TD>
+</TR>
+</TABLE>
+&nbsp;
+<BR><FONT COLOR="#FF0000">example: XM -2650000.000</FONT>
+<BR><FONT COLOR="#FF0000">example of <A HREF="#rec_xy">XY</A>:</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_ym"></A>YM</TD>
+
+<TD>Real</TD>
+</TR>
+</TABLE>
+&nbsp;
+<BR><FONT COLOR="#FF0000">example: YM -2650000.000</FONT>
+<BR><FONT COLOR="#FF0000">example of <A HREF="#rec_xy">XY</A>:</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_xo"></A>XO</TD>
+
+<TD>Real</TD>
+</TR>
+</TABLE>
+&nbsp;
+<BR><FONT COLOR="#FF0000">example: XO -2650000.000</FONT>
+<BR><FONT COLOR="#FF0000">example of <A HREF="#rec_xy">XY</A>:</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_yo"></A>YO</TD>
+
+<TD>Real</TD>
+</TR>
+</TABLE>
+&nbsp;
+<BR><FONT COLOR="#FF0000">example: YO -2650000.000</FONT>
+<BR><FONT COLOR="#FF0000">example of <A HREF="#rec_xy">XY</A>:</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_endel"></A>ENDEL</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Marks the end of an element.
+
+<P><FONT COLOR="#FF0000">example: ENDEL</FONT>
+<BR><FONT COLOR="#FF0000">example of <A HREF="#rec_xy">XY</A>:</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_sname"></A>SNAME</TD>
+
+<TD>ASCII string</TD>
+</TR>
+</TABLE>
+Contains the name of a referenced structure.See also <A HREF="#rec_sname">STRNAME</A>.
+
+<P><FONT COLOR="#FF0000">example: <A HREF="#rec_aref">SREF</A></FONT>
+<BR><FONT COLOR="#FF0000">example: <A HREF="#rec_aref">AREF</A></FONT>
+<BR>&nbsp;
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_colrow"></A>COLROW</TD>
+
+<TD>Integer</TD>
+</TR>
+</TABLE>
+The second word contains two integers. The first integer is&nbsp; the number
+of columns in the array. The second integer is the number of rows.&nbsp;
+See also <A HREF="#rec_aref">AREF.</A>
+<BR>&nbsp;
+<BR><FONT COLOR="#FF0000">example: <A HREF="#rec_aref">AREF</A></FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_node"></A>NODE</TD>
+
+<TD>No Data</TD>
+</TR>
+</TABLE>
+Present Marks the beginning of a node
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_texttype"></A>TEXTTYPE</TD>
+
+<TD>Signed Integer</TD>
+</TR>
+</TABLE>
+Contains two bytes representing texttype. The value of the texttype must
+be in the range 0 to 255.
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_presentation"></A>PRESENTATION</TD>
+
+<TD>Integer flags</TD>
+</TR>
+</TABLE>
+The second&nbsp; word contains&nbsp; 3 integer flags for text presentation.
+<BR>The first integer specifies the font&nbsp; (0 means font 0, 1 rneans
+font 1, 2 font 2, and 3 font 3).
+<BR>The second integer specifies the vertical justification (0 means top,
+1 means middle, and 2 means bottom).
+<BR>The third integer specifies the horizontal justification (0 means left,
+1 means center, and 2 means right).
+<BR>If this record is omitted, then top-left justification and font 0 are
+assumed.
+
+<P><FONT COLOR="#FF0000">example:</FONT>
+<BR><FONT COLOR="#FF0000">PRESENTATION 0,2,0&nbsp; ;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# font 0 vertical 2 horizontal 0</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_string"></A>STRING</TD>
+
+<TD>ASCII String</TD>
+</TR>
+</TABLE>
+Contains a character string for text presentation.
+<BR>&nbsp;
+<BR><FONT COLOR="#FF0000">example:</FONT>
+<BR><FONT COLOR="#FF0000">STRING "can be very long"</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_strans"></A>STRANS</TD>
+
+<TD>Integer flags</TD>
+</TR>
+</TABLE>
+The second word contains 3 integer flags for Sref, Aref, and text transforrnation.
+Integer 1 specifies reflection. If set, the element is reflected about
+the X-axis before angular rotation. For an Aref, the entire array is reflected,
+with the individual array members rigidly attached. Integer 2 flags absolute
+magnification. Integer 3 flags absolute angle. If this record is omitted,
+the element is assumed to have no reflection, non-absolute magnification,
+and non-absolute angle.
+
+<P><FONT COLOR="#FF0000">example:</FONT>
+<BR><FONT COLOR="#FF0000">STRANS 0,0,0</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_mag"></A>MAG</TD>
+
+<TD>Real</TD>
+</TR>
+</TABLE>
+Contains a&nbsp; real number, which is the magnification factor. If this
+record is omitted, a magnification factor of one is assumed.
+
+<P><FONT COLOR="#FF0000">example:</FONT>
+<BR><FONT COLOR="#FF0000">&nbsp;MAG 1875.001</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_angle"></A>ANGLE</TD>
+
+<TD>Real</TD>
+</TR>
+</TABLE>
+Contains a real number, which is the angular rotation factor. The angle
+of rotation is measured in degrees and in the counterclockwise direction.
+For an <A HREF="#rec_aref">Aref</A>, the ANGLE rotates the entire array
+(with the individual array members rigidly attached) about the array reference
+point. For <A HREF="#rec_colrow">COLROW</A> record information, the angle
+of rotation is already inlcuded in the coordinates. If this record is omitted,
+an angle of zero degrees is assumed.
+
+<P><FONT COLOR="#FF0000">example:</FONT>
+<BR><FONT COLOR="#FF0000">ANGLE -30.123</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_pathtype"></A>PATHTYPE</TD>
+
+<TD>Integer</TD>
+</TR>
+</TABLE>
+This record contains a value that describes the type of path endpoints.
+The value is
+<UL>
+<LI>
+0 for square-ended paths that endflush with their endpoints</LI>
+
+<LI>
+1 for round-ended paths</LI>
+
+<LI>
+2 for square-ended paths that extend a half-width beyond their endpoints</LI>
+</UL>
+If not specified, a Path-type of 0 is assumed.
+
+<P><FONT COLOR="#FF0000">example:</FONT>
+<BR><FONT COLOR="#FF0000">PATHTYPE 1</FONT>
+
+<P>The following picture shows the pathtypes
+<BR>&nbsp;
+<TABLE BORDER COLS=2 BGCOLOR="#FF99FF" >
+<TR>
+<TD ROWSPAN="3" WIDTH="190"><IMG SRC="pathtype.gif" BORDER=0 HEIGHT=567 WIDTH=190></TD>
+
+<TD WIDTH="200">Pathtype 0 produces a square-ended path, ending flush with
+thedigitized endpoints. This is the de-fault pathtype if none is specified</TD>
+</TR>
+
+<TR>
+<TD WIDTH="50%">Pathtype 1 produces a round-ended path. The two ends aresemicircular
+with center at thedigitized endpoints.</TD>
+</TR>
+
+<TR>
+<TD>Pathtype 2 produces a square-ended path. The ends of the pathextend
+beyond the digitized end-points by one-half the path width.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_elflags"></A>ELFLAGS</TD>
+
+<TD>Integer</TD>
+</TR>
+</TABLE>
+The second word contains 1 integer. Bit 1 of the integer flags Template
+data. Bit 2 specifies External data(also referred to as Exterior data).
+All other bits are currently unused and must be cleared to 0. If this record
+isomitted, all bits are assumed to be 0.
+<BR>Just to be compatible with GDSII, no idea what it means.
+
+<P><FONT COLOR="#FF0000">example:</FONT>
+<BR><FONT COLOR="#FF0000">ELFLAGS 1</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_nodetype"></A>NODETYPE</TD>
+
+<TD>Integer</TD>
+</TR>
+</TABLE>
+Contains two bytes which specify nodetype. The value of the nodetype must
+be in the range of 0 to 255.
+
+<P><FONT COLOR="#FF0000">example:</FONT>
+<BR><FONT COLOR="#FF0000">NODETYPE 1</FONT>
+<BR>&nbsp;
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_property"></A>PROPERTY</TD>
+
+<TD>ASCII String</TD>
+</TR>
+</TABLE>
+<p>A string which gives the name of a property that is attached to the previous 
+  element.</p>
+<p><font color="#FF0000">example:</font></p>
+<p><font color="#FF0000">PROPERTY myname</font></p>
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_proptype"></A>PROPTYPE</TD>
+
+<TD>Integer</TD>
+</TR>
+</TABLE>
+<p>A string which gives the type of a property that is attached to the previous 
+  element.</p>
+<p><font color="#FF0000">example:</font></p>
+<p><font color="#FF0000">PROPTYPE mytype</font></p>
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+    <TD WIDTH="116"><A NAME="rec_propvalue"></A>PROPVALUE</TD>
+
+    <TD width="464">ASCII string</TD>
+</TR>
+</TABLE>
+<p>A string which gives the value of a property that is attached to the previous 
+  element.</p>
+<p><font color="#FF0000">example:</font></p>
+<p><font color="#FF0000">PROPVALUE myvalue</font></p>
+<TABLE BORDER=3 WIDTH="600" BGCOLOR="#FF9900" >
+<TR>
+<TD WIDTH="100"><A NAME="rec_plex"></A>PLEX</TD>
+
+<TD>Integer</TD>
+</TR>
+</TABLE>
+A unique positive number which is common to all elementsof the plex to
+which this element belongs. The head of the plex is flagged by setting
+the seventh bit; therefore, plexnumbers should be small enough to occupy
+only the right-most 24 bits. If this record is not present, the element
+is not a plex member.
+<BR>Is ignored&nbsp; to be compatible with GDSII, no idea what it means.
+<BR>&nbsp;
+</BODY>
+</HTML>

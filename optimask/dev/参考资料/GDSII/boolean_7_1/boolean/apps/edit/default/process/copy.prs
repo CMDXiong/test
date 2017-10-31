@@ -1,0 +1,12 @@
+# Process file for GDS-II postprocessing tool
+
+record  @{processfile}
+copy
+mirrorx  0
+mirrory  0
+movehor  {0 um}
+movever  {0 mm}
+scale  1
+rotate  15
+direction  Clockwise
+transform

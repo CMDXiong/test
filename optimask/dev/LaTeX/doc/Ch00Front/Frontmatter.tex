@@ -1,0 +1,111 @@
+% TITLE PAGEs (may need to space and format this page yourself)
+% By Henghua DENG; Created: 2009-11-20; Updated: 2009-11-20;
+
+\pagestyle{empty} % No headers or page numbers
+
+\begin{center}
+
+\vspace*{1.0cm} \Huge{Optimask Manual}
+
+\vspace*{1.0cm}
+\normalsize
+by \\
+\vspace*{1.0cm}
+\Large
+Optixera\\
+\vspace*{2.0cm}
+\normalsize
+Optixera \\
+USA and China\\
+
+
+\vspace*{2.0cm} Silicon Valley, California, USA, \the\year\\ %\the\year, %\today
+%\vspace*{2.0cm} Silicon Valley, California, USA, 2012\\
+
+\vspace*{2.0cm} \copyright Optixera \the\year\\
+\end{center}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PRELIMINARY PAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain} % No headers, just page numbers
+\pagenumbering{roman} % Roman numerals
+\setcounter{page}{2}
+
+%% Declaration Page for ELECTRONIC SUBMISSION OF A THESIS
+%\begin{center}\large \textbf{Author's Declaration For Electronic Submission} \end{center}
+%\noindent I hereby declare that I am the sole author of this report. \\
+
+%\noindent I understand that my thesis may be made electronically
+%available to the public. \vspace{4cm}
+
+%\noindent Henghua Deng
+%\newpage
+
+% Long abstract (manually formatted)
+\resetdatestamp %Date Stamp--Only use when custom package datestamp.sty is used.
+\begin{center}\Large \textbf{Abstract} \end{center}
+\addcontentsline{toc}{chapter}{Abstract}
+Optimask is a revolutionary layout tool for advanced photomask drawing. It is developed after decades of professional experience from elite engineers and researchers in semiconductor and photonics industry companies, as well as scientific institutes and universities. Our team of international developers consist of photonic experts, electronics researchers and computer scientists. Our primary and ultimate goal is to simplify photonics simulation and photomask design as easy as word processing, with increased accuracy, precision, versatility, and portability. We will make photomask drawing a pleasure, and remove the barrier of advanced knowledge, skill-set and training required.
+
+\vspace*{1em} %\textbf{Index Terms:}
+\begin{description}
+    \item[\emph{Index Terms}:]
+      \small{\acf{GDSII}}
+\end{description}
+\newpage
+
+% Acknowledgements and/or Dedication Pages
+\begin{center}\Large \textbf{Acknowledgements}\end{center}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+
+We would like to express our sincere gratitude to all people who helped with this product.
+
+\begin{flushright}
+Optixera \\ 10/22/2007--\today \\
+Revised: \today \\
+\end{flushright}
+
+\newpage
+
+% Pages which are generated automatically
+%%\setcounter{page}{6} % Set this counter to get correct page numbers
+\tableofcontents
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+\newpage
+
+% Pages of List of Acronyms
+\input{./Ch00Front/ListAcronyms}
+\addcontentsline{toc}{chapter}{List of Acronyms}
+\newpage
+
+% Pages of List of Symbols
+%You can create it manually in a file ListSymbols and then
+%\input{ListSymbols}
+\newpage
+%but this is tedious and error-prone. (See nomencl.pdf by Boris Veytsman)
+%
+%Create a List of Symbols by using the package {nomencl} (DHH 20041217):
+%Add \usepackage{nomencl} and \makeglossary to the preamble,
+%issue \nomenclature{}{} for each symbol to be included in nomenclature list,
+%and \printglossary in the place you want to have your nomenclature list.
+%
+%BUT NEED TO Run this command line manually: (Thesis2004DHH is the file name you working on)
+%(please enable makeidx before this)
+% makeindex Thesis2004DHH.glo -s nomencl.ist -o Thesis2004DHH.gls
+%
+%
+%%Change display name "Nomenclature" to "List of Symbols":
+%\renewcommand\nomname{List of Symbols}
+%\printglossary  %%print nomencl (list of symbols) making
+%\newpage
+
+% Change page numbering back to Arabic numerals
+%%\setcounter{page}{1}
+\pagenumbering{arabic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

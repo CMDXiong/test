@@ -1,0 +1,53 @@
+
+# Configuration file for 
+# gcc, Windows on cygwin/mingw, 64bit
+# release build
+# 
+# Requires 
+#   Qt4 for mingw 64bit
+
+AR=ar -r
+
+# Compiler options
+
+CXX=gcc
+CXXOPT_DEP=-MM -MG 
+CXXWARN=-Wall -pedantic -Wno-deprecated -Woverloaded-virtual \
+       -Wsign-promo -Wsynth -Wno-long-long -Wno-strict-aliasing
+CXXOPT=-mthreads -fexceptions -c -O3 -o
+CXXOPT_SO=$(CXXOPT) 
+
+CC=gcc
+CCOPT_DEP=-MM -MG 
+CCWARN=
+CCOPT=-mthreads -fexceptions -c -O3 -o
+CCOPT_SO=$(CCOPT) 
+
+INC=-I$(TOP_SOURCE) -I$(SOURCE) -I. -I$(QTINCLUDE) -I$(ZLIB)/include -I$(RUBYINCLUDE)/i386-mingw32
+
+DEFS=-DQT_THREAD_SUPPORT -DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII
+
+# Linker options
+
+LINK=g++
+LOPT=-mthreads -mwindows -mno-cygwin -Wl,-E -o
+LOPT_SO=-mthreads -mwindows -mno-cygwin -shared -o
+LIBS=-L$(QTLIB) -lQtGui4 -lQtCore4 -lQtXml4 -lQtNetwork4 -lQtSql4 -lQtDesigner4 -lstdc++ -lkernel32 -lwsock32 -lws2_32 
+
+WIN_MINGW=1
+NO_SYSTEM_ZLIB=1
+
+.PHONY: install
+install:
+	mkdir -p $(INSTALL_BINDIR)
+	cp main/$(EXEC_NAME){.exe,.dll} $(INSTALL_BINDIR)
+	for bin in $(OTHER_BIN) ; \
+	do \
+	  cp main/$${bin}.exe $(INSTALL_BINDIR) ; \
+	done
+	for plugin in $(PLUGINS) ; \
+	do \
+	  cp $$plugin/*.dll $(INSTALL_BINDIR) ; \
+	done
+	chmod 755 $(INSTALL_BINDIR) $(INSTALL_BINDIR)/*
+

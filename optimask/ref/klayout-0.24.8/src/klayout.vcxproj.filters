@@ -1,0 +1,2521 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="UI Files">
+      <UniqueIdentifier>{ed489b93-7ac3-41c0-9316-3b936938f84e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\contrib">
+      <UniqueIdentifier>{f6ae387c-ab08-421d-b068-d82556ab1131}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\contrib\zlib">
+      <UniqueIdentifier>{78b26203-447d-4607-bbb7-8a3aca335d64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QRC Files">
+      <UniqueIdentifier>{f9f3a391-5d64-4e08-a429-59c15124fec7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="generated">
+      <UniqueIdentifier>{e8db116e-769f-4d0f-9ace-969203d21c81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\contrib\gds2_txt">
+      <UniqueIdentifier>{110dff7e-6d32-4142-a84d-a443c8aa5718}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MOC Headers">
+      <UniqueIdentifier>{88161854-d0de-476b-901b-4d0a0fd7c68b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\db">
+      <UniqueIdentifier>{1ad8b934-1d0f-4659-a55d-9ec8f17cda7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\ant">
+      <UniqueIdentifier>{f9bb5c46-7d3f-4ced-bb0d-40f3303d37cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\edt">
+      <UniqueIdentifier>{44fd80d8-0484-4053-ac65-e1e8b59a07c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\lay">
+      <UniqueIdentifier>{28c92ffb-20cc-404c-bbc8-08139f7db575}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\ext">
+      <UniqueIdentifier>{e7a053c1-af8b-40c4-a5f6-a4643e3c542f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\tl">
+      <UniqueIdentifier>{36ccf0d6-b133-4980-9e7e-9e26c678a13c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\gsi">
+      <UniqueIdentifier>{acff50dc-119e-406a-96bd-1b4cada2f249}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\img">
+      <UniqueIdentifier>{236a2985-7a0a-4a4a-a0f3-ec0aefc8c963}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\rba">
+      <UniqueIdentifier>{a9e2fb79-16c6-4d6e-aac4-9b6b7905cfb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\rdb">
+      <UniqueIdentifier>{13239fc7-5d5b-4c5e-9f68-0ece279baaa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\gtf">
+      <UniqueIdentifier>{26675f52-fd76-4921-8820-b2de2cfbea3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\lib">
+      <UniqueIdentifier>{e9a177af-636e-4eac-8da8-c15930fe7191}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\pya">
+      <UniqueIdentifier>{b6003409-4b94-4f2a-8837-b98d78e80412}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien\ant">
+      <UniqueIdentifier>{8851b28b-8d40-465f-983f-51404678911b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\db">
+      <UniqueIdentifier>{4d211d52-ef9d-4843-86b6-d6849fd43f3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\tl">
+      <UniqueIdentifier>{b4dc1c89-91d9-4133-ba14-687c4ea954ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\ext">
+      <UniqueIdentifier>{07033dca-f018-4745-8b62-ed8109eb9b2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\edt">
+      <UniqueIdentifier>{e2970cf7-53b0-488e-8c08-e9fe8378e1f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\gsi">
+      <UniqueIdentifier>{e6fae724-0cc5-4e4a-bf38-5602a3563fb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\gtf">
+      <UniqueIdentifier>{8e1b7dbd-2100-4a34-9d31-90795c2e4e7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\img">
+      <UniqueIdentifier>{a53ad229-934c-4eab-b817-f4f944ca726c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\lay">
+      <UniqueIdentifier>{588d3869-715e-464c-b4cd-5a3a67f79466}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\rdb">
+      <UniqueIdentifier>{9d9b2c29-82dd-45c5-8f8d-8bee9b395aa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\rba">
+      <UniqueIdentifier>{511465a2-9ee0-4392-8dea-398a4d13f1a8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="contrib\zlib\adler32.c">
+      <Filter>Quelldateien\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\zlib\compress.c">
+      <Filter>Quelldateien\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\zlib\crc32.c">
+      <Filter>Quelldateien\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\zlib\deflate.c">
+      <Filter>Quelldateien\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\zlib\gzclose.c">
+      <Filter>Quelldateien\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\zlib\gzlib.c">
+      <Filter>Quelldateien\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\zlib\gzread.c">
+      <Filter>Quelldateien\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\zlib\gzwrite.c">
+      <Filter>Quelldateien\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\zlib\infback.c">
+      <Filter>Quelldateien\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\zlib\inffast.c">
+      <Filter>Quelldateien\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\zlib\inflate.c">
+      <Filter>Quelldateien\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\zlib\inftrees.c">
+      <Filter>Quelldateien\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\zlib\trees.c">
+      <Filter>Quelldateien\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\zlib\uncompr.c">
+      <Filter>Quelldateien\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\zlib\zutil.c">
+      <Filter>Quelldateien\contrib\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\layResources.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\gds2_txt\dbGDS2Converter.cc">
+      <Filter>Quelldateien\contrib\gds2_txt</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\gds2_txt\dbGDS2Text.cc">
+      <Filter>Quelldateien\contrib\gds2_txt</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\gds2_txt\dbGDS2TextReader.cc">
+      <Filter>Quelldateien\contrib\gds2_txt</Filter>
+    </ClCompile>
+    <ClCompile Include="contrib\gds2_txt\dbGDS2TextWriter.cc">
+      <Filter>Quelldateien\contrib\gds2_txt</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_antConfigPage.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_antPropertiesPage.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_edtDialogs.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_edtEditorOptionsPages.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_edtPartialService.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_edtPropertiesPages.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_extDiffToolDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_extGerberImportDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_extNetTracerConfig.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_extStreamImportDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_extXORToolDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_gtf.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_imgPropertiesPage.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_imgWidgets.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layAbstractMenu.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layBookmarkManagementForm.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layBrowseInstancesForm.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layBrowserDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layBrowseShapesForm.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layCellSelectionForm.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layCIFReaderPlugin.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layClipDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layConfigurationDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layDialogs.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layDitherPattern.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layDXFReaderPlugin.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layDXFWriterPlugin.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layEditStipplesForm.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layEditStippleWidget.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layFillDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layGDS2ReaderPlugin.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layGDS2WriterPlugin.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layGridNet.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layHierarchyControlPanel.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layLayerControlPanel.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layLayerToolbox.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layLayerTreeModel.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layLayoutCanvas.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layLayoutPropertiesForm.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layLayoutView.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layLayoutViewConfigPages.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layLoadLayoutOptionsDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layLogViewerDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layMainConfigPages.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layMainWindow.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layMove.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layNavigator.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layProgressWidget.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layPropertiesDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_laySaveLayoutOptionsDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_laySelectCellViewForm.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_laySelector.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_laySelectStippleForm.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_laySettingsForm.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layWidgets.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_rdbMarkerBrowser.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_rdbMarkerBrowserDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_rdbMarkerBrowserPage.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_tlDeferredExecution.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_edtInstPropertiesPage.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_extNetTracerDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layCIFWriterPlugin.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="dbArray.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbWriterTools.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbBox.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbBoxConvert.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbCell.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbCellGraphUtils.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbCellInst.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbCellMapping.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbCIF.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbCIFReader.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbCIFWriter.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbClip.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbClipboard.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbClipboardData.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbDXF.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbDXFReader.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbDXFWriter.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbEdge.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbEdgeProcessor.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbGDS2.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbGDS2Reader.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbGDS2ReaderBase.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbGDS2Writer.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbGDS2WriterBase.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbHershey.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbInstances.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbInstElement.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbLayerProperties.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbLayout.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbLayoutDiff.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbLayoutStateModel.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbLayoutUtils.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbLibraryManager.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbLibraryProxy.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbLoadLayoutOptions.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbManager.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbMemStatistics.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbOASIS.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbOASISReader.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbOASISWriter.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbObject.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbPath.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbPCellDeclaration.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbPCellHeader.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbPCellVariant.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbPoint.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbPolygon.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbPolygonTools.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbPropertiesRepository.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbReader.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbSaveLayoutOptions.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbShape.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbShapes.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbShapes2.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbStatic.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbStream.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbStreamLayers.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbText.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbTextWriter.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbTrans.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbUserObject.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbVector.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbWriter.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="antConfig.cc">
+      <Filter>Quelldateien\ant</Filter>
+    </ClCompile>
+    <ClCompile Include="antTemplate.cc">
+      <Filter>Quelldateien\ant</Filter>
+    </ClCompile>
+    <ClCompile Include="antConfigPage.cc">
+      <Filter>Quelldateien\ant</Filter>
+    </ClCompile>
+    <ClCompile Include="antObject.cc">
+      <Filter>Quelldateien\ant</Filter>
+    </ClCompile>
+    <ClCompile Include="antPlugin.cc">
+      <Filter>Quelldateien\ant</Filter>
+    </ClCompile>
+    <ClCompile Include="antPropertiesPage.cc">
+      <Filter>Quelldateien\ant</Filter>
+    </ClCompile>
+    <ClCompile Include="antService.cc">
+      <Filter>Quelldateien\ant</Filter>
+    </ClCompile>
+    <ClCompile Include="edtConfig.cc">
+      <Filter>Quelldateien\edt</Filter>
+    </ClCompile>
+    <ClCompile Include="edtUtils.cc">
+      <Filter>Quelldateien\edt</Filter>
+    </ClCompile>
+    <ClCompile Include="edtDialogs.cc">
+      <Filter>Quelldateien\edt</Filter>
+    </ClCompile>
+    <ClCompile Include="edtEditorOptionsPages.cc">
+      <Filter>Quelldateien\edt</Filter>
+    </ClCompile>
+    <ClCompile Include="edtInstPropertiesPage.cc">
+      <Filter>Quelldateien\edt</Filter>
+    </ClCompile>
+    <ClCompile Include="edtMainService.cc">
+      <Filter>Quelldateien\edt</Filter>
+    </ClCompile>
+    <ClCompile Include="edtPartialService.cc">
+      <Filter>Quelldateien\edt</Filter>
+    </ClCompile>
+    <ClCompile Include="edtPlugin.cc">
+      <Filter>Quelldateien\edt</Filter>
+    </ClCompile>
+    <ClCompile Include="edtPropertiesPages.cc">
+      <Filter>Quelldateien\edt</Filter>
+    </ClCompile>
+    <ClCompile Include="edtService.cc">
+      <Filter>Quelldateien\edt</Filter>
+    </ClCompile>
+    <ClCompile Include="edtServiceImpl.cc">
+      <Filter>Quelldateien\edt</Filter>
+    </ClCompile>
+    <ClCompile Include="extDiffPlugin.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extXORToolDialog.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extDiffToolDialog.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extGerberDrillFileReader.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extGerberImport.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extGerberImportDialog.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extGerberImporter.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extNetTracer.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extNetTracerConfig.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extNetTracerDialog.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extRS274XApertures.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extRS274XReader.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extStreamImport.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extStreamImportDialog.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extStreamImporter.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extXORPlugin.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="gsi.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiClass.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiClassBase.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="imgObject.cc">
+      <Filter>Quelldateien\img</Filter>
+    </ClCompile>
+    <ClCompile Include="imgWidgets.cc">
+      <Filter>Quelldateien\img</Filter>
+    </ClCompile>
+    <ClCompile Include="imgPlugin.cc">
+      <Filter>Quelldateien\img</Filter>
+    </ClCompile>
+    <ClCompile Include="imgPropertiesPage.cc">
+      <Filter>Quelldateien\img</Filter>
+    </ClCompile>
+    <ClCompile Include="imgService.cc">
+      <Filter>Quelldateien\img</Filter>
+    </ClCompile>
+    <ClCompile Include="layAbstractMenu.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layZoomBox.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layAnnotationShapes.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layApplication.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layBitmap.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layBitmapRenderer.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layBitmapsToImage.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layBookmarkList.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layBookmarkManagementForm.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layBrowseInstancesForm.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layBrowser.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layBrowserDialog.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layBrowseShapesForm.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layCanvasPlane.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layCellSelectionForm.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layCellTreeModel.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layCellView.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layCIFReaderPlugin.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layCIFWriterPlugin.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layClipDialog.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layColorPalette.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layConfigurationDialog.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layConverters.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layCursor.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layDialogs.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layDisplayState.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layDitherPattern.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layDrawing.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layDXFReaderPlugin.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layDXFWriterPlugin.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layEditable.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layEditStipplesForm.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layEditStippleWidget.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layExceptions.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layFileDialog.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layFillDialog.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layFinder.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layFixedFont.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layGDS2ReaderPlugin.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layGDS2WriterPlugin.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layGridNet.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layHierarchyControlPanel.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layLayerControlPanel.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layLayerProperties.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layLayerToolbox.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layLayerTreeModel.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layLayoutCanvas.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layLayoutPropertiesForm.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layLayoutView.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layLayoutViewConfig.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layLayoutViewConfigPages.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layLoadLayoutOptionsDialog.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layLogViewerDialog.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layMainConfigPages.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layMainWindow.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layMarker.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layMouseTracker.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layMove.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layNavigator.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layOASISWriterPlugin.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layObjectInstPath.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layParsedLayerSource.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layPlugin.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layProgress.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layProgressWidget.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layProperties.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layPropertiesDialog.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layQtTools.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layRedrawLayerInfo.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layRedrawThread.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layRedrawThreadCanvas.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layRedrawThreadWorker.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layRenderer.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layRubberBox.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="laySaveLayoutOptionsDialog.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="laySelectCellViewForm.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="laySelector.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="laySelectStippleForm.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="laySession.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="laySettingsForm.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="laySnap.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layStipplePalette.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layStream.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layTechnology.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layTechSetupDialog.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layVersion.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layViewObject.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layViewOp.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layViewport.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layWidgets.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="rba.cc">
+      <Filter>Quelldateien\rba</Filter>
+    </ClCompile>
+    <ClCompile Include="rdbFile.cc">
+      <Filter>Quelldateien\rdb</Filter>
+    </ClCompile>
+    <ClCompile Include="rdbRVEReader.cc">
+      <Filter>Quelldateien\rdb</Filter>
+    </ClCompile>
+    <ClCompile Include="rdbInfoWidget.cc">
+      <Filter>Quelldateien\rdb</Filter>
+    </ClCompile>
+    <ClCompile Include="rdbMarkerBrowser.cc">
+      <Filter>Quelldateien\rdb</Filter>
+    </ClCompile>
+    <ClCompile Include="rdbMarkerBrowserDialog.cc">
+      <Filter>Quelldateien\rdb</Filter>
+    </ClCompile>
+    <ClCompile Include="rdbMarkerBrowserPage.cc">
+      <Filter>Quelldateien\rdb</Filter>
+    </ClCompile>
+    <ClCompile Include="rdbReader.cc">
+      <Filter>Quelldateien\rdb</Filter>
+    </ClCompile>
+    <ClCompile Include="tlAssert.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlXMLParser.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlClassRegistry.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlCollection.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlDataMapping.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlDeferredExecution.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlDeflate.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlException.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlExpression.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlInternational.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlLog.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlObserver.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlProgress.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlStream.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlString.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlThreadedWorkers.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlTimer.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlVariant.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="gtf.cc">
+      <Filter>Quelldateien\gtf</Filter>
+    </ClCompile>
+    <ClCompile Include="tlXMLWriter.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="dbFuzzyCellMapping.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbMatrix.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbLayoutQuery.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbLibrary.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="extBooleanOperationsPlugin.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extDEFImporter.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extLEFDEFImport.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extLEFDEFImportDialogs.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extLEFDEFImporter.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="extLEFImporter.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiExpression.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiObject.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiTypes.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="layBrowserPanel.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layGenericSyntaxHighlighter.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layGSIHelpProvider.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layHelpDialog.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layHelpProvider.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layHelpSource.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layLayerMappingWidget.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layLayoutStatisticsForm.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layMacro.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layMacroEditorDialog.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layMacroEditorPage.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layMacroEditorSetupDialog.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layMacroEditorTree.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layMacroPropertiesDialog.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layResourceHelpProvider.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layTechnologySelector.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="layTipDialog.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="libBasic.cc">
+      <Filter>Quelldateien\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="libBasicArc.cc">
+      <Filter>Quelldateien\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="libBasicCircle.cc">
+      <Filter>Quelldateien\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="libBasicDonut.cc">
+      <Filter>Quelldateien\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="libBasicEllipse.cc">
+      <Filter>Quelldateien\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="libBasicPie.cc">
+      <Filter>Quelldateien\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="libBasicRoundPath.cc">
+      <Filter>Quelldateien\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="libBasicRoundPolygon.cc">
+      <Filter>Quelldateien\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="libBasicStrokedPolygon.cc">
+      <Filter>Quelldateien\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="libBasicText.cc">
+      <Filter>Quelldateien\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="tlGlobPattern.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="tlStaticObjects.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="edtPCellParametersPage.cc">
+      <Filter>Quelldateien\edt</Filter>
+    </ClCompile>
+    <ClCompile Include="extBooleanOperationsDialogs.cc">
+      <Filter>Quelldateien\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_edtPCellParametersPage.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_extBooleanOperationsDialogs.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_extLEFDEFImportDialogs.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_imgLandmarksDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_imgNavigator.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layHelpDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layLayerMappingWidget.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layLayoutStatisticsForm.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layMacro.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layMacroEditorDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layMacroEditorPage.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layMacroEditorSetupDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layMacroEditorTree.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layMacroPropertiesDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layTipDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="imgLandmarksDialog.cc">
+      <Filter>Quelldateien\img</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layBrowserPanel.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layTechSetupDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="imgNavigator.cc">
+      <Filter>Quelldateien\img</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\libResources.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="dbRecursiveShapeIterator.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbRegion.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbEdges.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbEdgePairs.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="tlHttpStream.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_tlHttpStream.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="dbEdgePair.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbEdgePairRelations.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbTilingProcessor.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbFillTool.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="dbLayerMapping.cc">
+      <Filter>Quelldateien\db</Filter>
+    </ClCompile>
+    <ClCompile Include="layMacroInterpreter.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="rdbUtils.cc">
+      <Filter>Quelldateien\rdb</Filter>
+    </ClCompile>
+    <ClCompile Include="laySearchReplaceConfigPage.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="laySearchReplaceDialog.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="laySearchReplacePlugin.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="laySearchReplacePropertiesWidgets.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_laySearchReplaceDialog.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_laySearchReplaceConfigPage.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="rdb.cc">
+      <Filter>Quelldateien\rdb</Filter>
+    </ClCompile>
+    <ClCompile Include="pya.cc">
+      <Filter>Quelldateien\pya</Filter>
+    </ClCompile>
+    <ClCompile Include="pyaUtils.cc">
+      <Filter>Quelldateien\pya</Filter>
+    </ClCompile>
+    <ClCompile Include="pyaRefs.cc">
+      <Filter>Quelldateien\pya</Filter>
+    </ClCompile>
+    <ClCompile Include="pyaObject.cc">
+      <Filter>Quelldateien\pya</Filter>
+    </ClCompile>
+    <ClCompile Include="pyaMarshal.cc">
+      <Filter>Quelldateien\pya</Filter>
+    </ClCompile>
+    <ClCompile Include="pyaInspector.cc">
+      <Filter>Quelldateien\pya</Filter>
+    </ClCompile>
+    <ClCompile Include="pyaHelpers.cc">
+      <Filter>Quelldateien\pya</Filter>
+    </ClCompile>
+    <ClCompile Include="pyaConvert.cc">
+      <Filter>Quelldateien\pya</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiInterpreter.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiRuntimeError.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="gsiMethods.cc">
+      <Filter>Quelldateien\gsi</Filter>
+    </ClCompile>
+    <ClCompile Include="layMacroVariableView.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layMacroVariableView.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="tlHeap.cc">
+      <Filter>Quelldateien\tl</Filter>
+    </ClCompile>
+    <ClCompile Include="layRuntimeErrorForm.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\moc_layRuntimeErrorForm.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="edtPropertiesPageUtils.cc">
+      <Filter>Quelldateien\edt</Filter>
+    </ClCompile>
+    <ClCompile Include="layCrashMessage.cc">
+      <Filter>Quelldateien\lay</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AddNewImageDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="AlignCellOptionsDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="AlignOptionsDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="BookmarkManagementForm.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="BooleanOptionsDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="BoxPropertiesPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="BrowseInstancesConfigPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="BrowseInstancesForm.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="BrowserDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="BrowseShapesConfigPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="BrowseShapesForm.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="CellSelectionForm.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="ChangeLayerOptionsDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="CIFReaderOptionPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="CIFWriterOptionPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="ClearLayerModeDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="ClipDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="ConfigurationDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="Console.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="CopyModeDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="DeleteCellModeDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="DeleteModeDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="DiffToolDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="DXFReaderOptionPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="DXFWriterOptionPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="EditablePathPropertiesPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="EditorOptionsDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="EditorOptionsGeneric.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="EditorOptionsInst.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="EditorOptionsPath.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="EditorOptionsText.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="EditStipplesForm.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="FillDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="FlattenInstOptionsDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="GDS2ReaderOptionPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="GDS2WriterOptionPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="GerberImportDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="GridNetConfigPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="gtfUiDialogUI.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="HelpAboutDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="ImagePropertiesPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="InstantiationForm.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="InstPropertiesPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="KeyBindingsConfigPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutProperties.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutViewConfigPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutViewConfigPage1.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutViewConfigPage2a.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutViewConfigPage2b.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutViewConfigPage2c.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutViewConfigPage3a.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutViewConfigPage3b.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutViewConfigPage3c.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutViewConfigPage3d.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutViewConfigPage3e.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutViewConfigPage3f.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutViewConfigPage4.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutViewConfigPage5.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutViewConfigPage6.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutViewConfigPage7.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LoadLayoutOptionsDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LogViewerDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MainConfigPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MainConfigPage2.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MainConfigPage3.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MainConfigPage4.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MainConfigPage5.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MakeArrayOptionsDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MakeCellOptionsDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MarkerBrowserConfigPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MarkerBrowserConfigPage2.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MarkerBrowserDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MarkerBrowserPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MarkerBrowserSnapshotView.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MergeOptionsDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MoveOptionsDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="NetTracerConfigPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="NetTracerDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="NetTracerTechComponentEditor.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="NewCellPropertiesDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="NewLayerPropertiesDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="NewLayoutPropertiesDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="OASISWriterOptionPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="OpenLayoutModeDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="PathPropertiesPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="PolygonPropertiesPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="PropertiesDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="RenameCellDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="RoundCornerOptionsDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="RuntimeErrorForm.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="RulerConfigPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="RulerConfigPage2.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="RulerConfigPage3.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="RulerConfigPage4.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="RulerPropertiesPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="SaveLayoutOptionsDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="SelectCellViewForm.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="SelectStippleForm.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="SettingsForm.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="SizingOptionsDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="StreamImportDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="TechComponentSetupDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="TechSetupDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="TextPropertiesPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="TipDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="UserPropertiesEditForm.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="UserPropertiesForm.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="XORToolDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="BrowserPanel.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="DuplicateLayerDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="ImageLandmarksDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayerMappingWidget.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayerSourceDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LayoutStatistics.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LEFDEFImportOptionsDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LEFDEFTechnologyComponentEditor.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="LibraryCellSelectionForm.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MacroEditorDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MacroEditorSetupDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MacroPropertiesDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MacroTemplateSelectionDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="MainConfigPage6.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="ReplaceCellOptionsDialog.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="SimpleCellSelectionForm.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="TechBaseEditorPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+    <None Include="TechLayerMappingEditorPage.ui">
+      <Filter>UI Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="rdbMarkerBrowserPage.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="rdbMarkerBrowserDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="rdbMarkerBrowser.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layWidgets.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="laySettingsForm.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="laySelectStippleForm.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="laySelector.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="laySelectCellViewForm.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="laySaveLayoutOptionsDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layPropertiesDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layProgressWidget.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layNavigator.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layMove.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layMainWindow.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layMainConfigPages.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layLogViewerDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layLoadLayoutOptionsDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layLayoutViewConfigPages.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layLayoutView.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layLayoutPropertiesForm.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layLayoutCanvas.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layLayerTreeModel.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layLayerToolbox.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layLayerControlPanel.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layHierarchyControlPanel.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layGridNet.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layGDS2WriterPlugin.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layGDS2ReaderPlugin.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layFillDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layEditStippleWidget.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layEditStipplesForm.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layDXFWriterPlugin.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layDXFReaderPlugin.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layDitherPattern.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layDialogs.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layConfigurationDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layClipDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layCIFReaderPlugin.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layCellSelectionForm.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layBrowseShapesForm.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layBrowserDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layBrowseInstancesForm.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layBookmarkManagementForm.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layAbstractMenu.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="imgWidgets.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="imgPropertiesPage.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gtf.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="extXORToolDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="extStreamImportDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="extNetTracerConfig.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="extGerberImportDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="extDiffToolDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="edtPropertiesPages.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="edtPartialService.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="edtEditorOptionsPages.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="edtDialogs.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="antPropertiesPage.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="tlDeferredExecution.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="antConfigPage.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="edtInstPropertiesPage.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="extNetTracerDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layCIFWriterPlugin.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layResources.qrc">
+      <Filter>QRC Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layTipDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layMacroPropertiesDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layMacroEditorTree.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layMacroEditorSetupDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layMacroEditorPage.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layMacroEditorDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layMacro.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layLayoutStatisticsForm.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layLayerMappingWidget.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layHelpDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="imgNavigator.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="imgLandmarksDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="extLEFDEFImportDialogs.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="extBooleanOperationsDialogs.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="edtPCellParametersPage.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layTechSetupDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layBrowserPanel.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="libResources.qrc">
+      <Filter>QRC Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="tlHttpStream.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="laySearchReplaceDialog.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="laySearchReplaceConfigPage.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layMacroVariableView.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="layRuntimeErrorForm.h">
+      <Filter>MOC Headers</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="version.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="antConfig.h">
+      <Filter>Headerdateien\ant</Filter>
+    </ClInclude>
+    <ClInclude Include="antTemplate.h">
+      <Filter>Headerdateien\ant</Filter>
+    </ClInclude>
+    <ClInclude Include="antObject.h">
+      <Filter>Headerdateien\ant</Filter>
+    </ClInclude>
+    <ClInclude Include="antPlugin.h">
+      <Filter>Headerdateien\ant</Filter>
+    </ClInclude>
+    <ClInclude Include="antService.h">
+      <Filter>Headerdateien\ant</Filter>
+    </ClInclude>
+    <ClInclude Include="dbArray.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbWriterTools.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbBox.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbBoxConvert.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbBoxTree.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbCell.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbCellGraphUtils.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbCellInst.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbCellMapping.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbCIF.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbCIFReader.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbCIFWriter.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbClip.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbClipboard.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbClipboardData.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbDXF.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbDXFReader.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbDXFWriter.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbEdge.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbEdgeProcessor.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbGDS2.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbGDS2Reader.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbGDS2ReaderBase.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbGDS2Writer.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbGDS2WriterBase.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbHershey.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbHersheyFont.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbInstances.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbInstElement.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbLayer.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbLayerProperties.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbLayout.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbLayoutDiff.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbLayoutStateModel.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbLayoutUtils.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbLibrary.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbLibraryManager.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbLibraryProxy.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbLoadLayoutOptions.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbManager.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbMemStatistics.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbOASIS.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbOASISReader.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbOASISWriter.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbObject.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbObjectTag.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbObjectWithProperties.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbPath.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbPCellDeclaration.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbPCellHeader.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbPCellVariant.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbPoint.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbPolygon.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbPolygonTools.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbPropertiesRepository.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbReader.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbSaveLayoutOptions.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbShape.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbShapeRepository.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbShapes.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbShapes2.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbStatic.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbStream.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbStreamLayers.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbText.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbTextWriter.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbTrans.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbTypes.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbUserObject.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbVector.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="dbWriter.h">
+      <Filter>Headerdateien\db</Filter>
+    </ClInclude>
+    <ClInclude Include="edtConfig.h">
+      <Filter>Headerdateien\edt</Filter>
+    </ClInclude>
+    <ClInclude Include="edtUtils.h">
+      <Filter>Headerdateien\edt</Filter>
+    </ClInclude>
+    <ClInclude Include="edtMainService.h">
+      <Filter>Headerdateien\edt</Filter>
+    </ClInclude>
+    <ClInclude Include="edtPlugin.h">
+      <Filter>Headerdateien\edt</Filter>
+    </ClInclude>
+    <ClInclude Include="edtService.h">
+      <Filter>Headerdateien\edt</Filter>
+    </ClInclude>
+    <ClInclude Include="edtServiceImpl.h">
+      <Filter>Headerdateien\edt</Filter>
+    </ClInclude>
+    <ClInclude Include="extGerberDrillFileReader.h">
+      <Filter>Headerdateien\ext</Filter>
+    </ClInclude>
+    <ClInclude Include="extStreamImporter.h">
+      <Filter>Headerdateien\ext</Filter>
+    </ClInclude>
+    <ClInclude Include="extGerberImporter.h">
+      <Filter>Headerdateien\ext</Filter>
+    </ClInclude>
+    <ClInclude Include="extNetTracer.h">
+      <Filter>Headerdateien\ext</Filter>
+    </ClInclude>
+    <ClInclude Include="extNetTracerConfigPage.h">
+      <Filter>Headerdateien\ext</Filter>
+    </ClInclude>
+    <ClInclude Include="extRS274XApertures.h">
+      <Filter>Headerdateien\ext</Filter>
+    </ClInclude>
+    <ClInclude Include="extRS274XReader.h">
+      <Filter>Headerdateien\ext</Filter>
+    </ClInclude>
+    <ClInclude Include="gsi.h">
+      <Filter>Headerdateien\gsi</Filter>
+    </ClInclude>
+    <ClInclude Include="gsiCallback.h">
+      <Filter>Headerdateien\gsi</Filter>
+    </ClInclude>
+    <ClInclude Include="gsiCallbackVar.h">
+      <Filter>Headerdateien\gsi</Filter>
+    </ClInclude>
+    <ClInclude Include="gsiClass.h">
+      <Filter>Headerdateien\gsi</Filter>
+    </ClInclude>
+    <ClInclude Include="gsiClassBase.h">
+      <Filter>Headerdateien\gsi</Filter>
+    </ClInclude>
+    <ClInclude Include="gsiIterators.h">
+      <Filter>Headerdateien\gsi</Filter>
+    </ClInclude>
+    <ClInclude Include="gsiMethods.h">
+      <Filter>Headerdateien\gsi</Filter>
+    </ClInclude>
+    <ClInclude Include="gsiMethodsVar.h">
+      <Filter>Headerdateien\gsi</Filter>
+    </ClInclude>
+    <ClInclude Include="gsiObject.h">
+      <Filter>Headerdateien\gsi</Filter>
+    </ClInclude>
+    <ClInclude Include="gsiSerialisation.h">
+      <Filter>Headerdateien\gsi</Filter>
+    </ClInclude>
+    <ClInclude Include="gsiTypes.h">
+      <Filter>Headerdateien\gsi</Filter>
+    </ClInclude>
+    <ClInclude Include="gtfUiDialog.h">
+      <Filter>Headerdateien\gtf</Filter>
+    </ClInclude>
+    <ClInclude Include="imgObject.h">
+      <Filter>Headerdateien\img</Filter>
+    </ClInclude>
+    <ClInclude Include="imgService.h">
+      <Filter>Headerdateien\img</Filter>
+    </ClInclude>
+    <ClInclude Include="imgPlugin.h">
+      <Filter>Headerdateien\img</Filter>
+    </ClInclude>
+    <ClInclude Include="layAnnotationShapes.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layZoomBox.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layApplication.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layBitmap.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layBitmapRenderer.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layBitmapsToImage.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layBookmarkList.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layBrowser.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layCanvasPlane.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layCellTreeModel.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layCellView.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layColorPalette.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layConfig.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layConverters.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layCursor.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layDisplayState.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layDrawing.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layEditable.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layExceptions.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layFileDialog.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layFinder.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layFixedFont.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layLayerProperties.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layMarker.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layMouseTracker.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layOASISWriterPlugin.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layObjectInstPath.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layParsedLayerSource.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layPlugin.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layProgress.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layProperties.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layQtTools.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layRedrawLayerInfo.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layRedrawThread.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layRedrawThreadCanvas.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layRedrawThreadWorker.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layRenderer.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layRubberBox.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="laySession.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="laySnap.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layStipplePalette.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layStream.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layTechnology.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layVersion.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layViewObject.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layViewOp.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="layViewport.h">
+      <Filter>Headerdateien\lay</Filter>
+    </ClInclude>
+    <ClInclude Include="tlAlgorithm.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlXMLParser.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlAssert.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlClassRegistry.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlCollection.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlDataMapping.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlDeflate.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlException.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlExpression.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlInternational.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlIntervalMap.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlIntervalSet.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlKDTree.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlLog.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlObserver.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlProgress.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlReuseVector.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlStableVector.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlStream.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlString.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlThreadedWorkers.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlTimer.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlUtils.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlVariant.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="tlVector.h">
+      <Filter>Headerdateien\tl</Filter>
+    </ClInclude>
+    <ClInclude Include="rdb.h">
+      <Filter>Headerdateien\rdb</Filter>
+    </ClInclude>
+    <ClInclude Include="rdbReader.h">
+      <Filter>Headerdateien\rdb</Filter>
+    </ClInclude>
+    <ClInclude Include="rdbInfoWidget.h">
+      <Filter>Headerdateien\rdb</Filter>
+    </ClInclude>
+    <ClInclude Include="rba.h">
+      <Filter>Headerdateien\rba</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

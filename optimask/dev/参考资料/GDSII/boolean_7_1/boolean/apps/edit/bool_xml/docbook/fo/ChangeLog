@@ -1,0 +1,69 @@
+2000-10-29  Norman Walsh  <ndw@nwalsh.com>
+
+	* xref.xsl: fo:simple-link is now called fo:basic-link
+
+2000-10-26  Norman Walsh  <ndw@nwalsh.com>
+
+	* biblio.xsl: Use attribute sets; fixed missing ID
+
+	* block.xsl: Use attribute sets
+
+	* component.xsl, division.xsl, footnote.xsl, glossary.xsl, index.xsl, sections.xsl: 
+	Fix footnotes; use fo:footnote FO
+
+	* docbook.xsl: Turn off indenting; it breaks verbatim blocks
+
+	* fo.xsl, inline.xsl: Support trade, registered, and service dingbats
+
+	* formal.xsl: Fix keep error, use attribute sets
+
+	* graphics.xsl: Support the @format='linespecific' enbedding hack
+
+	* param.xsl: Added several attribute sets; removed check.idref (always check IDREFs)
+
+	* titlepage.xsl: Provide fo:table-column info for revision history tables
+
+	* verbatim.xsl: Fix white-space property name (white-space-collapse)
+
+	* xref.xsl: Update xref support
+
+2000-10-20  Norman Walsh  <ndw@nwalsh.com>
+
+	* Makefile: Use titlepage.xsl to generate title pages
+
+	* titlepage.templates.xsl: Generated from new titlepage.xsl
+
+2000-10-19  Norman Walsh  <ndw@nwalsh.com>
+
+	* Makefile, component.xsl, docbook.xsl, sections.xsl, titlepage.article.xsl, titlepage.book.xsl, titlepage.part.xsl, titlepage.reference.xsl, titlepage.section.xsl, titlepage.set.xsl, titlepage.templates.xml, titlepage.templates.xsl: 
+	Converted to template-driven title pages
+
+	* lists.xsl, synop.xsl: Added explicit priority to avoid conflict
+
+	* param.xsl, table.xsl: Documentation changes
+
+2000-10-17  Norman Walsh  <ndw@nwalsh.com>
+
+	* param.xsl: Updated documentation; changed variables to parameters
+
+	* table.xsl: Updated documentation
+
+2000-10-16  Norman Walsh  <ndw@nwalsh.com>
+
+	* param.xsl, table.xsl: Added doc:reference
+
+2000-10-14  Norman Walsh  <ndw@nwalsh.com>
+
+	* graphics.xsl: Rewrote support for graphics
+
+2000-10-12  Norman Walsh  <ndw@nwalsh.com>
+
+	* sections.xsl: Generate correct page-sequences for documents that begin at the section or sect1 level
+
+2000-10-09  Norman Walsh  <ndw@nwalsh.com>
+
+	* LostLog, admon.xsl, autotoc.xsl, biblio.xsl, block.xsl, callout.xsl, component.xsl, division.xsl, docbook.xsl, fo.xsl, footnote.xsl, formal.xsl, glossary.xsl, graphics.xsl, index.xsl, info.xsl, inline.xsl, keywords.xsl, lists.xsl, math.xsl, param.xsl, qandaset.xsl, refentry.xsl, sections.xsl, synop.xsl, table.xsl, titlepage.article.xsl, titlepage.book.xsl, titlepage.part.xsl, titlepage.reference.xsl, titlepage.section.xsl, titlepage.set.xsl, titlepage.xsl, toc.xsl, verbatim.xsl, xref.xsl: 
+	New file.
+
+	* component.xsl: Add ID on appendix block
+

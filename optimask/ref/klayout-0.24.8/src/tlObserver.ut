@@ -1,0 +1,267 @@
+
+/*
+
+  KLayout Layout Viewer
+  Copyright (C) 2006-2016 Matthias Koefferlein
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+*/
+
+
+
+#include "tlObserver.h"
+#include "utHead.h"
+
+namespace
+{
+
+class AO;
+
+class A : public tl::Observed
+{
+public:
+
+
+};
+
+class AO : public tl::Observer
+{
+public:
+  AO () : signalled (0) { }
+
+  virtual void signal_observed () {
+    signalled++;
+  }
+
+  int signalled;
+};
+
+TEST(1) 
+{
+  A *pa = new A ();
+  AO *pao = new AO ();
+  pa->add_observer (*pao);
+  EXPECT_EQ (pa->observers (), 1);
+  delete pao;
+  EXPECT_EQ (pa->observers (), 0);
+
+  pao = new AO ();
+  pa->add_observer (*pao);
+  EXPECT_EQ (pa->observers (), 1);
+  EXPECT_EQ (pao->observes (), 1);
+  delete pa;
+  EXPECT_EQ (pao->observes (), 0);
+  delete pao;
+}
+
+TEST(2) 
+{
+  A *pa = new A ();
+  AO *pao = new AO ();
+  pa->add_observer (*pao);
+  EXPECT_EQ (pa->observers (), 1);
+  EXPECT_EQ (pao->observes (), 1);
+
+  pa->signal_observers ();
+  EXPECT_EQ (pao->signalled, 1);
+  pa->signal_observers ();
+  EXPECT_EQ (pao->signalled, 2);
+
+  pao->signalled = 0;
+  pa->remove_observer (*pao);
+  EXPECT_EQ (pa->observers (), 0);
+  EXPECT_EQ (pao->observes (), 0);
+  pa->signal_observers ();
+  EXPECT_EQ (pao->signalled, 0);
+
+  delete pao;
+  delete pa;
+}
+
+TEST(3) 
+{
+  A *pa1 = new A ();
+  A *pa2 = new A ();
+  AO *pao = new AO ();
+
+  pa1->add_observer (*pao);
+  EXPECT_EQ (pa1->observers (), 1);
+  EXPECT_EQ (pa2->observers (), 0);
+  EXPECT_EQ (pao->observes (), 1);
+
+  pa2->add_observer (*pao);
+  EXPECT_EQ (pa1->observers (), 1);
+  EXPECT_EQ (pa2->observers (), 1);
+  EXPECT_EQ (pao->observes (), 2);
+
+  pa1->add_observer (*pao);
+  EXPECT_EQ (pa1->observers (), 2);
+  EXPECT_EQ (pa2->observers (), 1);
+  EXPECT_EQ (pao->observes (), 3);
+
+  pa1->signal_observers ();
+  EXPECT_EQ (pao->signalled, 2);
+  pa1->signal_observers ();
+  EXPECT_EQ (pao->signalled, 4);
+  pa2->signal_observers ();
+  EXPECT_EQ (pao->signalled, 5);
+
+  pao->signalled = 0;
+  pa1->remove_observer (*pao);
+  pa1->remove_observer (*pao);
+  EXPECT_EQ (pa1->observers (), 0);
+  EXPECT_EQ (pa2->observers (), 1);
+  EXPECT_EQ (pao->observes (), 1);
+  pa1->signal_observers ();
+  EXPECT_EQ (pao->signalled, 0);
+  pa2->signal_observers ();
+  EXPECT_EQ (pao->signalled, 1);
+
+  pao->signalled = 0;
+  pa2->remove_observer (*pao);
+  EXPECT_EQ (pa1->observers (), 0);
+  EXPECT_EQ (pa2->observers (), 0);
+  EXPECT_EQ (pao->observes (), 0);
+  pa1->signal_observers ();
+  EXPECT_EQ (pao->signalled, 0);
+  pa2->signal_observers ();
+  EXPECT_EQ (pao->signalled, 0);
+
+  delete pao;
+  delete pa1;
+  delete pa2;
+}
+
+TEST(4) 
+{
+  A *pa1 = new A ();
+  A *pa2 = new A ();
+  AO *pao = new AO ();
+
+  pa1->add_observer (*pao);
+  EXPECT_EQ (pa1->observers (), 1);
+  EXPECT_EQ (pa2->observers (), 0);
+  EXPECT_EQ (pao->observes (), 1);
+
+  pa2->add_observer (*pao);
+  EXPECT_EQ (pa1->observers (), 1);
+  EXPECT_EQ (pa2->observers (), 1);
+  EXPECT_EQ (pao->observes (), 2);
+
+  pa1->add_observer (*pao);
+  EXPECT_EQ (pa1->observers (), 2);
+  EXPECT_EQ (pa2->observers (), 1);
+  EXPECT_EQ (pao->observes (), 3);
+
+  pa1->signal_observers ();
+  EXPECT_EQ (pao->signalled, 2);
+  pa1->signal_observers ();
+  EXPECT_EQ (pao->signalled, 4);
+  pa2->signal_observers ();
+  EXPECT_EQ (pao->signalled, 5);
+
+  pao->signalled = 0;
+  delete pa1;
+  EXPECT_EQ (pa2->observers (), 1);
+  EXPECT_EQ (pao->observes (), 1);
+  pa2->signal_observers ();
+  EXPECT_EQ (pao->signalled, 1);
+
+  pao->signalled = 0;
+  delete pa2;
+  EXPECT_EQ (pao->observes (), 0);
+
+  delete pao;
+}
+
+TEST(5) 
+{
+  A *pa1 = new A ();
+  A *pa2 = new A ();
+  A *pa3 = new A ();
+  AO *pao1 = new AO ();
+  AO *pao2 = new AO ();
+  AO *pao3 = new AO ();
+
+  pa1->add_observer (*pao2);
+  pa1->add_observer (*pao1);
+  pa1->add_observer (*pao3);
+  pa2->add_observer (*pao3);
+  pa2->add_observer (*pao1);
+  pa2->add_observer (*pao2);
+  pa2->add_observer (*pao2);
+  pa3->add_observer (*pao2);
+  pa3->add_observer (*pao1);
+
+  EXPECT_EQ (pa1->observers (), 3);
+  EXPECT_EQ (pa2->observers (), 4);
+  EXPECT_EQ (pa3->observers (), 2);
+  EXPECT_EQ (pao1->observes (), 3);
+  EXPECT_EQ (pao2->observes (), 4);
+  EXPECT_EQ (pao3->observes (), 2);
+
+  delete pao1;
+  delete pao2;
+  delete pao3;
+  EXPECT_EQ (pa1->observers (), 0);
+  EXPECT_EQ (pa2->observers (), 0);
+  EXPECT_EQ (pa3->observers (), 0);
+
+  delete pa1;
+  delete pa2;
+  delete pa3;
+}
+
+TEST(6) 
+{
+  A *pa1 = new A ();
+  A *pa2 = new A ();
+  A *pa3 = new A ();
+  AO *pao1 = new AO ();
+  AO *pao2 = new AO ();
+  AO *pao3 = new AO ();
+
+  pa3->add_observer (*pao1);
+  pa1->add_observer (*pao2);
+  pa2->add_observer (*pao1);
+  pa2->add_observer (*pao3);
+  pa3->add_observer (*pao2);
+  pa2->add_observer (*pao2);
+  pa2->add_observer (*pao2);
+  pa1->add_observer (*pao3);
+  pa1->add_observer (*pao1);
+
+  EXPECT_EQ (pa1->observers (), 3);
+  EXPECT_EQ (pa2->observers (), 4);
+  EXPECT_EQ (pa3->observers (), 2);
+  EXPECT_EQ (pao1->observes (), 3);
+  EXPECT_EQ (pao2->observes (), 4);
+  EXPECT_EQ (pao3->observes (), 2);
+
+  delete pa1;
+  delete pa2;
+  delete pa3;
+  EXPECT_EQ (pao1->observes (), 0);
+  EXPECT_EQ (pao2->observes (), 0);
+  EXPECT_EQ (pao3->observes (), 0);
+
+  delete pao1;
+  delete pao2;
+  delete pao3;
+}
+
+}
+

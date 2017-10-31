@@ -1,0 +1,352 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="YES"
+	DECLARATION="template &lt;class Type&gt; class DL_SortIter"
+>
+
+<META-DATA>
+	<NAME>DL_SortIter</NAME>
+	<AUTHOR>klaasje</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Wed Oct 20  9:03:04 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>stdlib.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>misc.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>gdsmes.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>_dl_itr.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> template class DL_SortIter class for sort iterator on DL_List template sort iterator for any list/node type This class is a derived class to attach/instantiate a sorted iterator on a double linked list DL_List. The iterator is used to insert items in sorted order into a list.</PARA>
+</DESCRIPTION>
+
+<INHERITANCE>
+	<PARENT-CLASS
+		SCOPE="public"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>DL_Iter&lt;Type&gt;</NAME>
+	</PARENT-CLASS>
+</INHERITANCE>
+
+
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DL_SortIter(DL_List&lt;Type&gt; *, int &amp;&amp;BRAKO*newfunc&amp;&amp;BRAKC&amp;&amp;BRAKOType,Type&amp;&amp;BRAKC)"
+		INLINE="NO"
+	>
+		<NAME>DL_SortIter</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Constructor of sort iterator for given list and sort function</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DL_SortIter(int &amp;&amp;BRAKO*newfunc&amp;&amp;BRAKC&amp;&amp;BRAKOType,Type&amp;&amp;BRAKC)"
+		INLINE="NO"
+	>
+		<NAME>DL_SortIter</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Constructor of sort iterator with sort function and no list attached</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~DL_SortIter()"
+		INLINE="NO"
+	>
+		<NAME>~DL_SortIter</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Destructor of sort iterator</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insert(Type)"
+		INLINE="NO"
+	>
+		<NAME>insert</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>insert item in sorted order</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insend(G_BOOL n)"
+		INLINE="NO"
+	>
+		<NAME>insend</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Not allowed</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insbegin(G_BOOL n)"
+		INLINE="NO"
+	>
+		<NAME>insbegin</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Not allowed</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insbefore(G_BOOL n)"
+		INLINE="NO"
+	>
+		<NAME>insbefore</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Not allowed</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insafter(G_BOOL n)"
+		INLINE="NO"
+	>
+		<NAME>insafter</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Not allowed</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void takeover(DL_List&lt;Type&gt;*)"
+		INLINE="NO"
+	>
+		<NAME>takeover</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Not allowed</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void takeover(DL_Iter&lt;Type&gt;*)"
+		INLINE="NO"
+	>
+		<NAME>takeover</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Not allowed</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void takeover(DL_Iter&lt;Type&gt;* otheriter, int maxcount)"
+		INLINE="NO"
+	>
+		<NAME>takeover</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Not allowed</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void next_wrap()"
+		INLINE="NO"
+	>
+		<NAME>next_wrap</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Not allowed</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void prev_wrap()"
+		INLINE="NO"
+	>
+		<NAME>prev_wrap</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Not allowed</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void reset_tail()"
+		INLINE="NO"
+	>
+		<NAME>reset_tail</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Not allowed</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void reset_head()"
+		INLINE="NO"
+	>
+		<NAME>reset_head</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Not allowed</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void sortitererror()"
+		INLINE="NO"
+	>
+		<NAME>sortitererror</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Report off Iterator Errors</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="int(*comparef)"
+		INLINE="NO"
+	>
+		<NAME>int</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>comparefunction used to insert items in sorted order</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

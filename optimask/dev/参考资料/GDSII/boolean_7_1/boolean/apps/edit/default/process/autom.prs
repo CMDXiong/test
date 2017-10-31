@@ -1,0 +1,12 @@
+# auto automatic Process file for GDS-II postprocessing tool
+startpoint  0.000000 0.000000
+loadfile   $GDSROOT/default/data/trans.key key
+draw
+
+loadprocess   $GDSROOT/default/process/aap.prs
+loadprocess   $GDSROOT/default/process/aap2.prs
+loadprocess   $GDSROOT/default/process/aap3.prs
+
+displayaber       {5um}
+loadfile   $GDSROOT/default/data/boog3.key key
+draw

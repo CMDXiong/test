@@ -1,0 +1,1595 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class DrawDriver"
+>
+
+<META-DATA>
+	<NAME>DrawDriver</NAME>
+	<AUTHOR>klaasje</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Wed Oct 20  9:02:45 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>_lnk_itr.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>drivout.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>lsetup.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>matrix.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>bbox.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>shape.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>polyline.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME></NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+<DESCRIPTION>
+	<PARA> Drawdriver is the base class for drawing the internal database contents to the screen. For every Object in the database there are members to write it to a screen type device.  For instance the display or a printer a class derived from this baseclass will contain the device specific functions for doing the low level drawing.</PARA>
+</DESCRIPTION>
+
+<INHERITANCE>
+	<PARENT-CLASS
+		SCOPE="public"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>Driver_out</NAME>
+	</PARENT-CLASS>
+</INHERITANCE>
+
+
+
+<RELATED-TYPES>
+	<RELATED-TYPE TYPE="class">
+		<NAME>WindowsDriver</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>PrintDriver</NAME>
+	</RELATED-TYPE>
+</RELATED-TYPES>
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual G_BOOL "
+		DECLARATION="virtual G_BOOL Pending()"
+		INLINE="NO"
+	>
+		<NAME>Pending</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>detect interruption of drawing routines</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DrawDriver()"
+		INLINE="NO"
+	>
+		<NAME>DrawDriver</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> constructors</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~DrawDriver()"
+		INLINE="NO"
+	>
+		<NAME>~DrawDriver</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> destructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	WriteDirect(ElementList*)"
+		INLINE="NO"
+	>
+		<NAME>WriteDirect</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write the object to the device without history on the current tarnsform matrixthis is used in interactive drawing modes</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void WriteDirect(Path* _Path)"
+		INLINE="NO"
+	>
+		<NAME>WriteDirect</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write the object to the device without history on the current tarnsform matrixthis is used in interactive drawing modes</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void WriteDirect(Boundary* _Boundary)"
+		INLINE="NO"
+	>
+		<NAME>WriteDirect</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write the object to the device without history on the current tarnsform matrixthis is used in interactive drawing modes</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void WriteDirect(Box* _Box)"
+		INLINE="NO"
+	>
+		<NAME>WriteDirect</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write the object to the device without history on the current tarnsform matrixthis is used in interactive drawing modes</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void WriteDirect(Circle* _Circle)"
+		INLINE="NO"
+	>
+		<NAME>WriteDirect</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write the object to the device without history on the current tarnsform matrixthis is used in interactive drawing modes</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	WriteDirect(Text*)"
+		INLINE="NO"
+	>
+		<NAME>WriteDirect</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write the object to the device without history on the current tarnsform matrixthis is used in interactive drawing modes</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	WriteDirect(Arcseg*)"
+		INLINE="NO"
+	>
+		<NAME>WriteDirect</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write the object to the device without history on the current tarnsform matrixthis is used in interactive drawing modes</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	DrawOrigin()"
+		INLINE="NO"
+	>
+		<NAME>DrawOrigin</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>draw the (0,0) crosshair</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void	"
+		DECLARATION="virtual void	DrawGrid(double,long,int)"
+		INLINE="NO"
+	>
+		<NAME>DrawGrid</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>draw the drawing grid on the canvas</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	MakeWindowCoordinates(double&amp;, double&amp;, double&amp;, double&amp;)"
+		INLINE="NO"
+	>
+		<NAME>MakeWindowCoordinates</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform virtual coordinates to window coordinatestransform virtual coordinates to window coordinates (lines)</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	MakeWindowCoordinates(double&amp;, double&amp;, double&amp;, double&amp;)"
+		INLINE="NO"
+	>
+		<NAME>MakeWindowCoordinates</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform virtual coordinates to window coordinatestransform virtual coordinates to window coordinates (lines)</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void	"
+		DECLARATION="virtual void	Init(Setup*)"
+		INLINE="NO"
+	>
+		<NAME>Init</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>initialize the device to draw on</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix<double>*	"
+		DECLARATION="Matrix&lt;double&gt;*	GetInverseMappingMatrix()"
+		INLINE="NO"
+	>
+		<NAME>GetInverseMappingMatrix</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>matrix for calculating the virtual coordinate given a screen coordinate</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix<double>*	"
+		DECLARATION="Matrix&lt;double&gt;*	GetMappingMatrix()"
+		INLINE="NO"
+	>
+		<NAME>GetMappingMatrix</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>matrix for calculating the screen coordinate given a virtual coordinate</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="BoundingBox*	"
+		DECLARATION="BoundingBox*	GetVirtualSizeScreen()"
+		INLINE="NO"
+	>
+		<NAME>GetVirtualSizeScreen</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>return a Boundingbox in virtual coordinates being the visual size of the client window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void GetClientWindowSize(int* dx, int* dy)"
+		INLINE="NO"
+	>
+		<NAME>GetClientWindowSize</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>return the dx and dy size of the client window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetMapping(double vx1, double vy1, double vx2, double vy2, int border)"
+		INLINE="NO"
+	>
+		<NAME>SetMapping</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>given the virtual size to be displayed, the mappingmatrix will be calculatedin such a manner that it fits to the window size.the virtual size is just an indication, it will be ajusted to fit in the client window.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetDrawStyle(DrawStyle)"
+		INLINE="NO"
+	>
+		<NAME>SetDrawStyle</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the drawing style (filled, outline, inverted etc.) The drawstyle is used to determine how figures should be drawn on screen.	WIREFRAME	= draw the outlines only	FILLED	= draw outlines and fill the polygons	SELECTED	=	draw only a selectedline around already existing objects INVERTED = draw the object in a color being the inverse of the screencolor where the object is drawn P.S. With the drawstyle wireframe or filled selected objects are also drawn</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="DrawStyle	"
+		DECLARATION="DrawStyle	GetDrawStyle()"
+		INLINE="NO"
+	>
+		<NAME>GetDrawStyle</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the current drawing style (filled, outline, inverted etc.)</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	IsDrawStyle(DrawStyle)"
+		INLINE="NO"
+	>
+		<NAME>IsDrawStyle</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>is this the current drawstyle?</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void	"
+		DECLARATION="virtual void	ClearScreen()"
+		INLINE="NO"
+	>
+		<NAME>ClearScreen</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>clear the client window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="double	"
+		DECLARATION="double	GetScaleFactor()"
+		INLINE="NO"
+	>
+		<NAME>GetScaleFactor</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>current scale factor for virtual to window coordinatesbeing the zoomin factor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void FillPatternPolygon(void)"
+		INLINE="NO"
+	>
+		<NAME>FillPatternPolygon</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>scanfill the current absolute polygon</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void DetectCriticalPoints()"
+		INLINE="NO"
+	>
+		<NAME>DetectCriticalPoints</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>used in scanfill to detect local minimums</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Write(Box* _Box)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Write(Circle* _Circle)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Write(ArrayReference*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Write(Bgnlib*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Write(Bgnstr*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Write(Element*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Write(Boundary*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Write(ElementList*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Write(ColumnsRows*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Write(Elflags*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Write(GdsII*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Write(Header*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Write(Library*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Write(Path*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Write(Arcseg*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Write(Point*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Write(Segment*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Write(G_Polygon*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Write(G_Polyline*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Write(Presentation*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Write(Strans*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Write(StructureList*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Write(StructureReference*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Write(Structure*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Write(Text*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Write(Units*)"
+		INLINE="NO"
+	>
+		<NAME>Write</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>write given object to window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void	"
+		DECLARATION="virtual void	SetLayer(int layer)"
+		INLINE="NO"
+	>
+		<NAME>SetLayer</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>given a layer number, initialize all needed to draw on this layerlike colors fill patterns etc.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void	"
+		DECLARATION="virtual void	UnSetLayer(int layer)"
+		INLINE="NO"
+	>
+		<NAME>UnSetLayer</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>given a layer number, remove all that was needed to draw on this layerlike colors fill patterns etc.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void	"
+		DECLARATION="virtual void	GDSDrawText(char* text, double x, double y, double x2, double y2, Presentation*, Matrix&lt;double&gt;*)"
+		INLINE="NO"
+	>
+		<NAME>GDSDrawText</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>draw text on the screen</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void	"
+		DECLARATION="virtual void	GDSDrawLine(double x1, double y1, double x2, double y2)"
+		INLINE="NO"
+	>
+		<NAME>GDSDrawLine</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>draw a line on the screen (using dubbel buffering)</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void	"
+		DECLARATION="virtual void	GDSCanDrawLine(double x1, double y1, double x2, double y2)"
+		INLINE="NO"
+	>
+		<NAME>GDSCanDrawLine</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>draw a line on the screen (NOT using dubbel buffering)</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void	"
+		DECLARATION="virtual void	DrawOriginLine(double x1, double y1, double x2, double y2)"
+		INLINE="NO"
+	>
+		<NAME>DrawOriginLine</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>used for drawing crosshair at origin</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void	"
+		DECLARATION="virtual void	DrawLineSelected(double x1, double y1, double x2, double y2)"
+		INLINE="NO"
+	>
+		<NAME>DrawLineSelected</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>used for drawing lines in selected mode, used for drawingobjects that are selected</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void	"
+		DECLARATION="virtual void	GDSDrawPoint(double x, double y)"
+		INLINE="NO"
+	>
+		<NAME>GDSDrawPoint</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>draw a single point (using dubbel buffering)</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Transform(double&amp;, double&amp;, double&amp;, double&amp;)"
+		INLINE="NO"
+	>
+		<NAME>Transform</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform relative coordinates to absolute coordinatesusing the current relative matrix.it is used to draw the contents of structures that are referenced from the top leveltransform relative coordinates to absolute coordinatesusing the current relative matrix.it is used to draw the contents of structures that are referenced from the top level</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Transform(double&amp;, double&amp;, double&amp;, double&amp;)"
+		INLINE="NO"
+	>
+		<NAME>Transform</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform relative coordinates to absolute coordinatesusing the current relative matrix.it is used to draw the contents of structures that are referenced from the top leveltransform relative coordinates to absolute coordinatesusing the current relative matrix.it is used to draw the contents of structures that are referenced from the top level</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int GetClipCode(double, double)"
+		INLINE="NO"
+	>
+		<NAME>GetClipCode</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>return clipcode for a point, clipped against the virtual window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	Clipping(double&amp;, double&amp;, double&amp;, double&amp;)"
+		INLINE="NO"
+	>
+		<NAME>Clipping</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>return if point is clipped against the virtual windowreturn if both points are clipped against the virtual window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	Clipping(double&amp;, double&amp;, double&amp;, double&amp;)"
+		INLINE="NO"
+	>
+		<NAME>Clipping</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>return if point is clipped against the virtual windowreturn if both points are clipped against the virtual window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" int	"
+		DECLARATION=" int	InViewPort(BoundingBox*)"
+		INLINE="YES"
+	>
+		<NAME>InViewPort</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>does the given bounding box fit in the virtual window</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	NeedToDraw(int layer)"
+		INLINE="NO"
+	>
+		<NAME>NeedToDraw</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>is this layer visible, and needs drawing?</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void WindowsPolygon(void)"
+		INLINE="NO"
+	>
+		<NAME>WindowsPolygon</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>draw simple polygons</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void WindowsPolyline(void)"
+		INLINE="NO"
+	>
+		<NAME>WindowsPolyline</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>draw simple polylines</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void DrawRect(int x1, int y1, int x2, int y2)"
+		INLINE="NO"
+	>
+		<NAME>DrawRect</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>draw a rectangle in window coordinates</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void	"
+		DECLARATION="virtual void	DrawFillLine(double,double,double,double)"
+		INLINE="NO"
+	>
+		<NAME>DrawFillLine</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>used to scanline fill polygons</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	MoveUp(double horline,int direction)"
+		INLINE="NO"
+	>
+		<NAME>MoveUp</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>used to scanline fill polygons</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ClipIt(Element* a_ele)"
+		INLINE="NO"
+	>
+		<NAME>ClipIt</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>does this element need clipping</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Structure* "
+		DECLARATION="Structure* _showstructure"
+	>
+		<NAME>_showstructure</NAME>
+		<DESCRIPTION>
+			<PARA> top of visible structures</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Structure* "
+		DECLARATION="Structure* _drawstructure"
+	>
+		<NAME>_drawstructure</NAME>
+		<DESCRIPTION>
+			<PARA> structure to be drawn</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	_Selected"
+	>
+		<NAME>_Selected</NAME>
+		<DESCRIPTION>
+			<PARA> true if the element should be drawn selected</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	_SRefSelected"
+	>
+		<NAME>_SRefSelected</NAME>
+		<DESCRIPTION>
+			<PARA> true if the reference to the element was selected</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="BoundingBox*	"
+		DECLARATION="BoundingBox*	_virtualsize"
+	>
+		<NAME>_virtualsize</NAME>
+		<DESCRIPTION>
+			<PARA> holds the size of the virtual window</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="BoundingBox*	"
+		DECLARATION="BoundingBox*	_absbox"
+	>
+		<NAME>_absbox</NAME>
+		<DESCRIPTION>
+			<PARA> used for calculating absolute boundingboxes</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Matrix<double>*	"
+		DECLARATION="Matrix&lt;double&gt;*	_matrix"
+	>
+		<NAME>_matrix</NAME>
+		<DESCRIPTION>
+			<PARA> holds the matrix from structure reference</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Matrix<double>*	"
+		DECLARATION="Matrix&lt;double&gt;*	_mapping_matrix"
+	>
+		<NAME>_mapping_matrix</NAME>
+		<DESCRIPTION>
+			<PARA> holds the matrix for mapping from virtual to screen coordinates</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Matrix<double>*	"
+		DECLARATION="Matrix&lt;double&gt;*	_inverse_mapping"
+	>
+		<NAME>_inverse_mapping</NAME>
+		<DESCRIPTION>
+			<PARA> holds the inverse of the mapping matrix</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="OVERLAP "
+		DECLARATION="OVERLAP _clip_status"
+	>
+		<NAME>_clip_status</NAME>
+		<DESCRIPTION>
+			<PARA> use for checking clipping necessity</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	_visible"
+	>
+		<NAME>_visible</NAME>
+		<DESCRIPTION>
+			<PARA> is this structure visible?</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	_clipit"
+	>
+		<NAME>_clipit</NAME>
+		<DESCRIPTION>
+			<PARA> must the drawing be clipped?</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double	"
+		DECLARATION="double	_scalefactor"
+	>
+		<NAME>_scalefactor</NAME>
+		<DESCRIPTION>
+			<PARA> holds the scalefactor for the window</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Units* "
+		DECLARATION="Units* _units"
+	>
+		<NAME>_units</NAME>
+		<DESCRIPTION>
+			<PARA> holds the units from the library</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_Polygon* "
+		DECLARATION="G_Polygon* _AbsPolygon"
+	>
+		<NAME>_AbsPolygon</NAME>
+		<DESCRIPTION>
+			<PARA> for containing the absolute polygon to draw</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="TDLI<Segment>* "
+		DECLARATION="TDLI&lt;Segment&gt;* _AI"
+	>
+		<NAME>_AI</NAME>
+		<DESCRIPTION>
+			<PARA>iterator for absolute polygon</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="DL_List<void*>*	"
+		DECLARATION="DL_List&lt;void*&gt;*	_AET_list"
+	>
+		<NAME>_AET_list</NAME>
+		<DESCRIPTION>
+			<PARA>iterator for scanline</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="TDLISort<AET_elem>* "
+		DECLARATION="TDLISort&lt;AET_elem&gt;* _AET"
+	>
+		<NAME>_AET</NAME>
+		<DESCRIPTION>
+			<PARA>iterator for scanline</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="DL_List<void*>* "
+		DECLARATION="DL_List&lt;void*&gt;* _CR_list"
+	>
+		<NAME>_CR_list</NAME>
+		<DESCRIPTION>
+			<PARA>iterator for critical points</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="TDLISort<CR_point>* "
+		DECLARATION="TDLISort&lt;CR_point&gt;* _CR"
+	>
+		<NAME>_CR</NAME>
+		<DESCRIPTION>
+			<PARA>iterator for critical points</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	_ActiveLayer"
+	>
+		<NAME>_ActiveLayer</NAME>
+		<DESCRIPTION>
+			<PARA>active layer that is currently drawn</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	_pattern"
+	>
+		<NAME>_pattern</NAME>
+		<DESCRIPTION>
+			<PARA> holds the patternnumber</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="DrawStyle	"
+		DECLARATION="DrawStyle	_drawstyle"
+	>
+		<NAME>_drawstyle</NAME>
+		<DESCRIPTION>
+			<PARA>current drawstyle</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="DrawStyle	"
+		DECLARATION="DrawStyle	_stored_drawstyle"
+	>
+		<NAME>_stored_drawstyle</NAME>
+		<DESCRIPTION>
+			<PARA>previous drawstyle</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL _stopdrawing"
+	>
+		<NAME>_stopdrawing</NAME>
+		<DESCRIPTION>
+			<PARA> interrupt in drawing</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL _busydrawing"
+	>
+		<NAME>_busydrawing</NAME>
+		<DESCRIPTION>
+			<PARA> is drawing going on</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

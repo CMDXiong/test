@@ -1,0 +1,53 @@
+It can be argued that any program meant to be used on a network should support 
+three directory trees.
+
+USER TREE
+
+The user tree would contain files that were modified by a user for his own
+use.  It would be stored on the user's computer.
+
+SHARED TREE
+
+The shared tree would contain files that were modified by users and meant to
+be shared with other members of a team.  The tree would be stored on a 
+centralized server where all team members could access the files.
+
+DISTRIBUTION TREE
+
+The distribution tree would contain the files that came with the program 
+distribution.  It could be installed on a server so there is one centralized 
+copy of the files or it could be installed on each user's machine for faster 
+file access and better reliability on heavily used networks.
+
+Having a separate distribution tree means that program updates can be 
+installed without fear of overwriting files that were customized by the user. 
+(If the updated program cannot read customized files from the previous 
+version, this may have disadvantages.)
+
+When the program searches for a file it would look in the USER TREE, then the
+SHARED TREE and finally the DISTRIBUTION TREE.
+
+THE ICED_HOME ENVIRONMENT VARIABLE:
+
+The Windows version of ICED now supports up to three directory trees.  The 
+root directories for these trees are specified using the ICED_HOME environment
+variable.  Recall that a typical icwin.bat (or equivalent .bat file) would
+contain a line similar to:
+
+                       SET ICED_HOME=C:\ICWIN;
+
+If you want to use all three trees, you would specify three home directories.
+In this case our typical line might become:
+
+                SET ICED_HOME=C:\ICWIN;S:\ICSHARE;C:\ICDIST;
+
+Notice that the order of the directories in ICED_HOME corresponds to the
+order in which they a searched for files.
+
+As with the ICED_PATH, ICED_HOME can be split into several lines.  An 
+equivalent series of commands is:
+
+                SET ICED_HOME=C:\ICWIN; +
+                SET ICED_HOME_1=S:\ICSHARE; +
+                SET ICED_HOME_2=C:\ICDIST;
+ 

@@ -1,0 +1,650 @@
+    <HTML>
+  <HEAD>
+    <TITLE>GDS-II Postprocessing Tool Help: Groups menu</TITLE>
+  </HEAD>
+
+  <BODY bgcolor="#66FFFF" text="#000000" link="#6666ff" alink="#999900" vlink="009999">
+
+    <A name="top"></A>
+
+    <TABLE width=100% border=0 cellpadding=6 cellspacing=2>
+    <TR><TD bgcolor="#000000" align=middle valign=top>
+    <FONT color="#FFFF00" size=+3 face="Impact, Arial, Helvetica">Groups menu</FONT>
+    </TD></TR>
+    </TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Overview</FONT>
+    </TD></TR></TABLE>
+
+    With the Groups menu, layers can be placed in groups. On these groups,
+    certain operations can be performed.
+
+    Click in the picture below on one of the menu-commands for further info.
+
+    <map name="mainwindow">
+    <area shape="rect" href="#define"   coords=" 58, 48 180, 62" OnMouseOver="window.status='Define Groups'; return true" OnMouseOut="window.status=''; return true" alt="Define groups">
+    <area shape="rect" href="#a"        coords=" 58, 70 180, 89" OnMouseOver="window.status='Operation(A)'; return true" OnMouseOut="window.status=''; return true" alt="Operation on group A">
+    <area shape="rect" href="#ad"       coords=" 58, 93 180,104" OnMouseOver="window.status='Operation(A)->D'; return true" OnMouseOut="window.status=''; return true" alt="Operation on group A with result placed in group D">
+    <area shape="rect" href="#abd"      coords=" 58,109 180,124" OnMouseOver="window.status='Operation(A,B)->D'; return true" OnMouseOut="window.status=''; return true" alt="Operation on groups A and B with result placed in group D">
+
+  <!-- Define Groups   -->
+    <area shape="rect" href="#define"         coords=" 196,16 312,38" OnMouseOver="window.status='Group dialog'; return true" OnMouseOut="window.status=''; return true" alt="Group dialog">
+    <area shape="rect" href="#selectedgroupa" coords=" 196,41 312,61" OnMouseOver="window.status='selected group A'; return true" OnMouseOut="window.status=''; return true" alt="selected group A">
+    <area shape="rect" href="#selectedgroupb" coords=" 196,61 312,76" OnMouseOver="window.status='selected group B'; return true" OnMouseOut="window.status=''; return true" alt="selected group B">
+    <area shape="rect" href="#setdestination" coords=" 196,76 312,96" OnMouseOver="window.status='Destination'; return true" OnMouseOut="window.status=''; return true" alt="Destination">
+
+
+  <!-- Operation A     -->
+    <area shape="rect" href="#delete"    coords=" 214,116 368,136" OnMouseOver="window.status='Delete'; return true" OnMouseOut="window.status=''; return true" alt="Delete elements/layers in group A">
+    <area shape="rect" href="#transform" coords=" 214,136 368,157" OnMouseOver="window.status='Transform'; return true" OnMouseOut="window.status=''; return true" alt="Transform elements/layers in group A">
+    <area shape="rect" href="#undotrans" coords=" 214,157 368,178" OnMouseOver="window.status='Undo last transformation'; return true" OnMouseOut="window.status=''; return true" alt="Undo last transformation">
+
+  <!-- Operation A,D   -->
+    <area shape="rect" href="#ring"     coords=" 112,143 206,161" OnMouseOver="window.status='Create ring'; return true" OnMouseOut="window.status=''; return true" alt="Creates ring from elements in group A">
+    <area shape="rect" href="#correct"  coords=" 112,161 206,178" OnMouseOver="window.status='Correction'; return true" OnMouseOut="window.status=''; return true" alt="Creates a ring with correction">
+    <area shape="rect" href="#copy"     coords=" 112,178 206,195" OnMouseOver="window.status='Copy'; return true" OnMouseOut="window.status=''; return true" alt="Copies elements/layers from group A to destination layer">
+    <area shape="rect" href="#move"     coords=" 112,195 206,212" OnMouseOver="window.status='Move'; return true" OnMouseOut="window.status=''; return true" alt="Moves elements/layers from group A to destination layer">
+    <area shape="rect" href="#arcs"     coords=" 112,212 206,229" OnMouseOver="window.status='To arcs'; return true" OnMouseOut="window.status=''; return true" alt="Detects arcs in polygons and replaces those segments">
+    <area shape="rect" href="#lines"    coords=" 112,229 206,246" OnMouseOver="window.status='To lines'; return true" OnMouseOut="window.status=''; return true" alt="Replaces arcs and circles with line pieces">
+    <area shape="rect" href="#smooth"   coords=" 112,246 206,264" OnMouseOver="window.status='Smoothen'; return true" OnMouseOut="window.status=''; return true" alt="Removes glitches and short lines from polygons">
+    <area shape="rect" href="#merge_a"  coords=" 112,264 206,281" OnMouseOver="window.status='Merge'; return true" OnMouseOut="window.status=''; return true" alt="Merges elements/layers from group A">
+
+  <!-- Operation A,B,D -->
+    <area shape="rect" href="#inters"   coords=" 9,142 90,162" OnMouseOver="window.status='Intersect'; return true" OnMouseOut="window.status=''; return true" alt="Logical: A AND B">
+    <area shape="rect" href="#merge_ab" coords=" 9,162 90,178" OnMouseOver="window.status='Merge'; return true" OnMouseOut="window.status=''; return true" alt="Merges elements from group A and B">
+    <area shape="rect" href="#a-b"      coords=" 9,178 90,196" OnMouseOver="window.status='A - B'; return true" OnMouseOut="window.status=''; return true" alt="Subtracts B from A">
+    <area shape="rect" href="#b-a"      coords=" 9,196 90,213" OnMouseOver="window.status='B - A'; return true" OnMouseOut="window.status=''; return true" alt="Subtracts A from B">
+    <area shape="rect" href="#exor"     coords=" 9,213 90,230" OnMouseOver="window.status='EXOR'; return true" OnMouseOut="window.status=''; return true" alt="Logical: A EXOR B">
+    </map>
+
+    <CENTER>
+    <TABLE border=5 cellspacing=1 cellpadding=10 bgcolor="#FFFFFF">
+      <TR><TD align=middle valign=middle>
+        <IMG src="pics/groupsmenu.gif" USEMAP="#mainwindow" width=371 height=291 border=0>
+      </TD></TR>
+    </TABLE>
+    </CENTER>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="define">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Define groups</FONT>
+    </TD></TR></TABLE>
+
+    This menu-item brings up the dialog below. Use this dialog to create groups.
+    First select a layer on the left, than click add to add this layer to a group.
+    Only layers with --> before the name (layers containing elements) can
+    be added to group A or group B. Only one group can be added to group D.
+    <P>
+    To add only selected elements to the group, click the checkbox <I>Only
+    Selected</I>.
+
+    <P>
+    <CENTER>
+    <IMG src="pics/groupdlg.gif" width=624 height=518 border=0 alt="Define groups">
+    </CENTER>
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_group_a">group_a</A>, <A href="commands.html#T_group_b">group_b</A>, <A href="commands.html#T_destination">destination</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="selectedgroupa">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>selected group A</B></FONT>
+    </TD></TR></TABLE>
+
+    Set group_a to the selected elements. This will overrule previous settings.
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_group_a">group_a</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="selectedgroupb">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>selected group B</B></FONT>
+    </TD></TR></TABLE>
+
+    Set group_b to the selected elements. This will overrule previous settings.
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_group_b">group_b</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="setdestination">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Destination</B></FONT>
+    </TD></TR></TABLE>
+
+    Set destination to the given layer number. Overrules the groupdialog destination also.
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_destination">destination</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+    <A name="a">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Operation (A)</FONT>
+    </TD></TR></TABLE>
+
+    <P>
+    
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="delete">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Delete</B></FONT>
+    </TD></TR></TABLE>
+
+    This operation deletes all elements from all elements/layers in group A. When
+    selected only in group A is checked, only selected elements from the layers
+    in group A are deleted. Note that only elements are deleted, not structures.
+    This may leave empty structures in memory.
+    <P>
+    Group A must be defined, group B and D are ignored.
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_delete_a">delete_a</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="transform">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Transform</B></FONT>
+    </TD></TR></TABLE>
+
+    The transformation operation can modify structures in different ways.
+    Clicking the transform item in the menu will display the dialog below.
+    Specify the values for the transformation you want to perform. Values for
+    moving can be specified in <TT>pm</TT>, <TT>nm</TT>, <TT>um</TT>,
+    <TT>mm</TT>, <TT>cm</TT>, <TT>dm</TT>, <TT>m</TT> (default), <TT>inch</TT>
+    and <TT>foot</TT>. Values for moving, scaling and rotating can be positive
+    or negative. Integers are not required. Clicking Ok will execute the
+    transformation.
+    <P>
+    When Reset is clicked, all values are reset at their defaults. Mirroring in
+    both directions will be off, the move values will both be 0 (units), scaling
+    will be 1, rotating 0 and the direction will be "Clockwise".
+    <P>
+    When leaving the program, the values last used are saved to a settings
+    file. They will be loaded next time the program is started.
+    <P>
+    To transform all structures in a file, use the transform operation
+    from the <A href="opermenu.html#transform">Operations</A> menu.
+    <P>
+    <CENTER>
+    <IMG src="pics/transform.gif" width=303 height=336 border=0 alt="Transformation">
+    </CENTER>
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_transform_a">transform_a</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="undotrans">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Undo last transformation</B></FONT>
+    </TD></TR></TABLE>
+
+    Undo last transformation can be used to restore the old situation. Undo can
+    be used only once, and must be used before any other menu-item is
+    selected. When an other item is selected, undo is disabled. This is done
+    because in meantime structures can be selected, deselected, deleted or even
+    a new file can be loaded.
+    <P>
+    This item is used for undoing the transformation performed in the same menu.
+    To undo a transformation on all elements, use the undo operation from the
+    <A href="opermenu.html#undo">Operations</A> menu.
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_undotrans_a">undotrans_a</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+    <A name="ad">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Operation (A)->D</FONT>
+    </TD></TR></TABLE>
+
+    <P>
+    
+<!-- New header -------------------------------------------------->
+
+    <A name="ring">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Create ring</B></FONT>
+    </TD></TR></TABLE>
+
+    Creates a ring around the boundaries of the polygons on the elements/layers defined
+    in group A. The result is placed on the layer in the destination group.
+    Group B is ignored.
+    <P>
+    The factors used for this operation are: correctionfactor and correctionaber.
+    Correctionfactor is the radius of the ring,
+    correctionaber is the accuracy of the
+    segments of the ring.
+    <P>
+    All segements that have a surface are converted to polygons. Text does not
+    have a surface and is not converted.
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_makering">makering</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="correct">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Correction</B></FONT>
+    </TD></TR></TABLE>
+
+    This operation creates a ring around the boundaries of the polygons on the
+    elements/layers defined in group A and merges it with the original polygons. The
+    result is placed in group D. Group B is ignored.
+    <P>
+    With a positive/negative correction factor</A>
+    you can enlarge/shrink the drawing with that vaule.
+    <P>
+    All segements that have a surface are converted to polygons. Text does not
+    have a surface and is not converted.
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_correction">correction</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="copy">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Copy</B></FONT>
+    </TD></TR></TABLE>
+
+    Duplicates elements/layers from group A to destination. Group B is ignored.
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_copy">copy</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="move">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Move</B></FONT>
+    </TD></TR></TABLE>
+
+    Changes the layer-numbers of the elements/layers in group A to the
+    layer-number in destination.
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_move">move</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="arcs">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>To arcs</B></FONT>
+    </TD></TR></TABLE>
+
+    This operation detects arcs in polygons on elements/layers in group A and replaces
+    those segments. The result is put in destination. Group B is ignored.
+    <P>
+    You can specify the values for this operation in the
+    <A href="prefmenu.html#factors">factors dialog</A>.
+    Toarcrmax and
+    toarcrmin specify the radius for the arcs
+    and circles. Arcaccur</A> specifies the maximum
+    abberation between the arc and the polygon segments.
+    <P>
+    To convert arcs or circles to lines, see <A href="#lines">to lines</A>.
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_toarcs">toarcs</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="lines">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>To lines</B></FONT>
+    </TD></TR></TABLE>
+
+    <I>To lines</I> replaces arcs and circles in polygons on elements/layers in group A
+    with line-pieces and puts the result in destination. Group B is ignored.
+    <P>
+    The maximum abberation allowed between the polygon segments and the
+    arc/circle, can be specified with polyaccur</A>.
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_tolines">tolines</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="smooth">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Smoothen</B></FONT>
+    </TD></TR></TABLE>
+
+    This operation removes glitches and short lines from the polygons in group
+    A. The result is put in destination. Group B is ignored.
+    <P>
+    <I>Smoothaccur</I> can be used for specifying
+    the maximum abberation of the smoothed polygon-segements to the originals.
+    <I>Maxlinemerge</I> is used for the maximum
+    line-length to merge lines to.
+    <P>
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_smoothen">smoothen</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="merge_a">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Merge</B></FONT>
+    </TD></TR></TABLE>
+
+    Merges all polygons on the elements/layers in group A and/or group B. This is in fact
+    the logical operation (A or B). The result is placed
+    in Destination. Group A or group B, and Destination must be defined. All element
+    that have a surface are converted to polygons (Text does not have a surface
+    and is not converted).
+    <P>
+
+    <I>Snapfactor</I> determines the accuracy
+    with which the calculations are performed. <I>
+    Polyaccur</I> determines the accuracy for conversion of arcs and
+    circles.
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_merge">merge</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+    <A name="abd">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Operation (A,B)->D</FONT>
+    </TD></TR></TABLE>
+
+    <P>
+    
+<!-- New header -------------------------------------------------->
+
+
+    <A name="inters">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Intersect</B></FONT>
+    </TD></TR></TABLE>
+
+    Intersect calculates the intersections (overlappings) between the elements/layers
+    in group A and group B. This is the logical function (A and B). The result
+    is placed in destination. All groups must be defined. All elements that have
+    a surface are converted to polygons (Text does not have a surface and is not
+    converted).
+
+    <I>Snapfactor</I> determines the accuracy
+    with which the calculations are performed. <I>
+    Polyaccur</I> determines the accuracy for conversion of arcs and
+    circles.
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_intersect">intersect</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="merge_ab">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>Merge</B></FONT>
+    </TD></TR></TABLE>
+
+    See <A href="#merge_a">merge on A</A>.
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="a-b">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>A - B</B></FONT>
+    </TD></TR></TABLE>
+
+    Subtracts the contents of group B from those of group A. All groups must
+    be set. The result is placed in destination.
+    <P>
+    All elements that have a surface are converted to polygons (Text does not
+    have a surface and is not converted).
+    <P>
+    <I>Snapfactor</I> determines the accuracy
+    with which the calculations are performed. <I>Polyaccur</I> determines
+    the accuracy for conversion of arcs and circles.
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_a_subtract_b">a_subtract_b</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="b-a">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>B - A</B></FONT>
+    </TD></TR></TABLE>
+
+    Subtracts the contents of group A from those of group B. All groups must
+    be set. The result is placed in destination.
+    <P>
+    All elements that have a surface are converted to polygons (Text does not
+    have a surface and is not converted).
+    <P>
+    <I>Snapfactor</I> determines the accuracy
+    with which the calculations are performed. <I>
+    Polyaccur</I> determines the accuracy for conversion of arcs and
+    circles.
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_b_subtract_a">b_subtract_a</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="exor">
+    </A>
+    <TABLE bgcolor="#33CC33" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Arial, Helvetica" size=+0><B>EXOR</B></FONT>
+    </TD></TR></TABLE>
+
+    Performs an exclusive-or operation between the contents of group A and group
+    B. This results in the differences between group A and group B (i.e.
+    overlappings are not copied). The result is placed in destination. All
+    groups must be defined.
+    <P>
+    <I>Snapfactor</I> determines the accuracy
+    with which the calculations are performed. <I>
+    Polyaccur</I> determines the accuracy for conversion of arcs and
+    circles.
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_exor">exor</A>
+
+    </TD></TR></TABLE>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+    <TABLE width=100% border=0 cellpadding=6 cellspacing=0>
+    <TR>
+    <TD bgcolor="#000000" align=left valign=top>
+    <A href="index.html"><FONT size=+1 face="Impact, Arial, Helvetica">Index</FONT></A>
+    </TD>
+    <TD bgcolor="#000000" align=right valign=top>
+    <A href="#top"><FONT size=+1 face="Impact, Arial, Helvetica">Top of page</FONT></A>
+    </TD>
+    </TR>
+    </TABLE>
+  </BODY>
+</HTML>
+

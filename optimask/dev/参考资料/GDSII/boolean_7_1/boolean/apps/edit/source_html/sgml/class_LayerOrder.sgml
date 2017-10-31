@@ -1,0 +1,515 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class LayerOrder"
+>
+
+<META-DATA>
+	<NAME>LayerOrder</NAME>
+	<AUTHOR>J.C. Mollien, last modified by M. Reemst</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Thu Oct 21  9:08:22 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>mainwin.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>gdsapp.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>lsetup.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>wxwin.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>orderdlg.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> Class LayerOrder. This class is used to show the layerorder dialog, in which the order of the used layers can be set.</PARA>
+</DESCRIPTION>
+
+<INHERITANCE>
+	<PARENT-CLASS
+		SCOPE="public"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>wxDialog</NAME>
+	</PARENT-CLASS>
+</INHERITANCE>
+
+
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="LayerOrder(GDSMainWindow* parent,char* title,int x,int y,int width,int height, Setup* prev_setup,long style =0 ,char* name = &amp;&amp;QUOTDmain_layer_dlg&amp;&amp;QUOTD)"
+		INLINE="NO"
+	>
+		<NAME>LayerOrder</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> constructor.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~LayerOrder()"
+		INLINE="NO"
+	>
+		<NAME>~LayerOrder</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> destructor.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="wxListBox* "
+		DECLARATION="wxListBox* Get_ListBox()"
+		INLINE="NO"
+	>
+		<NAME>Get_ListBox</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Setup* "
+		DECLARATION="Setup* Get_Setup()"
+		INLINE="NO"
+	>
+		<NAME>Get_Setup</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="wxButton* "
+		DECLARATION="wxButton* Get_ButtonUP()"
+		INLINE="NO"
+	>
+		<NAME>Get_ButtonUP</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="wxButton* "
+		DECLARATION="wxButton* Get_ButtonDOWN()"
+		INLINE="NO"
+	>
+		<NAME>Get_ButtonDOWN</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="wxMessageDialog* "
+		DECLARATION="wxMessageDialog* Get_Text()"
+		INLINE="NO"
+	>
+		<NAME>Get_Text</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void SetupWindow()"
+		INLINE="NO"
+	>
+		<NAME>SetupWindow</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> wxWindows initialisation.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void StoreOrder()"
+		INLINE="NO"
+	>
+		<NAME>StoreOrder</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmOk()"
+		INLINE="NO"
+	>
+		<NAME>CmOk</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Close window if OK-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmCancel()"
+		INLINE="NO"
+	>
+		<NAME>CmCancel</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Close window if CANCEL-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmUp()"
+		INLINE="NO"
+	>
+		<NAME>CmUp</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Move selected layer to a heigher layersetting if UP-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmDown()"
+		INLINE="NO"
+	>
+		<NAME>CmDown</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Move selected layer to a lower layersetting if the DOWN-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmShow()"
+		INLINE="NO"
+	>
+		<NAME>CmShow</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Show new layerorder if the SHOW-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	CmListBox()"
+		INLINE="NO"
+	>
+		<NAME>CmListBox</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Make sure the UP- and DOWN-button can't be used if the top or the bottom of the list has been reached.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void OnCloseWindow(wxCloseEvent&amp; event)"
+		INLINE="NO"
+	>
+		<NAME>OnCloseWindow</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Close window if EXIT-button is pressed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Layer_Order_Changed(int i)"
+		INLINE="NO"
+	>
+		<NAME>Layer_Order_Changed</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Return G_BOOL if layer order has been changed.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DECLARE_EVENT_TABLE()"
+		INLINE="NO"
+	>
+		<NAME>DECLARE_EVENT_TABLE</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> Declare used events.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="GDSMainWindow*	"
+		DECLARATION="GDSMainWindow*	_parent"
+	>
+		<NAME>_parent</NAME>
+		<DESCRIPTION>
+			<PARA> Pointer to mainwindow</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Setup*	"
+		DECLARATION="Setup*	_setup"
+	>
+		<NAME>_setup</NAME>
+		<DESCRIPTION>
+			<PARA> the modified current layersetup</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Setup*	"
+		DECLARATION="Setup*	_prev_setup"
+	>
+		<NAME>_prev_setup</NAME>
+		<DESCRIPTION>
+			<PARA> the modified current layersetup the current layersetup</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxPanel*	"
+		DECLARATION="wxPanel*	_panel1"
+	>
+		<NAME>_panel1</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_buttonOK"
+	>
+		<NAME>_buttonOK</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_buttonCANCEL"
+	>
+		<NAME>_buttonCANCEL</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticBox* "
+		DECLARATION="wxStaticBox* _groupbox"
+	>
+		<NAME>_groupbox</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxListBox*	"
+		DECLARATION="wxListBox*	_listbox"
+	>
+		<NAME>_listbox</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxStaticText*	"
+		DECLARATION="wxStaticText*	_text1"
+	>
+		<NAME>_text1</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_buttonUP"
+	>
+		<NAME>_buttonUP</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_buttonDOWN"
+	>
+		<NAME>_buttonDOWN</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="wxButton*	"
+		DECLARATION="wxButton*	_buttonSHOW"
+	>
+		<NAME>_buttonSHOW</NAME>
+		<DESCRIPTION>
+			<PARA> wxWindows class.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

@@ -1,0 +1,4593 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class CommandHandler"
+>
+
+<META-DATA>
+	<NAME>CommandHandler</NAME>
+	<AUTHOR>klaas</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Wed Oct 20 11:56:49 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>stdarg.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>fstream.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>chandbas.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> Commandhandler interprets (graphical/commandline) userinterface commands. Commands are ascii strings, the first word is the keyword, followed by arguments. Commands can be recorded to a file, for later automatic processing. A history list of commands is maintained, allowing undo in certain cases. This file also calls functions from the mainwindow, to show complete dialogs See related classes "CommandParser", for the complete syntax of commands</PARA>
+</DESCRIPTION>
+
+
+
+
+
+<RELATED-TYPES>
+	<RELATED-TYPE TYPE="class">
+		<NAME>CommandParser</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>ProcessParser</NAME>
+	</RELATED-TYPE>
+</RELATED-TYPES>
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="CommandHandler()"
+		INLINE="NO"
+	>
+		<NAME>CommandHandler</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> constructors</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~CommandHandler()"
+		INLINE="NO"
+	>
+		<NAME>~CommandHandler</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> destructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Replace_Setup(Setup* new_setup)"
+		INLINE="NO"
+	>
+		<NAME>Replace_Setup</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>replace layer setup by a new setup</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ExecuteCommand()"
+		INLINE="NO"
+	>
+		<NAME>ExecuteCommand</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>all commands are handled by this function</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ExecuteCommand2(DL_Iter&lt;char*&gt;* argiter)"
+		INLINE="NO"
+	>
+		<NAME>ExecuteCommand2</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>used for process files</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	DoCommand(char* Format,...)"
+		INLINE="NO"
+	>
+		<NAME>DoCommand</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>used in case of formatted io command string (like printf)</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="double	"
+		DECLARATION="double	Get_ScaleFactor()"
+		INLINE="NO"
+	>
+		<NAME>Get_ScaleFactor</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>the factor of zoomin compared to the whole</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	Get_ZoomHistoryEmpty()"
+		INLINE="NO"
+	>
+		<NAME>Get_ZoomHistoryEmpty</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>is there zoom history</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	ZoomOut()"
+		INLINE="NO"
+	>
+		<NAME>ZoomOut</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the whole picture</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	ZoomBack()"
+		INLINE="NO"
+	>
+		<NAME>ZoomBack</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>zoom one level back</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Draw()"
+		INLINE="NO"
+	>
+		<NAME>Draw</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>redraw/draw the picture</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Get_Record()"
+		INLINE="NO"
+	>
+		<NAME>Get_Record</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>are commands recorded?</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="group* "
+		DECLARATION="group* Get_A()"
+		INLINE="NO"
+	>
+		<NAME>Get_A</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>groupA layers for boolean operations</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="group* "
+		DECLARATION="group* Get_B()"
+		INLINE="NO"
+	>
+		<NAME>Get_B</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>groupB layers for boolean operations</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int Get_Destination()"
+		INLINE="NO"
+	>
+		<NAME>Get_Destination</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get destination layer for boolean operations</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Setup* "
+		DECLARATION="Setup* Get_Setup()"
+		INLINE="NO"
+	>
+		<NAME>Get_Setup</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>pointer to setup for layers properties</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="GdsII* "
+		DECLARATION="GdsII* Get_GDSII()"
+		INLINE="NO"
+	>
+		<NAME>Get_GDSII</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>pointer to internal database structure</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Set_GDSII(GdsII* a_gdsii)"
+		INLINE="NO"
+	>
+		<NAME>Set_GDSII</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>make this datastructure the current one</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Structure* "
+		DECLARATION="Structure* Get_TopStructure()"
+		INLINE="NO"
+	>
+		<NAME>Get_TopStructure</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>top structure of the current database contents</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char* "
+		DECLARATION="char* Get_FileName()"
+		INLINE="NO"
+	>
+		<NAME>Get_FileName</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>current filename</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	Set_FileName(char*)"
+		INLINE="NO"
+	>
+		<NAME>Set_FileName</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the current filename</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetWidth()"
+		INLINE="NO"
+	>
+		<NAME>SetWidth</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set width to draw primitives with</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double GetWidth()"
+		INLINE="NO"
+	>
+		<NAME>GetWidth</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the current width</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char* "
+		DECLARATION="char* GetWidthStr()"
+		INLINE="NO"
+	>
+		<NAME>GetWidthStr</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get current width as a string</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetPathtype()"
+		INLINE="NO"
+	>
+		<NAME>SetPathtype</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set pathtype used in path/polyline entry</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	GetPathtype()"
+		INLINE="NO"
+	>
+		<NAME>GetPathtype</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get pathtype used in path/polyline entry</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	GetViewCoord()"
+		INLINE="NO"
+	>
+		<NAME>GetViewCoord</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get setting for viewing coordinates in status bar or not</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetViewCoord(G_BOOL value)"
+		INLINE="NO"
+	>
+		<NAME>SetViewCoord</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Set setting for viewing coordinates in status bar or not</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	GetViewOutline()"
+		INLINE="NO"
+	>
+		<NAME>GetViewOutline</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get setting for viewing only outlines of primitives</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetViewOutline(G_BOOL value)"
+		INLINE="NO"
+	>
+		<NAME>SetViewOutline</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Set setting for viewing only outlines of primitives</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	GetSelectedOnly()"
+		INLINE="NO"
+	>
+		<NAME>GetSelectedOnly</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>work on only selected elements?</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	GetVisibleOnly()"
+		INLINE="NO"
+	>
+		<NAME>GetVisibleOnly</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>save visible only?</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL GetGridVisible()"
+		INLINE="NO"
+	>
+		<NAME>GetGridVisible</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>grid visible?</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL GetEnv(char*,char*)"
+		INLINE="NO"
+	>
+		<NAME>GetEnv</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get given environment variable</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetEnv()"
+		INLINE="NO"
+	>
+		<NAME>SetEnv</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set given environment variable</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	GetAlias(char*,char*)"
+		INLINE="NO"
+	>
+		<NAME>GetAlias</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get given alias variable</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetAlias()"
+		INLINE="NO"
+	>
+		<NAME>SetAlias</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set given alias variable</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int GetNrAlias()"
+		INLINE="NO"
+	>
+		<NAME>GetNrAlias</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the total number of defined aliases</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL GetAliasNr(int i, char* aliasname, char* aliasstring)"
+		INLINE="NO"
+	>
+		<NAME>GetAliasNr</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the index number of the given alias</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetMirrorX()"
+		INLINE="NO"
+	>
+		<NAME>GetMirrorX</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform settings for transform commands</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetMirrorY()"
+		INLINE="NO"
+	>
+		<NAME>GetMirrorY</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform settings for transform commands</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetMoveHor()"
+		INLINE="NO"
+	>
+		<NAME>GetMoveHor</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform settings for transform commands</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetMoveVer()"
+		INLINE="NO"
+	>
+		<NAME>GetMoveVer</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform settings for transform commands</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetScale()"
+		INLINE="NO"
+	>
+		<NAME>GetScale</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform settings for transform commands</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetRotate()"
+		INLINE="NO"
+	>
+		<NAME>GetRotate</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform settings for transform commands</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetDirection()"
+		INLINE="NO"
+	>
+		<NAME>GetDirection</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform settings for transform commands</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="long	"
+		DECLARATION="long	GetGridColour()"
+		INLINE="NO"
+	>
+		<NAME>GetGridColour</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get gridcolour in use</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="long	"
+		DECLARATION="long	GetBackColour()"
+		INLINE="NO"
+	>
+		<NAME>GetBackColour</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get background colour in use</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetGridSpace()"
+		INLINE="NO"
+	>
+		<NAME>GetGridSpace</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get grid spacing as string</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double GetGridSpaceReal()"
+		INLINE="NO"
+	>
+		<NAME>GetGridSpaceReal</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get grid spacing as double</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	GetGridPlacement()"
+		INLINE="NO"
+	>
+		<NAME>GetGridPlacement</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>grid on forground or background</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetSelectmarge()"
+		INLINE="NO"
+	>
+		<NAME>GetSelectmarge</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>accuracy for selecting elements</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetSnapfactor()"
+		INLINE="NO"
+	>
+		<NAME>GetSnapfactor</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>snapfactor used in boolean algorithm</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetCorrectionfactor()"
+		INLINE="NO"
+	>
+		<NAME>GetCorrectionfactor</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>correction factor used in boolean algorithm</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetCorrectionaber()"
+		INLINE="NO"
+	>
+		<NAME>GetCorrectionaber</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>correction abberation used in boolean algorithm</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetRoundfactor()"
+		INLINE="NO"
+	>
+		<NAME>GetRoundfactor</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>rounding factor used in boolean algorithm</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetRoundtype()"
+		INLINE="NO"
+	>
+		<NAME>GetRoundtype</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>rounding type of corners, factor used in boolean algorithm</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetPoly2ArcRmin()"
+		INLINE="NO"
+	>
+		<NAME>GetPoly2ArcRmin</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>polygon to arc conversion factors</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetPoly2ArcRmax()"
+		INLINE="NO"
+	>
+		<NAME>GetPoly2ArcRmax</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>polygon to arc conversion factors</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetPoly2ArcAber()"
+		INLINE="NO"
+	>
+		<NAME>GetPoly2ArcAber</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>polygon to arc conversion factors</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetArc2PolyAber()"
+		INLINE="NO"
+	>
+		<NAME>GetArc2PolyAber</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>polygon to arc conversion factors</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetSmoothAber()"
+		INLINE="NO"
+	>
+		<NAME>GetSmoothAber</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>factor used in smoothing polygons</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetDisplayaber()"
+		INLINE="NO"
+	>
+		<NAME>GetDisplayaber</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>factor used while displaying arcs and circles</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetStrucThres()"
+		INLINE="NO"
+	>
+		<NAME>GetStrucThres</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>smaller structure will not be displayed</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetPrimThres()"
+		INLINE="NO"
+	>
+		<NAME>GetPrimThres</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>smaller elements will not be displayed</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetDrawSmallPrim()"
+		INLINE="NO"
+	>
+		<NAME>GetDrawSmallPrim</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>small elements will be displayed?</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetMaxlinemerge()"
+		INLINE="NO"
+	>
+		<NAME>GetMaxlinemerge</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>factor used in smoothing polygons</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char* "
+		DECLARATION="char* GetDefaultAcc()"
+		INLINE="NO"
+	>
+		<NAME>GetDefaultAcc</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>default accuracy used for entering elements</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char* "
+		DECLARATION="char* GetDefaultUnit()"
+		INLINE="NO"
+	>
+		<NAME>GetDefaultUnit</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>default unit used for entering elements</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	StripFilePath(char*,char*)"
+		INLINE="NO"
+	>
+		<NAME>StripFilePath</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> FilePath from full name</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	StripFileName(char*,char*)"
+		INLINE="NO"
+	>
+		<NAME>StripFileName</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> FileName from full name</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	StripName(char*,char*)"
+		INLINE="NO"
+	>
+		<NAME>StripName</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> File_Name from full name</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	StripExt(char*,char*)"
+		INLINE="NO"
+	>
+		<NAME>StripExt</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> File_Ext from full name</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	MakeLower(char* name)"
+		INLINE="NO"
+	>
+		<NAME>MakeLower</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>convert path to lwer case</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	AddSlash(char *_filename)"
+		INLINE="NO"
+	>
+		<NAME>AddSlash</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>add slash to path</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	StripSlash(char *_filename)"
+		INLINE="NO"
+	>
+		<NAME>StripSlash</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>strip slash from path</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetFileType(char *_filetoload)"
+		INLINE="NO"
+	>
+		<NAME>SetFileType</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>determine the current file type</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetFileEnv(char *_filetoload)"
+		INLINE="NO"
+	>
+		<NAME>SetFileEnv</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set path aliases</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetProcEnv(char *_filetoprocess)"
+		INLINE="NO"
+	>
+		<NAME>SetProcEnv</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set process file aliases</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetupEnv()"
+		INLINE="NO"
+	>
+		<NAME>SetupEnv</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>load setup file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetStartPoint()"
+		INLINE="NO"
+	>
+		<NAME>SetStartPoint</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set startpoint for measuring distances</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetRelPoint()"
+		INLINE="NO"
+	>
+		<NAME>SetRelPoint</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set relative point for measuring distances</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetDavidMannAdd(G_BOOL)"
+		INLINE="NO"
+	>
+		<NAME>SetDavidMannAdd</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>setting for adding or overwriting David Mann files</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetLayerNr(int)"
+		INLINE="NO"
+	>
+		<NAME>SetLayerNr</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>layer number to add flash file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL GetDavidMannAdd()"
+		INLINE="NO"
+	>
+		<NAME>GetDavidMannAdd</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get setting for adding or overwriting David Mann files</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	GetLayerNr()"
+		INLINE="NO"
+	>
+		<NAME>GetLayerNr</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>layer number to add flash file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL KeyString()"
+		INLINE="NO"
+	>
+		<NAME>KeyString</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>key command string for adding elements</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	Select()"
+		INLINE="NO"
+	>
+		<NAME>Select</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>select an area</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	Select(double,double,double,double,int)"
+		INLINE="NO"
+	>
+		<NAME>Select</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>select an area</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ReplaceStruct()"
+		INLINE="NO"
+	>
+		<NAME>ReplaceStruct</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>replace structure</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="double	"
+		DECLARATION="double	CalcSelectmarge()"
+		INLINE="NO"
+	>
+		<NAME>CalcSelectmarge</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>calculate selectmarge in virtual coordinates</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="ElementList* "
+		DECLARATION="ElementList* GetTopElementList()"
+		INLINE="NO"
+	>
+		<NAME>GetTopElementList</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the element list of the structure that is displayed</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ToHistory(char* Format,...)"
+		INLINE="NO"
+	>
+		<NAME>ToHistory</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>command to put in the history list</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ToHistory(Command* a_command)"
+		INLINE="NO"
+	>
+		<NAME>ToHistory</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>command to put in the history list</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int GetCurrentLayer()"
+		INLINE="NO"
+	>
+		<NAME>GetCurrentLayer</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get active layer</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double Eval_Parameter_ext(char* param,char* number,char* unit,double&amp; fac,double&amp; multi)"
+		INLINE="NO"
+	>
+		<NAME>Eval_Parameter_ext</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>conversion of number and units to number in meters</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double Eval_Parameter_inv(char* unit, double meters)"
+		INLINE="NO"
+	>
+		<NAME>Eval_Parameter_inv</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>conversion of number in meters to number given the unit</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Tool()"
+		INLINE="NO"
+	>
+		<NAME>Tool</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>start a interactive tool</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL EndCommand()"
+		INLINE="NO"
+	>
+		<NAME>EndCommand</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>end a interactive tool</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL UndoCommand()"
+		INLINE="NO"
+	>
+		<NAME>UndoCommand</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>undo an action</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Delete()"
+		INLINE="NO"
+	>
+		<NAME>Delete</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>delete (selected) elements</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL DeSelect()"
+		INLINE="NO"
+	>
+		<NAME>DeSelect</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>deselect all elements or area</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Begin()"
+		INLINE="NO"
+	>
+		<NAME>Begin</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>begin of action within a tool</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL End()"
+		INLINE="NO"
+	>
+		<NAME>End</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>end of action within a tool</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	AddPoint()"
+		INLINE="NO"
+	>
+		<NAME>AddPoint</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>add a point to a polygon</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	Move()"
+		INLINE="NO"
+	>
+		<NAME>Move</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>move within a tool</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL NewFile()"
+		INLINE="NO"
+	>
+		<NAME>NewFile</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>create a newfile</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL LoadFile()"
+		INLINE="NO"
+	>
+		<NAME>LoadFile</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>load a file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL MergeFile()"
+		INLINE="NO"
+	>
+		<NAME>MergeFile</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>merge a file with an existing one</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	ScrollScreen()"
+		INLINE="NO"
+	>
+		<NAME>ScrollScreen</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>scroll the visible part on the screen in given direction</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	IsZoomed()"
+		INLINE="NO"
+	>
+		<NAME>IsZoomed</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>is the zoom history available</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	EmptyZoomHistory()"
+		INLINE="NO"
+	>
+		<NAME>EmptyZoomHistory</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>make zoomhistory empty</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	Zoom()"
+		INLINE="NO"
+	>
+		<NAME>Zoom</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>zoom commands</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	PrintFile()"
+		INLINE="NO"
+	>
+		<NAME>PrintFile</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>print this file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="EIGHT_G_BYTE_REAL	"
+		DECLARATION="EIGHT_G_BYTE_REAL	Zoom(double,double,double,double,int)"
+		INLINE="NO"
+	>
+		<NAME>Zoom</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>zoom in on area or point</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	ClearScreen()"
+		INLINE="NO"
+	>
+		<NAME>ClearScreen</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>clear the screen</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	ShowCoords()"
+		INLINE="NO"
+	>
+		<NAME>ShowCoords</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get switch for show coordinates on and off</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	AddMenuFile()"
+		INLINE="NO"
+	>
+		<NAME>AddMenuFile</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>add this file to the menu for reloading</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	CloseFile()"
+		INLINE="NO"
+	>
+		<NAME>CloseFile</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>close the current file in memory</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	Flatten()"
+		INLINE="NO"
+	>
+		<NAME>Flatten</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>remove hiearchy in file within the structure visible on the screen</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	Validate()"
+		INLINE="NO"
+	>
+		<NAME>Validate</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>validate the structure in memory</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ViewStructure()"
+		INLINE="NO"
+	>
+		<NAME>ViewStructure</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>make this structure the visible one</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	View_Structure(Structure*)"
+		INLINE="NO"
+	>
+		<NAME>View_Structure</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set maaping for the given structure.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL DrawOutline()"
+		INLINE="NO"
+	>
+		<NAME>DrawOutline</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set draw only outlines on</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetSelectedOnly()"
+		INLINE="NO"
+	>
+		<NAME>SetSelectedOnly</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set, certain operations only work on selected elements?</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetVisibleOnly()"
+		INLINE="NO"
+	>
+		<NAME>SetVisibleOnly</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set, save only visible layers to files</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	ShowGrid()"
+		INLINE="NO"
+	>
+		<NAME>ShowGrid</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>make the grid visible and snap to it</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ResetTrans()"
+		INLINE="NO"
+	>
+		<NAME>ResetTrans</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>reset transform settings</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowBrowser()"
+		INLINE="NO"
+	>
+		<NAME>ShowBrowser</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>open the help browser</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Operation(DOWHAT dothis)"
+		INLINE="NO"
+	>
+		<NAME>Operation</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>to call operation on layers</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Exit()"
+		INLINE="NO"
+	>
+		<NAME>Exit</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>exit the program</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL AskFile()"
+		INLINE="NO"
+	>
+		<NAME>AskFile</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>ask for a filename</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Ask()"
+		INLINE="NO"
+	>
+		<NAME>Ask</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>ask for a string</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	Load_Process_File()"
+		INLINE="NO"
+	>
+		<NAME>Load_Process_File</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>load a process file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	LoadSetup()"
+		INLINE="NO"
+	>
+		<NAME>LoadSetup</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>load setup process file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SaveSetup()"
+		INLINE="NO"
+	>
+		<NAME>SaveSetup</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>save setup process file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	DumpFile(char* filename)"
+		INLINE="NO"
+	>
+		<NAME>DumpFile</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>save file in memory as GDSII dumpfile</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SaveFile()"
+		INLINE="NO"
+	>
+		<NAME>SaveFile</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>save file in memory</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	GetFileGDS(char* filename , GdsII* gdsii)"
+		INLINE="NO"
+	>
+		<NAME>GetFileGDS</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>import file in memory from GDSII file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	LoadFileGDS(char* filename)"
+		INLINE="NO"
+	>
+		<NAME>LoadFileGDS</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>load file in memory from GDSII file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SaveFileGDS(char* filename)"
+		INLINE="NO"
+	>
+		<NAME>SaveFileGDS</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>save file in memory as GDSII file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	GetFileKEY(char* filename , GdsII* gdsii)"
+		INLINE="NO"
+	>
+		<NAME>GetFileKEY</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>import file in memory from KEY file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SaveFilePNG(char* filename)"
+		INLINE="NO"
+	>
+		<NAME>SaveFilePNG</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>save file in memory as PNG bitmap</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SaveFileBMP(char* filename)"
+		INLINE="NO"
+	>
+		<NAME>SaveFileBMP</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>save file in memory as PMP bitmap</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	LoadFileKEY(char* filename)"
+		INLINE="NO"
+	>
+		<NAME>LoadFileKEY</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>load file in memory from KEY file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SaveFileKEY(char* filename)"
+		INLINE="NO"
+	>
+		<NAME>SaveFileKEY</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>save file in memory as KEY file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL LoadFileFLASH(char* filename)"
+		INLINE="NO"
+	>
+		<NAME>LoadFileFLASH</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>load file in memory from DAVID MANN file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SaveFileFLASH(char* filename)"
+		INLINE="NO"
+	>
+		<NAME>SaveFileFLASH</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>save file in memory as DAVID MANN file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SaveFileExelon(char* filename)"
+		INLINE="NO"
+	>
+		<NAME>SaveFileExelon</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>save file in memory as exelon file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SaveFileCnc(char* filename)"
+		INLINE="NO"
+	>
+		<NAME>SaveFileCnc</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>save file in memory as laser machine file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	Define_A()"
+		INLINE="NO"
+	>
+		<NAME>Define_A</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>define group a layers</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	Define_B()"
+		INLINE="NO"
+	>
+		<NAME>Define_B</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>define group b layers</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	DefineDestination()"
+		INLINE="NO"
+	>
+		<NAME>DefineDestination</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>define destination layer</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL AddProperty()"
+		INLINE="NO"
+	>
+		<NAME>AddProperty</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Record()"
+		INLINE="NO"
+	>
+		<NAME>Record</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Pause()"
+		INLINE="NO"
+	>
+		<NAME>Pause</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetMirrorX()"
+		INLINE="NO"
+	>
+		<NAME>SetMirrorX</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform settings for transform commands</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetMirrorY()"
+		INLINE="NO"
+	>
+		<NAME>SetMirrorY</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform settings for transform commands</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetMoveHor()"
+		INLINE="NO"
+	>
+		<NAME>SetMoveHor</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform settings for transform commands</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetMoveVer()"
+		INLINE="NO"
+	>
+		<NAME>SetMoveVer</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform settings for transform commands</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetScale()"
+		INLINE="NO"
+	>
+		<NAME>SetScale</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform settings for transform commands</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetRotate()"
+		INLINE="NO"
+	>
+		<NAME>SetRotate</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform settings for transform commands</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetDirection()"
+		INLINE="NO"
+	>
+		<NAME>SetDirection</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>transform settings for transform commands</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetGridSpace()"
+		INLINE="NO"
+	>
+		<NAME>SetGridSpace</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the grid spacing</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetGridColour()"
+		INLINE="NO"
+	>
+		<NAME>SetGridColour</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the grid color</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetBackColour()"
+		INLINE="NO"
+	>
+		<NAME>SetBackColour</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the background color</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetGridPlacement()"
+		INLINE="NO"
+	>
+		<NAME>SetGridPlacement</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set grid on back or foreground</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetSelectmarge()"
+		INLINE="NO"
+	>
+		<NAME>SetSelectmarge</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set select marge as a fraction of the window width</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetSnapfactor()"
+		INLINE="NO"
+	>
+		<NAME>SetSnapfactor</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set snapfactor, used in boolean algorithm</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetCorrectionfactor()"
+		INLINE="NO"
+	>
+		<NAME>SetCorrectionfactor</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set correctionfactor, used in boolean algorithm</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetCorrectionaber()"
+		INLINE="NO"
+	>
+		<NAME>SetCorrectionaber</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set correction abberation, used in boolean algorithm</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetRoundfactor()"
+		INLINE="NO"
+	>
+		<NAME>SetRoundfactor</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set roundfactor, used in correction operation</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetRoundtype()"
+		INLINE="NO"
+	>
+		<NAME>SetRoundtype</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set roundtype, used in correction operation</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetPoly2ArcRmin()"
+		INLINE="NO"
+	>
+		<NAME>SetPoly2ArcRmin</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set radius minimal, used in poly to arc conversion</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetPoly2ArcRmax()"
+		INLINE="NO"
+	>
+		<NAME>SetPoly2ArcRmax</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set radius maximal, used in poly to arc conversion</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetPoly2ArcAber()"
+		INLINE="NO"
+	>
+		<NAME>SetPoly2ArcAber</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set abberation, used in poly to arc conversion</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetArc2PolyAber()"
+		INLINE="NO"
+	>
+		<NAME>SetArc2PolyAber</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set abberation, used in arc to poly conversion</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetSmoothAber()"
+		INLINE="NO"
+	>
+		<NAME>SetSmoothAber</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set abberation, used in smooth operation</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetDisplayaber()"
+		INLINE="NO"
+	>
+		<NAME>SetDisplayaber</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set abberation, used in drawing routines</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetStrucThres()"
+		INLINE="NO"
+	>
+		<NAME>SetStrucThres</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set structure threshold, used in drawing routines</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetPrimThres()"
+		INLINE="NO"
+	>
+		<NAME>SetPrimThres</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set primitive threshold, used in drawing routines</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	SetMaxlinemerge()"
+		INLINE="NO"
+	>
+		<NAME>SetMaxlinemerge</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set maximum line to merge, used in smooth operation</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetDefaultAcc()"
+		INLINE="NO"
+	>
+		<NAME>SetDefaultAcc</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>default accuracy</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetDefaultUnit()"
+		INLINE="NO"
+	>
+		<NAME>SetDefaultUnit</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>default unit</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="double	"
+		DECLARATION="double	Eval_Parameter(char* param)"
+		INLINE="NO"
+	>
+		<NAME>Eval_Parameter</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>conversion of number and units to number in meters</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	IsFile(char* file)"
+		INLINE="NO"
+	>
+		<NAME>IsFile</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> look if this file exists</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	ParameterError(char*)"
+		INLINE="NO"
+	>
+		<NAME>ParameterError</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> To few parameters?</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetCurrentLayer()"
+		INLINE="NO"
+	>
+		<NAME>SetCurrentLayer</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the active layer</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetCurrentLayerByName()"
+		INLINE="NO"
+	>
+		<NAME>SetCurrentLayerByName</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the active layer by name</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetLayerName()"
+		INLINE="NO"
+	>
+		<NAME>SetLayerName</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set layer name for active layer</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetGdsInMap()"
+		INLINE="NO"
+	>
+		<NAME>SetGdsInMap</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set gdsmapping in for active layer</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetGdsOutMap()"
+		INLINE="NO"
+	>
+		<NAME>SetGdsOutMap</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set gdsmapping out for active layer</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetLayerVisible()"
+		INLINE="NO"
+	>
+		<NAME>SetLayerVisible</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set layer visibility for active layer</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetLayerSelectable()"
+		INLINE="NO"
+	>
+		<NAME>SetLayerSelectable</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set layer selectable for active layer</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetLayerBorderColor()"
+		INLINE="NO"
+	>
+		<NAME>SetLayerBorderColor</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set border color for active layer</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetLayerFillColor()"
+		INLINE="NO"
+	>
+		<NAME>SetLayerFillColor</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set fill color for active layer</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetLayerBrush()"
+		INLINE="NO"
+	>
+		<NAME>SetLayerBrush</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set fill pattern for active layer</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetLayerOrder()"
+		INLINE="NO"
+	>
+		<NAME>SetLayerOrder</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set drawing order for active layer</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL SetLayerRead()"
+		INLINE="NO"
+	>
+		<NAME>SetLayerRead</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set reading this layer from files for active layer</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowTextDlg()"
+		INLINE="NO"
+	>
+		<NAME>ShowTextDlg</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowPathtypeDlg()"
+		INLINE="NO"
+	>
+		<NAME>ShowPathtypeDlg</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowFactors()"
+		INLINE="NO"
+	>
+		<NAME>ShowFactors</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowOrder()"
+		INLINE="NO"
+	>
+		<NAME>ShowOrder</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowGroups()"
+		INLINE="NO"
+	>
+		<NAME>ShowGroups</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowAlias()"
+		INLINE="NO"
+	>
+		<NAME>ShowAlias</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowEnv()"
+		INLINE="NO"
+	>
+		<NAME>ShowEnv</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowLayers()"
+		INLINE="NO"
+	>
+		<NAME>ShowLayers</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowFilename()"
+		INLINE="NO"
+	>
+		<NAME>ShowFilename</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowKeyBNF()"
+		INLINE="NO"
+	>
+		<NAME>ShowKeyBNF</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowProcessBNF()"
+		INLINE="NO"
+	>
+		<NAME>ShowProcessBNF</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowTopStructure()"
+		INLINE="NO"
+	>
+		<NAME>ShowTopStructure</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowExecDlg()"
+		INLINE="NO"
+	>
+		<NAME>ShowExecDlg</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowInsertLayerDlg()"
+		INLINE="NO"
+	>
+		<NAME>ShowInsertLayerDlg</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowDistDlg()"
+		INLINE="NO"
+	>
+		<NAME>ShowDistDlg</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowIdentDlg()"
+		INLINE="NO"
+	>
+		<NAME>ShowIdentDlg</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ShowHelp()"
+		INLINE="NO"
+	>
+		<NAME>ShowHelp</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>show the dialog</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL CommandError( char* command, char* value )"
+		INLINE="NO"
+	>
+		<NAME>CommandError</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>message for command errors</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="GdsII* "
+		DECLARATION="GdsII* _gdsii"
+	>
+		<NAME>_gdsii</NAME>
+		<DESCRIPTION>
+			<PARA>current loaded internal database</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="GdsII* "
+		DECLARATION="GdsII* _gdsii_merge"
+	>
+		<NAME>_gdsii_merge</NAME>
+		<DESCRIPTION>
+			<PARA>current loaded important internal database</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="Setup* "
+		DECLARATION="Setup* _setup"
+	>
+		<NAME>_setup</NAME>
+		<DESCRIPTION>
+			<PARA>layer setup</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	_view_coord"
+	>
+		<NAME>_view_coord</NAME>
+		<DESCRIPTION>
+			<PARA> boolean show coordinates</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	_view_outline"
+	>
+		<NAME>_view_outline</NAME>
+		<DESCRIPTION>
+			<PARA> boolean show outline</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	_view_debug"
+	>
+		<NAME>_view_debug</NAME>
+		<DESCRIPTION>
+			<PARA> boolean view debugscreen</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	_selected_only"
+	>
+		<NAME>_selected_only</NAME>
+		<DESCRIPTION>
+			<PARA> boolean perform action only on selected items</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	_visible_only"
+	>
+		<NAME>_visible_only</NAME>
+		<DESCRIPTION>
+			<PARA> boolean for output only visible layers</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	_show_grid"
+	>
+		<NAME>_show_grid</NAME>
+		<DESCRIPTION>
+			<PARA> boolean for output only visible layers</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _mirror_x"
+	>
+		<NAME>_mirror_x</NAME>
+		<DESCRIPTION>
+			<PARA> transformation settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _mirror_y"
+	>
+		<NAME>_mirror_y</NAME>
+		<DESCRIPTION>
+			<PARA> transformation settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _move_hor"
+	>
+		<NAME>_move_hor</NAME>
+		<DESCRIPTION>
+			<PARA> transformation settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _move_ver"
+	>
+		<NAME>_move_ver</NAME>
+		<DESCRIPTION>
+			<PARA> transformation settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _scaling"
+	>
+		<NAME>_scaling</NAME>
+		<DESCRIPTION>
+			<PARA> transformation settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _rotate"
+	>
+		<NAME>_rotate</NAME>
+		<DESCRIPTION>
+			<PARA> transformation settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _str_width[30]"
+	>
+		<NAME>_str_width[30]</NAME>
+		<DESCRIPTION>
+			<PARA>value as string for eqauvalent number</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _str_mirror_x[30]"
+	>
+		<NAME>_str_mirror_x[30]</NAME>
+		<DESCRIPTION>
+			<PARA>value as string for eqauvalent number</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _str_mirror_y[30]"
+	>
+		<NAME>_str_mirror_y[30]</NAME>
+		<DESCRIPTION>
+			<PARA>value as string for eqauvalent number</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _str_move_hor[30]"
+	>
+		<NAME>_str_move_hor[30]</NAME>
+		<DESCRIPTION>
+			<PARA>value as string for eqauvalent number</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char	"
+		DECLARATION="char	_str_move_ver[30]"
+	>
+		<NAME>_str_move_ver[30]</NAME>
+		<DESCRIPTION>
+			<PARA>value as string for eqauvalent number</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char	"
+		DECLARATION="char	_str_scale[30]"
+	>
+		<NAME>_str_scale[30]</NAME>
+		<DESCRIPTION>
+			<PARA>value as string for eqauvalent number</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char	"
+		DECLARATION="char	_str_rotate[30]"
+	>
+		<NAME>_str_rotate[30]</NAME>
+		<DESCRIPTION>
+			<PARA>value as string for eqauvalent number</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char	"
+		DECLARATION="char	_str_direction[30]"
+	>
+		<NAME>_str_direction[30]</NAME>
+		<DESCRIPTION>
+			<PARA>value as string for eqauvalent number</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char	"
+		DECLARATION="char	_str_grid_space[30]"
+	>
+		<NAME>_str_grid_space[30]</NAME>
+		<DESCRIPTION>
+			<PARA>value as string for eqauvalent number</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char	"
+		DECLARATION="char	_str_grid_colour[30]"
+	>
+		<NAME>_str_grid_colour[30]</NAME>
+		<DESCRIPTION>
+			<PARA>value as string for eqauvalent number</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char	"
+		DECLARATION="char	_str_back_colour[30]"
+	>
+		<NAME>_str_back_colour[30]</NAME>
+		<DESCRIPTION>
+			<PARA>value as string for eqauvalent number</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _selectmarge"
+	>
+		<NAME>_selectmarge</NAME>
+		<DESCRIPTION>
+			<PARA> factor settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _snapfactor"
+	>
+		<NAME>_snapfactor</NAME>
+		<DESCRIPTION>
+			<PARA> factor settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _correctionfactor"
+	>
+		<NAME>_correctionfactor</NAME>
+		<DESCRIPTION>
+			<PARA> factor settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _correctionaber"
+	>
+		<NAME>_correctionaber</NAME>
+		<DESCRIPTION>
+			<PARA> factor settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _roundfactor"
+	>
+		<NAME>_roundfactor</NAME>
+		<DESCRIPTION>
+			<PARA> factor settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _poly2arcrmin"
+	>
+		<NAME>_poly2arcrmin</NAME>
+		<DESCRIPTION>
+			<PARA> factor settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _poly2arcrmax"
+	>
+		<NAME>_poly2arcrmax</NAME>
+		<DESCRIPTION>
+			<PARA> factor settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _poly2arcaber"
+	>
+		<NAME>_poly2arcaber</NAME>
+		<DESCRIPTION>
+			<PARA> factor settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _arc2polyaber"
+	>
+		<NAME>_arc2polyaber</NAME>
+		<DESCRIPTION>
+			<PARA> factor settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _smoothaber"
+	>
+		<NAME>_smoothaber</NAME>
+		<DESCRIPTION>
+			<PARA> factor settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _displayaber"
+	>
+		<NAME>_displayaber</NAME>
+		<DESCRIPTION>
+			<PARA> factor settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _maxlinemerge"
+	>
+		<NAME>_maxlinemerge</NAME>
+		<DESCRIPTION>
+			<PARA> factor settings</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _str_selectmarge[30]"
+	>
+		<NAME>_str_selectmarge[30]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _str_snapfactor[30]"
+	>
+		<NAME>_str_snapfactor[30]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _str_correctionfactor[30]"
+	>
+		<NAME>_str_correctionfactor[30]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _str_correctionaber[30]"
+	>
+		<NAME>_str_correctionaber[30]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char	"
+		DECLARATION="char	_str_roundfactor[30]"
+	>
+		<NAME>_str_roundfactor[30]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _roundtype[30]"
+	>
+		<NAME>_roundtype[30]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char	"
+		DECLARATION="char	_str_poly2arcrmin[30]"
+	>
+		<NAME>_str_poly2arcrmin[30]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char	"
+		DECLARATION="char	_str_poly2arcrmax[30]"
+	>
+		<NAME>_str_poly2arcrmax[30]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char	"
+		DECLARATION="char	_str_poly2arcaber[30]"
+	>
+		<NAME>_str_poly2arcaber[30]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char	"
+		DECLARATION="char	_str_arc2polyaber[30]"
+	>
+		<NAME>_str_arc2polyaber[30]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char	"
+		DECLARATION="char	_str_smoothaber[30]"
+	>
+		<NAME>_str_smoothaber[30]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _str_displayaber[30]"
+	>
+		<NAME>_str_displayaber[30]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _str_structhres[30]"
+	>
+		<NAME>_str_structhres[30]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _str_primthres[30]"
+	>
+		<NAME>_str_primthres[30]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _str_drawsmallprim[30]"
+	>
+		<NAME>_str_drawsmallprim[30]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _str_maxlinemerge[30]"
+	>
+		<NAME>_str_maxlinemerge[30]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _str_default_width[10]"
+	>
+		<NAME>_str_default_width[10]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _str_default_height[10]"
+	>
+		<NAME>_str_default_height[10]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _str_default_acc[10]"
+	>
+		<NAME>_str_default_acc[10]</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _default_width"
+	>
+		<NAME>_default_width</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _default_height"
+	>
+		<NAME>_default_height</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _default_acc"
+	>
+		<NAME>_default_acc</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="ofstream* "
+		DECLARATION="ofstream* _processing_file"
+	>
+		<NAME>_processing_file</NAME>
+		<DESCRIPTION>
+			<PARA>record to this file if record is on</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int _CurrentLayer"
+	>
+		<NAME>_CurrentLayer</NAME>
+		<DESCRIPTION>
+			<PARA>active layer</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="group*	"
+		DECLARATION="group*	_group_A"
+	>
+		<NAME>_group_A</NAME>
+		<DESCRIPTION>
+			<PARA>group a layers</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="group*	"
+		DECLARATION="group*	_group_B"
+	>
+		<NAME>_group_B</NAME>
+		<DESCRIPTION>
+			<PARA>group b layers</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int _destination"
+	>
+		<NAME>_destination</NAME>
+		<DESCRIPTION>
+			<PARA>destination</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char _filename[LINELENGTH]"
+	>
+		<NAME>_filename[LINELENGTH]</NAME>
+		<DESCRIPTION>
+			<PARA>current filename</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char	"
+		DECLARATION="char	_name_backup[LINELENGTH]"
+	>
+		<NAME>_name_backup[LINELENGTH]</NAME>
+		<DESCRIPTION>
+			<PARA>back up for old filename</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	_keyword"
+	>
+		<NAME>_keyword</NAME>
+		<DESCRIPTION>
+			<PARA>command keyword</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	DavidMannAdd"
+	>
+		<NAME>DavidMannAdd</NAME>
+		<DESCRIPTION>
+			<PARA>add to existing drawing in case of DAVID MANN file?</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int LayerNr"
+	>
+		<NAME>LayerNr</NAME>
+		<DESCRIPTION>
+			<PARA>add DAVID MANN file to this layer</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double	"
+		DECLARATION="double	_grid_space"
+	>
+		<NAME>_grid_space</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="long	"
+		DECLARATION="long	_grid_colour"
+	>
+		<NAME>_grid_colour</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="long	"
+		DECLARATION="long	_back_colour"
+	>
+		<NAME>_back_colour</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	_grid_placement"
+	>
+		<NAME>_grid_placement</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _start_point_x"
+	>
+		<NAME>_start_point_x</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _start_point_y"
+	>
+		<NAME>_start_point_y</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _rel_point_x"
+	>
+		<NAME>_rel_point_x</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _rel_point_y"
+	>
+		<NAME>_rel_point_y</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double _width"
+	>
+		<NAME>_width</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	_pathtype"
+	>
+		<NAME>_pathtype</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="OperationMethod "
+		DECLARATION="OperationMethod _operationmethod"
+	>
+		<NAME>_operationmethod</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="DL_Iter<char*>* "
+		DECLARATION="DL_Iter&lt;char*&gt;* _I"
+	>
+		<NAME>_I</NAME>
+		<DESCRIPTION>
+			<PARA>command argument iterator</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="AliasList* "
+		DECLARATION="AliasList* _aliaslist"
+	>
+		<NAME>_aliaslist</NAME>
+		<DESCRIPTION>
+			<PARA>aliaslist for internal variables</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="DL_List<Command*>* "
+		DECLARATION="DL_List&lt;Command*&gt;* _commandhistory"
+	>
+		<NAME>_commandhistory</NAME>
+		<DESCRIPTION>
+			<PARA>command history list</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="DDEHandler*	"
+		DECLARATION="DDEHandler*	_ddehandler"
+	>
+		<NAME>_ddehandler</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="DL_List<void*>* "
+		DECLARATION="DL_List&lt;void*&gt;* _zoom_history"
+	>
+		<NAME>_zoom_history</NAME>
+		<DESCRIPTION>
+			<PARA>zoom history list</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="EIGHT_G_BYTE_REAL	"
+		DECLARATION="EIGHT_G_BYTE_REAL	_scale"
+	>
+		<NAME>_scale</NAME>
+		<DESCRIPTION>
+			<PARA>zoom in factor</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

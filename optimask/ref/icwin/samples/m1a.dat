@@ -1,0 +1,1635 @@
+!************************************************************************
+!
+!                       ADD Command sub-menus
+!
+!************************************************************************
+
+#begin add1 13
+* 0  1  "LINE"     "line"                                             RET
+* 1  1  "ARC"      "arc"                                    angles radius
+* 2  1  "   w=%"   "arc"                                 angles arc_width
+* 3  1  " n,w=%"   "arc"                                 angles arc_sides
+* 4  1  "CIRCLE"   "circle"                                        radius
+* 5  1  "   n=%"   "circle"                           circle_sides radius
+* 6  1  "RING"     "ring "                                      inner_rad
+* 7  1  " n=%,%"   "ring "                                    inner_sides
+* 8  1  "BOX"      "box"                                              RET
+* 9  1  "POLY"     "poly"                                             RET
+*10  1  "WIRE"     "wire"                                             RET
+*11  1  "   w=%"   "wire width="                                    width
+*12  0  "TEXT"     
+*13  1  "  hori"   "text %"                                           RET
+*14  1  "   s=%"   "text % size="                               text_size
+*15  1  "  vert"   "text % vert"                                      RET
+*16  1  "   s=%"   "text % vert size="                          text_size
+*17  1  "ARRAY"    "array | n=(%,%)"                cell_list_1 array_rot
+*18  1  "CELL %"   "cell "                                    cell_list_1
+*19  1  "    r1"   "cell | r1"                                cell_list_1
+*20  1  "    r2"   "cell | r2"                                cell_list_1
+*21  1  "    r3"   "cell | r3"                                cell_list_1
+*22  1  "    mX"   "cell | mx"                                cell_list_1
+*23  1  " mX r1"   "cell | mx r1"                             cell_list_1
+*24  1  "    mY"   "cell | my"                                cell_list_1
+*25  1  " mX r3"   "cell | mx r3"                             cell_list_1
+*26  1  "at 0,0"   "cell | at 0,0"                            cell_list_1
+#end
+
+#begin add2 10
+* 0  1  "MAIN"     ""                                                 RET
+* 2  1  "LINE"     "; add line"                                       RET
+* 3  1  "ARC"      "; add arc"                              angles radius
+* 4  1  "   w=%"   "; add arc"                           angles arc_width
+* 5  1  " n,w=%"   "; add arc"                           angles arc_sides
+* 6  1  "CIRCLE"   "; add circle"                                  radius
+* 7  1  "   n=%"   "; add circle"                     circle_sides radius
+* 8  1  "RING"     "; add ring"                                 inner_rad
+* 9  1  " n=%,%"   "; add ring"                               inner_sides
+*10  1  "BOX"      "; add box"                                        RET
+*11  1  "POLY"     "; add poly"                                       RET
+*12  1  "WIRE"     "; add wire"                                       RET
+*13  1  "   w=%"   "; add wire width="                              width
+*14  0  "TEXT"
+*15  1  "  hori"   "; add text %"                                     RET
+*16  1  "   s=%"   "; add text % size="                         text_size
+*17  1  "  vert"   "; add text % vert"                                RET
+*18  1  "   s=%"   "; add text % vert size="                    text_size
+#end
+
+#begin text_size 5 RES
+* 0 0  "SIZE="
+* 1 1  "KeyBrd"   "%"           RET
++2:15  1 2:2:15   ""            RET
++17:24 1 30:10:15 ""            RET
+*25 1  "KeyBrd"   "%"           RET
+#end
+
+#begin width 7 RES
+* 0, 0  "WIDTH=" 
+* 1 1  "KeyBrd"   "%"           RET
++2:-1 1  1:1      ""            RET
+*-0 1  "KeyBrd"   "%"           RET
+#end
+
+#begin inner_sides 6 N
+* 0,  0  "NSIDES" 
+* 1,  0  "   FOR "
+* 2,  0  "INSIDE"
+* 3,  0  "CIRCLE"
+* 5   1  "KeyBrd"   "  n_sides=%"    outer_sides
++6:26 1  8:8:12     "  n_sides="     outer_sides
+*27   1  "KeyBrd"   "  n_sides=%"    outer_sides
+#end
+
+#begin outer_sides -1 N1
+* 0,  0  "NSIDES" 
+* 1,  0  "   FOR "
+* 2,  0  " OUTER"
+* 3,  0  "CIRCLE"
+* 5   1  "KeyBrd"   ",%"    inner_rad
++6:26 1  8:8:12     ","     inner_rad
+*27   1  "KeyBrd"   ",%"    inner_rad
+#end
+
+#begin inner_rad 8 RES
+* 0   0  "INNER-" 
+* 1   0  "RADIUS" 
+* 3   1  "KeyBrd"   "  radii=%"      RET
++4:-1 1   1:1       "  radii="       outer_rad
+*-0   1  "KeyBrd"   "  radii=%"      RET
+#end
+
+#begin outer_rad 5 RES1
+* 0   0  "OUTER-" 
+* 1   0  "RADIUS" 
+* 3   1  "KeyBrd"    ",%"         RET
++4:-1 1   1:1:100    ","          RET
+*-0   1  "KeyBrd"    ","          RET
+#end
+
+#begin circle_sides 3 N
+* 0   0  "NSIDES" 
+* 2   1  "KeyBrd"   "  n_sides=%"       radius
++3:27 1   8:8:24    "  n_sides="        radius
+#end
+
+#begin radius 7 RES
+* 0   0  "RADIUS" 
+* 2   1  "KeyBrd"   "  radius=%"        RET
++3:-1 1   1:1       "  radius="         RET
+*-0   1  "KeyBrd"   "  radius=%"        RET
+#end
+
+#begin angles 7
+*0    0  "ANGLES"
+*1    0  "Measured"
+*2    0  "clock-"
+*3    0  "   wise"
+*4    0  "from 12"
+*5    0  "O'clock"
+*7    1  "KeyBrd"   "  angles=% %"        STK
+*9    0  "  1/4"
+*10   0  " CIRCLE"
++11   1  "  0: 90"   " angles=0,90"       STK
++12   1  " 90:180"   " angles=90,180"     STK
++13   1  "180:270"   " angles=180,270"    STK
++14   1  "270:360"   " angles=270,360"    STK
+*16   0  "  1/2"
+*17   0  " CIRCLE"
++18   1  "  0:180"   " angles=0,180"      STK
++19   1  " 90:270"   " angles=90,270"     STK
++20   1  "180:360"   " angles=180,360"    STK
++21   1  "270: 90"   " angles=270,90"     STK
+*23   1  "KeyBrd"   "  angles=% %"        STK
+#end
+
+#begin arc_width 7 RES
+* 0,  0  "WIDTH=" 
+* 1   1  "KeyBrd"   " width=%"         radius
++2:-1 1     1:1     " width="          radius
+*-0   1  "KeyBrd"   " width=%"         radius
+#end
+
+#begin arc_sides 4 N
+* 0   0  "NSIDES" 
+* 2   1  "KeyBrd"   "  n_sides=%"    arc_width
++3:26 1  8:8:24     "  n_sides="     arc_width
+#end
+
+#begin array_rot 3
+*0    0 "ROTATE"
+*1    0 "  CODE"
++3    1 " none"   ""                        array_step
++4   1  "   r1"   " r1"                     array_step
++5   1  "   r2"   " r2"                     array_step
++6   1  "   r3"   " r3"                     array_step
++7   1  "   mX"   " mx"                     array_step
++8   1  "mX r1"   " mx r1"                  array_step
++9   1  "   mY"   " my"                     array_step
++10  1  "mX r3"   " mx r3"                  array_step
+#end
+
+#begin array_step 2
+*0   0 " STEP"
++2   1 "Def'lt"    ""                       RET
+*4   1 "KeyBrd"   "  step=(%,%)"           RET
+#end
+
+!************************************************************************
+!
+!                    (UN)BLANK and (UN)PROTECT  Commands
+!
+!************************************************************************
+
+#begin blank1 7
+* 4   0  "BLANK"  
+* 5   1  "   all"  "all"           RET
+* 6   1  "select"  "select"        RET
+* 7   1  "layers"  "layers "       sel_layer_names_0
+* 8   1  "  root"  "root layers "  sel_layer_names_0
+* 9   1  "  cell"  "cell layers "  sel_layer_names_0
+#end
+
+#begin unblank1 8
+* 6   0  "UNBLNK"
+* 7   1  "   all"  "all"           RET
+* 8   1  "layers"  "layers "       sel_layer_names_0
+* 9   1  "  root"  "root layers "  sel_layer_names_0
+*10   1  "  cell"  "cell layers "  sel_layer_names_0
+#end
+
+#begin prot1 5
+* 2   0  "PROTEC"
+* 3   1  "   all"  "all"           RET
+* 4   1  "select"  "select"        RET
+* 5   1  "layers"  "layers "       sel_layer_names_0
+#end
+
+#begin unprot1 6
+* 6   0  "UNPROT"
+* 7   1  "   all"  "all"           RET
+* 8   1  "layers"  "layers "       sel_layer_names_0
+#end
+
+#begin res_list 11
+* 8   0  "RESOLV"
+* 9   0  " STEP"
+*11   1  "No Chg"   ""             res_list1
+*12   1  "KeyBrd"  "step=%"        res_list1
++13   1  "  .001"  "step=.001"     res_list1
++14   1  "  .05 "  "step=.050"     res_list1
++15   1  "  .1"    "step=.1"       res_list1
++16   1  "  .2"    "step=.2"       res_list1
++17   1  "  .25"   "step=.25"      res_list1
++18   1  "  .5"    "step=.5"       res_list1
++19   1  " 1.00 "  "step=1.00"     res_list1
+*20   1  "KeyBrd"  "step=%"        res_list1
+#end
+
+#begin res_list1 11
+* 8   0  "RESOLV"
+* 9   0  " MODE"
+*11   1  "No Chg"   ""             RET
++12   1  "  hard"  "  hard"          RET
++13   1  "  soft"  "  soft"          RET
+#end
+
+#begin outline  8  N
+*5  0  "DEPTH"
++7:23  1   0:1      ""              RET
+#end
+
+!************************************************************************
+!
+!                          COPY-MOVE Command submenus
+!
+!************************************************************************
+
+#begin move 9
+* 8  1  "  X"      " x"                RET
+* 9  1  " X&Y"     " "                 RET
+*10  1  "  Y"      " y"                RET
+#end
+
+#begin copy_move 9
+* 2  0  "ROTATE"
+* 3  0  "  CCW"
+* 4  1  "r1= 90"   "rotate 1"         RET
+* 5  1  "r2=180"   "rotate 2"         RET
+* 6  1  "r3=270"   "rotate 3"         RET
+* 8  1  "  X"      "move x"           RET
+* 9  1  " X&Y"     "move"             RET
+*10  1  "  Y"      "move y"           RET
+*12  1  "MIR X"    "mirror x"         RET
+*13  1  "MIR Y"    "mirror y"         RET
+#end
+
+!************************************************************************
+!
+!                          DISPLAY Command
+!
+!************************************************************************
+
+#begin display_menu 2 
+* 0   0  "DISPLAY" 
++ 1   1  "  SetALL"  ""                   edit_stack
++ 2   1  "  NoChg"   ""                   RET
+* 4   0  "Edit Stack"
++ 5   1  "   on"    "  edit_stack=on"     RET
++ 6   1  "   off"   "  edit_stack=off"    RET
+* 8   0  "Cell Labls"
++ 9   1  "   on"    "  cell_labels=on"    RET
++10   1  "   off"   "  cell_labels=off"   RET
+*12   0  "Cursor"   
++13   1  "   number""  cursor="           cursor_number
++14   1  "   snap"  "  cursor 0 "         cursor_snap
+*16   0  "Cell Depth"   
++17   1  " KeyBrd"  "  cell_depth=%"      outline_depth
++18   1  "   %"     " "                   cell_depth
+*20   0  "Outline" 
+*21   0  "     Depth" 
++22   1  " KeyBrd"  "  outline_depth=%"   RET
++23   1  "   %"     " "                   outline_depth
+#end
+
+#begin edit_stack 3
+*  1  0  "EDIT STACK" 
+*  3  1  "  NoChg"  ""                   cell_labels
++  4  1  "   on"    "  edit_stack on"    cell_labels
++  5  1  "   off"   "  edit_stack off"   cell_labels
+#end
+
+#begin cell_labels 3
+*  0  0  "CELL"
+*  1  0  "  LABELS" 
+*  3  1  "  NoChg"  ""                   cursor
++  4  1  "   on"    "  cell_labels on"   cursor
++  5  1  "   off"   "  cell_labels off"  cursor
+#end
+
+#begin cursor 3 N
+*  1  0  "CURSOR"
+*  3  1  "  NoChg"  "  cursor 0"     cursor_snap1
++4:8  1  1:1:5      "  cursor "      cursor_snap1
+#end
+
+#begin cursor_number 3 N
+*  1  0  "CURSOR"
+*  3  1  "  NoChg"  "0 "    RET
++4:8  1  1:1:5      ""      RET
+#end
+
+#begin cursor_snap1 4
+*  1  0  "CURSOR"
+*  2  0  " SNAP"
+*  4  1  "NoChg"   ""          cell_depth
++  5  1  " On"     " snap on"  cell_depth
++  6  1  " Off"    " snap off" cell_depth
+#end
+
+#begin cursor_snap 4
+*  1  0  "CURSOR"
+*  2  0  " SNAP"
+*  4  1  "NoChg" ""         RET
++  5  1  " On"  "snap on"   RET
++  6  1  " Off" "snap off"  RET
+#end
+
+#begin cell_depth 3 N
+*  0  0  "CELL"
+*  1  0  "  DEPTH"  
+*  3  1  " NoChg"   ""                 outline_depth
++4:20 1  0:1:17     "  cell_depth="    outline_depth
+* 21  1  " Max"     "  cell_depth=100" outline_depth
+#end
+
+#begin outline_depth 3 N
+*  0  0  "OUTLINE"
+*  1  0  " DEPTH"                   
+*  3  1  " NoChg"  ""                     RET
++4:20 1  0:1:17     "  outline_depth="    RET
+* 21  1  " Max"     "  outline_depth=100" RET
+#end
+
+!************************************************************************
+!
+!                                 USE Command
+!
+!************************************************************************
+
+#begin use_menu 6
+* 0  1  "SHOW"    ""                  RET
+* 2  0  "WIRE"
+* 3  0  "    ENDS"
++ 4  1  "0:flush"  "wire_type=0"      RET
++ 5  1  "2:extend" "wire_type=2"      RET
+* 7  0  "TEXT"
+* 8  0  "   JUST"
++ 9  1  "   tl"    "just=tl"          RET
++10  1  "   tc"    "just=tc"          RET
++11  1  "   tr"    "just=tr"          RET
++12  1  "   cl"    "just=cl"          RET
++13  1  "   cc"    "just=cc"          RET
++14  1  "   cr"    "just=cr"          RET
++15  1  "   bl"    "just=bl"          RET
++16  1  "   bc"    "just=bc"          RET
++17  1  "   br"    "just=br"          RET
+*19  0  "CIRCLE"
+*20  0  "   SIDES"
+*21  1  " KeyBrd"  " n_sides=%"       RET
++22  1  "    8"    " n_sides=8"       RET
++23  1  "   16"    " n_sides=16"      RET
++24  1  "   32"    " n_sides=32"      RET
++25  1  "   64"    " n_sides=64"      RET
+#end
+
+!************************************************************************
+!
+!                       EXIT-QUIT-JOURNAL Commands
+!
+!************************************************************************
+
+#unused file_menu 20
+*2   1  "@START"   "@%start.cmd"       RET
+*3   1  "@ALWAYS"  "@%always.cmd"      RET
+*4   1  "@*"       "@*"                RET
+*5   1  "edit.JOU" 'dos -notepad "%lib^%cell.root^.JOU"' RET
+*7   1  "MENU"     "menu  "            menu_menu
+*8   1  "PATTERN"  "pattern  "         pattern_menu
+*10  1  "DRC 286"  "drc 286"           drc_array_mode
+*11  1  "DRC DOS"  "drc 386 DOS"       drc_array_mode
+*12  1  "DRC NT"   "drc 386"           drc_array_mode
+*14  1  "CIF"      "cif scale="        cif_scale
+*15  1  "STREAM"   "stream map "       stream_menu
+*16  1  "ARCHIVE"  "stream archive "   stream_menu
+*18  1  "PLOT"     "plot plotter="     plotter_list
+*19  1  "    now"  "@plotnow.cmd"      RET
+*21  1  "LEAVE"    "leave"             RET
+*22  1  "EXIT"     "exit"              RET
+*23  1  "QUIT"     "quit"              RET
+*24  1  "JOURNAL"  "journal"           RET
+*26  1  "PACK"     "pack"              RET
+#end
+
+!************************************************************************
+!
+!                            GRID Command
+!
+!************************************************************************
+
+#begin grid1  6  RES
+* 2      1  "ON"     " on"             RET
+* 3      1  "OFF"    " off"            RET
+* 5      0  "STEP"
+* 6      1  "NoChg"  " on"             grid2
++ 7:15   1   2:1:9   " on step="       grid2
+*16      1  "KeyBrd" " on step=%"      grid2
+#end
+
+#begin grid1a  6
+* 2      1  "ON"     " on"             RET
+* 3      1  "OFF"    " off"            RET
+* 5      0  "STEP"
+* 6      1  "NoChg"  " on"             grid2
++ 7      1  "   2"   " on step=2"      grid2
++ 8      1  "   5"   " on step=5"      grid2
++ 9      1  "  10"   " on step=10"     grid2
++10      1  "  20"   " on step=20"     grid2
+*11      1  "KeyBrd" " on step=%"      grid2
+#end
+
+#begin grid2  12
+* 0   0  "DOTS"
++ 1   1  "    red"   "  red dots"        RET
++ 2   1  " yellow"   "  yellow dots"     RET
++ 3   1  "  green"   "  green dots"      RET
++ 4   1  "   blue"   "  blue dots"       RET
++ 5   1  "magenta"   "  magenta dots"    RET
++ 6   1  "   cyan"   "  cyan dots"       RET
++ 7   1  "  white"   "  white dots"      RET
++ 8   1  "  NoChg"   ""                  RET
+*10   0  "CROSSES"
++11   1  "    red"   "  red crosses"     RET
++12   1  " yellow"   "  yellow crosses"  RET
++13   1  "  green"   "  green crosses"   RET
++14   1  "   blue"   "  blue crosses"    RET
++15   1  "magenta"   "  magenta crosses" RET
++16   1  "   cyan"   "  cyan crosses"    RET
++17   1  "  white"   "  white crosses"   RET
+*19   0  "LINES"
++20   1  "    red"   "  red lines"       RET
++21   1  " yellow"   "  yellow lines"    RET
++22   1  "  green"   "  green lines"     RET
++23   1  "   blue"   "  blue lines"      RET
++24   1  "magenta"   "  magenta lines"   RET
++25   1  "   cyan"   "  cyan lines"      RET
++26   1  "  white"   "  white lines"     RET
+#end
+
+!************************************************************************
+!
+!                            LAYER Command
+!
+!************************************************************************
+
+#begin layer0 1 LAY0
+* 0  1  "By #"     ""          layer0a
+* 1  5  "Nxt Pg"
+* 2  1  "KeyBrd"   "%"         layer_options1
++ 3  1  "  *"      "*"         layer_options3
++ 4:-1   1         ""          pen1 : layer_options1
+*-0  5  "Nxt Pg"
+#end
+
+#begin layer0a 1 LAY#0
+* 0  1  "ByName"   ""          layer0
+* 1  5  "Nxt Pg"
+* 2  1  "KeyBrd"   "%"         layer_options1
++ 3  1  "  *"      "*"         layer_options3
++ 4:-1   1         ""          pen1 : layer_options1
+*-0  5  "Nxt Pg"
+#end
+
+#begin layer_options1 10
+* 0   0  "SET"
++ 2   1  "  name"  "  name=%"  RET  
++ 3   1  "   cif"  "  cif=%"   RET 
++ 4   1  "stream"  ""          stream1
++ 5   1  " width"  ""          layer_width1
++ 6   1  " space"  ""          space1
++ 7   1  " color"  ""          color1
++ 8   1  "pat'rn"  ""          pattern1a
++ 9   1  "   pen"  ""          pen1
++11   1  "SetALL"  ""          name2           pen2a 
+#end
+
+#begin layer_options3 9
+* 0   0  "SET"
++ 2   1  "   cif"  "  cif=%"   RET 
++ 3   1  "stream"  ""          stream1
++ 4   1  " width"  ""          layer_width1
++ 5   1  " color"  ""          color1
++ 6   1  " space"  ""          space1
++ 7   1  "pat'rn"  ""          pattern1a
++ 8   1  "   pen"  ""          pen1
++10   1  "SetALL"  ""          cif2            pen2a 
+#end
+
+!*************************** Set single parameter ***********************
+
+#begin layer_width1 5 RES
+*0    0  "WIDTH"
+*2    5  "Nxt Pg"
+*3    1  "KeyBrd"    "  width=%"   RET
++4:-1 1  1:1:101     "  width="    RET
+*-0   5  "Nxt Pg"
+#end
+
+#begin space1 5 RES
+*0    0  "SPACE"
+*2    5  "Nxt Pg"
+*3    1  "KeyBrd"    "  space=%"   RET
++4:-1 1  0:1:101     "  space="    RET
+*-0   5  "Nxt Pg"
+#end
+
+#begin stream1  6  N
+* 0   0  "STREAM"
+* 1   0  "LAYER"
+* 3   5  "Nxt Pg"
+* 4   1  "KeyBrd"    "  stream=%"   RET
++ 5   1  "NO STR"    "  nostream"   RET
++6:-1 1   0:1:64     "  stream="    data_type1
+*-0   5  "Nxt Pg"
+#end
+
+#begin data_type1  4  N
+* 0   0  "DATA"
+* 1   0  "  TYPE"
+* 4   5  "Nxt Pg"
++5:-1 1   0:1:64      ","    RET
+*-0   5  "Nxt Pg"
+#end
+
+#begin color1 2  CLR
+* 0   0  "COLOR"
+* 2   1  "No Chg"   ""            pattern2
++3:18 1             "  color="    pattern1   pen1
+#end
+
+#begin pattern1 2  PAT
+* 0   0  "PAT'RN"
+* 2   1  "No Chg"    ""            RET
+* 3   5  "Nxt Pg"
+* 4   1  "KeyBrd"    "  pat=%"     RET
++5:-1 1   0:1:101    "  pat="      RET
+*-0   5  "Nxt Pg"
+#end
+
+#begin pattern1a 2  PAT
+* 0   0  "PAT'RN"
+* 2  10  "No Chg"
+* 3   5  "Nxt Pg"
+* 4   1  "KeyBrd"    "  pat=%"     RET
++5:-1 1   0:1:101    "  pat="      RET
+*-0   5  "Nxt Pg"
+#end
+
+#begin pen1 4  N
+* 0   0  " PEN"
+* 2   5  "Nxt Pg"
+* 3   1  "KeyBrd"   "  pen=%"     RET
++ 4   1  "no pen"   "  no_pen"    RET
++ 5   1  "pen=*"    "  pen=*"     RET
++6:-1 1   0:1:101   "  pen="      RET
+*-0   5  "Nxt Pg" 
+#end
+
+!************************** Set multiple parameters **********************
+
+#begin name2 3
+* 0   0  "LAYER"
+* 1   0  "  NAME"
+* 3   1  "No Chg"   ""          cif2
+* 4   1  "KeyBrd"   " name=%"   cif2   pen2
++ 5   1  " none"    " noname"   cif2   pen2 
+#end
+
+#begin cif2 3 
+* 0   0  "CIF"
+* 1   0  "  NAME"
+* 3   1  "No Chg"   ""             stream2
+* 4   1  "KeyBrd"   " cif=%"       stream2   pen2
++ 5   1  "no cif"   " no_cif"      stream2   pen2
+#end
+
+#begin stream2  3  N
+* 0   0  "STREAM"
+* 1   0  " LAYER"
+* 3   1  "No Chg"    ""             layer_width2
+* 4   5  "Nxt Pg"
+* 5   1  "KeyBrd"    "  stream=%"   layer_width2  pen2
++ 6   1  "no str"    "  nostream"   layer_width2  pen2
++7:-1 1   0:1:64     "  stream="    data_type2    pen2
+*-0   5  "Nxt Pg"
+#end
+
+#begin data_type2  4  N
+* 0   0  "DATA"
+* 1   0  "  TYPE"
+* 3   5  "Nxt Pg"
++4:-1 1   0:1:64     ","            layer_width2  pen2
+*-0   5  "Nxt Pg"
+#end
+
+#begin layer_width2 2 RES
+*0    0  "WIDTH"
+*2    1  "No Chg"   ""            space2
+*3    5  "Nxt Pg"
+*4    1  "KeyBrd"    "  width=%"  space2
++5:-1 1  1:1:101     "  width="   space2
+*-0   5  "Nxt Pg"
+#end
+
+#begin space2 2 RES
+*0    0  "SPACE"
+*2    1  "No Chg"   ""            color2
+*3    5  "Nxt Pg"
+*4    1  "KeyBrd"    "  space=%"  color2   pen2
++5:-1 1  0:1:101     "  space="   color2   pen2
+*-0   5  "Nxt Pg"
+#end
+
+#begin color2 2 CLR
+* 0   0  "COLOR"
+* 2   1  "No Chg"   ""            pattern2
++3:18 1             "  color="    pattern2   pen2
+#end
+
+#begin pattern2 2  PAT
+* 0   0  "PAT'RN"
+* 2   1  "No Chg"    ""            STK
+* 3   5  "Nxt Pg"
+* 4   1  "KeyBrd"    "  pat=%"     pen2   
++5:-1 1   0:1:101    "  pat="      pen2   
+*-0   5  "Nxt Pg"
+#end
+
+#begin pen2 2  N
+* 0   0  " PEN"
+* 2   1  "No Chg"   ""             RET
+* 3   5  "Nxt Pg"
+* 4   1  "KeyBrd"   "  pen=%"      RET
++ 5   1  "no pen"   "  no_pen"     RET
++ 6   1  "pen=*"    "  pen=*"      RET
++7:-1 1   0:1:101   "  pen="       RET
+*-0   1  "Nxt Pg"   "  pen=%"      RET
+#end
+
+#begin pen2a 2  N
+* 0   0  " PEN"
+* 2  10  "No Chg"
+* 3   5  "Nxt Pg"
+* 4   1  "KeyBrd"   "  pen=%"      RET
++ 5   1  "no pen"   "  no_pen"     RET
++ 6   1  "pen=*"    "  pen=*"      RET
++7:-1 1  0:1:101    "  pen="       RET
+*-0   1  "Nxt Pg"   "  pen=%"      RET
+#end
+
+!******************** Set single parameter for layer "*" *****************
+
+
+!************************************************************************
+!
+!                            MENU Command
+!
+!************************************************************************
+
+#begin menu_menu  3  FILES
+* 0     0   "  MENU"
+* 2     5   "Nxt Page"
++ 3:-1  1   "$AUX\*.MEN"  ""   RET
+* -0    5   "Nxt Page"
+#end
+
+!************************************************************************
+!
+!                            PATTERN Command
+!
+!************************************************************************
+
+#begin pattern_menu 3  FILES
+* 0   0  "PAT'RN"
+* 2   5  "Nxt Page"
++3:-1 1  "$AUX\*.STI"  ""     RET
+*-0   5  "Nxt Page"
+#end
+
+!************************************************************************
+!
+!                            NEAR Command
+!
+!************************************************************************
+
+#begin near_units 2  RES
+* 0   0  "UNITS="
+* 2   1  "NoChg"   ""           near_dots
+* 3   1  "KeyBrd"  "units=% "   near_dots
++4:24 1   0:1      "units= "    near_dots
+*25   1  "KeyBrd"  "units=% "   near_dots
+#end
+
+#begin near_dots 2  N
+* 0   0  "DOTS="
+* 2   1  "NoChg"   ""           RET       
+* 3   1  "KeyBrd"  "dots=%"     RET
++4:24 1   0:1      "dots="      RET
+*25   1  "KeyBrd"  "dots=%"     RET
+#end
+
+!************************************************************************
+!
+!                            PLOT Command
+!
+!************************************************************************
+
+#begin plotter_list 4  PLOT
+* 0  5   "Nxt Page"
+* 2  0   "PLOTTER"
++ 4:-1    1   "$AUX\*.PDF"  ""  plot_size_list:pattern_list  
+* -0 5   "Nxt Page"
+#end
+
+#begin pattern_list 4  FILES
+* 0  5   "Nxt Page"
+* 2  0   "PAT'RN"
++ 4:-1    1   "$AUX\*.STI"  "  pattern="   dots_list
+* -0 5   "Nxt Page"
+#end
+
+#begin dots_list 4
+* 0  0   "SUPER-"
+* 1  0   "   PIXEL"
+* 2  0   "MODE"
++ 4  1   "1 DOT " "  dots=1"   plot_size_list
++ 5  1   "4 DOTS" "  dots=4"   plot_size_list
++ 6  1   "DITHER" "  dither"   plot_size_list
+#end
+
+#begin plot_size_list 3 PSIZE
+*1  0    "SIZE"
++3:-0     1   "  size="        plot_options
+#end
+
+#begin plot_options 3
+* 1  0   "OPTIONS"
++ 3  1   "   none"   "  all=*"   RET
++ 4  1   "   some"   ""          plot_3a
++ 5  1   "   most"   ""          plot_layers plot10
++ 6  1   "    all"   ""          plot_layers plot5
+#end
+
+#begin plot_layer_names 6 LAY1
+* 0  1  " By # "   ""          plot_layer_nos
+* 1  1  "KeyBrd"    " %"       STK
+* 2  8  "SetAll"
+* 3  7  "ClrAll"
+* 4  6  "Invert"
+* 5  9  "Return"    ""         STK
+* 6  5  "Nxt Pg"
++ 7:-1  0
+*-0  5  "Nxt Pg"
+#end
+
+#begin plot_layer_nos 6 LAY#1
+* 0  1  "By Name"   ""         plot_layer_names
+* 1  1  "KeyBrd"    " %"       STK
+* 2  8  "SetAll"
+* 3  7  "ClrAll"
+* 4  6  "Invert"
+* 5  9  "Return"    ""         STK
+* 6  5  "Nxt Pg"
++ 7:-1  0
+*-0  5  "Nxt Pg"
+#end
+
+#begin plot_layers  3
+* 1  0   "LAYERS"
++ 3  1   "   all"   ""           plot3
++ 4  1   "layers"   "  layers "  plot_layer_names  plot3
+#end
+
+#begin plot3   4
+* 2   0  "NX NY"    
+* 3   1  "KeyBrd" "  nx=% ny=%"  plot4
++ 4   1  " 1  1"  ""             plot4
++ 5   1  " 1  2"  "  ny=2"       plot4
++ 6   1  " 1  3"  "  ny=3"       plot4
++ 7   1  " 1  4"  "  ny=4"       plot4
++ 9   1  " 2  1"  "  nx=2"       plot4
++10   1  " 2  2"  "  nx=2 ny=2"  plot4
++11   1  " 2  3"  "  nx=2 ny=3"  plot4
++12   1  " 2  4"  "  nx=2 ny=4"  plot4
++14   1  " 3  1"  "  nx=3"       plot4
++15   1  " 3  2"  "  nx=3 ny=2"  plot4
++16   1  " 3  3"  "  nx=3 ny=3"  plot4
++17   1  " 3  4"  "  nx=3 ny=4"  plot4
++19   1  " 4  1"  "  nx=4"       plot4
++20   1  " 4  2"  "  nx=4 ny=2"  plot4
++21   1  " 4  3"  "  nx=4 ny=3"  plot4
++22   1  " 4  4"  "  nx=4 ny=4"  plot4
+*23   1  "KeyBrd" "  nx=% ny=%"  plot4
+#end
+
+#begin plot_3a  4
+* 2   0  "NX NY"    
+* 3   1  "KeyBrd" "  nx=% ny=%"  plot3b
++ 4   1  " 1  1"  ""             plot3b
++ 5   1  " 1  2"  "  ny=2"       plot3b
++ 6   1  " 1  3"  "  ny=3"       plot3b
++ 7   1  " 1  4"  "  ny=4"       plot3b
++ 9   1  " 2  1"  "  nx=2"       plot3b
++10   1  " 2  2"  "  nx=2 ny=2"  plot3b
++11   1  " 2  3"  "  nx=2 ny=3"  plot3b
++12   1  " 2  4"  "  nx=2 ny=4"  plot3b
++14   1  " 3  1"  "  nx=3"       plot3b
++15   1  " 3  2"  "  nx=3 ny=2"  plot3b
++16   1  " 3  3"  "  nx=3 ny=3"  plot3b
++17   1  " 3  4"  "  nx=3 ny=4"  plot3b
++19   1  " 4  1"  "  nx=4"       plot3b
++20   1  " 4  2"  "  nx=4 ny=2"  plot3b
++21   1  " 4  3"  "  nx=4 ny=3"  plot3b
++22   1  " 4  4"  "  nx=4 ny=4"  plot3b
+*23   1  "KeyBrd" "  nx=% ny=%"  plot3b
+#end
+
+#begin plot3b  3
+* 0   0  "TEXT"
+* 1   0  "HALOS"
++ 3   1  "   on"    "  text_highlights=on"   plot10
++ 4   1  "  off"    "  text_highlights=off"  plot10
+#end
+
+#begin plot4 4
+* 0   0  "ROTATE"
++ 2   1  "  0"     "  R0"        STK  
++ 3   1  "  1"     "  R1"        STK 
++ 4   1  " best"   ""            STK
+#end
+
+#begin plot5  4
+* 0   0  "FILTER"
+* 1   0  " SIZE"
+* 3   1  "KeyBrd"   "  filter=%"      plot6
++ 4   1  " none"   ""                plot6
++ 5   1  "  1.0"    "  filter=1.0"    plot6
++ 6   1  "  2.0"    "  filter=2.0"    plot6
++ 7   1  "  5.0"    "  filter=5.0"    plot6
++ 8   1  " 10.0"    "  filter=10.0"   plot6
++ 9   1  " 20.0"    "  filter=20.0"   plot6
++ 10  1  " 50.0"    "  filter=50.0"   plot6
+* 11  1  "KeyBrd"   "  filter=%"      plot6
+#end
+
+#begin plot6  4  N
+* 0   0  " CELL"
+* 1   0  " DEPTH"
+* 2   0  " LIMIT"
++ 4   1  " none"    ""               plot7  
++ 5:21 1 0:1:17     "  depth="       plot7
+#end
+
+#begin plot7  4  N
+* 0   0  " OUTLINE"
+* 1   0  " DEPTH"
+* 2   0  " LIMIT"
++ 4   1  " none"    ""             plot8
++ 5:21 1 0:1:17     "  out="       plot8
+#end
+
+#begin plot8  4
+* 0   0  "ARRAY"
+* 1   0  "MODE"
++ 3   1  "blank"    "  array_mode=blank"   plot8a
++ 4   1  "sides"    "  array_mode=sides"   plot8a
++ 5   1  " full"    "  array_mode=full"    plot8a
+#end
+
+#begin plot8a  3
+* 0   0  "TEXT"
+* 1   0  "HALOS"
++ 3   1  "   on"    "  text_highlights=on"   plot8b
++ 4   1  "  off"    "  text_highlights=off"  plot8b
+#end
+
+#begin plot8b 3
+* 0   0  "TEXT PLOT"
+* 1   0  "ORIENTAIONS"
++ 3   1  "2:vert+hori"        "  text_orientations=2"   plot8c
++ 4   1  "4:all rot's"        "  text_orientations=4"   plot8c
++ 5   1  "8:4+mirror"         "  text_orientations=8"   plot8c
+#end
+
+#begin plot8c  3
+* 0   0  " CELL"
+* 1   0  "LABELS"
++ 3   1  "    on"    "  cell_labels=on"   plot9
++ 4   1  "   off"    "  cell_labels=off"  plot9
+#end
+
+#begin plot9  4
+* 0   0  "FILE"
+* 1   0  "    NAME"
++ 3   1  "KeyBoard"    "  file=%"         plot10
++ 4   1  "default"   ""                   plot10
+#end
+
+#begin plot10 4
+* 2   0  "ALL"
++ 3   1  "  metric"  "  metric all=%"       RET
++ 4   1  " english"  "  english all=%"      RET
+* 6   0  "PRESCALE"
++ 7   1  "  metric"  "  metric prescale=%"  RET
++ 8   1  " english"  "  english prescale=%" RET
+*10   0  "SCALE" 
++11   1  "  metric"  "  metric scale=%"     RET
++12   1  " english"  "  english scale=%"    RET
+#end
+
+!************************************************************************
+!
+!                       (UN)SELECT Command sub-menus
+!
+!************************************************************************
+
+#begin select0  14
+* 0   0  "TEXT"  
+* 1   1  "   all"  "text all"    RET
+* 2   1  "    in"  "text in"     RET
+* 3   1  "    at"  "text at"     RET
+* 4   0  "CELL %"
+* 5   1  "   all"  "cell | all"  cell_list_0
+* 6   1  "    in"  "cell | in"   cell_list_0
+* 7   1  "    at"  "cell | at"   cell_list_0
+* 8   0  "CELL *" 
+* 9   1  "   all"  "cell * all"  RET
+*10   1  "    in"  "cell * in"   RET
+*11   1  "    at"  "cell * at"   RET
+*12   1  "ALL"   "all"           RET
+*13   1  "NEW"   "new"           RET
+*14   1  "IN"    "in"            RET
+*15   1  "NEAR"  "near"          RET
+*17   1  "PARTS" "parts"         RET
+*18   1  "SIDE"  "side in"       RET
+*19   1  "END"   "end in"        RET
+*21   1  "PUSH"  "push"          RET
+*22   1  "POP"   "pop"           RET
+*23   1  "EXCHNG"  "exchange"    RET
+*24   1  "FAIL"  "fail"          RET
+#end
+!*18   1  "@sel1" "@sel1"         RET
+
+#begin unselect0  14
+* 2   1  "TEXT"    "text all"    RET
+* 3   1  "   all"  "text all"    RET
+* 4   1  "    in"  "text in"     RET
+* 5   1  "    at"  "text at"     RET
+* 6   1  "CELL %"  "cell | all"  cell_list_0
+* 7   1  "   all"  "cell | all"  cell_list_0
+* 8   1  "    in"  "cell | in"   cell_list_0
+* 9   1  "    at"  "cell | at"   cell_list_0
+*10   1  "CELL *"  "cell * all"  RET
+*11   1  "   all"  "cell * all"  RET
+*12   1  "    in"  "cell * in"   RET
+*13   1  "    at"  "cell * at"   RET
+*14   1  "ALL"     "all"         RET
+*15   1  "IN"      "in"          RET
+*16   1  "NEAR"    "near"        RET
+*18   1  "PARTS"   "parts"       RET
+*19   1  "FULL"    "full"        RET
+*21   1  "SIDE"    "side in"     RET
+*22   1  "END"     "end in"      RET
+*23   1  "PUSH"    "push"        RET
+*24   1  "POP"     "pop"         RET
+#end
+
+#begin select1  14
+*12   1  "NEW"     " new"        RET
+*13   1  "ALL"     " all"        RET
+*14   1  "IN"      " in"         RET
+*15   1  "NEAR"    " near"       RET
+*16   1  "SIDE"    " side in"    RET
+*17   1  "END"     " end in"     RET
+#end
+
+#begin unselect1  14
+*13   1  "ALL"     " all"        RET
+*14   1  "IN"      " in"         RET
+*15   1  "NEAR"    " near"       RET
+*16   1  "SIDE"    " side in"    RET
+*17   1  "END"     " end in"     RET
+#end
+
+!************************************************************************
+!
+!                            SNAP Command
+!
+!************************************************************************
+
+#begin snap1 2  
+* 0  0  "ANGLE  "
+* 2  1  "NoChg"  "snap"           snap2a
++ 3  1  "   0"   "snap angle=0"   snap2b
++ 4  1  "  45"   "snap angle=45"  snap2a
++ 5  1  "  90"   "snap angle=90"  snap2b
+#end
+
+#begin snap2a 2  RES
+* 0  0  " STEP"
+* 2  1  "NoChg"  ""               snap4
++ 3:22  1  1:1    "  step="       snap4
+*23  1  "KeyBrd"  "  step=%"      snap4
+#end
+
+#begin snap2b 2  RES
+* 0  0  " STEP"
+* 2  1  "NoChg"  ""               snap4
+* 3  1  "KeyBrd"  " step=%"       snap4
+* 5  0  "X-STEP"  
++6:25 1 1:1       " step="        snap3b
+*26  1  "KeyBrd"  " step=%"       snap4
+#end
+
+#begin snap3b -1  RES
+* 5  0  "Y-STEP"
++6:25 1  1:1      ","             snap4
+#end
+
+#begin snap4  7
+* 5  0  "OFFSET"
+* 7  1  "NoChg"   ""              RET
++ 8  1  "(0,0)"   " offset=(0,0)" RET
++ 9  1  "mouse"   " offset"       RET
+#end
+
+!************************************************************************
+!
+!                            SPACER Command
+!
+!************************************************************************
+
+#begin spacer  13
+* 9   0  "SET"
++10   1  " space"   "%spacer.on"       space1
++11   1  " track"   ""                 track1
++12   1  " style"   ""                 style1
++13   1  "SetALL"   ""                 spacer_set
+*15   0  "ON/OFF"  
++16   1  "    on"   "on"               RET
++17   1  "   off"   "off"              RET
+#end
+
+#begin track1  11
+* 8   0  " LAYER" 
+* 9   0  "TRACKING" 
+*11   1  "NoChg"    "  %spacer.on"        RET
++12   1  "   on"    "  track_layers=on"   RET
++13   1  "  off"    "  track_layers=off"  RET
+#end
+
+#begin style1 12  N
+*10    0  "STYLE" 
+*12    1  "NoChg"    "  %spacer.on"       RET
++13:16 1  1:1        "  style="           RET
+#end
+
+#begin spacer_set  13
+*11   0  "ON/OFF" 
+*13   1  "NoChg"    "  %spacer.on"      set_space2
++14   1  "    on"   "  on"              set_space2
++15   1  "   off"   "  off"             set_space2
+#end
+
+#begin set_space2 2 RES 
+*0    0  "SPACE"
+*2    1  " NoChg"    ""            track2
+*3    5  "Nxt Pg"
+*4    1  "KeyBrd"    "  space=%"   track2
++5:-1 1  0:1:101     "  space="    track2
+*-0   5  "Nxt Pg"
+#end
+
+#begin track2  11
+* 8   0  " LAYER" 
+* 9   0  "TRACKING" 
+*11   1  "NoChg"    ""                   style1
++12   1  "   on"    "  track_layers=on"  style1
++13   1  "  off"    "  track_layers=off" style1
+#end
+
+!************************************************************************
+!
+!                             VIEW Command
+!
+!************************************************************************
+
+#begin view 12
+* 0  1  "LIMIT"   "limit"                  RET
+* 1  1  "   set"  "limit on "              view_limit
+* 2  1  "    on"  "limit on"               RET
+* 3  1  "   off"  "limit off"              RET
+* 5  1  "SELECT"  "select"                 RET
+* 6  1  "BOX"     "box"                    RET
+* 7  1  "IN %"    "in "                    view_factor
+* 8  1  "   2.0"  "in 2.0"                 RET
+* 9  1  "OUT %"   "out"                    view_factor
+*10  1  "   1.5"  "out 1.5"                RET
+*11  1  "   2.0"  "out 2.0"                RET
+*12  1  "LAST"    "last"                   RET
+*13  1  "ALL"     "all"                    RET
+*14  1  "   out"  "all out 1.5"            RET
+*15  1  "CENTER"  "center"                 RET
+*16  1  " (0,0)"  "center (0,0)"           RET
+*17  1  "MOVE"    "move "                  RET
+*18  1  "WNDOW%"  "window "                window
+*19  1  "     1"  "window 1"               RET
+*20  1  "     2"  "window 2"               RET
+*21  1  "SAVE %"  "save in window "        window
+*22  1  "     1"  "save in window 1"       RET
+*23  1  "SvLst%"  "save last in window "   window
+*24  1  "     2"  "save last in window 2"  RET
+*25  1  "ON"      "on"                     RET
+*26  1  "OFF"     "off"                    RET
+#end
+
+#begin view_factor 4
+* 1  1  "KeyBrd"  "%"    RET
++ 2  1  " 1.1"  "1.1"    RET
++ 3  1  " 1.25" "1.25"   RET
++ 4  1  " 1.5"  "1.5"    RET
++ 5  1  " 2.0"  "2.0"    RET
++ 6  1  " 2.5"  "2.5"    RET
++ 7  1  " 3.0"  "3.0"    RET
++ 8  1  " 4.0"  "4.0"    RET
++ 9  1  " 5.0"  "5.0"    RET
++10  1  "10.0"  "10.0"   RET
+*11  1  " Max"  "10000"  RET
+*12  1  "KeyBrd"  "%"    RET
+#end
+
+#begin window 6  N
+* 5  0   "WINDOW"
++ 6:14   1  1:1   ""   RET
+#end
+
+!************************************************************************
+!
+!                          VIEW_LIMIT Command
+!
+!************************************************************************
+
+#begin view_limit  12
+* 5   0  "SET"
++ 6   1  " scale"   ""                limit_scale_0
++ 7   1  " depth"   ""                limit_depth_0
++ 8   1  " units"   ""                limit_units_0
++ 9   1  "  dots"   ""                limit_dots_0
++10   1  "layers"   ""                limit_layer_names_1 
++12   1  "SetALL"   ""                limit_scale_1
+#end
+
+#begin limit_scale_0  6
+* 4   0  "SCALE" 
+* 6   1  "NoChg"    ""                  RET
++ 7   1   "0.5"     "  scale=0.5"       RET
++ 8   1   "1.0"     "  scale=1.0"       RET
++ 9   1   "1.5"     "  scale=1.5"       RET
++10   1   "2.0"     "  scale=2.0"       RET
+*11   1  "KeyBrd"   "  scale=%"         RET
+#end
+
+#begin limit_depth_0  5  N
+* 3   0  "DEPTH" 
+* 5   1  "NoChg"    ""                  RET
++ 6:16  1  0:1      "  depth="          RET
+#end
+
+#begin limit_units_0  6
+* 4   0  "UNITS" 
+* 6   1  "NoChg"    ""                  RET
++ 7   1   " 0.0"    "  units=0.0"       RET
++ 8   1   " 1.0"    "  units=1.0"       RET
++ 9   1   " 5.0"    "  units=5.0"       RET
++10   1   "10.0"    "  units=10.0"      RET
++11   1   "25.0"    "  units=25.0"      RET
+*12   1  "KeyBrd"   "  units=%"         RET
+#end
+
+#begin limit_dots_0  7
+* 5   0  "DOTS" 
+* 7   1  "NoChg"    ""                  RET
++ 8   1   "  0"     "  dots=0"          RET
++ 9   1   "  1"     "  dots=1"          RET
++10   1   "  5"     "  dots=5"          RET
++11   1   " 10"     "  dots=10"         RET
++12   1   " 25"     "  dots=25"         RET
+*13   1  "KeyBrd"   "  dots=%"          RET
+#end
+
+#begin limit_scale_1  3
+* 1   0  "SCALE" 
+* 3   1  "NoChg"    ""                  limit_depth_1
++ 4   1   "0.5"     "  scale=0.5"       limit_depth_1
++ 5   1   "1.0"     "  scale=1.0"       limit_depth_1
++ 6   1   "1.5"     "  scale=1.5"       limit_depth_1
++ 7   1   "2.0"     "  scale=2.0"       limit_depth_1
+* 8   1  "KeyBrd"   "  scale=%"         limit_depth_1
+#end
+
+#begin limit_depth_1  3  N
+* 1   0  "DEPTH" 
+* 3   1  "NoChg"    ""                  limit_units_1
++ 4:14  1  0:1      "  depth="          limit_units_1
+#end
+
+#begin limit_units_1  3
+* 1   0  "UNITS" 
+* 3   1  "NoChg"    ""                  limit_dots_1
++ 4   1   " 0.0"    "  units=0.0"       limit_dots_1
++ 5   1   " 1.0"    "  units=1.0"       limit_dots_1
++ 6   1   " 5.0"    "  units=5.0"       limit_dots_1
++ 7   1   "10.0"    "  units=10.0"      limit_dots_1
++ 8   1   "25.0"    "  units=25.0"      limit_dots_1
+* 9   1  "KeyBrd"   "  units=%"         limit_dots_1
+#end
+
+#begin limit_dots_1  3
+* 1   0  "DOTS" 
+* 3   1  "NoChg"    ""                  limit_layer_names_1
++ 4   1   "  0"     "  dots=0"          limit_layer_names_1
++ 5   1   "  1"     "  dots=1"          limit_layer_names_1
++ 6   1   "  5"     "  dots=5"          limit_layer_names_1
++ 7   1   " 10"     "  dots=10"         limit_layer_names_1
++ 8   1   " 25"     "  dots=25"         limit_layer_names_1
+* 9   1  "KeyBrd"   "  dots=%"          limit_layer_names_1
+#end
+
+#begin limit_layer_names_1 3 LAY1
+* 0  0  "SHOW"
+* 1  0  " LAYERS"
+* 3  1  "NoChg"     ""              RET
+* 5  1  " By # "    ""              limit_layer_nos_1
+* 6  1  "KeyBrd"    "  show %"      RET
+* 7  8  "SetAll"
+* 8  7  "ClrAll"
+* 9  6  "Invert"
+*10  9  "Return"    "  show "       RET
+*11  5  "Nxt Pg"
++12:-1  0 
+*-0  5  "Nxt Pg"
+#end
+
+#begin limit_layer_nos_1 11 LAY#1
+* 0  0  "SHOW"
+* 1  0  " LAYERS"
+* 3  1  "NoChg"     ""              RET
+* 5  1  "By Name"   ""              limit_layer_names_1a
+* 6  1  "KeyBrd"    "  show %"      RET
+* 7  8  "SetAll"
+* 8  7  "ClrAll"
+* 9  6  "Invert"
+*10  9  "Return"    "  show "       RET
+*11  5  "Nxt Pg"
++12:-1  0 
+*-0  5  "Nxt Pg"
+#end
+
+#begin limit_layer_names_1a 11 LAY1
+* 0  0  "SHOW"
+* 1  0  " LAYERS"
+* 3  1  "NoChg"     ""              RET
+* 5  1  " By # "    ""              limit_layer_nos_1
+* 6  1  "KeyBrd"    "  show %"      RET
+* 7  8  "SetAll"
+* 8  7  "ClrAll"
+* 9  6  "Invert"
+*10  9  "Return"    "  show "       RET
+*11  5  "Nxt Pg"
++12:-1  0
+*-0  5  "Nxt Pg"
+#end
+
+!*************************************************************************
+!
+!                    CELL List used in several commands
+!
+!*************************************************************************
+
+#begin cell_list_0 0 CELL0
+* 0  5  "NextPage"
+* 1  1  "KeyBoard" "%"         STK
++ 2:-1  1          ""          STK
+*-0  5  "NextPage"
+#end
+
+#begin cell_list_1 1 CELLS
+* 0 11  "REFRESH"
+* 1  4  "NextPATH"
+* 2  5  "NextPage"
+* 3  1  "KeyBoard" "%"         STK
++ 4:-1  1          ""          STK
+*-0  5  "NextPage"
+#end
+
+!************************************************************************
+!
+!                              UNCLASSIFIED
+!
+!************************************************************************
+
+#begin cmd_list  3  CMD
+* 0  4  "NextPATH"
+* 1  5  "Nxt Pg"
+* 2  1  "KeyBrd"   "%"         RET
++3:-1     1        ""          RET
+*-0  5  "Nxt Pg"
+#end
+
+#begin layer_names_1 2 LAY1
+* 0  1  "KeyBrd"   "%"         STK
+* 1  1  "By #"     ""          layer_nos_1
+* 2  5  "Nxt Pg"
++3:-1   1          ""          STK
+*-0  5  "Nxt Pg"
+#end
+
+#begin layer_nos_1 2 LAY#1
+*  0  1  "KeyBrd"   "%"        STK
+*  1  1  "ByName"   ""         layer_names_1
+*  2  5  "Nxt Pg"    
++3:-1    1          ""         STK
+*-0   5  "Nxt Pg"    
+#end
+
+#begin sel_layer_names_0 6 LAY0
+* 0  1  " By #"     ""         sel_layer_nos_0
+* 1  1  "KeyBrd"    "%"        STK
+* 2  8  "SetAll"
+* 3  7  "ClrAll"
+* 4  6  "Invert"
+* 5  9  "Return"    ""         STK
+* 6  5  "Nxt Pg"
++ 7:-1  0 
+*-0  5  "Nxt Pg"
+#end
+
+#begin sel_layer_nos_0 6 LAY#0
+* 0  1  "By Name"   ""         sel_layer_names_0
+* 1  1  "KeyBrd"    "%"        STK
+* 2  8  "SetAll"
+* 3  7  "ClrAll"
+* 4  6  "Invert"
+* 5  9  "Return"    ""         STK
+* 6  5  "Nxt Pg"
++ 7:-1  0 
+*-0  5  "Nxt Pg"
+#end
+
+#begin cif_scale 12
+* 9  0   "SCALE"
+*11  1   "KeyBrd"  "%"         cif_text
++12  1   "  100"   "100"       cif_text
++13  1   " 2540"   "2540"      cif_text
+*14  1   "KeyBrd"  "%"         cif_text
+#end
+
+#begin cif_text 10
+* 8  0   "TEXT"
++10  1   "none"    ""          RET
++11  1   "user 2"  "text=2"    RET
++12  1   "user 94" "text=94"   RET
+#end
+
+!************************************************************************
+!
+!                             SHOW1.CMD
+!
+!************************************************************************
+
+#unused show1 10
+* 0  1  "DELETE"  "delete"            RET
+* 2  1  "VIEW"    "view "             view
+* 3  1  "select"  "view select out 2" RET
+* 4  1  "  in %"  "view in "          view_factor 
+* 5  1  " out %"  "view out "         view_factor 
+* 6  1  "   box"  "view box"          RET
+* 7  1  "  last"  "view last"         RET
+* 8  1  "   all"  "view all"          RET
+*10  1  "NEXT"    "@_show1a.cmd"      RET
+*11  1  "FIRST"   "list #show.one.list index=0; @_show1a.cmd"     RET
+-13  1  "RETURN"  "return"            RET 
+-14  1  " unsel"  "unsel all; return" RET 
+#end
+
+#unused show1a 11
+*11  1  "FIRST"   "list #show.one.list index=0; menu *:show1; @_show1a.cmd" RET
+-13  1  "RETURN"  "return"            RET 
+-14  1  " unsel"  "unsel all; return" RET 
+#end
+
+!************************************************************************
+!
+!                          DRC Command
+!
+!************************************************************************
+
+#begin drc_array_mode 11
+* 6   0  "ARRAY"
+* 7   0  "MODE"
++ 9   1  "blank"    "  array_mode=blank"   RET
++10   1  "sides"    "  array_mode=sides"   RET
++11   1  " full"    "  array_mode=full"    RET
+#end
+
+!************************************************************************
+!
+!                          ARRAY Command
+!
+!************************************************************************
+
+#begin array 17
+* 14  0  "DRAW"
+* 15  0  "  MODE"
+* 17  1  "NoChg"    ""                    array1
++ 19  1  "blank"    "  draw_mode=blank"   array1
++ 20  1  "sides"    "  draw_mode=sides"   array1
++ 21  1  " full"    "  draw_mode=full"    array1
+#end
+
+#begin array1 17 N
+*14   0  "CELL"
+*15   0  " LIMIT"
+*17   1  "NoChg"    ""                    RET
+*19   1  "Keybrd"   "  cell_limit=%"      RET
++20   1  "   64"    "  cell_limit=64"     RET
++21   1  "  256"    "  cell_limit=256"    RET
++22   1  "  512"    "  cell_limit=512"    RET
++23   1  " 1024"    "  cell_limit=1024"   RET
++24   1  " 2500"    "  cell_limit=2500"   RET
++25   1  " 5120"    "  cell_limit=5120"   RET
+*26   1  "Keybrd"   "  cell_limit=%"      RET
+#end
+
+!************************************************************************
+!
+!                          ARROW Command
+!
+!************************************************************************
+
+#begin arrow_mode 17
+* 15  0  "  MODE"
+* 17  1  "NoChg"    ""                   RET
++ 19  1  "  Pan"    "mode=pan"           RET
++ 20  1  " Edit"    "mode=edit"          RET
+#end
+
+!************************************************************************
+!
+!                          STREAM Command
+!
+!************************************************************************
+
+#begin stream_menu 3
+* 1  0   "OPTIONS"
++ 3  1   "   none"   ""          RET
++ 4  1   "   some"   ""          stream_out
++ 5  1   "    all"   ""          stream_dialect
+#end
+
+#begin stream_dialect 11
+* 9  0  "    DIALECT"
++11  1  "Calma"             ""               stream_font
++13  1  "Lower Case Names"  "  CASE=LOWER"   stream_font
++15  1  "Computer Vision"   "  CV"           stream_font
+#end
+
+#begin stream_font 12
+* 9  0  "FONT"
+*10  0  "  NAME"
++12  1  "def'lt"   ""          font_ht
+*14  1  "KeyBrd"  "  font=%"  font_ht
+#end
+
+#begin font_ht 13
+* 9  0  "FONT"
+*10  0  "HEIGHT"
+*12  1  "KeyBrd"  "  height=%"     stream_sample
++13  1  "  1.0"   ""               stream_sample
++14  1  "  2.0"   "  height=2.0"   stream_sample
++15  1  "  2.5"   "  height=2.5"   stream_sample
++16  1  "  5.0"   "  height=5.0"   stream_sample
++17  1  " 10.0"   "  height=10"    stream_sample
+*18  1  "KeyBrd"  "  height=%"     stream_sample
+#end
+
+#begin stream_sample 11
+* 9  0  "SAMPLE"
++11  1  "  none"   ""              stream_wires
+*13  1  "KeyBrd"   "  sample=%"    stream_wires
+#end
+
+#begin stream_wires 11
+* 9  0  "WIRE ENDS"
++11  1  "preserve"  ""              stream_out
++13  1  "force-"    "  wire=flush"  stream_out
++14  1  "   flush"  "  wire=flush"  stream_out
+#end
+
+#begin stream_out 13
+* 9  0  "OUTPUT"
++11  1  "  Root"  "  root"          stream_scale
++12  1  "NoLibs"  "  nolibs"        stream_scale
++13  1  "  Full"  ""                stream_scale
+#end
+
+#begin stream_scale 13
+* 9  0  "SCALE"
+*11  1  "KeyBrd"  "  scale=%"         RET
++12  1  "   0.1"  "  scale=0.1"       RET
++13  1  "   1"    ""                RET
++14  1  "  25.4"  "  scale=25.4"      RET
+*15  1  "KeyBrd"  "  scale=%"         RET
+#end
+!************************************************************************
+!
+!                          TEXT Command
+!
+!************************************************************************
+
+#begin text 17
+*14  0  "DEFAULT"
+*15  0  " JUST"
+*17  1  "NoChg"    ""                  text1
++19  1  "  tl"    "  just=tl"          text1
++20  1  "  tc"    "  just=tc"          text1
++21  1  "  tr"    "  just=tr"          text1
++22  1  "  cl"    "  just=cl"          text1
++23  1  "  cc"    "  just=cc"          text1
++24  1  "  cr"    "  just=cr"          text1
++25  1  "  bl"    "  just=bl"          text1
++26  1  "  bc"    "  just=bc"          text1
++27  1  "  br"    "  just=br"          text1
+#end
+
+#begin text1 17
+* 15  0  "LOWER CASE"
+* 17  1  "NoChg"    ""                     text2
++ 19  1  "enabled"  "  lower_case=on"      text2
++ 20  1  "disabled" "  lower_case=off"     text2
+#end
+
+#begin text2 17 N
+*14   0  "MULTI-LINE"
+*15   0  "   TEXT"
+*17   1  "NoChg"    ""                     text3
++19   1  "enabled"  "  multi=on"           text3
++20   1  "disabled" "  multi=off"          text3
+#end
+
+#begin text3 17
+* 14  0  "TEXT DISPLAY"
+* 15  0  "ORIENTAIONS"
+* 17  1  "NoChg"    ""                    text4
++ 19  1  "2:vert+hori"     "  orient=2"   text4
++ 20  1  "4:all rot's"     "  orient=4"   text4
++ 21  1  "8:4+mirror"      "  orient=8"   text4
+#end
+
+#begin text4 17
+* 14  0  "DISPLAY"
+* 15  0  " ORIGINS"
+* 17  1  "NoChg"         ""                 RET
++ 19  1  "enabled"       "  origins=on"     RET
++ 20  1  "disabled"      "  origins=off"    RET
+#end
+
+!************************************************************************
+!
+!                   EDIT, GROUP, & UNGROUP Commands
+!
+!************************************************************************
+
+#begin edit_menu 14
+* 7  0  "EDIT"
+* 8  1  "  cell"  "edit cell "               cell_list_1
+* 9  1  "select"  "edit select"              RET
+*10  1  "  near"  "edit near"                RET
+*12  0  "P_EDIT"
+*13  1  "select"  "p_edit select"            RET
+*14  1  "  near"  "p_edit near"              RET
+*16  0  "T_EDIT"  
+*17  1  "select"  "t_edit select"            RET
+*18  1  "  near"  "t_edit near"              RET
+*20  1  "GROUP"   "group % at "              RET
+*21  1  "  at *"  "group % at *"             RET
+*22  1  " (0,0)"  "group % at (0, 0)"        RET
+*23  1  "UnGRP"   "ungroup"                  RET
+#end
+
+!************************************************************************
+!
+!                            FILL Command
+!
+!************************************************************************
+
+#begin fill_mode 12
+* 8  0  "FILL "
+* 9  0  "   MODE"
+*11  0  "ALL"
++12  1  "  on"     "all on"                   RET
++13  1  "  off"    "all off"                  RET
+*14  0  "MIXED"
++15  1  "  on"    "mixed on"                  RET
++16  1  "  off"   "mixed off"                 RET
+*18  1  "TOGGLE"  ""                          RET
+#end

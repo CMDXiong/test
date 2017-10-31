@@ -1,0 +1,279 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class Line_Parser"
+>
+
+<META-DATA>
+	<NAME>Line_Parser</NAME>
+	<AUTHOR>klaas</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Thu Oct 21 14:44:20 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME></NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME></NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+<DESCRIPTION>
+	<PARA> used to parse command strings comming from files</PARA>
+</DESCRIPTION>
+
+<INHERITANCE>
+	<PARENT-CLASS
+		SCOPE="public"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>CommandParser</NAME>
+	</PARENT-CLASS>
+	<PARENT-CLASS
+		SCOPE="public"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>ifstream</NAME>
+	</PARENT-CLASS>
+</INHERITANCE>
+
+
+
+<RELATED-TYPES>
+	<RELATED-TYPE TYPE="class">
+		<NAME>Evalstring</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>CommandParser</NAME>
+	</RELATED-TYPE>
+</RELATED-TYPES>
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="Line_Parser(AliasList* aliaslist,char* the_file)"
+		INLINE="NO"
+	>
+		<NAME>Line_Parser</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> constructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~Line_Parser()"
+		INLINE="NO"
+	>
+		<NAME>~Line_Parser</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> destructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL ReadItem(char* type)"
+		INLINE="NO"
+	>
+		<NAME>ReadItem</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>read a command, if not the required one, it is stored</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int GetLineNumber()"
+		INLINE="NO"
+	>
+		<NAME>GetLineNumber</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>current line number</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	GetValue(int i)"
+		INLINE="NO"
+	>
+		<NAME>GetValue</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the n'th argument</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Reset()"
+		INLINE="NO"
+	>
+		<NAME>Reset</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>start from beginning of the file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	GetNextCommand()"
+		INLINE="NO"
+	>
+		<NAME>GetNextCommand</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the next command</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void IncC()"
+		INLINE="NO"
+	>
+		<NAME>IncC</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>reading characters from the file</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="char "
+		DECLARATION="char PeekNextC()"
+		INLINE="NO"
+	>
+		<NAME>PeekNextC</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>peek at next character</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int _linenumber"
+	>
+		<NAME>_linenumber</NAME>
+		<DESCRIPTION>
+			<PARA>current line number</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	_line_file"
+	>
+		<NAME>_line_file</NAME>
+		<DESCRIPTION>
+			<PARA> holds the filename from the layer file</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char*	"
+		DECLARATION="char*	_keyword"
+	>
+		<NAME>_keyword</NAME>
+		<DESCRIPTION>
+			<PARA>last read command</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL _back"
+	>
+		<NAME>_back</NAME>
+		<DESCRIPTION>
+			<PARA>is the last command stored</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

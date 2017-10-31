@@ -1,0 +1,10 @@
+# Process file for GDS-II postprocessing tool
+# Copyright 1995 Hollandse Signaal Apparaten
+
+loadfile = p:\final\gdstest\cal\nointa.cal,gds
+group_a = 00
+group_b = 01
+destination = 02
+exor
+draw
+draw

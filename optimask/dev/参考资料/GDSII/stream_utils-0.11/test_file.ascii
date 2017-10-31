@@ -1,0 +1,1091 @@
+
+0x0006     # RECORD_LENGTH              Bytes of data in this record
+0x00       # RECORD_TYPE:  HEADER       Start of stream, contains version number of stream file
+0x02       # DATA_TYPE:    INTEGER_2    Two byte signed integer
+0x0005     # DATA: 5
+
+0x001c     # RECORD_LENGTH              Bytes of data in this record
+0x01       # RECORD_TYPE:  BGNLIB       Beginning of library, plus mod and access dates
+0x02       # DATA_TYPE:    INTEGER_2    Two byte signed integer
+0x0062     # DATA: 98
+0x0002     # DATA: 2
+0x0012     # DATA: 18
+0x000e     # DATA: 14
+0x0021     # DATA: 33
+0x0000     # DATA: 0
+0x0062     # DATA: 98
+0x0002     # DATA: 2
+0x0012     # DATA: 18
+0x000e     # DATA: 14
+0x0021     # DATA: 33
+0x0000     # DATA: 0
+
+0x000a     # RECORD_LENGTH              Bytes of data in this record
+0x02       # RECORD_TYPE:  LIBNAME      The name of the library
+0x06       # DATA_TYPE:    STRING       ASCII string (padded to an even byte count with NULL)
+0x66 0x6f  # DATA: fo
+0x6f 0x2e  # DATA: o.
+0x64 0x62  # DATA: db
+
+0x00b4     # RECORD_LENGTH              Bytes of data in this record
+0x20       # RECORD_TYPE:  FONTS        Names of the textfont definition files
+0x06       # DATA_TYPE:    STRING       ASCII string (padded to an even byte count with NULL)
+0x68 0x79  # DATA: hy
+0x62 0x72  # DATA: br
+0x69 0x64  # DATA: id
+0x66 0x6f  # DATA: fo
+0x6e 0x74  # DATA: nt
+0x2e 0x54  # DATA: .T
+0x58 0x00  # DATA: X.
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x79 0x6d  # DATA: ym
+0x69 0x6c  # DATA: il
+0x2e 0x54  # DATA: .T
+0x58 0x00  # DATA: X.
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x79 0x6d  # DATA: ym
+0x69 0x6c  # DATA: il
+0x2e 0x54  # DATA: .T
+0x58 0x00  # DATA: X.
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x68 0x79  # DATA: hy
+0x62 0x72  # DATA: br
+0x69 0x64  # DATA: id
+0x66 0x6f  # DATA: fo
+0x6e 0x74  # DATA: nt
+0x2e 0x54  # DATA: .T
+0x58 0x00  # DATA: X.
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+0x00 0x00  # DATA: ..
+
+0x0014     # RECORD_LENGTH              Bytes of data in this record
+0x03       # RECORD_TYPE:  UNITS        Size of db unit in user units and size of db unit in meters
+0x05       # DATA_TYPE:    REAL_8       Eight byte real
+0.001000000000000000 # DATA
+0.000000025400000000 # DATA
+
+0x001c     # RECORD_LENGTH              Bytes of data in this record
+0x05       # RECORD_TYPE:  BGNSTR       Begin structure, plus create and mod dates
+0x02       # DATA_TYPE:    INTEGER_2    Two byte signed integer
+0x0062     # DATA: 98
+0x0002     # DATA: 2
+0x0012     # DATA: 18
+0x000e     # DATA: 14
+0x001f     # DATA: 31
+0x0000     # DATA: 0
+0x0062     # DATA: 98
+0x0002     # DATA: 2
+0x0012     # DATA: 18
+0x000e     # DATA: 14
+0x0020     # DATA: 32
+0x0000     # DATA: 0
+
+  0x0008     # RECORD_LENGTH              Bytes of data in this record
+  0x06       # RECORD_TYPE:  STRNAME      Name of a structure
+  0x06       # DATA_TYPE:    STRING       ASCII string (padded to an even byte count with NULL)
+  0x62 0x6f  # DATA: bo
+  0x78 0x00  # DATA: x.
+
+  0x0004     # RECORD_LENGTH              Bytes of data in this record
+  0x08       # RECORD_TYPE:  BOUNDARY     The beginning of a BOUNDARY element
+  0x00       # DATA_TYPE:    NO_DATA      No data present (nothing after the record header)
+
+    0x0006     # RECORD_LENGTH              Bytes of data in this record
+    0x0d       # RECORD_TYPE:  LAYER        Layer specification
+    0x02       # DATA_TYPE:    INTEGER_2    Two byte signed integer
+    0x000a     # DATA: 10
+
+    0x0006     # RECORD_LENGTH              Bytes of data in this record
+    0x0e       # RECORD_TYPE:  DATATYPE     Datatype specification
+    0x02       # DATA_TYPE:    INTEGER_2    Two byte signed integer
+    0x0000     # DATA: 0
+
+    0x002c     # RECORD_LENGTH              Bytes of data in this record
+    0x10       # RECORD_TYPE:  XY           An array of XY coordinates
+    0x03       # DATA_TYPE:    INTEGER_4    Four byte signed integer
+    0x00000000 # DATA: 0
+    0x00000000 # DATA: 0
+    0x000186a0 # DATA: 100000
+    0x00000000 # DATA: 0
+    0x000186a0 # DATA: 100000
+    0x000186a0 # DATA: 100000
+    0x00000000 # DATA: 0
+    0x000186a0 # DATA: 100000
+    0x00000000 # DATA: 0
+    0x00000000 # DATA: 0
+
+  0x0004     # RECORD_LENGTH              Bytes of data in this record
+  0x11       # RECORD_TYPE:  ENDEL        The end of an element
+  0x00       # DATA_TYPE:    NO_DATA      No data present (nothing after the record header)
+
+0x0004     # RECORD_LENGTH              Bytes of data in this record
+0x07       # RECORD_TYPE:  ENDSTR       End of a structure
+0x00       # DATA_TYPE:    NO_DATA      No data present (nothing after the record header)
+
+0x001c     # RECORD_LENGTH              Bytes of data in this record
+0x05       # RECORD_TYPE:  BGNSTR       Begin structure, plus create and mod dates
+0x02       # DATA_TYPE:    INTEGER_2    Two byte signed integer
+0x0062     # DATA: 98
+0x0002     # DATA: 2
+0x0012     # DATA: 18
+0x000e     # DATA: 14
+0x0020     # DATA: 32
+0x0000     # DATA: 0
+0x0062     # DATA: 98
+0x0002     # DATA: 2
+0x0012     # DATA: 18
+0x000e     # DATA: 14
+0x0020     # DATA: 32
+0x0000     # DATA: 0
+
+  0x0008     # RECORD_LENGTH              Bytes of data in this record
+  0x06       # RECORD_TYPE:  STRNAME      Name of a structure
+  0x06       # DATA_TYPE:    STRING       ASCII string (padded to an even byte count with NULL)
+  0x74 0x65  # DATA: te
+  0x78 0x74  # DATA: xt
+
+  0x0004     # RECORD_LENGTH              Bytes of data in this record
+  0x0c       # RECORD_TYPE:  TEXT         The beginning of a TEXT element
+  0x00       # DATA_TYPE:    NO_DATA      No data present (nothing after the record header)
+
+    0x0006     # RECORD_LENGTH              Bytes of data in this record
+    0x0d       # RECORD_TYPE:  LAYER        Layer specification
+    0x02       # DATA_TYPE:    INTEGER_2    Two byte signed integer
+    0x000a     # DATA: 10
+
+    0x0006     # RECORD_LENGTH              Bytes of data in this record
+    0x16       # RECORD_TYPE:  TEXTTYPE     Texttype specification
+    0x02       # DATA_TYPE:    INTEGER_2    Two byte signed integer
+    0x0000     # DATA: 0
+
+    0x0006     # RECORD_LENGTH              Bytes of data in this record
+    0x17       # RECORD_TYPE:  PRESENTATION Text origin and font specification
+    0x01       # DATA_TYPE:    BIT_ARRAY    Bit array (2 bytes)
+    0x0015     # DATA
+               # bits 15 to 0, l to r
+               # bits 0 and 1: 00 left, 01 center, 10 right
+               # bits 2 and 3: 00 top 01, middle, 10 bottom
+               # bits 4 and 5: 00 font 0, 01 font 1, 10 font 2, 11 font 3,
+               # Font 1
+               # Middle justification
+               # Center justification
+
+    0x0006     # RECORD_LENGTH              Bytes of data in this record
+    0x1a       # RECORD_TYPE:  STRANS       Refl, absmag, and absangle for SREF, AREF and TEXT
+    0x01       # DATA_TYPE:    BIT_ARRAY    Bit array (2 bytes)
+    0x0000     # DATA
+               # bits 15 to 0, l to r
+               # 15=refl, 2=absmag, 1=absangle, others unused
+
+    0x000c     # RECORD_LENGTH              Bytes of data in this record
+    0x1b       # RECORD_TYPE:  MAG          Magnification, 1 is the default
+    0x05       # DATA_TYPE:    REAL_8       Eight byte real
+    15.000000000000000000 # DATA
+
+    0x000c     # RECORD_LENGTH              Bytes of data in this record
+    0x10       # RECORD_TYPE:  XY           An array of XY coordinates
+    0x03       # DATA_TYPE:    INTEGER_4    Four byte signed integer
+    0x00000000 # DATA: 0
+    0x00000000 # DATA: 0
+
+    0x0008     # RECORD_LENGTH              Bytes of data in this record
+    0x19       # RECORD_TYPE:  STRING       Character string
+    0x06       # DATA_TYPE:    STRING       ASCII string (padded to an even byte count with NULL)
+    0x54 0x45  # DATA: TE
+    0x53 0x54  # DATA: ST
+
+  0x0004     # RECORD_LENGTH              Bytes of data in this record
+  0x11       # RECORD_TYPE:  ENDEL        The end of an element
+  0x00       # DATA_TYPE:    NO_DATA      No data present (nothing after the record header)
+
+0x0004     # RECORD_LENGTH              Bytes of data in this record
+0x07       # RECORD_TYPE:  ENDSTR       End of a structure
+0x00       # DATA_TYPE:    NO_DATA      No data present (nothing after the record header)
+
+0x001c     # RECORD_LENGTH              Bytes of data in this record
+0x05       # RECORD_TYPE:  BGNSTR       Begin structure, plus create and mod dates
+0x02       # DATA_TYPE:    INTEGER_2    Two byte signed integer
+0x0062     # DATA: 98
+0x0002     # DATA: 2
+0x0012     # DATA: 18
+0x000e     # DATA: 14
+0x0020     # DATA: 32
+0x0000     # DATA: 0
+0x0062     # DATA: 98
+0x0002     # DATA: 2
+0x0012     # DATA: 18
+0x000e     # DATA: 14
+0x0021     # DATA: 33
+0x0000     # DATA: 0
+
+  0x000a     # RECORD_LENGTH              Bytes of data in this record
+  0x06       # RECORD_TYPE:  STRNAME      Name of a structure
+  0x06       # DATA_TYPE:    STRING       ASCII string (padded to an even byte count with NULL)
+  0x73 0x72  # DATA: sr
+  0x65 0x66  # DATA: ef
+  0x73 0x00  # DATA: s.
+
+  0x0004     # RECORD_LENGTH              Bytes of data in this record
+  0x0a       # RECORD_TYPE:  SREF         The beginning of an SREF element
+  0x00       # DATA_TYPE:    NO_DATA      No data present (nothing after the record header)
+
+    0x0008     # RECORD_LENGTH              Bytes of data in this record
+    0x12       # RECORD_TYPE:  SNAME        The name of a referenced structure
+    0x06       # DATA_TYPE:    STRING       ASCII string (padded to an even byte count with NULL)
+    0x62 0x6f  # DATA: bo
+    0x78 0x00  # DATA: x.
+
+    0x0006     # RECORD_LENGTH              Bytes of data in this record
+    0x1a       # RECORD_TYPE:  STRANS       Refl, absmag, and absangle for SREF, AREF and TEXT
+    0x01       # DATA_TYPE:    BIT_ARRAY    Bit array (2 bytes)
+    0x0000     # DATA
+               # bits 15 to 0, l to r
+               # 15=refl, 2=absmag, 1=absangle, others unused
+
+    0x000c     # RECORD_LENGTH              Bytes of data in this record
+    0x10       # RECORD_TYPE:  XY           An array of XY coordinates
+    0x03       # DATA_TYPE:    INTEGER_4    Four byte signed integer
+    0x00000000 # DATA: 0
+    0x00000000 # DATA: 0
+
+  0x0004     # RECORD_LENGTH              Bytes of data in this record
+  0x11       # RECORD_TYPE:  ENDEL        The end of an element
+  0x00       # DATA_TYPE:    NO_DATA      No data present (nothing after the record header)
+
+  0x0004     # RECORD_LENGTH              Bytes of data in this record
+  0x0a       # RECORD_TYPE:  SREF         The beginning of an SREF element
+  0x00       # DATA_TYPE:    NO_DATA      No data present (nothing after the record header)
+
+    0x0008     # RECORD_LENGTH              Bytes of data in this record
+    0x12       # RECORD_TYPE:  SNAME        The name of a referenced structure
+    0x06       # DATA_TYPE:    STRING       ASCII string (padded to an even byte count with NULL)
+    0x74 0x65  # DATA: te
+    0x78 0x74  # DATA: xt
+
+    0x0006     # RECORD_LENGTH              Bytes of data in this record
+    0x1a       # RECORD_TYPE:  STRANS       Refl, absmag, and absangle for SREF, AREF and TEXT
+    0x01       # DATA_TYPE:    BIT_ARRAY    Bit array (2 bytes)
+    0x0000     # DATA
+               # bits 15 to 0, l to r
+               # 15=refl, 2=absmag, 1=absangle, others unused
+
+    0x000c     # RECORD_LENGTH              Bytes of data in this record
+    0x10       # RECORD_TYPE:  XY           An array of XY coordinates
+    0x03       # DATA_TYPE:    INTEGER_4    Four byte signed integer
+    0x0000c350 # DATA: 50000
+    0x0001f20c # DATA: 127500
+
+  0x0004     # RECORD_LENGTH              Bytes of data in this record
+  0x11       # RECORD_TYPE:  ENDEL        The end of an element
+  0x00       # DATA_TYPE:    NO_DATA      No data present (nothing after the record header)
+
+0x0004     # RECORD_LENGTH              Bytes of data in this record
+0x07       # RECORD_TYPE:  ENDSTR       End of a structure
+0x00       # DATA_TYPE:    NO_DATA      No data present (nothing after the record header)
+
+0x0004     # RECORD_LENGTH              Bytes of data in this record
+0x04       # RECORD_TYPE:  ENDLIB       End of the library
+0x00       # DATA_TYPE:    NO_DATA      No data present (nothing after the record header)
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+0x0000 # PADDING
+# ***WHOOPS*** We seem to have reached the end of the file.

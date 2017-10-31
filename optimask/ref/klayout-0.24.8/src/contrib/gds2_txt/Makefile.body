@@ -1,0 +1,28 @@
+
+vpath %.cc $(SOURCE)/contrib/gds2_txt
+vpath %.h $(SOURCE)/contrib/gds2_txt
+vpath %.ut $(SOURCE)/contrib/gds2_txt
+
+
+
+SOURCES += \
+  dbGDS2Converter.cc \
+  dbGDS2Text.cc \
+  dbGDS2TextReader.cc \
+  dbGDS2TextWriter.cc \
+
+ifneq ($(HAVE_RUBY),0) 
+SOURCES += \
+
+endif
+
+MOC_SOURCES += \
+
+UI_SOURCES += \
+
+RESOURCES += \
+
+TESTS += \
+  dbGDS2TextReader.ut \
+  dbGDS2TextWriter.ut \
+

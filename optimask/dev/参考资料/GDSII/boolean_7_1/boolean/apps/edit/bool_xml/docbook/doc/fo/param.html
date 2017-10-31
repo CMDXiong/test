@@ -1,0 +1,178 @@
+<html>
+   <head>
+      <title>Formatting Object Paramter Reference</title>
+      <link rel="stylesheet" href="../reference.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.22">
+   </head>
+   <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="reference">
+         <div class="titlepage">
+            <h1 class="title"><a name="c38a"></a>Formatting Object Paramter Reference
+            </h1>
+            <h3 class="author">Norman Walsh</h3><span class="releaseinfo">
+               $Id: param.xsl,v 1.5 2000/10/26 01:02:07 ndw Exp $
+               <br></span><p class="copyright"><a href="../copyright.html">Copyright</a> &copy; 1999, 2000 by Norman Walsh. <a href="../warranty.html">No Warranty</a>.
+            </p>
+            <hr>
+         </div>
+         <div class="partintro">
+            <div id="c38ab2a" class="section">
+               <div class="titlepage">
+                  <h2 class="title" style="clear: all"><a name="c38ab2a"></a>Introduction
+                  </h2>
+               </div>
+               <p>This is technical reference documentation for the DocBook XSL
+                  Stylesheets; it documents (some of) the parameters, templates, and
+                  other elements of the stylesheets.
+               </p>
+               <p>This reference describes each of the Formatting Object
+                  Stylesheet parameters.  These are the &#8220;easily
+                  customizable&#8221; parts of the stylesheet.  If you want to specify
+                  an alternate value for one or more of these parameters, you can do so
+                  in a &#8220;driver&#8221; stylesheet.
+               </p>
+               <p>For example, if you want to turn on automatic section numbering,
+                  you might create a driver stylesheet like this:
+               </p><pre class="programlisting">&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                version='1.0'>
+
+  &lt;xsl:import href="/path/to/fo/docbook.xsl"/>
+
+  &lt;xsl:param name="section.autolabel" select="1"/>
+
+&lt;/xsl:stylesheet></pre><p>Naturally, you have to change the
+                  href attribute on
+                  <tt>&lt;xsl:import></tt>
+                  to point to <tt>docbook.xsl</tt>
+                  on your system.
+               </p>
+               <p>This is not intended to be &#8220;user&#8221; documentation.
+                  It is provided for developers writing customization layers for the
+                  stylesheets, and for anyone who's interested in &#8220;how it
+                  works&#8221;.
+               </p>
+               <p>Although I am trying to be thorough, this documentation is known
+                  to be incomplete. Don't forget to read the source, too :-)
+               </p>
+            </div>
+         </div>
+         <div class="toc">
+            <p><b>Table of Contents</b></p>
+            <dl>
+               <dt><a href="#var.qandadiv.autolabel">qandadiv.autolabel</a></dt>
+               <dt><a href="#var.qanda.inherit.numeration">qanda.inherit.numeration</a></dt>
+               <dt><a href="#var.graphic.default.extension">graphic.default.extension</a></dt>
+               <dt><a href="#attrset."> mode</a></dt>
+               <dt><a href="#attrset."> mode</a></dt>
+               <dt><a href="#attrset."> mode</a></dt>
+            </dl>
+         </div>
+         <hr>
+         <div class="refentry">
+            <h1 class="title"><a name="var.qandadiv.autolabel">qandadiv.autolabel</a></h1>
+            <div class="refnamediv"><a name="c38ab3a"></a><h2>Name</h2>qandadiv.autolabel &#8212; Are divisions in QAndASets enumerated?
+            </div>
+            <div class="refsynopsisdiv"><a name="c38ab3b1"></a><h2>Synopsis</h2>
+               <div class="synopsis" id="c38ab3b1a"><a name="c38ab3b1a"></a><pre class=""></pre></div>
+            </div>
+            <div class="refdescription"><a name="c38ab3b2"></a>
+               
+               
+               <p>If true (non-zero), unlabeled qandadivs will be enumerated.
+                  
+               </p>
+               
+               
+            </div>
+         </div>
+         <hr>
+         <div class="refentry">
+            <h1 class="title"><a name="var.qanda.inherit.numeration">qanda.inherit.numeration</a></h1>
+            <div class="refnamediv"><a name="c38ab4a"></a><h2>Name</h2>qanda.inherit.numeration &#8212; Does enumeration of QandASet components inherit the numeration of parent elements?
+            </div>
+            <div class="refsynopsisdiv"><a name="c38ab4b1"></a><h2>Synopsis</h2>
+               <div class="synopsis" id="c38ab4b1a"><a name="c38ab4b1a"></a><pre class=""></pre></div>
+            </div>
+            <div class="refdescription"><a name="c38ab4b2"></a>
+               
+               
+               <p>If true (non-zero), numbered QandADiv elements and Questions and Answers inherit
+                  the numeration of the ancestors of the QandASet.
+                  
+               </p>
+               
+               
+            </div>
+         </div>
+         <hr>
+         <div class="refentry">
+            <h1 class="title"><a name="var.graphic.default.extension">graphic.default.extension</a></h1>
+            <div class="refnamediv"><a name="c38ab5a"></a><h2>Name</h2>graphic.default.extension &#8212; Default extension for graphic filenames
+            </div>
+            <div class="refsynopsisdiv"><a name="c38ab5b1"></a><h2>Synopsis</h2>
+               <div class="synopsis" id="c38ab5b1a"><a name="c38ab5b1a"></a><pre class=""></pre></div>
+            </div>
+            <div class="refdescription"><a name="c38ab5b2"></a>
+               
+               
+               <p>If a <tt>graphic</tt> or <tt>mediaobject</tt>
+                  includes a reference to a filename that does not include an extension,
+                  and the format attribute is
+                  <i>unspecified</i>, the default extension will be used.
+                  
+               </p>
+               
+               
+            </div>
+         </div>
+         <hr>
+         <div class="refentry">
+            <h1 class="title"><a name="attrset."> mode</a></h1>
+            <div class="refnamediv"><a name="c38ab6a"></a><h2>Name</h2> mode &#8212; Properties of formal object titles
+            </div>
+            <div class="refdescription"><a name="c38ab6b1"></a>
+               
+               
+               <p>This attribute set is used to specify the properties of formal
+                  object titles.
+                  
+               </p>
+               
+               
+            </div>
+         </div>
+         <hr>
+         <div class="refentry">
+            <h1 class="title"><a name="attrset."> mode</a></h1>
+            <div class="refnamediv"><a name="c38ab7a"></a><h2>Name</h2> mode &#8212; Properties of component titles
+            </div>
+            <div class="refdescription"><a name="c38ab7b1"></a>
+               
+               
+               <p>This attribute set is used to specify the properties of component
+                  titles.
+                  
+               </p>
+               
+               
+            </div>
+         </div>
+         <hr>
+         <div class="refentry">
+            <h1 class="title"><a name="attrset."> mode</a></h1>
+            <div class="refnamediv"><a name="c38ab8a"></a><h2>Name</h2> mode &#8212; Spacing properties of normal paragraphs
+            </div>
+            <div class="refdescription"><a name="c38ab8b1"></a>
+               
+               
+               <p>This attribute set is used to specify the spacing properties
+                  of normal paragraphs.
+                  
+               </p>
+               
+               
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

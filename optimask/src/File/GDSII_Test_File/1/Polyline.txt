@@ -1,0 +1,61 @@
+#------------------------------------------------------------------
+# Polyline.txt
+#
+# This file was created by LinkCAD 4.7.2 Build 4217.
+# It is a text translation of a GDS-II format binary file.
+#------------------------------------------------------------------
+
+#----- GDS-II Stream Format: Version 3
+
+HEADER          3;
+
+#----- Library: Polyline.txt
+
+BGNLIB          06/16/2010 13:08:13 06/16/2010 13:08:13;
+LIBNAME         Polyline.txt;
+UNITS           1.000000e-03 1.000000e-09;
+
+#----- Structure: Polyline_dxf
+
+BGNSTR          06/16/2010 13:08:13 06/16/2010 13:08:13;
+STRNAME         Polyline_dxf;
+
+   BOUNDARY
+      LAYER          6;
+      DATATYPE       0;
+      XY                   47736:      34016
+                           71476:      38660
+                           84868:      33297
+                           81603:      24119
+                           55041:      18646
+                           47736:      34016;
+   ENDEL
+
+   PATH
+      LAYER          6;
+      DATATYPE       0;
+      PATHTYPE       0;
+      WIDTH          2000;
+      XY                       0:          0
+                           10000:      10000;
+   ENDEL
+
+   BOUNDARY
+      LAYER          6;
+      DATATYPE       0;
+      XY                   46775:      36563
+                           41462:      52048
+                           61758:      59274
+                           74230:      55588
+                           71574:      44822
+                           46775:      36563
+                           71574:      44822
+                           74230:      55588
+                           61758:      59274
+                           41462:      52048
+                           46775:      36563;
+   ENDEL
+
+ENDSTR
+
+ENDLIB

@@ -1,0 +1,111 @@
+PDF file names:
+
+DJET150: HP monochrome desk jet printers -- plots at 150 dpi
+DJET300: HP monochrome desk jet printers -- plots at 300 dpi
+CJET150: HP color desk jet printers -- plots at 150 dpi
+CJET300: HP color desk jet printers -- plots at 300 dpi
+LJET150: HP laser jet printers -- plots at 150 dpi
+LJET300: HP laser jet printers -- plots at 300 dpi
+HP1120C: HP 1120C only -- plots at 300 dpi
+
+HP650C: Most HP large format color plotters, e.g. HP650C, HP750C, HP350C,
+        HP450C, HP500C(with HPGL/PCL option) -- plots at 300 dpi 
+
+HP1050HI: HP1050C large format plotter -- plots at 600 dpi
+HP1050LO: HP1050C large format plotter -- plots at 300 dpi
+
+HP500HI:  HP 5000/500/800 large format plotters -- 42" roll plots at 600 dpi 
+HP500LO:  HP 5000/500/800 large format plotters -- 42" roll plots at 300 dpi 
+
+EPSON180: Epson ESCP2 color printers (Stylus and later) -- plots at 180 dpi
+          (For unknown reasons, EPSON180 does not work on Epson900)
+EPSON360: Epson ESCP2 color printers (Stylus and later) -- plots at 360 dpi
+EPSON720: Epson ESCP2 color printers (Stylus and later) -- plots at 720 dpi
+
+BMPCOLOR: Color Microsoft Windows Bitmap (.BMP) file (4 bits per pixel).
+          MkPlot will prompt you for the resolution.
+BMPMONO:  Monochrome Microsoft Windows Bitmap (.BMP) file (1 bit per pixel).
+          MkPlot will prompt you for the resolution.
+
+**************************************************************************
+
+The following .PDF files are obsolete.  They should work but we no longer 
+have printers to test them.
+
+PRINTER: IBM (and compatible) 9-pin printers
+24PIN:   Epson (and compatible) 24-pin printers
+9PIN:    Same as PRINTER
+
+PJXL150: HP paint jet XL -- plots at 150 dpi
+PJXL300: HP paint jet XL -- plots at 300 dpi
+
+*************************************************************************
+
+MKPDF:  The program MKPDF can be used to create or modify .PDF files.  
+By far the most common use of MKPDF is to add or change page sizes.  You 
+run MKPDF by typing:
+
+                        MKPDF name
+
+at a DOS prompt.  If the file name.PDF exists, MKPDF will read its contents 
+and use them as default values when it prompts you for data.  When all 
+questions have been answered, MKPDF will overwrite the existing name.PDF.
+
+Because of this behavior, the easiest way to create a .PDF file for a new
+plotter (new_name) is to copy an existing .PDF file for a similar plotter to 
+new_name.PDF and then type: MKPDF new_name.
+
+One of the prompts asks you for the plotter resolution in dpi (dots per inch).
+Neither MKPDF nor MKPLOT checks to see that the value you enter is appropriate 
+for your plotter.  Incorrect values can lead to ruined plots.
+
+Near the end of the process, MKPDF prompts you to "Enter special flags: ".
+These flags have special meanings for each plotter type.  A summary of the
+special flags in use at this time is given below.  To combine flags, add 
+their values.  Thus, if you want to set flags 8 and 16 enter the value 24.
+
+Plotter type     Flag                 Meaning
+                value
+
+EPSON ESCP2        8    Disable microweave.  (Faster printing, more banding)
+                  16    Allow bidirectional printing.  (Faster printing, 
+                        vertical lines may be jagged)
+
+HP LARGE FORMAT    1    Disable PJL commands.  MKPDF sends certain HP-PJL 
+PLOTTERS (650C,         commands to ensure that Postscript capable plotters
+750C, etc.)             are in their HPGL/RTL mode.  Additional HP-PJL
+                        commands affect the color mappings on newer HP 
+                        plotters.  As far as we know, these HP-PJL commands 
+                        do not represent a problem to any RTL compatible 
+                        plotters.  However, they can be disabled by setting 
+                        special flags=1.
+                   2    Mkplot normally forces best quality for 600 dpi and 
+                        finer plots and for "dithered" plots.  Setting flags=2 
+                        allows you to control the plot quality using the 
+                        plotter's front panel.
+
+HP COLOR DESK JET  2    Send plotter specific page size commands to plotter.  
+                        (Sets page size to custom=101. Required for HP1120C.)
+
+HP PAINT JET       4    Send plotter specific page size commands to plotter.
+                        (Required for PaintJet XL.)
+
+HP COLOR LASER JET 8    Send plotter specific page size commands to plotter.
+                        Size code is based on size name.  Coded names are:
+                        A(8.5" x 11"), B(11" x 17"), 
+                        A5(148mm x 210mm), A4(210mm x 297mm), A3(297mm x 420mm)
+                        JB5(182mm x 257mm) and JB4 (250mm x 354mm).  
+                        (Required for Laser Jet 5500)  This flag can be used
+                        with flag 2 by setting special flags=10.  If you do
+                        so sizes with names that don't match those on the list 
+                        will be flagged as custom sizes.
+
+*************************************************************************
+
+Hewlett Packard Acronyms:
+
+      PCL  Page Control Language
+      PJL  Printer Job Language
+      RTL  Raster Transfer Language
+      HPGL HP Graphics Language
+

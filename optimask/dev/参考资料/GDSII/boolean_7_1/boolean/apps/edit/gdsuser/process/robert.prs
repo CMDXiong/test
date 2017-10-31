@@ -1,0 +1,7 @@
+# Process file for GDS-II postprocessing tool
+# Copyright 1995 Hollandse Signaal Apparaten
+
+loadfile = p:\final\gdstest\cal\problem2.cal,gds
+group_a = 00
+group_b = empty
+destination = 00

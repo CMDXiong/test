@@ -1,0 +1,50 @@
+# Process file for GDS-II postprocessing tool
+
+record  %{processfile}
+
+#ask "geef correctie factor in micro meter (b.v -5.5)" aap
+#setalias aap "-5.5"
+
+viewstructure STROOMDIEFTEXT
+
+# Flashgenerator blaast elk flitsje rondom 3 um op !!!!!
+# STRING invullen dus hier (2*-5.5)+6=-5
+keystring {
+         TEXT; LAYER 0; \
+         TEXTTYPE 0; PRESENTATION 0,2,1; STRANS 0,0,0; MAG 2500; ANGLE -90; \
+            XY 1; \
+            X   -6100; Y  43000; \
+         STRING "Corr. fact. Cu_-5 um"; \
+         ENDEL;}
+begin
+viewstructure top
+viewstructure top
+
+selected  0
+flatten
+group_a 00 false
+group_b empty
+destination 00 false
+merge
+# Factor setting(s)
+selectmarge       {0.010000}
+snapfactor        {1um}
+correctionfactor  { -5.5 um}
+roundfactor       {1.500000}
+correctionaber    {1.0um}
+roundtype         {circle}
+toarcrmin         {50um}
+toarcrmax         {10cm}
+arcaccur          {25um}
+polyaccur         {1um}
+smoothaccur       {5um}
+maxlinemerge      {5000um}
+displayaber       {5um}
+structhres        {1}
+primthres         {1} {false}
+correction
+savefile %{file_path}/%{file_name}.cor gds-ii
+exit
+exit
+
+ 

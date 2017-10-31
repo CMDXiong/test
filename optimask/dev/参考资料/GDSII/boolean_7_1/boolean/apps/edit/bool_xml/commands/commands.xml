@@ -1,0 +1,3115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE book
+  PUBLIC "-//Norman Walsh//DTD DocBk XML V3.1.7//EN"
+  "../docbookx.dtd">
+
+<commands>
+	<command>
+		<name>commandname</name>
+		<menu> /path/to/menu </menu>
+		<shortcut> Ctrl A </shortcut>
+		<speedbar> speedbar button </speedbar>
+		<syntax> syntax of the command 
+            <para>askfile "TITLE DIALOG-TYPE FILE-MASKS </para>
+            <para>DEF-DIR DEF-EXT FILE-ALIAS" </para>
+            <para>Title Title of dialog box </para>
+            <para>
+            <itemizedlist mark="opencircle">
+            <listitem>
+                TeX and LaTeX
+            </listitem>
+            <listitem override="bullet">
+                Troff
+            </listitem>
+            <listitem>
+                Lout
+            </listitem>
+            </itemizedlist>
+
+        File-alias alias to put filename in 
+                blah blahblah blahblah blahblah blahblah blahblah blahblah blah
+                blah blahblah blahblah blahblah blahblah blahblah blahblah blah
+                blah blahblah blahblah blahblah blahblah blahblah blahblah blah
+                blah blahblah blahblah blahblah blahblah blahblah blahblah blah
+            </para>
+        </syntax>
+		<short> short description </short>
+		<long> long description 
+                blah blahblah blahblah blahblah blahblah blahblah blahblah blah
+                blah blahblah blahblah blahblah blahblah blahblah blahblah blah
+                blah blahblah blahblah blahblah blahblah blahblah blahblah blah
+                blah blahblah blahblah blahblah blahblah blahblah blahblah blah
+        </long>
+		<notes> general notes
+			<note> note1 DO NOT     </note>
+			<note> note2 dO THIS    </note>
+		</notes>
+		<example>  
+            <simpara>loadfile %{datadir}myfile.cal </simpara>
+            <simpara>loadfile %{setupfile} </simpara>
+            <simpara>loadfile %{GDSROOT}/%HOME/myfile.cal gds-ii </simpara>
+            %{COMMANDALIAS} arguments 
+        </example>
+		<relations> 
+			<relation>commandname2</relation>
+			<relation>commandname1</relation>
+			<relation>command3</relation>
+		</relations>
+		<catagories> functional context
+			<catagorie>miscellaneous</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>help</name>
+		<menu> /help/help </menu>
+		<syntax> help [command] 
+        </syntax>
+		<short> help on commands </short>
+		<long> 
+            This command shows help on the available commands. 
+            Help without a command shows a list of all valid commands. 
+            Help with a command shows help on that command. 
+        </long>
+		<example>  
+            <simpara> help help (see this:) </simpara>
+            <simpara> help (see all commands) </simpara>
+        </example>
+		<catagories>
+			<catagorie>miscellaneous</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>showkeybnf </name>
+		<syntax> showkeybnf </syntax>
+		<short> Show the Bachus Nauer Form of Key format </short>
+		<long> 
+                This command shows the Bachus Nauer Form of the Key format. 
+        </long>
+		<example>  
+            <simpara> showkeybnf </simpara>
+        </example>
+		<catagories>
+			<catagorie>miscellaneous</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>setalias</name>
+		<menu> non </menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax> setalias aliasname string 
+        </syntax>
+		<short> 
+            Set alias 
+		</short> 
+		<long> 
+            Creates an internal alias "aliasname" with value "string" 
+        </long>
+		<notes> general notes
+			<note> String can contain reference to other aliases and environment variables. </note>
+		</notes>
+		<example>  
+            <simpara>setalias gdsuser %GDSROOT/gdsuser </simpara>
+        </example>
+		<relations> 
+			<relation link="aliassubst">%{}</relation>
+			<relation link="showalias">showalias</relation>
+		</relations>
+		<catagories>
+			<catagorie>miscellaneous</catagorie>
+			<catagorie>environment</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>setenv</name>
+		<menu> non </menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax> setenv env-name string  
+        </syntax>
+		<short> 
+            Set environment-variable   
+		</short> 
+		<long> 
+            Creates an environment-variable "env-name" with value "string" 
+        </long>
+		<notes> general notes
+			<note> 
+            The environment, from which the program was started, is only modified during
+            execution.
+			</note> 
+			<note> 
+            String can contain reference to other aliases and environment variables. 
+			</note> 
+		</notes>
+		<example>  
+            <simpara>setenv HOME . </simpara>
+        </example>
+		<relations> 
+			<relation link="envsubst"> ${} </relation>
+			<relation link="showenv" > showenv </relation>
+		</relations>
+		<catagories>
+			<catagorie>miscellaneous</catagorie>
+			<catagorie>environment</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>showalias</name>
+		<menu> non </menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax> showalias alias_variable   
+        </syntax>
+		<short> 
+            Show alias variable  
+		</short> 
+		<long> 
+            The showalias command, without an alias(name), shows all defined aliases. The
+            showalias command with a name shows that alias. 
+        </long>
+		<example>  
+            <simpara>showalias gdsroot</simpara>
+        </example>
+		<relations> 
+			<relation link="aliassubst">%{}</relation>
+			<relation link="setalias">setalias</relation>
+		</relations>
+		<catagories>
+			<catagorie>miscellaneous</catagorie>
+			<catagorie>environment</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>showenv</name>
+		<menu> non </menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax> showalias environment_variable   
+        </syntax>
+		<short> 
+            Show alias variable  
+		</short> 
+		<long> 
+			The showenv command shows the contents of the "environment_variable"
+            variable.             
+        </long>
+		<example>  
+            <simpara>showenv HOME </simpara>
+        </example>
+		<notes> general notes
+			<note> Environment variables MUST be typed in CAPITAL letters. </note>
+		</notes>
+		<relations> 
+			<relation link="aliassubst">%{}</relation>
+			<relation link="setalias">setalias</relation>
+		</relations>
+		<catagories>
+			<catagorie>miscellaneous</catagorie>
+			<catagorie>environment</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name anchor="aliassubst">%{} OR %alias</name>
+		<menu> non </menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax> See Command BNF    
+        </syntax>
+		<short> 
+            Use/Substitute alias   
+		</short> 
+		<long> 
+			Substitutes the internal alias "aliasname" with a string assigned earlier to this alias.
+        </long>
+		<notes> general notes
+			<note> Environment variables MUST be typed in CAPITAL letters. </note>
+		</notes>
+		<example>
+            <simpara>loadfile %{datadir}myfile.cal </simpara>
+            <simpara>loadfile %{setupfile} </simpara>
+            <simpara>loadfile %{GDSROOT}/%HOME/myfile.cal gds-ii </simpara>
+            <simpara>%{COMMANDALIAS} arguments   </simpara>
+        </example>
+		<relations> 
+			<relation link="setenv"> setalias</relation>
+			<relation link="envsubst">${}</relation>
+		</relations>
+		<catagories>
+			<catagorie>miscellaneous</catagorie>
+			<catagorie>environment</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name anchor="envsubst">${} OR $envvariable</name>
+		<menu> non </menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax> See Command BNF    
+        </syntax>
+		<short> 
+            Use/Substitute alias   
+		</short> 
+		<long> 
+			Substitutes environment-variable "envname" with the stored string 
+        </long>
+		<notes> general notes
+			<note> An environment variable can contain an empty string, but the variable MUST exist.
+			</note>
+		</notes>
+		<example>
+			<simpara>loadfile ${datadir}myfile.cal gds-ii </simpara>
+            <simpara>loadfile $GDSROOT/${HOME}/myfile.cal gds-ii </simpara>
+            <simpara>${DOLLARVARIABLE} argument </simpara>
+        </example>
+		<relations> 
+			<relation link="setenv"> setenv </relation>
+			<relation link="showenv"> showenv </relation>
+		</relations>
+		<catagories>
+			<catagorie>misilanious</catagorie>
+			<catagorie>environment</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>askfile</name>
+		<menu> /file/open/*</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara>askfile "&lt; TITLE &gt; &lt;DIALOG-TYPE&gt;  &lt; FILE-MASKS &gt;  &lt;DEF-DIR&gt; &lt;DEF-EXT&gt; &lt;FILE-ALIAS&gt;" </simpara>
+            <simpara>Title Title of dialog box </simpara>
+            <simpara>Dialog-type Type of dialog box (OPEN or SAVE) </simpara>
+            <simpara>File-masks Mask for file listbox (All|*.*|Key-files|*.key) </simpara>
+            <simpara>Def-dir Directory to start in </simpara>
+            <simpara>Def-ext File-extention to show </simpara>
+            <simpara>File-alias alias to put filename in </simpara>
+        </syntax>
+		<short> 
+            ask for a file name   
+		</short> 
+		<long> 
+			Shows a dialog, with drive, directory and file boxes, to select or enter a file. For
+            the selected file an alias is created (&lt;File-alias&gt;) containing the file name. 
+            This mechanism is used to be able to load or save the file from a process file by
+            using the alias. 
+        </long>
+		<notes> general notes
+			<note>
+				Double-quotes are optional, use them when your string contains special characters,
+    	        such as ';' (end of command) 
+			</note>
+		</notes>
+		<example>
+			<simpara>askfile "Open GDS-II file OPEN GDS-II|*.gds;*.cal|All|*.*| C:\DATA\ CAL
+            selectedfile" </simpara>
+            <simpara>(followed by, for example, 'loadfile %{selectedfile}') </simpara>
+        </example>
+		<relations> 
+			<relation link="loadfile"> loadfile </relation>
+		</relations>
+		<catagories>
+			<catagorie>files</catagorie>
+			<catagorie>interface</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>ask</name>
+		<menu> non</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+            <simpara>ask "&lt;TITLE&gt; &lt;ALIAS&gt;" </simpara>
+            <simpara>Title Title of the input dialog </simpara>
+            <simpara>Alias alias to put the input into File-alias alias to put filename in </simpara>
+        </syntax>
+		<short> 
+            Asks for input string   
+		</short> 
+		<long> 
+			Asks for input string to the user, the result will be set as an alias
+        </long>
+		<example>
+            <simpara>ask "Please give me some input" myaliasvar </simpara>
+        </example>
+		<relations> 
+			<relation link="showalias"> showalias </relation>
+		</relations>
+		<catagories>
+			<catagorie>interface</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>showfilename</name>
+		<menu> non</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+            <simpara>showfilename</simpara>
+        </syntax>
+		<short> 
+            Show filename    
+		</short> 
+		<long> 
+			output as a message the file that is currently in memory 
+        </long>
+		<example>
+            <simpara>showfilename</simpara>
+        </example>
+		<catagories>
+			<catagorie>interface</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>savevisible</name>
+		<menu> non</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+            <simpara>savevisible &lt;0&gt;|&lt;1&gt; </simpara>
+        </syntax>
+		<short> 
+            Only save visible layers     
+		</short> 
+		<long> 
+            Only the layers that are visible on the screen will
+			be saved to a file e.g. GDSII or KEY etc, when using the savefile command.   
+        </long>
+		<notes> general notes
+			<note>
+				When writing to a file, the current file remains in memory, to prevent data-loss. 
+			</note>
+		</notes>
+		<example>
+            <simpara>savevisible 0</simpara>
+        </example>
+		<relations> 
+			<relation link="savefile"> savefile </relation>
+		</relations>
+		<catagories>
+			<catagorie>interface</catagorie>
+			<catagorie>settings</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>savefile</name>
+		<menu>/file/save/*</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara> savefile &lt;FILENAME&gt; &lt;FILETYPE&gt;  </simpara>
+            <simpara> Filename Path + name of the file </simpara> 
+            <simpara> Filetype Type of file (gds-ii, key or flash) </simpara> 
+        </syntax>
+		<short> 
+            Save a file      
+		</short> 
+		<long> 
+			Save a file to a certain type.
+        </long>
+		<notes> general notes
+			<note>
+			File type must be specified at all times. The extension can be anything at all. 
+			</note>
+		</notes>
+		<example>
+            <simpara>savefile %{datadir}one.lay key </simpara>
+            <simpara>savefile /home/klaas/gdsuser/data/combiner.gds gds-ii </simpara>
+        </example>
+		<relations> 
+			<relation link="loadfile"> loadfile </relation>
+		</relations>
+		<catagories>
+			<catagorie>interface</catagorie>
+			<catagorie>files</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>loadfile</name>
+		<menu>/file/load/*</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara> loadfile &lt;FILENAME&gt; &lt;FILETYPE&gt;  </simpara>
+            <simpara> Filename Path + name of the file </simpara> 
+            <simpara> Filetype Type of file (gds-ii, key or flash) </simpara> 
+        </syntax>
+		<short> 
+            Load a file      
+		</short> 
+		<long> 
+			Load a file of a certain type.
+        </long>
+		<notes> general notes
+			<note>
+			File type must be specified at all times. The extension can be anything at all. 
+			</note>
+		</notes>
+		<example>
+            <simpara>loadfile %{datadir}one.lay key </simpara>
+            <simpara>loadfile /home/klaas/gdsuser/data/combiner.gds gds-ii </simpara>
+        </example>
+		<relations> 
+			<relation link="savefile"> savefile </relation>
+		</relations>
+		<catagories>
+			<catagorie>interface</catagorie>
+			<catagorie>files</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>mergefile</name>
+		<menu>/file/import/*</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara> mergefile &lt;FILENAME&gt; &lt;FILETYPE&gt;  </simpara>
+            <simpara> Filename Path + name of the file </simpara> 
+            <simpara> Filetype Type of file (gds-ii, key or flash) </simpara> 
+        </syntax>
+		<short> 
+            Loads a file and merges it with the one in memory       
+		</short> 
+		<long> 
+			Loads a file of the given type and merges it with the one in memory 
+        </long>
+		<notes> general notes
+			<note>
+			File type must be specified at all times. The extension can be anything at all. 
+            This operation is only available when a file is in memory.
+			</note>
+		</notes>
+		<example>
+            <simpara>mergefile %{datadir}one.lay key </simpara>
+            <simpara>mergefile /home/klaas/gdsuser/data/combiner.gds gds-ii </simpara>
+        </example>
+		<relations> 
+			<relation link="loadfile"> loadfile </relation>
+		</relations>
+		<catagories>
+			<catagorie>interface</catagorie>
+			<catagorie>files</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>closefile</name>
+		<menu>/file/close</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara> closefile</simpara>
+        </syntax>
+		<short> 
+            Close the current (data)file in memory       
+		</short> 
+		<long> 
+            Close the current (data)file in memory       
+        </long>
+		<notes> general notes
+			<note>
+				Changes will be lost, use command savefile to save first
+			</note>
+		</notes>
+		<example>
+            <simpara>closefile</simpara>
+        </example>
+		<relations> 
+			<relation link="loadfile"> loadfile </relation>
+		</relations>
+		<catagories>
+			<catagorie>interface</catagorie>
+			<catagorie>files</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>loadsetup</name>
+		<menu>/file/load setup file</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara> loadsetup &lt;file&gt; </simpara>
+        </syntax>
+		<short> 
+            Load a setup or configuration file       
+		</short> 
+		<long> 
+            Load a setup or configuration file. A setup file is not different from a process file.
+			So it just contains a set of commands. But in this case it more meant for setting layers
+			and factors for the program. Several setupfiles can exist, during startup
+			the $HOME/gdsuser/config/user.set will always be used.
+			Or if not available $GDSROOT/default/config/default.set.
+        </long>
+		<notes> general notes
+			<note>
+				On closing the application, the current settings will be saved.
+				This can be overruled by the command savesetuponexit
+			</note>
+		</notes>
+		<example>
+            <simpara>setalias setupfile "$HOME/aap.set" </simpara>
+            <simpara>loadsetup %{setupfile}</simpara>
+        </example>
+		<relations> 
+			<relation link="savesetup"> savesetup </relation>
+			<relation link="savasetuponexit"> savesetuponexit </relation>
+		</relations>
+		<catagories>
+			<catagorie>interface</catagorie>
+			<catagorie>files</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>savesetup</name>
+		<menu>/file/save setup file</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara> savesetup &lt;file&gt; </simpara>
+        </syntax>
+		<short> 
+            Save a setup or configuration file       
+		</short> 
+		<long> 
+            Save a setup or configuration file. A setup file is not different from a process file.
+			So it just contains a set of commands. But in this case it more meant for setting layers
+			and factors for the program. Several setupfiles can exist, during startup
+			the $HOME/gdsuser/config/user.set will always be used.
+			Or if not available $GDSROOT/default/config/default.set.
+        </long>
+		<notes> general notes
+			<note>
+				On closing the application, the current settings will be saved.
+				This can be overruled by the command savesetuponexit
+			</note>
+		</notes>
+		<example>
+            <simpara>setalias setupdir "$HOME" </simpara>
+            <simpara>savesetup %{setupdir}/aap.set </simpara>
+        </example>
+		<relations> 
+			<relation link="savasetuponexit"> savesetuponexit </relation>
+			<relation link="loadsetup"> loadsetup </relation>
+		</relations>
+		<catagories>
+			<catagorie>interface</catagorie>
+			<catagorie>files</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>loadprocess</name>
+		<menu>/Automatic/Load process file</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara> loadprocess &lt;file&gt; </simpara>
+        </syntax>
+		<short> 
+			Execute a processing file. This is a file containing pre-recorded commands and can
+            be used as a macro. 
+		</short> 
+		<long> 
+			Execute a processing file. This is a file containing pre-recorded commands and can
+            be used as a macro. 
+        </long>
+		<notes> general notes
+			<note>
+				Settings may/can be changed during execution. 
+			</note>
+		</notes>
+		<example>
+            <simpara>loadprocess %{procdir}automatic.prs </simpara>
+        </example>
+		<relations> 
+			<relation link="record"> record </relation>
+		</relations>
+		<catagories>
+			<catagorie>interface</catagorie>
+			<catagorie>files</catagorie>
+			<catagorie>automation</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>record</name>
+		<menu>/Automatic/Start process recording</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara> record filename (to start recording) </simpara>
+            <simpara> record (to stop recording) </simpara>
+        </syntax>
+		<short> 
+			Start/Stop process recording. 
+		</short> 
+		<long>
+			Start/Stop process recording. This function is used to record a macro file. While
+            recording all (executed) actions are recorded to the file.
+            When executing a process file, the record command will be ignored.  
+        </long>
+		<notes> general notes
+			<note>		
+	            This function overwrites an existing file (if it can). 
+			</note>
+		</notes>
+		<example>
+            <simpara>record %{procdir}nothing.prs </simpara>
+            <simpara>record </simpara>
+        </example>
+		<relations> 
+			<relation link="loadprocess">loadprocess</relation>
+		</relations>
+		<catagories>
+			<catagorie>interface</catagorie>
+			<catagorie>files</catagorie>
+			<catagorie>automation</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>keystring</name>
+		<menu>non</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax> keystring '{' (&lt;key-file elements&gt;)* '}'     
+
+        </syntax>
+		<short> 
+			For drawing using a key file string. Handy in process files. 
+		</short> 
+		<long>
+			For drawing using a key file string. Handy in process files. 
+        </long>
+		<notes> general notes
+			<note>		
+	            Only the elements from Key files can be used inside a key string.
+		        The key elements are seperated by a semi-colon or a backslash character to continue
+        		on the next line. 
+			</note>
+		</notes>
+		<example>
+
+		<programlisting>     
+
+          keystring {CIRCLE; LAYER 0;  WIDTH 0;  XY 1;\
+             X 620.714; Y  188.116;   RADIUS 156.3;\
+          ENDEL;\
+          BOX; LAYER 0;  BOXTYPE 0;  WIDTH 0;  XY 5;\
+             X 0;       Y 0;      X 500;   Y 0;\
+             X 500;     Y 500;    X 0;     Y 500;\
+             X 0;       Y 0;  \
+          ENDEL;\
+          TEXT; LAYER 0; \
+          TEXTTYPE 0; PRESENTATION 0,2,1; STRANS 0,0,0; MAG 400; \
+             XY 1; \
+             X   1030000.000; Y  329000.000; \
+          STRING "here some text"; \
+          ENDEL;\
+          PATH; LAYER 0; DATATYPE 0; WIDTH 100000; \
+             XY 4; \
+             X  57000.000; Y  70000.000;   X  160000.000; Y  70000.000;   \
+             X 257000.000; Y 270000.000;   X 2160000.000; Y 270000.000;   \
+          ENDEL;\
+          BOUNDARY; LAYER 0;  DATATYPE 0; WIDTH 25000; \
+             XY 7; \
+             X   500000;  Y     89170;   X  500000; Y    0000;   \
+             X     0000;  Y      0000;   X    0000; Y  500000;   \
+             X   500000;  Y    500000;   X  500000; Y  287060;   \
+             XM  773100;  YM   222900;   XO 620834; YO 188115;   \
+             X   500000;  Y     89170; \
+          ENDEL;}
+
+          # Elements can be placed together in one key string like above, 
+          # or seperate like below. Comment lines can also be added
+          # (like this ;-)
+
+          keystring {ARC; LAYER 0;  DATATYPE 0; WIDTH 100000;\
+             XY 2; \
+             X  1500000;  Y   287060; \
+             XM 1773100;  YM  222900;  XO  1620834; YO 188115;   \
+             X  1500000;  Y    89170; \
+          ENDEL;}
+		</programlisting>     
+        </example>
+		<relations> 
+			<relation link="defaultunit">defaultunit</relation>
+			<relation link="defaultaccur">defaultaccur</relation>
+			<relation link="keybnf">Key Bachus Nauer.</relation>
+		</relations>
+		<catagories>
+			<catagorie>automation</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>defaultaccur</name>
+		<menu>non</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara> defaultaccur &lt;number&gt;</simpara>
+        </syntax>
+		<short> 
+			 Sets the default accuracy.
+		</short> 
+		<long>
+			Sets the default accuracy. This is used when a process file with key strings is read.
+            When a file is in memory, the accuracy from that file is used. If not, the accuracy
+            'defaultaccur' will be used. Using a value of 0.01 means that two figures behind the
+            comma will be displayed. 
+        </long>
+		<notes> general notes
+			<note>		
+	            This value is only used when there's no file in memory. 
+			</note>
+		</notes>
+		<example>
+            <simpara>defaultaccur 0.01 </simpara>
+        </example>
+		<relations> 
+			<relation link="defaultunit">defaultunit</relation>
+			<relation link="keystring">keystring</relation>
+		</relations>
+		<catagories>
+			<catagorie>automation</catagorie>
+			<catagorie>settings</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>defaultunit</name>
+		<menu>non</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara> defaultunit &lt;unit&gt;</simpara>
+			<simpara> &lt;unit&gt; in: pm, nm, um, mm, cm, dm, m, e, inch, ft </simpara> 
+        </syntax>
+		<short> 
+			 Sets the default unit.
+		</short> 
+		<long>
+			Sets the default unit. This is used when a process file with key strings is read. The
+            numbers in the file will be interpreted with 'defaultunit' as multiplier instead of
+            meters (=1). 
+        </long>
+		<example>
+            <simpara>defaultunit um </simpara>
+        </example>
+		<relations> 
+			<relation link="defaultaccur">defaultaccur</relation>
+			<relation link="keystring">keystring</relation>
+		</relations>
+		<catagories>
+			<catagorie>automation</catagorie>
+			<catagorie>settings</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>selected</name>
+		<menu>non</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara>selected &lt;0&gt;|&lt;1&gt;</simpara>
+        </syntax>
+		<short> 
+			 Only tread selected elements.
+		</short> 
+		<long>
+			When selected 1, the operations which don't need groups are performed only on
+            selected elements in layers.
+        </long>
+		<example>
+            <simpara>selected 1 </simpara>
+            <simpara>selected 0 </simpara>
+        </example>
+		<relations> 
+			<relation link="delete">delete</relation>
+			<relation link="flatten">flatten</relation>
+			<relation link="transform">transform</relation>
+		</relations>
+		<catagories>
+			<catagorie>operations</catagorie>
+			<catagorie>settings</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>selectmarge</name>
+		<menu>non</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara>selected &lt;number&gt;</simpara>
+        </syntax>
+		<short> 
+			 Set selectmarge.
+		</short> 
+		<long>
+			The purpose of 'selectmarge' is that a user doesn't have to click exactly on a
+            polygon to select it. 'Selectmarge' defines the percentage of the screenwidth a user
+            can click next to a polygon and still select it. 
+        </long>
+		<example>
+            <simpara>selectmarge 0.01 </simpara>
+        </example>
+		<relations> 
+			<relation link="showfactorsdlg">showfactorsdlg</relation>
+		</relations>
+		<catagories>
+			<catagorie>settings</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>snapfactor</name>
+		<menu>non</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara>snapfactor &lt;number&gt; [&lt;unit&gt;]</simpara>
+			<simpara> &lt;unit&gt; in: pm, nm, um, mm, cm, dm, m, e, inch, ft </simpara> 
+        </syntax>
+		<short> 
+			 Set snapfactor.
+		</short> 
+		<long>
+			At the beginning of a logical operation (i.e. AND, OR...) polygon segments shorter
+            than 'snapfactor' are removed. Polygons that are closer to eachother than
+            'snapfactor' are connected to eachother. 
+        </long>
+		<example>
+            <simpara>snapfactor {1.0 um}</simpara>
+            <simpara>snapfactor 1.0um </simpara>
+        </example>
+		<relations> 
+			<relation link="showfactorsdlg">showfactorsdlg</relation>
+		</relations>
+		<catagories>
+			<catagorie>settings</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>correctionfactor</name>
+		<menu>non</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara>correctionfactor &lt;number&gt; [&lt;unit&gt;]</simpara>
+			<simpara> &lt;unit&gt; in: pm, nm, um, mm, cm, dm, m, e, inch, ft </simpara> 
+        </syntax>
+		<short> 
+			 Set correctionfactor.
+		</short> 
+		<long>
+			This variable is used by the correction and makering functions, which create a ring
+            around the polygons. For correction, this factor determines the width by which the
+            polygon is enlarged or shrinked. A positive correctionfactor enlarges the polygon
+            and a negative shrinks it. For makering, this factor determines half the width
+            (radius) of the ring. The boundaries of the ring are this size smaller and larger than
+            the original polygon. 
+        </long>
+		<example>
+            <simpara>correctionfactor {5.5 um}</simpara>
+            <simpara>correctionfactor 5.5um </simpara>
+        </example>
+		<relations> 
+			<relation link="showfactorsdlg">showfactorsdlg</relation>
+		</relations>
+		<catagories>
+			<catagorie>settings</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>correctionaber</name>
+		<menu>non</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara>correctionaber &lt;number&gt; [&lt;unit&gt;]</simpara>
+			<simpara> &lt;unit&gt; in: pm, nm, um, mm, cm, dm, m, e, inch, ft </simpara> 
+        </syntax>
+		<short> 
+			 Set correctionaber.
+		</short> 
+		<long>
+			This variable is used when creating a ring around the boundaries of a polygon. It
+            determines the accuracy of the segments of the ring. 
+        </long>
+		<example>
+            <simpara>correctionaber {1.0 um}</simpara>
+            <simpara>correctionaber 1.0um </simpara>
+        </example>
+		<relations> 
+			<relation link="showfactorsdlg">showfactorsdlg</relation>
+		</relations>
+		<catagories>
+			<catagorie>settings</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>roundfactor</name>
+		<menu>non</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara>roundfactor &lt;number&gt;</simpara>
+        </syntax>
+		<short> 
+			 Set roundfactor.
+		</short> 
+		<long>
+			This variable is used when rounding sharp corners. An arc is calculated at the
+            sharp edge of a polygon. If the distance of the sharp edge to the midpoint of arc is
+            longer than arc-radius * roundfactor, then the edge is replaced by the arc. 
+        </long>
+		<example>
+            <simpara>roundfactor 1.5</simpara>
+            <simpara>roundfactor 0 </simpara>
+        </example>
+		<relations> 
+			<relation link="showfactorsdlg">showfactorsdlg</relation>
+		</relations>
+		<catagories>
+			<catagorie>settings</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>roundtype</name>
+		<menu>non</menu>
+		<shortcut> non </shortcut>
+		<speedbar> non </speedbar>
+		<syntax>     
+			<simpara>roundtype &lt;circle&gt;|&lt;medial&gt;</simpara>
+        </syntax>
+		<short> 
+			 Set roundtype.
+		</short> 
+		<long>
+			This variable specifies the rounding type when creating a ring around a sharp edge.
+            The rounding type is used when the distance of the new edge to the original is
+            longer than 'roundfactor' * 'correctionfactor'. The circles must fit inside the
+            enlarged/shrinked polygon. The Circle type creates a circle with the old edge as
+            midpoint and 'correctionfactor' as radius. The Medial type creates a circle on the
+            line between the old and new edge. The far most crossing of this circle with this
+            help-line is laying at a distance of 'roundfactor' * 'correctionfactor' from the old
+            edge. 
+        </long>
+		<notes> general notes
+			<note>		
+	            NOT IMPLEMENTED YET Only Circle type is used !. 
+			</note>
+		</notes>
+		<example>
+            <simpara>roundtype circle </simpara>
+        </example>
+		<relations> 
+			<relation link="showfactorsdlg">showfactorsdlg</relation>
+		</relations>
+		<catagories>
+			<catagorie>settings</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>toarcrmin</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>toarcrmin  &lt;number&gt; [&lt;unit&gt;]</simpara>
+			<simpara> &lt;unit&gt; in: pm, nm, um, mm, cm, dm, m, e, inch, ft </simpara> 
+        </syntax>
+		<short> 
+			 Set toarcrmin .
+		</short> 
+		<long>
+			This variable is used by the polygon to arc conversion function, and specifies the
+            minimum radius of an arc.        
+		</long>
+		<example>
+            <simpara>toarcrmin {50 um}</simpara>
+            <simpara>toarcrmin 50um</simpara>
+        </example>
+		<relations> 
+			<relation link="showfactorsdlg">showfactorsdlg</relation>
+		</relations>
+		<catagories>
+			<catagorie>settings</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>toarcrmax</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>toarcrmax  &lt;number&gt; [&lt;unit&gt;]</simpara>
+			<simpara> &lt;unit&gt; in: pm, nm, um, mm, cm, dm, m, e, inch, ft </simpara> 
+        </syntax>
+		<short> 
+			 Set toarcrmax.
+		</short> 
+		<long>
+			This variable is used by the polygon to arc conversion function, and specifies the
+            maximum radius of an arc.        
+		</long>
+		<example>
+            <simpara>toarcrmax {50 um}</simpara>
+            <simpara>toarcrmax 50um</simpara>
+        </example>
+		<relations> 
+			<relation link="showfactorsdlg">showfactorsdlg</relation>
+		</relations>
+		<catagories>
+			<catagorie>settings</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>arcaccur</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>arcaccur &lt;number&gt; [&lt;unit&gt;]</simpara>
+			<simpara> &lt;unit&gt; in: pm, nm, um, mm, cm, dm, m, e, inch, ft </simpara> 
+        </syntax>
+		<short> 
+			 Set arcaccur.
+		</short> 
+		<long>
+			This variable is used by the polygon to arc conversion function, and specifies the
+            maximum abberation of an arc to the original line-pieces. 
+		</long>
+		<example>
+            <simpara>arcaccur {25 um}</simpara>
+            <simpara>arcaccur 25um</simpara>
+        </example>
+		<relations> 
+			<relation link="showfactorsdlg">showfactorsdlg</relation>
+		</relations>
+		<catagories>
+			<catagorie>settings</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>polyaccur</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>polyaccur &lt;number&gt; [&lt;unit&gt;]</simpara>
+			<simpara> &lt;unit&gt; in: pm, nm, um, mm, cm, dm, m, e, inch, ft </simpara> 
+        </syntax>
+		<short> 
+			 Set polyaccur .
+		</short> 
+		<long>
+			This variable is used by the arc/circle to polygon conversion function, and specifies
+            the maximum abberation of a polygon to the original arc/circle. 
+		</long>
+		<example>
+            <simpara>polyaccur  {1 um}</simpara>
+            <simpara>polyaccur  1um</simpara>
+        </example>
+		<relations> 
+			<relation link="showfactorsdlg">showfactorsdlg</relation>
+		</relations>
+		<catagories>
+			<catagorie>settings</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>smoothaccur</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>smoothaccur  &lt;number&gt; [&lt;unit&gt;]</simpara>
+			<simpara> &lt;unit&gt; in: pm, nm, um, mm, cm, dm, m, e, inch, ft </simpara> 
+        </syntax>
+		<short> 
+			 Set smoothaccur.
+		</short> 
+		<long>
+			This variable is used by the smoothen function, and specifies the maximum
+            abberation the new polygon may have to the original. 
+		</long>
+		<example>
+            <simpara>smoothaccur   {5 um}</simpara>
+            <simpara>smoothaccur   5um</simpara>
+        </example>
+		<relations> 
+			<relation link="showfactorsdlg">showfactorsdlg</relation>
+		</relations>
+		<catagories>
+			<catagorie>settings</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>maxlinemerge</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>maxlinemerge  &lt;number&gt; [&lt;unit&gt;]</simpara>
+			<simpara> &lt;unit&gt; in: pm, nm, um, mm, cm, dm, m, e, inch, ft </simpara> 
+        </syntax>
+		<short> 
+			 Set maxlinemerge.
+		</short> 
+		<long>
+			This variable is used by the smoothen function, and specifies the maximum length
+            of a line-pieces where other lines may be merged to.
+ 		</long>
+		<example>
+            <simpara>maxlinemerge  {5000 um}</simpara>
+            <simpara>maxlinemerge   5000um</simpara>
+        </example>
+		<relations> 
+			<relation link="showfactorsdlg">showfactorsdlg</relation>
+		</relations>
+		<catagories>
+			<catagorie>settings</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>displayaber</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>displayaber &lt;number&gt; [&lt;unit&gt;]</simpara>
+			<simpara> &lt;unit&gt; in: pm, nm, um, mm, cm, dm, m, e, inch, ft </simpara> 
+        </syntax>
+		<short> 
+			 Set displayaber.
+		</short> 
+		<long>
+			This variable is used by the screendriver, and specifies the accuracy of displayed
+            arcs and circles. Internally they are converted to line-pieces. This variable is the
+            display version of 'polyaccur', which is the operation version. Too see the effect of
+            a change in value, redraw the screen. 
+		</long>
+		<example>
+            <simpara>displayaber  {5 um}</simpara>
+            <simpara>displayaber   5um</simpara>
+        </example>
+		<relations> 
+			<relation link="showfactorsdlg">showfactorsdlg</relation>
+			<relation link="polyaccur">polyaccur</relation>
+		</relations>
+		<catagories>
+			<catagorie>settings</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>structhres</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>structhres &lt;number&gt;</simpara>
+            &lt;number&gt; integer number specifying pixels 
+        </syntax>
+		<short> 
+			 Set structhres.
+		</short> 
+		<long>
+			This variable is used by the screendriver, and specifies when a structure will be
+            drawn. If the structure boundingbox on the screen is less then the given number of
+            pixels on the screen, only the boundingbox will be drawn. For huge drawings this
+            will increase the drawing speed. 
+		</long>
+		<example>
+            <simpara>structhres 100</simpara>
+        </example>
+		<relations> 
+			<relation link="showfactorsdlg">showfactorsdlg</relation>
+		</relations>
+		<catagories>
+			<catagorie>settings</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>primthres</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>primthres &lt;number&gt; &lt;true|false&gt;</simpara>
+            &lt;number&gt; integer number specifying pixels 
+        </syntax>
+		<short> 
+			 Set primthres.
+		</short> 
+		<long>
+			This variable is used by the screendriver, and specifies when a primitive will be
+            drawn. If the primitive boundingbox on the screen is less then the given number of
+            pixels on the screen, only the boundingbox will be drawn if the second parameter
+            is True. If the second parameter is False nothing will be drawn. For huge drawings
+            this will increase the drawing speed. 
+		</long>
+		<example>
+            <simpara>primthres 5</simpara>
+        </example>
+		<relations> 
+			<relation link="showfactorsdlg">showfactorsdlg</relation>
+		</relations>
+		<catagories>
+			<catagorie>settings</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>mirrorx</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>mirrorx &lt;0&gt; &lt;1&gt;</simpara>
+        </syntax>
+		<short> 
+			 Set mirrorx for transforms.
+		</short> 
+		<long>
+			Mirrorx sets the option for the transform and transform_a operations to mirror
+            selected elements in the X-axis.
+		</long>
+		<example>
+            <simpara>mirrorx 0</simpara>
+        </example>
+		<relations> 
+			<relation link="mirrorx">mirrorx</relation>
+			<relation link="mirrory">mirrory</relation>
+			<relation link="movehor">movehor</relation>
+			<relation link="movever">movever</relation>
+			<relation link="scale">scale</relation>
+			<relation link="rotate">rotate</relation>
+			<relation link="direction">direction</relation>
+			<relation link="transform">transform</relation>
+			<relation link="transform_a">transform_a</relation>
+		</relations>
+		<catagories>
+			<catagorie>transform</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>mirrory</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>mirrorx &lt;0&gt; &lt;1&gt;</simpara>
+        </syntax>
+		<short> 
+			 Set mirrory for transforms.
+		</short> 
+		<long>
+			Mirrory sets the option for the transform and transform_a operations to mirror
+            selected elements in the Y-axis.
+		</long>
+		<example>
+            <simpara>mirrory 0</simpara>
+        </example>
+		<relations> 
+			<relation link="mirrorx">mirrorx</relation>
+			<relation link="mirrory">mirrory</relation>
+			<relation link="movehor">movehor</relation>
+			<relation link="movever">movever</relation>
+			<relation link="scale">scale</relation>
+			<relation link="rotate">rotate</relation>
+			<relation link="direction">direction</relation>
+			<relation link="transform">transform</relation>
+			<relation link="transform_a">transform_a</relation>
+		</relations>
+		<catagories>
+			<catagorie>transform</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>movehor</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>movehor &lt;number&gt; [&lt;unit&gt;]</simpara>
+			<simpara> &lt;unit&gt; in: pm, nm, um, mm, cm, dm, m, e, inch, ft </simpara> 
+        </syntax>
+		<short> 
+			 Set movehor for transforms.
+		</short> 
+		<long>
+			Specifies the distance structures are moved horizontal when the transform or
+            transform_a operation is performed. 
+		</long>
+		<example>
+            <simpara>movehor 0</simpara>
+        </example>
+		<relations> 
+			<relation link="mirrorx">mirrorx</relation>
+			<relation link="mirrory">mirrory</relation>
+			<relation link="movehor">movehor</relation>
+			<relation link="movever">movever</relation>
+			<relation link="scale">scale</relation>
+			<relation link="rotate">rotate</relation>
+			<relation link="direction">direction</relation>
+			<relation link="transform">transform</relation>
+			<relation link="transform_a">transform_a</relation>
+		</relations>
+		<catagories>
+			<catagorie>transform</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>movever</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>movever &lt;number&gt; [&lt;unit&gt;]</simpara>
+			<simpara> &lt;unit&gt; in: pm, nm, um, mm, cm, dm, m, e, inch, ft </simpara> 
+        </syntax>
+		<short> 
+			 Set movever for transforms.
+		</short> 
+		<long>
+			Specifies the distance structures are moved vertical when the transform or
+            transform_a operation is performed. 
+		</long>
+		<example>
+            <simpara>movever 0</simpara>
+        </example>
+		<relations> 
+			<relation link="mirrorx">mirrorx</relation>
+			<relation link="mirrory">mirrory</relation>
+			<relation link="movehor">movehor</relation>
+			<relation link="movever">movever</relation>
+			<relation link="scale">scale</relation>
+			<relation link="rotate">rotate</relation>
+			<relation link="direction">direction</relation>
+			<relation link="transform">transform</relation>
+			<relation link="transform_a">transform_a</relation>
+		</relations>
+		<catagories>
+			<catagorie>transform</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>scale</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>scale &lt;number&gt; </simpara>
+        </syntax>
+		<short> 
+			 Set scale for transforms.
+		</short> 
+		<long>
+			Specifies the scale factor for the transform and transform_a operations. 
+		</long>
+		<example>
+            <simpara>scale 2.0</simpara>
+        </example>
+		<relations> 
+			<relation link="mirrorx">mirrorx</relation>
+			<relation link="mirrory">mirrory</relation>
+			<relation link="movehor">movehor</relation>
+			<relation link="movever">movever</relation>
+			<relation link="scale">scale</relation>
+			<relation link="rotate">rotate</relation>
+			<relation link="direction">direction</relation>
+			<relation link="transform">transform</relation>
+			<relation link="transform_a">transform_a</relation>
+			<relation link="displayaber">displayaber</relation>
+		</relations>
+		<catagories>
+			<catagorie>transform</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>rotate</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>rotate &lt;number&gt; </simpara>
+        </syntax>
+		<short> 
+			 Set rotate for transforms.
+		</short> 
+		<long>
+			Specifies the rotation in degrees for the transform and transform_a operations. 
+		</long>
+		<example>
+            <simpara>rotate 2.0</simpara>
+        </example>
+		<relations> 
+			<relation link="mirrorx">mirrorx</relation>
+			<relation link="mirrory">mirrory</relation>
+			<relation link="movehor">movehor</relation>
+			<relation link="movever">movever</relation>
+			<relation link="scale">scale</relation>
+			<relation link="rotate">rotate</relation>
+			<relation link="direction">direction</relation>
+			<relation link="transform">transform</relation>
+			<relation link="transform_a">transform_a</relation>
+			<relation link="displayaber">displayaber</relation>
+		</relations>
+		<catagories>
+			<catagorie>transform</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>direction</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>direction &lt;Clockwise&gt;|&lt;Counter clockwise&gt; </simpara>
+        </syntax>
+		<short> 
+			 Set direction for transforms.
+		</short> 
+		<long>
+			Specifies the direction of the rotation for the transform and transform_a operations. 
+		</long>
+		<example>
+            <simpara>direction Clockwise  </simpara>
+			<simpara>direction {Cntr clockwise} </simpara>
+        </example>
+		<relations> 
+			<relation link="mirrorx">mirrorx</relation>
+			<relation link="mirrory">mirrory</relation>
+			<relation link="movehor">movehor</relation>
+			<relation link="movever">movever</relation>
+			<relation link="scale">scale</relation>
+			<relation link="rotate">rotate</relation>
+			<relation link="direction">direction</relation>
+			<relation link="transform">transform</relation>
+			<relation link="transform_a">transform_a</relation>
+			<relation link="displayaber">displayaber</relation>
+		</relations>
+		<catagories>
+			<catagorie>transform</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>showgroupsdlg</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>showgroupsdlg</simpara>
+        </syntax>
+		<short> 
+			 Show group settings dialog (A, B and Destination)
+		</short> 
+		<long>
+			Groups are used for several operations, like boolean operations.
+			Shows the layers in group A, B and destination. Groups A and B 
+            contains a list of layernumbers, destination contains only one layer. 
+			You can set if the element in the ayers in the groups should be only selected
+			elements or all. For the destination you can select either add to the destination
+			or overwrite what is on that layer.
+		</long>
+		<example>
+         	<simpara>showgroupsdlg</simpara>
+        </example>
+		<relations> 
+			<relation link="group_a">group_a</relation>
+			<relation link="group_b">group_b</relation>
+			<relation link="destination">destination</relation>
+		</relations>
+		<catagories>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>groups</catagorie>
+			<catagorie>dialogs</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>group_a</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>
+			to set group_a to (selected) elements on given layers:
+            group_a &lt;layer_no&gt; &lt;layer_no&gt; &lt;layer_no&gt; {True|False} 
+			</simpara>
+            <simpara>&lt;layer_no&gt; layer number (0-199)</simpara>
+            <simpara>if True is set, only selected elements in the layers will be used.</simpara>
+            <simpara>to make group_a empty:</simpara>
+            <simpara>group_a empty</simpara>
+            <simpara> to set group_a to the selected elements in the drawing:</simpara>
+            <simpara>group_a selected </simpara>
+        </syntax>
+		<short> Set group A layers
+		</short> 
+		<long>
+			Fill/clear layer-group A 
+		</long>
+		<example>
+         <simpara>group_a 0 3 14 true</simpara>
+         <simpara>group_a 0 3 false</simpara>
+         <simpara>group_a empty</simpara>
+         <simpara>group_a selected</simpara>
+      </example>
+		<relations> 
+			<relation link="group_b">group_b</relation>
+			<relation link="destination">destination</relation>
+		</relations>
+		<catagories>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>groups</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>group_b</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>
+			to set group_b to (selected) elements on given layers:
+            group_a &lt;layer_no&gt; &lt;layer_no&gt; &lt;layer_no&gt; {True|False} 
+			</simpara>
+            <simpara>&lt;layer_no&gt; layer number (0-199)</simpara>
+            <simpara>if True is set, only selected elements in the layers will be used.</simpara>
+            <simpara>to make group_b empty:</simpara>
+            <simpara>group_b empty</simpara>
+            <simpara> to set group_b to the selected elements in the drawing:</simpara>
+            <simpara>group_b selected </simpara>
+        </syntax>
+		<short> Set group B layers
+		</short> 
+		<long>
+			Fill/clear layer-group B 
+		</long>
+		<example>
+         <simpara>group_b 0 3 14 true</simpara>
+         <simpara>group_b 0 3 false</simpara>
+         <simpara>group_b empty</simpara>
+         <simpara>group_b selected</simpara>
+      </example>
+		<relations> 
+			<relation link="group_a">group_a</relation>
+			<relation link="destination">destination</relation>
+		</relations>
+		<catagories>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>groups</catagorie>
+		</catagories>
+	</command>
+
+	<command >
+		<name>destination</name>
+		<menu>non</menu>
+		<syntax>     
+			<simpara>
+			to set destination layer:
+            destination &lt;layer_no&gt; {True|False}  
+			</simpara>
+            <simpara>&lt;layer_no&gt; layer number (0-199)</simpara>
+            <simpara>True means add result to this layer, else 
+			overwrite the destination layer.</simpara>
+            <simpara>destination empty</simpara>
+        </syntax>
+		<short> Set destination layer
+		</short> 
+		<long>
+			Set destination layer for output of operations on layers.
+		</long>
+		<example>
+         <simpara>destination 3</simpara>
+         <simpara>destination empty</simpara>
+      </example>
+		<relations> 
+			<relation link="group_b">group_b</relation>
+			<relation link="group_a">group_a</relation>
+		</relations>
+		<catagories>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>groups</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>flatten {one}</name>
+		<menu>non</menu>
+		<syntax> 
+			flatten    
+        </syntax>
+		<short> remove structures hierarchy from (selected) elements
+		</short> 
+		<long>
+			The datafile can consist of several structures and structure-references. Flatten
+            expands all references in the visible structure to one (top)structure by copying the
+            elements inside referenced structures to that level. Empty structures will be
+            removed. If the selected flag is set, only selected elements will be flattened.
+			"flatten one", Only removes one level of hierarchy.
+		</long>
+		<notes>
+			<note>
+				File may grow very large (in memory too) 
+			</note>
+		</notes>
+		<example>
+         <simpara>selected 1</simpara>
+         <simpara>flatten</simpara>
+         <simpara>flatten one</simpara>
+        </example>
+		<relations> 
+			<relation link="selected">selected</relation>
+		</relations>
+		<catagories>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>delete</name>
+		<menu>non</menu>
+		<syntax> 
+			delete    
+        </syntax>
+		<short> delete (selected) elements
+		</short> 
+		<long>
+			Deletes in Visible structure contents, elements that are selected or all,
+			depending if flag "selected" is set.
+		</long>
+		<notes>
+			<note>
+			Only the elements inside the visible top structure are deleted. Selected References
+            are also deleted, by first exploded to make them unique. This may lead to
+            empty structures. 
+			</note>
+		</notes>
+		<example>
+         <simpara>delete</simpara>
+        </example>
+		<relations> 
+			<relation link="selected">selected</relation>
+		</relations>
+		<catagories>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>delete_a</name>
+		<menu>non</menu>
+		<syntax> 
+			delete_a    
+        </syntax>
+		<short> delete (selected) elements in group A
+		</short> 
+		<long>
+			Deletes in visible structure contents, elements specified in group A. Group A is
+            specified with the group_a command. In case the onlyselected flag is set for group
+            A, selected References are first exploded. The command only deletes elements,this
+            may result in empty structures 
+		</long>
+		<notes>
+			<note>A must be set. B and destination are ignored.
+			</note>
+			<note>
+			Only the elements inside the visible structure are deleted, references to other
+            structures will be exploded first if onlyselected in the group is True. 
+			</note>
+		</notes>
+		<example>
+         <simpara>delete_a</simpara>
+        </example>
+		<relations> 
+			<relation link="group_a">group_a</relation>
+			<relation link="group_b">group_b</relation>
+			<relation link="destination">destination</relation>
+		</relations>
+		<catagories>
+			<catagorie>operations</catagorie>
+			<catagorie>groupoperations</catagorie>
+		</catagories>
+	</command>
+
+
+	<command>
+		<name>transform</name>
+		<menu>non</menu>
+		<syntax> 
+			transform    
+        </syntax>
+		<short> Transforms structure contents visible on screen. 
+		</short> 
+		<long>
+			Transforms structure contents visible on screen. Uses the transformation settings. 
+		</long>
+		<notes>
+			<note>
+			Transformation can be undone with undotrans.
+            Selected flag can be set to transform only the selected elements (also structure
+            references) 
+			</note>
+		</notes>
+		<example>
+         <simpara>transform</simpara>
+        </example>
+		<relations> 
+			<relation link="selected">selected</relation>
+			<relation link="mirrorx">mirrorx</relation>
+			<relation link="mirrory">mirrory</relation>
+			<relation link="movehor">movehor</relation>
+			<relation link="movever">movever</relation>
+			<relation link="scale">scale</relation>
+			<relation link="rotate">rotate</relation>
+			<relation link="direction">direction</relation>
+			<relation link="transform">transform</relation>
+			<relation link="transform_a">transform_a</relation>
+		</relations>
+		<catagories>
+			<catagorie>operations</catagorie>
+			<catagorie>transform</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>undotrans</name>
+		<menu>non</menu>
+		<syntax> 
+			undotrans    
+        </syntax>
+		<short> Undo last transformation. 
+		</short> 
+		<long>
+			Transforms elements back to old situation (before last transform). 
+		</long>
+		<notes>
+			<note>
+			Transformation can only be undone immediately after the transformation itself.
+            When first an other command is chosen, 'undotrans' becomes unavailable.
+			</note>
+		</notes>
+		<example>
+         <simpara>undotrans</simpara>
+        </example>
+		<relations> 
+			<relation link="mirrorx">mirrorx</relation>
+			<relation link="mirrory">mirrory</relation>
+			<relation link="movehor">movehor</relation>
+			<relation link="movever">movever</relation>
+			<relation link="scale">scale</relation>
+			<relation link="rotate">rotate</relation>
+			<relation link="direction">direction</relation>
+			<relation link="transform">transform</relation>
+			<relation link="group_a">group_a</relation>
+			<relation link="group_b">group_b</relation>
+			<relation link="destination">destination</relation>
+		</relations>
+		<catagories>
+			<catagorie>operations</catagorie>
+			<catagorie>transform</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>transform_a</name>
+		<menu>non</menu>
+		<syntax> 
+			transform    
+        </syntax>
+		<short> Transform elements in group A. 
+		</short> 
+		<long>
+			Transforms in visible structure contents elements specified in group A. Uses the
+            transformation settings. 
+		</long>
+		<notes>
+			<note>
+				A must be set. B and destination are ignored 
+			</note>
+			<note>
+				Transformation can be undone with undotrans_a.
+			</note>
+		</notes>
+		<example>
+         <simpara>transform</simpara>
+        </example>
+		<relations> 
+			<relation link="selected">selected</relation>
+			<relation link="mirrorx">mirrorx</relation>
+			<relation link="mirrory">mirrory</relation>
+			<relation link="movehor">movehor</relation>
+			<relation link="movever">movever</relation>
+			<relation link="scale">scale</relation>
+			<relation link="rotate">rotate</relation>
+			<relation link="direction">direction</relation>
+			<relation link="transform">transform</relation>
+			<relation link="transform_a">transform_a</relation>
+		</relations>
+		<catagories>
+			<catagorie>operations</catagorie>
+			<catagorie>transform</catagorie>
+			<catagorie>groupoperations</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>undotrans_a</name>
+		<menu>non</menu>
+		<syntax> 
+			undotrans    
+        </syntax>
+		<short> Undo last transformation on groups. 
+		</short> 
+		<long>
+			Transforms elements back to old situation (before last transform). 
+		</long>
+		<notes>
+			<note>
+			Transformation can only be undone immediately after the transformation itself.
+            When first an other command is chosen, 'undotrans' becomes unavailable.
+			</note>
+		</notes>
+		<example>
+         <simpara>undotrans</simpara>
+        </example>
+		<relations> 
+			<relation link="mirrorx">mirrorx</relation>
+			<relation link="mirrory">mirrory</relation>
+			<relation link="movehor">movehor</relation>
+			<relation link="movever">movever</relation>
+			<relation link="scale">scale</relation>
+			<relation link="rotate">rotate</relation>
+			<relation link="direction">direction</relation>
+			<relation link="transform_a">transform</relation>
+			<relation link="group_a">group_a</relation>
+			<relation link="group_b">group_b</relation>
+			<relation link="destination">destination</relation>
+		</relations>
+		<catagories>
+			<catagorie>operations</catagorie>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>transform</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>makering</name>
+		<menu>non</menu>
+		<syntax> 
+			makering 
+        </syntax>
+		<short> Creates a ring around filled elements
+		</short> 
+		<long>
+			Creates a ring around the boundaries of elements defined in group
+            A. 
+		</long>
+		<notes>
+			<note>
+				A and Desination set. B is ignored.  
+			</note>
+			<note>
+			All elements that have a surface are converted to polygons. 
+            (Text does not have a surface and is not converted.) 
+			</note>
+		</notes>
+		<example>
+         <simpara>makering</simpara>
+        </example>
+		<relations> 
+			<relation link="group_a">group_a</relation>
+			<relation link="destination">destination</relation>
+			<relation link="correctionfactor">correctionfactor</relation>
+			<relation link="correctionaber">correctionaber</relation>
+			<relation link="tolines">tolines</relation>
+			<relation link="polyaccur">polyaccur</relation>
+		</relations>
+		<catagories>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>correction</name>
+		<menu>non</menu>
+		<syntax> 
+			correction 
+        </syntax>
+		<short> Creates a ring around filled elements
+		</short> 
+		<long>
+			Creates a ring around the boundaries of elements defined in group
+            A. And merges it with the original polygons. With a positive/negetive correction
+            value you can enlarge/shrink the drawing with that value. 
+		</long>
+		<notes>
+			<note>
+				A and Desination set. B is ignored.  
+			</note>
+			<note>
+			All elements that have a surface are converted to polygons. 
+            (Text does not have a surface and is not converted.) 
+			</note>
+		</notes>
+		<example>
+         <simpara>correction</simpara>
+        </example>
+		<relations> 
+			<relation link="group_a">group_a</relation>
+			<relation link="destination">destination</relation>
+			<relation link="correctionfactor">correctionfactor</relation>
+			<relation link="correctionaber">correctionaber</relation>
+			<relation link="tolines">tolines</relation>
+			<relation link="polyaccur">polyaccur</relation>
+		</relations>
+		<catagories>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>copy_a</name>
+		<menu>non</menu>
+		<syntax> 
+			copy_a 
+        </syntax>
+		<short> Duplicates elements from group A to the layer in destination. 
+		</short> 
+		<long>
+			Duplicates elements from group A to the layer in destination. 
+		</long>
+		<notes>
+			<note>
+				A and Desination set. B is ignored.  
+			</note>
+		</notes>
+		<example>
+         <simpara>copy_a</simpara>
+        </example>
+		<relations> 
+			<relation link="group_a">group_a</relation>
+			<relation link="destination">destination</relation>
+		</relations>
+		<catagories>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>move_a</name>
+		<menu>non</menu>
+		<syntax> 
+			move_a 
+        </syntax>
+		<short>  
+            Changes the layer-numbers of the elements in group A to the layer in destination.
+		</short> 
+		<long>
+            Changes the layer-numbers of the elements in group A to the layer in destination.
+		</long>
+		<notes>
+			<note>
+				A and Desination set. B is ignored.  
+			</note>
+		</notes>
+		<example>
+         <simpara>move_a</simpara>
+        </example>
+		<relations> 
+			<relation link="group_a">group_a</relation>
+			<relation link="destination">destination</relation>
+		</relations>
+		<catagories>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>toarcs</name>
+		<menu>non</menu>
+		<syntax> 
+			toarcs
+        </syntax>
+		<short>  
+            Convert polygons to arcs.
+		</short> 
+		<long>
+            Detects arcs in polygons and replaces those with segments. 
+            'toarcrmax' and 'toarcrmin' as range for the radius. 'arcaccur' for maximum
+            abberation between the arc and the polygon segments. 
+		</long>
+		<notes>
+			<note>
+				A and Desination set. B is ignored.  
+			</note>
+		</notes>
+		<example>
+         <simpara>toarcs</simpara>
+        </example>
+		<relations> 
+			<relation link="group_a">group_a</relation>
+			<relation link="destination">destination</relation>
+			<relation link="tolines">tolines</relation>
+			<relation link="polyaccur">polyaccur</relation>
+			<relation link="toarcrmin">toarcrmin</relation>
+			<relation link="toarcrmax">toarcrmax</relation>
+			<relation link="arcaccur">arcaccur</relation>
+		</relations>
+		<catagories>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>tolines</name>
+		<menu>non</menu>
+		<syntax> 
+			tolines
+        </syntax>
+		<short>  
+            Convert arcs and circles to polygons. 
+		</short> 
+		<long>
+			Replaces arcs and circles, in a polygon, with line-pieces.  
+			'polyaccur' determines the maximum abberation that between the polygon
+            segments and the arc/circle.            
+		</long>
+		<notes>
+			<note>
+			All elements that have a surface are converted to polygons. 
+            (Text does not have a surface and is not converted.) 
+			</note>
+			<note>A and Desination set. B is ignored. 
+			</note>
+		</notes>
+		<example>
+         <simpara>toarcs</simpara>
+        </example>
+		<relations> 
+			<relation link="group_a">group_a</relation>
+			<relation link="destination">destination</relation>
+			<relation link="toarcs">tolines</relation>
+			<relation link="polyaccur">polyaccur</relation>
+			<relation link="arcaccur">arcaccur</relation>
+		</relations>
+		<catagories>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>smoothen</name>
+		<menu>non</menu>
+		<syntax> 
+			smoothen
+        </syntax>
+		<short>  
+            Removes glitches and short lines from polygons. 
+		</short> 
+		<long>
+			Removes glitches and short lines from polygons. 
+			Uses 'smoothaccur' for maximum abberation of the smoothed polygon-segments to the
+            originals. 
+            Uses 'maxlinemerge' for maximum line-length to merge lines to. 
+		</long>
+		<notes>
+			<note>A and Desination set. B is ignored. 
+			</note>
+			<note>
+			All elements that have a surface are converted to polygons. Polylines and polygons
+            containing arcsegments are also converted. 
+            (Text does not have a surface and is not converted.) 
+			</note>
+		</notes>
+		<example>
+         <simpara>smoothen</simpara>
+        </example>
+		<relations> 
+			<relation link="group_a">group_a</relation>
+			<relation link="destination">destination</relation>
+			<relation link="tolines">tolines</relation>
+			<relation link="polyaccur">polyaccur</relation>
+			<relation link="smoothaccur">smoothaccur</relation>
+			<relation link="maxlinemerge">maxlinemerge</relation>
+		</relations>
+		<catagories>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>intersect</name>
+		<menu>non</menu>
+		<syntax> 
+			intersect
+        </syntax>
+		<short>  
+            Calculate intersections (Logical AND: A AND B)  
+		</short> 
+		<long>
+			Calculate the intersections (overlappings) between the elements in group A and B. 
+			'snapfactor' determines the accuracy with which the calculations are performed,
+            and 'polyaccur' for conversion of Arcs and Circles. 
+		</long>
+		<notes>
+			<note> A or B and destination must be set. 
+			</note>
+			<note>
+			All elements that have a surface are converted to polygons. 
+            (Text does not have a surface and is not converted.) 
+			</note>
+		</notes>
+		<example>
+         <simpara>intersect</simpara>
+        </example>
+		<relations> 
+			<relation link="group_a">group_a</relation>
+			<relation link="group_b">group_b</relation>
+			<relation link="destination">destination</relation>
+			<relation link="tolines">tolines</relation>
+			<relation link="polyaccur">polyaccur</relation>
+		</relations>
+		<catagories>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>booleanoperations</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>merge</name>
+		<menu>non</menu>
+		<syntax> 
+			merge
+        </syntax>
+		<short>  Merges elements (Logical OR: A OR B)  
+		</short> 
+		<long>
+			Merges the elements in group A and B (Logical OR of A and B) 
+			'snapfactor' determines the accuracy with which the calculations are performed,
+            and 'polyaccur' for conversion of Arcs and Circles. 
+		</long>
+		<notes>
+			<note> A or B and destination must be set. 
+			</note>
+			<note>
+			All elements that have a surface are converted to polygons. 
+            (Text does not have a surface and is not converted.) 
+			</note>
+		</notes>
+		<example>
+         <simpara>merge</simpara>
+        </example>
+		<relations> 
+			<relation link="group_a">group_a</relation>
+			<relation link="group_b">group_b</relation>
+			<relation link="destination">destination</relation>
+			<relation link="tolines">tolines</relation>
+			<relation link="polyaccur">polyaccur</relation>
+		</relations>
+		<catagories>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>booleanoperations</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>a_subtract_b</name>
+		<menu>non</menu>
+		<syntax> 
+			a_subtract_b
+        </syntax>
+		<short>  Subtraction (A - B)   
+		</short> 
+		<long>
+			Subtracts the contents of group B from those of group A (A-B). 
+			'snapfactor' determines the accuracy with which the calculations are performed,
+            and 'polyaccur' for conversion of Arcs and Circles. 
+		</long>
+		<notes>
+			<note> A or B and destination must be set. 
+			</note>
+			<note>
+			All elements that have a surface are converted to polygons. 
+            (Text does not have a surface and is not converted.) 
+			</note>
+		</notes>
+		<example>
+         <simpara>a_subtract_b</simpara>
+        </example>
+		<relations> 
+			<relation link="group_a">group_a</relation>
+			<relation link="group_b">group_b</relation>
+			<relation link="destination">destination</relation>
+			<relation link="tolines">tolines</relation>
+			<relation link="polyaccur">polyaccur</relation>
+		</relations>
+		<catagories>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>booleanoperations</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>b_subtract_a</name>
+		<menu>non</menu>
+		<syntax> 
+			b_subtract_a
+        </syntax>
+		<short>  Subtraction (B - A)   
+		</short> 
+		<long>
+			Subtracts the contents of group A from those of group B (B-A). 
+			'snapfactor' determines the accuracy with which the calculations are performed,
+            and 'polyaccur' for conversion of Arcs and Circles. 
+		</long>
+		<notes>
+			<note> A or B and destination must be set. 
+			</note>
+			<note>
+			All elements that have a surface are converted to polygons. 
+            (Text does not have a surface and is not converted.) 
+			</note>
+		</notes>
+		<example>
+         <simpara>b_subtract_a</simpara>
+        </example>
+		<relations> 
+			<relation link="group_a">group_a</relation>
+			<relation link="group_b">group_b</relation>
+			<relation link="destination">destination</relation>
+			<relation link="tolines">tolines</relation>
+			<relation link="polyaccur">polyaccur</relation>
+		</relations>
+		<catagories>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>booleanoperations</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>exor</name>
+		<menu>non</menu>
+		<syntax> 
+			exor
+        </syntax>
+		<short>  Exor (Logical EXOR: A EXOR B)   
+		</short> 
+		<long>
+			Exor (Logical EXOR: A EXOR B) 
+			Performs an exclusive-or operation between the contents of group A and B. This
+            results in the differences between group A and B (i.e. overlappings are not
+            copied). 
+			'snapfactor' determines the accuracy with which the calculations are performed,
+            and 'polyaccur' for conversion of Arcs and Circles. 
+		</long>
+		<notes>
+			<note> A or B and destination must be set. 
+			</note>
+			<note>
+			All elements that have a surface are converted to polygons. 
+            (Text does not have a surface and is not converted.) 
+			</note>
+		</notes>
+		<example>
+         <simpara>exor</simpara>
+        </example>
+		<relations> 
+			<relation link="group_a">group_a</relation>
+			<relation link="group_b">group_b</relation>
+			<relation link="destination">destination</relation>
+			<relation link="tolines">tolines</relation>
+			<relation link="polyaccur">polyaccur</relation>
+		</relations>
+		<catagories>
+			<catagorie>groupoperations</catagorie>
+			<catagorie>booleanoperations</catagorie>
+			<catagorie>operations</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>showlayerdlg</name>
+		<menu>non</menu>
+		<syntax> 
+			showlayerdlg
+        </syntax>
+		<short>  Show layers dialog   
+		</short> 
+		<long>
+			Show the layers settings dialog, which can
+			be used to set the layer settings. 
+		</long>
+		<example>
+         <simpara>showlayerdlg</simpara>
+        </example>
+		<relations> 
+			<relation link="setlayer">setlayer</relation>
+			<relation link="name">name</relation>
+			<relation link="visible">visible</relation>
+			<relation link="selectable">selectable</relation>
+			<relation link="bordercolor">bordercolor</relation>
+			<relation link="fillcolor">fillcolor</relation>
+			<relation link="brush">brush</relation>
+			<relation link="order">order</relation>
+		</relations>
+		<catagories>
+			<catagorie>layers</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>setlayer</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>setlayer &lt;layer_nr&gt;</simpara>
+            <simpara>&lt;layer_nr&gt; is in [0..99] </simpara>
+        </syntax>
+		<short>  Set active layer   
+		</short> 
+		<long>
+            Select a layer. This is needed before changing layersettings. 
+			This layer is also used for drawing upon.
+		</long>
+		<example>
+         <simpara>showlayerdlg</simpara>
+        </example>
+		<relations> 
+			<relation link="name">name</relation>
+			<relation link="visible">visible</relation>
+			<relation link="selectable">selectable</relation>
+			<relation link="bordercolor">bordercolor</relation>
+			<relation link="fillcolor">fillcolor</relation>
+			<relation link="brush">brush</relation>
+			<relation link="order">order</relation>
+		</relations>
+		<catagories>
+			<catagorie>layers</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>name</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>name &lt;name&gt; | "&lt;name&gt;"</simpara>
+        </syntax>
+		<short>  Set active layer name  
+		</short> 
+		<long>
+			Set the name of the selected layer. 
+		</long>
+		<example>
+         <simpara>name "ape mockey"</simpara>
+         <simpara>name apemockey</simpara>
+        </example>
+		<notes>
+			<note> First set active layer with setlayer 
+			</note>
+		</notes>
+		<relations> 
+			<relation link="setlayer">setlayer</relation>
+			<relation link="visible">visible</relation>
+			<relation link="selectable">selectable</relation>
+			<relation link="bordercolor">bordercolor</relation>
+			<relation link="fillcolor">fillcolor</relation>
+			<relation link="brush">brush</relation>
+			<relation link="order">order</relation>
+		</relations>
+		<catagories>
+			<catagorie>layers</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>visible</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>visible 1 | 0 [all] </simpara>
+        </syntax>
+		<short>  Set Layer Visibility On/Off   
+		</short> 
+		<long>
+			Select if the selected layer/all layers is/are visible or not. 
+		</long>
+		<example>
+         <simpara>visible 1</simpara>
+         <simpara>visible 0 all</simpara>
+        </example>
+		<notes>
+			<note> First set active layer with setlayer 
+			</note>
+		</notes>
+		<relations> 
+			<relation link="setlayer">setlayer</relation>
+			<relation link="name">name</relation>
+			<relation link="selectable">selectable</relation>
+			<relation link="bordercolor">bordercolor</relation>
+			<relation link="fillcolor">fillcolor</relation>
+			<relation link="brush">brush</relation>
+			<relation link="order">order</relation>
+		</relations>
+		<catagories>
+			<catagorie>layers</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>selectable</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>selectable 1 | 0 [all] </simpara>
+        </syntax>
+		<short>  Set Layer Selectability On/Off   
+		</short> 
+		<long>
+			Select if the current layer/all layers is/are selectable or not. 
+		</long>
+		<example>
+         <simpara>selectable 1</simpara>
+         <simpara>selectable 0 all</simpara>
+        </example>
+		<notes>
+			<note> First set active layer with setlayer 
+			</note>
+		</notes>
+		<relations> 
+			<relation link="setlayer">setlayer</relation>
+			<relation link="name">name</relation>
+			<relation link="visible">visible</relation>
+			<relation link="fillcolor">fillcolor</relation>
+			<relation link="brush">brush</relation>
+			<relation link="order">order</relation>
+		</relations>
+		<catagories>
+			<catagorie>layers</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>bordercolor</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>bordercolor r g b </simpara>
+            <simpara>r g and b are in [0..255] </simpara>
+        </syntax>
+		<short>  Set layer border color    
+		</short> 
+		<long>
+			Defines the border color of the selected layer. This determines color of the borders
+            around polygons and the color of text. 
+		</long>
+		<example>
+         <simpara>bordercolor 0 0 0 </simpara>
+         <simpara>bordercolor 0 255 0 </simpara>
+        </example>
+		<notes>
+			<note> First set active layer with setlayer 
+			</note>
+		</notes>
+		<relations> 
+			<relation link="setlayer">setlayer</relation>
+			<relation link="name">name</relation>
+			<relation link="visible">visible</relation>
+			<relation link="bordercolor">bordercolor</relation>
+			<relation link="fillcolor">fillcolor</relation>
+			<relation link="brush">brush</relation>
+			<relation link="order">order</relation>
+		</relations>
+		<catagories>
+			<catagorie>layers</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>fillcolor</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>fillcolor r g b </simpara>
+            <simpara>r g and b are in [0..255] </simpara>
+        </syntax>
+		<short>  Set layer border color    
+		</short> 
+		<long>
+			Defines the fill color of the selected layer. This determines the color with which
+            polygons are filled. 
+		</long>
+		<example>
+         <simpara>fillcolor 0 0 0 </simpara>
+         <simpara>fillcolor 0 255 0 </simpara>
+        </example>
+		<notes>
+			<note> First set active layer with setlayer 
+			</note>
+		</notes>
+		<relations> 
+			<relation link="setlayer">setlayer</relation>
+			<relation link="name">name</relation>
+			<relation link="visible">visible</relation>
+			<relation link="bordercolor">bordercolor</relation>
+			<relation link="brush">brush</relation>
+			<relation link="order">order</relation>
+		</relations>
+		<catagories>
+			<catagorie>layers</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>brush</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>brush &lt;brush_nr&gt;</simpara>
+            <simpara>&lt;brush_nr&gt; is in [0..64] </simpara>
+        </syntax>
+		<short> Set layer brush   
+		</short> 
+		<long>
+			Selects the fill pattern of the selected layer. This determines how polygons are filled
+            on the screen. 
+		</long>
+		<example>
+         <simpara>brush 23</simpara>
+        </example>
+		<notes>
+			<note> First set active layer with setlayer 
+			</note>
+		</notes>
+		<relations> 
+			<relation link="setlayer">setlayer</relation>
+			<relation link="name">name</relation>
+			<relation link="visible">visible</relation>
+			<relation link="bordercolor">bordercolor</relation>
+			<relation link="fillcolor">fillcolor</relation>
+			<relation link="order">order</relation>
+		</relations>
+		<catagories>
+			<catagorie>layers</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>viewstructure</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>viewstructure &lt;structure_name&gt;</simpara>
+        </syntax>
+		<short> Set View Structure    
+		</short> 
+		<long>
+			Select a structure to make visible on the screen. All operations work on the visible
+            structure. 
+		</long>
+		<example>
+         <simpara>viewstructure "nameofstructure"</simpara>
+        </example>
+		<notes>
+			<note> A file must be in memory, and the structure must be available. 
+			</note>
+		</notes>
+		<catagories>
+			<catagorie>display</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>drawoutline</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>drawoutline  &lt;0&gt;|&lt;1&gt;</simpara>
+        </syntax>
+		<short> Set fill polygons on/off.    
+		</short> 
+		<long>
+			Drawoutline sets the option to Draw-only the outlines of the drawing, i.e. not to fill
+            the primitives. 
+		</long>
+		<example>
+         <simpara>drawoutline 1</simpara>
+        </example>
+		<notes>
+			<note>If the polygons are visible but not filled, check the fill- color and pattern.  
+			</note>
+		</notes>
+		<catagories>
+			<catagorie>display</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>showcoords</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>showcoords &lt;0&gt;|&lt;1&gt;</simpara>
+        </syntax>
+		<short> Set show coordinates on/off.    
+		</short> 
+		<long>
+			Select if the mouse coordinates are shown in the statusbar. 
+		</long>
+		<example>
+         <simpara>showcoords 1</simpara>
+        </example>
+		<catagories>
+			<catagorie>display</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>showgrid</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>showgrid &lt;0&gt;|&lt;1&gt;</simpara>
+        </syntax>
+		<short> Show grid on screen.    
+		</short> 
+		<long>
+			Shows the grid on the screen using the gridsettings. 
+		</long>
+		<example>
+         <simpara>showgrid 1</simpara>
+        </example>
+		<relations> 
+			<relation link="gridspace">gridspace</relation>
+			<relation link="gridcolour">gridcolour</relation>
+			<relation link="gridplacement">gridplacement</relation>
+		</relations>
+		<catagories>
+			<catagorie>display</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>gridspace</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>gridspace &lt;number&lt; [&lt;unit&lt;]</simpara>
+			<simpara>&lt;unit&lt; in: pm, nm, um, mm, cm, dm, m, e, inch, ft </simpara>
+        </syntax>
+		<short> Show grid on screen.    
+		</short> 
+		<long>
+			Specifies the distance between points, drawn as single pixels, horizontal and
+            vertical. 
+		</long>
+		<notes>
+			<note>
+				When showgrid is on, call draw, to draw grid with the new settings. 
+			</note>
+		</notes>
+		<example>
+         <simpara>gridspace {5 mm} </simpara>
+        </example>
+		<relations> 
+			<relation link="showgrid">showgrid</relation>
+			<relation link="gridcolour">gridcolour</relation>
+			<relation link="gridplacement">gridplacement</relation>
+		</relations>
+		<catagories>
+			<catagorie>display</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>gridcolour</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>gridcolour &lt;r&gt; &lt;g&gt; &lt;b&gt;</simpara>
+			<simpara>&lt;r&gt; &lt;g&gt; &lt;b&gt; are in [0..255]</simpara>
+        </syntax>
+		<short> Specify the colour of grid points    
+		</short> 
+		<long>Specifies the colour of gridpoints on the screen on white background. 
+		</long>
+		<notes>
+			<note>
+			When showgrid is on, call draw to draw grid with the new settings. 
+			</note>
+		</notes>
+		<example>
+         <simpara>gridcolour 0 255 125</simpara>
+        </example>
+		<relations> 
+			<relation link="showgrid">showgrid</relation>
+			<relation link="gridspace">gridspace</relation>
+			<relation link="gridplacement">gridplacement</relation>
+		</relations>
+		<catagories>
+			<catagorie>display</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>gridplacement</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>gridplacement &lt;0&gt; | &lt;1&gt;</simpara>
+        </syntax>
+		<short> Specify the place of the grid     
+		</short> 
+		<long>
+			Specifies the place of the grid. When this value is 0, the grid is drawn on the
+            background. When 1, the grid is drawn on the foreground.
+		</long>
+		<notes>
+			<note>
+			When showgrid is on, call draw to draw grid with the new settings. 
+			</note>
+		</notes>
+		<example>
+         <simpara>gridplacement 1</simpara>
+        </example>
+		<relations> 
+			<relation link="showgrid">showgrid</relation>
+			<relation link="gridspace">gridspace</relation>
+			<relation link="gridcolour">gridcolour</relation>
+		</relations>
+		<catagories>
+			<catagorie>display</catagorie>
+		</catagories>
+	</command>
+
+
+	<command>
+		<name>zoom</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>
+            zoom &lt;x_min&gt; &lt;y_min&gt; &lt;x_max&gt; &lt;y_max&gt; 
+			</simpara>
+        </syntax>
+		<short> zoom in/out     
+		</short> 
+		<long>
+			Zoom to the selected rectangle given in database units. 
+		</long>
+		<example>
+         <simpara>zoom 3423.038632 16262.008107 7657.606047 13039.112088</simpara>
+        </example>
+		<relations> 
+			<relation link="zoomback">zoomback</relation>
+			<relation link="zoomout">zoomout</relation>
+			<relation link="zoomout2">zoomout2</relation>
+		</relations>
+		<catagories>
+			<catagorie>display</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>zoomback</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>
+            zoomback 
+			</simpara>
+        </syntax>
+		<short> zoom to prev zoom area     
+		</short> 
+		<long>
+			Zoom to the previous zooming coordinates from the zoom history. 
+		</long>
+		<example>
+         <simpara>zoomback</simpara>
+      </example>
+		<relations> 
+			<relation link="zoom">zoom</relation>
+			<relation link="zoomout">zoomout</relation>
+			<relation link="zoomout2">zoomout2</relation>
+		</relations>
+		<catagories>
+			<catagorie>display</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>zoomout</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>
+            zoomout 
+			</simpara>
+        </syntax>
+		<short> zoom to full drawing     
+		</short> 
+		<long>
+				Zoom to the first zooming coordinates in the zoom history,
+				this selects full view of the current structure. 
+		</long>
+		<example>
+         <simpara>zoomout</simpara>
+      </example>
+		<relations> 
+			<relation link="zoom">zoom</relation>
+			<relation link="zoomout2">zoomout2</relation>
+			<relation link="zoomback">zoomback</relation>
+		</relations>
+		<catagories>
+			<catagorie>display</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>zoomout2</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>
+            zoomout2 
+			</simpara>
+        </syntax>
+		<short> zoom out 2 times current size
+		</short> 
+		<long>
+				zoom out 2 times current size, enables to zoomout to extend beyond the boundingbox
+				of the full drawing.
+		</long>
+		<example>
+         <simpara>zoomout2</simpara>
+      </example>
+		<relations> 
+			<relation link="zoom">zoom</relation>
+			<relation link="zoomout">zoomout</relation>
+			<relation link="zoomback">zoomback</relation>
+		</relations>
+		<catagories>
+			<catagorie>display</catagorie>
+		</catagories>
+	</command>
+
+
+	<command>
+		<name>select</name>
+		<menu>non</menu>
+		<syntax> 
+			<simpara>To (de)select an area:</simpara>
+           <simpara>select &lt;x_min&gt; &lt;y_min&gt; &lt;x_max&gt; &lt;y_max&gt; &lt;mode&gt; </simpara>
+			<simpara>To (de)select at a point:</simpara>
+           <simpara>select &lt;x&gt; &lt;y&gt; &lt;mode&gt; </simpara>
+			<simpara>To (de)select all:</simpara>
+           <simpara>select all &lt;mode&gt; </simpara>
+           <simpara>&lt;mode&gt;= true : select mode </simpara>
+           <simpara>&lt;mode&gt;= false: deselect mode </simpara>
+        </syntax>
+		<short> selection of elements     
+		</short> 
+		<long>
+            Selects elements (also references) in specified area or at given point.
+            With point selection the elements are selected inside out (smallest first).
+            In deselection mode this is the same. 
+		</long>
+		<example>
+         <simpara>select 0 0 1000 2000 true </simpara>
+         <simpara>select 1000 2000 false  </simpara>
+         <simpara>select all true </simpara>
+        </example>
+		<relations> 
+			<relation link="selectmarge">selectmarge</relation>
+		</relations>
+		<catagories>
+			<catagorie>display</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>clearscreen</name>
+		<menu>non</menu>
+		<syntax> 
+          <simpara>clearscreen &lt;rgb&gt;</simpara>
+			<simpara>&lt;rgb&gt; is the color value </simpara>
+        </syntax>
+		<short> clear the screen     
+		</short> 
+		<long>Clearscreen fills the screen with color &lt;rgb&gt;. 
+		</long>
+		<example>
+         <simpara>clearscreen 16777215</simpara>
+         <simpara>clearscreen 0</simpara>
+        </example>
+		<catagories>
+			<catagorie>display</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>draw</name>
+		<menu>non</menu>
+		<syntax> 
+          <simpara>draw</simpara>
+        </syntax>
+		<short> draw what is in memory     
+		</short> 
+		<long> Clear the screen and then redraws the drawing. 
+		</long>
+		<example>
+         <simpara>draw</simpara>
+        </example>
+		<catagories>
+			<catagorie>display</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>print</name>
+		<menu>non</menu>
+		<syntax> 
+          <simpara>print</simpara>
+        </syntax>
+		<short> print screen     
+		</short> 
+		<long>  Print what's on the screen. 
+		</long>
+		<example>
+         <simpara>print</simpara>
+        </example>
+		<catagories>
+			<catagorie>display</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>startpoint</name>
+		<menu>non</menu>
+		<syntax> 
+          <simpara>startpoint &lt;x&gt; &lt;y&gt; </simpara>
+        </syntax>
+		<short> Sets the relative startpoint 
+		</short> 
+		<long>    
+			Sets the relative startpoint to the selected coordinates. Used for calculating
+            distance with relative points. 
+		</long>
+		<example>
+         <simpara>startpoint -1000 -1500 </simpara>
+        </example>
+		<relations> 
+			<relation link="relativepoint">relativepoint</relation>
+		</relations>
+		<catagories>
+			<catagorie>display</catagorie>
+			<catagorie>measure</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>relativepoint</name>
+		<menu>non</menu>
+		<syntax> 
+          <simpara>relativepoint &lt;x&gt; &lt;y&gt; </simpara>
+        </syntax>
+		<short> Sets the relative endpoint
+		</short> 
+		<long> Sets the relative endpoint to the selected coordinates. Used for calculating distance
+            to startpoint.  
+			When a relative point is defined, the 'distance' dialog appears (if it's not on the
+            screen already). The properties calculated are: dx, dy, distance between start and
+            endpoints and the angle of the line between the points.  
+		</long>
+		<example>
+         <simpara>relativepoint 1200 -1500</simpara>
+        </example>
+		<relations> 
+			<relation link="relativepoint">relativepoint</relation>
+		</relations>
+		<catagories>
+			<catagorie>display</catagorie>
+			<catagorie>measure</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>addfile</name>
+		<menu>non</menu>
+		<syntax> 
+          <simpara>addfile &lt;filename&gt; &lt;filetype&gt;</simpara>
+        </syntax>
+		<short> adds a file to the file history
+		</short> 
+		<long> 
+            This command adds a file to the file history. Maximum no. is 10 files, the 10th pushes
+            out the 1st. added 
+		</long>
+		<example>
+         <simpara>addfile /usr/users/pc/guest/hahohihuhe.cal gds-ii</simpara>
+        </example>
+		<catagories>
+			<catagorie>files</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>pause</name>
+		<menu>non</menu>
+		<syntax> 
+          <simpara>pause &lt;test to show&gt;</simpara>
+        </syntax>
+		<short>stops a process file
+		</short> 
+		<long> This function shows a dialog with a message. Pressing &lt;Enter&gt; continues
+            processing. Pause without a text shows a default message. 
+		</long>
+		<example>
+         <simpara>pause "This is a great opportunity to get a cup of java!" </simpara>
+         <simpara>pause %{message_inside_alias} </simpara>
+        </example>
+		<catagories>
+			<catagorie>automation</catagorie>
+		</catagories>
+	</command>
+
+	<command>
+		<name>exit</name>
+		<menu>non</menu>
+		<syntax> 
+          <simpara>exit</simpara>
+        </syntax>
+		<short>exit program
+		</short> 
+		<long> 
+			Close data- and process-file(s) and exits program, 
+			usefull from a process file.
+		</long>
+		<example>
+         <simpara>exit</simpara>
+        </example>
+		<catagories>
+			<catagorie>automation</catagorie>
+		</catagories>
+	</command>
+
+</commands>
+

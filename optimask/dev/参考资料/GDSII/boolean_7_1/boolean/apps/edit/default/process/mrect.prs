@@ -1,0 +1,6 @@
+keystring {BOUNDARY; LAYER 0;  DATATYPE 0;  \
+   XY 5; \
+   X      -8.375; Y      -32.270;   X       7.355; Y      -32.270;   \
+   X       7.355; Y       37.170;   X      -8.375; Y       37.170;   \
+   X      -8.375; Y      -32.270; \
+ENDEL;}

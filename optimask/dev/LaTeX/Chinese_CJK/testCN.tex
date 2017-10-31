@@ -1,0 +1,21 @@
+%Windows英文系统LaTex中文设置 %https://tumutanzi.com/archives/1988
+%办公室电脑是Windows 7 英文操作系统，未自行安装任何中文字体。为了能够在MiKTeX中处理LaTex中文文档，下面是博主亲自试验并总结的简单方法：
+%将MiKTeX2.8安裝完毕后，在Package Manager中安装cjk,cjk-font与arphic三个package包即可。
+%示例代码：
+
+\documentclass[a4paper]{article}
+\usepackage{CJKutf8}
+\begin{document}
+\begin{CJK}{UTF8}{bsmi}
+這是一個中文繁體明體測試。
+\end{CJK}
+\begin{CJK}{UTF8}{bkai}
+這是一個中文繁體楷體測試。
+\end{CJK}
+\begin{CJK}{UTF8}{gkai}
+这是一个中文简体楷体测试。
+\end{CJK}
+\begin{CJK}{UTF8}{gbsn}
+这是一个中文简体宋体测试。
+\end{CJK}
+\end{document}

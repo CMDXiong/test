@@ -1,0 +1,9 @@
+! This file was created during SETUP.  ICICON needs the information it
+! contains to modify the system's PATH and create the ICED_HOME path
+! environment variable.  The ICED_HOME path finds its way into a number of
+! other environment variables.  If you are tempted to modify this file, make
+! a backup first and be prepared for all sorts of "Could not open..." errors
+! if you make a mistake.
+!
+IC_DIST="c:\icwin"
+IC_USER="c:\icwin"

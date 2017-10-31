@@ -1,0 +1,150 @@
+<html>
+   <head>
+      <title>Formatting Object Table Reference</title>
+      <link rel="stylesheet" href="../reference.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.22">
+   </head>
+   <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="reference">
+         <div class="titlepage">
+            <h1 class="title"><a name="c38a"></a>Formatting Object Table Reference
+            </h1>
+            <h3 class="author">Norman Walsh</h3><span class="releaseinfo">
+               $Id: table.xsl,v 1.4 2000/10/19 20:54:34 ndw Exp $
+               <br></span><p class="copyright"><a href="../copyright.html">Copyright</a> &copy; 1999, 2000 by Norman Walsh. <a href="../warranty.html">No Warranty</a>.
+            </p>
+            <hr>
+         </div>
+         <div class="partintro">
+            <div id="c38ab2a" class="section">
+               <div class="titlepage">
+                  <h2 class="title" style="clear: all"><a name="c38ab2a"></a>Introduction
+                  </h2>
+               </div>
+               <p>This is technical reference documentation for the DocBook XSL
+                  Stylesheets; it documents (some of) the parameters, templates, and
+                  other elements of the stylesheets.
+               </p>
+               <p>This is not intended to be &#8220;user&#8221; documentation.
+                  It is provided for developers writing customization layers for the
+                  stylesheets, and for anyone who's interested in &#8220;how it
+                  works&#8221;.
+               </p>
+               <p>Although I am trying to be thorough, this documentation is known
+                  to be incomplete. Don't forget to read the source, too :-)
+               </p>
+            </div>
+         </div>
+         <div class="toc">
+            <p><b>Table of Contents</b></p>
+            <dl>
+               <dt><a href="#template.calc.column.width">calc.column.width</a></dt>
+            </dl>
+         </div>
+         <hr>
+         <div class="refentry">
+            <h1 class="title"><a name="template.calc.column.width">calc.column.width</a></h1>
+            <div class="refnamediv"><a name="c38ab3a"></a><h2>Name</h2>calc.column.width &#8212; Calculate an XSL FO table column width specification from a
+               CALS table column width specification.
+            </div>
+            <div class="refsynopsisdiv"><a name="c38ab3b1"></a><h2>Synopsis</h2>
+               <div class="synopsis" id="c38ab3b1a"><a name="c38ab3b1a"></a><pre class="">&lt;xsl:template name="calc.column.width">
+&lt;xsl:param name="colwidth">1*&lt;/xsl:param>
+  ...
+&lt;/xsl:template></pre></div>
+            </div>
+            <div class="refdescription"><a name="c38ab3b2"></a>
+               
+               
+               <p>CALS expresses table column widths in the following basic
+                  forms:
+               </p>
+               
+               
+               
+               
+               <div class="itemizedlist">
+                  <ul>
+                     <li><a name="c38ab3b2b3a"></a><p><i>99.99units</i>, a fixed length specifier.
+                        </p>
+                     </li>
+                     <li><a name="c38ab3b2b3b1"></a><p><i>99.99</i>, a fixed length specifier without any units.
+                        </p>
+                     </li>
+                     <li><a name="c38ab3b2b3b2"></a><p><i>99.99*</i>, a relative length specifier.
+                        </p>
+                     </li>
+                     <li><a name="c38ab3b2b3b3"></a><p><i>99.99*+99.99units</i>, a combination of both.
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+               
+               
+               
+               
+               <p>The CALS units are points (pt), picas (pi), centimeters (cm),
+                  millimeters (mm), and inches (in). These are the same units as XSL,
+                  except that XSL abbreviates picas "pc" instead of "pi". If a length
+                  specifier has no units, the CALS default unit (pt) is assumed.
+               </p>
+               
+               
+               
+               
+               <p>Relative length specifiers are represented in XSL with the
+                  proportional-column-width() function.
+               </p>
+               
+               
+               
+               
+               <p>Here are some examples:</p>
+               
+               
+               
+               
+               <div class="itemizedlist">
+                  <ul>
+                     <li><a name="c38ab3b2c11a"></a><p>"36pt" becomes "36pt"</p>
+                     </li>
+                     <li><a name="c38ab3b2c11b1"></a><p>"3pi" becomes "3pc"</p>
+                     </li>
+                     <li><a name="c38ab3b2c11b2"></a><p>"36" becomes "36pt"</p>
+                     </li>
+                     <li><a name="c38ab3b2c11b3"></a><p>"3*" becomes "proportional-column-width(3)"</p>
+                     </li>
+                     <li><a name="c38ab3b2c11b4"></a><p>"3*+2pi" becomes "proportional-column-width(3)+2pc"</p>
+                     </li>
+                     <li><a name="c38ab3b2c11b5"></a><p>"1*+2" becomes "proportional-column-width(1)+2pt"</p>
+                     </li>
+                  </ul>
+               </div>
+               
+               
+            </div>
+            <div class="refparameter"><b><a name="c38ab3b3"></a>Parameters</b>
+               
+               
+               <div class="variablelist">
+                  <dl>
+                     <dt><a name="c38ab3b3b1a"></a><span class="term">colwidth</span></dt>
+                     <dd>
+                        <p>The CALS column width specification.</p>
+                     </dd>
+                  </dl>
+               </div>
+               
+               
+            </div>
+            <div class="refreturn"><b><a name="c38ab3b4"></a>Returns</b>
+               
+               
+               <p>The XSL column width specification.</p>
+               
+               
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<root>
+  <member>
+    10
+  </member>
+  <sub>1.0</sub>
+  <isub>-100</isub>
+  <sub>-2.5</sub>
+  <child><t> Text </t><d>2.5</d><d>1e-3</d></child>
+  <child><t>T2</t></child>
+</root>

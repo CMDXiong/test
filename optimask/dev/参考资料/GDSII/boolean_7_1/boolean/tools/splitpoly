@@ -1,0 +1,34 @@
+# This script or function breaks coordinates in pieces
+# for klaas. It automatically generates files (aap?.key)
+# corresponding to the number of polygons.
+# use of this script :
+# splitpoly <filename>
+cat $1 |awk 'BEGIN {poly=0; prlngth=0; lngth=0;polynr=0;aap=0 }
+		/oly/ {	poly=poly +1;	
+			lngth=NR-prlngth;
+			prlngth=NR;			
+			if (poly>1){
+				polynr=poly-1;
+				polylength["poly"polynr]=lngth;
+				print "XY "lngth>>file
+			}
+		       }
+		{if (poly==aap) {
+			file = "aap"aap".key";
+			printf "x %s; y %s;\n", $1 , $2 > file 
+		}else{
+			aap = aap+1
+			}
+		}
+		END {	lngth=NR-prlngth;
+			polynr=polynr+1;
+			polylength["poly"polynr]=lngth;
+			print "XY "lngth>>file;
+			print "there are " poly " polygons";
+			totlngth =0;
+			for(p in polylength){
+				print p, "with length",polylength[p];
+				totlngth = totlngth + polylength[p]
+				}
+			print "total length = "totlngth;
+			}'

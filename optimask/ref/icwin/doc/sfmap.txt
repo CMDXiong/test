@@ -1,0 +1,157 @@
+SFMAP renames structures in a Stream (Calma GDSII) file.
+
+Command line syntax:
+
+SFMAP [input_stream_file [output_stream_file]] ([map_file] | /L | /U | /H)
+                         
+The input_stream_file, output_stream_file and map_file names can include a 
+directory name.  Their default extensions are .SF, .SF, and .MAP, respectively.
+SFMAP will prompt you for any required file names you do not include in the
+command line.
+
+SFMAP reads the input_stream_file and writes a new output_stream_file with 
+modified structure names.  The input_stream_file and output_stream_file names
+CANNOT be the same. 
+
+You may specify at most one of the following flags:
+
+      /H     Display a Help message and exit.
+      /L     Convert all structure names to Lower case.
+      /U     Convert all structure names to Upper case.
+
+Examples:
+
+          SFMAP design1 design2 /L
+
+SFMAP will read design1.sf and write design2.sf.  All structure names in 
+design2.sf will be forced to lower case.  Otherwise the files will be 
+identical.
+
+          SFMAP /U
+
+SFMAP will prompt you for an the input and output stream file names.  All
+structure names in the output stream file will be forced to upper case.
+
+If you do not specify a flag, SFMAP modifies the structure names listed in a
+map file.  The map file is normally prepared by UNSTREAM.  It can be modified 
+with a text editor.  If there are structure names in the input stream file 
+that are not listed in the map file, SFMAP will generate a warning but the 
+output stream file will still be created.
+
+A map file consists of map lines, blank lines, and comments.  
+
+Map lines have the form:
+
+        M: input_structure_name output_structure_name 
+or
+        M: structure_name 
+
+The first form specifies that SFMAP should replace all references to 
+input_structure_name in the input stream file by references to 
+output_structure_name in the output_stream file.  
+
+The second form specifies that SFMAP should not modify references to
+structure_name.  It is used to prevent SFMAP from generating a warning that 
+structure_name was not listed in the map file.
+
+SFMAP uses C-style escape sequences to unprintable, non-standard or special
+characters in structure names.  All escape sequences start with a backslash 
+(\).  Unprintable or non-standard characters are represented by a backslash 
+followed by three octal digits.  Exclamation points (!) are represented by a 
+backslash-exclamation point.  Blanks are represented by a backslash-blank.  
+Commas (,) are represented by a backslash-comma.  Finally, the backslash 
+itself is represented by a backslash-backslash (\\).  Contact technical 
+support if you need help interpreting or creating escape sequences.
+
+Comments start with an exclamation point and continue to the end of the line.
+They can start at the beginning of a line or after the end of a map line.
+SFMAP ignores blank lines and comments.
+  
+EXAMLPE:
+
+    M: FLIP_FLOP flip\ flop\! ! Illustrates escape sequences and comments
+
+will cause SFMAP to replace all references to the structure "FLIP_FLOP" with
+references to "flip flop!".
+
+Background: 
+
+ICED tries to follow the original Calma GDSII conventions in naming cells.  (A 
+CELL in ICED is called a STRUCTURE in Calma GDSII.)  Those conventions allowed
+letters, digits, underscores (_), dollar signs ($), and question marks (?) in
+structure names.  (Because Microsoft's operating systems do not allow question 
+marks in file names, ICED replaces question marks in structure names with 
+pound signs.  ICED converts pound signs back to question marks when it writes
+a Stream file.)  While the old Calma systems allowed both upper and lower case 
+letters in structure names, they were case independent.  (FLIPFLOP, flipflop, 
+and FlipFlop all represented the same structure.)  ICED insures case 
+independence by converting all letters in cell names to upper case.
+
+Newer, typically UNIX based, systems tend to allow a much wider variety of 
+characters in structure names and make case significant.  (FLIPFLOP, flipflop, 
+and FlipFlop represent three different structures.)
+
+Now consider the problem faced by a user who must modify a design created on
+a UNIX based system.  He gets the original design in the form of a Stream 
+file.  He uses UNSTREAM to import the data.  During this process he uses an 
+"alias" file to convert the Stream file structure names to valid ICED cell 
+names.  When he is done modifying the design, wants to create a Stream file 
+that will be exported to the UNIX system.  He should restore the original 
+Stream file structure names.  The UNSTREAM and SFMAP utilities work together 
+to do this.
+
+Using UNSTREAM and SFMAP together:
+
+The second pass of UNSTREAM (version 1.11 or later) can create a map file.
+This file is created whenever any Stream file structure names are modified in
+creating ICED cell names. (The conversion of the question mark to a pound 
+sign does not trigger creation of a map file.)  If the Stream file was named 
+design.SF the map file will be named design.MAP.  Suppose you have 
+imported a design, deisgn.SF, using UNSTREAM; modified it using ICED; and 
+created a new Stream file, design1.SF.  You can use the SFMAP utility to 
+create yet another .SF file, design2.SF, with the original structure names.  
+The command to do this will be of the form:
+
+           SFMAP design1.SF design2.SF design.MAP
+
+or more briefly:
+
+               SFMAP design1 design2 design
+
+since default extensions will be supplied by SFMAP.
+
+You can modify the mapping file with a text editor.  Thus, if in the process 
+of modifying the design, you created a new a cell FLIP_FLOP, and your the 
+design team's naming conventions require a name like FlipFlop, you can add a 
+the line:
+
+           M: FLIPFLOP  FlipFlop
+
+to the mapping file.  Indeed, SFMAP will warn you if there are any structures
+in the Stream file that were not listed in the mapping file.  This warning can 
+serve as a reminder to add the appropriate lines to the mapping file.
+
+Restating the procedure:
+
+Step 1:  Use the UNSTREAM utility to convert the original design, design.SF, 
+         to .CEL files.  Make sure to save the .MAP file, design.MAP.
+
+Step 2:  Use ICED to modify the design.
+
+Step 3:  Use ICED to create a new .SF file, design1.SF.
+
+Step 4:  Create design2.SF by running the SFMAP utility with a line like:
+
+                     SFMAP design1 design2 design
+
+         Watch for warning messages about unlisted structure names.  If the 
+         are any warnings, they will be displayed on the screen AND recorded 
+         in the file design.ERR.
+
+IF THERE WERE WARNINGS:
+
+Step 5   Use a text editor to add the appropriate lines to design.MAP.  
+         Instructions are included in the mapping file.
+
+Step 6   Rerun SFMAP.
+

@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="kholwerda">
+  <meta name="GENERATOR"
+ content="Mozilla/4.5 [en] (WinNT; I) [Netscape]">
+  <title>install</title>
+</head>
+<body>
+<h1>Boolean Install</h1>
+<h3>Problems</h3>
+Contact me at <font color="#3366ff">ngi@klaasholwerda.nl</font><br>
+<br>
+I did test on:<br>
+<ul>
+  <li>windows XP and NT </li>
+  <li>Linux using Redhat fedora 2<br>
+  </li>
+  <li>Solaris</li>
+</ul>
+I am interested to know on which other platform you succeed to run
+boolean.<br>
+<h3>Unzip distribution</h3>
+UnZip the distribution in any directory you like.<br>
+&nbsp;I assume from now on that on windows you use <i><font
+ color="#3366ff">
+c:/tools/boolea</font>n</i> or <font color="#3366ff"><i>/usr/tools/boolean</i></font>
+on Unix.<br>
+The boolean distribuation contains one Module called <b>kbool</b>
+which is
+the algorithm to perform boolean operation. The Application called <b>edit</b>
+is to read, edit and save files. Within <b>edit</b> the <b>kbool</b>
+module
+is used for performing boolean operations<br>
+on layers.<br>
+<h3>Install wxWidgets</h3>
+The wxWidgets libary is used for the Graphical User Interface within
+the
+Boolean package.<br>
+In case you are going to compile yourself or you are using the dynamic
+linked wxWidgets library, you first need &nbsp;to install the wxWidgets
+library
+which can be downloaded here <a href="http://www.wxwidgets.org">http://www.wxWidgets.org</a>
+<br>
+On Unix i used wxGTK sofar. Since wxGTK uses&nbsp; GTK/GLIB libraries
+internal,
+it might be necessary to also install those.<br>
+i recommend using Gtk2 as a start, this option is on by default.<br>
+I tested with wxWidgets 2.6.2, and i suggest to always used the latest
+in
+case of problems.<br>
+<h3>Download Cmake</h3>
+<p>If you want to compile Boolean yourself, download and install cmake
+to
+be found at <a href="http://www.cmake.org">http://www.cmake.org.<br>
+</a>
+If you do not need to compile because you downloaded the binary, skip
+this
+step.<a href="http://www.cmake.org"><br>
+</a>
+</p>
+<p>Cmake is used to generate: <br>
+</p>
+<ul>
+  <li>VC project files or </li>
+  <li>nmake files or </li>
+  <li>Borland files make or </li>
+  <li>Unix make files</li>
+</ul>
+<h4>On Windows</h4>
+Just run CMakeSetup on windows click on the line "Where is the source
+installed"
+and browse to where you installed boolean.<br>
+In our case&nbsp; <font color="#3366ff"><i>c:/tools/boolean</i></font>
+and
+on the line "Where to build binaries" and browse to where you installed
+boolean.<br>
+(this maybe be any other directory also, e.g. <font color="#3366ff"><i>c:/tools/boolean</i></font><font
+ color="#3366ff"><i>
+/VCprojects</i></font>.)<br>
+Choose in the "Build for line" the type of build you want to use.<br>
+Now click the button configure twice, and check the path to where your
+wxWidgets
+distribution was installed.<br>
+You can change them by hand if needed.<br>
+Last click on Ok.<br>
+Go into the directory you used for the build and type ( <font
+ color="#3366ff">
+nmake</font> for Visual C&nbsp; ).<br>
+In case of generating project files, open those instead.<br>
+<h4>On Unix</h4>
+Make sure <font color="#3366ff">wx-config</font> can be found, using
+the
+command <font color="#3366ff">which wx-config</font>. If not extend
+the path
+to include<br>
+the path to the place where wxWidgets was installed. The default place
+is
+<font color="#3366ff">/usr/local/bin/wx-config</font>.<br>
+Just type <font color="#3366ff">cmake</font> within the directory
+where you
+installed the Boolean package.<br>
+After that type <font color="#3366ff">make </font>or<font
+ color="#3366ff"> gmake.</font><br>
+<h3>Environment variables</h3>
+The Boolean Application called <b>edit</b> uses two environment
+variables.<br>
+<ul>
+  <li><font color="#ff0000">GDSROOT</font> needs to be defined in order
+for
+boolean to find its settings</li>
+  <li><font color="#ff0000">HOME</font> needs to be defined for boolean
+in
+order to save user changes.</li>
+</ul>
+In our example case this means:<br>
+<ul>
+  <li><font color="#ff0000">GDSROOT</font> needs to point to <font
+ color="#3366ff"><i>
+c:/tools/boolean</i></font><font color="#3366ff"><i>/apps/edit</i></font>
+or on Unix <font color="#3366ff"><i>/usr/tools/boolean/</i></font><font
+ color="#3366ff"><i>
+apps/edit</i></font></li>
+  <li><font color="#ff0000">HOME</font> may point to any place, but in
+that
+place you need to copy<i> </i>the following directory and its contents
+    <font color="#3366ff"><i>
+c:/tools/boolean</i></font><font color="#3366ff"><i>/apps/edit</i></font><font
+ color="#3366ff"><i>
+/gdsuser</i></font>.</li>
+</ul>
+On unix as well PC, $HOME is used to overrule the default configuration
+found
+in $(GDSROOT)/gdsuser.<br>
+<br>
+When running Boolean its edit application on Unix, edit is linked
+dynamically&nbsp;
+to the wxWidgets library.<br>
+Therefore edit needs to be able to find the installed&nbsp; wxWidgets
+library.
+Often this is already<br>
+arranged in the environment.&nbsp; In case of problems set the
+following
+variable to point to the place where<br>
+the wxWidgets libraryies recide (the default is in /usr/local/lib).<br>
+<ul>
+  <li><font color="#ff0000">LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH</font>
+&nbsp;</li>
+  <li><font color="#ff0000">export</font> <font color="#ff0000">LD_LIBRARY_PATH</font></li>
+</ul>
+<h3>Scripts</h3>
+The two scripts in <br>
+<font color="#3366ff"><i><font>c:/tools/boolean</font></i></font><font
+ color="#3366ff"><i><font>
+/</font></i></font><font color="#3366ff"><i>bin</i></font> or <font
+ color="#3366ff"><i><font>
+/usr/tools/boolean/</font></i></font><font color="#3366ff"><i>bin</i></font>
+show how you can easily setup starting the <b>edit</b> application.<br>
+<br>
+<br>
+</body>
+</html>

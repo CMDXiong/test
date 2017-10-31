@@ -1,0 +1,65 @@
+<html><head><title>A brief introduction to XSL</title><link rel="stylesheet" href="reference.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.22"><link rel="home" href="index.html" title="DocBook XSL Stylesheet Documentation"><link rel="up" href="ch01.html" title="1. DocBook XSL"><link rel="previous" href="ch01.html" title="1. DocBook XSL"><link rel="next" href="ch01s03.html" title="XSL processing model"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div id="c38ab2b3" class="sect1"><div class="titlepage"><h2 class="title" style="clear: all"><a name="c38ab2b3"></a>A brief introduction to XSL</h2></div><p>XSL is both a transformation language and a
+ formatting language. The XSLT transformation part lets you
+ scan through a document's structure and rearrange its
+ content any way you like. You can write out the content
+ using a different set of XML tags, and generate text as
+ needed. For example, you can scan through a document to
+ locate all headings and then insert a generated table of
+ contents at the beginning of the document, at the same time
+ writing out the content marked up as HTML. XSL is also a
+ rich formatting language, letting you apply typesetting
+ controls to all components of your output. With a good
+ formatting backend, it is capable of producing high quality
+ printed pages.</p><p>An XSL stylesheet is written using XML syntax, and is
+ itself a well-formed XML document. That makes the basic
+ syntax familiar, and enables an XML processor to check for
+ basic syntax errors. The stylesheet instructions use
+ special element names, which typically begin with
+ <tt>xsl:</tt> to distinguish them from any XML
+ tags you want to appear in the output. The XSL namespace is
+ identified at the top of the stylesheet file. As with other
+ XML, any XSL elements that are not empty will require a
+ closing tag. And some XSL elements have specific attributes
+ that control their behavior. It helps to keep a good XSL
+ reference book handy.</p><p>Here is an example of a simple XSL stylesheet applied
+ to a simple XML file to generate HTML output.</p><div class="example"><p><a name="c38ab2b3b4"></a><b>Example 1.1. Simple XML file</b></p><pre class="programlisting">&lt;?xml version="1.0"?>
+&lt;document>
+&lt;title>Using a mouse&lt;/title>
+&lt;para>It's easy to use a mouse. Just roll it
+around and click the buttons.&lt;/para>
+&lt;/document></pre></div><div class="example"><p><a name="c38ab2b3b5"></a><b>Example 1.2. Simple XSL stylesheet</b></p><pre class="programlisting">&lt;?xml version='1.0'?>
+&lt;xsl:stylesheet
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version='1.0'>
+&lt;xsl:output method="html"/>
+
+&lt;xsl:template match="document">
+  &lt;HTML>&lt;HEAD>&lt;TITLE>
+    &lt;xsl:value-of select="./title"/>
+  &lt;/TITLE>
+  &lt;/HEAD>
+  &lt;BODY>
+    &lt;xsl:apply-templates/>
+  &lt;/BODY>
+  &lt;/HTML>
+&lt;/xsl:template>
+
+&lt;xsl:template match="title">
+  &lt;H1>&lt;xsl:apply-templates/>&lt;/H1>
+&lt;/xsl:template>
+
+&lt;xsl:template match="para">
+  &lt;P>&lt;xsl:apply-templates/>&lt;/P>
+&lt;/xsl:template>
+
+&lt;/xsl:stylesheet>
+</pre></div><div class="example"><p><a name="c38ab2b3b6"></a><b>Example 1.3. HTML output</b></p><pre class="programlisting">&lt;HTML>
+&lt;HEAD>
+&lt;TITLE>Using a mouse&lt;/TITLE>
+&lt;/HEAD>
+&lt;BODY>
+&lt;H1>Using a mouse&lt;/H1>
+&lt;P>It's easy to use a mouse. Just roll it
+around and click the buttons.&lt;/P>
+&lt;/BODY>
+&lt;/HTML>
+</pre></div></div></body></html>

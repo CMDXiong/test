@@ -1,0 +1,29 @@
+# corr1.prs: creates polygon which covers circle on layer 21 and puts it on layer 1.
+# Uses layer 31 and deletes it.
+# Process file for GDS-II postprocessing tool
+# R.C. Strijbos TU Eindhoven 05/11/00
+
+group_a empty
+group_a 21 false
+group_b empty
+destination 31
+correctionfactor {2.2um}
+correction
+
+group_a empty
+group_a 31 false
+group_b empty
+destination 31
+polyaccur {1.75um}
+arcaccur {0.1um}
+toarcs
+
+group_a empty
+group_a 31 false
+group_b empty
+destination 1
+tolines
+delete_a
+
+polyaccur {0.01um}
+arcaccur {0.01um}

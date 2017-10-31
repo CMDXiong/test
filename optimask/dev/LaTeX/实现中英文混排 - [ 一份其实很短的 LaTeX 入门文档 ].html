@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <title> 实现中英文混排 - [ 一份其实很短的 LaTeX 入门文档 ] - 看云</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="description" content="有很多 Geeks 或者 LaTeX’s Fanatical Fans 过分地强调了 LaTeX 的一些并非重点的特性，以至于很多初学者会觉得 LaTeX 很神秘很复杂，从而引发了初学者的畏难情绪甚至是负面情绪。尽管这些 Fans 说得并没有错，我是说在事实上，但是他们的表达方式和内心态度却间接阻碍了 LaTeX 的发展，我想这也是和他们的初衷相悖的。" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="//static.kancloud.cn/Static/home/font/style.css?v=20161121002">
+    <link rel="stylesheet" href="//static.kancloud.cn/Static/document/dist/kancloud.min.css?v=20161121002">
+            <script>(function (H) {
+        H.className = H.className.replace(/\bno-js\b/, 'js')
+    })(document.documentElement)</script>
+    <style></style>
+</head>
+<body>
+<!--[if lte IE 8]>
+<div class="m-browsehappy">
+    <div class="browsehappy-inner">
+        <h3 class="title">对不起！<br>您的浏览器版本太低，请升级你的浏览器</h3>
+
+        <p class="suggest">建议使用：</p>
+
+        <p class="brower">
+            <span class="item">
+                <a class="ie image" href="https://www.microsoft.com/en-us/download/internet-explorer.aspx" target="_blank" title="下载Internet Explorer浏览器"></a>
+                <b class="text">ie9+</b>
+            </span>
+            <span class="item">
+                <a class="chrome image" href="http://www.google.cn/intl/zh-CN/chrome/browser/?spm=1.7274553.0.0.benzR1" target="_blank" title="下载Chrome浏览器"></a>
+                <b class="text">chrome</b>
+            </span>
+        </p>
+
+        <p class="from">来自看云官方</p>
+        <b class="browsehappy-arrow"></b>
+    </div>
+</div>
+<script>
+    window.nonsupportIE = true;
+</script>
+<![endif]-->
+<div class="m-manual manual-reader" data-namespace="thinkphp" data-name="latex" data-id="2789" data-token="" data-title="一份其实很短的 LaTeX 入门文档" data-desc="有很多 Geeks 或者 LaTeX’s Fanatical Fans 过分地强调了 LaTeX 的一些并非重点的特性，以至于很多初学者会觉得 LaTeX 很神秘很复杂，从而引发了初学者的畏难情绪甚至是负面情绪。尽管这些 Fans 说得并没有错，我是说在事实上，但是他们的表达方式和内心态度却间接阻碍了 LaTeX 的发展，我想这也是和他们的初衷相悖的。" data-basepath="http://www.kancloud.cn" data-article-id="41810">
+    <div class="manual-head">
+        <div class="left">
+            <a class="manual-title" href="http://www.kancloud.cn/thinkphp/latex" title="返回文档首页">
+                <b class="text">一份其实很短的 LaTeX 入门文档</b>
+            </a>
+        </div>
+        <div style="display: none;">
+            <img src="http://box.kancloud.cn/cover_2015-07-07_559b81eeb258_800x1068.png?imageMogr2/thumbnail/300x400!/interlace/1/quality/100" />
+        </div>
+    </div>
+    <div class="manual-body">
+        <div class="manual-left">
+            <div class="manual-tab">
+                <div class="tab-navg">
+                    <span data-mode="view" class="navg-item active"><i class="icon icon-menu"></i><b class="text">目录</b></span>
+                    <span data-mode="search" class="navg-item"><i class="icon icon-search"></i><b class="text">搜索</b></span>
+                </div>
+                <div class="tab-util">
+                    <span class="manual-fullscreen-switch">
+                        <b class="open icon-chevron-right" title="展开"></b>
+                        <b class="close icon-chevron-left" title="关闭"></b>
+                    </span>
+                </div>
+                <div class="tab-wrap">
+                    <div class="tab-item manual-catalog">
+                        <div class="catalog-list read-book-preview">
+                            <a href="/thinkphp/latex/41802" data-pid="0" data-disable="0" data-id="41802">关于</a><a href="/thinkphp/latex/41805" data-pid="0" data-disable="0" data-id="41805">关于编辑器的简单介绍</a><a href="/thinkphp/latex/41810" data-pid="0" data-disable="0" data-id="41810">实现中英文混排</a><a href="/thinkphp/latex/41803" data-pid="0" data-disable="0" data-id="41803">组织你的文章</a><a href="/thinkphp/latex/41806" data-pid="0" data-disable="0" data-id="41806">插入数学公式</a><a href="/thinkphp/latex/41808" data-pid="0" data-disable="0" data-id="41808">插入图片和表格</a><a href="/thinkphp/latex/41807" data-pid="0" data-disable="0" data-id="41807">版面设置</a><a href="/thinkphp/latex/41811" data-pid="0" data-disable="0" data-id="41811">TeX 家族</a><a href="/thinkphp/latex/41809" data-pid="0" data-disable="0" data-id="41809">出现问题应当如何处理</a>                        </div>
+                    </div>
+                    <div class="tab-item manual-search">
+                        <div class="search-inner">
+                            <div class="search-form">
+                                <form class="w-search" onsubmit="return false;" method="post" autocomplete="off">
+                                    <label class="w-text text-m text-full search-enter"><input class="text-input" type="text" name="keyword" placeholder="请输入搜索关键词..."></label>
+                                    <input type="hidden" name="book_id" value="2789">
+                                    <button class="search-btn icon-search" type="submit"></button>
+                                </form>
+                            </div>
+                            <div class="search-result"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-copyright">
+                <p>
+                                        本文档使用
+                    <a href="http://www.kancloud.cn" target="_blank" onclick="window.open('http://www.kancloud.cn')">看云</a> 发布
+                </p>
+            </div>
+        </div>
+        <div class="manual-right">
+            <div class="m-article">
+                <div class="article-head">
+                    <div class="head-tool">
+                        <div class="item font-setting w-drop drop-hover">
+                            <span class="drop-show"><i class="icon icon-font"></i><b class="text">文字</b></span>
+                            <div class="drop-hide drop-hide-left">
+                                <b class="drop-arrow-outer"><i class="drop-arrow-inner"></i></b>
+
+                                <div class="drop-hide-inner">
+                                    <div class="buttons size-list">
+                                        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+                                        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+                                    </div>
+                                    <div class="buttons theme-list">
+                                        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">默认</button>
+                                        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">护眼</button>
+                                        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">夜间</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="head-util">
+
+                    </div>
+                    <h1></h1>
+                </div>
+                <div class="article-wrap">
+                    <div class="article-view">
+                        <div class="view-body think-editor-content">
+                            <p>除掉成功生成第一个文档，实现中文输出（或者说是中英文混排）恐怕是困扰中国的 TeX 使用者的第二个普遍问题。众所周知，TeX 系统是高教授开发的，当初并没有考虑到亚洲文字的问题。因此早期的 TeX 系统并不能直接支持中文，必须要用其他工具先处理一下（或者是一些宏包之类的）。</p>
+<p>但是现在，XeTeX 原生支持 Unicode，并且可以方便地调用系统字体。可以说解决了困扰中国 TeX 使用者多年的大问题。</p>
+<p>此外，除去中文支持，中文的版式处理和标点禁则也是不小的挑战。好在由吴凌云和江疆牵头，现在主要由刘海洋和李清（还有我打个酱油）维护的 <code>ctex</code> 宏包 / 文档类一次性解决了这些问题。<code>ctex</code> 宏包和文档类的优势在于，它适用于多种编译方式；在内部处理好了中文和中文版式的支持，隐藏了这些细节；并且，提供了不少中文用户需要的功能接口。</p>
+<p>为了和原有的日志对接，这里分别用两种方法来介绍中英文混排。当然，老方法只是为了「兼容性」存在的，推荐使用新方法。</p>
+<h2>新方法——使用 <code>ctex</code> 文档类</h2>
+<p>在 TeXworks 编辑框中输入以下内容，保存，使用 XeLaTeX 编译：</p>
+<pre><code>\documentclass[UTF8]{ctexart}
+\begin{document}
+你好，world!
+\end{document}</code></pre>
+<p>如果没有意外，你将会看到类似下图的输出结果。</p>
+<p><a href="http://box.kancloud.cn/2015-07-07_559b472676c29.jpg"><img src="http://box.kancloud.cn/2015-07-07_559b4726960a9.jpg" alt="" /></a></p>
+<p>相较于之前的例子，这份代码只有细微的差异：</p>
+<ol><li>文档类从 <code>article</code> 变为 <code>ctexart</code>；</li>
+<li>增加了文档类选项 <code>UTF8</code>。</li>
+</ol><p>新版 <code>ctex</code> 宏包和文档类的默认能够自动检测用户的操作系统，并为之配置合适的字库。对于 Windows 用户、Mac OS X 用户和 Linux 用户，都无需做任何配置，就能使用 <code>ctex</code> 宏包和文档类来排版中文。[2015-05-20 更新]</p>
+<h2>老方法——直接调用 xeCJK 宏包</h2>
+<p>在 TeXworks 编辑框中输入以下内容，保存，使用 XeLaTeX 编译：</p>
+<pre><code>\documentclass{article}
+\usepackage{xeCJK}% 调用 xeCJK 宏包
+\setCJKmainfont{SimSun}% 设置 CJK 主字体为 SimSun （宋体）
+\begin{document}
+你好，world!
+\end{document}</code></pre>
+<p>如果一切顺利，你将会在屏幕右边的窗口，看见类似下图的输出结果。<br /><a href="http://ww2.sinaimg.cn/large/818901c1jw1e44g5azwaej20j00kimy3.jpg"><img src="http://ww2.sinaimg.cn/large/818901c1jw1e44g5azwaej20j00kimy3.jpg" alt="" /></a></p>
+<p>如果你的 TeX 系统提示找不到字体，请换用你的操作系统中可用的中文字体。关于如何寻找你的操作系统中可用的中文字体，请参考本章最后一小节。</p>
+<p>除了 “document” 环境中同时出现了中文和英文，和最原始的 Hello, world! 不同点在于，导言区中多出了两条控制序列。他们的作用我已经用注释标出了。</p>
+<p>所谓的宏包，就是一系列控制序列的合集。这些控制序列太常用，以至于人们会觉得每次将他们写在导言区太过繁琐，于是将他们打包放在同一个文件中，成为所谓的宏包（台湾方面称之为“巨集套件”）。<code>\usepackage{·}</code>可以用来调用宏包。</p>
+<p><code>\setCJKmainfont{·}</code>是定义在 “xeCJK” 宏包中的控制序列，它可以用来设置 CJK 主字体。</p>
+<p><em>请注意，TeX 系统对宏包名称和控制序列的大小写是敏感的</em></p>
+<h2>查看当前操作系统中的字体</h2>
+<h3>Mac OS X 用户</h3>
+<p>请参照 <a href="http://liam0205.me/2014/11/02/latex-mactex-chinese-support/">这篇博客</a> 中的方法，使用系统自带的字体册程序来查看系统字体。</p>
+<h3>非 Mac OS X 用户</h3>
+<p>按照如下步骤打开系统命令行（*nix 系统请打开终端）：</p>
+<ul><li>按下<code>+ R</code>；</li>
+<li>键入<code>cmd</code>, 回车。</li>
+</ul><p>在系统命令行中输入如下命令：</p>
+<pre><code>fc-list :lang=zh-cn &gt; C:\font_zh-cn.txt</code></pre>
+<p>（相信使用 *nix 的你，一定知道如何修改上述命令达到你想要的效果）</p>
+<p>打开 C 盘根目录下的 <code>C:\font_zh-cn.txt</code> 纯文本文档，里面的内容就是你当前系统可用的全部中文字体，形如：</p>
+<p><a href="http://box.kancloud.cn/2015-07-07_559b4726ea247.jpg"><img src="http://ww1.sinaimg.cn/large/818901c1jw1e44gmvz7yuj20i40actcb.jpg" alt="" /></a></p>
+<p>每一个小黑框之间的内容，就对应着一个可用的字体。这些小黑框实际上是换行符，但是由于 Windows 系统的原因，他们没有被正常显示。如果看着不爽，你可以尝试用 TeXworks 打开这个文件查看（放心，能够打开的）。以下是我用 gVim 打开的效果：</p>
+<p><a href="http://box.kancloud.cn/2015-07-07_559b472739ae4.jpg"><img src="http://ww2.sinaimg.cn/large/818901c1jw1e44gpsi9fpj20km0f478v.jpg" alt="" /></a></p>
+<p>其中的每一行，都代表着一个可用的字体。其形式如下：</p>
+<pre><code>&lt;字体文件路径&gt;: &lt;字体标示名 1&gt;, &lt;字体表示名 2&gt;:Style=&lt;字体类型&gt;</code></pre>
+<p>我们可以看到图中的倒数第四行</p>
+<pre><code>C:/WINDOWS/fonts/simsun.ttc: 宋体,SimSun:style=Regular</code></pre>
+<p>出现了之前文档里调用的字体<code>SimSun</code>，此处表明该字体有两个表示名：<code>宋体</code>和<code>SimSun</code>，我们在<code>\setCJKmainfont{·}</code>中填入任意一个都有同样的效果。</p>
+<p>因此，如果之前的文档无法编译通过，请在你的操作系统字体中，选取一个自己喜欢的，将它的字体表示名填入到<code>\setCJKmainfont{·}</code>中去。</p>                        </div>
+                        <div class="view-foot">
+                            <div class="article-jump">
+                                <span class="jump-up">上一篇：<a></a></span>
+                                <span class="jump-down">下一篇：<a></a></span>
+                            </div>
+                            <a class="view-backtop"><i class="icon-arrow-up2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="think-loading loading-gear loading-active">
+    <span class="loading-inner">
+        <i class="loading-image">&nbsp;</i>
+        <b class="loading-text">页面正在加载中</b>
+    </span>
+</div>
+<script src="//static.kancloud.cn/Static/component/seajs/dist/sea.js"></script>
+<script>
+    seajs.config({
+        base   : "//static.kancloud.cn/Static/",
+        paths  : {
+            'home'     : 'home/script',
+            'common'   : 'common/script',
+            'document' : 'document/script',
+            'component': 'component'
+        },
+        preload : [
+            'jquery'
+        ],
+        alias: {
+            'jquery':'component/jquery',
+            'config': 'common/module/config'
+        },
+        map    : [
+            [/^(.*\.(?:css|js))(.*)$/i, '$1?v=20161121002']
+        ],
+        debug  : true
+    });
+</script>
+<script src="//static.kancloud.cn/Static/home/dist/app.min.js?v=20161121002"></script>
+    <script src="//static.kancloud.cn/Static/document/dist/kancloud.min.js?v=20161121002"></script><script>
+    seajs.use('config', function (config) {
+        //设置项目配置
+        config.set({
+            "ROOT"  : "", //当前网站地址
+            "APP"   : "", //当前项目地址
+            "STATIC": "//static.kancloud.cn/Static", //静态资源文件地址
+            "PUBLIC": "//static.kancloud.cn/Static", //home目录地址
+            "GIT_HOST" : "https://git.kancloud.cn",
+        });
+        seajs.use('home/globle', function (globle) {
+            //启动页面脚本
+            if(globle!==false) {
+                seajs.use('document/kancloud', function (kancloud) {
+                    kancloud.start({"plugins":null,"comment":false,"collect":true,"cover":"http:\/\/box.kancloud.cn\/cover_2015-07-07_559b81eeb258_800x1068.png?imageMogr2\/thumbnail\/231x273!\/interlace\/1\/quality\/100","sharing":true,"login":true});
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

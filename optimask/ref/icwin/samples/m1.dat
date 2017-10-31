@@ -1,0 +1,218 @@
+! $OLD tells MkMenu to generate a menu for ICED32 (DOS).  An OLD menu can
+!      be used by both ICED and ICED32 as a command menu but cannot be used 
+!      to set macro values.
+!
+! $NO_TOP implies there is no default top level menu and that the menu cannot 
+!      be used as a command menu. 
+!
+! It is an error to set both the $OLD and $NO_TOP options simultaneously.
+!
+$ROWS=27
+!
+! $ ROWS=max_row specifies that Menu rows are numbered 0 thru max_row.
+! The following keywords are obsolete but can still be used in place of the
+! $ROWS=max_row statement.
+! $ VGA    implies 640 by 450 VGA   --  Menu rows numbered 0 thru 27
+! $ SUPER  implies 800 by 600 VGA   --  Menu rows numbered 0 thru 34
+! $ R1024A implies 1024 by 768 VGA  --  Menu rows numbered 0 thru 45
+! Default: $ROWS=27
+!
+! Unless the $NO_TOP option is specified, all four top level submenus:
+!      "top_nosel_angles",
+!      "top_nosel_45",
+!      "top_sel_angles" and
+!      "top_sel_45"
+! must be defined.  However, one menu can be used to define more than one 
+! top level menu as follows:
+!      A menu named "top" defines all four top level menus.
+!      A menu named "top_nosel" defines "top_nosel_angles" and "top_nosel_45".
+!      A menu named "top_sel" defines "top_sel_angles" and "top_sel_45".
+!      A menu named "top_angles" defines "top_sel_angles" and 
+!         "top_nosel_angles".
+!      A menu named "top_45" defines "top_sel_45" and "top_nosel_45".
+!  
+! It is an error to use these names in a way that defines a top level menu
+!      more than once.
+!
+!************************************************************************
+!
+!                        Required top level menus
+!
+!************************************************************************
+!
+#begin top_sel_45 12
+* 0  1  "DELETE" "delete"             RET
+* 2  1  "VIEW"    "view "             view
+* 3  1  "  in %"  "view in "          view_factor 
+* 4  1  " out %"  "view out "         view_factor 
+* 5  1  "   box"  "view box"          RET
+* 6  1  "  last"  "view last"         RET
+* 7  1  "   all"  "view all"          RET
+* 8  1  "COPY"    "copy "             copy_move
+* 9  1  "MOVE"    ""                  copy_move
+*10  1  "  side"  "move side"         move
+*11  1  "UNDO"    "undo"              RET
+*12  2  "Again"
+*13  1  "UseLay"  "use layer "        layer_names_1    add2
+*14  1  "SELECT"  "select "           select0
+*15  1  " layer"  "select layers "    sel_layer_names_0  select1
+*16  1  "   new"  "select new"        RET
+*17  1  "    in"  "select in"         RET
+*18  1  "  side"  "select side in"    RET
+*19  1  "ADD"     "add "              add1
+*20  1  "UNSEL"   "unselect "         unselect0
+*21  1  "   all"  "unselect all"      RET
+*22  1  " layer"  "unselect layers "  sel_layer_names_0  unselect1
+*23  1  "    in"  "unselect in"       RET
+*24  1  "  side"  "unselect side in"  RET
+*26  1  "USE"     "use "              use_menu
+*27  1  "FILE"    ""                  file_menu
+#end
+
+#begin top_sel_angles 13
+* 0  1  "DELETE"  "delete"            RET
+* 2  1  "VIEW"    "view "             view
+* 3  1  "  in %"  "view in "          view_factor 
+* 4  1  " out %"  "view out "         view_factor 
+* 5  1  "   box"  "view box"          RET
+* 6  1  "  last"  "view last"         RET
+* 7  1  "   all"  "view all"          RET
+* 8  1  "COPY"    "copy "             copy_move
+* 9  1  "MOVE"    ""                  copy_move
+*10  1  "  side"  "move side"         move
+*11  1  "vertex"  "move vertex"       move
+*12  1  "UNDO"    "undo"              RET
+*13  2  "Again"
+*14  1  "UseLay"  "use layer "        layer_names_1    add2
+*15  1  "SELECT"  "select "           select0
+*16  1  " layer"  "select layers "    sel_layer_names_0  select1
+*17  1  "   new"  "select new"        RET
+*18  1  "    in"  "select in"         RET
+*19  1  "  side"  "select side in"    RET
+*20  1  "ADD"     "add "              add1
+*21  1  "UNSEL"   "unselect "         unselect0
+*22  1  "   all"  "unselect all"      RET
+*23  1  " layer"  "unselect layers "  sel_layer_names_0  unselect1
+*24  1  "    in"  "unselect in"       RET
+*25  1  "  side"  "unselect side in"  RET
+*26  1  "USE"     "use "              use_menu
+*27  1  "FILE"    ""                  file_menu
+#end
+
+#begin top_nosel_45  12
+* 0  1  "DELETE"  "delete"            RET
+* 2  1  "VIEW"    "view "             view
+* 3  1  "  in %"  "view in "          view_factor 
+* 4  1  " out %"  "view out "         view_factor 
+* 5  1  "   box"  "view box"          RET
+* 6  1  "  last"  "view last"         RET
+* 7  1  "   all"  "view all"          RET
+* 8  1  "COPY"    "copy "             copy_move
+* 9  1  "MOVE"    ""                  copy_move
+*10  1  "  side"  "move side"         move
+*11  1  "UNDO"    "undo"              RET
+*12  2  "Again"
+*13  1  "UseLay"  "use layer "        layer_names_1    add2
+*14  1  "SELECT"  "select "           select0
+*15  1  " layer"  "select layers "    sel_layer_names_0  select1
+*16  1  "   new"  "select new"        RET
+*17  1  "    in"  "select in"         RET
+*18  1  "  side"  "select side in"    RET
+*19  1  "ADD"     "add "              add1
+*20  1  "   box"  "add box"           RET
+*21  1  "  poly"  "add poly"          RET
+*22  1  "  wire"  "add wire"          RET
+*23  1  "  cell"  "add cell "         cell_list_1
+*24  1  "  text"  "add text %"        RET
+*25  1  "USE"     "use "              use_menu
+*27  1  "FILE"    ""                  file_menu
+#end
+
+#begin top_nosel_angles  13
+* 0  1  "DELETE"  "delete"            RET
+* 2  1  "VIEW"    "view "             view
+* 3  1  "  in %"  "view in "          view_factor 
+* 4  1  " out %"  "view out "         view_factor 
+* 5  1  "   box"  "view box"          RET
+* 6  1  "  last"  "view last"         RET
+* 7  1  "   all"  "view all"          RET
+* 8  1  "COPY"    "copy "             copy_move
+* 9  1  "MOVE"    ""                  copy_move
+*10  1  "  side"  "move side"         move
+*11  1  "vertex"  "move vertex"       RET
+*12  1  "UNDO"    "undo"              RET
+*13  2  "Again"
+*14  1  "UseLay"  "use layer "        layer_names_1    add2
+*15  1  "SELECT"  "select "           select0
+*16  1  " layer"  "select layers "    sel_layer_names_0  select1
+*17  1  "   new"  "select new"        RET
+*18  1  "    in"  "select in"         RET
+*19  1  "  side"  "select side in"    RET
+*20  1  "ADD"     "add "              add1
+*21  1  "   box"  "add box"           RET
+*22  1  "  poly"  "add poly"          RET
+*23  1  "  wire"  "add wire"          RET
+*24  1  "  cell"  "add cell "         cell_list_1
+*25  1  "  text"  "add text % "       RET
+*26  1  "USE"     "use "              use_menu
+*27  1  "FILE"    ""                  file_menu
+#end
+
+!************************************************************************
+!
+!                        Optional top level menus
+!
+!************************************************************************
+
+#begin more_1  11 
+* 0  0  "SWAP"
+* 1  1  " cells"  "swap cells | and "   cell_list_0   cell_list_1
+* 2  1  "layers"  "swap layers | and "  layer_names_1  layer_names_1 
+* 4  0  "TEMPLA"
+* 5  1  "  file"  "template %"        RET
+* 6  1  "screen"  "template *"        RET
+* 8  0  "SHOW"
+* 9  1  "  file"  "show file=%"       RET
+*10  1  "screen"  "show file=*"       RET
+*11  1  "  @one"  "@show1"            RET
+*12  1  " @deep"  "@deepshow"         RET
+*14  1  "RULER"   "ruler"             RET
+*16  1  "EDIT"    ""                  edit_menu
+*18  0  "MERGE"
+*19  1  "  poly"  "merge polygons"    RET
+*20  1  "  wire"  "merge wires"       RET
+*21  1  "  line"  "merge lines"       RET
+*22  0  "CUT"
+*23  1  "vert-X"  "cut x"             RET
+*24  1  "hori-Y"  "cut y"             RET
+#end
+
+#begin more_2 -1
+* 0  1  "ReDraw"  "redraw"            RET
+* 1  1  "DOS"     "dos"               RET
+* 2  1  "SPAWN"   "spawn"             RET
+* 3  1  "@*"      "@*"                RET
+* 4  1  "@%.cmd"  '@"|"'              cmd_list
+* 6  1  "PROTEC"  "protect "          prot1
+* 7  1  "UNPROT"  "unprotect "        unprot1
+* 8  1  "BLANK"   "blank "            blank1
+* 9  1  "UNBLNK"  "unblank "          unblank1
+*11  1  "LAYER"   "layer "            layer0
+*12  1  "FILL"    "fill "             fill_mode
+*13  1  "   tog"  "fill"              RET
+*14  1  "OUTLIN"  "outline depth="    outline
+*15  1  "A-PAN"   "autopan"           RET
+*16  1  "GRID 1"  "grid 1"            grid1
+*17  1  "     2"  "grid 2"            grid1a
+*18  1  "     3"  "grid 3"            grid1a
+*19  1  "SNAP"    ""                  snap1
+*20  1  "RESOLV"  "resolution="       res_list
+*21  1  "NEAR"    "near "             near_units
+*23  1  "DISPLY"  "display"           display_menu
+*24  1  "ARRAY"   "array"             array
+*25  1  "TEXT"    "text"              text
+*26  1  "ARROW"   "arrow "            arrow_mode
+*27  1  "SPACER"  "spacer  "          spacer
+#end
+
+#include "m1a.dat"

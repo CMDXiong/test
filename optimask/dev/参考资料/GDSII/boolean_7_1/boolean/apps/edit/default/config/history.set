@@ -1,0 +1,13 @@
+# Process file for GDS-II postprocessing tool
+
+record  C:/soft/boolean/boolean/apps/edit/default/config/history.set
+addfile  {G:/wxwin/wx232bc/third/canvas/samples/vdrawm/ttt.cal} gds-ii
+addfile  {G:/gian/P505_2.cal} gds-ii
+addfile  {G:/gian/aap_abb5um.cal} gds-ii
+addfile  {F:/gian/P505_2.cal} gds-ii
+addfile  {E:/boolean/boolean/apps/edit/default/data/pippo.cal} gds-ii
+addfile  {C:/data/boolean/boolean/apps/edit/default/data/33375151.cal} gds-ii
+addfile  {C:/tmp/kbooltestfile_error2.key} key
+addfile  {C:/soft/boolean/boolean/apps/edit/default/data/kat.key} key
+addfile  {C:/soft/wxArt2D/tmp/ferry/82223002179_bugout.key} key
+addfile  {C:/soft/wxArt2D/tmp/boolbugs/kbooltestfile_error.key} key

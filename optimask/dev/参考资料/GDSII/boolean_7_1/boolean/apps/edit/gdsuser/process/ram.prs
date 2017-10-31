@@ -1,0 +1,26 @@
+# Process file for GDS-II postprocessing tool
+draw
+record  @{processfile}
+flatten
+group_a 00 false
+group_b empty
+destination 00 false
+merge
+# Factor setting(s)
+selectmarge       {1.000000}
+snapfactor        {1um}
+correctionfactor  {-5.5um}
+roundfactor       {1.500000}
+correctionaber    {1.0um}
+roundtype         {circle}
+toarcrmin         {50um}
+toarcrmax         {10cm}
+arcaccur          {25um}
+polyaccur         {1um}
+smoothaccur       {5um}
+maxlinemerge      {5000um}
+displayaber       {5um}
+structhres        {30}
+primthres         {5} {true}
+correction
+askfile   {Save GDS-II file} SAVE {GDSII file (*.cal)|*.cal| GDS file (*.db)|*.db|ALL (*.*)|*.*} @{file_path} @{file_ext} curfile
