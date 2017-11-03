@@ -39,6 +39,9 @@ private:
 
     QAction *cellFCL;//Flat Cell List
     QAction *cellSM; //Split Mode
+    QAction *cellMode;
+    QAction *cellHierarchy;
+    QAction *cellFlatten;
     QAction *cellSorting;
     QAction *cellSortByNameBeginToEnd;
     QAction *cellSortByNameEndToBegin;
@@ -52,7 +55,6 @@ private:
     QAction *cellRenameCell;
     QAction *cellReplaceCell;
     QAction *cellFlattenCell;
-    QAction *cellHierarchyCell;
     QAction *cellUserProperties;
 
     QAction *cellCopy;
