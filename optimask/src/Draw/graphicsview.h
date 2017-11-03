@@ -32,7 +32,7 @@ public:
     PaintingWidget*  getGraphicsScene();
 
     inline QPointF   GeoPtToQPoint(const CGeoPt& point) const;         // 将CGeoPt类型的点转换成QPointF
-    inline QRect     GeoRectToQRect(const CGeoRect& rect) const;      // 将CGeoRect类型的点转换成QRect
+    inline QRectF    GeoRectToQRectF(const CGeoRect& rect) const;   // 将CGeoRect类型的点转换成QRectF
     inline CGeoPt    QPointFToGeoPt(QPointF& point) const;                 // 将QPointF类型的点转换成CGeoPt
     inline CGeoPt    QPointFToGeoPt(QPoint& point) const;                 // 将QPoint类型的点转换成CGeoPt
 signals:
@@ -46,8 +46,6 @@ public:
     void             drawType(const int type);
     void             isSelect(bool select);
     void             DrawWithMouse(const int type);  // Draw All Shape With mouse
-    void             EnterDrawSceneEvent();
-
 
     //Begin Added by Bamboo 2017/08/05 --------------------------
     //virtual void    DrawScene();
@@ -63,30 +61,35 @@ public:
     virtual void    DrawPrimitive(CGeoMulripler* pData);
     virtual void    DrawPrimitive(CGeoTransform* pData);
     virtual void    DrwaPrimitive(CGeoArray* pData);
-    void            DrawItemFrame(CGeoBase* pData);//画图元的边框
+    void            DrawItemFrame(CGeoBase* pData);//画图元的包围盒
+
     void            DrawStructure(CGeoGDSStruct* pCell);
     void            DrawStructure(std::string sname);
     CGeoGDSStruct*  FindStructureByName(std::string sname);
-    CGeoGDSStruct*  FindMainStructure();                 // 找主构元
-    void            DrawMainStructure();                 // 画主构元
     unsigned int    GeoTransformReferenceLevel(CGeoTransform* trans);        // 一种CGeoTransform类型图元的引用层次
     unsigned int    GeoStructureReferenceLevel(CGeoGDSStruct* trans);        // 一种CGeoTransform类型图元的引用层次
 
-
     //End -------------------------------------------------------
+    void            DrawMainStructure();                                     // 画主构元
+    void            DrawMainStructureByName(std::string sname);              // 根据主构无的名字画主构元
+    CGeoGDSStruct*  FindMainStructure();                                     // 找主构元
+    QRect           setViewPort();                                           // 设置显示整个Frame的视口
+    void            SetMap(CGeoGDSStruct* pData);                            // 建立映射关系
+    void            SetGeoStructureMap(CGeoGDSStruct* pData);                // 设置GeoGDSStructure的Map映射
+    void            SetGeoTransformMap(ref_ptr<CGeoTransform> pData);        // 设置GeoTransform图元的Map映射
 
     void TestData();
+private:
+    FLOAT_T multiple;                       // 1个物理坐标单位对应multiple个逻辑坐标单位
+    QRect   viewFrame;                      // 整个构元包围盒对应的物理坐标范围
+    QRect  windowFrame;                    // 构元包围盒范围
 
     //Begin Added by Xiong 2017/09/05 有关选中的函数--------------------------
 public:
     void         SetSceneFrame();                  // 场景中所有图形区域边框
-    //void         SetSceneFrameByStructure();
     CGeoRect     LayerFrame(const int& n) const;                  // 第n层的图形区域边框
     CGeoRect     Frame(const std::vector<FLOAT_T>& xVector, const std::vector<FLOAT_T>& yVector) const;
     //Begin Added by Xiong 2017/09/12-------------------------
-    void         SetMap();
-    void         SetSceneFrameByStructure(CGeoGDSStruct* struc);          // 将struc为的边框设置为scene的边框
-    void         SetSceneFrameByName(std::string sname);
     inline void  SetRow(int row);      //行暂时这样设置，最后根据图元的数据来调整
     inline void  SetColumn(int column);//列暂时这样设置，最后根据图元的数据来调整
     void         SetHeight(const CGeoRect& frame);
@@ -99,6 +102,7 @@ public:
     bool         CircleContainPoint(const ref_ptr<CGeoCircle>& circle, const QPoint& point);
     bool         ArcContainPoint(const ref_ptr<CGeoArc>& arc, const QPoint& point);
     bool         EllipseContainPoint(const ref_ptr<CGeoEllipse>& ellipse, const QPoint& point);
+    bool         TransformContainPoint(const ref_ptr<CGeoTransform>& trans, const QPoint& point);           //这个CGeoTransform中子节点一定要是基础元素
 
     void         GetListcontainPointAndMinArea();
 
@@ -133,8 +137,6 @@ private:
 public:
      ref_ptr<CGeoBase> GetSelectItem();  //  得到当前选中图元
      void SetPen(QPen pen);              //  设置笔
-     void SetPainter();                  //  设置QPainter
-     inline FLOAT_T  SetMmultiple();
 
 public:
     // 与坐标位置有关
@@ -145,7 +147,7 @@ public:
     QPointF mapToWindow(const double dx, const double dy);    // viewport(物理坐标)映射到window(逻辑坐标)
     QPointF mapFromWindow(const QPointF point);         // window(逻辑坐标)映射到viewport(物理坐标)
     QPointF mapFromWindow(FLOAT_T dx, FLOAT_T dy);      // window(逻辑坐标)映射到viewport(物理坐标)
-    QRect   setViewPort();                              // 设置显示整个Frame的视口
+
     //End Added by Xiong 2017/09/28-------------------------
 
     //Begin Added by Xiong 2017/09/14-------------------------
@@ -182,14 +184,11 @@ private:
     CCoord<int>         m_aryCoordBuf[GDS_MAX_COORD];     // 图元的坐标数组
     CGDSBoundary        boxstructure;                     // 矩形图元转成在的CGDSBoundary
     // 用鼠标画图中需要的变量
-    QPixmap        pix;                                   // 双缓冲绘制图元
-    QPixmap        tempPix;                               // 双缓冲拖动时绘制图元
+    QPixmap        pix;                       // 双缓冲绘制图元
+    QPixmap        tempPix;              // 双缓冲拖动时绘制图元
     QPainter       painter;
-    QPainter       pp;
-    bool           isDrawing;                             // 一个图元的绘制过程中
+    bool           isDrawing;           // 一个图元的绘制过程中
     bool           isDoubleClick;
-
-    FLOAT_T        multiple1;                             // 逻辑边框长度与物理边框长度比值
 
     //start----------------------Add by xiong 17/09/05
     CGeoPt  m_geoStartPos;
@@ -268,7 +267,7 @@ public slots:
     void DrawArcWithCommand(CGeoPt, double,double,double);
 
 public:
-    bool UnAction(CCommandBase* command);    //  Undo对应的操作
+    bool UnAction(CCommandBase* command);    // Undo对应的操作
     bool Action(CCommandBase* command);      //  Redo对应的操作
 };
 

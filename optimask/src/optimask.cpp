@@ -20,20 +20,22 @@
 #include <QMimeData>
 
 #include "optimask.h"
+#include "./Cell/celltreewidget.h"
 #include "./Edit/commands.h"
 #include "./Edit/CommandManager.h"
 #include "./Edit/pastetodlg.h"
 #include "./Draw/graphicsview.h"
 #include "./Draw/gdsdocument.h"
-#include "./Draw/celltreewidget.h"
 #include "./Draw/matrix.h"
 #include "./Draw/librarywidget.h"
 #include "./Draw/multiline.h"
 #include "./Alter/alterdockwidget.h"
 #include "./Layer/laynavigator.h"
 #include "./Script/command.h"
+#include "./Script/fuzzyquery.h"
 #include "./Script/hint.h"
 #include "./Script/info.h"
+//#include "./Cell/ccelldockwidget.h"
 
 using namespace std;
 
@@ -41,11 +43,8 @@ using namespace std;
 //Qt资源的相对路径：必须在工程的qrc文件中增加你需要的文件或者资源，引用方法是：":/路径/你的资源.png"
 #ifdef RELEASE
   const QString rsrcPath = "./Icon/";     //指定图标目录
-  //const QString rsrcPath = ":/Icon/";     //指定图标目录
 #else
   const QString rsrcPath = "../src/Icon";     //指定图标目录
-  //const QString rsrcPath = QCoreApplication::applicationDirPath() + "/Icon";
-  //const QString rsrcPath = QDir::currentPath()+ "/Icon";
 #endif
 
 const int OffsetIncrement = 5;
@@ -831,20 +830,6 @@ void Optimask::createLayerPanel()
     layerPanel->setWidget(layerPanelTabs);
     //dispLayerPanelAct->setChecked(true); //将viewMenu->vpadMenu下的该项选中
     connect(layerPanelTabs, SIGNAL(currentChanged(int)), this, SLOT(currentLayerPanelChanged(int)));
-
-    //    //NOTE!! 请先检查LayerPanel是否已经存在。
-    //    //如果存在，只需显示(viewLayerPanel)； 如果不存在，那么创建(createLayerPanel)。
-    //    LayTableView *pTableView=new LayTableView;
-    //    layerPanel=new QDockWidget(tr("Layer Panel"), this);
-    //    QWidget *Widget= new QWidget();
-    //    QVBoxLayout *verticalLayout = new QVBoxLayout(Widget); //垂直布局添加水平布局，下拉列表，行编辑框，laytablemodel
-    //    verticalLayout->addWidget(pTableView);
-    //    Widget->setLayout(verticalLayout);
-    //    // Widget->resize(30,30);
-    //    layerPanel->setWidget(Widget);
-    //    //setCorner(Qt::BottomLeftCorner,Qt::LeftDockWidgetArea);
-    //    addDockWidget(Qt::LeftDockWidgetArea,layerPanel);
-    //    dispLayerPanelAct->setChecked(true); //将viewMenu->vpadMenu下的该项选中
 }
 
 /* 创建构层色板(Layer Palette, Color&Pattern) */
@@ -880,184 +865,20 @@ void Optimask::createAltrDock()
 /* 创建构元结构面板(Cell Structure Tree Panel), 构元组织(Cell Hierarchy) */
 void Optimask::createCellDock()
 {
-//    QAction *addSeparator = 0;
-//    cellTreeWidget= new QWidget(cellDock);
-//    QVBoxLayout *vboxLayout = new QVBoxLayout(cellTreeWidget);
-//    vboxLayout->setSpacing(0);
-//    vboxLayout->setContentsMargins(0, 0, 0, 0);
-//    vboxLayout->setObjectName(QStringLiteral("vboxLayout"));
-
-//    cellTreeTabs = new QTabWidget(cellTreeWidget); //将QTabWidget变成中心部件
-//    cellTreeTabs->setObjectName(QStringLiteral("cellTreeTabs"));
-//    //cellTreeTabs->setTabsClosable(true);
-
-//    QHBoxLayout *topHoritalLayout = new QHBoxLayout();
-//    QToolBar *toolBar = new QToolBar();
-//    QAction *hierarchyAct = new QAction(cellDock);
-//    hierarchyAct->setIcon(QIcon(rsrcPath+"/hierarchy.png"));
-//    hierarchyAct->setToolTip(tr("Hierarchy"));
-//    QAction *flatAct = new QAction( cellDock);
-//    flatAct->setIcon(QIcon(rsrcPath+"/flat.png"));
-//    flatAct->setToolTip(tr("Flat"));
-//    QAction *alphabetAct = new QAction(cellDock);
-//    alphabetAct->setIcon(QIcon(rsrcPath+"/alphabet.png"));
-//    alphabetAct->setToolTip(tr("Alphabet"));
-//    QAction *timeAct = new QAction(cellDock);
-//    timeAct->setIcon(QIcon(rsrcPath+"/time.png"));
-//    timeAct->setToolTip(tr("Time"));
-//    QAction *sizeAct = new QAction(cellDock);
-//    sizeAct->setIcon(QIcon(rsrcPath+"/size.png"));
-//    sizeAct->setToolTip(tr("Size"));
-//    QList<QAction*> actions;
-//    actions << addSeparator << hierarchyAct << flatAct  << addSeparator
-//            << alphabetAct << timeAct << sizeAct;
-//    foreach (QAction *action, actions) {
-//        if (!action) {
-//            toolBar->addSeparator();
-//        }
-//        else {
-//            toolBar->addAction(action);
-//        }
-//    }
-
-//    topHoritalLayout->addWidget(toolBar);
-
-//    QHBoxLayout *horitalLayout=new QHBoxLayout();
-//    QLabel *label1=new QLabel("Levels");
-//    QSpinBox *spinbox1=new QSpinBox();
-//    spinbox1->setRange(-100,100);
-//    QLabel *label2=new QLabel("...");
-//    QSpinBox *spinbox2=new QSpinBox();
-//    spinbox2->setRange(-100,100);
-//    horitalLayout->addWidget(label1);
-//    horitalLayout->addWidget(spinbox1);
-//    horitalLayout->addWidget(label2);
-//    horitalLayout->addWidget(spinbox2);
-
-//    QHBoxLayout *horitalLayout2=new QHBoxLayout();
-//    QToolBar *toolBar1 = new QToolBar();
-//    QLineEdit *lineEdit = new QLineEdit();
-//    lineEdit->setMaximumSize(175, 20);
-//    lineEdit->setMinimumSize(175, 20);
-//    QAction *findAct = new QAction(cellDock);
-//    findAct->setIcon(QIcon(rsrcPath+"/find.png"));
-//    findAct->setToolTip(tr("Find"));
-//    toolBar1->addAction(findAct);
-//    horitalLayout2->addWidget(lineEdit);
-//    horitalLayout2->addWidget(toolBar1);
-
-//    vboxLayout->addLayout(topHoritalLayout);
-//    vboxLayout->addLayout(horitalLayout2);
-//    vboxLayout->addWidget(cellTreeTabs);
-//    vboxLayout->addLayout(horitalLayout);
-
-//    cellDock->setWidget(cellTreeWidget);
-//    connect(cellTreeTabs, SIGNAL(currentChanged(int)), this, SLOT(currentCellTreeChanged(int)));
-    QAction *addSeparator = 0;
-    cellTreeWidget= new QWidget(cellDock);
-    QVBoxLayout *vboxLayout = new QVBoxLayout(cellTreeWidget);
-    vboxLayout->setSpacing(0);
-    vboxLayout->setContentsMargins(0, 0, 0, 0);
-    vboxLayout->setObjectName(QStringLiteral("vboxLayout"));
-
-    cellTreeTabs = new QTabWidget(cellTreeWidget); //将QTabWidget变成中心部件
-    cellTreeTabs->setObjectName(QStringLiteral("cellTreeTabs"));
-    //cellTreeTabs->setTabsClosable(true);
-
-    QHBoxLayout *topHoritalLayout = new QHBoxLayout();
-    QComboBox *comboBox = new QComboBox();
-    comboBox->addItems(QStringList()<<"Top dowm - all cells"<<"Bottom up - all cells"<<"Top dowm - non -instanced"
-                       <<"By date modified"<<"DRC status");
-
-    QToolBar *toolBar = new QToolBar();
-    QAction *cellCollapseAll = new QAction(QIcon(rsrcPath+"/collapse.png"), tr("Collapse All"), cellDock);
-    cellCollapseAll->setToolTip(tr("Collapse All"));
-    QAction *cellExpandAll = new QAction(QIcon(rsrcPath+"/Expand.png"), tr("Expand All"), cellDock);
-    cellExpandAll->setToolTip(tr("Expand All"));
-    QAction *cellNewCell = new QAction(QIcon(rsrcPath+"/NewCell.png"), tr("New Cell"), cellDock);
-    cellNewCell->setToolTip(tr("New Cell"));
-    QAction *cellDeleteCell = new QAction(QIcon(rsrcPath+"/DeleteCell.png"), tr("Delete Cell"), cellDock);
-    cellDeleteCell->setToolTip(tr("Delete Cell"));
-    QAction *cellCopyToTextViewl = new QAction(QIcon(rsrcPath+"/CopyToText.png"), tr("Copy"), cellDock);
-    cellCopyToTextViewl->setToolTip(tr("Copy To Text View"));
-    QAction *cellShowAllCell = new QAction(QIcon(rsrcPath+"/ShowAll.png"), tr("Show"), cellDock);
-    cellShowAllCell->setToolTip(tr(" Show All Cell"));
-    QList<QAction*> actions;
-    actions << addSeparator << cellCollapseAll << cellExpandAll << addSeparator << cellNewCell
-                << cellDeleteCell << addSeparator <<  cellCopyToTextViewl << addSeparator <<  cellShowAllCell;
-    foreach (QAction *action, actions) {
-        if (!action) {
-            toolBar->addSeparator();
-        }
-        else {
-            toolBar->addAction(action);
-        }
-    }
-
-    topHoritalLayout->addWidget(comboBox);
-    topHoritalLayout->addWidget(toolBar);
-
-    QHBoxLayout *horitalLayout=new QHBoxLayout();
-    QLabel *label1=new QLabel("Levels");
-    QSpinBox *spinbox1=new QSpinBox();
-    spinbox1->setRange(-100,100);
-    QLabel *label2=new QLabel("...");
-    QSpinBox *spinbox2=new QSpinBox();
-    spinbox2->setRange(-100,100);
-    horitalLayout->addWidget(label1);
-    horitalLayout->addWidget(spinbox1);
-    horitalLayout->addWidget(label2);
-    horitalLayout->addWidget(spinbox2);
-
-    QHBoxLayout *horitalLayout2=new QHBoxLayout();
-    QToolBar *toolBar1 = new QToolBar();
-    QLineEdit *lineEdit = new QLineEdit();
-    lineEdit->setMaximumSize(175, 20);
-    lineEdit->setMinimumSize(175, 20);
-    QAction *modeAct = new QAction(tr("Mode"), cellDock);
-    modeAct->setToolTip(tr("Toggle Show Mode"));
-    toolBar1->addSeparator();
-    toolBar1->addAction(modeAct);
-    horitalLayout2->addWidget(lineEdit);
-    horitalLayout2->addWidget(toolBar1);
-
-    vboxLayout->addLayout(topHoritalLayout);
-    vboxLayout->addLayout(horitalLayout2);
-    vboxLayout->addWidget(cellTreeTabs);
-    vboxLayout->addLayout(horitalLayout);
-
-    cellDock->setWidget(cellTreeWidget);
+    celldockwidget = new CCellDockWidget(cellDock);
+    cellDock->setWidget(celldockwidget);
     dispViewToolBarAct->setChecked(true); //将viewMenu->vpadMenu下的该项选中
-    connect(cellTreeTabs, SIGNAL(currentChanged(int)), this, SLOT(currentCellTreeChanged(int)));
+    connect(celldockwidget->cellTreeTabs, SIGNAL(currentChanged(int)), this, SLOT(currentCellTreeChanged(int)));
 }
 
 void Optimask::createWorkDock()
 {
-//    centralwidget = new QWidget(workDock);
-//    centralwidget->setObjectName(QStringLiteral("centralwidget"));
-//    QVBoxLayout *vboxLayout = new QVBoxLayout(centralwidget);
-//    vboxLayout->setSpacing(0);
-//    vboxLayout->setContentsMargins(0, 0, 0, 0);
-//    vboxLayout->setObjectName(QStringLiteral("vboxLayout"));
-//    workTabs = new QTabWidget(centralwidget);                   //将QTabWidget变成中心部件
-//    workTabs->setObjectName(QStringLiteral("workTabs"));
-//    workTabs->setTabsClosable(true);
-//    vboxLayout->addWidget(workTabs);
-
-//    centralwidget->setFixedSize(workDock->width(),workDock->height());
-
-//    workDock->setWidget(centralWidget());
-//    connect(workTabs, SIGNAL(tabCloseRequested(int)), this, SLOT(removeWorkSubTab(int)));
-//    connect(workTabs, SIGNAL(currentChanged(int)), this, SLOT(currentWorkViewChanged(int)));
-//    //centralwidget->setMinimumSize(workDock->width(),workDock->height());
-
     workTabs = new QTabWidget();
     workTabs->setObjectName(QStringLiteral("workTabs"));
     workTabs->setTabsClosable(true);
 //    vboxLayout->addWidget(workTabs);
     workDock->setWidget(workTabs);
     workTabs->setMinimumSize(workDock->width(),workDock->height());
-
 //        setCentralWidget(workDock);
     connect(workTabs, SIGNAL(tabCloseRequested(int)), this, SLOT(removeWorkSubTab(int)));
     connect(workTabs, SIGNAL(currentChanged(int)), this, SLOT(currentWorkViewChanged(int)));
@@ -1334,8 +1155,6 @@ void Optimask::fileOpen()
 
         COptimaskView *view=new COptimaskView(gdsdoc);
         view->m_parent=true;
-        view->EnterDrawSceneEvent();
-
 
         if(fileName.contains(".gds", Qt::CaseInsensitive)){
 
@@ -1347,6 +1166,7 @@ void Optimask::fileOpen()
         }
         //设置celltree窗口以及其数据
         CCellTreeWidget* celltree=new CCellTreeWidget();
+
         celltree->SetGdsDocument(gdsdoc);
         celltree->ConstructTreeWidget();
         connect(celltree,SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),this,SLOT(showSelectedItem(QTreeWidgetItem*,int)));
@@ -1359,8 +1179,8 @@ void Optimask::fileOpen()
         gdsdoc->SetLayTableViewWid(tableview);    // Layer窗口
         gdsdoc->SetCellTreeWid(celltree);         // celltree窗口
         gdsdoc->SetViewWid(view);
-        //view->TestData();
-        view->DrawMainStructure();
+        //view->TestData();                       // 测试函数
+        view->DrawMainStructure();                // 画主构元
         addGdsDocument(gdsdoc);
     }
 }
@@ -2414,7 +2234,7 @@ void Optimask::addGdsDocument(CGdsDocument *gdsdoc)
         return;
     m_gdsDocument.append(gdsdoc);           // m_gdsDocument中保存数据
     workTabs->addTab(gdsdoc->GetViewWid(),fixedWindowTitle(gdsdoc));
-    cellTreeTabs->addTab(gdsdoc->GetCellTreeWid(),fixedWindowTitle(gdsdoc));
+    celldockwidget->cellTreeTabs->addTab(gdsdoc->GetCellTreeWid(),fixedWindowTitle(gdsdoc));
     layerPanelTabs->addTab(gdsdoc->GetTableView(),fixedWindowTitle(gdsdoc));
     //layerNaviTabs->addTab(gdsdoc->GetNavigator(),fixedWindowTitle(gdsdoc));
     setCurrentGdsDocument(gdsdoc);//设置当前窗口
@@ -2428,8 +2248,8 @@ void Optimask::removeGdsDocument(CGdsDocument *&gdsdoc)
     m_gdsDocument.removeAt(gdsindex);
     int viewindex=workTabs->indexOf(gdsdoc->GetViewWid());
     workTabs->removeTab(viewindex);
-    int celltreeindex=cellTreeTabs->indexOf(gdsdoc->GetCellTreeWid());
-    cellTreeTabs->removeTab(celltreeindex);
+    int celltreeindex=celldockwidget->cellTreeTabs->indexOf(gdsdoc->GetCellTreeWid());
+    celldockwidget->cellTreeTabs->removeTab(celltreeindex);
     int tableviewindex=layerPanelTabs->indexOf(gdsdoc->GetTableView());
     layerPanelTabs->removeTab(tableviewindex);
     int navigatorindex=layerNaviTabs->indexOf(gdsdoc->GetNavigator());
@@ -2440,7 +2260,7 @@ void Optimask::removeGdsDocument(CGdsDocument *&gdsdoc)
 void Optimask::setCurrentGdsDocument(CGdsDocument *gdsdoc)
 {
     workTabs->setCurrentWidget(gdsdoc->GetViewWid());
-    cellTreeTabs->setCurrentWidget(gdsdoc->GetCellTreeWid());
+    celldockwidget->cellTreeTabs->setCurrentWidget(gdsdoc->GetCellTreeWid());
     layerPanelTabs->setCurrentWidget(gdsdoc->GetTableView());
     layerNaviTabs->setCurrentWidget(gdsdoc->GetNavigator());
     connect(currentNavi(),SIGNAL(viewBoxchanged(float)),currentView(),SLOT(zoom(float)));
@@ -2691,7 +2511,7 @@ void Optimask::currentWorkViewChanged(int /*index*/)
 void Optimask::currentCellTreeChanged(int /*index*/)
 {
     CCellTreeWidget *celltree;
-    celltree= qobject_cast<CCellTreeWidget*>(cellTreeTabs->currentWidget());
+    celltree= qobject_cast<CCellTreeWidget*>(celldockwidget->cellTreeTabs->currentWidget());
     CGdsDocument *gdsdoc=celltree->GetGdsDocument();
     setCurrentGdsDocument(gdsdoc);
 }
@@ -2719,8 +2539,7 @@ void Optimask::showSelectedItem(QTreeWidgetItem* item,int column)
     gds->SaveCellViewWid(view);
     if(qname.contains(' '))
         qname = qname.split(' ').at(0);
-    view->SetSceneFrameByName(qname.toStdString());
-    view->DrawStructure(qname.toStdString());
+    view->DrawMainStructureByName(qname.toStdString());
     workTabs->addTab(view,qname);
     workTabs->setCurrentWidget(view);
 }

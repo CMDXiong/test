@@ -64,12 +64,11 @@ COptimaskView::COptimaskView(CGdsDocument* document):m_coordViewOffset(0.0,0.0),
     m_gdsdocument = document;
     if(document != 0){
         m_CurScene = document->GetSceneData();
-        SetSceneFrame();
-        SetMap();
     }
     m_pen.setColor(Qt::black);
     m_pen.setStyle(Qt::SolidLine);
     m_pen.setWidth(1);
+    multiple = 1.0;
 }
 
 COptimaskView::~COptimaskView()
@@ -81,8 +80,6 @@ void COptimaskView::SetGdsDocument(CGdsDocument*gds)
 {
     m_gdsdocument=gds;
     m_CurScene = m_gdsdocument->GetSceneData();
-    SetSceneFrame();
-    SetMap();
 }
 
 
@@ -91,9 +88,9 @@ PaintingWidget *COptimaskView::getGraphicsScene()
     return paintscene;
 }
 
-inline QRect COptimaskView::GeoRectToQRect(const CGeoRect &rect) const
+inline QRectF COptimaskView::GeoRectToQRectF(const CGeoRect &rect) const
 {
-    return QRect(std::floor(rect.m_dLeft), std::floor(rect.m_dTop), rect.m_dRight, rect.m_dBottom);
+    return QRectF(rect.m_dLeft, rect.m_dTop, rect.m_dRight, rect.m_dBottom);
 }
 
 inline CGeoPt COptimaskView::QPointFToGeoPt(QPointF &point) const
@@ -294,13 +291,23 @@ void COptimaskView::DrawWithMouse(const int type)
     }
 }
 
-void COptimaskView::EnterDrawSceneEvent()
+void COptimaskView::DrawPrimitive(CGeoPoint *pData)
 {
-//    m_CurScene = m_gdsdocument->GetSceneData();
-    //SetSceneFrame();
-//    SetMap();
+    if(pData == 0){
+        QMessageBox::information(NULL, tr("Warning"),tr("No Data"));
+        return;
+    }
+    QPainter pp(&pix);
+    pp.setViewport(viewFrame);
+    pp.setWindow(windowFrame);
+    pp.translate(0, windowFrame.bottom() + windowFrame.top());
+    m_pen.setWidthF(multiple);
+    pp.setPen(m_pen);
+    pp.setRenderHint(QPainter::Antialiasing, true);
 
-    //    DrawScene();
+    QPointF pointF(pData->GetPt().dx, -pData->GetPt().dy);
+    pp.drawPoint(pointF);
+    this->viewport()->update();
 }
 
 void COptimaskView::DrawPrimitive(CGeoLine *pData)
@@ -310,24 +317,15 @@ void COptimaskView::DrawPrimitive(CGeoLine *pData)
         return;
     }
     QPainter pp(&pix);
-    pp.setViewport(setViewPort());
-    FLOAT_T multiple   = std::max(m_sceneFrame.Height()/setViewPort().height(), m_sceneFrame.Width()/setViewPort().width());
-    if(multiple < 1.0){
-        multiple = 1.0;
-    }
-    pp.setWindow(std::floor(m_sceneFrame.m_dLeft),std::floor(m_sceneFrame.m_dTop), m_sceneFrame.Width(), m_sceneFrame.Height());
+    pp.setViewport(viewFrame);
+    pp.setWindow(windowFrame);
+    pp.translate(0, windowFrame.bottom() + windowFrame.top());
     m_pen.setWidthF(multiple);
     pp.setPen(m_pen);
     pp.setRenderHint(QPainter::Antialiasing, true);
 
-    pp.drawLine(pData->GetFirstPt().dx, pData->GetFirstPt().dy,
-                pData->GetSecondPt().dx, pData->GetSecondPt().dy);
-
-    //    CGeoRect itemframe = pData->GetBoundBox();//画图元边框测试
-    //    pp.save();
-    //    pp.setPen(QPen(Qt::red,12));
-    //    pp.drawRect(itemframe.m_dLeft, itemframe.m_dTop, itemframe.Width(), itemframe.Height());
-    //    pp.restore();
+    pp.drawLine(pData->GetFirstPt().dx, -pData->GetFirstPt().dy,
+                pData->GetSecondPt().dx, -pData->GetSecondPt().dy);
     this->viewport()->update();
 }
 
@@ -339,20 +337,17 @@ void COptimaskView::DrawPrimitive(CGeoCircle *pData)
     }
 
     QPainter pp(&pix);
-    pp.setViewport(setViewPort());
-    FLOAT_T multiple   = std::max(m_sceneFrame.Height()/setViewPort().height(), m_sceneFrame.Width()/setViewPort().width());
-    if(multiple < 1.0){
-        multiple = 1.0;
-    }
-    pp.setWindow(std::floor(m_sceneFrame.m_dLeft),std::floor(m_sceneFrame.m_dTop), m_sceneFrame.Width(), m_sceneFrame.Height());
+    pp.setViewport(viewFrame);
+    pp.setWindow(windowFrame);
     m_pen.setWidthF(multiple);
     pp.setPen(m_pen);
     pp.setRenderHint(QPainter::Antialiasing, true);
 
-    QPointF center1(pData->GetCenterPt().dx, pData->GetCenterPt().dy);
+    pp.translate(0, windowFrame.bottom() + windowFrame.top());
+    QPointF center1(pData->GetCenterPt().dx, -pData->GetCenterPt().dy);
     pp.drawEllipse(center1, pData->GetRadius(),pData->GetRadius());
 
-    pp.drawRect(m_sceneFrame.m_dLeft, m_sceneFrame.m_dTop, m_sceneFrame.Width(),m_sceneFrame.Height());
+    //pp.drawRect(m_sceneFrame.m_dLeft, m_sceneFrame.m_dTop, m_sceneFrame.Width(),m_sceneFrame.Height());
     this->viewport()->update();
 }
 
@@ -363,17 +358,14 @@ void COptimaskView::DrawPrimitive(CGeoRectangle *pData)
         return;
     }
     QPainter pp(&pix);
-    pp.setViewport(setViewPort());
-    FLOAT_T multiple   = std::max(m_sceneFrame.Height()/setViewPort().height(), m_sceneFrame.Width()/setViewPort().width());
-    if(multiple < 1.0){
-        multiple = 1.0;
-    }
-    pp.setWindow(std::floor(m_sceneFrame.m_dLeft),std::floor(m_sceneFrame.m_dTop), m_sceneFrame.Width(), m_sceneFrame.Height());
+    pp.setViewport(viewFrame);
+    pp.setWindow(windowFrame);
     m_pen.setWidthF(multiple);
     pp.setPen(m_pen);
     pp.setRenderHint(QPainter::Antialiasing, true);
 
-    pp.drawRect(pData->GetTopLeftPt().dx, pData->GetTopLeftPt().dy, pData->Width(), pData->Height());
+    pp.translate(0, windowFrame.bottom() + windowFrame.top());
+    pp.drawRect(pData->GetTopLeftPt().dx, -pData->GetTopLeftPt().dy, pData->Width(), pData->Height());
     this->viewport()->update();
 }
 
@@ -384,21 +376,17 @@ void COptimaskView::DrawPrimitive(CGeoArc *pData)
         return;
     }
     QPainter pp(&pix);
-    pp.setViewport(setViewPort());
-    FLOAT_T multiple   = std::max(m_sceneFrame.Height()/setViewPort().height(), m_sceneFrame.Width()/setViewPort().width());
-    if(multiple < 1.0){
-        multiple = 1.0;
-    }
-    pp.setWindow(std::floor(m_sceneFrame.m_dLeft),std::floor(m_sceneFrame.m_dTop), m_sceneFrame.Width(), m_sceneFrame.Height());
+    pp.setViewport(viewFrame);
+    pp.setWindow(windowFrame);
     m_pen.setWidthF(multiple);
     pp.setPen(m_pen);
     pp.setRenderHint(QPainter::Antialiasing, true);
 
     FLOAT_T rad = pData->GetRadius();
-    QRectF rectf(pData->GetCenterPt().dx - rad, pData->GetCenterPt().dy - rad, 2*rad, 2*rad);
-    pp.drawArc(rectf, -pData->GetAngleS()*16,-(pData->GetAngleE()*16-pData->GetAngleS()*16));
+    pp.translate(0, windowFrame.bottom() + windowFrame.top());
+    QRectF rectf1(pData->GetCenterPt().dx - rad, -pData->GetCenterPt().dy - rad, 2*rad, 2*rad);
+    pp.drawArc(rectf1, pData->GetAngleS()*16,(pData->GetAngleE()*16-pData->GetAngleS()*16));
     this->viewport()->update();
-
 }
 
 void COptimaskView::DrawPrimitive(CGeoLWPolyline *pData)
@@ -408,13 +396,9 @@ void COptimaskView::DrawPrimitive(CGeoLWPolyline *pData)
         return;
     }
     QPainter pp(&pix);
-    QRect rect = setViewPort();
-    pp.setViewport(rect);
-    FLOAT_T multiple   = std::max(m_sceneFrame.Height()/setViewPort().height(), m_sceneFrame.Width()/setViewPort().width());
-    if(multiple < 1.0){
-        multiple = 1.0;
-    }
-    pp.setWindow(std::floor(m_sceneFrame.m_dLeft),std::floor(m_sceneFrame.m_dTop), m_sceneFrame.Width(), m_sceneFrame.Height());
+    pp.setViewport(viewFrame);
+    pp.setWindow(windowFrame);
+    pp.translate(0, windowFrame.bottom() + windowFrame.top());
     m_pen.setWidthF(multiple);
     pp.setPen(m_pen);
     pp.setRenderHint(QPainter::Antialiasing, true);
@@ -423,7 +407,8 @@ void COptimaskView::DrawPrimitive(CGeoLWPolyline *pData)
     int numPoint = pData->GetPtNum();
     QPointF* points = new QPointF[numPoint]; //C++不允许以变量作为数组的大小
     for(int i = 0; i<numPoint; ++i ){
-        points[i] = GeoPtToQPoint(allPoint[i]);
+        points[i]  = GeoPtToQPoint(allPoint[i]);
+        points[i].setY(-points[i].y());
     }
     if(pData->IsClosed()){//封闭
         pp.drawPolygon(points, numPoint);
@@ -447,12 +432,8 @@ void COptimaskView::DrawPrimitive(CGeoEllipse *pData)
         return;
     }
     QPainter pp(&pix);
-    pp.setViewport(setViewPort());
-    FLOAT_T multiple   = std::max(m_sceneFrame.Height()/setViewPort().height(), m_sceneFrame.Width()/setViewPort().width());
-    if(multiple < 1.0){
-        multiple = 1.0;
-    }
-    pp.setWindow(std::floor(m_sceneFrame.m_dLeft),std::floor(m_sceneFrame.m_dTop), m_sceneFrame.Width(), m_sceneFrame.Height());
+    pp.setViewport(viewFrame);
+    pp.setWindow(windowFrame);
     m_pen.setWidthF(multiple);
     pp.setPen(m_pen);
     pp.setRenderHint(QPainter::Antialiasing, true);
@@ -466,16 +447,15 @@ void COptimaskView::DrawPrimitive(CGeoText *pData)
         return;
     }
     QPainter pp(&pix);
-    pp.setViewport(setViewPort());
-    FLOAT_T multiple   = std::max(m_sceneFrame.Height()/setViewPort().height(), m_sceneFrame.Width()/setViewPort().width());
-    if(multiple < 1.0){
-        multiple = 1.0;
-    }
-    pp.setWindow(std::floor(m_sceneFrame.m_dLeft),std::floor(m_sceneFrame.m_dTop), m_sceneFrame.Width(), m_sceneFrame.Height());
+    pp.setViewport(viewFrame);
+    pp.setWindow(windowFrame);
     m_pen.setWidthF(multiple);
     pp.setPen(m_pen);
     pp.setRenderHint(QPainter::Antialiasing, true);
-    pp.drawText(GeoPtToQPoint(pData->GetStartPt()),QString::fromLocal8Bit(pData->GetText().c_str()));
+    pp.translate(0, windowFrame.bottom() + windowFrame.top());
+    CGeoPt Pt = pData->GetStartPt();
+    Pt.dy *=(-1);
+    pp.drawText(GeoPtToQPoint(Pt),QString::fromLocal8Bit(pData->GetText().c_str()));
     this->viewport()->update();
 }
 
@@ -650,18 +630,16 @@ void COptimaskView::DrawPrimitive(CGeoTransform *pData)
 
 
         QPainter pp(&pix);
-        pp.setViewport(setViewPort());
-        FLOAT_T multiple   = std::max(m_sceneFrame.Height()/setViewPort().height(), m_sceneFrame.Width()/setViewPort().width());
-        if(multiple < 1.0){
-            multiple = 1.0;
-        }
-        pp.setWindow(std::floor(m_sceneFrame.m_dLeft),std::floor(m_sceneFrame.m_dTop), m_sceneFrame.Width(), m_sceneFrame.Height());
+        pp.setViewport(viewFrame);
+        pp.setWindow(windowFrame);
         m_pen.setWidthF(multiple);
         pp.setPen(m_pen);
         pp.setRenderHint(QPainter::Antialiasing, true);
+        pp.translate(0, windowFrame.bottom() + windowFrame.top());
+
 
         pp.save();
-        pp.translate(center.dx, center.dy);              // 使用逻辑坐标
+        pp.translate(center.dx, -center.dy);              // 使用逻辑坐标
         pp.rotate(angle*180/M_PI);
         QRectF ellipseFrame1(-width, -height, 2*width, 2*height);
         pp.drawEllipse(ellipseFrame1);
@@ -734,37 +712,35 @@ void COptimaskView::DrawItemFrame(CGeoBase* pData)
         return;
     }
     QPainter pp(&pix);
-    pp.setViewport(setViewPort());
-    double mulriple = m_sceneFrame.Width()/setViewPort().width();
-    if(mulriple < 1.0){
-        mulriple = 1.0;
-    }
-    pp.setWindow(std::floor(m_sceneFrame.m_dLeft),std::floor(m_sceneFrame.m_dTop), setViewPort().width() * mulriple, setViewPort().height() * mulriple);
-    m_pen.setWidthF(mulriple);
+    pp.setViewport(viewFrame);
+    pp.setWindow(windowFrame);
+    pp.translate(0, windowFrame.bottom() + windowFrame.top());
+    m_pen.setWidthF(multiple);
     pp.setPen(m_pen);
     pp.setRenderHint(QPainter::Antialiasing, true);
 
-    CGeoRect itemframe = pData->GetBoundBox();//画图元边框测试
-    pp.drawRect(itemframe.m_dLeft, itemframe.m_dTop, itemframe.Width(), itemframe.Height());
+    CGeoRect itemframe = pData->GetBoundBox(); //画图元包围盒
+    pp.drawRect(itemframe.m_dLeft, -itemframe.m_dBottom, itemframe.Width(), itemframe.Height());
     this->viewport()->update();
 }
 
 void COptimaskView::DrawStructure(CGeoGDSStruct *pCell)
 {
     if(pCell == 0){
-        QMessageBox::information(NULL, tr("Warning"),tr("CGeoGDSStruct: No Data"));
+        QMessageBox::information(NULL, tr("Warning"),tr("CGeoGDSStruct: 没有构元数据"));
         return;
     }
     for (unsigned int j = 0; j < pCell->GetChildCount();j++)
     {
-        CGeoBase* pChild = pCell->GetChild(j);
-        CGeoTransform* pTran = dynamic_cast<CGeoTransform*>(pChild);
-        if (pTran != 0)
-        {
-            DrawPrimitive(pTran);
-        }else{
-            DrawBasePrimitive(pChild);
-        }
+        DrawBasePrimitive(pCell->GetChild(j));
+//        CGeoBase* pChild = pCell->GetChild(j);
+//        CGeoTransform* pTran = dynamic_cast<CGeoTransform*>(pChild);
+//        if (pTran != 0)
+//        {
+//            DrawPrimitive(pTran);
+//        }else{
+//            DrawBasePrimitive(pChild);
+//        }
     }
 }
 
@@ -823,7 +799,27 @@ void COptimaskView::DrawMainStructure()
         QMessageBox::information(NULL, tr("Warning"),tr("MainStruct: No Found"));
         return;
     }
+    m_sceneFrame = mainStruct->GetBoundBox();              // 计算主构元的包围盒
+    setViewPort();                                         // 计算主构元包围盒所对应的物理坐标范围
+    m_dboriginMapItemX = windowFrame.x();
+    m_dboriginMapItemY = windowFrame.y();
+    SetMap(mainStruct);                                    // 建立图元选中的映射关系
     DrawStructure(mainStruct);                             // 画主构元
+}
+
+void COptimaskView::DrawMainStructureByName(std::string sname)
+{
+    CGeoGDSStruct *mainStruct = FindStructureByName(sname);       // 寻找主构元
+        if(mainStruct == 0){
+            QMessageBox::information(NULL, tr("Warning"),tr("MainStruct: No Found"));
+            return;
+        }
+        m_sceneFrame = mainStruct->GetBoundBox();              // 计算主构元的包围盒
+        setViewPort();                                         // 计算主构元包围盒所对应的物理坐标范围
+        m_dboriginMapItemX = windowFrame.x();
+        m_dboriginMapItemY = windowFrame.y();
+        SetMap(mainStruct);                                    // 建立图元选中的映射关系
+        DrawStructure(mainStruct);                             // 画主构元
 }
 
 unsigned int COptimaskView::GeoTransformReferenceLevel(CGeoTransform* trans)
@@ -892,7 +888,6 @@ void COptimaskView::TestData()
                 pChild = const_cast<CGeoBase*>(pTran->GetChild());
                 DrawPrimitive(pTran);
             }else{
-                qDebug()<<"i'm here";
                 DrawBasePrimitive(pChild);
             }
         }
@@ -902,11 +897,11 @@ void COptimaskView::TestData()
 
 void COptimaskView::DrawBasePrimitive(CGeoBase *pData)
 {
-    unsigned short wType = pData->GetObjType();
-    if (wType >= GEO_TYPE_ELEMENT && wType <= GEO_TYPE_OTHER)
+    CGeoTransform* pTran = dynamic_cast<CGeoTransform*>(pData);
+    if (pTran != 0)
     {
-        DrawPrimitive(static_cast<CGeoTransform*>(pData));
-        return;
+        DrawPrimitive(pTran);
+        return ;
     }
 
     CGeoMulripler* pMulti = dynamic_cast<CGeoMulripler*>(pData);
@@ -961,7 +956,7 @@ void COptimaskView::DrawBasePrimitive(CGeoBase *pData)
         return;
     }
 
-    switch(wType){
+    switch(pData->GetObjType()){
     case GEO_TYPE_POINT:
         break;
     case GEO_TYPE_LWPOLYLINE:
@@ -998,31 +993,6 @@ void COptimaskView::DrawBasePrimitive(CGeoBase *pData)
     }
 }
 
-void COptimaskView::DrawPrimitive(CGeoPoint *pData)
-{
-    if(pData == 0){
-        QMessageBox::information(NULL, tr("Warning"),tr("No Data"));
-        return;
-    }
-//    QPainter pp(&pix);
-//    QRect rect = setViewPort();
-//    pp.setViewport(rect);
-//    FLOAT_T multiple   = std::max(m_sceneFrame.Height()/setViewPort().height(), m_sceneFrame.Width()/setViewPort().width());
-//    if(multiple < 1.0){
-//        multiple = 1.0;
-//    }
-//    pp.setWindow(std::floor(m_sceneFrame.m_dLeft),std::floor(m_sceneFrame.m_dTop), m_sceneFrame.Width(), m_sceneFrame.Height());
-//    m_pen.setWidthF(multiple);
-    SetPainter();
-    m_pen.setWidthF(multiple1);
-    pp.setPen(m_pen);
-    pp.setRenderHint(QPainter::Antialiasing, true);
-
-    QPointF pointF(pData->GetPt().dx, pData->GetPt().dy);
-    pp.drawPoint(pointF);
-    this->viewport()->update();
-}
-
 void COptimaskView::SetSceneFrame()
 {
     std::vector<FLOAT_T> xVector;
@@ -1035,51 +1005,18 @@ void COptimaskView::SetSceneFrame()
         for(std::vector<ref_ptr<CGeoBase> >::iterator iterObj = objList.begin(); iterObj != objList.end(); ++iterObj){
 
             CGeoBase* pData = (*iterObj).get();
-            unsigned int num = pData->GetObjType();
             CGeoRect rect = pData->GetBoundBox();
             xVector.push_back(rect.m_dLeft);
             xVector.push_back(rect.m_dRight);
             yVector.push_back(rect.m_dTop);
             yVector.push_back(rect.m_dBottom);
-            //            CGeoTransform *pTrans = static_cast<CGeoTransform* >(pData);
-            //            qDebug()<<"num: "<<pData->GetObjType();
-            //            qDebug()<<"Frame: "<<pData->GetBoundBox().m_dLeft<<": "<<pData->GetBoundBox().m_dTop<<": "<<pData->GetBoundBox().m_dRight
-            //                   <<": "<<pData->GetBoundBox().m_dBottom;
-            //            qDebug()<<"childnum:"<<pTrans->GetChild()->GetObjType();
-            //            qDebug()<<"FrameChild: "<<pTrans->GetChild()->GetBoundBox().m_dLeft<<": "<<pTrans->GetChild()->GetBoundBox().m_dTop<<": "<<pTrans->GetChild()->GetBoundBox().m_dRight
-            //                   <<": "<<pTrans->GetChild()->GetBoundBox().m_dBottom;
-            // unsigned int num = pData->GetObjType();
+
         }
     }
     m_sceneFrame =  Frame(xVector, yVector);
-    //qDebug("left: (%f, top: %f), right: (%f, bottom: %f)\n",m_sceneFrame.m_dLeft, m_sceneFrame.m_dTop,m_sceneFrame.m_dRight, m_sceneFrame.m_dBottom);
-
     m_dboriginMapItemX = *(std::min_element(xVector.begin(), xVector.end()));
     m_dboriginMapItemY = *(std::min_element(yVector.begin(), yVector.end()));
 }
-
-//void COptimaskView::SetSceneFrameByStructure()
-//{
-//    std::vector<FLOAT_T> xVector;
-//    std::vector<FLOAT_T> yVector;
-//    const GeoStructList& lstStru = m_CurScene->GetCellList();
-//    for (int i = 0; i < lstStru.size(); i++)
-//    {
-//        const CGeoGDSStruct* pCell = lstStru.at(i).get();
-
-//        CGeoRect rect = pCell->GetBoundBox();
-//        xVector.push_back(rect.m_dLeft);
-//        xVector.push_back(rect.m_dRight);
-//        yVector.push_back(rect.m_dTop);
-//        yVector.push_back(rect.m_dBottom);
-
-//    }
-//    m_sceneFrame =  Frame(xVector, yVector);
-//    qDebug("left: (%f, top: %f), right: (%f, bottom: %f)\n",m_sceneFrame.m_dLeft, m_sceneFrame.m_dTop,m_sceneFrame.m_dRight, m_sceneFrame.m_dBottom);
-
-//    m_dboriginMapItemX = *(std::min_element(xVector.begin(), xVector.end()));
-//    m_dboriginMapItemY = *(std::min_element(yVector.begin(), yVector.end()));
-//}
 
 CGeoRect COptimaskView::LayerFrame(const int& n) const
 {
@@ -1108,62 +1045,286 @@ CGeoRect COptimaskView::Frame(const std::vector<double> &xVector, const std::vec
     return CGeoRect(dbMinX-2, dbMinY-2, dbMaxX+2, dbMaxY+2);//冗余两个单位
 }
 
-void COptimaskView::SetMap()
+void COptimaskView::SetMap(CGeoGDSStruct* pData)
 {
-
-    //SetSceneFrame();
+    if(pData == 0){
+        QMessageBox::information(NULL, tr("Warning"),tr("无主构元"));
+        return;
+    }
     SetRow(10);
     SetColumn(10);
     SetHeight(m_sceneFrame);
     SetWidth(m_sceneFrame);
 
-    std::vector<ref_ptr<CGeoLayer> > layerList = m_CurScene->GetLayerList();
-    for(std::vector<ref_ptr<CGeoLayer> >::iterator iterLayer = layerList.begin(); iterLayer != layerList.end(); ++iterLayer){
-        ref_ptr<CGeoLayer> layer = *iterLayer;
-        GeoObjList objList = layer->GetObjList();
-        for(std::vector<ref_ptr<CGeoBase> >::iterator iterObj = objList.begin(); iterObj != objList.end(); ++iterObj){
-            //CGeoBase* pData = (*iterObj).get();
-            //            switch(pData->GetObjType())
-            //            {
-            //            case
+    SetGeoStructureMap(pData);
+}
 
-            //            }
-            CGeoBase* pData = (*iterObj).get();
-            CGeoRect itemframe = pData->GetBoundBox();
+void COptimaskView::SetGeoTransformMap(ref_ptr<CGeoTransform> pData)
+{
+    if(pData == 0){
+        QMessageBox::information(NULL, tr("Warning"),tr("No Map Data"));
+        return;
+    }
 
-            int itemLeftTopX = std::floor((itemframe.m_dLeft - std::floor(m_dboriginMapItemX))/idWidth);
-            int itemLeftTopY = std::floor((itemframe.m_dTop  - std::floor(m_dboriginMapItemY))/idHeight);
-            int itemRightBottomX = std::floor((itemframe.m_dRight  - std::floor(m_dboriginMapItemX))/idWidth);
-            int itemRightBottomY = std::floor((itemframe.m_dBottom  - std::floor(m_dboriginMapItemY))/idHeight);
+    CGeoBase* child = pData->GetChild();
+    CMatrix mat;
+    pData->GetTransformMatrix(mat);
 
-            for(int i = itemLeftTopX; i <= itemRightBottomX; ++i )
-                for(int j = itemLeftTopY; j <= itemRightBottomY; ++j )
-                {
-                    unsigned int itemID = ((i<<16) + j);
-                    m_mapItem.insert(std::pair<unsigned int, ref_ptr<CGeoBase> >(itemID, pData));
-                }
+    CGeoTransform* pTran = dynamic_cast<CGeoTransform*>(child); // 判断子节点是否是CGeoTransform类或其派生类
+    if (pTran != 0)
+    {
+//        CGeoTransform trans/* = *pTran*/;
+//        mat *= pTran->GetTransformMatrix();//更新矩阵
+//        trans.SetTransformMatrix(mat);
+//        trans.SetChild(pTran->GetChild());
+//        SetGeoTransformMap(&trans);
+//        return ;
+        ref_ptr<CGeoTransform> trans(new CGeoTransform());
+        mat *= pTran->GetTransformMatrix();//更新矩阵
+        trans->SetTransformMatrix(mat);
+        trans->SetChild(pTran->GetChild());
+        SetGeoTransformMap(trans);
+        return ;
+    }
+
+    CGeoMulripler* pMulti = dynamic_cast<CGeoMulripler*>(child);
+    if (pMulti != 0)
+    {
+        if (pMulti->GetObjType() == GEO_TYPE_MULRIPLER || pMulti->GetObjType() == GEO_TYPE_STRUCT) {
+            for (unsigned i = 0; i < pMulti->GetChildCount(); ++i)
+            {
+                CGeoBase *geoChild = pMulti->GetChild(i);
+                ref_ptr<CGeoTransform> transform(new CGeoTransform());
+                transform->SetTransformMatrix(mat);
+                transform->SetChild(geoChild);
+                SetGeoTransformMap(transform);
+            }
+            return ;
+        }
+        if (pMulti->GetObjType() == GEO_TYPE_ARRAY) {
+            CGeoArray *pArray = static_cast<CGeoArray*>(child);
+
+            int     rowNum, colNum;
+            FLOAT_T interRow, interCol;
+            pArray->GetRowAndCol(rowNum, colNum);
+            pArray->GetRowAndColInterDist(interRow, interCol);
+            for (int i = 0; i<rowNum; ++i)
+                for (int j = 0; j<colNum; ++j)
+                    for (unsigned k = 0; k < pArray->GetChildCount(); ++k)
+                    {
+//                        CGeoTransform transform;
+//                        FLOAT_T angle = mat.GetAngle();
+//                        CGeoPt pt(j*interCol, i*interRow);
+
+//                        CMatrix rotateMat = CMatrix::Rotate(angle);
+//                        CGeoPt newPt = rotateMat * pt;
+//                        CMatrix translateMat = CMatrix::Translate(newPt.dx, newPt.dy);
+//                        translateMat *= mat;
+//                        transform.SetTransformMatrix(translateMat);
+//                        transform.SetChild(pArray->GetChild(k));
+
+//                        SetGeoTransformMap(&transform);
+                        ref_ptr<CGeoTransform> transform(new CGeoTransform());
+                        FLOAT_T angle = mat.GetAngle();
+                        CGeoPt pt(j*interCol, i*interRow);
+
+                        CMatrix rotateMat = CMatrix::Rotate(angle);
+                        CGeoPt newPt = rotateMat * pt;
+                        CMatrix translateMat = CMatrix::Translate(newPt.dx, newPt.dy);
+                        translateMat *= mat;
+                        transform->SetTransformMatrix(translateMat);
+                        transform->SetChild(pArray->GetChild(k));
+
+                        SetGeoTransformMap(transform);
+                    }
+            return ;
         }
     }
+
+    CGeoRect rect;
+    switch (child->GetObjType()) {
+    case GEO_TYPE_POINT:
+    {
+        CGeoPoint* point = static_cast<CGeoPoint* >(child);
+        CGeoPt newPt = mat * point->GetPt();
+        CGeoPoint newPoint;
+        newPoint.SetPt(newPt.dx, newPt.dy);
+        rect = newPoint.GetBoundBox();
+        break;
+    }
+
+    case GEO_TYPE_LINE:
+    {
+        CGeoLine* line = static_cast<CGeoLine* >(child);
+        CGeoPt newFirstPt = mat * line->GetFirstPt();
+        CGeoPt newSecondPt = mat * line->GetSecondPt();
+        CGeoLine newLine(newFirstPt, newSecondPt);
+        rect = newLine.GetBoundBox();
+        break;
+    }
+    case GEO_TYPE_CIRCLE:
+    {
+        CGeoCircle* circle = static_cast<CGeoCircle* >(child);
+        CGeoCircle newCircle;
+        CMatrix rotateTranslateMaT;                                         // 旋转平移矩阵
+        mat.GetRotateAndTranslate(rotateTranslateMaT);
+        newCircle.SetRadius(mat.GetScale() * circle->GetRadius());          // 半径只能放缩
+        newCircle.SetCenterPt(rotateTranslateMaT * circle->GetCenterPt());  // 圆心旋转平移
+        rect = newCircle.GetBoundBox();
+        break;
+    }
+    case GEO_TYPE_ARC:
+    {
+        CGeoArc* arc = static_cast<CGeoArc* >(child);
+        CGeoArc newArc;
+        CMatrix rotateTranslateMaT;
+        mat.GetRotateAndTranslate(rotateTranslateMaT);
+
+        newArc.SetRadius(mat.GetScale() * arc->GetRadius());                 // 设置新的半径
+        newArc.SetCenterPt(rotateTranslateMaT * arc->GetCenterPt());         // 设置新的中心点
+        newArc.SetAngleS(mat.GetAngle() + arc->GetAngleS());                 // 设置新的起始角度
+        newArc.SetAngleE(mat.GetAngle() + arc->GetAngleE());                 // 设置新的终止角度
+        rect = newArc.GetBoundBox();
+        break;
+    }
+    case GEO_TYPE_LWPOLYLINE:
+    {
+        const CGeoLWPolyline* pPloy = static_cast<const CGeoLWPolyline*>(child);
+        const std::vector<CGeoPt>& ptList = pPloy->GetPtList();
+        CGeoLWPolyline newLwPolyline;
+        newLwPolyline.SetClose(pPloy->IsClosed());
+        newLwPolyline.SetFill(pPloy->IsFill());
+        for (unsigned i = 0;i < ptList.size();i++)
+        {
+            const CGeoPt& pt = ptList.at(i);
+            CGeoPt ptNew = mat*pt;
+            newLwPolyline.AddPt(ptNew);
+        }
+        rect = newLwPolyline.GetBoundBox();
+        break;
+    }
+    case GEO_TYPE_ELLIPSE:
+    {
+        CGeoEllipse* pEllipse = static_cast<CGeoEllipse* >(child);
+        FLOAT_T width  = mat.GetScale() * pEllipse->GetWidth();
+        FLOAT_T height = mat.GetScale() * pEllipse->GetHeight();
+        CMatrix rotateTranslateMaT;
+        mat.GetRotateAndTranslate(rotateTranslateMaT);
+        CGeoPt center = rotateTranslateMaT * pEllipse->GetCenterPt(); // 圆心
+        FLOAT_T angle = mat.GetAngle();  // 弧度
+
+        CGeoRect   FrameRect ;
+        FLOAT_T   a = width;                         // 椭圆长轴一半
+        FLOAT_T   b = height;                        // 椭圆短轴一半
+        FLOAT_T angleXT = atan((-b * tan(angle))/a);
+        FLOAT_T xFrame1 = center.dx + a * cos(angleXT) * cos(angle) - b * sin(angleXT) *sin(angle);
+        angleXT += M_PI;
+        FLOAT_T xFrame2 = center.dx + a * cos(angleXT) * cos(angle) - b * sin(angleXT) *sin(angle);
+        if(xFrame1 > xFrame2){
+            FrameRect.m_dLeft  = xFrame2;
+            FrameRect.m_dRight = xFrame1;
+        }else{
+            FrameRect.m_dLeft  = xFrame1;
+            FrameRect.m_dRight = xFrame2;
+        }
+
+        FLOAT_T angleYT = atan(b/(a * tan(angle)));
+        FLOAT_T yFrame1 = center.dy + b * sin(angleYT) * cos(angle) + a * cos(angleYT) *sin(angle);
+        angleYT += M_PI;
+        FLOAT_T yFrame2 = center.dy + b * sin(angleYT) * cos(angle) + a * cos(angleYT) *sin(angle);
+        if(yFrame1 > yFrame2){
+            FrameRect.m_dBottom  = yFrame1;
+            FrameRect.m_dTop     = yFrame2;
+        }else{
+            FrameRect.m_dBottom  = yFrame2;
+            FrameRect.m_dTop     = yFrame1;
+        }
+        rect = FrameRect;
+        break;
+    }
+    case GEO_TYPE_TEXT:
+    {
+        CGeoRect   FrameRect = child->GetBoundBox();
+        CGeoPt leftTop(FrameRect.m_dLeft, FrameRect.m_dTop);
+        CGeoPt rightBottom(FrameRect.m_dRight, FrameRect.m_dBottom);
+        CGeoPt rightTop(FrameRect.m_dRight, FrameRect.m_dTop);
+        CGeoPt leftBottom(FrameRect.m_dLeft, FrameRect.m_dBottom);
+
+        leftTop = (mat) * leftTop;
+        rightBottom = (mat) * rightBottom;
+        rightTop = (mat) * rightTop;
+        leftBottom = (mat) * leftBottom;
+
+        FrameRect.m_dLeft = std::min(std::min(leftTop.dx, rightBottom.dx), std::min(rightTop.dx, leftBottom.dx));
+        FrameRect.m_dTop = std::min(std::min(leftTop.dy, rightBottom.dy), std::min(rightTop.dy, leftBottom.dy));
+        FrameRect.m_dRight = std::max(std::max(leftTop.dx, rightBottom.dx), std::max(rightTop.dx, leftBottom.dx));
+        FrameRect.m_dBottom = std::max(std::max(leftTop.dy, rightBottom.dy), std::max(rightTop.dy, leftBottom.dy));
+
+        rect = FrameRect;
+        break;
+    }
+    case GEO_TYPE_RECT:
+    {
+        CGeoRect   FrameRect = child->GetBoundBox();
+        CGeoPt leftTop(FrameRect.m_dLeft, FrameRect.m_dTop);
+        CGeoPt rightBottom(FrameRect.m_dRight, FrameRect.m_dBottom);
+        CGeoPt rightTop(FrameRect.m_dRight, FrameRect.m_dTop);
+        CGeoPt leftBottom(FrameRect.m_dLeft, FrameRect.m_dBottom);
+
+        leftTop = (mat) * leftTop;
+        rightBottom = (mat) * rightBottom;
+        rightTop = (mat) * rightTop;
+        leftBottom = (mat) * leftBottom;
+
+        FrameRect.m_dLeft = std::min(std::min(leftTop.dx, rightBottom.dx), std::min(rightTop.dx, leftBottom.dx));
+        FrameRect.m_dTop = std::min(std::min(leftTop.dy, rightBottom.dy), std::min(rightTop.dy, leftBottom.dy));
+        FrameRect.m_dRight = std::max(std::max(leftTop.dx, rightBottom.dx), std::max(rightTop.dx, leftBottom.dx));
+        FrameRect.m_dBottom = std::max(std::max(leftTop.dy, rightBottom.dy), std::max(rightTop.dy, leftBottom.dy));
+        rect = FrameRect;
+        break;
+    }
+    default://到这里应该是不知道的类型
+        break;
+    }
+
+    rect.m_dTop = windowFrame.bottom() + windowFrame.top() - rect.m_dTop;
+    rect.m_dBottom = windowFrame.bottom() + windowFrame.top() - rect.m_dBottom;
+    std::swap(rect.m_dTop, rect.m_dBottom);
+
+    if(rect.m_dLeft==0 && rect.m_dTop == 0 && rect.m_dRight == 0 && rect.m_dBottom == 0)
+        return;
+    else{
+        int itemLeftTopX     = std::floor((rect.m_dLeft    - windowFrame.x())/idWidth);
+        int itemLeftTopY     = std::floor((rect.m_dTop     - windowFrame.y())/idHeight);
+        int itemRightBottomX = std::floor((rect.m_dRight   - windowFrame.x())/idWidth);
+        int itemRightBottomY = std::floor((rect.m_dBottom  - windowFrame.y())/idHeight);
+
+        for(int i = itemLeftTopX; i <= itemRightBottomX; ++i )
+            for(int j = itemLeftTopY; j <= itemRightBottomY; ++j )
+            {
+                unsigned int itemID = ((i<<16) + j);
+                m_mapItem.insert(std::pair<unsigned int, ref_ptr<CGeoBase> >(itemID, pData));
+            }
+    }
 }
 
-void COptimaskView::SetSceneFrameByStructure(CGeoGDSStruct *struc)
+void COptimaskView::SetGeoStructureMap(CGeoGDSStruct *pData)
 {
-    if(struc == 0){
-        QMessageBox::information(NULL, tr("CGeoGDSStruct"),tr("No Data"));
+    if(pData == 0){
+        QMessageBox::information(NULL, tr("Warning"),tr("No Map Data"));
         return;
     }
-    m_sceneFrame = struc->GetBoundBox();
-}
-
-void COptimaskView::SetSceneFrameByName(std::string sname)
-{
-    if(FindStructureByName(sname) == 0){
-        QMessageBox::information(NULL, tr("Find"),tr("No Found"));
-        return;
+    CMatrix mat;
+    for (unsigned i = 0; i < pData->GetChildCount(); ++i)
+    {
+        CGeoBase *geoChild = pData->GetChild(i);
+        ref_ptr<CGeoTransform> transform(new CGeoTransform());
+        transform->SetTransformMatrix(mat);
+        transform->SetChild(geoChild);
+        SetGeoTransformMap(transform);
     }
-    m_sceneFrame = FindStructureByName(sname)->GetBoundBox();
-}
 
+}
 
 inline void COptimaskView::SetRow(int row)
 {
@@ -1339,6 +1500,118 @@ bool COptimaskView::EllipseContainPoint(const ref_ptr<CGeoEllipse> &ellipse, con
 }
 
 
+// 此trans中包含的子节点一定是基本图元
+// 基本图元包含...
+bool COptimaskView::TransformContainPoint(const ref_ptr<CGeoTransform> &trans, const QPoint &point)
+{
+    CMatrix   mat;
+    trans->GetTransformMatrix(mat);
+    CGeoBase* geoChild = trans->GetChild();
+
+    switch (geoChild->GetObjType()) {
+    case GEO_TYPE_POINT:
+    {
+        CGeoPoint* pt = static_cast<CGeoPoint* >(geoChild);
+        CGeoPt newPt = mat * pt->GetPt();
+        if(point.x() <= (multiple*2+newPt.dx) && point.x() >= (newPt.dx-multiple*2) && point.y() <= (multiple*2+newPt.dy) && point.y() >= (newPt.dy-multiple*2))
+        {
+            return true;
+        }
+        return false;
+    }
+    case GEO_TYPE_LINE:
+    {
+        CGeoLine* line = static_cast<CGeoLine* >(geoChild);
+        CGeoPt newFirstPt = mat * line->GetFirstPt();
+        CGeoPt newSecondPt = mat * line->GetSecondPt();
+        ref_ptr<CGeoLine> newLine(new CGeoLine(newFirstPt, newSecondPt));
+        return LineContainPoint(newLine, point);
+    }
+    case GEO_TYPE_CIRCLE:
+    {
+        CGeoCircle* circle = static_cast<CGeoCircle* >(geoChild);
+        ref_ptr<CGeoCircle> newCircle(new CGeoCircle());
+        CMatrix rotateTranslateMaT;                                         // 旋转平移矩阵
+        mat.GetRotateAndTranslate(rotateTranslateMaT);
+        newCircle->SetRadius(mat.GetScale() * circle->GetRadius());          // 半径只能放缩
+        newCircle->SetCenterPt(rotateTranslateMaT * circle->GetCenterPt());  // 圆心旋转平移
+        return CircleContainPoint(newCircle, point);
+
+    }
+    case GEO_TYPE_ARC:
+    {
+        CGeoArc* arc = static_cast<CGeoArc* >(geoChild);
+        ref_ptr<CGeoArc> newArc(new CGeoArc());
+        CMatrix rotateTranslateMaT;
+        mat.GetRotateAndTranslate(rotateTranslateMaT);
+
+        newArc->SetRadius(mat.GetScale() * arc->GetRadius());                 // 设置新的半径
+        newArc->SetCenterPt(rotateTranslateMaT * arc->GetCenterPt());         // 设置新的中心点
+        newArc->SetAngleS(mat.GetAngle() + arc->GetAngleS());                 // 设置新的起始角度
+        newArc->SetAngleE(mat.GetAngle() + arc->GetAngleE());                 // 设置新的终止角度
+
+        return ArcContainPoint(newArc, point);
+    }
+    case GEO_TYPE_LWPOLYLINE:
+    {
+        const CGeoLWPolyline* pPloy = static_cast<const CGeoLWPolyline*>(geoChild);
+        const std::vector<CGeoPt>& ptList = pPloy->GetPtList();
+        ref_ptr<CGeoLWPolyline> newLwPolyline(new CGeoLWPolyline());
+        newLwPolyline->SetClose(pPloy->IsClosed());
+        newLwPolyline->SetFill(pPloy->IsFill());
+        for (unsigned i = 0;i < ptList.size();i++)
+        {
+            const CGeoPt& pt = ptList.at(i);
+            CGeoPt ptNew = mat*pt;
+            newLwPolyline->AddPt(ptNew);
+        }
+
+        return LWPolyContainPoint(newLwPolyline, point);
+    }
+
+    case GEO_TYPE_ELLIPSE:
+    {
+        CGeoEllipse* pEllipse = static_cast<CGeoEllipse* >(geoChild);
+        FLOAT_T width  = mat.GetScale() * pEllipse->GetWidth();
+        FLOAT_T height = mat.GetScale() * pEllipse->GetHeight();
+        CMatrix rotateTranslateMaT;
+        mat.GetRotateAndTranslate(rotateTranslateMaT);
+        CGeoPt center = rotateTranslateMaT * pEllipse->GetCenterPt(); // 圆心
+        FLOAT_T angle = mat.GetAngle();  // 弧度
+
+        double calu1 = ((point.x() - center.dx)*cos(angle) - (point.y() - center.dy)*sin(angle)) *((point.x() - center.dx)*cos(angle) - (point.y() - center.dy)*sin(angle)) / (width * width);
+        double calu2 = ((point.x() - center.dx)*sin(angle) + (point.y() - center.dy)*cos(angle)) *((point.x() - center.dx)*sin(angle) + (point.y() - center.dy)*cos(angle)) / (height * height);
+        return ((calu1 +calu2) <=1);
+    }
+    case GEO_TYPE_TEXT:
+    case GEO_TYPE_RECT:
+    {
+        ref_ptr<CGeoLWPolyline> lwPolyline(new CGeoLWPolyline());
+        lwPolyline->SetClose(true);
+
+        CGeoRect   FrameRect = geoChild->GetBoundBox();
+        CGeoPt leftTop(FrameRect.m_dLeft, FrameRect.m_dTop);
+        CGeoPt rightBottom(FrameRect.m_dRight, FrameRect.m_dBottom);
+        CGeoPt rightTop(FrameRect.m_dRight, FrameRect.m_dTop);
+        CGeoPt leftBottom(FrameRect.m_dLeft, FrameRect.m_dBottom);
+
+        lwPolyline->AddPt(mat * leftTop);
+        lwPolyline->AddPt(mat * rightBottom);
+        lwPolyline->AddPt(mat * rightTop);
+        lwPolyline->AddPt(mat * leftBottom);
+
+        return LWPolyContainPoint(lwPolyline, point);
+    }
+    case GEO_TYPE_POLYGON:
+    {
+        return false;
+        // 数据中还没有设置这一类型
+    }
+    default:
+        break;
+    }
+    return false;
+}
 
 FLOAT_T COptimaskView::FrameArea(CGeoRect rect) const
 {
@@ -1408,20 +1681,6 @@ void COptimaskView::SetPen(QPen pen)
     m_pen.setColor(pen.color()) ;
 }
 
-void COptimaskView::SetPainter()
-{
-    QRect rect = setViewPort();
-    pp.begin(&pix);
-    pp.setViewport(rect);
-    pp.setWindow(GeoRectToQRect(m_sceneFrame));
-}
-
-FLOAT_T COptimaskView::SetMmultiple()
-{
-//    multiple1 = std::max(m_sceneFrame.Height()/viewHeight, m_sceneFrame.Width()/viewWidth);
-//    return multiple1;
-}
-
 QPointF COptimaskView::mapToWindow(const QPoint point)
 {
     FLOAT_T x = m_sceneFrame.m_dLeft + (point.x() - setViewPort().left())*m_sceneFrame.Width()/setViewPort().width();
@@ -1467,31 +1726,29 @@ QPointF COptimaskView::mapFromWindow(double dx, double dy)
 
 QRect COptimaskView::setViewPort()
 {
+    int viewWidth;
+    int viewHeight;
     if(m_sceneFrame.Height() >= m_sceneFrame.Width()){
-        int viewWidth  = std::ceil(0.9*static_cast<double>(this->viewport()->height())*m_sceneFrame.Width()/m_sceneFrame.Height());
-        int viewHeight = std::ceil(0.9*this->viewport()->height());
-        FLOAT_T multiple   = std::max(m_sceneFrame.Height()/viewHeight, m_sceneFrame.Width()/viewWidth);
-        multiple1 = multiple;
-        // 修正m_sceneFrame的宽高比与setViewPort一样,都为viewWidth/viewHeight。
-        m_sceneFrame.m_dLeft = std::floor(m_sceneFrame.m_dLeft);
-        m_sceneFrame.m_dTop  = std::floor(m_sceneFrame.m_dTop);
-        m_sceneFrame.m_dRight = m_sceneFrame.m_dLeft + multiple * viewWidth;
-        m_sceneFrame.m_dBottom = m_sceneFrame.m_dTop + multiple * viewHeight;
-
-        return QRect(std::floor(this->viewport()->width()/2 - viewWidth/2), std::floor(0.05*this->viewport()->height()),viewWidth, viewHeight);
+        viewWidth  = std::ceil(0.9*static_cast<double>(this->viewport()->height())*m_sceneFrame.Width()/m_sceneFrame.Height());
+        viewHeight = std::ceil(0.9*this->viewport()->height());
+        viewFrame = QRect(std::floor(this->viewport()->width()/2 - viewWidth/2), std::floor(0.05*this->viewport()->height()),viewWidth, viewHeight);
     }else{
-        int viewHeight = std::ceil(0.9*this->viewport()->width()*m_sceneFrame.Height()/m_sceneFrame.Width());
-        int viewWidth  = std::ceil(0.9*this->viewport()->width());
-        FLOAT_T multiple   = std::max(m_sceneFrame.Height()/viewHeight, m_sceneFrame.Width()/viewWidth);
-        multiple1 = multiple;
-        // 修正m_sceneFrame的宽高比与setViewPort一样,都为viewWidth/viewHeight。
-        m_sceneFrame.m_dLeft = std::floor(m_sceneFrame.m_dLeft);
-        m_sceneFrame.m_dTop  = std::floor(m_sceneFrame.m_dTop);
-        m_sceneFrame.m_dRight = m_sceneFrame.m_dLeft + multiple * viewWidth;
-        m_sceneFrame.m_dBottom = m_sceneFrame.m_dTop + multiple * viewHeight;
-
-        return QRect(std::floor(0.05*this->viewport()->width()), std::floor(this->viewport()->height()/2 - viewHeight/2), viewWidth, viewHeight);
+        viewHeight = std::ceil(0.9*this->viewport()->width()*m_sceneFrame.Height()/m_sceneFrame.Width());
+        viewWidth  = std::ceil(0.9*this->viewport()->width());
+        viewFrame = QRect(std::floor(0.05*this->viewport()->width()), std::floor(this->viewport()->height()/2 - viewHeight/2), viewWidth, viewHeight);
     }
+
+    multiple   = std::max(m_sceneFrame.Height()/viewHeight, m_sceneFrame.Width()/viewWidth);
+    if(multiple < 1.0)
+        multiple = 1.0;
+    // 修正m_sceneFrame的宽高比与setViewPort一样,都为viewWidth/viewHeight。
+    m_sceneFrame.m_dLeft = std::floor(m_sceneFrame.m_dLeft);
+    m_sceneFrame.m_dTop  = std::floor(m_sceneFrame.m_dTop);
+    m_sceneFrame.m_dRight = m_sceneFrame.m_dLeft + multiple * viewWidth;
+    m_sceneFrame.m_dBottom = m_sceneFrame.m_dTop + multiple * viewHeight;
+    windowFrame = QRect(m_sceneFrame.m_dLeft, m_sceneFrame.m_dTop, std::ceil(multiple * viewWidth), std::ceil(multiple * viewHeight));
+
+    return viewFrame;
 }
 
 void COptimaskView::DrawScene()
@@ -1775,11 +2032,20 @@ void COptimaskView::mousePressEvent(QMouseEvent *event)
         typedef std::multimap<unsigned int , ref_ptr<CGeoBase> >::iterator MultiMapIterator;
         std::pair<MultiMapIterator, MultiMapIterator> iterPair = m_mapItem.equal_range(GetID(event->pos()));
         FLOAT_T minFrameArea = std::numeric_limits<FLOAT_T>::max();
+
         QPoint eventpos = event->pos();
         QPointF LogPos = mapToWindow(eventpos);
+
+        LogPos.setY(-LogPos.y() + windowFrame.top() + windowFrame.bottom());
         std::list<ref_ptr<CGeoBase> > list;
         for (MultiMapIterator it = iterPair.first; it != iterPair.second; ++it)
         {
+            CGeoTransform* trans = static_cast<CGeoTransform*>(((*it).second).get());
+            if(trans != 0){
+                if(TransformContainPoint(trans, LogPos.toPoint())){
+                     GetAreaMinItem((*it).second.get(), list, minFrameArea);
+                }
+            }
             switch((*it).second->GetObjType()){
             case GEO_TYPE_LWPOLYLINE:
                 if(LWPolyContainPoint( static_cast<CGeoLWPolyline*>((*it).second.get()), LogPos.toPoint())){
@@ -1808,6 +2074,10 @@ void COptimaskView::mousePressEvent(QMouseEvent *event)
                 break;
             case GEO_TYPE_ELLIPSE:
                 if(EllipseContainPoint( static_cast<CGeoEllipse*>((*it).second.get()), LogPos.toPoint())){
+                    GetAreaMinItem((*it).second.get(), list, minFrameArea);
+                }
+            case GEO_TYPE_OTHER:
+                if(TransformContainPoint( static_cast<CGeoTransform*>((*it).second.get()), LogPos.toPoint())){
                     GetAreaMinItem((*it).second.get(), list, minFrameArea);
                 }
                 break;

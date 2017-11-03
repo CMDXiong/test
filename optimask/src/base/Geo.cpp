@@ -492,8 +492,6 @@ bool CGeoMulripler::SetChild(unsigned nIndex, CGeoBase* pElement)
     return true;
 }
 
-#include <QDebug>
-
 CGeoRect CGeoTransform::GetBoundBox() const
 {
     CMatrix mat = *m_mat;

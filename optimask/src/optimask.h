@@ -25,6 +25,7 @@
 #include "./Layer/laytreeview.h"
 #include "./Layer/layertoolbox.h"
 #include "./Layer/laynavigator.h"
+#include "./cell/ccelldockwidget.h"
 
 class QAction;
 class QMenu;
@@ -55,6 +56,7 @@ public:
     Optimask(QWidget *parent = 0);
     ~Optimask();
 private:
+
     void init();                       //初始化场景
     void createActions();              //创建动作       
     void createMenusAndToolBars();     //创建菜单和工具条
@@ -567,7 +569,6 @@ private:
     QDockWidget *  infoDock;           //信息输出栏(Information, Status, Result, Output)
     QDockWidget *  hintDock;           //提示报警栏(Hint, Error, Warning, Issue)
     QWidget *      centralwidget;      //中心窗口
-    QWidget *      cellTreeWidget;     //celltree窗口
 
     /*--------------------------GDS文件的打开与显示多窗口-----------------------------------*/
 private:
@@ -590,9 +591,10 @@ public slots:
     void                 showSelectedItem(QTreeWidgetItem* item,int column);
 
 private:
+    CCellDockWidget *celldockwidget;
+
     QList<CGdsDocument*> m_gdsDocument;
     QTabWidget *  workTabs;            // 多页窗口
-    QTabWidget *  cellTreeTabs;        // cell多窗口
     QTabWidget *  layerPanelTabs;      // 多窗口
     QTabWidget *  layerNaviTabs;       // 多窗口
     /* 【视图(View)】 和 【显示(Display)】 相关 */

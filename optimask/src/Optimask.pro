@@ -44,6 +44,7 @@ HEADERS  += \
     com/comcnst.h \
     com/commath.h \
     com/comgeom.h \
+    Cell/celltreewidget.h \
 #    com/compoly.h \
 #    com/comdefn.h \
     File/gds2reader.h \
@@ -64,7 +65,6 @@ HEADERS  += \
     Draw/graphicscene.h \
     Draw/gdsdocument.h \
     Draw/graphicsview.h \
-    Draw/celltreewidget.h \
     Draw/matrix.h \
     Draw/librarywidget.h \
     Draw/multiline.h \
@@ -86,7 +86,8 @@ HEADERS  += \
     Script/hint.h \
     Layer/laytreenode.h \
     Layer/laytreemodel.h \
-    Layer/laytreeview.h
+    Layer/laytreeview.h \
+    Cell/ccelldockwidget.h
 
 ## Include Sources Files
 SOURCES += main.cpp \
@@ -112,6 +113,7 @@ SOURCES += main.cpp \
 #    com/q1rim.c \
 #    com/qdrim.c \
 #    com/qdcvx.c \
+    Cell/celltreewidget.cpp \
     File/gds2reader.cpp \
     File/gds2writer.cpp \
 #    Edit/CMacroCommand.cpp \
@@ -123,7 +125,6 @@ SOURCES += main.cpp \
     Edit/pastetodlg.cpp \
     Draw/graphicscene.cpp \
     Draw/gdsdocument.cpp \
-    Draw/celltreewidget.cpp \
     Draw/graphicsview.cpp \
     Draw/matrix.cpp \
     Draw/librarywidget.cpp \
@@ -146,7 +147,8 @@ SOURCES += main.cpp \
     Script/hint.cpp \
     Layer/laytreenode.cpp \
     Layer/laytreemodel.cpp \
-    Layer/laytreeview.cpp
+    Layer/laytreeview.cpp \
+    Cell/ccelldockwidget.cpp
 
 
 
