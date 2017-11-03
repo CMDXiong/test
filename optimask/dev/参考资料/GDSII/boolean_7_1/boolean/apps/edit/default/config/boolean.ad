@@ -1,0 +1,4 @@
+boolean_exe*foreground: black
+boolean_exe*background: gray
+TopLevelShell*background: gray
+TopLevelShell*foreground: black

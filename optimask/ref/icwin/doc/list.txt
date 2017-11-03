@@ -1,0 +1,399 @@
+This file contains information about the LIST, ITEM and related commands and
+the new ADD.item_name macro.  These topics are important to users writing command files, but are unlikely to be of much interest to anyone else.
+
+New commands:       LIST 
+Modified commands:  SELECT, ITEM, REMOVE, SHOW
+New macros:         ADD.item_name, LIST.EMPTY.name, LIST.EOL.name, 
+                    LIST.LEN.name, LIST.INDEX.name
+New functions:      LIST_EXISTS("name"), VALID_LIST_NAME("name");
+
+OVERVIEW:
+
+Suppose you want to write a command file that processes selected components.
+The LIST command allows you to create a list of selected components.  After 
+creating the list you can unselect the components then use the SELECT LIST
+command to reselect them one at a time.  The ITEM command and ADD.item_name 
+macro aid in processing the reselected components.  The ITEM command generates 
+a series of macros describing a single selected component.  You can modify 
+these macros to describe a new component.  The ADD.item_name macro generates 
+a string forming the text of an ADD command that adds a component constructed 
+from the modified macros.  
+
+EXAMPLE: The following code will add 1 to the layer number for all components 
+in a cell.  (Don't worry about the exact syntax, it will be explained later.)
+
+LOG LEVEL=BRIEF SCREEN=OFF  ! This command file will generate several journal  
+!     file entries for each component in the cell.  That can result in a very 
+!     large journal file.  LEVEL=BRIEF prevents ICED from placing !comments
+!     in the journal.  !comments normally represent about half the text in 
+!     the journal file.  Even so, without SCREEN=OFF, most the run time would
+!     go into flashing the journal file entries on the screen. 
+! 
+UNBLANK ALL; UNPROTECT ALL  ! Make sure all components are selectable
+SELECT LAYERS 1:255 ALL     ! Select everything but cells and arrays
+LIST LOCAL=#tmp             ! Form local list named "tmp"
+UNSELECT ALL                ! Unselect all components
+WHILE(1){                   
+   !
+   ! Each loop iteration selects and processes one component from list tmp
+   !
+   SELECT LIST #tmp NEXT    ! Select next component on list
+   IF(%N.SELECT==0) RETURN  ! Nothing left on list, we're done
+   ITEM LOCAL #tmp.item     ! Create ITEM macros for selected component
+   #tmp.item.LAYER = {%tmp.item.LAYER+1} ! Add 1 to layer number
+   %ADD.tmp.item            ! Add new component based on modified item macros
+   DELETE                   ! Delete old component
+}
+
+The LIST Command:
+
+LIST   Create a list of selected components.
+
+Syntax:  
+ (1)    LIST [DEFAULT] GLOBAL [#]name 
+ (2)    LIST [DEFAULT] LOCAL  [#]name 
+ (3)    LIST #name 
+
+Lists provide an efficient way of examining a series of components in command 
+files.  There is a section on EFFICIENCY CONCIDERATIONS near the end of this 
+file.
+
+The DEFAULT, GLOBAL, and LOCAL keywords and # have the same meanings as they 
+do in the MACRO command.  List names are formed using the same rules as 
+macro_names except that list names cannot be more than 16 characters long. 
+(Macro names can be up to 32 characters long.)  
+
+The list command creates a list of fully or partially selected components.  
+Once the list has been created, the components can be selected one at a time 
+using the SELECT LIST command described below.
+
+Each list has an index that points to the current position on the list.  The 
+position of the first component on the list is 1.  The position of the last 
+component is n, where n is the number of components that were on the list 
+when it was created.  The list index can have values in the range [0:n+1].  
+When a list is created, its list index is set to 0.  The list is sorted by ID 
+number, with the component having the lowest ID number first.  Deleting 
+listed components does not affect either the value of n or the list positions
+of any of the remaining components on the list.
+
+Lists are created by the LIST command.  LOCAL lists are destroyed when ICED 
+returns from the command file in which they were created.  Both LOCAL and 
+GLOBAL lists can be destroyed using the REMOVE LIST command.  LOCAL and GLOBAL 
+lists are also destroyed when you QUIT, EXIT, or LEAVE the cell in which they 
+were created.  If you are editing a cell FOO and then use an EDIT command to 
+begin editing a cell GOO, the lists associated with cell FOO are hidden until 
+you QUIT, EXIT, or LEAVE cell GOO.
+
+There are two arbitrary restrictions associated with lists.  You cannot have 
+more than 6 lists for a given cell at any one time and a single list cannot 
+contain more than 10000000 components.  
+
+The SELECT LIST command:
+
+Syntax:
+
+        SELECT LIST [#]name [NEXT | PREVIOUS | FIRST | LAST]
+
+The select list command is used to SELECT individual components on a list.  
+Which component is selected is determined by the list's index and the optional 
+NEXT, PREVIOUS, FIRST, or LAST keyword.  The default, NEXT, is used if none is 
+specified.  
+
+SELECT LIST #name NEXT (Same as SELECT LIST #name):
+
+When ICED executes a SELECT LIST #name NEXT command it adds one to the list
+name's index and checks to see if the indexed component still exists.  If it 
+still exists, it tries to select it.  If the component doesn't exist (it was 
+deleted or merged with another component, etc. after the list was created) or 
+if the select fails (the component was protected or blanked) it adds one to 
+the index and tries again.  This process is repeated until a component is 
+selected or ICED comes to the end of the list (index=n+1).  If a component is 
+selected, ICED clears the peol (Passed End Of List) flag for that list.  If 
+ICED reaches the end of the list without selecting anything and the peol flag 
+is clear it just sets the peol flag.  However, if the peol flag is set ICED 
+reports an error.  This sequence is designed to prevent infinite loops in 
+command files by reporting an error and interrupting the command file if you 
+advance past the end of a list twice.
+
+SELECT LIST #name PREVIOUS:
+
+This command is similar to the SELECT LIST #name NEXT command, except that it 
+traverses the list in the opposite direction.  When ICED executes a SELECT 
+LIST #name PREVIOUS command it subtracts one from the list name's index and 
+checks to see if the indexed component still exists.  If it still exists, it 
+tries to select it.  If the component doesn't exist or the select fails it 
+subtracts one from the index and tries again.  This process is repeated until 
+a component is selected or ICED comes to the start of the list (index=0).  If 
+a component is selected, ICED clears the peol (Passed End Of List) flag for 
+that list.  If ICED reaches the start of the list without selecting anything 
+and the peol flag is clear it just sets the peol flag.  However, if the peol 
+flag is set ICED reports an error.  
+
+SELECT LIST #name FIRST:
+
+When ICED executes a SELECT LIST #name FIRST command it starts by setting the 
+index for list name to 0.  (Recall that the first component on the list has 
+position 1.)  Then it follows the algorithm used in the SELECT LIST #name NEXT 
+command.
+
+SELECT LIST #name LAST:
+
+When ICED executes a SELECT LIST #name LAST command it starts by setting the 
+index for list name to n+1.  (Recall that the last component on the list has 
+position n.)  Then it follows the algorithm used in the SELECT LIST #name PREV 
+command.
+
+
+The REMOVE LIST Command:
+
+Syntax:  
+
+    REMOVE LIST [#]wild_name
+
+The REMOVE LIST command erases both local and global lists with names that
+match wild_name.  It only affects lists for the current cell (the cell you 
+are editing).  It is NOT an error to remove a list that does not exist.  
+
+The ITEM Command:
+
+Syntax:
+
+(1) ITEM [DEFAULT] (#name | GLOBAL [#]name) [BOX=(BOX | POLYGON)]
+(2) ITEM [DEFAULT] (#name | LOCAL [#]name | GLOBAL [#]name)...
+                ...[BOX=(BOX | POLYGON)]
+
+The DEFAULT, GLOBAL, and LOCAL keywords and # have the same meanings as they 
+do in the MACRO command.  Item names are formed using the same rules as 
+macro_names except that list names cannot be more than 16 characters long. 
+(Macro names can be up to 32 characters long.)  
+
+The ITEM command creates a series of macros, with names of the form name.*, 
+that describe a single selected component.  ICED reports an error if it 
+executes an ITEM command when more than one component is selected.  The 
+macros can be examined and altered in a command file.  The ADD.item_name 
+system macro evaluates as a text string containing an ADD command based on the 
+name.* macros.  
+
+The ITEM will overwrite macros with the same name, but it does not otherwise 
+erase existing macros.  Thus, you cannot determine if an item describes a 
+CELL or ARRAY by checking if the macro name.CELL.NAME exists, it may exist 
+because it is left over from a previous ITEM command.
+
+EXAMPLE:  
+
+The following commands that takes a selected wire on layer metal_1 and create 
+a new wire on layer metal_2 that's 1 user unit wider.  
+
+  XSELECT LAYER=metal_1 WIRE NEAR ! If nothing is selected, select something
+  ITEM LOCAL #tmp                 ! Create tmp.* macros for selected component
+  IF(CMP(%tmp.TYPE, WIRE)!=0){    ! Make sure it's a WIRE
+     ERROR "Selected component is a %tmp.TYPE"
+  }
+  IF(%tmp.LAYER!=%LAYER.NUMBER.metal_1){ ! Make sure it's on layer metal_1
+                                  ! %tmp.LAYER will always be a layer number
+     ERROR "Selected component was on layer %LAYER.NAME.%tmp.LAYER"
+  }
+  #tmp.LAYER=metal_2              ! The %ADD.tmp macro accepts layer names OR
+                                  ! numbers 
+  #tmp.WIDTH={%tmp.WIDTH+1}       ! Add 1 to tmp.WIDTH
+  %ADD.tmp                        ! ADD the modified wire
+
+The following is a list of all macros created by an ITEM #name command.  
+
+ MACRO   Used by ADD.ITEM.name      VALUE
+             Y/N/?
+          ?=>see text.
+
+name.TYPE      Y  This macro is updated for all component types.  It is the
+                  type of the selected component.  The ITEM command will 
+                  generate one of the following values: "BOX", "POLYGON", 
+                  "WIRE", "LINE", "CELL", "TEXT", "ARRAY", or "ERROR".  
+                  "ERROR" means that there was an error generating the 
+                  macros and they are not all valid.
+
+name.ID        N  This macro is updated for all component types.  It is the
+                  ID number of the selected component.
+
+name.LAYER     ?  This macro is updated for all component types.  It is 
+                  always reported as a layer number.  If the selected 
+                  component was a CELL or ARRAY it is "0".  This macro is 
+                  used by ADD.item_name for all components except CELLS and 
+                  ARRAYS.
+
+name.TAG       Y  This macro is updated for all component types.  (The TAG 
+                  value is normally generated for components output to error 
+                  layers by the DRC).  name.TAG=0 for untagged components.
+
+name.BB.X0     N  These macros are updated for all component types.  They 
+name.BB.Y0        are the coordinates of the lower left (X0, Y0) and upper
+name.BB.X1        right(X1, Y1) corners of a Bounding Box for the selected 
+name.BB.Y1        component.  
+
+name.AREA      N  These macros are updated for all component types.  Area and 
+name.PERIM        perimeter of selected component.  They are provided for 
+                  convenience in computing capacitances etc.
+
+name.OFFSET    Y  This macro is updated for all component types.  It is 
+                  always set to "(0, 0)".  You can set it to a non-zero value 
+                  to move the component.
+
+name.N.POINTS  ?  This macro is updated for all component types.  It is the
+                  number of coordinates used in ADD command for the selected 
+                  component: 2 for boxes; [3:199] for polygons; [2:200] for 
+                  wires or lines; and 1 for text, cells, and arrays.  The 
+                  ADD.ITEM macro only uses these values for POLYGONS, LINES,
+                  and WIRES.
+
+name.POS.1...  Y  These macros are updated for all component types.  They are
+...name.POS.n     the coordinates used in ADD command for selected component.  
+                  (n=name.N.POINTS)  
+
+name.POS.0     N  These macros are only updated for POLYGONS.  name.POS.0 
+name.POS.n+1      equals name.POS.n and name.POS.n+1 equals name.POS.0.  These 
+                  macros are only defined if the selected component was a 
+                  POLYGON.  They are provided so that command files that 
+                  process vertexes i-1, i, and i+1 do not have to make special 
+                  allowance for the first and last vertex.
+
+name.N.ROWS    ?  These macros are only updated if the selected component was 
+name.N.COLS       an ARRAY.  The ADD.item_name macro only uses these values for
+name.N.ROW.STEP   ARRAYS.
+name.N.COL.STEP
+name.N.ROW.STEP
+
+name.CELL.NAME ?  This macro is only updated if the selected component was a 
+                  CELL or ARRAY.  The ADD.item_name macro only uses this value 
+                  for CELLS and ARRAYS.
+
+name.CELL.NO   N  This macro is only updated if the selected component was a 
+                  CELL or ARRAY.  It is the cell table entry number for cell 
+                  name.CELL.NAME.  
+
+name.TRANS     ?  This macro is only updated if the selected component was a
+                  CELL, ARRAY, or TEXT.  It will have one of the following
+                  values: "R0", "R1", "R2", "R3", "MY", "R1 MY", "R2 MY", or
+                  "R3 MY".  "R3 MY" means that the component was rotated 
+                  3*90 = 270 degrees counter clockwise about its origin and 
+                  then reflected through a horizontal line through its origin. 
+                  The ADD.item_name macro only uses this value for CELLS, 
+                  ARRAYS, and TEXT.
+
+name.ROT       N  This macro is only updated if the selected component was a
+                  CELL, ARRAY, or TEXT.  It will be an integer in the range 
+                  [0:3].  It represents the R-value in name.TRANS.
+
+name.MY        N  This macro is only updated if the selected component was a
+                  CELL, ARRAY, or TEXT.  It will be "1" if "MY" appears in 
+                  name.TRANS and "0" if it does not.
+
+name.WIRE.TYPE ?  This macro is only updated if the selected component was a
+                  WIRE or LINE.  It will be "0" for LINES or flush end WIRES
+                  and "2" for extended end WIRES.  It is defined for LINES so
+                  that some command files can treat WIRES and LINES as a single
+                  case.  The ADD.item_name macro only uses this value for 
+                  WIRES.
+
+name.WIDTH      ? This macro is only updated if the selected component was a
+                  WIRE or LINE.  It will always be "0" for LINES.  It will 
+                  never be "0" for WIRES.  It is defined for LINES so that 
+                  some command files can treat WIRES and LINES as a single 
+                  case.  The ADD.item_name macro only uses this value for 
+                  WIRES.
+
+name.LEN       N  This macro is only updated if the selected component was a
+                  WIRE or LINE.  For extended end WIRES it is the length of
+                  the WIRE'S spine plus the WIRE width.  For LINES and flush
+                  end WIRES it is the length of the component's spine.
+
+name.JUST      ?  This macro is only updated if the selected component was
+                  TEXT.  It will be one of the values "LB", "CB", "RB", "LC",
+                  "CC", "RC", "LT", "CT", or "RT".  The ADD.item_name macro 
+                  only uses this value for TEXT.
+
+name.SIZE      ?  This macro is only updated if the selected component was
+                  TEXT.  The ADD.item_name macro only uses this value for TEXT.
+
+name.N.LINES   ?  This macro is only updated if the selected component was
+                  TEXT.  It is the number of lines of text.  The ADD.item_name 
+                  macro only uses this value for TEXT.
+
+name.LINE.1... ?  This macro is only updated if the selected component was
+...name.LINE.n    TEXT.  The ADD.item_name macro only uses this value for TEXT.
+                  (n=name.N.LINES)
+
+
+Recall that ICED cannot define a GLOBAL macro with the same name as an 
+existing LOCAL macro.  The ITEM command defines a large number of macros any
+such LOCAL/GLOBAL name conflicts will lead to an error. 
+
+EXAMPLE:
+
+A command file with the following commands will always report an error:
+
+                LOCAL test.layer=17
+                ITEM GLOBAL #test
+
+When the error occurs the GLOBAL macro TEST.TYPE will be set to ERROR.  The 
+values of the remaining GLOBAL test.* macros are unpredictable.  
+
+The following commands also result in an error.
+
+                LOCAL test.type=NAND
+                ITEM GLOBAL #test
+
+However, since the conflict occurred with the test.TYPE macro, none of the
+test macros are updated.
+
+NEW SYSTEM MACRO: ADD.item_name.
+
+ADD.item_name system macro generates a text string based on the a series of
+macros of the form item_name.*.  The string forms the TEXT of an ADD command.
+
+Note that the command:
+
+%ADD.item_name
+
+is a command that actually adds a component.  On the other hand,
+
+GLOBAL #str = %add.item_name
+
+stores the string in a macro named str.  This command is not quite foolproof.
+If the add string contains all 4 valid quotes ("'`~) it will fail.  This can
+only happen if it adds a piece of text that contains 3 of the valid quotes.
+
+ 
+EFFICIENCY CONCIDERATIONS
+
+The LIST command is intended to boost the efficiency of certain command files. 
+There are other simpler but potentially much less efficient ways to step 
+through a series of components.  The first example in this file uses the LIST 
+command to step through all components in a cell.  It adds 1 to the layer 
+number of each component in turn.  An alternative approach would be to use the 
+SELECT ID command. 
+
+LOG LEVEL=BRIEF SCREEN=OFF
+UNBLANK ALL; UNPROTECT ALL  ! Make sure all components are selectable
+LOCAL #n = 1
+LOCAL #nnn = %id.max
+WHILE(%n <= %nnn){
+   SELECT ID=%n ALL
+   IF(%N.SELECT!=0){
+       ITEM LOCAL #tmp.item     ! Create ITEM macros for selected component
+       #tmp.item.LAYER = {%tmp.item.LAYER+1} ! Add 1 to layer number
+       %ADD.tmp.item      ! Add new component based on modified item macros
+       DELETE             ! Delete old component
+   }
+   #n = {%n+1}
+}
+
+The problem with this command file is that every time ICED executes a 
+SELECT ID command it searches the data base until it finds the component with 
+the proper ID.  On the average this means that it will read half data base 
+for each component selected.  (If the ID does not exist because the component 
+with that ID was deleted, ICED will have to read the whole data base to
+be sure.)  This hardly matters for small cells with only a few hundred 
+components.  However, when dealing with large cells (more than a few thousand 
+components) the repeated searches can take a LOT of time.  When you use the 
+LIST command, ICED keeps track of the data base position of each listed 
+component.  This can be a major efficiency improvement -- but only for large 
+cells.

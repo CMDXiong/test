@@ -1,0 +1,9 @@
+ask "geef correctie factor in micro meter (b.v -5.5)" aap
+#setalias aap "-5.5"
+keystring {
+         TEXT; LAYER 0; \
+         TEXTTYPE 0; PRESENTATION 0,2,1; STRANS 0,0,0; MAG 400; \
+            XY 1; \
+            X   10000.000; Y  32900.000; \
+         STRING "correction factor: @aap um"; \
+         ENDEL;}

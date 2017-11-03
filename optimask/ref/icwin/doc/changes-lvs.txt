@@ -1,0 +1,33 @@
+             
+*******************************************************************************************
+                 Please read NEW_NAMES.TXT in your \ICWIN\DOC directory.
+*******************************************************************************************
+Version 1.15 LVS  1-04-2004
+
+-Fixed processing of diodes in a schematic netlist that use a default bulk 
+terminal connection defined in a device model. 
+
+Version 1.14 LPE,LVS  12-04-2003
+
+-Fixed parameter processing of diodes and jfets where area is defined in
+  device model, but no multiple is defined on device statements.  Area
+  was squared in these cases in older versions.
+
+Version 1.13 LPE,LVS  12-03-2003
+
+-Made following changes to spice output file format
+	-Control file now supports using "-" for the following options.
+	  This will prevent the addition of any suffix to the device values
+	  in the output spice netlist.
+		SCALE_CHARACTER_FOR_RESISTORS
+		SCALE_CHARACTER_FOR_CAPACITORS
+		SCALE_CHARACTER_FOR_INDUCTORS
+	-Fixed output of terminal names in parasitic capacitors in LPE.  
+
+-Fixed support of COLLAPSE_DISSIMILAR_SIZED_GAASFETS option in control file.
+-Fixed parameter comparison routine for collapsed GaAsFet devices.
+-Fixed recognition of negative values in input files.
+-Fixed crash bug in handling of equiv.lvs input file when invalid netnames 
+  were used.
+-Fixed processing of input parameter values using Meg suffix
+

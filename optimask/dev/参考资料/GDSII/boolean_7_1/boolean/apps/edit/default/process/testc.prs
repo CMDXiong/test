@@ -1,0 +1,21 @@
+# Process file for GDS-II postprocessing tool
+setenv HOME c:/masker/klaas
+loadsetup $GDSROOT/default/config/vcsel3.set
+loadfile $GDSROOT/default/process/testc.gds gds-ii
+
+setlayer 0
+visible 1 all
+selectable 1 all
+drawoutline 1
+ 
+viewstructure Cell0
+
+viewstructure Unit_Circle
+loadprocess $GDSROOT/default/process/corr1.prs
+loadprocess $GDSROOT/default/process/invert01c.prs
+loadprocess $GDSROOT/default/process/ring1.prs
+#viewstructure Cell0
+
+setlayer 1
+visible 0 all
+visible 1

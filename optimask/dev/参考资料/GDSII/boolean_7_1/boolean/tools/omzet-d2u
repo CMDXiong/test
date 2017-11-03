@@ -1,0 +1,15 @@
+for FILE in *.cpp
+do
+	dos2unix $FILE $FILE.unix
+	echo $FILE
+	cp $FILE.unix $FILE
+	rm $FILE.unix
+done
+
+for FILE in *.h
+do 
+	dos2unix $FILE $FILE.unix
+	echo $FILE
+	cp $FILE.unix $FILE
+	rm $FILE.unix
+done

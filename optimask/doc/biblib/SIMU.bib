@@ -1,0 +1,1966 @@
+%%SIMU.bib combines FEM_FDM_BPM.bib,WGM.bib,Yevick.bib,etc.
+% Henghua Deng 20120712.
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%Review & Classics%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+@ARTICLE{MTT85Oct894Saad,
+  AUTHOR =       "Saad Michael Saad",
+  TITLE =        "Review of Numerical Methods for the Analysis of Arbitrarily-Shaped
+                  Microwave and Optical Dielectric Waveguides",
+  JOURNAL =      IEEE_J_MTT,
+  YEAR =         "1985",
+  volume =       "MTT-33",
+  number =       "10",
+  pages =        "894-899",
+  month =        oct,
+};
+
+@ARTICLE{OQE94S113Chiang,
+  AUTHOR =       "K. S. Chiang",
+  TITLE =        "Review of numerical and approximate methods for the modal analysis
+                  of general optical dielectric waveguides (invited paper)",
+  JOURNAL =      "Optical and Quantum Electronics",
+  YEAR =         "1994",
+  volume =       "26",
+  number =       " ",
+  pages =        "S113-S134",
+  month =        " ",
+};
+
+@ARTICLE{OQE97p95Vassallo,
+  AUTHOR =       "Charles Vassallo",
+  TITLE =        "1993-1995 Optical mode solvers",
+  JOURNAL =      "Optical and Quantum Electronics",
+  YEAR =         "1997",
+  volume =       "29",
+  number =       " ",
+  pages =        "95-114",
+  month =        " ",
+};
+
+@ARTICLE{MTT85Oct972Ney,
+  AUTHOR =       "Michel M. Ney",
+  TITLE =        "Method of Moments as Applied to Electromagnetic Problems",
+  JOURNAL =      IEEE_J_MTT,
+  YEAR =         "1985",
+  volume =       "MTT-33",
+  number =       "10",
+  pages =        "972-980",
+  month =        oct,
+};
+
+@ARTICLE{JLT92Apr418Sudbo,
+  AUTHOR =       "Aasmund Sv Sudb{\o}",
+  TITLE =        "Why are Accurate Computations of Mode Fields in Rectangular Dielectric Waveguides Difficult",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1992",
+  volume =       "10",
+  number =       "4",
+  pages =        "418-419",
+  month =        apr,
+};
+
+@ARTICLE{JQE73Sep919Yariv,
+  AUTHOR =       "Amnon Yariv",
+  TITLE =        "Coupled Mode Theory for Guided-Wave Optics",
+  JOURNAL =      IEEE_J_JQE,
+  YEAR =         "1973",
+  volume =       "QE-9",
+  number =       "9",
+  pages =        "919-933",
+  month =        sep,
+};
+
+@ARTICLE{BSTJ69Sep2071Macatilli,
+  AUTHOR =       "E. A. J. Macatili",
+  TITLE =        "Dielectric Rectangular Waveguide and Directional Coupler for Integrated Optics",
+  JOURNAL =      "The Bell System Technical Journal",
+  YEAR =         "1969",
+  volume =       " ",
+  number =       " ",
+  pages =        "2071-2102",
+  month =        sep,
+};
+
+@ARTICLE{BSTJ71Jul1791Marcuse,
+  AUTHOR =       "Dietrich Marcuse",
+  TITLE =        "The coupling of Dgenerate Modes in Two Parallel Dielectric Waveguides",
+  JOURNAL =      "The Bell System Technical Journal",
+  YEAR =         "1971",
+  volume =       "50",
+  number =       "6",
+  pages =        "1791-1816",
+  month =        jul # "/" # aug,
+};
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%     BPM         %%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+@ARTICLE{JOSA83Jul920Fleck,
+  AUTHOR =       "J. A. Fleck and M. D. Feit",
+  TITLE =        "Beam propagation in uniaxial anisotropic media",
+  JOURNAL =      "J. Opt. Soc. Am.",
+  YEAR =         "1983",
+  volume =       "73",
+  number =       " ",
+  pages =        "920-926",
+  month =        jul,
+};
+
+@ARTICLE{JLT93Sep1425Schmidt,
+  AUTHOR =       "Frank Schmidt",
+  TITLE =        "An adaptive approach to the numerical solution of {F}resnel's wave equation",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1993",
+  volume =       "11",
+  number =       "9",
+  pages =        "1425-1434",
+  month =        sep,
+};
+
+@ARTICLE{JLT96Oct2395Schmidt,
+  AUTHOR =       "Frank Schmidt and Reinhard M{\"{a}}rz",
+  TITLE =        "On the reference wave vector of paraxial {H}elmholtz equations",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1996",
+  volume =       "14",
+  number =       "10",
+  pages =        "2395-2400",
+  month =        oct,
+};
+
+@ARTICLE{PTL92Dec1381Schmidt,
+  AUTHOR =       "Frank Schmidt and Hans-Peter Nolting",
+  TITLE =        "Adaptive Multilevel Beam Propagation Method",
+  JOURNAL =      IEEE_J_PTL,
+  YEAR =         "1992",
+  volume =       "4",
+  number =       "12",
+  pages =        "1381-1382",
+  month =        dec,
+};
+
+@ARTICLE{JLT95Feb216Nolting,
+  AUTHOR =       "Hans-Peter Nolting and Reinhard M{\"{a}}rz",
+  TITLE =        "Results of benchmark tests for different numerical {BPM} algorithms",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1995",
+  volume =       "13",
+  number =       "2",
+  pages =        "216-224",
+  month =        feb,
+};
+
+@ARTICLE{JLT96Jun1557Haes,
+  AUTHOR =       "Jan Haes and others",
+  TITLE =        "A comparison between different propagative schemes for the simulation of tapered step index slab waveguides",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1996",
+  volume =       "14",
+  number =       "6",
+  pages =        "1557-1569",
+  month =        jun,
+};
+
+@ARTICLE{JLT96Jun1557Haes_ALL,
+  AUTHOR =       "Jan Haes and Roel Baets and C. M. Weinert and M. Gravert and Hans-Peter Nolting
+                  and M. Adelaide Andrade and A. Leite and Hans K. Bissessur and J. B. Davies
+                  and Robert D. Ettinger and Jiri Ctyroky and E. Ducloux and F. Ratovelomanana
+                  and N. Vodjdani and Stefan Helfert and Reinhold Pregla and F. H. G. M. Wijnands
+                  and Hugo J. W. M. Hoekstra and G. J. M. Krijnen",
+  TITLE =        "A comparison between different propagative schemes for the simulation of tapered step index slab waveguides",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1996",
+  volume =       "14",
+  number =       "6",
+  pages =        "1557-1569",
+  month =        jun,
+};
+
+@ARTICLE{JQE94Sep2098Jungling,
+  AUTHOR =       "Stephan J{\"{u}}ngling and Jerry C. Chen",
+  TITLE =        "A Study and Optimization of Eigenmode Calculations
+                  Using the Imaginary-Distance Beam-Propagation Method",
+  JOURNAL =      IEEE_J_JQE,
+  YEAR =         "1994",
+  volume =       "30",
+  number =       "9",
+  pages =        "2098-2105",
+  month =        sep,
+};
+
+@ARTICLE{JLT00Aug1155Rao,
+  AUTHOR =       "Hongling Rao and M. J. Steel and Robert Scarmozzino and Richard M. {Osgood, Jr.}",
+  TITLE =        "Complex Propagators for Evanescent Waves in Bidirectional Beam Propagation Method",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "2000",
+  volume =       "18",
+  number =       "8",
+  pages =        "1155-1160",
+  month =        aug,
+};
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%% BPM Unitarity %%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+@ARTICLE{OQE97p157Hoekstra,
+  AUTHOR =       "Hugo J. W. M. Hoekstra",
+  TITLE =        "On beam propagation methods for modelling in integrated optics",
+  JOURNAL =      "Optical and Quantum Electronics",
+  YEAR =         "1997",
+  volume =       "29",
+  number =       " ",
+  pages =        "157-171",
+  month =        " ",
+};
+
+@ARTICLE{EL95Jan130Vassallo,
+  AUTHOR =       "Charles Vassallo",
+  TITLE =        "Wide-angle {BPM} and power conservation",
+  JOURNAL =      "IEE Electron. Lett.",
+  YEAR =         "1995",
+  volume =       "31",
+  number =       "2",
+  pages =        "130-131",
+  month =        jan,
+};
+
+@ARTICLE{EL97Jan61Vassallo,
+  AUTHOR =       "Charles Vassallo",
+  TITLE =        "Difficulty with vectorial {BPM}",
+  JOURNAL =      "IEE Electron. Lett.",
+  YEAR =         "1997",
+  volume =       "33",
+  number =       "1",
+  pages =        "61-62",
+  month =        jan,
+};
+
+@ARTICLE{JOSAA96Apr761Vassallo,
+  AUTHOR =       "Charles Vassallo",
+  TITLE =        "Limitation of the wide-angle beam propagation method in nonuniform systems",
+  JOURNAL =      "J. Opt. Soc. Am. A",
+  YEAR =         "1996",
+  volume =       "13",
+  number =       "4",
+  pages =        "761-770",
+  month =        apr,
+};
+
+@ARTICLE{PTL98Jan105Poladian,
+  AUTHOR =       "L. Poladian and F. Ladouceur",
+  TITLE =        "Unification of {TE} and {TM} beam-propagation algorithms",
+  JOURNAL =      IEEE_J_PTL,
+  YEAR =         "1998",
+  volume =       "10",
+  number =       "1",
+  pages =        "105-107",
+  month =        jan,
+};
+
+@ARTICLE{JLT00May721Yamauchi,
+  AUTHOR =       "Junji Yamauchi and Kenji Matsubara and Takeshi Tsuda and Hisamatsu Nakano",
+  TITLE =        "Norm-conserving finite-difference beam-propagation method for {TM}
+                  wave analysis in step-index optical waveguides",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "2000",
+  volume =       "18",
+  number =       "5",
+  pages =        "721-727",
+  month =        may,
+};
+
+@ARTICLE{JOSAA94Apr1272Jablonski,
+  AUTHOR =       "Tomasz F. Jab{\l}o{\'{n}}ski",
+  TITLE =        "Complex modes in open lossless dielectric waveguides",
+  JOURNAL =      "J. Opt. Soc. Am. A",
+  YEAR =         "1994",
+  volume =       "11",
+  number =       "4",
+  pages =        "1272-1282",
+  month =        apr,
+};
+
+@ARTICLE{PTL94Apr549Xu,
+  AUTHOR =       "C.-L. Xu and W.-P. Huang and S. K. Chaudhuri and J. Chrostowski",
+  TITLE =        "An Unconditionally Stable Vectorial Beam Propagation Method for {3-D} Structures",
+  JOURNAL =      IEEE_J_PTL,
+  YEAR =         "1994",
+  volume =       "6",
+  number =       "4",
+  pages =        "549-551",
+  month =        apr,
+};
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%   Yevick   %%%%%%
+%%%%%%   BPM     %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+@BOOK{Yevick05,
+  AUTHOR =       "David Yevick",
+  TITLE =        "A First Cource in Computational Physics and Object-Oriented Programming with {C++}",
+  PUBLISHER =    "Cambridge University Press",
+  YEAR =         "2005",
+ address =      "United Kingdom",
+};
+
+@ARTICLE{OQE94S185Yevick,
+  AUTHOR =       "David Yevick",
+  TITLE =        "A guide to electric field propagation techniques for guided-wave optics (invited paper)",
+  JOURNAL =      "Optical and Quantum Electronics",
+  YEAR =         "1994",
+  volume =       "26",
+  number =       " ",
+  pages =        "S185-S197",
+  month =        " ",
+};
+
+@ARTICLE{PTL00Dec1636Yevick,
+  AUTHOR =       "David Yevick",
+  TITLE =        "The application of complex {Pad{\'{e}}} approximants to vector field propagation",
+  JOURNAL =      IEEE_J_PTL,
+  YEAR =         "2000",
+  volume =       "12",
+  number =       "12",
+  pages =        "1636-1638",
+  month =        dec,
+};
+
+@ARTICLE{PTL95Jun658Yevick,
+  AUTHOR =       "David Yevick and Jun Yu and Witold Bardyszewski and Moses Glasner",
+  TITLE =        "Stability issues in vector electric field propagation",
+  JOURNAL =      IEEE_J_PTL,
+  YEAR =         "1995",
+  volume =       "7",
+  number =       "6",
+  pages =        "658-660",
+  month =        jun,
+};
+
+@ARTICLE{PTL90Oct738Hermansson,
+  AUTHOR =       "Bj{\"{o}}rn Hermansson and David Yevick",
+  TITLE =        "Generalized propagation techniques -- Application to semiconductor rib waveguide {Y}-junctions",
+  JOURNAL =      IEEE_J_PTL,
+  YEAR =         "1990",
+  volume =       "2",
+  number =       "10",
+  pages =        "738-740",
+  month =        oct,
+};
+
+@ARTICLE{JLT90Dec1866Hermansson,
+  AUTHOR =       "Bj{\"{o}}rn Hermansson and David Yevick and Witold Bardyszewski and Moses Glasner",
+  TITLE =        "The unitarity of split-operator finite difference and finite-element methods:
+                  applications to longitudinally varying semiconductor rib waveguides",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1990",
+  volume =       "8",
+  number =       "12",
+  pages =        "1866-1873",
+  month =        dec,
+};
+
+@ARTICLE{JQE90Jan109Yevick,
+  AUTHOR =       "David Yevick and Bj{\"{o}}rn Hermansson",
+  TITLE =        "Efficient Beam Propagation Techniques",
+  JOURNAL =      IEEE_J_JQE,
+  YEAR =         "1990",
+  volume =       "26",
+  number =       "1",
+  pages =        "109-112",
+  month =        jan,
+};
+
+@ARTICLE{AO82Aug2751Thylen,
+  AUTHOR =       "L. Thylen and David Yevick",
+  TITLE =        "Beam propagation method in anisotropic media",
+  JOURNAL =      "Applied Optics",
+  YEAR =         "1982",
+  volume =       "21",
+  number =       " ",
+  pages =        "2751-2754",
+  month =        aug,
+};
+
+@ARTICLE{JOC83p94Danielsen,
+  AUTHOR =       "P. Danielsen and David Yevick",
+  TITLE =        "Propagating Beam Analysis of Bent Optical Waveguides",
+  JOURNAL =      "Journal of Optical Communication",
+  YEAR =         "1983",
+  volume =       "4",
+  number =       " ",
+  pages =        "94-98",
+  month =        " ",
+};
+
+@ARTICLE{JQE83Aug1246Hermansson,
+  AUTHOR =       "Bj{\"{o}}rn Hermansson and David Yevick and P. Danielsen",
+  TITLE =        "Propagating Beam Analysis of Multimode Waveguide Tapers",
+  JOURNAL =      IEEE_J_JQE,
+  YEAR =         "1983",
+  volume =       "QE-19",
+  number =       "8",
+  pages =        "1246-1251",
+  month =        aug,
+};
+
+@ARTICLE{JQE89Feb221Yevick,
+  AUTHOR =       "David Yevick and Bj{\"{o}}rn Hermansson",
+  TITLE =        "New Formulations of the Matrix Beam Propagation Method: Application to Rib Waveguides",
+  JOURNAL =      IEEE_J_JQE,
+  YEAR =         "1989",
+  volume =       "25",
+  number =       "2",
+  pages =        "221-229",
+  month =        feb,
+};
+
+@ARTICLE{AO82Aug2727Yevick,
+  AUTHOR =       "David Yevick and P. Danielsen",
+  TITLE =        "Numerical investigation of mode coupling in sinusoidally modulated {GRIN} planar waveguides",
+  JOURNAL =      "Applied Optics",
+  YEAR =         "1982",
+  volume =       "21",
+  number =       "15",
+  pages =        "2727-2733",
+  month =        aug,
+};
+
+@ARTICLE{AO82Dec4188Danielsen,
+  AUTHOR =       "Per Danielsen and David Yevick",
+  TITLE =        "Improved analysis of the propagating beam method in longitudinally perturbed optical waveguide",
+  JOURNAL =      "Applied Optics",
+  YEAR =         "1982",
+  volume =       "21",
+  number =       "23",
+  pages =        "4188-4189",
+  month =        dec,
+};
+
+@ARTICLE{OQE84p331Yevick,
+  AUTHOR =       "David Yevick and Bj{\"{o}}rn Hermansson",
+  TITLE =        "A numerical investivgation of the mode coupling among the local normal
+                  modes of sinusoidally modulated parabolic graded-index planar waveguides",
+  JOURNAL =      "Optical and Quantum Electronics",
+  YEAR =         "1984",
+  volume =       " ",
+  number =       "16",
+  pages =        "331-337",
+  month =        " ",
+};
+
+@ARTICLE{EL85Oct1029Yevick,
+  AUTHOR =       "David Yevick and Bj{\"{o}}rn Hermansson",
+  TITLE =        "New approach to lossy optical waveguide",
+  JOURNAL =      "IEE Electronics Letters",
+  YEAR =         "1985",
+  volume =       "21",
+  number =       " ",
+  pages =        "1029-1030",
+  month =        oct,
+};
+
+@ARTICLE{EL89Mar461Yevick,
+  AUTHOR =       "David Yevick and Bj{\"{o}}rn Hermansson",
+  TITLE =        "Split-Step Finite Differnce Analysis of Rib Waveguides",
+  JOURNAL =      "IEE Electronics Letters",
+  YEAR =         "1989",
+  volume =       "25",
+  number =       "7",
+  pages =        "461-462",
+  month =        mar,
+};
+
+@ARTICLE{OL92Mar329Yevick,
+  AUTHOR =       "David Yevick and Witold Bardyszewski",
+  TITLE =        "Correspondence of variational finite-difference (relaxation)
+                  and imaginary-distance propagation methods for modal analysis",
+  JOURNAL =      "Optics Letters",
+  YEAR =         "1992",
+  volume =       "17",
+  number =       "5",
+  pages =        "329-330",
+  month =        mar,
+};
+
+@ARTICLE{OL92May725Yevick,
+  AUTHOR =       "David Yevick and Moses Glasner and Bj{\"{o}}rn Hermansson",
+  TITLE =        "Numerical studies of split-operator finite-difference alternating-direction implicit
+                  techniques based on generalized {Pad{\'{e}}} approximants",
+  JOURNAL =      "Optics Letters",
+  YEAR =         "1992",
+  volume =       "17",
+  number =       "10",
+  pages =        "725-727",
+  month =        may,
+};
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% FEM & FEM-BPM   %%%
+%%Silvester, Rahman, Lee et al. %%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+@INCOLLECTION{Okamoto00Ch6,
+  AUTHOR =       "Katsunari Okamoto",
+  TITLE =        "Finite Element Method",
+  BOOKTITLE =    "Fundamentals of Optical Waveguides",
+  PUBLISHER =    "Academic Press",
+  YEAR =         "2000",
+  chapter =      "6",
+};
+
+@ARTICLE{MGWL98Jan7Mielewski,
+  AUTHOR =       "Jacek Mielewski and Micha{\l} Mrozowski",
+  TITLE =        "Application of the {Arnoldi} Method in {FEM} Analysis of Waveguides",
+  JOURNAL =      IEEE_J_MGWL,
+  YEAR =         "1998",
+  volume =       "8",
+  number =       "1",
+  pages =        "7-9",
+  month =        jan,
+};
+
+@ARTICLE{AF69p313Silvester,
+  AUTHOR =       "Peter P. Silvester",
+  TITLE =        "Finite-Element Solution of Homogenous Waveguide Problems",
+  JOURNAL =      "Alta Frequenza",
+  YEAR =         "1969",
+  volume =       "38",
+  number =       " ",
+  pages =        "313-317",
+  month =        " ",
+};
+
+@ARTICLE{MTT69Apr204Silvester,
+  AUTHOR =       "Peter P. Silvester",
+  TITLE =        "A general high-order finite-element waveguide analysis program",
+  JOURNAL =      IEEE_J_MTT,
+  YEAR =         "1969",
+  volume =       "MTT-17",
+  number =       "4",
+  pages =        "204-210",
+  month =        apr,
+};
+
+@ARTICLE{MTT70Dec1124Csendes,
+  AUTHOR =       "Zoltan J. Csendes and Peter P. Silvester",
+  TITLE =        "Numerical Solution of Dielectric Loaded Waveguides: {I}--Finite-Element Analysis",
+  JOURNAL =      IEEE_J_MTT,
+  YEAR =         "1970",
+  volume =       "MTT-18",
+  number =       "12",
+  pages =        "1124-1131",
+  month =        dec,
+};
+
+@ARTICLE{EDU89May85Sadiku,
+  AUTHOR =       "M. N. O. Sadiku",
+  TITLE =        "A simple introduction to finite element analysis of electromagnetic problems",
+  JOURNAL =      IEEE_J_EDU,
+  YEAR =         "1989",
+  volume =       "32",
+  number =       "2",
+  pages =        "85-93",
+  month =        may,
+};
+
+@ARTICLE{MTT91Aug1262Lee,
+  AUTHOR =       "Jin-Fa Lee and Din-Kow Sun and Zoltan J. Cendes",
+  TITLE =        "Full-Wave Analysis of Dielectric Waveguides Using Tangential Vector Finite Elements",
+  JOURNAL =      IEEE_J_MTT,
+  YEAR =         "1991",
+  volume =       "39",
+  number =       "8",
+  pages =        "1262-1271",
+  month =        aug,
+};
+
+@ARTICLE{OQE01Apr373Selleri,
+  AUTHOR =       "Stefano Selleri and Ji\v{r}\'{\i} Petr\'{a}\v{c}ek",
+  TITLE =        "Modal analysis of rib waveguide through finite element and mode matching methods",
+  JOURNAL =      "Optical and Quantum Electronics",
+  YEAR =         "2001",
+  volume =       "33",
+  number =       "4-5",
+  pages =        "373-386",
+  month =        apr,
+};
+
+@ARTICLE{JQE00Dec1392Selleri,
+  AUTHOR =       "Stefano Selleri and Luca Vincetti and Maurizio Zoboli",
+  TITLE =        "Full-Vector Finite-Element Beam Propagation Method for Anisotropic Optical Device Analysis",
+  JOURNAL =      IEEE_J_JQE,
+  YEAR =         "2000",
+  volume =       "36",
+  number =       "12",
+  pages =        "1392-1401",
+  month =        dec,
+};
+
+@ARTICLE{JOSAA00Jun1124Vincetti,
+  AUTHOR =       "Luca Vincetti and Annamaria Cucinotta and Stefano Selleri and Maurizio Zoboli",
+  TITLE =        "Three-dimensional finite-element beam propagation method: assessments and developments",
+  JOURNAL =      "J. Opt. Soc. Am. A",
+  YEAR =         "2000",
+  volume =       "17",
+  number =       "6",
+  pages =        "1124-1131",
+  month =        jun,
+};
+
+@ARTICLE{JOSAA97Jul1460Selleri,
+  AUTHOR =       "Stefano Selleri and Maurizio Zoboli",
+  TITLE =        "Performance comparison of finite-element approaches for electromagnetic waveguides",
+  JOURNAL =      "J. Opt. Soc. Am. A",
+  YEAR =         "1997",
+  volume =       "14",
+  number =       "7",
+  pages =        "1460-1466",
+  month =        jul,
+};
+
+@ARTICLE{MTT82Nov1975Davies,
+  AUTHOR =       "J. Brian Davies and F. An\'{\i}bal Fern\'{a}ndez and Glafkos Y. Philippou",
+  TITLE =        "Finite element analysis of all modes in cavities with circular symmetry",
+  JOURNAL =      IEEE_J_MTT,
+  YEAR =         "1982",
+  volume =       "MTT-30",
+  number =       "11",
+  pages =        "1975-1980",
+  month =        nov,
+};
+
+@ARTICLE{MTT93Jun1215Lu,
+  AUTHOR =       "Yilong Lu and F. An\'{\i}bal Fern\'{a}ndez",
+  TITLE =        "An Efficient Finite Element Solution of Inhomogeneous
+                  Anisotropic and Lossy Dielectric Waveguides",
+  JOURNAL =      IEEE_J_MTT,
+  YEAR =         "1993",
+  volume =       "41",
+  number =       "6",
+  pages =        "1215-1223",
+  month =        jun,
+};
+
+@ARTICLE{MTT84Jan20Rahman,
+  AUTHOR =       "B. M. Azizur Rahman and J. Brian Davies",
+  TITLE =        "Finite-Element Analysis of Optical and Microwave Waveguide Problems",
+  JOURNAL =      IEEE_J_MTT,
+  YEAR =         "1984",
+  volume =       "MTT-32",
+  number =       "1",
+  pages =        "20-28",
+  month =        jan,
+};
+
+@ARTICLE{MTT84Aug922Rahman,
+  AUTHOR =       "B. M. Azizur Rahman and J. Brian Davies",
+  TITLE =        "Penalty Function Improvement of Waveguide Solution by Finite Elements",
+  JOURNAL =      IEEE_J_MTT,
+  YEAR =         "1984",
+  volume =       "MTT-32",
+  number =       "8",
+  pages =        "922-928",
+  month =        aug,
+};
+
+@ARTICLE{JLT84Oct682Rahman,
+  AUTHOR =       "B. M. Azizur Rahman and J. Brian Davies",
+  TITLE =        "Finite-Element Solution of Intergrated Optical Waveguides",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1984",
+  volume =       "LT-2",
+  number =       "5",
+  pages =        "682-688",
+  month =        oct,
+};
+
+@ARTICLE{ProcIEEE91Oct1442Rahman,
+  AUTHOR =       "B. M. Azizur Rahman and F. An\'{\i}bal Fern\'{a}ndez and J. Brian Davies",
+  TITLE =        "Review of Finite Element Methods for Microwave and Optical Waveguides",
+  JOURNAL =      "Proc. IEEE",
+  YEAR =         "1991",
+  volume =       "79",
+  number =       "10",
+  pages =        "1442-1448",
+  month =        oct,
+};
+
+@ARTICLE{JLT04May1420Obayya,
+  AUTHOR =       "Salah S. A. Obayya",
+  TITLE =        "Novel Finite Element Analysis of Optical Waveguide Discontinuity Problems",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "2004",
+  volume =       "22",
+  number =       "5",
+  pages =        "1420-1425",
+  month =        may,
+};
+
+@ARTICLE{JLT00Mar409Obayya,
+  AUTHOR =       "Salah S. A. Obayya and B. M. Azizur Rahman and Hamdi A. El-Mikati",
+  TITLE =        "New Full-Vectorial Numerically Efficient Propagation
+                  Algorithm Based on the Finite Element Method",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "2000",
+  volume =       "18",
+  number =       "3",
+  pages =        "409-415",
+  month =        mar,
+};
+
+@ARTICLE{JQE02Aug1120Obayya,
+  AUTHOR =       "Salah S. A. Obayya and B. M. Azizur Rahman and Kenneth T. V. Grattan and Hamdi A. El-Mikati",
+  TITLE =        "Full Vectorial Finite-Element Solution of Nonlinear Bistable Optical Waveguides",
+  JOURNAL =      IEEE_J_JQE,
+  YEAR =         "2002",
+  volume =       "38",
+  number =       "8",
+  pages =        "1120-1125",
+  month =        aug,
+};
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%Edge&Mixed Element%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+@ARTICLE{NumerMath80p315Nedelec,
+  AUTHOR =       "J. C. N\'{e}d\'{e}lec",
+  TITLE =        "Mixed Finite Elements in ${R}^3$",
+  JOURNAL =      "Numerische Mathematik",
+  YEAR =         "1980",
+  volume =       "35",
+  number =       " ",
+  pages =        "315-341",
+  month =        " ",
+};
+
+@ARTICLE{NumerMath86p57Nedelec,
+  AUTHOR =       "J. C. N\'{e}d\'{e}lec",
+  TITLE =        "A New Family of Mixed Finite Elements in ${R}^3$",
+  JOURNAL =      "Numerische Mathematik",
+  YEAR =         "1986",
+  volume =       "50",
+  number =       " ",
+  pages =        "57-81",
+  month =        " ",
+};
+
+@ARTICLE{MAG02Sep2370Garcia,
+  AUTHOR =       "L. E. Garc\'{\i}a-Castillo and A. J. Ruiz-Genov\'{e}s and I. G\'{o}mez-Revuelto
+                  and M. Salazar-Palma and T. K. Sarkar",
+  TITLE =        "Third-Order {N\'{e}d\'{e}lec} Curl-Conforming Finite Element",
+  JOURNAL =      IEEE_J_MAG,
+  YEAR =         "2002",
+  volume =       "38",
+  number =       "5",
+  pages =        "2370-2372",
+  month =        sep,
+};
+
+@ARTICLE{MAG03May1111Tsukerman,
+  AUTHOR =       "Ignor Tsukerman",
+  TITLE =        "Symbolic Algebra as a Tool for Understanding Edge Elements",
+  JOURNAL =      IEEE_J_MAG,
+  YEAR =         "2003",
+  volume =       "39",
+  number =       "3",
+  pages =        "1111-1114",
+  month =        may,
+};
+
+@ARTICLE{MAG99May1438Geuzaine,
+  AUTHOR =       "C. Geuzaine and B. Meys and F. Henrotte and P. Dular and W. Legros",
+  TITLE =        "A Galerkin Projection Method for Mixed Finite Elements",
+  JOURNAL =      IEEE_J_MAG,
+  YEAR =         "1999",
+  volume =       "35",
+  number =       "3",
+  pages =        "1438-1441",
+  month =        may,
+  keywords =     "Mesh Interpolation, Stress, inhomogenous boundary condition",
+};
+
+@ARTICLE{JLT02Aug1463Dossou,
+  AUTHOR =       "Kokou Dossou and Sophie LaRochelle and Marie Fontaine",
+  TITLE =        "Numerical Analysis of the Contribution of the Transverse Asymmetry in the
+                  Photo-Induced Index Change Profile to the Birefringence of Optical Fiber",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "2002",
+  volume =       "20",
+  number =       "8",
+  pages =        "1463-1470",
+  month =        aug,
+};
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% PML, ABC, & TBC %%%
+%%%%%%%%%%%%%%%%%%%%%%%
+@ARTICLE{JCP94Oct185Berenger,
+  AUTHOR =       "Jean-Pierre B\'{e}renger",
+  TITLE =        "A Perfectly Matched Layer for the Absorbtion of Electromagnetic Waves",
+  JOURNAL =      "Journal of Computational Physics",
+  YEAR =         "1994",
+  volume =       "114",
+  number =       " ",
+  pages =        "185-200",
+  month =        oct,
+};
+
+@ARTICLE{TAP95Dec1460Sacks,
+  AUTHOR =       "Zachary S. Sacks and David M. Kingsland and Robert Lee and Jin-Fa Lee",
+  TITLE =        "A Perfectly Matched Anisotropic Absorber for Use as an Absorbing boundary condition",
+  JOURNAL =      IEEE_J_AP,
+  YEAR =         "1995",
+  volume =       "43",
+  number =       "12",
+  pages =        "1460-1463",
+  month =        dec,
+};
+
+@ARTICLE{PTL96May649Huang,
+  AUTHOR =       "W. P. Huang and C. L. Xu and W. Lui and K. Yokoyama",
+  TITLE =        "The Perfectly Matched Layer ({PML}) Boundary Condition for the Beam Propagation Method",
+  JOURNAL =      IEEE_J_PTL,
+  YEAR =         "1996",
+  volume =       "8",
+  number =       "5",
+  pages =        "649-651",
+};
+
+@ARTICLE{PTL96May652Huang,
+  AUTHOR =       "W. P. Huang and C. L. Xu and W. Lui and K. Yokoyama",
+  TITLE =        "The Perfectly Matched Layer Boundary Condition for Modal Analysis
+                  of Optical Waveguides: Leaky Mode Calculations",
+  JOURNAL =      IEEE_J_PTL,
+  YEAR =         "1996",
+  volume =       "8",
+  number =       "5",
+  pages =        "652-654",
+};
+
+@ARTICLE{MOTL99Oct67Cucinotta,
+  AUTHOR =       "Annamaria Cucinotta and Giuseppe Pelosi and Stefano Selleri
+                  and Luca Vincetti and Maurizio Zoboli",
+  TITLE =        "Perfectly matched anisotropic layers for optical waveguides analysis
+                  through the finite element beam propagation method",
+  JOURNAL =      "Microwave and Optical Technology Letters",
+  YEAR =         "1999",
+  volume =       "23",
+  number =       "2",
+  pages =        "67-69",
+  month =        oct,
+};
+
+@ARTICLE{OQE01Apr359Selleri,
+  AUTHOR =       "Stefano Selleri and Luca Vincetti and Annamaria Cucinotta and Maurizio Zoboli",
+  TITLE =        "Complex {FEM} modal solver of optical waveguides with {PML} boundary conditions",
+  JOURNAL =      "Optical and Quantum Electronics",
+  YEAR =         "2001",
+  volume =       "33",
+  number =       "4-5",
+  pages =        "359-371",
+  month =        apr,
+};
+
+@ARTICLE{OQE98May443Fogli,
+  AUTHOR =       "F. Fogli and G. Bellanca and P. Bassi",
+  TITLE =        "{TBC} and {PML} conditions for {2D} and {3D} {BPM}: a comparison",
+  JOURNAL =      "Optical and Quantum Electronics",
+  YEAR =         "1998",
+  volume =       "30",
+  number =       "5-6",
+  pages =        "443-456",
+  month =        may,
+};
+
+@ARTICLE{MTT02May1297Mitchell,
+  AUTHOR =       "Arnan Mitchell and David M. Kokotoff and Michael W. Austin",
+  TITLE =        "Improvement to the {PML} Boundary Condition in the {FEM} Using Mesh Compression",
+  JOURNAL =      IEEE_J_MTT,
+  YEAR =         "2002",
+  volume =       "50",
+  number =       "5",
+  pages =        "1297-1302",
+  month =        may,
+};
+
+@ARTICLE{MGWL98Jun223Teixeira,
+  AUTHOR =       "F. L. Teixeira and W. C. Chew",
+  TITLE =        "General Closed-Form {PML} Constitutive Tensors to Match Arbitrary
+                  Bianisotropic and Dispersive Linear Media",
+  JOURNAL =      IEEE_J_MGWL,
+  YEAR =         "1998",
+  volume =       "8",
+  number =       "6",
+  pages =        "223-225",
+  month =        jun,
+};
+
+@ARTICLE{MOTL99Jan124Teixeira,
+  AUTHOR =       "F. L. Teixeira and W. C. Chew",
+  TITLE =        "Unified Analysis Of Perfectly Matched Layers Using Differential Forms",
+  JOURNAL =      "Microwave and Optical Technology Letters",
+  YEAR =         "1999",
+  volume =       "20",
+  number =       "2",
+  pages =        "124-126",
+  month =        jan # " 20, ",
+};
+
+@ARTICLE{IJNM00Sep441Teixeira,
+  AUTHOR =       "F. L. Teixeira and W. C. Chew",
+  TITLE =        "Complex space approach to perfectly matched layers: a review and some new developments",
+  JOURNAL =      "Int. J. Numer. Model.",
+  YEAR =         "2000",
+  volume =       "13",
+  number =       " ",
+  pages =        "441-455",
+  month =        sep,
+};
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% Adaptive Meshes %%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+@ARTICLE{MAG83Nov2551Cendes,
+  AUTHOR =       "Z. J. Cendes and D. N. Shenton and H. Shahnasser",
+  TITLE =        "Magnetic Field Computation Using Delaunay Triangulation and Complementary Finite Element Methods",
+  JOURNAL =      IEEE_J_MAG,
+  YEAR =         "1983",
+  volume =       "MAG-19",
+  number =       "6",
+  pages =        "2551-2554",
+  month =        nov,
+};
+
+@ARTICLE{MAG85Sep1811Cendes,
+  AUTHOR =       "Z. J. Cendes and D. N. Shenton",
+  TITLE =        "Adaptive Mesh Refinement in the Finite Element Computation of Magnetic Fields",
+  JOURNAL =      IEEE_J_MAG,
+  YEAR =         "1985",
+  volume =       "MAG-21",
+  number =       "5",
+  pages =        "1811-1816",
+  month =        sep,
+};
+
+@ARTICLE{MAG88Jan322Hoole,
+  AUTHOR =       "S. Ratnajeevan H. Hoole",
+  TITLE =        "Flux Density and Energy Perturbations in Adaptive Finite Element Mesh Generation",
+  JOURNAL =      IEEE_J_MAG,
+  YEAR =         "1988",
+  volume =       "24",
+  number =       "1",
+  pages =        "322-325",
+  month =        jan,
+};
+
+@ARTICLE{MAG90Mar791Hoole,
+  AUTHOR =       "S. Ratnajeevan H. Hoole",
+  TITLE =        "Eigen value and eigen vector perturbation and adaptive mesh generation in the analysis of waveguides",
+  JOURNAL =      IEEE_J_MAG,
+  YEAR =         "1990",
+  volume =       "26",
+  number =       "2",
+  pages =        "791-794",
+  month =        mar,
+};
+
+@ARTICLE{MAG93Mar1882Fernandez,
+  AUTHOR =       "F. An\'{\i}bal Fern\'{a}ndez and Y. C. Yong and R. D. Ettinger",
+  TITLE =        "A simple adaptive mesh generator for {2-D} finite element calculation",
+  JOURNAL =      IEEE_J_MAG,
+  YEAR =         "1993",
+  volume =       "29",
+  number =       "2",
+  pages =        "1882-1885",
+  month =        mar,
+};
+
+@ARTICLE{MAG92Mar1739Fernandes,
+  AUTHOR =       "P. Fernandes and P. Girdinio and M. Repetto and G. Secondo",
+  TITLE =        "Refinement Strategies in Adaptive Meshing",
+  JOURNAL =      IEEE_J_MAG,
+  YEAR =         "1992",
+  volume =       "28",
+  number =       "2",
+  pages =        "1739-1742",
+  month =        mar,
+};
+
+@ARTICLE{MAG90Mar795Fernandes,
+  AUTHOR =       "P. Fernandes and P. Girdinio and P. Molfino and G. Molinari and M. Repetto",
+  TITLE =        "A comparison of adaptive strategies for mesh refinement based
+                  on `a posteriori' local error estimation precedures",
+  JOURNAL =      IEEE_J_MAG,
+  YEAR =         "1990",
+  volume =       "26",
+  number =       "2",
+  pages =        "795-798",
+  month =        mar,
+};
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% Spurious Modes  %%%
+%%% Vector Parasite %%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+@ARTICLE{MTT91Mar383Lynch,
+  AUTHOR =       "Daniel R. Lynch and Keith D. Paulsen",
+  TITLE =        "Origin of Vector Parasites in Numerical Maxwell Solutions",
+  JOURNAL =      IEEE_J_MTT,
+  YEAR =         "1991",
+  volume =       "39",
+  number =       "3",
+  pages =        "383-394",
+  month =        mar,
+};
+
+@ARTICLE{MTT91Mar395Paulsen,
+  AUTHOR =       "Keith D. Paulsen and Daniel R. Lynch",
+  TITLE =        "Elimination of Vector Parasites in Finite Element Maxwell Solutions",
+  JOURNAL =      IEEE_J_MTT,
+  YEAR =         "1991",
+  volume =       "39",
+  number =       "3",
+  pages =        "395-404",
+  month =        mar,
+};
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% Koshiba et al.  %%%
+%%% FEM & FEM-BPM   %%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+@ARTICLE{MTT86Nov1120Hayata,
+  AUTHOR =       "Kazuya Hayata and Masanori Koshiba and Masashi Eguchi and Michio Suzuki",
+  TITLE =        "Vectorial Finite-Element Method without Any Spurious Solutions for
+                  Dielectric Waveguding Problem using Transverse Magnetic-Field Component",
+  JOURNAL =      IEEE_J_MTT,
+  YEAR =         "1986",
+  volume =       "MTT-34",
+  number =       "11",
+  pages =        "1120-1124",
+  month =        nov,
+};
+
+@ARTICLE{MTT92Feb371Koshiba,
+  AUTHOR =       "Masanori Koshiba and Kazuhiro Inoue",
+  TITLE =        "Simple and Efficient Finite-Element Analysis of Microwave and Optical Waveguides",
+  JOURNAL =      IEEE_J_MTT,
+  YEAR =         "1992",
+  volume =       "40",
+  number =       "2",
+  pages =        "371-377",
+  month =        feb,
+};
+
+@ARTICLE{JLT94Mar495Koshiba,
+  AUTHOR =       "Masanori Koshiba and Shinji Maruyama and Koichi Hirayama",
+  TITLE =        "A Vector Finite Element Method with the High-Order Mixed-Interpolation-Type
+                  Triangular Elements for Optical Waveguiding Problems",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1994",
+  volume =       "12",
+  number =       "3",
+  pages =        "495-502",
+  month =        mar,
+};
+
+@ARTICLE{JLT00May737Koshiba,
+  AUTHOR =       "Masanori Koshiba and Yasuhide Tsuji",
+  TITLE =        "Curvilinear hybrid edge/nodal elements with triangular shape for guided-wave problems",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "2000",
+  volume =       "18",
+  number =       "5",
+  pages =        "737-743",
+  month =        may,
+};
+
+@ARTICLE{IJNM00Mar115Tsuji,
+  AUTHOR =       "Yasuhide Tsuji and Masanori Koshiba",
+  TITLE =        "Finite element beam propagation method with perfectly matched layer
+                  boundary conditions for three-dimensional optical waveguides",
+  JOURNAL =      "International Journal of Numerical Modelling: Electronic Networks, Devices and Fields",
+  YEAR =         "2000",
+  volume =       "13",
+  number =       " ",
+  pages =        "115-126",
+  month =        mar,
+};
+
+@ARTICLE{TE98Dec1814Tsuji,
+  AUTHOR =       "Yasuhide Tsuji and Masanori Koshiba",
+  TITLE =        "Simple and efficient adaptive mesh generation for approxiamte scalar
+                  guided-mode and beam-propagation solutions",
+  JOURNAL =      "IEICE Trans. Electron.",
+  YEAR =         "1998",
+  volume =       "E81-C",
+  number =       "12",
+  pages =        "1814-1820",
+  month =        dec,
+};
+
+@ARTICLE{ECJ99Nov52Hikari,
+  AUTHOR =       "Masafumi Hikari and Masanori Koshiba and Yasuhide Tsuji",
+  TITLE =        "A Time Domain Beam Propagation Method Based on a Finite Element Scheme",
+  JOURNAL =      "Electronics and Communications in Japan, Part 2",
+  YEAR =         "1999",
+  volume =       "82",
+  number =       "11",
+  pages =        "52-58",
+  month =        nov,
+};
+
+@ARTICLE{JSTQE00Jan163Tsuji,
+  AUTHOR =       "Yasuhide Tsuji and Masanori Koshiba",
+  TITLE =        "Adaptive Mesh Generation for Full-Vectorial Guided-Mode and Beam-Propagation Solutions",
+  JOURNAL =      IEEE_J_JSTQE,
+  YEAR =         "2000",
+  volume =       "6",
+  number =       "1",
+  pages =        "163-169",
+  month =        jan # "/" # feb,
+};
+
+@ARTICLE{IEEProcJ92Apr166Koshiba,
+  AUTHOR =       "Masanori Koshiba and H. Saitoh and M. Eguchi and K.Hirayama",
+  TITLE =        "Simple scalar finite element approach to optical rib waveguides",
+  JOURNAL =      "IEE Proceedings-J",
+  YEAR =         "1992",
+  volume =       "139",
+  number =       "2",
+  pages =        "166-171",
+  month =        apr,
+};
+
+@ARTICLE{JQE02Jul927Saitoh,
+  AUTHOR =       "Kunimasa Saitoh and Masanori Koshiba",
+  TITLE =        "Full-vectorial imaginary-distance beam propagation method based on
+                  a finited element scheme: application to photonic crystal fibers",
+  JOURNAL =      IEEE_J_JQE,
+  YEAR =         "2002",
+  volume =       "38",
+  number =       "7",
+  pages =        "927-933",
+  month =        jul,
+};
+
+@ARTICLE{JLT00Apr618Tsuji,
+  AUTHOR =       "Yasuhide Tsuji and Masanori Koshiba",
+  TITLE =        "Guided-Mode and Leaky-Mode Analysis by Imaginary Distance
+                  Beam Propagation Method Based on Finite Element Scheme",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "2000",
+  volume =       "18",
+  number =       "4",
+  pages =        "618-623",
+  month =        apr,
+};
+
+@ARTICLE{JLT01Mar405Saitoh,
+  AUTHOR =       "Kunimasa Saitoh and Masanori Koshiba",
+  TITLE =        "Full-Vectorial Finite Element Beam Propagation Method
+                  with Perfectly Matched Layers For Anisotropic Optical Waveguides",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "2001",
+  volume =       "19",
+  number =       "3",
+  pages =        "405-413",
+  month =        mar,
+};
+
+@ARTICLE{JLT01May786Saitoh,
+  AUTHOR =       "Kunimasa Saitoh and Masanori Koshiba",
+  TITLE =        "Approximate Scalar Finite-Element Beam-Propagation Method
+                  with Perfectly Matched Layers for Anisotropic Optical Waveguides",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "2001",
+  volume =       "19",
+  number =       "5",
+  pages =        "786-792",
+  month =        may,
+};
+
+@ARTICLE{OpEx03Jun1481Fujisawa,
+  AUTHOR =       "Takeshi Fujisawa and Masanori Koshiba",
+  TITLE =        "Finite element characterization of chromatic dispersion in nonlinear holey fibers",
+  JOURNAL =      "OSA Optics Express",
+  YEAR =         "2003",
+  volume =       "11",
+  number =       "13",
+  pages =        "1481-1489",
+  month =        jun,
+};
+
+@ARTICLE{JLT02Oct1876Fujisawa,
+  AUTHOR =       "Takeshi Fujisawa and Masanori Koshiba",
+  TITLE =        "Full-vector finite-element beam propagation method for three-dimensional nonlinear optical waveguides",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "2002",
+  volume =       "20",
+  number =       "10",
+  pages =        "1876-1884",
+  month =        oct,
+};
+
+@ARTICLE{MAG97Mar1544Tsuji,
+  AUTHOR =       "Yasuhide Tsuji and Masanori Koshiba and Tamohide Tanabe",
+  TITLE =        "A Wide-angle Beam Propagatiom Method Based on a Finite Element Scheme",
+  JOURNAL =      IEEE_J_MAG,
+  YEAR =         "1997",
+  volume =       "33",
+  number =       "2",
+  pages =        "1544-1547",
+  month =        mar,
+};
+
+@ARTICLE{JLT99Apr723Tsuji,
+  AUTHOR =       "Yasuide Tsuji and Masanori Koshiba and N. Takimoto",
+  TITLE =        "Finite Element Beam Propagation Method for Anisotropic Optical Waveguides",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1999",
+  volume =       "17",
+  number =       "4",
+  pages =        "723-728",
+  month =        apr,
+};
+
+@ARTICLE{PTL96Sep1208Koshiba,
+  AUTHOR =       "Masanori Koshiba and Yasuide Tsuji",
+  TITLE =        "A wide-angle finite-element beam propagation method",
+  JOURNAL =      IEEE_J_PTL,
+  YEAR =         "1996",
+  volume =       "8",
+  number =       "9",
+  pages =        "1208-1210",
+  month =        sep,
+};
+
+@ARTICLE{JLT97Sep1728Tsuji,
+  AUTHOR =       "Yasuide Tsuji and Masanori Koshiba and T. Shiraishi",
+  TITLE =        "Finite Element Beam Propagation Method for Three-Dimensional Optical Waveguide Structures",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1997",
+  volume =       "15",
+  number =       "9",
+  pages =        "1728-1734",
+  month =        sep,
+};
+
+@ARTICLE{JLT96Feb217Tsuji,
+  AUTHOR =       "Yasuide Tsuji and Masanori Koshiba",
+  TITLE =        "A finite-element beam-propagation method for strongly guiding and longitudinally varying optical waveguides",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1996",
+  volume =       "14",
+  number =       "2",
+  pages =        "217-222",
+  month =        feb,
+};
+
+@ARTICLE{JLT99Nov2398Yoneta,
+  AUTHOR =       "Susumu Yoneta and Masanori Koshiba and Yasuide Tsuji",
+  TITLE =        "Combination of Beam Propagation Method and Finite Element Method for Optical Beam Propagation Analysis",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1999",
+  volume =       "17",
+  number =       "11",
+  pages =        "2398-2404",
+  month =        nov,
+};
+
+@ARTICLE{JLT93Mar400Yamamoto,
+  AUTHOR =       "Toshio Yamamoto and Masanori Koshiba",
+  TITLE =        "Analysis of Propagation Characteristics of Whispering Gallery Modes
+                  in a Dielectric Disk or a Curved Rectangular Dielectric Waveguides",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1993",
+  volume =       "11",
+  number =       "3",
+  pages =        "400-404",
+  month =        mar,
+};
+
+@ARTICLE{JLT93Oct1579Yamamoto,
+  AUTHOR =       "Toshio Yamamoto and Masanori Koshiba",
+  TITLE =        "Numerical Analysis of Curvature Loss in Optical Waveguides by the Finite-Element Method",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1993",
+  volume =       "11",
+  number =       "10",
+  pages =        "1579-1583",
+  month =        oct,
+};
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% Anand Gopinath  %%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+@ARTICLE{JSTQE00Jan150Scarmozzino,
+  AUTHOR =       "Robert Scarmozzino and Anand Gopinath and Reinhold Pregla and Stefan Helfert",
+  TITLE =        "Numerical Techniques for Modeling Guided-Wave Photonic Devices (invited paper)",
+  JOURNAL =      IEEE_J_JSTQE,
+  YEAR =         "2000",
+  volume =       "6",
+  number =       "1",
+  pages =        "150-162",
+  month =        jan # "/" # feb,
+};
+
+@ARTICLE{JLT93Oct1545Abid,
+  AUTHOR =       "Zine-Eddine Abid and Klein L. Johnson and Anand Gopinath",
+  TITLE =        "Analysis of Dielectric Guides by Vector Transverse Magnetic Field Finite Elements",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1993",
+  volume =       "11",
+  number =       "10",
+  pages =        "1545-1549",
+  month =        oct,
+};
+
+@ARTICLE{JLT93Oct1559Dong,
+  AUTHOR =       "Haozhe Dong and Anthony Chronopoulos and Junping Zou and Anand Gopinath",
+  TITLE =        "Vectorial Integrated Finite-Difference Analysis of Dielectric Waveguides",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1993",
+  volume =       "13",
+  number =       "10",
+  pages =        "1559-1563",
+  month =        oct,
+};
+
+@ARTICLE{JLT95Mar442Silveira,
+  AUTHOR =       "M. Silveira and Anand Gopinath",
+  TITLE =        "Analysis of Dielectric Guides by Transverse Magnetic Field Finite Element Penalty Method",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1995",
+  volume =       "13",
+  number =       "3",
+  pages =        "442-446",
+  month =        mar,
+};
+
+@ARTICLE{JLT95Jul777Yang,
+  AUTHOR =       "Wei Yang and Anand Gopinath",
+  TITLE =        "A Boundary Integral Method for Propagation Problems in Integrated Optical Structures",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1995",
+  volume =       "7",
+  number =       "7",
+  pages =        "777-779",
+  month =        jul,
+};
+
+@ARTICLE{JLT95Sep1873Cheung,
+  AUTHOR =       "Philip Cheung and M. Silveire and Anand Gopinath",
+  TITLE =        "Analysis of Lossy Dielectric Guides by Transverse Magnetic Field Finite Element Method",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1995",
+  volume =       "13",
+  number =       "9",
+  pages =        "1873-1875",
+  month =        sep,
+};
+
+@ARTICLE{JLT96Dec2799Cheung,
+  AUTHOR =       "Philip Cheung and M. Silveire and Anand Gopinath",
+  TITLE =        "Correction to the Analysis of Dielectric Guides by Transvers Magnetic
+                  Field Finite Element Penalty Function Method with Extensions",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1996",
+  volume =       "14",
+  number =       "12",
+  pages =        "2799-2803",
+  month =        dec,
+};
+
+@ARTICLE{JLT96Sep2085Kim,
+  AUTHOR =       "Sangin Kim and Anand Gopinath",
+  TITLE =        "Vector Analysis of Optical Dielectric Waveguide Bends Using Finite-Difference Method",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1996",
+  volume =       "14",
+  number =       "9",
+  pages =        "2085-2091",
+  month =        sep,
+};
+
+@ARTICLE{JLT00Aug1161Berglund,
+  AUTHOR =       "William Berglund and Anand Gopinath",
+  TITLE =        "{WKB} Analysis of Bend Losses in Optical Waveguides",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "2000",
+  volume =       "18",
+  number =       "8",
+  pages =        "1161-1166",
+  month =        aug,
+};
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%       FDM       %%%
+%%% FD-BPM & FE-BPM %%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+@ARTICLE{EL89Apr514Koch,
+  AUTHOR =       "T. B. Koch and J. Brian Davies and D. Wickramasinghe",
+  TITLE =        "Finite element/finite difference propagation algorithm for integrated optical devices",
+  JOURNAL =      "IEE Electron. Lett.",
+  YEAR =         "1989",
+  volume =       "25",
+  number =       "8",
+  pages =        "514-516",
+  month =        apr,
+};
+
+@ARTICLE{PTL91May466Splett,
+  AUTHOR =       "A. Splett and M. Majd and K. Petermann",
+  TITLE =        "A Novel Beam Propagation Method for Large Refractive Index Steps and Large Propagation Distances",
+  JOURNAL =      IEEE_J_PTL,
+  YEAR =         "1991",
+  volume =       "3",
+  number =       "5",
+  pages =        "466-468",
+  month =        may,
+};
+
+@ARTICLE{JLT98Jul1336Schulz,
+  AUTHOR =       "D. Schulz and C. Glingener and M. Bludszuweit and E. Voges",
+  TITLE =        "Mixed Finite Element Beam Propagation Method",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1998",
+  volume =       "16",
+  number =       "7",
+  pages =        "1336-1342",
+  month =        jul,
+};
+
+@ARTICLE{JQE94Apr1132Schulz,
+  AUTHOR =       "D. Schulz and C. Glingener and E. Voges",
+  TITLE =        "Novel generalized finite-difference beam propagation method",
+  JOURNAL =      IEEE_J_JQE,
+  YEAR =         "1994",
+  volume =       "30",
+  number =       "4",
+  pages =        "1132-1140",
+  month =        apr,
+};
+
+@ARTICLE{JLT92Dec1832Lee,
+  AUTHOR =       "P. C. Lee and D. Schulz and E. Voges",
+  TITLE =        "Three dimensional finite difference beam propagtion algorithm for photonic devices",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1992",
+  volume =       "10",
+  number =       "12",
+  pages =        "1832-1838",
+  month =        dec,
+};
+
+@ARTICLE{OL93May765Arai,
+  AUTHOR =       "Y. Arai and A. Maruta and M. Matsuhara",
+  TITLE =        "Transparent boundary for the finite-element beam-propagation method",
+  JOURNAL =      "Opt. Lett.",
+  YEAR =         "1993",
+  volume =       "18",
+  number =       "10",
+  pages =        "765-766",
+  month =        may,
+};
+
+@ARTICLE{TE94Mar510Pu,
+  AUTHOR =       "G. Pu and T. Mizumoto and Y. Naito",
+  TITLE =        "Modified numerical technique for beam propagation method based on the {Galerkin's} technique",
+  JOURNAL =      "IEICE Trans. Electron.",
+  YEAR =         "1994",
+  volume =       "E77-C",
+  number =       " ",
+  pages =        "510-514",
+  month =        mar,
+};
+
+@ARTICLE{JLT94Apr644Hernandez,
+  AUTHOR =       "H. E. Hern{\'{a}}ndez-Figueroa",
+  TITLE =        "Simple nonparaxial beam-propagation method for integrated optics",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1994",
+  volume =       "12",
+  number =       "4",
+  pages =        "644-649",
+  month =        apr,
+};
+
+@ARTICLE{JOSA92Sep1574Liu,
+  AUTHOR =       "J. M. Liu and L. Gomelsky",
+  TITLE =        "Vectorial beam propagation method",
+  JOURNAL =      "J. Opt. Soc. Am.",
+  YEAR =         "1992",
+  volume =       "9",
+  number =       " ",
+  pages =        "1574-1585",
+  month =        sep,
+};
+
+@ARTICLE{JLT94Nov1926Xu,
+  AUTHOR =       "C. L. Xu and W. P. Huang and J. Chrostowski and S. K. Chaudhuri",
+  TITLE =        "A full-vectorial beam propagation method for anisotropic waveguides",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1994",
+  volume =       "12",
+  number =       "11",
+  pages =        "1926-1931",
+  month =        nov,
+};
+
+@INCOLLECTION{EMW95Xu,
+  AUTHOR =       "C. L. Xu and W. P. Huang",
+  TITLE =        "Finite-difference beam-propagation method for guide-wave optics",
+  BOOKTITLE =    "Progress In Electromagnetic Waves: {PIERS} 11",
+  PUBLISHER =    "EMW Publishing, Cambridge",
+  YEAR =         "1995",
+  editor =       "W. P. Huang",
+  chapter =      "1",
+  pages =        "1-49",
+  address =      " ",
+};
+
+@ARTICLE{JLT92Mar295Huang,
+  AUTHOR =       "Weiping Huang and Chenglin Xu and Sai-Tak Chu and Sujeet K. Chaudhuri",
+  TITLE =        "The finite-difference vector beam propagation method: Analysis and assessment",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1992",
+  volume =       "10",
+  number =       "3",
+  pages =        "295-305",
+  month =        mar,
+};
+
+@ARTICLE{OL91May624Hadley,
+  AUTHOR =       "G. Ronald Hadley",
+  TITLE =        "Transparent boundary condition for beam propagation",
+  JOURNAL =      "Optics Letters",
+  YEAR =         "1991",
+  volume =       "16",
+  number =       "9",
+  pages =        "624-626",
+  month =        may,
+};
+
+@ARTICLE{OL92Oct1426Hadley,
+  AUTHOR =       "G. Ronald Hadley",
+  TITLE =        "Wide-angle beam propagation using {Pad{\'{e}}} approximant operators",
+  JOURNAL =      "Optics Letters",
+  YEAR =         "1992",
+  volume =       "17",
+  number =       "20",
+  pages =        "1426-1428",
+  month =        oct,
+};
+
+@ARTICLE{JLT02Jul1210Hadley,
+  AUTHOR =       "G. Ronald Hadley",
+  TITLE =        "High-Accuracy Finite-Difference Equations for Dielectric Waveguide Analysis {I}: Uniform Regions and Dielectric Interfaces",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "2002",
+  volume =       "20",
+  number =       "7",
+  pages =        "1210-1218",
+  month =        jul,
+};
+
+@ARTICLE{JLT02Jul1219Hadley,
+  AUTHOR =       "G. Ronald Hadley",
+  TITLE =        "High-Accuracy Finite-Difference Equations for Dielectric Waveguide Analysis {II}: Dielectric Corners",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "2002",
+  volume =       "20",
+  number =       "7",
+  pages =        "1219-1231",
+  month =        jul,
+};
+
+@ARTICLE{IEEProcJ88Feb56Stern,
+  AUTHOR =       "M. S. Stern",
+  TITLE =        "Semivectorial polarised finite difference method for optical waveguides with arbitrary index profiles",
+  JOURNAL =      "IEE Proceedings Pt. J.",
+  YEAR =         "1988",
+  volume =       "135",
+  number =       "1",
+  pages =        "56-63",
+  month =        feb,
+};
+
+@ARTICLE{IEEProcJ88Oct333Stern,
+  AUTHOR =       "M. S. Stern",
+  TITLE =        "Semivectorial polarised \emph{\textbf{\MakeUppercase{H}}} field
+                  solutions for dielectric waveguides with arbitrary index profiles",
+  JOURNAL =      "IEE Proceedings Pt. J.",
+  YEAR =         "1988",
+  volume =       "135",
+  number =       "5",
+  pages =        "333-338",
+  month =        oct,
+};
+
+@ARTICLE{JQE91Oct2296Chung,
+  AUTHOR =       "Youngchul Chung and Nadir Dagli",
+  TITLE =        "Analysis of z-invariant and z-variant semiconductor rib waveguides by explicit finite difference
+                  beam propagation method with nonuniform mesh configuration",
+  JOURNAL =      IEEE_J_JQE,
+  YEAR =         "1991",
+  volume =       "27",
+  number =       "10",
+  pages =        "2296-2305",
+  month =        oct,
+};
+
+@ARTICLE{JQE92Apr778Liu,
+  AUTHOR =       "Pao-Lo Liu and Bing-Jin Li",
+  TITLE =        "Semivectorial Beam-Propagation Method for Analyzing Polarizaed Modes of Rib Waveguides",
+  JOURNAL =      IEEE_J_JQE,
+  YEAR =         "1992",
+  volume =       "28",
+  number =       "4",
+  pages =        "778-782",
+  month =        apr,
+};
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% FDTD & FDTD-BPM %%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+@ARTICLE{JLT03Jul1709Shibayama,
+  AUTHOR =       "Jun Shibayama and Atsushi Yamahira and Takanori Mugita and Junji Yamauchi and Hisamatsu Nakano",
+  TITLE =        "A Finite-Difference Time-Domain Beam-Propagation Method for {TE}- and {TM}-Wave Analyses",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "2003",
+  volume =       "21",
+  number =       "7",
+  pages =        "1709-1715",
+  month =        jul,
+};
+
+@ARTICLE{JLT89Dec2033Chu,
+  AUTHOR =       "Sai-Tak Chu and Sujeet K. Chaudhuri",
+  TITLE =        "A Finite-Difference Time-Domain Method for the Design and Analysis of Guided-Wave Optical Structures",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1989",
+  volume =       "7",
+  number =       "12",
+  pages =        "2033-2028",
+  month =        dec,
+};
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%  Taper & SSC    %%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+@ARTICLE{JLT99Jul1255Mitomi,
+  AUTHOR =       "Osamu Mitomi and Naoto Yoshimoto and Katsuaki Magari and Toshio Ito
+                  and Yosihiro Kawaguchi and Ysumasa Suzaki and Yuichi Tohmori and Kazuo Kasaya",
+  TITLE =        "Analyzing the Polarization Dependence in Optical Spot-Size Converter by
+                  Using a Semivectorial Finite-Element Beam Propagation Method",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1999",
+  volume =       "17",
+  number =       "7",
+  pages =        "1255-1261",
+  month =        jul,
+};
+
+@ARTICLE{JLT99Mar466Fan,
+  AUTHOR =       "Regis S. Fan and R. Brian Hooker",
+  TITLE =        "Tapered Polymer Single-Mode Waveguides for Mode Transformation",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1999",
+  volume =       "17",
+  number =       "3",
+  pages =        "466-474",
+  month =        mar,
+};
+
+@ARTICLE{JLT98Aug1456Yokoyama,
+  AUTHOR =       "Kiyoyuki Yokoyama and Naoko Sekino and Takuo Hirono and Yuuichi Tohmori and Yoshihiro Kawaguchi",
+  TITLE =        "Design and Fabrication of High-Coupling Efficiency Spot-Size Converter
+                  Integrated Laser Diodes Using Three-Dimensional {BPM} Program",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "1998",
+  volume =       "16",
+  number =       "8",
+  pages =        "1456-1463",
+  month =        aug,
+};
+
+@ARTICLE{JSTQE97Dec1351Kawano,
+  AUTHOR =       "Kenji Kawano and Masaki Kohtoku and Hiroshi Okamoto and Yoshi Itaya and Mitsuru Naganuma",
+  TITLE =        "Coupling and Conversion Characteristics of Spot-Size-Converter Integrated Laser Diodes",
+  JOURNAL =      IEEE_J_JSTQE,
+  YEAR =         "1997",
+  volume =       "3",
+  number =       "6",
+  pages =        "1351-1360",
+  month =        dec,
+};
+
+@ARTICLE{JSTQE96Jun348Kawano,
+  AUTHOR =       "Kenji Kawano and Masaki Kohtoku and Masato Wada and Hiroshi Okamoto and Yoshio Itaya and Mitsuru Naganuma",
+  TITLE =        "Design of a Spotsize-Converter-Integrated Laser Diode ({SS-LD}) with a Lateral Taper,
+                  Thin-Film Core and Ridge in the 1.3-$\mu$m-Wavelength Region Based on the {3-D BPM}",
+  JOURNAL =      IEEE_J_JSTQE,
+  YEAR =         "1996",
+  volume =       "2",
+  number =       "2",
+  pages =        "348-354",
+  month =        jun,
+};
+
+@ARTICLE{JSTQE97Dec1308Moerman,
+  AUTHOR =       "Ingrid Moerman and Peter P. Van Daele and Piet M. Demeester",
+  TITLE =        "A Review on Fabrication Technologies for the Monolithic Integration of
+                  Tapers with {III-V} Semiconductor Devices (invited paper)",
+  JOURNAL =      IEEE_J_JSTQE,
+  YEAR =         "1997",
+  volume =       "3",
+  number =       "6",
+  pages =        "1308-1320",
+  month =        dec,
+};
+
+@ARTICLE{JSTQE97Dec1321Mersali,
+  AUTHOR =       "Boum\'{e}dienne Mersali and Abderrahim Ramdane and Alain Carenco",
+  TITLE =        "Optical-Mode Transformer: A {III-V} Circuit Integration Enabler (invited paper)",
+  JOURNAL =      IEEE_J_JSTQE,
+  YEAR =         "1997",
+  volume =       "3",
+  number =       "6",
+  pages =        "1321-1331",
+  month =        dec,
+};
+
+@ARTICLE{EL96May1025Sewell,
+  AUTHOR =       "P. Sewell and T. M. Benson and P. C. Kendall and T. Anada",
+  TITLE =        "Tapered beam propagation",
+  JOURNAL =      "IEE Electron. Lett.",
+  YEAR =         "1996",
+  volume =       "32",
+  number =       "11",
+  pages =        "1025-1026",
+  month =        may,
+};
+
+@ARTICLE{OQE99Oct689Benson,
+  AUTHOR =       "T. M. Benson and P. Sewell and S. Sujecki and P. C. Kendall",
+  TITLE =        "Structure related beam propagation",
+  JOURNAL =      "Optical and Quantum Electronics",
+  YEAR =         "1999",
+  volume =       "31",
+  number =       " ",
+  pages =        "689-703",
+  month =        oct,
+};
+
+@ARTICLE{PTL93Sep1053Brenner,
+  AUTHOR =       "T. Brenner and H. Melchior",
+  TITLE =        "Integrated Optical Modeshape Adapters in {InGaAsP/InP} for Efficient Fiber-to-Waveguide Coupling",
+  JOURNAL =      IEEE_J_PTL,
+  YEAR =         "1993",
+  volume =       "5",
+  number =       "9",
+  pages =        "1053-1055",
+  month =        sep,
+};
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% Bent & Curved   %%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+@ARTICLE{JQE75Feb75Heiblum,
+  AUTHOR =       "Mordehai Heiblum and Jay H. Harris",
+  TITLE =        "Analysis of Curved Optical Waveguides by Conformal Tranformation",
+  JOURNAL =      IEEE_J_JQE,
+  YEAR =         "1975",
+  volume =       "QE-11",
+  number =       "2",
+  pages =        "75-83",
+  month =        feb,
+};
+
+@ARTICLE{JQE91Mar531Gu,
+  AUTHOR =       "Jing-Song Gu and Pierre-Andr\'{e} Besse and Hans Melchior",
+  TITLE =        "Method of Lines for the Analysis of the Propagation Characteristics
+                  of Curved Optical Rib Waveguides",
+  JOURNAL =      IEEE_J_JQE,
+  YEAR =         "1991",
+  volume =       "27",
+  number =       "3",
+  pages =        "531-537",
+  month =        mar,
+};
+
+@ARTICLE{PTL02Feb164Bienstman,
+  AUTHOR =       "Peter Bienstman and E. Six and M. Roelens and M. Vanwolleghem and Roel Baets",
+  TITLE =        "Calculation of Bending Losses in Dielectric Waveguides Using
+                  Eigenmode Expansion and Perfectly Matched Layers",
+  JOURNAL =      IEEE_J_PTL,
+  YEAR =         "2002",
+  volume =       "14",
+  number =       "2",
+  pages =        "164-166",
+  month =        feb,
+};
+
+@ARTICLE{TAP03Jun1185Song,
+  AUTHOR =       "Won Jay Song and G. Hugh Song and Byung Ha Ahn and Minho Kang",
+  TITLE =        "Scalar {BPM} Analyses of {TE} and {TM} Polarized Fields in Bent Waveguides",
+  JOURNAL =      IEEE_J_AP,
+  YEAR =         "2003",
+  volume =       "51",
+  number =       "6",
+  pages =        "1185-1198",
+  month =        jun,
+};
+
+@ARTICLE{JOSAA04Jan113Dai,
+  AUTHOR =       "Daoxin Dai and Sailing He",
+  TITLE =        "Analysis of characteristics of bent rib waveguides",
+  JOURNAL =      "J. Opt. Soc. Am. A",
+  YEAR =         "2004",
+  volume =       "21",
+  number =       "1",
+  pages =        "113-121",
+  month =        jan,
+};
+
+@ARTICLE{JLT04Oct2333Djurdjevic,
+  AUTHOR =       "D. Z. Djurdjevic and T. M. Benson and P. Sewell and A. Vukovic",
+  TITLE =        "Fast and Accurate Analysis of {3-D} Curved Optical Waveguide Couplers",
+  JOURNAL =      IEEE_J_JLT,
+  YEAR =         "2004",
+  volume =       "22",
+  number =       "10",
+  pages =        "2333-2340",
+  month =        oct,
+};
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% whispering gallery mode %%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+@ARTICLE{Nature03Aug839Vahala,
+  AUTHOR =       {Kerry J. Vahala},
+  TITLE =        {Optical microcavities},
+  JOURNAL =      {Nature},
+  YEAR =         {2003},
+  volume =       {424},
+  number =       { },
+  pages =        {839-846},
+  month =        aug # { 14, },
+}
+
+@ARTICLE{Nature03Feb925Armani,
+  AUTHOR =       {D. K. Armani and T. J. Kippenberg and S. M. Spillane and K. J. Vahala},
+  TITLE =        {Ultra-high-{Q} toroid microcavity on a chip},
+  JOURNAL =      {Nature},
+  YEAR =         {2003},
+  volume =       {421},
+  number =       { },
+  pages =        {925-928},
+  month =        feb # { 27, },
+}
+
+@ARTICLE{TE95Nov1638Ahmed,
+  AUTHOR =       {Anis Ahmed and Ryuichi Koya and Osami Wada and Ming Wang and Ryuji Koga},
+  TITLE =        {Eigenmod Analysis of Whispering Gallery Modes of Pillbox-Type Optical Resonators Utilizing {FE-BPM} Formulation},
+  JOURNAL =      {IEICE Trans. Electron.},
+  YEAR =         {1995},
+  volume =       {E78-C},
+  number =       {11},
+  pages =        {1638-1645},
+  month =        nov,
+}
+
+@ARTICLE{OpRev96Ahmed,
+  AUTHOR =       {Anis Ahmed and Ryuichi Koya and Osami Wada and Ming Wang and Ryuji Koga},
+  TITLE =        {Field Analysis of Pillbox Resonator with Radiation Loss Utilizing
+                  Finite-Element Beam Propagation Method Formulation},
+  JOURNAL =      {Optical Review},
+  YEAR =         {1996},
+  volume =       {3},
+  number =       {2},
+  pages =        {109-113},
+}
+
+@ARTICLE{OpEx06Nov11128Kakihara,
+  AUTHOR =       {Kuniaki Kakihara and Naoya Kono and Kunimasa Saitoh and Masanori Koshiba},
+  TITLE =        {Full-vectorial finite element method in a cylindrical coordinate system for loss analysis of photonic wire bends},
+  JOURNAL =      {Optics Express},
+  YEAR =         {2006},
+  volume =       {14},
+  number =       {23},
+  pages =        {11128-11141},
+  month =        nov,
+}
+
+@ARTICLE{PLA89May393Braginsky,
+  AUTHOR =       {V. B. Braginsky and M. L. Gorodetsky and V. S. Ilchenko},
+  TITLE =        {Quality-factor and nonliner properties of optical whispering-gallery modes},
+  JOURNAL =      {Physics Letters A},
+  YEAR =         {1989},
+  volume =       {137},
+  number =       {7{/}8},
+  pages =        {393-397},
+  month =        may # { 29, },
+}
+
+@ARTICLE{ProcIEEJ93Jun177Rowland,
+  AUTHOR =       {D. R. Rowland and J. D. Love},
+  TITLE =        {Evanescent wave coupling of whispering gallery modes of a dielectric cylinder},
+  JOURNAL =      {IEE Proceedings J},
+  YEAR =         {1993},
+  volume =       {140},
+  number =       {3},
+  pages =        {177-188},
+  month =        jun,
+}
+
+@ARTICLE{SST06v21L21Finlayson,
+  AUTHOR =       {C. E. Finlayson and P. J. A. Sazio and R. Sanchez-Martin and M. Bradley and T. A. Kelf and J. J. Baumberg},
+  TITLE =        {Whispering gallery mode emission at telecommunications-window wavelengths
+                  using {PbSe} nanocrystals attached to photonic beads},
+  JOURNAL =      {Semiconductor Science and Technology},
+  YEAR =         {2006},
+  volume =       {21},
+  number =       { },
+  pages =        {L21-L24},
+  month =        { },
+}
+
+@ARTICLE{JQSRT05v93p231Quan,
+  AUTHOR =       {Haiyong Quan and Zhixiong Guo},
+  TITLE =        {Simulation of whispering-gallery-mode resonance shifts for optical miniature biosensors},
+  JOURNAL =      {Journal of Quantitative Spectroscopy {\&} Radiative Transfer},
+  YEAR =         {2005},
+  volume =       {93},
+  number =       { },
+  pages =        {231-243},
+  month =        { },
+}
+
+@INPROCEEDINGS{PIER06p287Talebi,
+  AUTHOR =       {N. Talebi and M. Shahabadi},
+  TITLE =        {Analysis of A Lossy Microring Using the Generalized Multipole Technique},
+  BOOKTITLE =    {Progress In Electromagnetics Research},
+  YEAR =         {2006},
+  editor =       { },
+  volume =       {{PIER 66}},
+  number =       { },
+  series =       { },
+  pages =        {287-299},
+}

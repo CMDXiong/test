@@ -1,0 +1,1638 @@
+# Process file for GDS-II postprocessing tool
+
+record  d:/bool/boolean/6.0/gdsuser/config/user.set
+# Startup
+showcoords        1
+drawoutline       0
+structhres        30
+primthres         5 true
+# Transformation
+mirrorx           0
+mirrory           0
+movehor           {0 um}
+movever           {0 mm}
+scale             1
+rotate            {40}
+direction         {Clockwise}
+# Factors
+selectmarge       {0.01}
+snapfactor        {1.0um}
+correctionfactor  {5.5um}
+roundfactor       {1.5}
+correctionaber    {1.0um}
+roundtype         {circle}
+toarcrmin         {50um}
+toarcrmax         {10cm}
+arcaccur          {25um}
+polyaccur         {1um}
+smoothaccur       {5um}
+maxlinemerge      {5000um}
+displayaber       {5um}
+# Grid settings
+showgrid          1
+gridspace         {100 um}
+gridcolour        0 0 0 
+gridplacement     0
+draw
+backgroundcolour  255 255 255 
+# Layer settings
+setlayer       0
+name           {condup}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 0 255
+brush          0
+order          9
+setlayer       1
+name           {barrier}
+visible        1
+readlayer      1
+bordercolor    0 0 255
+fillcolor      70 112 198
+brush          7
+order          28
+setlayer       2
+name           {ridges}
+visible        1
+readlayer      1
+bordercolor    255 0 0
+fillcolor      128 0 128
+brush          9
+order          15
+setlayer       3
+name           {conddown}
+visible        1
+readlayer      1
+bordercolor    255 255 0
+fillcolor      0 0 255
+brush          13
+order          16
+setlayer       4
+name           {resup}
+visible        1
+readlayer      1
+bordercolor    0 0 255
+fillcolor      0 255 255
+brush          15
+order          10
+setlayer       5
+name           {resdown}
+visible        1
+readlayer      1
+bordercolor    128 128 128
+fillcolor      0 0 0
+brush          12
+order          17
+setlayer       6
+name           {mvial}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      0 128 0
+brush          7
+order          13
+setlayer       7
+name           {vial}
+visible        1
+readlayer      1
+bordercolor    0 0 128
+fillcolor      255 128 0
+brush          9
+order          14
+setlayer       8
+name           {bond}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      0 255 0
+brush          7
+order          1
+setlayer       9
+name           {symbol}
+visible        1
+readlayer      1
+bordercolor    128 0 128
+fillcolor      0 0 255
+brush          10
+order          2
+setlayer       10
+name           {textl}
+visible        1
+readlayer      1
+bordercolor    255 0 0
+fillcolor      255 255 255
+brush          0
+order          0
+setlayer       11
+name           {dummy}
+visible        1
+readlayer      1
+bordercolor    128 128 0
+fillcolor      255 255 255
+brush          0
+order          29
+setlayer       12
+name           {error}
+visible        1
+readlayer      1
+bordercolor    128 0 0
+fillcolor      255 255 255
+brush          0
+order          18
+setlayer       13
+name           {border}
+visible        1
+readlayer      1
+bordercolor    128 128 128
+fillcolor      192 192 192
+brush          7
+order          27
+setlayer       14
+name           {substr}
+visible        1
+readlayer      1
+bordercolor    0 128 128
+fillcolor      255 255 255
+brush          0
+order          26
+setlayer       15
+name           {endobjbo}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          19
+setlayer       16
+name           {slot1}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          12
+setlayer       17
+name           {slot2}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          11
+setlayer       18
+name           {ballen}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          20
+setlayer       19
+name           {symbol2}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          3
+setlayer       20
+name           {symbol3}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          4
+setlayer       21
+name           {symbol4}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          5
+setlayer       22
+name           {symbol5}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          6
+setlayer       23
+name           {slotup}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          21
+setlayer       24
+name           {slotdown}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          22
+setlayer       25
+name           {bridge1}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          7
+setlayer       26
+name           {bridge2}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          8
+setlayer       27
+name           {sublev1}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          23
+setlayer       28
+name           {sublev2}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          24
+setlayer       29
+name           {sublev3}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          25
+setlayer       30
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          30
+setlayer       31
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          31
+setlayer       32
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          32
+setlayer       33
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          33
+setlayer       34
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          34
+setlayer       35
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          35
+setlayer       36
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          36
+setlayer       37
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          37
+setlayer       38
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          38
+setlayer       39
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          39
+setlayer       40
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          40
+setlayer       41
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          41
+setlayer       42
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          42
+setlayer       43
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          43
+setlayer       44
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          44
+setlayer       45
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          45
+setlayer       46
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          46
+setlayer       47
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          47
+setlayer       48
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          48
+setlayer       49
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          49
+setlayer       50
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          50
+setlayer       51
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          51
+setlayer       52
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          52
+setlayer       53
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          53
+setlayer       54
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          54
+setlayer       55
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          55
+setlayer       56
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          56
+setlayer       57
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          57
+setlayer       58
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          58
+setlayer       59
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          59
+setlayer       60
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          60
+setlayer       61
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          61
+setlayer       62
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          62
+setlayer       63
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          63
+setlayer       64
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          64
+setlayer       65
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          65
+setlayer       66
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          66
+setlayer       67
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          67
+setlayer       68
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          68
+setlayer       69
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          69
+setlayer       70
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          70
+setlayer       71
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          71
+setlayer       72
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          72
+setlayer       73
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          73
+setlayer       74
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          74
+setlayer       75
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          75
+setlayer       76
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          76
+setlayer       77
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          77
+setlayer       78
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          78
+setlayer       79
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          79
+setlayer       80
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          80
+setlayer       81
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          81
+setlayer       82
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          82
+setlayer       83
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          83
+setlayer       84
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          84
+setlayer       85
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          85
+setlayer       86
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          86
+setlayer       87
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          87
+setlayer       88
+name           {<not specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          0
+order          88
+setlayer       89
+name           {<none specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          89
+setlayer       90
+name           {<none specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          90
+setlayer       91
+name           {<none specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          91
+setlayer       92
+name           {<none specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          92
+setlayer       93
+name           {<none specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          93
+setlayer       94
+name           {<none specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          94
+setlayer       95
+name           {<none specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          95
+setlayer       96
+name           {<none specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          96
+setlayer       97
+name           {<none specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          97
+setlayer       98
+name           {<none specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          98
+setlayer       99
+name           {<none specified>}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          99
+setlayer       100
+name           {layer 100}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          100
+setlayer       101
+name           {layer 101}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          101
+setlayer       102
+name           {layer 102}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          102
+setlayer       103
+name           {layer 103}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          103
+setlayer       104
+name           {layer 104}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          104
+setlayer       105
+name           {layer 105}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          105
+setlayer       106
+name           {layer 106}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          106
+setlayer       107
+name           {layer 107}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          107
+setlayer       108
+name           {layer 108}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          108
+setlayer       109
+name           {layer 109}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          109
+setlayer       110
+name           {layer 110}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          110
+setlayer       111
+name           {layer 111}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          111
+setlayer       112
+name           {layer 112}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          112
+setlayer       113
+name           {layer 113}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          113
+setlayer       114
+name           {layer 114}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          114
+setlayer       115
+name           {layer 115}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          115
+setlayer       116
+name           {layer 116}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          116
+setlayer       117
+name           {layer 117}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          117
+setlayer       118
+name           {layer 118}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          118
+setlayer       119
+name           {layer 119}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          119
+setlayer       120
+name           {layer 120}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          120
+setlayer       121
+name           {layer 121}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          121
+setlayer       122
+name           {layer 122}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          122
+setlayer       123
+name           {layer 123}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          123
+setlayer       124
+name           {layer 124}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          124
+setlayer       125
+name           {layer 125}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          125
+setlayer       126
+name           {layer 126}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          126
+setlayer       127
+name           {layer 127}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          127
+setlayer       128
+name           {layer 128}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          128
+setlayer       129
+name           {layer 129}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          129
+setlayer       130
+name           {layer 130}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          130
+setlayer       131
+name           {layer 131}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          131
+setlayer       132
+name           {layer 132}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          132
+setlayer       133
+name           {layer 133}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          133
+setlayer       134
+name           {layer 134}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          134
+setlayer       135
+name           {layer 135}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          135
+setlayer       136
+name           {layer 136}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          136
+setlayer       137
+name           {layer 137}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          137
+setlayer       138
+name           {layer 138}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          138
+setlayer       139
+name           {layer 139}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          139
+setlayer       140
+name           {layer 140}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          140
+setlayer       141
+name           {layer 141}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          141
+setlayer       142
+name           {layer 142}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          142
+setlayer       143
+name           {layer 143}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          143
+setlayer       144
+name           {layer 144}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          144
+setlayer       145
+name           {layer 145}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          145
+setlayer       146
+name           {layer 146}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          146
+setlayer       147
+name           {layer 147}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          147
+setlayer       148
+name           {layer 148}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          148
+setlayer       149
+name           {layer 149}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          149
+setlayer       150
+name           {layer 150}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          150
+setlayer       151
+name           {layer 151}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          151
+setlayer       152
+name           {layer 152}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          152
+setlayer       153
+name           {layer 153}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          153
+setlayer       154
+name           {layer 154}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          154
+setlayer       155
+name           {layer 155}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          155
+setlayer       156
+name           {layer 156}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          156
+setlayer       157
+name           {layer 157}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          157
+setlayer       158
+name           {layer 158}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          158
+setlayer       159
+name           {layer 159}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          159
+setlayer       160
+name           {layer 160}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          160
+setlayer       161
+name           {layer 161}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          161
+setlayer       162
+name           {layer 162}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          162
+setlayer       163
+name           {layer 163}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          163
+setlayer       164
+name           {layer 164}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          164
+setlayer       165
+name           {layer 165}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          165
+setlayer       166
+name           {layer 166}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          166
+setlayer       167
+name           {layer 167}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          167
+setlayer       168
+name           {layer 168}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          168
+setlayer       169
+name           {layer 169}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          169
+setlayer       170
+name           {layer 170}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          170
+setlayer       171
+name           {layer 171}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          171
+setlayer       172
+name           {layer 172}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          172
+setlayer       173
+name           {layer 173}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          173
+setlayer       174
+name           {layer 174}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          174
+setlayer       175
+name           {layer 175}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          175
+setlayer       176
+name           {layer 176}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          176
+setlayer       177
+name           {layer 177}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          177
+setlayer       178
+name           {layer 178}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          178
+setlayer       179
+name           {layer 179}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          179
+setlayer       180
+name           {layer 180}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          180
+setlayer       181
+name           {layer 181}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          181
+setlayer       182
+name           {layer 182}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          182
+setlayer       183
+name           {layer 183}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          183
+setlayer       184
+name           {layer 184}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          184
+setlayer       185
+name           {layer 185}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          185
+setlayer       186
+name           {layer 186}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          186
+setlayer       187
+name           {layer 187}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          187
+setlayer       188
+name           {layer 188}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          188
+setlayer       189
+name           {layer 189}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          189
+setlayer       190
+name           {layer 190}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          190
+setlayer       191
+name           {layer 191}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          191
+setlayer       192
+name           {layer 192}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          192
+setlayer       193
+name           {layer 193}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          193
+setlayer       194
+name           {layer 194}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          194
+setlayer       195
+name           {layer 195}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          195
+setlayer       196
+name           {layer 196}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          196
+setlayer       197
+name           {layer 197}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          197
+setlayer       198
+name           {layer 198}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          198
+setlayer       199
+name           {layer 199}
+visible        1
+readlayer      1
+bordercolor    0 0 0
+fillcolor      255 255 255
+brush          8
+order          199

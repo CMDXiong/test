@@ -1,0 +1,8 @@
+input layer 1 a; 2 b;
+output layer 3 err;
+scratch layer parts;
+parts=a and not b;
+err=maxquad(parts, 15);
+badpoly 4
+3ONLY
+ALL_SAFE

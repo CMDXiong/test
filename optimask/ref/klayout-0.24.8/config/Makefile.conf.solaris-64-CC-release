@@ -1,0 +1,48 @@
+
+# Configuration file for 
+# Sun-CC (tested with CC 5.8, SunStudio 11), Solaris, 64bit
+# release build
+
+
+AR=ar -r
+
+# Compiler options
+CC=CC
+CCOPT_DEP=-xM1
+CCWARN=
+CCOPT=-xarch=v9 -xO3 -library=stlport4 -c -o
+CCOPT_SO=-PIC $(CCOPT) 
+
+CXX=CC
+CXXOPT_DEP=-xM1
+CXXWARN=
+CXXOPT=-xarch=v9 -xO3 -library=stlport4 -c -o
+CXXOPT_SO=-PIC $(CXXOPT) 
+
+INC=-I$(TOP_SOURCE) -I$(SOURCE) -I. -I$(QTINCLUDE)
+
+DEFS=-DQT_THREAD_SUPPORT -DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII
+
+# Linker options
+
+LINK=CC
+
+LOPT=-xarch=v9 -library=stlport4 -o
+LOPT_SO=-xarch=v9 -G -PIC -library=stlport4 -o
+
+LIBS=-L$(QTLIB) -lQtGui -lQtCore -lQtXml -lQtNetwork -lQtSql -lQtDesigner -lrt -ldl -lz
+
+.PHONY: install
+install:
+	mkdir -p $(INSTALL_BINDIR)
+	cp main/$(EXEC_NAME) $(INSTALL_BINDIR)
+	for bin in $(OTHER_BIN) ; \
+	do \
+	  cp main/$$bin $(INSTALL_BINDIR) ; \
+	done
+	for plugin in $(PLUGINS) ; \
+	do \
+	  cp $$plugin/*.so $(INSTALL_BINDIR) ; \
+	done
+	chmod 755 $(INSTALL_BINDIR) $(INSTALL_BINDIR)/*
+

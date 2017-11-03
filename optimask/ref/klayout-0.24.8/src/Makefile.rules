@@ -1,0 +1,196 @@
+
+.SECONDARY:  # don't delete files considered intermediate
+
+# contributions
+ifeq ($(NO_SYSTEM_ZLIB),1)
+  include $(TOP_SOURCE)/contrib/zlib/Makefile.rules
+endif
+
+# switch off all the implicit stuff
+.SUFFIXES:
+MAKEFLAGS+=-rR
+
+COMMON_SOURCES_PART1=$(SOURCES)
+COMMON_OBJS_PART1=$(patsubst %.c,%.o,$(COMMON_SOURCES_PART1:%cc=%o)) 
+COMMON_SOURCES_PART2=$(MOC_SOURCES) $(MOC_SOURCES:%.cc=%_moc.cc) resources.cc
+COMMON_OBJS_PART2=$(patsubst %.c,%.o,$(COMMON_SOURCES_PART2:%cc=%o)) 
+COMMON_SOURCES=$(COMMON_SOURCES_PART1) $(COMMON_SOURCES_PART2)
+COMMON_OBJS=$(COMMON_OBJS_PART1) $(COMMON_OBJS_PART2)
+
+ALL_SOURCES=\
+  $(MAIN_SOURCE) \
+  $(ADD_SOURCES) \
+  $(ADD_MOC_SOURCES) \
+  $(ADD_MOC_SOURCES:%.cc=%_moc.cc) \
+  $(COMMON_SOURCES)
+ALL_MOC_SOURCES=$(ADD_MOC_SOURCES) $(MOC_SOURCES)
+ALL_DEP=\
+  $(TESTS:%.ut=%.utd) \
+  $(patsubst %.c,%.d,$(MAIN_SOURCE:%.cc=%.d)) \
+  $(patsubst %.c,%.d,$(ADD_SOURCES:%.cc=%.d)) \
+  $(patsubst %.c,%.d,$(SOURCES:%.cc=%.d)) \
+  $(ALL_MOC_SOURCES:%.cc=%.d) \
+  $(ALL_MOC_SOURCES:%.cc=./%.dm) \
+  $(RESOURCES:%.qrc=./%.drc)
+ALL_OBJS=$(ALL_SOURCES:%.cc=%.o) 
+
+TEST_TARGETS=$(TESTS:%.ut=%.utx)
+TEST_OBJS=$(TESTS:%.ut=%.uto) unit_test_main.o
+
+# Add special defines
+ifneq ($(HAVE_PYTHON),0) 
+  DEFS+= -DHAVE_PYTHON -DHAVE_PYTHON_VERSION_CODE=$(PYTHONVERSIONCODE)
+  INC+= -I$(PYTHONINCLUDE)
+endif
+ifneq ($(HAVE_RUBY),0) 
+  DEFS+= -DHAVE_RUBY -DHAVE_RUBY_VERSION_CODE=$(RUBYVERSIONCODE)
+  INC+= -I$(RUBYINCLUDE)
+endif
+ifneq ($(RUBYINCLUDE2),) 
+  INC+= -I$(RUBYINCLUDE2)
+endif
+ifneq ($(HAVE_QTBINDINGS),0) 
+  DEFS+= -DHAVE_QTBINDINGS
+endif
+ifneq ($(HAVE_64BIT_COORD),0) 
+  DEFS+= -DHAVE_64BIT_COORD
+endif
+
+ALL_LIBS=$(RUBYLIBFILE) $(PYTHONLIBFILE) $(LIBS)
+
+ifneq ($(BUILD_SO),0)
+  CCOPTS_PROD=$(CCWARN) $(DEFS) $(CCOPT_SO)
+  CXXOPTS_PROD=$(CXXWARN) $(DEFS) $(CXXOPT_SO)
+else
+  CCOPTS_PROD=$(CCWARN) $(DEFS) $(CCOPT)
+  CXXOPTS_PROD=$(CXXWARN) $(DEFS) $(CXXOPT)
+endif
+CCOPTS=$(CCWARN) $(DEFS) $(CCOPT)
+CXXOPTS=$(CXXWARN) $(DEFS) $(CXXOPT)
+CCOPTS_DEP=$(DEFS) $(CCOPT_DEP) 
+CXXOPTS_DEP=$(DEFS) $(CXXOPT_DEP)
+ifeq ($(LOPT_TEST),)
+  LOPT_TEST=$(LOPT)
+endif
+
+MOC=$(QTBIN)/moc
+UIC=$(QTBIN)/uic
+RCC=$(QTBIN)/rcc
+
+TESTSRC=$(TOP_SOURCE)/..
+RUBYTESTSRC=$(TESTSRC)/testdata/ruby
+PYTHONTESTSRC=$(TESTSRC)/testdata/python
+
+# this target must be first:
+
+.PHONY: cleandep
+cleandep: 
+	rm -f $(ALL_DEP) \
+          .dep
+
+.PHONY: clean
+clean: 
+	rm -f $(ALL_DEP) \
+          $(ALL_OBJS) \
+          $(TEST_OBJS) \
+          $(TEST_TARGETS) \
+          $(ALL_MOC_SOURCES:%.cc=%_moc.cc) \
+          $(UI_SOURCES:%.ui=%.h) \
+	      resources.cc \
+	      $(RESOURCES:%.qrc=%.drc) \
+          .dep
+
+# this target must be called on "main" to prepare the tests
+.PHONY: test_prep
+test_prep: $(LIBKLAYOUT)
+
+.PHONY: tests_build
+tests_build: $(TESTS:%.ut=%.utx) test_prep
+
+.PHONY: tests_exec_nostop
+tests_exec_nostop: 
+	echo "Testrun with -e:"
+	for t in $(TESTS:%.ut=%.utx); do LD_LIBRARY_PATH=. TESTSRC=$(TESTSRC) ./$$t -e; done
+	echo "Testrun with -ne:"
+	for t in $(TESTS:%.ut=%.utx); do LD_LIBRARY_PATH=. TESTSRC=$(TESTSRC) ./$$t -ne; done
+
+.PHONY: tests_nostop
+tests_nostop: tests_build tests_exec_nostop
+
+.PHONY: tests_exec
+tests_exec: 
+	failed=""; \
+	echo "Testrun with -e:"; \
+	for t in $(TESTS:%.ut=%.utx); do LD_LIBRARY_PATH=. TESTSRC=$(TESTSRC) ./$$t -e || failed=`echo "$$failed"; echo " -e " $$t`; done; \
+	echo "Testrun with -ne:"; \
+	for t in $(TESTS:%.ut=%.utx); do LD_LIBRARY_PATH=. TESTSRC=$(TESTSRC) ./$$t -ne || failed=`echo "$$failed"; echo " -ne" $$t`; done; \
+	if [ "$$failed" != "" ]; then echo "-----------"; echo -n "*** Failed Tests:"; echo "$$failed"; exit 1; fi
+
+.PHONY: tests_exec_valgrind
+tests_exec_valgrind: 
+	failed=""; \
+	echo "Testrun with -e:"; \
+	for t in $(TESTS:%.ut=%.utx); do LD_LIBRARY_PATH=. TESTSRC=$(TESTSRC) valgrind ./$$t -e || failed=`echo "$$failed"; echo " -e " $$t`; done; \
+	echo "Testrun with -ne:"; \
+	for t in $(TESTS:%.ut=%.utx); do LD_LIBRARY_PATH=. TESTSRC=$(TESTSRC) valgrind ./$$t || failed=`echo "$$failed"; echo " -ne" $$t`; done; \
+	if [ "$$failed" != "" ]; then echo "-----------"; echo -n "*** Failed Tests:"; echo "$$failed"; exit 1; fi
+
+.PHONY: tests
+tests: tests_build tests_exec
+
+vpath %.ut $(SOURCE)
+vpath %.cc $(SOURCE)
+vpath %.h $(SOURCE)
+vpath %.qrc $(SOURCE)
+vpath %.ui $(SOURCE)
+
+%.utx: %.uto unit_tests_main.o $(LIBKLAYOUT) $(PLUGIN_LIB)
+	$(LINK) $(LOPT_TEST) $@ $+ $(ALL_LIBS) $(LIBS_EXE)
+
+%.uto: %.ut %.utd
+	cp $< $*.ut.cc ; $(CXX) $(INC) $(CXXOPTS) $@ $*.ut.cc
+
+%.utd: %.ut
+	cp $< $*.ut.cc ; $(CXX) $(CXXOPTS_DEP) $*.ut.cc $(INC) | sed "s/$*\.ut\.o/$*.uto/" | sed "s/$*\.ut\.cc//" >$@ || (rm -rf $@; exit 1)
+
+%.d: %.cc
+	$(CXX) $(CXXOPTS_DEP) $(<) $(INC) >$@ || (rm -rf $@; exit 1)
+
+%.d: %.c
+	$(CXX) $(CXXOPTS_DEP) $(<) $(INC) >$@ || (rm -rf $@; exit 1)
+
+%.o: %.c %.d
+	$(CC) $(INC) $(CCOPTS_PROD) $@ $(<)
+
+%.o: %.cc %.d
+	$(CXX) $(INC) $(CXXOPTS_PROD) $@ $(<)
+
+%_moc.o: %_moc.cc %.dm
+	$(CXX) $(INC) $(CXXOPTS_PROD) $@ $(<)
+
+%.h: %.ui
+	$(UIC) -o $*.h $(<)
+
+%_moc.cc: %.h
+	$(MOC) -o $@ $(<)
+
+%.dm: %_moc.cc
+	$(CXX) $(CXXOPTS_DEP) $*_moc.cc $(INC) >$@ || (rm -rf $@; exit 1)
+
+%.drc: %.qrc
+	echo 'resources.cc:\' >$@
+	grep '<file' $< | sed 's&^.*<file.*>\(.*\)</file>.*$$&$(SOURCE)/\1\\&' >>$@
+	echo >>$@
+
+resources.cc: $(RESOURCES:%=$(SOURCE)/%) $(RESOURCES:%.qrc=./%.drc)
+	if [ "x$(RESOURCES)" != "x" ]; then $(RCC) -o $@ $(RESOURCES:%=$(SOURCE)/%); else echo "" >$@; fi
+
+resources.o: resources.cc 
+	$(CXX) $(INC) $(CXXOPTS_PROD) $@ $+
+
+dep: cleandep 
+	$(MAKE) .dep
+
+.dep: $(UI_SOURCES:%.ui=%.h) $(ALL_DEP) 
+	cat $(ALL_DEP) >.dep
+

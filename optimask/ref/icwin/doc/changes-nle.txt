@@ -1,0 +1,780 @@
+Version 1.53, 201.38:
+Fixes bug introduced in versions 1.52 and 201.37, involving ATTACH_TEXT.
+------------------------------------------------------------------
+Version 1.52, 201.37
+Fixes bug in the rules compiler that led to information being
+overwritten.  This was NOT a crash-or-run-right bug.
+Necessary conditions for the bug were:
+   --The same scratch layer name was reused for different purposes.
+   --The scratch layer mentioned above was used more than once
+in operations performed in subcells.
+
+Sufficient conditions were more complicated.
+
+------------------------------------------------------------------
+Version 1.51
+There are two changes:
+
+1) Fixes bug in rules compiler that allowed a layer to be
+altered after being used to stamp another layer.
+
+2) Requires a minimum memory to run.  This defaults to 32 Meg.
+
+You can override this minimum memory requirement in 2 ways:
+    -Use the HOG parameter to specify the memory allocation directly.
+    -Use the new MIN_MEMORY specification.
+
+The MIN_MEMORY specification changes only the minimum memory requied.
+The actual amount of memory allocated depends on the system and may
+be quite a bit larger.
+
+MIN_MEMORY can be specified in 2 ways.  
+    -On the command line.
+    -In the rules file.
+In either case the syntax is:
+MIN_MEMORY=<memory, in Meg>
+
+This is an attempt to stop the confusing error messages that
+occur when someone attempts to run the DRC with very little
+memory.  (Of course, this won't help if the program is run with
+too little memory to get to the check.)   
+------------------------------------------------------------------
+Version 201.36
+
+There are four changes.  The first two are the same as for the
+released version, discussed above.
+
+1) Fixes bug in rules compiler that allowed a layer to be
+altered after being used to stamp another layer.
+
+2) Requires a minimum memory to run.  This defaults to 32 Meg.
+
+You can override this minimum memory requirement in 2 ways:
+    -Use the HOG parameter to specify the memory allocation directly.
+    -Use the new MIN_MEMORY specification.
+
+The MIN_MEMORY specification changes only the minimum memory requied.
+The actual amount of memory allocated depends on the system and may
+be quite a bit larger.
+
+MIN_MEMORY can be specified in 2 ways.  
+    -On the command line.
+    -In the rules file.
+In either case the syntax is:
+MIN_MEMORY=<memory, in Meg>
+
+This is an attempt to stop the confusing error messages that
+occur when someone attempts to run the DRC with very little
+memory.  (Of course, this won't help if the program is run with
+too little memory to get to the check.)   
+
+3) Introduces "extent boxes."  These 2 new rules create bounding boxes
+on a result layer.  
+
+     A = EXTENT_IN
+set A as a bounding box for all the INPUT layers mentioned in
+the rules file, whether the layers are used in the rules or not.
+     Only boxes and polygons are use in setting the box; text
+and lines are not. 
+     This differs from input layer zero in that layer zero
+includes text, lines and layers not mentioned in the rules.
+ 
+     A = EXTENT(B)
+sets A as the bounding box of layer B.
+
+*** WARNING ***  
+    Suppose you have a statement like:
+        A = NOT B
+    What is the bounding box of A?  In the DRC, it is an
+arbitrary distance far enough from the edges of the original
+chip so no calculation touches the edges.  The program will
+allow you to use EXTENT(A), but it will not have any physical
+significance. 
+
+4) Introduces a SIDE_COUNT rule.  Syntax is:
+
+<output layer> = [NOT] SIDE_COUNT (<input layer> [,] 
+     N= <min sides> [:<max sides>] [,] <holes_type>
+     ) [NOT = <second output layer>]
+
+Polygons are classified by the number of sides.  Remember that
+overlapping shapes are merged before the rules are processed.
+
+At most one NOT can be used.
+
+If <max sides> is not given, it is assumed equal to <min sides>.
+
+<holes_type> specifies how polygons with holes are treated.  Choices are:
+    NO_HOLES: polygons with holes are always in the NOT catagory.
+    IGNORE_HOLES: holes are ignored; sides in the outer perimeter are counted.
+    INCLUDE_HOLES: sides in outer perimeter and holes are counted.
+------------------------------------------------------------------
+Version 1.50, 201.35
+    Changes maximum subcell depth from 16 (an old ICED limit) to 36 (the 
+current ICED limit).
+------------------------------------------------------------------
+Version 1.49, 201.34 (There was no veriosn 1.48)
+     Increases maximum number of layers (including scratch) used in rule set to
+5000. 
+     Fixes bug in which overlap by sharp points was sometime not detected.
+------------------------------------------------------------------
+Version 1.47, 201.33
+    Fixes bug in rules compiler that dis-allowed HOLE_AREA_FRACTION.
+------------------------------------------------------------------
+Version 1.47
+    Fixes bug in rules compiler that dis-allowed ATTACH_TEXT.
+------------------------------------------------------------------
+Version 1.46, 201.32
+    Imposes prohibition against using STAMP and IN_CELL operations in the same
+rule set.  Using both could lead to incorrect answers.
+------------------------------------------------------------------
+Version 1.45, 201.31
+    Fixes rules compiler bug which allowed CONNECT rules after a STAMP rule and
+would sometimes do a STAMP before all the connections were done.
+------------------------------------------------------------------
+Version 1.44, 201.30
+    Fixes bug involving the NOT of layers with polygons touching the edge of
+the main cell.  The is NOT a crash-or-run-right bug.  Loss of data, and
+overlooking errors, was possible.
+     Executable names have changed.  This is to clear up confusion between
+current names and documentation, some of dates back to the DOS version.
+The names are:
+     Old           New
+     ------------  ------------
+     NLERU-NT.EXE  NLERULES.EXE
+     NLE-NT.EXE    NLE.EXE
+Dummy routines with the old names (which just call the new names) are available
+from IC Editors.
+------------------------------------------------------------------
+Version 201.29
+******** WARNING ***********
+     If you install this revision, previous versions of the beta test ARC will
+no longer work.  You must install version 301.21 or higher.  (This is because
+the interface with the ICED node outliner had to be revised for the ARC.  The
+ARC and NLE use the same interface.)
+
+     Executable names have changed.  This is to clear up confusion between
+current names and documentation, some of dates back to the DOS version.
+The names are:
+     Old           New
+     ------------  ------------
+     NLER-NTX.EXE  NLERULEX.EXE
+     NLE-NTX.EXE   NLEX.EXE
+Dummy routines with the old names (which just call the new names) are available
+from IC Editors.
+------------------------------------------------------------------
+Version 1.43, 201.28
+     Fixes bug involving HOLE_AREA_FRACTION in which data could be lost when
+output was used as input to further rules on the same pass.
+     This was NOT a crash-or-run-right bug.  Inconspicuous loss of data was
+possible.     
+------------------------------------------------------------------
+Version 1.42, 201.27
+1)  Fixes bug involving INCELL input layer specification in rules files.  This
+was NOT a crash-or-run-right bug, but the results were likely to be
+spectacularly wrong.
+2)  Fixes display problem with Windows XP and LONGCASE command line option.
+------------------------------------------------------------------
+Version 201.26
+Removed restriction that NODE and SAME_POLYGON rules must be the last rule.
+------------------------------------------------------------------
+Version 1.41, 201.25
+Changes maximum number of scratch directories to 50.  This allows for up to
+100 Gig total scratch files.
+------------------------------------------------------------------
+Version 1.40, 201.24
+Fixes bug that lost errors if a large number of unflattened cells was combined
+with a large panel border.
+------------------------------------------------------------------
+Version 1.39, 201.23
+Fixes bug that sometimes allocates too little memory if the USE parameter
+is used instead of the HOG parameter.  This was a crash-or-run-right bug.
+------------------------------------------------------------------
+Version 201.22
+    Fixes bug in which the area of a device component is not computed properly
+iff the component extends into a panel not adjacent to the panel(s) containing
+the ID polygon.
+     This bug effects both the released and beta versions.  It is being fixed
+in the beta version first because the error is unlikely to occur in practice.
+Therefore, the fix is being tested before being put in the released version.
+     This is NOT a crash-or-run-right bug.  However, it would take EXTREME
+bad luck for a case where this error occurred to pass the LVS.
+------------------------------------------------------------------
+Version 201.21
+Fixes bug in alias introduced in 201.20
+------------------------------------------------------------------
+Version 201.20
+Allows "alias" for names sent to LVS.  Syntax is:
+    DEVICE <name> [ = <alias name>] ...
+Multiple devices can have the same alias.  The same type number will be sent
+for all devices with the same alias.
+------------------------------------------------------------------
+Version 1.38, 201.19
+The command NO_LOG_ACUTE suppresses the description to acute angle output on
+the log (.NLO) file.  Acute angles are still marked with error wires.
+------------------------------------------------------------------
+Version 1.37, 201.18:
+Fixes bug which can cause the whole chip not to be processed in run with more
+than 20 passes.  This was NOT a crash-or-run-right bug.
+------------------------------------------------------------------
+Version 1.36, 201.17:
+1)  Fixes bug involving large number of panels.  This was NOT a crash or run
+right bug.
+2)  Improves running time in certain special cases involving 
+------------------------------------------------------------------
+Version 1.35:
+1) Fixed output bug in which rules file output sometime contained empty
+connection groups.  This was a cosmetic problem; answers were not affected.
+2) Copy protection change allowing the use of HASP dongles with the NT version.
+3) Eliminates false warning message about panel size.  This did not effect
+answers.
+4) Fixes bug that prevented generating outliner files with blanks in the path 
+name.
+------------------------------------------------------------------
+Version 1.34, 201.16:
+1) Wire width in .CMD output can now be specified.
+    The syntax is:
+    WIRE_WIDTH = <value>
+This can appear in the .RUL file or the command line.
+2) Constants can now appear in E format. Example: 1.5E3 for 1500.0
+Some rules:
+    No blanks in number
+    Number must begin with a digit. Example: 1.E3, NOT E3
+------------------------------------------------------------------
+Version 1.33, 201.15:
+1) Allows panel size specification on NLE command line.
+2) Fixes crash-or-run-right bug involving large number of passes.
+3) Allows PAUSE on rules command line.
+------------------------------------------------------------------
+Version 1.32, Version 201.14
+1)  Fixes bug in stamp rule, having to do with item in higher level cell being
+stamped by subcell.  This was NOT a crash-or-run-right bug.
+2)  Fixes crash-or-run-right bug in which memory was not deallocated properly.
+------------------------------------------------------------------
+Version 1.31, Version 201.13
+     Fixes bug INPUT LAYER .. NOT INCELL specification.
+     This was NOT a crash-or-run-right bug, but the results are so obviously
+wrong it was unlikely to be overlooked.
+------------------------------------------------------------------
+Version 1.30, Version 201.12
+Fixes 2 bugs found in DANGER specifications:
+--When bloats in subcells were done dangerously, the border of the main cell
+could be corrupted, resulting in incomplete processing.
+--DANGER_LAYER specifications could be ignored.
+Versions 1.30 and 210.12 fix these bugs in the released and beta
+specifications. 
+------------------------------------------------------------------
+Version 201.11
+Bug fixes in version 1.29 applied to beta test version.
+------------------------------------------------------------------
+Version 1.29
+Fixes bug in which shrink/bloat or nearly horizontal line was done improperly.
+
+Fixes bug in which STAMPs in subcells are processed properly, possibly
+resulting in missed multi-stamp error and spurious non-stamped errors. 
+
+This bug could only occur if the NLE did not flatten all subcells.  This would
+only happen if:
+    --The is an IN_CELL rule in your rules.
+or
+    --You overrode the default behavior of the NLE with command line
+parameters. 
+------------------------------------------------------------------
+Version 201.10
+The /AREA in device specifications option no long requires that the  ID polygon
+touch exactly one polygon.  You can now put in a touch count
+and/or a /NODE with the /AREA component. 
+
+If you just have /AREA, it defaults to 1 /POLYGON, as before.
+However, you can now use a device line like: 
+
+ <layer name> <count> [/NODE]/AREA
+
+The NLE will transmit the total area and perimeter to the LVS.
+------------------------------------------------------------------
+Version 1.28
+     1)  Fixes bug in which version 1.27 called for a wrong auxiliary file.
+
+     2)  The default panel size is changed.  In previous versions, not entering
+PANEL_X and PANEL_Y caused the DRC to process the chip as one panel.  With
+large chips, this resulted in panel failures and/or very long running time,
+causing numerous technical support calls from people who apparently didn't
+read the manual section on panel size.  A new way of specifying panel size is:
+     PANEL_VERTICES = <n>
+Where n is the APPROXIMATE number of input vertices per panel per megabyte of
+memory used as "main memory". n defaults to 5000, eliminating the unfortunate
+behavior when nothing about panel size is specified IN MOST CASES.  However,
+manual intervention may still be required.
+     By default, "main memory" is half the memory available, to a maximum of
+128 Meg. 
+     This modification is not intended to improve on carefully optimized panel
+sizes; just to provide a reasonable default.  However, you might try the
+default if:
+          --You optimized your panel size some time ago, using a computer with
+     less memory than you are using now.
+          --You are dealing with a design with a different density than you are
+     used to, and you don't know where to start.
+However, understand that the default may be just a starting point for a new
+optimization.
+------------------------------------------------------------------
+Version 1.27
+Brings beta test improvements up to version 201.09 into released version.
+------------------------------------------------------------------
+Version 1.26, 201.09:
+Fixes bug involving connections between subcell and main cell.  This was NOT a
+crash-or-run-right bug, although it apparently seldom occurs in practice and
+it would require VERY bad luck for a chip effected by the bug to pass the LVS
+check.
+Necessary conditions are:
+     --There is a rule of the form CONNECT A B BY C
+     --There are panels in which layer A or B (but not both) are empty.
+     --Layer C is significant in the layout.
+     
+Fixes bug in which an error file can be overwritten if there are bad polygons
+in both the main cell and a subcell.
+------------------------------------------------------------------
+Version 1.25, 201.08:
+Fixes error that caused crash if an auxiliary file is in a directory containing
+blanks.  This was a crash-or-run-right bug.  Only Windows versions are
+effected.
+------------------------------------------------------------------
+Version 201.07:
+Fixes  spurious-error-or-run-right bug in rules program.  Only beta test 
+versions were effected.
+------------------------------------------------------------------
+Version 1.24
+Fixes crash-or-run-right false error message in rules program.
+------------------------------------------------------------------
+Version 201.06
+Fixes crash-or-run-right false error message in rules program.
+------------------------------------------------------------------
+Version 1.23
+Fixed crash-or-run-right involving bounding boxes for empty cells.
+------------------------------------------------------------------
+Version 201.05
+Fixed crash-or-run-right involving bounding boxes for empty cells.
+------------------------------------------------------------------
+
+Version 201.04
+Changes are:
+
+     1)  A crash-or-run-right bug involving cross-panel results
+is fixed.  The run may still abort, but there will be a coherent
+error message with instructions on how to adjust the command
+parameters.
+
+     2) The windows version now uses the system virtual memory.
+
+     3) The default for the FILE_SIZE parameter is changed.
+
+Details:
+
+     1) Crash-or-run-right bug.
+     After recognizing devices panel by panel, with some shape
+recognition rules, the DRC must deal polygons the cross panel
+boundaries separately.  The DRC tries -- usually successfully --
+to deal with all the cross-panel polygons at once.  If the DRC
+is run with too little memory, it must abort.  (The old version
+gave a confusing error message.)
+
+     If you encounter this abort, do one or more of the following:
+     --** FIRST, check to see if the free memory given near the top of your log
+file is as much as you would expect given the memory in your machine.  If not,
+reboot and/or exit all other tasks if you are in a multi-tasking OS.
+     --In Windows, increase the HOG parameter on the command line.  
+     --Use the command line parameter MULTI_REPASS. This is new parameter.  It
+tells the program to handle inter-panel repasses by doubling the panel area
+(again and again until the "panel" is the whole chip.  Hence MULTI_REPASS.)
+     --In the windows version, use the new FORCE_HOG parameter to use the
+system virtual memory.
+     --Use the command line parameter MAIN_MEMORY =<x>, where <x> is something
+over .5, to allocate more memory for computation and less memory for avoiding
+disk swaps.  (.5 is the default.)    For machines with more than 256Meg, you
+also need to set MAIN_HOG to something more than 128. 
+
+
+     2) System virtual memory.  (Windows version only.)   THIS
+IS INCOMPATIBLE WITH QEMM.   The behavior of the HOG parameter has changed. By
+default, the program allocates no more than the physical memory available when
+it starts, and uses disc swapping to store data out of memory.
+     The command line parameter HOG = <memory to be used, in Meg> allocates the
+value given, whether physical memory is available or not.  A large HOG is not
+necessarily "free."  It is not yet known whether the system's virtual memory
+makes for faster or slower runs than the DRC's own disk swapping scheme.
+     The new command line parameter NO_VIRTUAL_MEMORY reverts the program to
+the old version's behavior.  This is for QEMM, or if you discover some other
+reason the new version doesn't work.  (If the latter, TELL US.)
+
+     3)  The FILE_SIZE parameter gave the maximum total scratch files size the
+program initialized itself the handle.  (If you use multiple scratch
+directories, this would be the sum of the sizes of all the scratch files.)
+     The old default was 2000 Meg.  The new default is 2048*<n>, where <n> is
+the number of directories in the SCRATCH command line parameter.  As before,
+the default may be overridden with FILE_SIZE = <value, in Meg> on the command
+line. 
+------------------------------------------------------------------
+Version 201.03
+Version 1.22
+Internal changes for new copy protection method.
+------------------------------------------------------------------
+Version 201.02
+Bug fix of 1.21 in beta version.
+------------------------------------------------------------------
+Version 1.21:
+Fixes a bug that caused infinite loops when device ID polygon was along the
+cell border and was the output of a bloat.  This was an
+infinite-loop-or-run-right bug.
+------------------------------------------------------------------
+Version 201.01
+
+Three things:
+1) New file naming conventions for beta test versions.
+2) Expended INCELL specification for input layers.
+3) New optional constraints on device recognition
+
+Details:
+
+1)  Staring now, Version 1.xx will be the released version of then NLE.
+Version 201.xx will be the beta test version.
+
+The files for the beta test versions will be named RULESNLX.EXE, NLEX.EXE
+NLE1X.EXE, and MKP9KX.EXE for the DOS version and NLE-NTX.EXE, NLER-NTX.EXE
+and MKP9-NTX.EXE for the W95/98/NT version.
+
+This will allow users to keep both the released and beta test versions on the
+same machine. 
+
+2)  The INCELL specification for INPUT LAYER has be expanded to up to 50 
+multiple specifications.  (For those who have already read the details, this is
+the same as the DRC3 beta test version.)
+
+The syntax:
+     INPUT LAYER <iced layer number> NOT INCELL <cell specification> <layer name>
+Is unchanged from the previous version.
+     
+The new syntax is:
+     INPUT LAYER <iced layer number> INCELL <cell specification 1> <layer name>
+[INCELL <cell specifications> <layer name> .. (up to a total of 50  
+specifications)] [NOT  <cell specification> <layer name>]
+
+Example:
+    INPUT LAYER 1 INCELL A* A INCELL *B* B NOT C;
+
+Input layer 1 will be divided as follows:
+     Layer 1 from all cells beginning with A will go to DRC layer B
+     Layer 1 from all cells with a B somewhere in the name will go to 
+DRC layer B
+     The rest of layer 1 in the chip will go to DRC layer C.
+
+     Layer 1 from, for example, AB, will go the DRC layer A, the first
+specification AB meets.  A warning message will be printed on the log (.DLO)
+file as follows:
+
+*****WARNING*****WARNING*****WARNING*****WARNING*****WARNING***
+*****WARNING*****WARNING*****WARNING*****WARNING*****WARNING***
+*****WARNING*****WARNING*****WARNING*****WARNING*****WARNING***
+Cell AB meets multiple IN_CELL specifications for ICED layer 1.
+Layer A from spec A* will be used.
+    Also meets specification *B* for layer B.
+
+3) In device recognition, there are now optional constraints on the length,
+width, and length/width of the device identifier polygon.  
+
+The length and width are the same as the length and width reported to the LVS.
+ 
+The new syntax is:
+
+DEVICE <device name> ... (same ID line parameters as before)  
+   [LENGTH = <min length [: <max length>]] 
+   [WIDTH = [<min width [: <max width>]]
+   [L_BY_W = <min length/width : [<max length/width>]]
+
+In all cases, if the max value is left out, it is assumed to be the same as the
+min value: that is, an exact value is required.  Remember that unless the ID
+polygon is a rectangle square with the axes, you are unlikely to know the exact
+values.
+
+An combination of these parameters can be used, it is NOT all 3 or none.
+
+If any of the 3 are used, a /WIDTH component must be specified for the device.
+
+Example:
+
+device ptransistor id = pgate, err=bad_gate length=2:4, width=1:3 L_by_W=1.5:3 {
+    p 1/POLY
+    xs 2/poly/WIDTH
+    WELL 1/POLY
+    PINS = XS, XS;
+    }
+
+The same syntax can be used for the transistor and capacitor special cases.
+
+Examples:
+
+transistor ptransistor id = pgate, err=bad_gate length=2:4, width=1:3 L_by_W=1.5:3 {
+    gate = p;
+    s$d = xs/poly;
+    bulk = well;
+    }
+
+capacitor SIMPLE id = DIA err = bad_CAP length=6:7, width=5:6 {
+    PLUS=END1;
+    MINUS=END2;
+    }
+
+------------------------------------------------------------------
+Version 1.20:
+Fixes bug involving electrical connections between subcells.
+
+This is NOT a crash-or-run right bug.  It apparently seldom occurs, since it
+evaded detection so long.  The result would be an incorrect net list.  (Barring
+astounding coincidence, this would be detected in the LVS step, which makes us
+believe the bug doesn't happen often.) 
+
+NECESSARY conditions for the bug to appear are a connection rule involving
+layers generated on different passes of the DRC or NLE for example:
+
+CONNECT A B BY CONTACT
+
+where A was generated on pass 1 and B was generated on pass 3.
+
+Sufficient conditions are more complicated.
+------------------------------------------------------------------
+Version 1.19:
+The program no longer pauses at the beginning by default.  The beginning pause
+can be requested with PAUSE=START on the command line.
+
+Fixes a crash-or-run right bug.
+Version 1.18:
+
+Fixes crash-or-run-right bug involving devices and air bridges.
+
+Fixing this bug required a change in the default operation of the program,
+which should be invisible to most users.
+
+Device and air bridge recognition have a tolerance parameter, which gives
+permissible misalignment between components that are SUPPOSED to touch along an
+edge.   IN PREVIOUS VERSIONS this defaulted to zero.  IN THE NEW version, it
+defaults to a "smoothing tolerance" computed by the program.  This is usually
+.001 ICED units, but can be larger for very large chips.  The command line
+parameter SHOW_SCALES will print the smoothing tolerance on your log (.NLO)
+file. 
+
+Version 1.17:
+Fixes crash-or-run right bug involving dangerous operations.
+------------------------------------------------------------------
+Version 1.16:
+
+Allows for very long command lines under Windows 95/98/NT
+
+Allows @MAIN for the main cell in the IN_CELL specification for INPUT LAYERS.
+
+For the Windows version, NLE1-NT.EXE is eliminated.  (NLE-NT and NLE1-NT of
+previous versions are merged into NLE-NT.) 
+
+Adds command line parameter PAUSE.
+    PAUSE = ALWAYS means the NLE pauses and waits for a <Return> after
+termination. 
+    PAUSE = CRASH  means the NLE pauses and waits for a <Return> after
+an abnormal termination.  
+    PAUSE = NEVER (default) means no pause. 
+------------------------------------------------------------------
+Version 1.15:
+Experimental, not distributed.
+------------------------------------------------------------------
+Version 1.14:
+Fixes bug that sometimes produced massive output on .NLO file.  This was a
+fill-up-your-disk or run right bug.
+------------------------------------------------------------------
+Version 1.13:
+
+1)  Fixes bugs in shrink/bloat operations.  The bugs were:
+    a)  When small figures or holes with 45 degrees angles were shrunk or
+bloated out of existence, a "phantom" figure or hole appeared nearby.  This was
+NOT a crash-or-run-right bug.
+    b)  When sharp points were blunted for shrink or bloat, the distance from
+the point to the flattened edge was further than the shrink distance.
+
+2)  Fixes what was APPARENTLY a shrink or run right bug, involving
+mis-addressed memory.
+--------------------------------------------------
+Version 1.12
+
+1)  Eliminates spurious error message in NT version when P9K file is
+deliberately suppressed.  Fixes two other confusing error messages.
+
+2)  Fixes bug in rules compiler that allowed FLATTEN{} or NOFLATTEN{} with no
+cell names. 
+
+3) Allow device specifications to require labeled pins.  This might be used if
+a device has more the one pin on the same layer, but arbitrarily assigning the
+pins won't do.  The labels are specified in the rule set. The syntax is best
+explained by example:
+
+INPUT LAYER 1 A ID 6; 2 B; 3 C; 4 WIRES;
+SCRATCH LAYER CENTER; DEVICE_PINS;
+OUTPUT LAYER 10 NON_DEV;
+
+CENTER = A AND B;
+DEVICE_PINS = A AND NOT B;
+
+CONNECT DEVICE_PINS WIRES;
+
+DEVICE FUNNY_DEVICE ID = CENTER ERR = NON_DEV {
+    DEVICE_PINS 2/poly;
+    PINS = DEVICE_PINS "S", DEVICE_PINS "D";
+    }
+
+NO_ECC    
+
+In this example, FUNNY_DEVICEs have two pins, both on layer DEVICE_PINS, with
+pin1 labeled "S" and pin 2 labeled "D".  The quotation marks are not included
+on the ICED cell text.  There are required in the rule set, to distinguish the
+labels from layer names.
+
+Restrictions:
+     If a pin is labeled, all pins on the same layer must be labeled.
+     There cannot be duplicate labels on a given layer.
+     Labeled pins cannot be used with a /NODE option component.
+
+The pins must be labeled with text in the ICED cell.  There are 2 ways to avoid
+having the pin labels confused with node labels:
+           Have the pin label text on a separate layer, which the rule set
+     specifies as an identifier layer.   In the example above, the first line
+     of the rules specifies that text on layer 6 should be taken as identifier
+     text for layer 1. 
+          Use the comment prefix, as explained in the NLE documentation.
+     However, this is not Dracula compatible.
+
+-----------------------------------------
+Version 1.11
+
+
+1)  Fixes two bugs that cause spurious discontinuities at panel boundaries.
+These were NOT crash-or-run-right bugs, but apparently appeared very seldom.
+
+2)  Introduces outlining selected nodes or polygons on an output layer.  Nodes
+may be selected by node number, label, or by location and layer of an item on
+the node.  Polygons may be specified by location and layer of part of the
+polygon. 
+
+Outlining a polygon means outlining an entire physical polygon, even if it is
+split by construction lines, or because parts are in subcells.  In complex
+chips, it can be hard to tell just what forms a single connected polygon.
+
+The syntax is:
+
+<output layer> = NODE("<label>", [<layer>, <layer>, ..])
+The quotation marks are required.  It the layer list is given, only those items
+on the node and listed layers are copied to the output layer.  If no layer
+list is given, all items on the node are output.
+
+<output layer> = NODE(<node number>, [<layer>, <layer>, ..])
+The meaning of the layer list is as above.
+
+<output layer> = NODE((<x>, <y>), <layer1>, [<layer>, <layer>, ..])
+The first layer is required.  The node containing some polygon at (x,y) on
+layer <layer1> is copied to the output layer.  If an additional layer list is
+given, only items on the listed layers (and layer1) are output.
+
+<output layer> = SAME_POLYGON((<x>, <y>), <layer>)
+Polygons that form the same polygon with a polygon and (x,y) on <layer> are
+output.  "Same polygon" means overlapping or touching along a non-zero
+interval.  (Like colored squares on a checkerboard do not form the same
+polygon). 
+
+-----------------------------------------
+Version 1.10
+
+REQUIRES NEW COPY-PROTECTED FILE NLE99AUX.EXE
+
+1)  Fixes bug that caused .POK files to be misread when .POK file was generated
+from a subcell, and/or subcells had recently been deleted.  This bug had been
+present in Version 1.09 only.
+
+2)  Checks to prevent running NLE with .LL files from NLERU-NT, or NLE-NT with
+.LL files from RULESNLE.  (The .LL files are not compatible.  Previous versions
+gave a meaningless error message.)
+
+3)  Improves error message when auxiliary files cannot be found.
+
+4)  The DOS version aborts with a meaningful error message when confronted
+with long file names.  The NT/W95/W98 version allows long file names.
+
+-----------------------------------------
+Version 1.09
+
+Fixes bug that unnecessarily limited panel size in many cases.  Answers were
+not effected, but previous versions my have required smaller panels than the
+corrected version.
+
+-----------------------------------------
+Version 1.08
+
+Fixes crash-or-run-right bug.  If you didn't see it, you have nothing to worry
+about. 
+
+-----------------------------------------
+Version 1.07
+
+1) Small code changes for compatibility with future Windows NT version. 
+
+2) Internal checks on deallocating storage. 
+
+3) Fixes bug in cleaning up that caused crashes after some panel failures.
+This was a crash-or-run-right bug; if you didn't see it, it didn't effect you.
+
+4) Changes on-screen progress report.  Current operations will no longer
+"flash by" quickly; progress report lines ending with "operation...",
+"Output", or "Connections" will be suppressed if:
+    --The number of panels in the cell times the number of rules in the rule
+set is 100,000 or more.  (10,000 in the future NT version.)
+    --It has been less than 2 seconds since the last report.
+
+This is because, in some very large cases with many panels, writing to the
+screen was taking a significant amount of time.   In a test case with 160,000
+panels and 17 rules, the "flash display" added 15 minutes to a 7 hour run.
+
+The 100,000 panels can be changed with "NO_FLASH_PANELS =<number of panels>" on
+the NLE command line.
+
+The 2 seconds can be changed with "DISPLAY_OPERATIONS =
+<min time between displays, in seconds>" on the NLE command line.
+
+"DISPLAY_OPERATIONS=0" returns the display to previous versions.
+
+------------------------------
+Version 1.06
+
+1)  Improved intermediate data storage requires less disk swapping with
+very large  cells.
+
+2)  False alarm error messages about node labels not over polygons fixed.
+
+3)  Short-circuit path drawing has been improved so it is more likely to
+find paths involving all labels when the same node is labeled with more than
+two conflicting labels.
+
+4)  By default, the memory used as "main memory" is now only 128Meg for
+machines over 256Meg.
+
+The NLE has always divided memory into "main memory", used for
+computations, and "swap memory", used to avoid disk swapping.  By default, the
+memory was divided half and half between both uses.  The can be changed with
+the command line parameter MAIN_MEMORY =<Main memory/swap memory ratio>
+
+Starting with Version 1.06, main memory is restricted to 128Meg by
+default.  (On machines with less than 256Meg, it is still half the memory.)
+This can be changed with the command line parameter
+     MAIN_USE =<main memory, in K)
+or
+     MAIN_HOG =<main memory, in Meg>
+when MAIN_MEMORY and MAIN_USE give conflicting values, the lesser value will be
+used. 
+
+------------------------------
+Version 1.05
+
+Fixes bug in deallocating storage that caused crashes on some cells.  This
+was a crash-or-run-right bug; if you didn't see it, it didn't effect you.
+

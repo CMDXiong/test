@@ -1,0 +1,14 @@
+# Process file for GDS-II postprocessing tool
+# Copyright 1995 Hollandse Signaal Apparaten
+
+snapfactor = 1 um
+correctionfactor = -5.5 um
+roundtype = circle
+roundfactor = 1.0
+correctionaber = 1 um
+group_a = 00
+group_b = empty
+destination = 00
+correction
+draw
+

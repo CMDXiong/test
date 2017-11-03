@@ -1,0 +1,220 @@
+<HTML>
+  <HEAD>
+    <TITLE>GDS-II Postprocessing Tool Help: Preferences menu</TITLE>
+  </HEAD>
+
+  <BODY bgcolor="#66FFFF" text="#000000" link="#6666ff" alink="#999900" vlink="009999">
+
+    <A name="top"></A>
+
+    <TABLE width=100% border=0 cellpadding=6 cellspacing=2>
+    <TR><TD bgcolor="#000000" align=middle valign=top>
+    <FONT color="#FFFF00" size=+3 face="Impact, Arial, Helvetica">Preferences menu</FONT>
+    </TD></TR>
+    </TABLE>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Overview</FONT>
+    </TD></TR></TABLE>
+
+    With the <I>Preferences</I> menu can be specified how the program behaves
+    at certain points.
+
+    <map name="mainwindow">
+      <area shape="rect" href="#factors"   coords="42, 44 140, 58" OnMouseOver="window.status='Modify factor settings'; return true" OnMouseOut="window.status=''; return true" alt="Brings up factor dialog">
+      <area shape="rect" href="#savevis"   coords="42, 62 140, 76" OnMouseOver="window.status='Save only visible layers'; return true" OnMouseOut="window.status=''; return true" alt="Saves only screen contents">
+      <area shape="rect" href="#showgrid"  coords="42, 80 140, 94" OnMouseOver="window.status='Draw grid on screen'; return true" OnMouseOut="window.status=''; return true" alt="Shows a grid on screen">
+      <area shape="rect" href="#gridset"   coords="42, 98 140,112" OnMouseOver="window.status='Modify grid settings'; return true" OnMouseOut="window.status=''; return true" alt="Brings up grid settings dialog">
+      <area shape="rect" href="#unitset"   coords="42,116 140,130" OnMouseOver="window.status='Modify units settings'; return true" OnMouseOut="window.status=''; return true" alt="Brings up units settings dialog">
+    </map>
+
+    <CENTER>
+    <TABLE border=5 cellspacing=1 cellpadding=10 bgcolor="#FFFFFF">
+      <TR><TD align=middle valign=middle>
+
+      <A name="prefmenu">
+        <IMG src="pics/prefmenu.gif" USEMAP="#mainwindow" width=185 height=145 border=0>
+      </A>
+
+    </TD></TR>
+    </TABLE>
+    </CENTER>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="factors">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Factors</FONT>
+    </TD></TR></TABLE>
+
+        This menu-item brings up the dialog below, with which the factors
+        for operations can be specified. For an explanation of each factor,
+        click on one of the names below the image.
+
+    <CENTER>
+  <p><IMG src="pics/factors1.gif" width="350" height="350"> <img src="pics/factor2.gif" width="350" height="350"> 
+  </p>
+  <p><img src="pics/factor3.gif" width="350" height="350"> <img src="pics/factors4.gif" width="350" height="350"> 
+  </p>
+</CENTER>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A HREF="commands.html#T_snapfactor">snapfactor</A>,
+    <A HREF="commands.html#T_correctionfactor">correctionfactor</A>,
+    <A HREF="commands.html#T_selectmarge">selectmarge</A>,
+    <A HREF="commands.html#T_roundfactor">roundfactor</A>,
+    <A HREF="commands.html#T_correctionaber">correctionaber</A>,
+    <A HREF="commands.html#T_roundtype">roundtype</A>,
+    <A HREF="commands.html#T_toarcrmin">toarcrmin</A>,
+    <A HREF="commands.html#T_toarcrmax">toarcrmax</A>,
+    <A HREF="commands.html#T_arcaccur">arcaccur</A>,
+    <A HREF="commands.html#T_polyaccur">polyaccur</A>,
+    <A HREF="commands.html#T_smoothaccur">smoothaccur</A>,
+    <A HREF="commands.html#T_maxlinemerge">maxlinemerge</A>,
+    <A HREF="commands.html#T_displayaber">displayaber</A>.
+    <A HREF="commands.html#T_structhres">structhres</A>.
+    <A HREF="commands.html#T_primthres">primthres</A>.
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="savevis">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Save visible</FONT>
+    </TD></TR></TABLE>
+
+        When this item is checked and the current file is saved, only the
+        layers visible on screen are saved.
+        <P>
+        When one or more layers are made invisible, these layers are <B>not</B>
+        saved.
+        <P>
+        <B>NOTE</B>: the file in memory remains the same, even when the file
+        that is saved overwrites the old file!!!
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_savevisible">savevisible</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="showgrid">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Show grid</FONT>
+    </TD></TR></TABLE>
+
+        Check this menu-item to have a grid drawn with the file in memory.
+        The grid is drawn with the grid settings specified in the grid dialog.
+        <P>
+        When the grid is 'on', a little cross is drawn on the gridpoint closest
+        to the cursor. Commands like zoom, select, startpoint etc. use the
+        coordinates of this gridpoint.
+
+        <CENTER>
+        <TABLE border=5 cellspacing=0 cellpadding=0 bgcolor="#FFFFFF">
+          <TR><TD align=middle valign=middle>
+            <IMG src="pics/grid.gif" width="301" height="205">
+          </TD></TR>
+          </TABLE>
+        </CENTER>
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_showgrid">showgrid</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="gridset">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Grid settings</FONT>
+    </TD></TR></TABLE>
+
+        This menu-item brings up the dialog below, with which the properties
+        of the grid can be altered.
+        <P>
+        <B>Spacing</B> is the distance between the grid points. It must be
+        specified with a unit. If no unit is specified, the value is interpreted
+        in meters.
+        <P>
+        The colour of the points can be changed into any colour. You can also choose if
+        you want the grid to be drawn before or after the image.
+
+    <CENTER>
+    <IMG src="pics/griddlg.gif" width="250" height="250"> 
+  </CENTER>
+
+    <P>
+
+    
+<TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5 width="365">
+  <TR>
+    <TD valign=middle> <A href="commands.html#T_gridspace">gridspace</A>, <A href="commands.html#T_gridcolour">gridcolour</A>, 
+      <A href="commands.html#T_gridplacement">gridplacement</A> , <a href="commands.html#T_backgroundcolour">backgroundcolour</a></TD>
+  </TR></TABLE>
+
+    
+<P> <!-- New header --------------------------------------------------> <a name="unitset"> 
+  </a>
+<TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Units settings</FONT>
+    </TD></TR></TABLE>
+
+        When the <A href="commands.html#T_keystring">keystring</A> command
+        is used, the program must know the unit of the values specified in
+        the command. It must also know what accuracy it has to work with.
+        <P>
+        In the Units Settings dialog these values can be specified.
+        <P>
+        Please note that <B>accuracy</B> can only be altered when there's
+        no file in memory. When there is, the accuracy from this file is used.
+
+    <CENTER>
+    <IMG src="pics/unitsdlg.gif" width="150" height="105"> 
+  </CENTER>
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A HREF="commands.html#T_defaultunit">defaultunit</A>,
+    <A HREF="commands.html#T_defaultaccur">defaultaccur</A>
+    </TD></TR></TABLE>
+
+    
+<P> <!-- New header -------------------------------------------------->
+<P>
+
+    <TABLE width=100% border=0 cellpadding=6 cellspacing=0>
+    <TR>
+    <TD bgcolor="#000000" align=left valign=top>
+    <A href="index.html"><FONT size=+1 face="Impact, Arial, Helvetica">Index</FONT></A>
+    </TD>
+    <TD bgcolor="#000000" align=right valign=top>
+    <A href="#top"><FONT size=+1 face="Impact, Arial, Helvetica">Top of page</FONT></A>
+    </TD>
+    </TR>
+    </TABLE>
+  </BODY>
+</HTML>

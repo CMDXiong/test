@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE reference
+  PUBLIC "-//Norman Walsh//DTD JRefEntry V1.0//EN" "http://nwalsh.com/docbook/jrefentry/1.0/jrefentry.dtd">
+<reference>
+<referenceinfo>
+<releaseinfo role="meta">
+$Id: param.xsl,v 1.5 2000/10/26 01:02:07 ndw Exp $
+</releaseinfo>
+<author><surname>Walsh</surname>
+<firstname>Norman</firstname></author>
+<copyright><year>1999</year><year>2000</year>
+<holder>Norman Walsh</holder>
+</copyright>
+</referenceinfo>
+<title>Formatting Object Paramter Reference</title>
+
+<partintro>
+<section><title>Introduction</title>
+
+
+<para>This is technical reference documentation for the DocBook XSL
+Stylesheets; it documents (some of) the parameters, templates, and
+other elements of the stylesheets.</para>
+
+
+
+<para>This reference describes each of the Formatting Object
+Stylesheet parameters.  These are the <quote>easily
+customizable</quote> parts of the stylesheet.  If you want to specify
+an alternate value for one or more of these parameters, you can do so
+in a <quote>driver</quote> stylesheet.</para>
+
+
+
+<para>For example, if you want to turn on automatic section numbering,
+you might create a driver stylesheet like this:</para>
+
+
+<programlisting>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                version='1.0'&gt;
+
+  &lt;xsl:import href="/path/to/fo/docbook.xsl"/&gt;
+
+  &lt;xsl:param name="section.autolabel" select="1"/&gt;
+
+&lt;/xsl:stylesheet&gt;</programlisting>
+
+
+<para>Naturally, you have to change the
+<sgmltag class="attribute">href</sgmltag> attribute on
+<literal>&lt;xsl:import&gt;</literal>
+to point to <filename>docbook.xsl</filename>
+on your system.</para>
+
+
+
+<para>This is not intended to be <quote>user</quote> documentation.
+It is provided for developers writing customization layers for the
+stylesheets, and for anyone who's interested in <quote>how it
+works</quote>.</para>
+
+
+
+<para>Although I am trying to be thorough, this documentation is known
+to be incomplete. Don't forget to read the source, too :-)</para>
+
+</section>
+</partintro>
+
+<refentry id="var.qandadiv.autolabel">
+<refnamediv>
+<refname>qandadiv.autolabel</refname>
+<refpurpose>Are divisions in QAndASets enumerated?</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<synopsis/>
+</refsynopsisdiv>
+<refdescription>
+
+<para>If true (non-zero), unlabeled qandadivs will be enumerated.
+</para>
+
+</refdescription></refentry>
+
+<refentry id="var.qanda.inherit.numeration">
+<refnamediv>
+<refname>qanda.inherit.numeration</refname>
+<refpurpose>Does enumeration of QandASet components inherit the numeration of parent elements?</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<synopsis/>
+</refsynopsisdiv>
+<refdescription>
+
+<para>If true (non-zero), numbered QandADiv elements and Questions and Answers inherit
+the numeration of the ancestors of the QandASet.
+</para>
+
+</refdescription></refentry>
+
+<refentry id="var.graphic.default.extension">
+<refnamediv>
+<refname>graphic.default.extension</refname>
+<refpurpose>Default extension for graphic filenames</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<synopsis/>
+</refsynopsisdiv>
+<refdescription>
+
+<para>If a <sgmltag>graphic</sgmltag> or <sgmltag>mediaobject</sgmltag>
+includes a reference to a filename that does not include an extension,
+and the <sgmltag class="attribute">format</sgmltag> attribute is
+<emphasis>unspecified</emphasis>, the default extension will be used.
+</para>
+
+</refdescription></refentry>
+<refentry id="attrset."><refnamediv><refname> mode</refname><refpurpose>Properties of formal object titles</refpurpose></refnamediv><refdescription>
+
+<para>This attribute set is used to specify the properties of formal
+object titles.
+</para>
+
+</refdescription></refentry><refentry id="attrset."><refnamediv><refname> mode</refname><refpurpose>Properties of component titles</refpurpose></refnamediv><refdescription>
+
+<para>This attribute set is used to specify the properties of component
+titles.
+</para>
+
+</refdescription></refentry><refentry id="attrset."><refnamediv><refname> mode</refname><refpurpose>Spacing properties of normal paragraphs</refpurpose></refnamediv><refdescription>
+
+<para>This attribute set is used to specify the spacing properties
+of normal paragraphs.
+</para>
+
+</refdescription></refentry></reference>

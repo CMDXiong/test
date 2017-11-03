@@ -1,0 +1,61 @@
+#-------------------------------------------------------------------------------
+# Configuration file for
+# gcc, MacOSX Yosemite (10.10.5), 64bit, with Mac Port's Qt
+# debug build
+#
+# gcc should be LLVM/clang of Xcode like
+#    $ gcc --version
+#    Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr
+#    --with-gxx-include-dir=/usr/include/c++/4.2.1
+#    Apple LLVM version 7.0.0 (clang-700.1.76)
+#    Target: x86_64-apple-darwin14.5.0
+#    Thread model: posix
+#-------------------------------------------------------------------------------
+
+# Compiler general
+INC=-I$(TOP_SOURCE) -I$(SOURCE) -I. -I$(QTINCLUDE)
+DEFS=-DQT_THREAD_SUPPORT -DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII
+
+# C++
+CXX=g++
+CXXOPT_DEP=-MM -MG
+CXXWARN=-Wall -pedantic -Wno-deprecated -Woverloaded-virtual \
+        -Wsign-promo -Wsynth -Wno-long-long -Wno-strict-aliasing
+CXXOPT=-std=c++11 -c -g -O2 -m64 -o
+CXXOPT_SO=-fPIC $(CXXOPT)
+
+# C
+CC=gcc
+CCOPT_DEP=-MM -MG
+CCWARN=
+CCOPT=-c -g -O2 -m64 -o
+CCOPT_SO=-fPIC $(CCOPT)
+
+# Linker options
+AR=ar rcs
+LINK=g++
+LOPT=-m64 -o
+LOPT_SO=-m64 -dynamiclib -o
+LIBS=-L$(QTLIB) -lQtGui -lQtCore -lQtXml -lQtNetwork -lQtSql -lQtDesigner \
+     -framework CoreFoundation -lc++ -lc++abi -lz
+
+# Install target
+
+.PHONY: install
+install:
+	mkdir -p $(INSTALL_BINDIR)
+	rm -rf $(INSTALL_BINDIR)/klayout.app
+	mkdir -p $(INSTALL_BINDIR)/klayout.app/Contents/MacOS/
+	cp main/$(EXEC_NAME) $(INSTALL_BINDIR)/klayout.app/Contents/MacOS
+	for bin in $(OTHER_BIN) ; \
+	do \
+	  cp main/$$bin $(INSTALL_BINDIR)/klayout.app/Contents/MacOS/ ; \
+	done
+	for plugin in $(PLUGINS) ; \
+	do \
+	  cp $$plugin/*.so $(INSTALL_BINDIR)/klayout.app/Contents/MacOS/ ; \
+	done
+	chmod 755 $(INSTALL_BINDIR) $(INSTALL_BINDIR)/klayout.app/Contents/MacOS/*
+	cd $(INSTALL_BINDIR) ; $(QTBIN)/macdeployqt klayout.app ; cd -
+	cp ../src/logo.icns $(INSTALL_BINDIR)/klayout.app/Contents/Resources/klayout.icns
+	cp ../src/Info.plist $(INSTALL_BINDIR)/klayout.app/Contents/

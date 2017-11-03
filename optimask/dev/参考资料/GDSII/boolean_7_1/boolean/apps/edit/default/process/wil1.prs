@@ -1,0 +1,23 @@
+loadfile wil1.cal gds-ii
+showtopstructure
+group_a empty
+group_a 0 FALSE
+calcarea_a result
+showalias result
+group_a empty
+group_a 13 FALSE
+calcarea_a result
+showalias result
+group_a empty
+group_a 11 FALSE
+calcarea_a result
+showalias result
+group_a empty
+group_a 4 FALSE
+calcarea_a result
+showalias result
+group_a empty
+group_a 14 FALSE
+calcarea_a result
+showalias result
+exit

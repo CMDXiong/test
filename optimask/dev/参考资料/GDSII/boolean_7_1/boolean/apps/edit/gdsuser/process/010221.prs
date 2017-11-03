@@ -1,0 +1,35 @@
+# Process file for GDS-II postprocessing tool
+#setenv HOME c:/masker/vcsel
+#loadsetup $HOME/gdsuser/config/vcsel3.set
+loadfile /tools/boolean/6.1/gdsuser/process/010221.cal gds-ii
+
+setlayer 0
+selectable 1 all
+visible 1 all
+drawoutline 1
+selected 0
+
+viewstructure Align2CRotH
+
+#make copy of layer 5 in layer 1
+#group_a empty
+#group_a 5 false
+#destination 1
+#copy_a
+
+#draw rectangle to indicate part of structure to remove
+begin
+  keystring {BOX; LAYER 20;  BOXTYPE 0;  WIDTH 0;  XY 5;
+  X -452.000; Y 620.000;X 178.000;Y 620.000;
+  X 178.000; Y 820.000;  X -452.000; Y 820.000;
+  X -452.000; Y 620.000; ENDEL;}
+end
+
+#remove part of structure in layer 5 that overlaps with rectangle in layer 1
+group_a empty
+group_a 20 false
+group_b empty
+group_b 5 false
+destination 5
+b_subtract_a
+#exor

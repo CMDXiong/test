@@ -1,0 +1,41 @@
+<!DOCTYPE book
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+  "http://www.oasis-open.org/xml/4.1.2/docbookx.dtd" [
+<!ENTITY reference.xml SYSTEM "reference.xml" NDATA SGML>
+<!ENTITY publishing.xml SYSTEM "publishing.xml">
+<!ENTITY templates.xml SYSTEM "templates.xml">
+]>
+<book>
+<bookinfo>
+<title>DocBook XSL Stylesheet Documentation</title>
+<!-- $Id: documentation.xml,v 1.3 2000/11/02 02:06:04 ndw Exp $ -->
+<author><surname>Walsh</surname>
+<firstname>Norman</firstname></author>
+<copyright><year>1999</year><year>2000</year>
+<holder>Norman Walsh</holder>
+</copyright>
+</bookinfo>
+
+<preface><title>Preface</title>
+
+<para>This is the beginnings of documentation for the DocBook XSL
+Stylesheets.</para>
+
+</preface>
+&publishing.xml;
+
+<chapter>
+<title>Reference Documentation</title>
+
+<para>Reference documentation is also available:</para>
+
+<itemizedlist>
+<listitem><para><olink type="title" localinfo="reference.html"
+                       targetdocent="reference.xml"/></para>
+</listitem>
+</itemizedlist>
+</chapter>
+
+&templates.xml;
+</book>
+

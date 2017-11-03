@@ -1,0 +1,14 @@
+# Process file for GDS-II postprocessing tool
+loadfile test4.gds gds-ii
+setlayer 0
+visible 1 all
+selectable 1 all
+setlayer 1
+drawoutline 1
+
+#viewstructure Unit_Circle
+viewstructure Cell0
+group_a empty
+group_a 04 false
+delete_a
+draw

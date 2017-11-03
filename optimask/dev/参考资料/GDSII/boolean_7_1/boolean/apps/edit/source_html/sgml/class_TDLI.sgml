@@ -1,0 +1,451 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="YES"
+	DECLARATION="template &lt;class Type&gt; class TDLI"
+>
+
+<META-DATA>
+	<NAME>TDLI</NAME>
+	<AUTHOR>klaasje</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Wed Oct 20  9:03:04 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>_dl_itr.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>stdlib.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>misc.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>gdsmes.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>_dl_itr.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA></PARA>
+</DESCRIPTION>
+
+<INHERITANCE>
+	<PARENT-CLASS
+		SCOPE="public"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>DL_Iter&lt;void*&gt;</NAME>
+	</PARENT-CLASS>
+</INHERITANCE>
+
+
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="TDLI(DL_List&lt;void*&gt;* list)"
+		INLINE="NO"
+	>
+		<NAME>TDLI</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>constructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="TDLI(DL_Iter&lt;void*&gt;* otheriter)"
+		INLINE="NO"
+	>
+		<NAME>TDLI</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>constructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="TDLI()"
+		INLINE="NO"
+	>
+		<NAME>TDLI</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> nolist constructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~TDLI()"
+		INLINE="NO"
+	>
+		<NAME>~TDLI</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> destructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void foreach_f(void &amp;&amp;BRAKO*fp&amp;&amp;BRAKC &amp;&amp;BRAKOType* n&amp;&amp;BRAKC )"
+		INLINE="NO"
+	>
+		<NAME>foreach_f</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>call fp for each item</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void foreach_mf(void &amp;&amp;BRAKOType::*fp&amp;&amp;BRAKC &amp;&amp;BRAKO&amp;&amp;BRAKC )"
+		INLINE="NO"
+	>
+		<NAME>foreach_mf</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>call fp for each item</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void delete_all()"
+		INLINE="NO"
+	>
+		<NAME>delete_all</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> delete all items</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insend(Type* n)"
+		INLINE="NO"
+	>
+		<NAME>insend</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> insert at end</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insbegin(Type* n)"
+		INLINE="NO"
+	>
+		<NAME>insbegin</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> insert at begin</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insbefore(Type* n)"
+		INLINE="NO"
+	>
+		<NAME>insbefore</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> insert before current</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insafter(Type* n)"
+		INLINE="NO"
+	>
+		<NAME>insafter</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> insert after current</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insend_unsave(Type* n)"
+		INLINE="NO"
+	>
+		<NAME>insend_unsave</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> insert at end unsave (works even if more then one iterator is on the list the user must be sure not to delete/remove items where other iterators are pointing to.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insbegin_unsave(Type* n)"
+		INLINE="NO"
+	>
+		<NAME>insbegin_unsave</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> insert at begin unsave (works even if more then one iterator is on the list the user must be sure not to delete/remove items where other iterators are pointing to.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insbefore_unsave(Type* n)"
+		INLINE="NO"
+	>
+		<NAME>insbefore_unsave</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> insert before iterator position unsave (works even if more then one iterator is on the list the user must be sure not to delete/remove items where other iterators are pointing to.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insafter_unsave(Type* n)"
+		INLINE="NO"
+	>
+		<NAME>insafter_unsave</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> insert after iterator position unsave (works even if more then one iterator is on the list the user must be sure not to delete/remove items where other iterators are pointing to.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void takeover(DL_List&lt;void*&gt;* otherlist)"
+		INLINE="NO"
+	>
+		<NAME>takeover</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void takeover(TDLI* otheriter)"
+		INLINE="NO"
+	>
+		<NAME>takeover</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void takeover(TDLI* otheriter, int maxcount)"
+		INLINE="NO"
+	>
+		<NAME>takeover</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL has(Type*)"
+		INLINE="NO"
+	>
+		<NAME>has</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL toitem(Type*)"
+		INLINE="NO"
+	>
+		<NAME>toitem</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" Type* "
+		DECLARATION=" Type* item()"
+		INLINE="YES"
+	>
+		<NAME>item</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void mergesort(int &amp;&amp;BRAKO*&amp;&amp;BRAKC&amp;&amp;BRAKOType*,Type*&amp;&amp;BRAKC)"
+		INLINE="NO"
+	>
+		<NAME>mergesort</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void cocktailsort(int &amp;&amp;BRAKO*&amp;&amp;BRAKC&amp;&amp;BRAKOType*,Type*&amp;&amp;BRAKC, void &amp;&amp;BRAKO*&amp;&amp;BRAKC&amp;&amp;BRAKOType*,Type*&amp;&amp;BRAKC=NULL)"
+		INLINE="NO"
+	>
+		<NAME>cocktailsort</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

@@ -1,0 +1,6 @@
+input layer 1 a; 2 b;
+output layer 3 err;
+err=minspacing(a, b, 5);
+badpoly 0
+3ONLY
+ALL_SAFE

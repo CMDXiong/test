@@ -1,0 +1,239 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="YES"
+	DECLARATION="template &lt;class Dtype&gt; class DL_StackIter"
+>
+
+<META-DATA>
+	<NAME>DL_StackIter</NAME>
+	<AUTHOR>klaasje</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Wed Oct 20  9:03:04 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>stdlib.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>misc.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>gdsmes.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>_dl_itr.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA>  template class DL_StackIter </PARA>
+			<PARA>  class for stack iterator on DL_List </PARA>
+			<PARA>  template stack iterator for any list/node type </PARA>
+			<PARA>  This class is the base class to attach/instantiate a stack iterator on a double linked list  DL_List. The stack iterator is used to push and pop objects  to and from the beginning of a list.  class </PARA>
+			<PARA> Dtype </PARA>
+			<PARA> Object for traversing a DL_List of the same Dtype</PARA>
+</DESCRIPTION>
+
+<INHERITANCE>
+	<PARENT-CLASS
+		SCOPE="protected"
+		VIRTUAL="STANDARD"
+	>
+		<NAME>DL_Iter&lt;Dtype&gt;</NAME>
+	</PARENT-CLASS>
+</INHERITANCE>
+
+
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DL_StackIter(DL_List&lt;Dtype&gt; *)"
+		INLINE="NO"
+	>
+		<NAME>DL_StackIter</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Constructor of stack iterator for given list</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DL_StackIter()"
+		INLINE="NO"
+	>
+		<NAME>DL_StackIter</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Constructor of stack iterator no list attached</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~DL_StackIter()"
+		INLINE="NO"
+	>
+		<NAME>~DL_StackIter</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Destructor of stack iterator</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void remove_all()"
+		INLINE="NO"
+	>
+		<NAME>remove_all</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Remove all items from the stack</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void push(Dtype n)"
+		INLINE="NO"
+	>
+		<NAME>push</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>push given item on the stack</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Dtype "
+		DECLARATION="Dtype pop()"
+		INLINE="NO"
+	>
+		<NAME>pop</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get last inserted item from stack</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL empty()"
+		INLINE="NO"
+	>
+		<NAME>empty</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>is stack empty?</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int count()"
+		INLINE="NO"
+	>
+		<NAME>count</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>number of items on the stack</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+</MEMBERS>
+
+<EXAMPLE>
+	<PARA> How to work with a stack iterator for a list of type integer|
+ to push a and b, pop a into list and remove_all directly using a stack iterator
+</PARA>
+	<CODE>     DL_List&lt;int&gt;* a_list = new DL_List&lt;int&gt;();# declaration and allocation
+
+     int a=123;
+
+     int b=345;
+
+     {
+
+             DL_StackIter&lt;int&gt;*  a_listiter=new DL_StackIter&lt;int&gt;(a_list);
+
+             a_listiter-&gt;push(a)
+
+             a_listiter-&gt;push(b)
+
+             a_listiter-&gt;pop()
+
+             a_listiter-&gt;remove_all()
+
+     } //to destruct the iterator before the list is deleted
+
+     delete a_list; #delete it (must have no iterators attached to it)
+</CODE>
+</EXAMPLE>
+</CLASS>
+</CXXDOC>
+

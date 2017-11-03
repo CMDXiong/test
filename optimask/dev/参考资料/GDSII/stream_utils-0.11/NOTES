@@ -1,0 +1,54 @@
+
+Both sf2ascii and ascii2sf take data in on the stdin and put it out on
+stdout.
+
+sf2ascii converts a binary stream format file into a fairly verbose,
+commented ASCII file. These files can get very long... Most of the
+data is translated to hexadecimal numbers (in ASCII format, hence the
+name) followed by comments. Real (floating point) numbers are output
+in a decimal format. REAL_* and REAL_4 (see the description of the
+Stream Format) are differentiated by the number of places to the right
+of the decimal. Some attempt to indent the data in a sensible manner
+is made.
+
+ascii2sf undoes what sf2ascii does. There's no error checking to speak
+of, it just converts the numbers before the comments back to a binary
+file. Most of 'em are hex, so there's no problem, the REAL_8 and
+REAL_4 could be though. If there are more than 9 places to the right
+of the decimal, a REAL_8 is assumed. If you play around with this and
+generate the wrong one, you'll get an invalid stream file. Then again,
+that's a real risk no matter what you do. Read the
+stream_description.txt before attempting to modify a stream file using
+these programs. It's real easy to generate trash. BTW, as far as I
+know you'll never use REAL_4, but it's defined, so the program
+attempts to handle it. Good luck!
+
+The file test_file.sf is a very small stream file that contains three
+structures. A structure called "box" that has one boundary on layer
+10. A structure called "text" that contains one text element. A
+structure called "srefs" that contains an sref (structure reference)
+of both of the other structures.
+
+If a file is converted from .sf to ASCII, then back again, and comes
+out very slightly different, it's most likely imprecision in the
+floating point references. It's likely nothing to be concerned
+over. Or it could be a bug... :-)
+
+This code was hacked out in a hurry, and is definitely not optimum in
+several ways. Most noticeably the use of buffered I/O such as fread()
+instead of read() comes to mind. However, there is likely more that
+could use improvement.
+
+I tried to make this really robust. In theory, no matter how corrupt
+the file is, this should completely read it and output it, in raw form
+if nothing else. In theory, it should be possible to run any binary
+file through here w/o a crash. ascii2sf is not guaranteed to get it
+back though, since floating point numbers may not survive the double
+translation w/o minor changes way over to the right of the decimal
+
+I originally wrote the code to read/write stream files as a tentative
+first step at a freeware GDSII style CAD system. It's a pretty big
+project, and might never really get started, let alone
+finished. However, I have found these functions useful when faced with
+corrupt stream files that *must* be read in.
+

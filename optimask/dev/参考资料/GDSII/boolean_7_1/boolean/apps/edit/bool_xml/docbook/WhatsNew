@@ -1,0 +1,97 @@
+Changes since version 1.22 (2000-10-26)
+
+Changes to docbook/*
+
+  | 2000-11-02  Norman Walsh  <ndw@nwalsh.com>
+  | 
+  | 	* VERSION: Version 1.23 released.
+  | 
+
+Changes to docbook/common/*
+
+  | 2000-11-02  Norman Walsh  <ndw@nwalsh.com>
+  | 
+  | 	* common.xsl: Remove HTML spans from common.xsl; that needs to
+  | 	  be supported some other way (in the HTML stylesheets)
+  | 
+  | 2000-10-30  Norman Walsh  <ndw@nwalsh.com>
+  | 
+  | 	* common.xsl: Don't put the span around the label if text-only
+  | 	  is true
+  | 
+  | 2000-10-29  Norman Walsh  <ndw@nwalsh.com>
+  | 
+  | 	* common.xsl: Added label.this.section template to provide
+  | 	  more specific control of section labelling; added spans
+  | 	  around labels and titles for CSS styling
+  | 
+  | 	* en.xml: Make dingbat quotes curly
+  | 
+  | 2000-10-27  Norman Walsh  <ndw@nwalsh.com>
+  | 
+  | 	* cs.xml: Updates
+  | 
+
+Changes to docbook/docsrc/*
+
+  | 2000-11-02  Norman Walsh  <ndw@nwalsh.com>
+  | 
+  | 	* documentation.xml: Reorganized pointer to reference
+  | 	  documentation
+  | 
+  | 	* publishing.xml: Changed some literallayouts to
+  | 	  programlistings
+  | 
+  | 2000-10-30  Norman Walsh  <ndw@nwalsh.com>
+  | 
+  | 	* jrefhtml.xsl: Turn of labelling of parts/references
+  | 
+  | 2000-10-29  Norman Walsh  <ndw@nwalsh.com>
+  | 
+  | 	* xsl2jref.xsl: Remove extra spaces in front of params
+  | 
+
+Changes to docbook/fo/*
+
+  | 2000-10-29  Norman Walsh  <ndw@nwalsh.com>
+  | 
+  | 	* xref.xsl: fo:simple-link is now called fo:basic-link
+  | 
+
+Changes to docbook/html/*
+
+  | 2000-10-30  Norman Walsh  <ndw@nwalsh.com>
+  | 
+  | 	* chunk.xsl: Fix typos in suppress.navigation
+  | 
+  | 2000-10-29  Norman Walsh  <ndw@nwalsh.com>
+  | 
+  | 	* autotoc.xsl, division.xsl: Support ToC (for navigation) in
+  | 	  Set title pages
+  | 
+  | 	* component.xsl: Don't process footnotes in article apendixes,
+  | 	  let the article handle them
+  | 
+  | 	* footnote.xsl: Superscript the footnote numbers; make space
+  | 	  after the hr
+  | 
+  | 	* lists.xsl: Cycle numeration of nested ordered lists: 1, a,
+  | 	  i, A, I, 1, a, ...
+  | 
+  | 	* sections.xsl: Add template for subtitles
+  | 
+  | 	* table.xsl: Reworked colnum calculations to handle some cases
+  | 	  where leading entrys are missing in a row; support 'summary'
+  | 	  attributes on HTML tables
+  | 
+  | 	* titlepage.xsl: If there are no authorinitials; just make
+  | 	  revhistorys two columns
+  | 
+
+Changes to docbook/test/*
+
+  | 2000-10-29  Norman Walsh  <ndw@nwalsh.com>
+  | 
+  | 	* table.xml: Added a few more tests
+  | 
+

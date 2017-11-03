@@ -1,0 +1,763 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug STLPort|Win32">
+      <Configuration>Debug STLPort</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug STLPort|x64">
+      <Configuration>Debug STLPort</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug No Qt Binding STLPort|Win32">
+      <Configuration>Debug No Qt Binding STLPort</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug No Qt Binding STLPort|x64">
+      <Configuration>Debug No Qt Binding STLPort</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release No Qt Binding STLPort|Win32">
+      <Configuration>Release No Qt Binding STLPort</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release No Qt Binding STLPort|x64">
+      <Configuration>Release No Qt Binding STLPort</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release STLPort|Win32">
+      <Configuration>Release STLPort</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release STLPort|x64">
+      <Configuration>Release STLPort</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dbArray.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbBoxTree.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbCell.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbCellGraphUtils.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbEdge.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbEdgeProcessor.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbGDS2Reader.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbGDS2Writer.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbLayer.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbLayout.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbLayoutUtils.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbLibraries.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbOASISReader.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbOASISWriter.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbOASISWriter2.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbObject.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbPath.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbPCells.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbPoint.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbPolygon.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbPolygonTools.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbPropertiesRepository.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbShape.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbShapeArray.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbShapeRepository.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbShapes.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbStreamLayers.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbText.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbTrans.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbVector.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbWriterTools.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="imgObject.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="layAnnotationShapes.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="layBitmap.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="layBitmapsToImage.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="layLayerProperties.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="layParsedLayerSource.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="layRenderer.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="rba.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="rdb.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbCellMapping.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbDXFReader.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbEdgesToContours.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbLayoutQuery.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbMatrix.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="extGerberImport.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="gsiExpression.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlAlgorithm.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlClassRegistry.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlCollection.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlDataMapping.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlDeferredExecution.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlExpression.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlIntervalMap.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlIntervalSet.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlKDTree.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlObserver.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlReuseVector.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlStableVector.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlString.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlDeflate.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlGlobPattern.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlUtils.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlVariant.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlXMLParser.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbBox.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbBoxScanner.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbCIFReader.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbClip.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbEdgePair.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbEdgePairRelations.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbEdgePairs.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbEdges.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbLayerMapping.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbRecursiveShapeIterator.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbRegion.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="dbTilingProcessor.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="extNetTracer.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="pya.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="tlThreadedWorkers.ut">
+      <FileType>Document</FileType>
+    </ClCompile>
+    <ClCompile Include="unit_tests_main.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="utHead.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tlThreadedWorkers.ut" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B104E0E5-9118-4845-A096-240627417DBE}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>klayout_app</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release STLPort|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release No Qt Binding STLPort|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release STLPort|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release No Qt Binding STLPort|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug STLPort|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug No Qt Binding STLPort|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug STLPort|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug No Qt Binding STLPort|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release STLPort|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release No Qt Binding STLPort|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release STLPort|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release No Qt Binding STLPort|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug STLPort|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug No Qt Binding STLPort|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug STLPort|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug No Qt Binding STLPort|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(QTDIR)\include;$(MSBuildProjectDirectory)\generated;$(MSBuildProjectDirectory)\contrib\zlib;$(MSBuildProjectDirectory)</IncludePath>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\unit_tests\</IntDir>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(SolutionDir)$(Configuration)\</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(QTDIR)\include;$(MSBuildProjectDirectory)\generated;$(MSBuildProjectDirectory)\contrib\zlib;$(MSBuildProjectDirectory)</IncludePath>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\unit_tests\</IntDir>
+    <LibraryPath>$(VCInstallDir)lib\amd64;$(VCInstallDir)atlmfc\lib\amd64;$(WindowsSdkDir)lib\x64;</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(QTDIR)\include;$(MSBuildProjectDirectory)\generated;$(MSBuildProjectDirectory)\contrib\zlib;$(MSBuildProjectDirectory)</IncludePath>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\unit_tests\</IntDir>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(SolutionDir)$(Configuration)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(QTDIR)\include;$(MSBuildProjectDirectory)\generated;$(MSBuildProjectDirectory)\contrib\zlib;$(MSBuildProjectDirectory)</IncludePath>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\unit_tests\</IntDir>
+    <LibraryPath>$(VCInstallDir)lib\amd64;$(VCInstallDir)atlmfc\lib\amd64;$(WindowsSdkDir)lib\x64;</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release STLPort|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(STLPORT)\stlport;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(QTDIR)\include;$(MSBuildProjectDirectory)\generated;$(MSBuildProjectDirectory)\contrib\zlib;$(MSBuildProjectDirectory);$(RUBY)\include\ruby-1.9.1;$(RUBY)\include\ruby-1.9.1\i386-mswin32_100;$(PYTHON)\include</IncludePath>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\unit_tests\</IntDir>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(SolutionDir)$(Configuration)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release No Qt Binding STLPort|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(STLPORT)\stlport;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(QTDIR)\include;$(MSBuildProjectDirectory)\generated;$(MSBuildProjectDirectory)\contrib\zlib;$(MSBuildProjectDirectory);$(RUBY)\include\ruby-1.9.1;$(RUBY)\include\ruby-1.9.1\i386-mswin32_100;$(PYTHON)\include</IncludePath>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\unit_tests\</IntDir>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(SolutionDir)$(Configuration)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release STLPort|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(STLPORT)\stlport;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(QTDIR64)\include;$(MSBuildProjectDirectory)\generated;$(MSBuildProjectDirectory)\contrib\zlib;$(MSBuildProjectDirectory);$(PYTHON64)\include</IncludePath>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\unit_tests\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release No Qt Binding STLPort|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(STLPORT)\stlport;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(QTDIR64)\include;$(MSBuildProjectDirectory)\generated;$(MSBuildProjectDirectory)\contrib\zlib;$(MSBuildProjectDirectory);$(PYTHON64)\include</IncludePath>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\unit_tests\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug STLPort|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(STLPORT)\stlport;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(QTDIR)\include;$(MSBuildProjectDirectory)\generated;$(MSBuildProjectDirectory)\contrib\zlib;$(MSBuildProjectDirectory);$(RUBY)\include\ruby-1.9.1;$(RUBY)\include\ruby-1.9.1\i386-mswin32_100;$(PYTHON)\include</IncludePath>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\unit_tests\</IntDir>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(SolutionDir)$(Configuration)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug No Qt Binding STLPort|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(STLPORT)\stlport;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(QTDIR)\include;$(MSBuildProjectDirectory)\generated;$(MSBuildProjectDirectory)\contrib\zlib;$(MSBuildProjectDirectory);$(RUBY)\include\ruby-1.9.1;$(RUBY)\include\ruby-1.9.1\i386-mswin32_100;$(PYTHON)\include</IncludePath>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\unit_tests\</IntDir>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(SolutionDir)$(Configuration)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug STLPort|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(STLPORT)\stlport;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(QTDIR64)\include;$(MSBuildProjectDirectory)\generated;$(MSBuildProjectDirectory)\contrib\zlib;$(MSBuildProjectDirectory);$(PYTHON64)\include</IncludePath>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\unit_tests\</IntDir>
+    <LibraryPath>$(VCInstallDir)lib\amd64;$(VCInstallDir)atlmfc\lib\amd64;$(WindowsSdkDir)lib\x64;</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug No Qt Binding STLPort|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(STLPORT)\stlport;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(QTDIR64)\include;$(MSBuildProjectDirectory)\generated;$(MSBuildProjectDirectory)\contrib\zlib;$(MSBuildProjectDirectory);$(PYTHON64)\include</IncludePath>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\unit_tests\</IntDir>
+    <LibraryPath>$(VCInstallDir)lib\amd64;$(VCInstallDir)atlmfc\lib\amd64;$(WindowsSdkDir)lib\x64;</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions);_USE_MATH_DEFINES</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4290;4996;4503</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);$(QTDIR)\lib\QtCored4.lib;$(QTDIR)\lib\QtGuid4.lib;$(QTDIR)\lib\QtXmld4.lib;$(OutDir)klayout.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions);_USE_MATH_DEFINES</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4290;4996;4503</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);$(QTDIR)\lib\QtCored4.lib;$(QTDIR)\lib\QtGuid4.lib;$(QTDIR)\lib\QtXmld4.lib;$(OutDir)klayout.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);_USE_MATH_DEFINES;_SECURE_SCL=0</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4290;4996;4503</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);$(QTDIR)\lib\QtCore4.lib;$(QTDIR)\lib\QtGui4.lib;$(QTDIR)\lib\QtXml4.lib;$(OutDir)klayout.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);_USE_MATH_DEFINES;_SECURE_SCL=0</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4290;4996;4503</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);$(QTDIR)\lib\QtCore4.lib;$(QTDIR)\lib\QtGui4.lib;$(QTDIR)\lib\QtXml4.lib;$(OutDir)klayout.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release STLPort|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);HAVE_QTBINDINGS;_USE_MATH_DEFINES;_SECURE_SCL=0;HAVE_RUBY;HAVE_PYTHON</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4290;4996;4503</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>$(STLPORT)\lib\stlport_vc10.5.2.lib;$(PYTHON)\libs\python34.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);$(QTDIR)\lib\QtCore4.lib;$(QTDIR)\lib\QtGui4.lib;$(QTDIR)\lib\QtXml4.lib;$(QTDIR)\lib\QtDesigner4.lib;$(QTDIR)\lib\QtSql4.lib;$(QTDIR)\lib\QtNetwork4.lib;$(OutDir)klayout.lib;$(OutDir)klayout_gsi.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release No Qt Binding STLPort|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);_USE_MATH_DEFINES;_SECURE_SCL=0;HAVE_RUBY;HAVE_PYTHON</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4290;4996;4503</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>$(STLPORT)\lib\stlport_vc10.5.2.lib;$(PYTHON)\libs\python34.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);$(QTDIR)\lib\QtCore4.lib;$(QTDIR)\lib\QtGui4.lib;$(QTDIR)\lib\QtXml4.lib;$(QTDIR)\lib\QtDesigner4.lib;$(QTDIR)\lib\QtSql4.lib;$(QTDIR)\lib\QtNetwork4.lib;$(OutDir)klayout.lib;$(OutDir)klayout_gsi.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release STLPort|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);HAVE_QTBINDINGS;_USE_MATH_DEFINES;_SECURE_SCL=0;HAVE_RUBY;HAVE_PYTHON</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4290;4996;4503</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>$(STLPORT)\lib\stlport_vc10_x64.5.2.lib;$(PYTHON64)\libs\python34.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);$(QTDIR64)\lib\QtCore4.lib;$(QTDIR64)\lib\QtGui4.lib;$(QTDIR64)\lib\QtXml4.lib;$(QTDIR64)\lib\QtDesigner4.lib;$(QTDIR64)\lib\QtSql4.lib;$(QTDIR64)\lib\QtNetwork4.lib;$(OutDir)klayout.lib;$(OutDir)klayout_gsi.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release No Qt Binding STLPort|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);_USE_MATH_DEFINES;_SECURE_SCL=0;HAVE_RUBY;HAVE_PYTHON</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4290;4996;4503</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>$(STLPORT)\lib\stlport_vc10_x64.5.2.lib;$(PYTHON64)\libs\python34.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);$(QTDIR64)\lib\QtCore4.lib;$(QTDIR64)\lib\QtGui4.lib;$(QTDIR64)\lib\QtXml4.lib;$(QTDIR64)\lib\QtDesigner4.lib;$(QTDIR64)\lib\QtSql4.lib;$(QTDIR64)\lib\QtNetwork4.lib;$(OutDir)klayout.lib;$(OutDir)klayout_gsi.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug STLPort|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>
+      </FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions);HAVE_QTBINDINGS;_USE_MATH_DEFINES;HAVE_RUBY;HAVE_PYTHON</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4290;4996;4503</DisableSpecificWarnings>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <AdditionalDependencies>$(STLPORT)\lib\stlport_vc10d.5.2.lib;$(PYTHON)\libs\python34_d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);$(QTDIR)\lib\QtCore4.lib;$(QTDIR)\lib\QtGui4.lib;$(QTDIR)\lib\QtXml4.lib;$(OutDir)klayout.lib;$(OutDir)klayout_gsi.lib</AdditionalDependencies>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug No Qt Binding STLPort|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>
+      </FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions);_USE_MATH_DEFINES;HAVE_RUBY;HAVE_PYTHON</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4290;4996;4503</DisableSpecificWarnings>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <AdditionalDependencies>$(STLPORT)\lib\stlport_vc10d.5.2.lib;$(PYTHON)\libs\python34_d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);$(QTDIR)\lib\QtCore4.lib;$(QTDIR)\lib\QtGui4.lib;$(QTDIR)\lib\QtXml4.lib;$(OutDir)klayout.lib;$(OutDir)klayout_gsi.lib</AdditionalDependencies>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug STLPort|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>
+      </FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions);HAVE_QTBINDINGS;_USE_MATH_DEFINES;HAVE_RUBY;HAVE_PYTHON</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4290;4996;4503</DisableSpecificWarnings>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <AdditionalDependencies>$(STLPORT64)\lib\stlport_vc10_x64d.5.2.lib;$(PYTHON64)\libs\python34_d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);$(QTDIR)\lib\QtCore4.lib;$(QTDIR)\lib\QtGui4.lib;$(QTDIR)\lib\QtXml4.lib;$(OutDir)klayout.lib;$(OutDir)klayout_gsi.lib</AdditionalDependencies>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug No Qt Binding STLPort|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>
+      </FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions);HAVE_QTBINDINGS;_USE_MATH_DEFINES;HAVE_RUBY;HAVE_PYTHON</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4290;4996;4503</DisableSpecificWarnings>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <AdditionalDependencies>$(STLPORT)\lib\stlport_vc10_x64d.5.2.lib;$(PYTHON64)\libs\python34_d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);$(QTDIR64)\lib\QtCore4.lib;$(QTDIR64)\lib\QtGui4.lib;$(QTDIR64)\lib\QtXml4.lib;$(OutDir)klayout.lib;$(OutDir)klayout_gsi.lib</AdditionalDependencies>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

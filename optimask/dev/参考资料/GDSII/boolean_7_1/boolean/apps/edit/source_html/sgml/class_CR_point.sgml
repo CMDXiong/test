@@ -1,0 +1,129 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class CR_point"
+>
+
+<META-DATA>
+	<NAME>CR_point</NAME>
+	<AUTHOR>klaasje</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Thu Oct 14 16:53:43 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>_lnk_itr.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>drivout.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>lsetup.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>matrix.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>bbox.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>shape.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>polyline.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME></NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+<DESCRIPTION>
+	<PARA> Critical Point this is used in drawing fill lines it is a local minimum in a polygon</PARA>
+</DESCRIPTION>
+
+
+
+
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="CR_point(TDLI&lt;Segment&gt;* one)"
+		INLINE="NO"
+	>
+		<NAME>CR_point</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" "
+		DECLARATION=" CR_point::~CR_point()"
+		INLINE="YES"
+	>
+		<NAME>CR_point::~CR_point</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="TDLI<Segment>* "
+		DECLARATION="TDLI&lt;Segment&gt;* Index"
+	>
+		<NAME>Index</NAME>
+		<DESCRIPTION>
+			<PARA>iterator for Segment contained</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+
+
+
+
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

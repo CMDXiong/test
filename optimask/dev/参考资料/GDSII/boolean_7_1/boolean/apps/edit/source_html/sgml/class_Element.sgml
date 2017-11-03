@@ -1,0 +1,493 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class Element"
+>
+
+<META-DATA>
+	<NAME>Element</NAME>
+	<AUTHOR>klaas</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Thu Oct 21 14:44:13 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>element.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>gdsii.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>misc.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>proper.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>element.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> pure virtual Base class for all data types, that can be in a drawing. References to structures and Shapes are derived from this class In general Elements are part of an ElementList, the ElementList is part of a Structure. A Refrence Element is Referencing a Struture. This way hiearchy is created.</PARA>
+</DESCRIPTION>
+
+
+
+
+
+<RELATED-TYPES>
+	<RELATED-TYPE TYPE="class">
+		<NAME>Shape</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>Reference</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>Structure</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>ElementList</NAME>
+	</RELATED-TYPE>
+</RELATED-TYPES>
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="Element()"
+		INLINE="NO"
+	>
+		<NAME>Element</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual BoundingBox*	"
+		DECLARATION="virtual BoundingBox*	CalcBoundingBox()"
+		INLINE="NO"
+	>
+		<NAME>CalcBoundingBox</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>calculate the bounding box</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual BoundingBox*	"
+		DECLARATION="virtual BoundingBox*	GetBoundingBox()"
+		INLINE="NO"
+	>
+		<NAME>GetBoundingBox</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the boundingbox</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void "
+		DECLARATION="virtual void Transform(Matrix&lt;double&gt;* _Matrix)"
+		INLINE="NO"
+	>
+		<NAME>Transform</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>tranform the element given a matrix</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual void	"
+		DECLARATION="virtual void	SetElflags(Elflags*)"
+		INLINE="NO"
+	>
+		<NAME>SetElflags</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>gdsii compatible</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual TYPE	"
+		DECLARATION="virtual TYPE	GetType()"
+		INLINE="NO"
+	>
+		<NAME>GetType</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the element type NON,BOUNDARY,PATH,TEXT,SREF,AREF,ARCSEG,BOX,CIRCLE</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual G_BOOL	"
+		DECLARATION="virtual G_BOOL	Select(Point*,Setup* setup)"
+		INLINE="NO"
+	>
+		<NAME>Select</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>select the element if Point is within it</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="virtual G_BOOL	"
+		DECLARATION="virtual G_BOOL	SelectBox(BoundingBox*,Matrix&lt;double&gt;*,Setup* setup)"
+		INLINE="NO"
+	>
+		<NAME>SelectBox</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>select the element it is within the box.matrix is used to calculate the relative BoundingBox within structures</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void	"
+		DECLARATION=" void	SetSelect(G_BOOL)"
+		INLINE="YES"
+	>
+		<NAME>SetSelect</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the select flag</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" G_BOOL	"
+		DECLARATION=" G_BOOL	GetSelect()"
+		INLINE="YES"
+	>
+		<NAME>GetSelect</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the select flag</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL GetGroupA()"
+		INLINE="NO"
+	>
+		<NAME>GetGroupA</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the groupA flag</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL GetGroupB()"
+		INLINE="NO"
+	>
+		<NAME>GetGroupB</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the groupB flag</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL GetGroupC()"
+		INLINE="NO"
+	>
+		<NAME>GetGroupC</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the groupC flag</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void SetGroupA(G_BOOL value)"
+		INLINE="NO"
+	>
+		<NAME>SetGroupA</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the groupA flag</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void SetGroupB(G_BOOL value)"
+		INLINE="NO"
+	>
+		<NAME>SetGroupB</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the groupB flag</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void SetGroupC(G_BOOL value)"
+		INLINE="NO"
+	>
+		<NAME>SetGroupC</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the groupC flag</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetFlags(EleFlags which)"
+		INLINE="NO"
+	>
+		<NAME>SetFlags</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>GDSII compatible</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	ClearFlags(EleFlags which)"
+		INLINE="NO"
+	>
+		<NAME>ClearFlags</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>reset all flags in which</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="EleFlags "
+		DECLARATION="EleFlags GetFlags()"
+		INLINE="NO"
+	>
+		<NAME>GetFlags</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get flags mask</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="PropertyList*	"
+		DECLARATION="PropertyList*	GetPropList()"
+		INLINE="NO"
+	>
+		<NAME>GetPropList</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get property list</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	SetPropList(PropertyList* proplist)"
+		INLINE="NO"
+	>
+		<NAME>SetPropList</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set property list</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void SetStamp(long event)"
+		INLINE="NO"
+	>
+		<NAME>SetStamp</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set event stamp</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="long "
+		DECLARATION="long GetStamp()"
+		INLINE="NO"
+	>
+		<NAME>GetStamp</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get event stamp</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="long "
+		DECLARATION="long _stamp"
+	>
+		<NAME>_stamp</NAME>
+		<DESCRIPTION>
+			<PARA>event stamp that is unique for every element</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="EleFlags "
+		DECLARATION="EleFlags _flags"
+	>
+		<NAME>_flags</NAME>
+		<DESCRIPTION>
+			<PARA>mask of flags for select groups etc.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="PropertyList*	"
+		DECLARATION="PropertyList*	_proplist"
+	>
+		<NAME>_proplist</NAME>
+		<DESCRIPTION>
+			<PARA>user defined properties attached to the element</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

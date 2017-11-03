@@ -1,0 +1,12 @@
+This directory contains the source for the graphical interface 
+of the boolean program.
+The graphical interface is platform independent, because it is based on 
+wxwindows 1.67.
+I hate writing interfaces, even more to document them.
+So the only think i will tell is that all those interface menus,dialogs etc.
+only produce ascii string that are pased to the commandhandler of boolean.
+
+SEE:
+chandbas.cpp
+chandler.cpp
+

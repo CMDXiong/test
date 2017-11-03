@@ -1,0 +1,18 @@
+%http://lazybios.com/2013/05/how-to-use-chinese-fonts-in-latax/
+%\optixera\optimask\dev\Windows下MikTex+TexMaker中文化.pdf
+%
+%关于字体，XeLaTex可以使用本系统自带字体，
+%可以通过cmd窗口下运行 fc‐list>fonts.log 命令到fonts.log文件中
+%查看看字体对应的英文名称，换到 setmainfont{} 里就可以了。
+%
+% Henghua Deng Notes： fc‐list>fonts.log
+
+\documentclass[12pt,a4paper]{article}
+\usepackage{fontspec, xunicode, xltxtra}
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+\setmainfont{SimSun} %新宋体 %{FZShuTi}字体不存在，用{FZShuTi}字体编译出错。
+\begin{document}
+{\noindent Hello,Kitty \\}
+世界这么大，我想去看看。
+\end{document}

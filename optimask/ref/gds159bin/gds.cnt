@@ -1,0 +1,76 @@
+:Base gds.HLP
+2 Main Index=main_index
+2 Terms of use=terms_of_use
+1 Introduction
+2 Introduction to GDSII=introduction_to_gdsii
+2 Known problem=known_problem
+2 Release note=release_note
+2 Viewer in future release=future_release
+1 Installation
+2 Install and Uninstall=install_uninstall
+2 Launch viewer=launch
+1 Operation (not in menu)
+2 Abort drawing=abort_draw
+2 Auto-redraw switch=auto_redraw
+2 Visual structure exploring=visual_explore
+2 Draw referenced cell=draw_referenced_cell
+2 Mid-click (move scroll position)=mid_click
+2 Zoom mode=mode_zoom
+2 Measure (ruler) mode=mode_measure
+2 Memo mode=mode_memo
+1 [File] menu
+2 Open GDSII file=open_file
+2 Open GDSII file (same .tec)=open_file_same_tec
+2 Close file=close_file
+2 Print=print
+2 Print preview=print_preview
+2 Setup printer=setup_printer
+2 Write to File=write_to_emf
+2 Exit GDSII viewer=exit
+1 [Edit] menu
+2 Copy to clipboard=copy
+1 [View] menu
+2 Redraw=redraw
+2 Fit to window=fit_window
+2 Zoom operation=zoom_operation
+2 Zoom Area=zoom_area
+2 Synchronize ALL view=sync_view
+2 Fill / Hatch=fill_hatch
+2 Text=text
+2 Rotation=rotation
+2 Mirror to X-axis=mirror_x
+2 Mirror to Y-axis=mirror_y
+2 Show origin=show_origin
+2 Hatch exactly=hatch_exactly
+2 Status bar=status_bar
+1 [Tool] menu
+2 Layer setup=layer_setup
+2 Structure explorer=structure_explorer
+2 Move to (X, Y)=move_xy
+2 Optical shrink=optical_shrink
+2 Time stamp=time_stamp
+1 [Preference] menu
+2 Grid and measure=grid_and_measure
+2 Sub-structure (recurring) level=recurse_level
+2 Show AREF=show_aref
+2 Draw by layer=draw_by_layer
+2 Transparent=transparent
+2 Outlined path=outlined_path
+2 Cursor style=cursor_style
+2 Background color=background_color
+2 Text size/font=text_size
+2 Show axis=show_axis
+2 Minimum fill / draw=minimum_fill_draw
+2 Ruler color=ruler_color
+2 Memo color=memo color
+2 Default layer setup file=default_layer_setup_file
+1 [Window] menu
+2 New=window_new
+2 Cascade=window_cascade
+2 Tile=window_tile
+2 Arrange Icons=window_arrange_icons
+2 Split Window 1, 2, ...=window_split
+1 [Help] menu
+2 Index=index
+2 Play splash window=splash
+2 About GDSII viewer=about

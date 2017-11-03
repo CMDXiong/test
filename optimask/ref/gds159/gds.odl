@@ -1,0 +1,31 @@
+[ uuid(80B06E19-A361-441C-9F3A-6107D27F3483), version(1.0) ]
+library Gds
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	
+
+	
+	[ uuid(E294B420-67C1-482F-BD44-AA941990738E) ]
+	dispinterface IGds
+	{
+		properties:
+			//{{AFX_ODL_PROP(CGdsDoc)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			//{{AFX_ODL_METHOD(CGdsDoc)
+			//}}AFX_ODL_METHOD
+
+	};
+
+	
+	[ uuid(70071046-426D-4470-8158-0FFBD0B94A98) ]
+	coclass Document
+	{
+		[default] dispinterface IGds;
+	};
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};

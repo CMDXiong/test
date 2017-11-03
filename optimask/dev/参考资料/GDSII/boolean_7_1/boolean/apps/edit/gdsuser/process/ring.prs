@@ -1,0 +1,9 @@
+# Process file for GDS-II postprocessing tool
+# Copyright 1995 Hollandse Signaal Apparaten
+
+group_a = 00
+group_b = empty
+destination = 03
+makering
+zoom =  -109053.435115 , -201446.564885 , -72106.870229 , -164500.000000 
+zoomout

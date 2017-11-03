@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+    <Keyword>MFCProj</Keyword>
+    <ProjectGuid>{359176B2-38CF-40C2-853C-92BCBF44A1EC}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\Debug\gds.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>.\Debug\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Debug\gds.tlb</TypeLibraryName>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\gds.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <IgnoreSpecificDefaultLibraries>libc.lib libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <OutputFile>.\Debug\gds.exe</OutputFile>
+      <AdditionalDependencies>version.lib;winmm.lib;gdiplus.lib;zlibstat.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\gds.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>.\Release\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>if not exist Distrib mkdir Distrib
+copy Res\ReadMe*.txt Distrib
+copy Release\*.exe Distrib
+copy Release\*.cnt Distrib
+copy Release\*.hlp Distrib
+if exist Debug copy Release\*.cnt Debug
+if exist Debug copy Release\*.hlp Debug</Command>
+    </PostBuildEvent>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Release\gds.tlb</TypeLibraryName>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\gds.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <IgnoreSpecificDefaultLibraries>libc.lib libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <OutputFile>.\Release\gds.exe</OutputFile>
+      <AdditionalDependencies>version.lib;winmm.lib;gdiplus.lib;zlibstat.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AngleDlg.cpp" />
+    <ClCompile Include="ChildFrm.cpp" />
+    <ClCompile Include="DefLayerSet.cpp" />
+    <ClCompile Include="DlgLayer.cpp" />
+    <ClCompile Include="FillPatDialog.cpp" />
+    <ClCompile Include="FontSizeDlg.cpp" />
+    <ClCompile Include="gds.cpp" />
+    <ClCompile Include="GDS2MultiDocTemplate.cpp" />
+    <ClCompile Include="gdsDoc.cpp" />
+    <ClCompile Include="GDShcy.cpp" />
+    <ClCompile Include="gdsView.cpp" />
+    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="GridDlg.cpp" />
+    <ClCompile Include="HatchDlg.cpp" />
+    <ClCompile Include="LayerInfo.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="MemoDlg.cpp" />
+    <ClCompile Include="MTRender.cpp" />
+    <ClCompile Include="PrintScaleDlg.cpp" />
+    <ClCompile Include="ProgDlg.cpp" />
+    <ClCompile Include="Scale.cpp" />
+    <ClCompile Include="SelViewSetting.cpp" />
+    <ClCompile Include="SetCursor.cpp" />
+    <ClCompile Include="ShrinkDlg.cpp" />
+    <ClCompile Include="Splash.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="StrLvlDlg.cpp" />
+    <ClCompile Include="StructureDlg.cpp" />
+    <ClCompile Include="StructureInfoDlg.cpp" />
+    <ClCompile Include="TBComboBox.cpp" />
+    <ClCompile Include="TextDumpDlg.cpp" />
+    <ClCompile Include="TimeStampDlg.cpp" />
+    <ClCompile Include="ViewSetCommentDlg.cpp" />
+    <ClCompile Include="ZipSelDlg.cpp" />
+    <ClCompile Include="ZoomAreaDlg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="gds.reg" />
+    <CustomBuild Include="hlp\gds.cnt">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy "hlp\%(Filename).cnt" $(OutDir)</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">–ÚŽŸÌ§²Ù‚ðì¬’†‚Å‚·...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)\$(InputName).cnt;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">copy "hlp\%(Filename).cnt" $(OutDir)</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">–ÚŽŸÌ§²Ù‚ðì¬’†‚Å‚·...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)\$(InputName).cnt;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="hlp\GDS.GID" />
+    <CustomBuild Include="hlp\GDS.HLP" />
+    <CustomBuild Include="hlp\gds.hm" />
+    <CustomBuild Include="hlp\gds.hpj">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">start /wait hcw /C /E /M "hlp\%(Filename).hpj" 
+if errorlevel 1 goto :Error 
+if not exist "hlp\%(Filename).hlp" goto :Error 
+copy "hlp\%(Filename).hlp" $(OutDir) 
+goto :done 
+:Error 
+echo hlp\%(Filename).hpj(1) : error: 
+type "hlp\%(Filename).log" 
+:done </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ÍÙÌß Ì§²Ù‚ðì¬‚µ‚Ä‚¢‚Ü‚·...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)\$(InputName).hlp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">hlp\GDSIIviewer.rtf;hlp\$(TargetName).hm;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">start /wait hcw /C /E /M "hlp\%(Filename).hpj" 
+if errorlevel 1 goto :Error 
+if not exist "hlp\%(Filename).hlp" goto :Error 
+copy "hlp\%(Filename).hlp" $(OutDir) 
+goto :done 
+:Error 
+echo hlp\%(Filename).hpj(1) : error: 
+type "hlp\%(Filename).log" 
+:done </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ÍÙÌß Ì§²Ù‚ðì¬‚µ‚Ä‚¢‚Ü‚·...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)\$(InputName).hlp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">hlp\GDSIIviewer.rtf;hlp\$(TargetName).hm;%(AdditionalInputs)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="hlp\GDSIIviewer.rtf" />
+    <CustomBuild Include="res\cursor_z.cur" />
+    <CustomBuild Include="res\cursor_zd.cur" />
+    <CustomBuild Include="res\cursor_zu.cur" />
+    <CustomBuild Include="res\gds.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="gds.odl">
+      <TargetEnvironment Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Win32</TargetEnvironment>
+      <TargetEnvironment Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Win32</TargetEnvironment>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="gds.rc">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OUTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OUTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AngleDlg.h" />
+    <ClInclude Include="ChildFrm.h" />
+    <ClInclude Include="DefLayerSet.h" />
+    <ClInclude Include="DlgLayer.h" />
+    <ClInclude Include="FillPatDialog.h" />
+    <ClInclude Include="FontSizeDlg.h" />
+    <ClInclude Include="gds.h" />
+    <ClInclude Include="GDS2MultiDocTemplate.h" />
+    <ClInclude Include="gdsDoc.h" />
+    <ClInclude Include="GDShcy.h" />
+    <ClInclude Include="GDSRead.h" />
+    <ClInclude Include="gdsView.h" />
+    <ClInclude Include="Grid.h" />
+    <ClInclude Include="GridDlg.h" />
+    <ClInclude Include="HatchDlg.h" />
+    <ClInclude Include="ioapi.h" />
+    <ClInclude Include="LayerInfo.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="MemoDlg.h" />
+    <ClInclude Include="MTRender.h" />
+    <ClInclude Include="PrintScaleDlg.h" />
+    <ClInclude Include="ProgDlg.h" />
+    <CustomBuild Include="Resource.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">echo. &gt;"hlp\$(TargetName).hm" 
+echo // Commands (ID_* and IDM_*) &gt;&gt;"hlp\$(TargetName).hm" 
+makehm ID_,HID_,0x10000 IDM_,HIDM_,0x10000 resource.h &gt;&gt;"hlp\$(TargetName).hm" 
+echo. &gt;&gt;"hlp\$(TargetName).hm" 
+echo // Prompts (IDP_*) &gt;&gt;"hlp\$(TargetName).hm" 
+makehm IDP_,HIDP_,0x30000 resource.h &gt;&gt;"hlp\$(TargetName).hm" 
+echo. &gt;&gt;"hlp\$(TargetName).hm" 
+echo // Resources (IDR_*) &gt;&gt;"hlp\$(TargetName).hm" 
+makehm IDR_,HIDR_,0x20000 resource.h &gt;&gt;"hlp\$(TargetName).hm" 
+echo. &gt;&gt;"hlp\$(TargetName).hm" 
+echo // Dialogs (IDD_*) &gt;&gt;"hlp\$(TargetName).hm" 
+makehm IDD_,HIDD_,0x20000 resource.h &gt;&gt;"hlp\$(TargetName).hm" 
+echo. &gt;&gt;"hlp\$(TargetName).hm" 
+echo // Frame Controls (IDW_*) &gt;&gt;"hlp\$(TargetName).hm" 
+makehm IDW_,HIDW_,0x50000 resource.h &gt;&gt;"hlp\$(TargetName).hm" </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ÍÙÌß‚Ì²Ý¸Ù°ÄÞ Ì§²Ù‚ðì¬’†‚Å‚·...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">hlp\$(TargetName).hm;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">echo. &gt;"hlp\$(TargetName).hm" 
+echo // Commands (ID_* and IDM_*) &gt;&gt;"hlp\$(TargetName).hm" 
+makehm ID_,HID_,0x10000 IDM_,HIDM_,0x10000 resource.h &gt;&gt;"hlp\$(TargetName).hm" 
+echo. &gt;&gt;"hlp\$(TargetName).hm" 
+echo // Prompts (IDP_*) &gt;&gt;"hlp\$(TargetName).hm" 
+makehm IDP_,HIDP_,0x30000 resource.h &gt;&gt;"hlp\$(TargetName).hm" 
+echo. &gt;&gt;"hlp\$(TargetName).hm" 
+echo // Resources (IDR_*) &gt;&gt;"hlp\$(TargetName).hm" 
+makehm IDR_,HIDR_,0x20000 resource.h &gt;&gt;"hlp\$(TargetName).hm" 
+echo. &gt;&gt;"hlp\$(TargetName).hm" 
+echo // Dialogs (IDD_*) &gt;&gt;"hlp\$(TargetName).hm" 
+makehm IDD_,HIDD_,0x20000 resource.h &gt;&gt;"hlp\$(TargetName).hm" 
+echo. &gt;&gt;"hlp\$(TargetName).hm" 
+echo // Frame Controls (IDW_*) &gt;&gt;"hlp\$(TargetName).hm" 
+makehm IDW_,HIDW_,0x50000 resource.h &gt;&gt;"hlp\$(TargetName).hm" </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ÍÙÌß‚Ì²Ý¸Ù°ÄÞ Ì§²Ù‚ðì¬’†‚Å‚·...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">hlp\$(TargetName).hm;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="Scale.h" />
+    <ClInclude Include="SelViewSetting.h" />
+    <ClInclude Include="SetCursor.h" />
+    <ClInclude Include="ShrinkDlg.h" />
+    <ClInclude Include="Splash.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="StrLvlDlg.h" />
+    <ClInclude Include="StructureDlg.h" />
+    <ClInclude Include="StructureInfoDlg.h" />
+    <ClInclude Include="TBComboBox.h" />
+    <ClInclude Include="TextDumpDlg.h" />
+    <ClInclude Include="TimeStampDlg.h" />
+    <ClInclude Include="unzip.h" />
+    <ClInclude Include="ViewSetCommentDlg.h" />
+    <ClInclude Include="zconf.h" />
+    <ClInclude Include="ZipSelDlg.h" />
+    <ClInclude Include="zlib.h" />
+    <ClInclude Include="ZoomAreaDlg.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="hlp\ButtonFill.bmp" />
+    <Image Include="hlp\ButtonFitWindow.bmp" />
+    <Image Include="hlp\ButtonFlipH.bmp" />
+    <Image Include="hlp\ButtonFlipV.bmp" />
+    <Image Include="hlp\ButtonLayer.bmp" />
+    <Image Include="hlp\ButtonMemo.bmp" />
+    <Image Include="hlp\ButtonMemoDel.bmp" />
+    <Image Include="hlp\ButtonPreview.bmp" />
+    <Image Include="hlp\ButtonPrint.bmp" />
+    <Image Include="hlp\ButtonRedraw.bmp" />
+    <Image Include="hlp\ButtonRotate.bmp" />
+    <Image Include="hlp\ButtonRuler.bmp" />
+    <Image Include="hlp\ButtonRulerDel.bmp" />
+    <Image Include="hlp\ButtonStructure.bmp" />
+    <Image Include="hlp\ButtonText.bmp" />
+    <Image Include="hlp\ButtonZoomIn.bmp" />
+    <Image Include="hlp\ButtonZoomMode.bmp" />
+    <Image Include="hlp\ButtonZoomOut.bmp" />
+    <Image Include="hlp\CursorZoom.bmp" />
+    <Image Include="hlp\CursorZoomIn.bmp" />
+    <Image Include="hlp\CursorZoomOut.bmp" />
+    <Image Include="hlp\FillLimit.bmp" />
+    <Image Include="hlp\GridMeasure.bmp" />
+    <Image Include="hlp\GridMeasure2.bmp" />
+    <Image Include="hlp\Launch.bmp" />
+    <Image Include="hlp\LayerSetup.bmp" />
+    <Image Include="hlp\Memo.bmp" />
+    <Image Include="hlp\MoveToXY.bmp" />
+    <Image Include="hlp\Open.bmp" />
+    <Image Include="hlp\RecurseLevel.bmp" />
+    <Image Include="hlp\Rotate.bmp" />
+    <Image Include="hlp\Ruler.bmp" />
+    <Image Include="hlp\SetupPrint.bmp" />
+    <Image Include="hlp\Shrink.bmp" />
+    <Image Include="hlp\Structure.bmp" />
+    <Image Include="hlp\TextSize.bmp" />
+    <Image Include="hlp\WriteEmf.bmp" />
+    <Image Include="res\dia.bmp" />
+    <Image Include="res\dummy_st.bmp" />
+    <Image Include="res\fdiag1.bmp" />
+    <Image Include="res\fdiag_da.bmp" />
+    <Image Include="res\fill1.bmp" />
+    <Image Include="res\gds.ico" />
+    <Image Include="res\gdsDoc.ico" />
+    <Image Include="res\gdsToolBar.bmp" />
+    <Image Include="res\hdash.bmp" />
+    <Image Include="res\hhatch1.bmp" />
+    <Image Include="res\hwave.bmp" />
+    <Image Include="res\hzigzag.bmp" />
+    <Image Include="res\icon_dum.ico" />
+    <Image Include="res\icon_str.ico" />
+    <Image Include="res\light.bmp" />
+    <Image Include="res\light2.bmp" />
+    <Image Include="res\mainfram.bmp" />
+    <Image Include="res\rdiag1.bmp" />
+    <Image Include="res\rdiag_da.bmp" />
+    <Image Include="res\solid1.bmp" />
+    <Image Include="res\Splsh16.bmp" />
+    <Image Include="res\Toolbar.bmp" />
+    <Image Include="res\vdash.bmp" />
+    <Image Include="res\vwave.bmp" />
+    <Image Include="res\vzigzag.bmp" />
+    <Image Include="res\xdiag.bmp" />
+    <Image Include="res\xdiag1.bmp" />
+    <Image Include="res\xhatch1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\ReadMeEnglish.txt" />
+    <Text Include="res\ReadMeJapanese.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

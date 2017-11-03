@@ -1,0 +1,15 @@
+
+These programs were developed under Linux, most recently Slackware 3.4
+using a 2.0.30 kernel. The gcc 2.7.2 compiler was used. At one point
+they were compiled under HPUX, but this version has not been tried
+under HPUX. Any needed changes would be slight.
+
+Before compiling, check out "Makefile", and make any needed changes,
+most likely the bin directory.
+
+To compile the programs, type "make".
+
+To clean the directory, type "make clean"
+
+To install the files in the specified bin directory, type "make
+install".

@@ -1,0 +1,19 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Optixera Software Architecture.}}{10}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Optimask Layout Data Architecture 版图数据类结构描述图样。}}{11}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Optimask Layout File Read/Write Module Architecture 版图文件读写模块。}}{12}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces CodeDock for Command/Script/Macro input.}}{25}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Overview of Commands 命令总览。}}{28}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Command Category（命令类别）}}}{28}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Command Minimum Set（命令最小子集）}}}{28}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Commands to Create Basic Elements 绘制基本图形命令。}}{29}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Optimask Extension （相对于GDSII的扩展）。}}{30}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Commands to View Basic Elements 视图基本命令。}}{34}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Optimask数据结构基本构架。}}{39}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Optimask基本图元（Element）数据结构，包括绘制、多边形、端口和注释。}}{40}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {绘制（Plot）和多边形（Polygon）}}}{40}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {端口（Port）和标注（Note）}}}{40}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Optimask构元引用（Cell Reference）数据结构。}}{41}

@@ -1,0 +1,6 @@
+# Aap3 Process file for GDS-II postprocessing tool
+
+startpoint  0.000000 0.000000
+loadfile  $GDSROOT/default/data/alan.cal gds-ii
+draw
+tool zoom

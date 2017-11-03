@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{8702deb0-90aa-4e9e-b2db-830e55b83aa9}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{e679b934-ec2e-472d-ba4e-39d1e3a33aa3}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{484a8226-802c-429b-a4a1-635820ab9dda}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Help Files">
+      <UniqueIdentifier>{10f98b08-0e03-45b2-8b02-1e002a4353c8}</UniqueIdentifier>
+      <Extensions>cnt;rtf</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AngleDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChildFrm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DefLayerSet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgLayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FillPatDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FontSizeDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GDS2MultiDocTemplate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gdsDoc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GDShcy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gdsView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GridDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HatchDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LayerInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MTRender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PrintScaleDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scale.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SelViewSetting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SetCursor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShrinkDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Splash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StrLvlDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StructureDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StructureInfoDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TBComboBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextDumpDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeStampDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewSetCommentDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ZipSelDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ZoomAreaDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="gds.odl">
+      <Filter>Source Files</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="gds.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AngleDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChildFrm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DefLayerSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FillPatDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FontSizeDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GDS2MultiDocTemplate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gdsDoc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GDShcy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GDSRead.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gdsView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GridDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HatchDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ioapi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LayerInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MTRender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PrintScaleDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scale.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SelViewSetting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SetCursor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShrinkDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Splash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StrLvlDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StructureDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StructureInfoDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TBComboBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextDumpDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeStampDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="unzip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewSetCommentDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zconf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ZipSelDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ZoomAreaDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\dia.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\dummy_st.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\fdiag1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\fdiag_da.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\fill1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\gds.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\gdsDoc.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\gdsToolBar.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\hdash.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\hhatch1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\hwave.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\hzigzag.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\icon_dum.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\icon_str.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\light.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\light2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\mainfram.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\rdiag1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\rdiag_da.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\solid1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Splsh16.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Toolbar.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\vdash.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\vwave.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\vzigzag.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\xdiag.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\xdiag1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\xhatch1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonFill.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonFitWindow.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonFlipH.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonFlipV.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonLayer.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonMemo.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonMemoDel.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonPreview.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonPrint.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonRedraw.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonRotate.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonRuler.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonRulerDel.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonStructure.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonText.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonZoomIn.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonZoomMode.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\ButtonZoomOut.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\CursorZoom.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\CursorZoomIn.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\CursorZoomOut.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\FillLimit.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\GridMeasure.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\GridMeasure2.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\Launch.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\LayerSetup.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\Memo.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\MoveToXY.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\Open.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\RecurseLevel.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\Rotate.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\Ruler.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\SetupPrint.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\Shrink.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\Structure.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\TextSize.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+    <Image Include="hlp\WriteEmf.bmp">
+      <Filter>Help Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\ReadMeEnglish.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="res\ReadMeJapanese.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="hlp\gds.hpj">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\cursor_z.cur">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\cursor_zd.cur">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\cursor_zu.cur">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\gds.rc2">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="hlp\gds.cnt">
+      <Filter>Help Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="hlp\GDS.GID">
+      <Filter>Help Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="hlp\GDS.HLP">
+      <Filter>Help Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="hlp\gds.hm">
+      <Filter>Help Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="hlp\GDSIIviewer.rtf">
+      <Filter>Help Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gds.reg" />
+  </ItemGroup>
+</Project>

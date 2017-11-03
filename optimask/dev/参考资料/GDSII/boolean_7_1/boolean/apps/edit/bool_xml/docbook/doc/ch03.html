@@ -1,0 +1,58 @@
+<html><head><title>3. The Template System</title><link rel="stylesheet" href="reference.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.22"><link rel="home" href="index.html" title="DocBook XSL Stylesheet Documentation"><link rel="up" href="index.html" title="DocBook XSL Stylesheet Documentation"><link rel="previous" href="ch02.html" title="2. Reference Documentation"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div id="c38ab4" class="chapter"><div class="titlepage"><h2 class="title"><a name="c38ab4">3. The Template System</a></h2><h3 class="author">Norman Walsh</h3><span class="releaseinfo">
+$Id: templates.xml,v 1.1 2000/10/20 05:31:57 ndw Exp $
+<br></span><p class="copyright">Copyright &copy; 2000 by Norman Walsh</p></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt> <a href="ch03.html#c38ab4b4">Changing the Article Title Page</a></dt></dl></div><p>Some parts of the DocBook XSL Stylesheets are actually generated
+using XSL Stylesheets. In particular, the formatting of title pages
+is generated using a special template system. The same template system
+will eventually allow you to easily customize bibliography entries and
+perhaps other parts of the system as well.</p><p>FIXME: there needs to be more introductory/explanatory text
+here!</p><div id="c38ab4b4" class="section"><div class="titlepage"><h2 class="title" style="clear: all"><a name="c38ab4b4"></a>Changing the Article Title Page</h2></div><p>In order to demonstrate how this system works, let's consider
+how we can use it to change the format of article title pages.</p><p>By default, the stylesheets print the following elements on the
+article title page, in this order: <span class="simplelist"><tt>title</tt>, <tt>subtitle</tt>, <tt>corpauthor</tt>, <tt>authorgroup</tt>, <tt>author</tt>, <tt>releaseinfo</tt>, <tt>copyright</tt>, <tt>legalnotice</tt>, <tt>pubdate</tt>, <tt>revision</tt>, <tt>revhistory</tt>, <tt>abstract</tt></span>. Suppose we want to put only the
+<tt>title</tt>, <tt>author</tt>, and
+<tt>edition</tt> elements on the title page, in the order
+that they appear in the <tt>articleinfo</tt>.
+</p><p>The &#8220;hard&#8221; (and wrong!) way to do it would be to
+edit <tt>titlepage.templates.xsl</tt> and make the changes
+by hand.</p><p>The easy and right way is to construct a template document that
+describes the order and sequence of elements that you want:</p><pre class="screen">
+&lt;t:templates xmlns:t="http://nwalsh.com/docbook/xsl/template/1.0"
+             xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+             base-stylesheet="/path/to/html/docbook.xsl">
+
+&lt;t:titlepage element="article" wrapper="div" class="titlepage">
+  &lt;t:titlepage-content side="recto" order="document">
+    &lt;title predicate="[1]"/>
+    &lt;author/>
+    &lt;edition/>
+  &lt;/t:titlepage-content>
+&lt;/t:titlepage>
+&lt;/t:templates>
+</pre><p>Then process this document with the
+<tt>template/titlepage.xsl</tt> stylesheet. This will
+produce the following somewhat cryptic stylesheet:</p><pre class="screen">
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+
+&lt;!-- This stylesheet was created by titlepage.xsl; do not edit it by hand. -->
+
+&lt;xsl:import href="/path/to/html/docbook.xsl"/>
+
+&lt;xsl:template name="article.titlepage.recto">&lt;xsl:apply-templates mode="article.titlepage.recto.mode" select="(articleinfo/title|artheader/title|title)[1]|articleinfo/author|artheader/author|articleinfo/edition|artheader/edition"/>
+&lt;/xsl:template>
+
+&lt;xsl:template name="article.titlepage">
+  &lt;div class="titlepage">
+    &lt;xsl:call-template name="article.titlepage.before.recto"/>
+    &lt;xsl:call-template name="article.titlepage.recto"/>
+    &lt;xsl:call-template name="article.titlepage.before.verso"/>
+    &lt;xsl:call-template name="article.titlepage.verso"/>
+    &lt;xsl:call-template name="article.titlepage.separator"/>
+  &lt;/div>
+&lt;/xsl:template>
+
+&lt;/xsl:stylesheet>
+</pre><p>Despite its cryptic appearance, it has the desired result.
+If you want to change <i>how</i> the titlepage elements
+are formatted (as opposed to which ones are formatted), you have to
+write your own customization layer that overrides the template for
+the element in question in the &#8220;titlepage.mode&#8221; mode.</p></div></div></body></html>

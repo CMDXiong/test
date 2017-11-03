@@ -1,0 +1,43 @@
+UNSTREAMING ARRAYS
+
+Once upon a time (in 1987?) Cadence modified the meaning (semantics) of the 
+data stored in a Stream file for an array placement (Aref) without telling 
+anyone.
+
+UNSTREAM guesses whether to interpret Aref's according to the old (Calma GDSII
+Outform 3) semantics or the new (Cadence Outform 6) semantics based on the 
+version number that appears at the beginning of the Stream file.  At the 
+beginning of pass 2, UNSTREAM asks you:
+
+          Use Calma outform 3 array format ([Y] or N)?
+
+The default answer, in this case Yes, is chosen according to this guess.  
+Unfortunately, because the change was not well documented or publicized, the
+meaning of the Aref's in some CAD vendor's Stream files is not properly 
+correlated with the version number.
+
+The change in semantics does not affect all Aref's.  Such Aref's are always
+processed properly.
+
+In some cases, using the wrong semantics leads to obviously incorrect results.
+In such cases you will get the message:
+
+      "*** ELEMENT LOST: Unconventional or improper array step ***"
+
+If you get this message you should rerun pass 2 using the other answer to the 
+array format prompt.
+
+There are a few cases in which using the wrong interpretation leads to 
+unlikely, but not impossible results.  (This happens when an array is rotated 
+180 degrees.)  In such cases UNSTR32 and UNSTREAM behave differently.  UNSTR32
+simply processes the Aref without comment.  UNSTREAM gives the warning message:
+
+  "***** HAZARD: Negative array step -- This probably means you chose *****"
+  "*****         the wrong array format at the beginning of pass 2 *****"
+
+and then processes the Aref.  
+
+Finally, there two known cases where UNSTREAM can use the wrong semantics 
+without detecting a problem.  This can occur for one dimensional arrays that
+are reflected about an axis and then rotated 180 degrees.
+

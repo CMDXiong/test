@@ -1,0 +1,498 @@
+! $OLD tells MkMenu to generate a menu for ICED32 (DOS).  An OLD menu can
+!      be used by both ICED and ICED32 as a command menu but cannot be used 
+!      to set macro values.
+!
+! $NO_TOP implies there is no default top level menu and that the menu cannot 
+!      be used as a command menu. 
+!
+! It is an error to set both the $OLD and $NO_TOP options simultaneously.
+!
+$ROWS=27
+!
+! $ ROWS=max_row specifies that Menu rows are numbered 0 thru max_row.
+! The following keywords are obsolete but can still be used in place of the
+! $ROWS=max_row statement.
+! $ VGA    implies 640 by 450 VGA   --  Menu rows numbered 0 thru 27
+! $ SUPER  implies 800 by 600 VGA   --  Menu rows numbered 0 thru 34
+! $ R1024A implies 1024 by 768 VGA  --  Menu rows numbered 0 thru 45
+! Default: $ROWS=27
+!
+! Unless the $NO_TOP option is specified, all four top level submenus:
+!      "top_nosel_angles",
+!      "top_nosel_45",
+!      "top_sel_angles" and
+!      "top_sel_45"
+! must be defined.  However, one menu can be used to define more than one 
+! top level menu as follows:
+!      A menu named "top" defines all four top level menus.
+!      A menu named "top_nosel" defines "top_nosel_angles" and "top_nosel_45".
+!      A menu named "top_sel" defines "top_sel_angles" and "top_sel_45".
+!      A menu named "top_angles" defines "top_sel_angles" and 
+!         "top_nosel_angles".
+!      A menu named "top_45" defines "top_sel_45" and "top_nosel_45".
+!  
+! It is an error to use these names in a way that defines a top level menu
+!      more than once.
+!
+!************************************************************************
+!
+!                        Required top level menus
+!
+!************************************************************************
+!
+#begin top_sel_45 12
+* 0  1  "DELETE" "delete"             RET
+* 2  1  "VIEW"    "view "             view
+* 3  1  "  in %"  "view in "          view_factor 
+* 4  1  " out %"  "view out "         view_factor 
+* 5  1  "   box"  "view box"          RET
+* 6  1  "  last"  "view last"         RET
+* 7  1  "   all"  "view all"          RET
+* 8  1  "COPY"    "copy "             copy_move
+* 9  1  "MOVE"    ""                  copy_move
+*10  1  "  side"  "move side"         move
+*11  1  "UNDO"    "undo"              RET
+*12  2  "Again"
+*13  1  "UseLay"  "use layer "        layer_names_1    add2
+*14  1  "SELECT"  "select "           select0
+*15  1  " layer"  "select layers "    sel_layer_names_0  select1
+*16  1  "   new"  "select new"        RET
+*17  1  "    in"  "select in"         RET
+*18  1  "  side"  "select side in"    RET
+*19  1  "ADD"     "add "              add1
+*20  1  "UNSEL"   "unselect "         unselect0
+*21  1  "   all"  "unselect all"      RET
+*22  1  " layer"  "unselect layers "  sel_layer_names_0  unselect1
+*23  1  "    in"  "unselect in"       RET
+*24  1  "  side"  "unselect side in"  RET
+*26  1  "USE"     "use "              use_menu
+*27  1  "FILE"    ""                  drc_file_menu
+#end
+
+#begin top_sel_angles 13
+* 0  1  "DELETE"  "delete"            RET
+* 2  1  "VIEW"    "view "             view
+* 3  1  "  in %"  "view in "          view_factor 
+* 4  1  " out %"  "view out "         view_factor 
+* 5  1  "   box"  "view box"          RET
+* 6  1  "  last"  "view last"         RET
+* 7  1  "   all"  "view all"          RET
+* 8  1  "COPY"    "copy "             copy_move
+* 9  1  "MOVE"    ""                  copy_move
+*10  1  "  side"  "move side"         move
+*11  1  "vertex"  "move vertex"       move
+*12  1  "UNDO"    "undo"              RET
+*13  2  "Again"
+*14  1  "UseLay"  "use layer "        layer_names_1    add2
+*15  1  "SELECT"  "select "           select0
+*16  1  " layer"  "select layers "    sel_layer_names_0  select1
+*17  1  "   new"  "select new"        RET
+*18  1  "    in"  "select in"         RET
+*19  1  "  side"  "select side in"    RET
+*20  1  "ADD"     "add "              add1
+*21  1  "UNSEL"   "unselect "         unselect0
+*22  1  "   all"  "unselect all"      RET
+*23  1  " layer"  "unselect layers "  sel_layer_names_0  unselect1
+*24  1  "    in"  "unselect in"       RET
+*25  1  "  side"  "unselect side in"  RET
+*26  1  "USE"     "use "              use_menu
+*27  1  "FILE"    ""                  drc_file_menu
+#end
+
+#begin top_nosel_45  12
+* 0  1  "DELETE"  "delete"            RET
+* 2  1  "VIEW"    "view "             view
+* 3  1  "  in %"  "view in "          view_factor 
+* 4  1  " out %"  "view out "         view_factor 
+* 5  1  "   box"  "view box"          RET
+* 6  1  "  last"  "view last"         RET
+* 7  1  "   all"  "view all"          RET
+* 8  1  "COPY"    "copy "             copy_move
+* 9  1  "MOVE"    ""                  copy_move
+*10  1  "  side"  "move side"         move
+*11  1  "UNDO"    "undo"              RET
+*12  2  "Again"
+*13  1  "UseLay"  "use layer "        layer_names_1    add2
+*14  1  "SELECT"  "select "           select0
+*15  1  " layer"  "select layers "    sel_layer_names_0  select1
+*16  1  "   new"  "select new"        RET
+*17  1  "    in"  "select in"         RET
+*18  1  "  side"  "select side in"    RET
+*19  1  "ADD"     "add "              add1
+*20  1  "   box"  "add box"           RET
+*21  1  "  poly"  "add poly"          RET
+*22  1  "  wire"  "add wire"          RET
+*23  1  "  cell"  "add cell "         cell_list_1
+*24  1  "  text"  "add text %"        RET
+*25  1  "USE"     "use "              use_menu
+*27  1  "FILE"    ""                  drc_file_menu
+#end
+
+#begin top_nosel_angles  13
+* 0  1  "DELETE"  "delete"            RET
+* 2  1  "VIEW"    "view "             view
+* 3  1  "  in %"  "view in "          view_factor 
+* 4  1  " out %"  "view out "         view_factor 
+* 5  1  "   box"  "view box"          RET
+* 6  1  "  last"  "view last"         RET
+* 7  1  "   all"  "view all"          RET
+* 8  1  "COPY"    "copy "             copy_move
+* 9  1  "MOVE"    ""                  copy_move
+*10  1  "  side"  "move side"         move
+*11  1  "vertex"  "move vertex"       RET
+*12  1  "UNDO"    "undo"              RET
+*13  2  "Again"
+*14  1  "UseLay"  "use layer "        layer_names_1    add2
+*15  1  "SELECT"  "select "           select0
+*16  1  " layer"  "select layers "    sel_layer_names_0  select1
+*17  1  "   new"  "select new"        RET
+*18  1  "    in"  "select in"         RET
+*19  1  "  side"  "select side in"    RET
+*20  1  "ADD"     "add "              add1
+*21  1  "   box"  "add box"           RET
+*22  1  "  poly"  "add poly"          RET
+*23  1  "  wire"  "add wire"          RET
+*24  1  "  cell"  "add cell "         cell_list_1
+*25  1  "  text"  "add text % "       RET
+*26  1  "USE"     "use "              use_menu
+*27  1  "FILE"    ""                  drc_file_menu
+#end
+
+!************************************************************************
+!
+!                        Optional top level menus
+!
+!************************************************************************
+
+#begin more_1  11 
+* 0  0  "SWAP"
+* 1  1  " cells"  "swap cells | and "   cell_list_0   cell_list_1
+* 2  1  "layers"  "swap layers | and "  layer_names_1  layer_names_1 
+* 4  0  "TEMPLA"
+* 5  1  "  file"  "template %"        RET
+* 6  1  "screen"  "template *"        RET
+* 8  0  "SHOW"
+* 9  1  "  file"  "show file=%"       RET
+*10  1  "screen"  "show file=*"       RET
+*11  1  "  @one"  "@show1"            RET
+*13  1  "RULER"   "ruler"             RET
+*15  1  "EDIT"    ""                  edit_menu
+*17  0  "MERGE"
+*18  1  "  poly"  "merge polygons"    RET
+*19  1  "  wire"  "merge wires"       RET
+*20  1  "  line"  "merge lines"       RET
+*21  0  "CUT"
+*22  1  "vert-X"  "cut x"             RET
+*23  1  "hori-Y"  "cut y"             RET
+#end
+
+#begin more_2 -1
+* 0  1  "ReDraw"  "redraw"            RET
+* 1  1  "DOS"     "dos"               RET
+* 2  1  "SPAWN"   "spawn"             RET
+* 3  1  "@%.cmd"  '@"|"'              cmd_list
+* 4  1  "@START"  "@*"                RET
+* 6  1  "PROTEC"  "protect "          prot1
+* 7  1  "UNPROT"  "unprotect "        unprot1
+* 8  1  "BLANK"   "blank "            blank1
+* 9  1  "UNBLNK"  "unblank "          unblank1
+*11  1  "LAYER"   "layer "            layer0
+*12  1  "FILL"    "fill "             fill_mode
+*13  1  "   tog"  "fill"              RET
+*14  1  "OUTLIN"  "outline depth="    outline
+*15  1  "A-PAN"   "autopan"           RET
+*16  1  "GRID 1"  "grid 1"            grid1
+*17  1  "     2"  "grid 2"            grid1a
+*18  1  "     3"  "grid 3"            grid1a
+*19  1  "SNAP"    ""                  snap1
+*20  1  "RESOLV"  "resolution="       res_list
+*21  1  "NEAR"    "near "             near_units
+*23  1  "DISPLY"  "display"           display_menu
+*24  1  "ARRAY"   "array"             array
+*25  1  "TEXT"    "text"              text
+*26  1  "ARROW"   "arrow "            arrow_mode
+*27  1  "SPACER"  "spacer  "          spacer
+#end
+
+#begin more_3 8
+* 3  0  "DRC-OPs"
++ 4  1  " Merge"    "@MERGEOP"                         RET
++ 5  1  " Bloat"    "@BOOLOP; #bool.op='bloat'"        RET
++ 6  1  " Shrink"   "@BOOLOP; #bool.op='shrink'"       RET
++ 7  1  " AandB"    "@BOOLOP; #bool.op='a_and_b'"      RET
++ 8  1  " Aand-B"   "@BOOLOP; #bool.op='a_and_not_b'"  RET
++ 9  1  " AorB"     "@BOOLOP; #bool.op='a_or_b'"       RET
++10  1  " AxorB"    "@BOOLOP; #bool.op='a_xor_b'"      RET
++11  1  " *and-M"   "@MASKOP; #bool.op='x_and_not_mask'"  RET
++12  1  " *andM"    "@MASKOP; #bool.op='x_and_mask'"   RET
++13  1  " WinCut"   "@MASKOP; #bool.op='mask'"         RET
+*14  1  "@unDRCop"  "@UNDRCOP"                         RET
+*16  1  "show.log"  "show user #dop.log.* file=*"      RET
+*17  1  "edit.DLO"  'spawn -notepad "%dop.log.file"'   RET
+-19  1  "DRCTAG"   "menu drc:drc_tag; if(macro_exists(key.drc.macros)) @drcmac" RET
+-20  1  "DRCSTEP"  "menu drc:drc_step; if(macro_exists(key.drc.macros)) @drcmac" RET
+#end
+
+!************************************************************************
+!
+!                        DRC specific menus
+!
+!************************************************************************
+
+#begin drc_file_menu 20
+*4   1  "@START"   "*"                 RET
+*5   1  "edit.JOU" 'dos -notepad "%lib^%cell.root^.JOU"' RET
+*7   1  "MENU"     "menu  "            menu_menu
+*8   1  "PATTERN"  "pattern  "         pattern_menu
+*10  1  "DRC NT"   "drc 386"           drc_array_mode
+*11  1  "    now"  "@drcnow"           RET
+*14  1  "CIF"      "cif scale="        cif_scale
+*15  1  "STREAM"   "stream map "       stream_menu
+*17  1  "ARCHIVE"  "stream archive "   RET        
+*19  1  "PLOT"     "plot plotter="     plotter_list
+*20  1  "    now"  "@plotnow.cmd"      RET
+*22  1  "LEAVE"    "leave"             RET
+*23  1  "EXIT"     "exit"              RET
+*24  1  "QUIT"     "quit"              RET
+*25  1  "JOURNAL"  "journal"           RET
+*27  1  "PACK"     "pack"              RET
+#end
+
+#unused drc_tag  12
+* 0  1  "VIEW"      "view "              view
+* 1  1  "  in %"    "view in "           view_factor 
+* 2  1  " out %"    "view out "          view_factor 
+* 3  1  "   box"    "view box"           RET
+* 4  1  "  last"    "view last"          RET
+* 5  1  "   all"    "view all"           RET
+* 7  1  "LoadMACs"  "@drcmac.cmd"        RET
+* 8  1  "LoadTAGs"  "@_tagger; #tag="    tag_list
+* 9  1  "@DRCTAG"   "@DRCTAG"            RET
+*11  1  "UNDO"      "undo"               RET
+*12  2  "Again"
+*14  1  "ERR DEL"   "unsel tag==0 all; xsel tag=* layer %drc.layers near; delete"  RET
+*15  1  "DRC SEL"   "select "            drc_select0
+*16  1  "UNSELECT"  "unselect "          unselect0
+*18  1  "@DRCNOW"   "@drcnow.cmd"        RET
+*19  1  " unload"   "@drcunload.cmd"     RET
+*20  1  " reload"   "@drcreload.cmd"     RET
+*22  1  "show.log"  "show user #drc.log.* file=*"     RET
+*23  1  "edit.DLO"  'spawn -notepad "%drc.log.file"'  RET
+*24  1  "edit.RLO"  "@_drced; #ext=.RLO" RET
+-25  1  "DRCSTEP"   "menu drc:drc_step"  RET
+-26  1  "LAYOUT"    "menu drc"           RET
+*27  1  "FILE"      ""                   drc_file_menu
+#end
+
+#unused drc_step  14
+* 0  1  "VIEW"     "view "             view
+* 1  1  "  in %"   "view in "          view_factor 
+* 2  1  " out %"   "view out "         view_factor 
+* 3  1  "   box"   "view box"          RET
+* 4  1  "  last"   "view last"         RET
+* 5  1  "   all"   "view all"          RET
+* 7  0  "DRC STEP"
+* 8  1  "    init"  "@drcstep; #op=init"   RET
+* 9  1  "   first"  "@drcstep; #op=first"  RET
+*10  1  " next"     "@drcstep; #op=next"   RET
+*11  1  "    prev"  "@drcstep; #op=prev"   RET
+*12  1  "    last"  "@drcstep; #op=last"   RET
+*13  1  "UNDO"      "undo"                 RET
+*14  2  "Again"
+*16  1  "ERR DEL"   "unsel tag==0 all; xsel tag=* layer %drc.layers near; delete"  RET
+*17  1  "DRC SEL"   "select "              drc_select0
+*18  1  "UNSELECT"  "unselect "            unselect0
+*19  1  "@DRCNOW"   "@drcnow.cmd"          RET
+*20  1  " unload"   "@drcunload.cmd"       RET
+*21  1  " reload"   "@drcreload.cmd"       RET
+*22  1  "show.log"  "show user #drc.log.* file=*"     RET
+*23  1  "edit.DLO"  'spawn -notepad "%drc.log.file"'  RET
+*24  1  "edit.RLO"  "@_drced; #ext=.RLO"   RET
+-25  1  "DRCTAG"    "menu drc:drc_tag"     RET
+-26  1  "LAYOUT"    "menu drc"             RET
+*27  1  "FILE"      ""                     drc_file_menu
+#end
+
+#begin tag_list  2  FILES
+* 0  0  "DRC-Tags"
+* 2  5  "Nxt Pg"
+* 3  1  "KeyBrd"   "%"           RET
++4:-1     1      "$DRC\*.TAG" "" RET
+*-0  5  "Nxt Pg"
+#end
+
+#begin drc_select0  15
+* 11   0  "DRC"
+* 12   0  "  LAYER"
+* 13   0  "    TYPE"
++ 15   1  "error"     "tag=* layers %%drc.layers "   drc_select1
++ 16   1  "non-err"   "tag=0 layers %%drc.layers "   drc_select1
++ 17   1  "both"      "layers %%drc.layers "         drc_select1
+#end
+
+#begin drc_select1  15
+* 13   1  "ALL"  "all"           RET
+* 14   1  "IN"   "in"            RET
+* 15   1  "NEAR" "near"          RET
+* 17   1  "SIDE" "side in"       RET
+* 18   1  "END"  "end in"        RET
+* 19   1  "NEW"  "new"           RET
+#end
+
+#unused bool_ops  12
+*10  0  "BOUNDED"
+*11  0  "      OPS"
++12  1  "A and B"    "a_and_b"           RET
++13  1  "A and -B"   "a_and_not_b"       RET
++14  1  "A or B"     "a_or_b"            RET
++15  1  "A xor B"    "a_xor_b"           RET
+*17  0  "UNBOUNDED"
+*18  0  "      OPS"
++19  1  "-A"         "not_a"             RET
++20  1  " A or  -B"  "a_or_not_b"        RET
++21  1  "-A or  -B"  "not_a_or_not_b"    RET
++22  1  "-A and -B"  "not_a_and_not_b"   RET
++23  1  " A xor -B"  "a_xor_not_b"       RET
+#end
+
+#unused mask_ops  9
+* 9  0  "MASK OPS"
++10  1  " *and-M"   "x_and_not_mask"  RET
++11  1  " *andM"    "x_and_mask"      RET
++12  1  " MaskCut"  "mask"            RET
+#end
+
+#unused delete_input  13
+* 10  0  "DELETE"
+* 11  0  "INPUT?"
++ 13  1  " Yes"      "1"                 RET
++ 14  1  " No"       "0"                 RET
+#end
+
+#unused convert_wires  13
+*  9  0  "CONVERT"
+* 10  0  "WIRES->"
+* 11  0  "POLYS?"
++ 13  1  " Yes"      "1"                 RET
++ 14  1  " No"       "2"                 RET
++ 15  1  " Cancel"   "3"                 RET
+#end
+
+#begin mask_op_layer_names 6 LAY1
+* 1  0  "MaskLay"
+* 3  1  "KeyBrd"   "%"      RET
+* 4  1  "By #"     ""       mask_op_layer_nos
++ 5  1  "    99"   " 99"    RET
++ 6  1  "   255"   "255"    RET
+* 7  5  "Nxt Pg"
++8:-1   1          ""       RET
+*-0  5  "Nxt Pg"
+#end
+
+#begin mask_op_layer_nos 4 LAY#1
+* 1  0  "MaskLAY"
+* 3  1  "KeyBrd"   "%"      RET
+* 4  1  "ByName"   ""       mask_op_layer_names
+* 5  5  "Nxt Pg"    
++6:-1    1         ""       RET
+*-0  5  "Nxt Pg"    
+#end
+
+#begin one_op_layer_names 4 LAY1
+* 1  0  "LayerA"
+* 3  1  "KeyBrd"   "local #layer.a='%'"  result_layer_names
+* 4  1  "By #"     ""                    one_op_layer_nos
+* 5  5  "Nxt Pg"
++6:-1   1          "local #layer.a="     result_layer_names
+*-0  5  "Nxt Pg"
+#end
+
+#begin one_op_layer_nos 4 LAY#1
+* 1  0  "LayerA"
+* 3  1  "KeyBrd"   "local #layer.a='%'"  result_layer_names
+* 4  1  "ByName"   ""                    one_op_layer_names
+* 5  5  "Nxt Pg"    
++6:-1    1         "local #layer.a="     result_layer_names
+*-0  5  "Nxt Pg"    
+#end
+
+#begin two_op_layer_names_1 4 LAY1
+* 1  0  "LayerA"
+* 3  1  "KeyBrd"   "local #layer.a='%'"  two_op_layer_names_2
+* 4  1  "By #"     ""                    two_op_layer_nos_1
+* 5  5  "Nxt Pg"
++6:-1   1          "local #layer.a="     two_op_layer_names_2
+*-0  5  "Nxt Pg"
+#end
+
+#begin two_op_layer_nos_1 4 LAY#1
+* 1  0  "LayerA"
+* 3  1  "KeyBrd"   "local #layer.a='%'"  two_op_layer_names_2
+* 4  1  "ByName"   ""                    two_op_layer_names_1
+* 5  5  "Nxt Pg"    
++6:-1    1          "local #layer.a="    two_op_layer_names_2
+*-0  5  "Nxt Pg"    
+#end
+
+#begin two_op_layer_names_2 -1 LAY1
+* 1  0  "LayerB"
+* 3  1  "KeyBrd"   "; local #layer.b='%'"  result_layer_names
+* 4  1  "By #"     ""                      two_op_layer_nos_2
+* 5  5  "Nxt Pg"
++6:-1   1          "; local #layer.b="     result_layer_names          
+*-0  5  "Nxt Pg"
+#end
+
+#begin two_op_layer_nos_2 -1 LAY#1
+* 1  0  "LayerB"
+* 3  1  "KeyBrd"   "; local #layer.b='%'"  result_layer_names
+* 4  1  "ByName"   ""                      two_op_layer_names_2
+* 5  5  "Nxt Pg"    
++6:-1    1          "; local #layer.b="    result_layer_names
+*-0   5  "Nxt Pg"    
+#end
+
+#begin result_layer_names -1 LAY1
+* 0  0  "RESULT"
+* 1  0  " LAYER"
+* 3  1  "KeyBrd"   "; local #layer.c='%'"  RET
+* 4  1  "By #"     ""                      result_layer_nos
+* 5  5  "Nxt Pg"
++6:-1   1          "; local #layer.c="     RET
+*-0  5  "Nxt Pg"
+#end
+
+#begin result_layer_nos -1 LAY#1
+* 0  0  "RESULT"
+* 1  0  " LAYER"
+* 3  1  "KeyBrd"   "; local #layer.c='%'"  RET
+* 4  1  "ByName"   ""                      result_layer_names
+* 5  5  "Nxt Pg"    
++6:-1    1          "; local #layer.c="    RET
+*-0   5  "Nxt Pg"    
+#end
+
+#unused bloat_len 4 RES
+* 0 0  "BLOAT/"
+* 1 0  "SHRINK"
+* 2 0  "LENGTH"
+* 4 1  "KeyBrd"   "%"      RET
++5:-1 1 1:1       ""       RET
+*-0 1  "KeyBrd"   "%"      RET
+#end
+
+#unused tag_shell 10
+* 0  1  "DELETE"  "delete"              RET
+* 2  1  "VIEW"    "view "               view
+* 3  1  "select"  "view select"         RET
+* 4  1  "  in %"  "view in "            view_factor 
+* 5  1  " out %"  "view out "           view_factor 
+* 6  1  "   box"  "view box"            RET
+* 7  1  "  last"  "view last"           RET
+* 8  1  "   all"  "view all"            RET
+*10  1  "NEXT"    "@_drctag1; #op=next" RET
+*11  1  "PREV"    "@_drctag1; #op=prev" RET
+-12  1  "RETURN"  "return"              RET 
+#end
+
+#include "m1a.dat"

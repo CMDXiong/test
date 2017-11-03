@@ -1,0 +1,5 @@
+# Process file for GDS-II postprocessing tool
+startpoint  0.000000 0.000000
+#loadfile  C:/boolean/6.0/default/data/onlyholes.key key
+draw
+savefile onlyholes.cnc cnc

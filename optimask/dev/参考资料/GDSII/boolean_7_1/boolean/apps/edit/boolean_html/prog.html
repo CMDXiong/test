@@ -1,0 +1,217 @@
+<HTML>
+  <HEAD>
+    <TITLE>GDS-II Postprocessing Tool Help</TITLE>
+  </HEAD>
+
+  <BODY bgcolor="#66FFFF" text="#000000" link="#6666ff" alink="#999900" vlink="009999">
+<A name="top"></A> 
+<TABLE width=100% border=0 cellpadding=6 cellspacing=2>
+    <TR><TD bgcolor="#000000" align=middle valign=top>
+    <FONT color="#FFFF00" size=+3 face="Impact, Arial, Helvetica">GDS-II Postprocessing Tool Help</FONT>
+    </TD></TR>
+    </TABLE>
+
+    <FONT color="#000000" size=+1 face="Impact, Arial, Helvetica">
+    <CENTER>
+</CENTER>
+    </FONT>
+
+    
+<P> Info on how to use the program using the Graphical Interface 
+<P>Click in the picture below for help, or read <A href="#workingwith">here</A> 
+  some info on how to operate the program. 
+<P>
+
+    <CENTER>
+    <img src="pics/prog.gif" usemap="#gdsiiwindow" width=666 height=508 border=0><map name="gdsiiwindow"> 
+      <area shape="rect" coords="344,25,381,39" href="helpmenu.html"> <area shape="rect" coords="275,25,342,39" href="prefmenu.html"> 
+      <area shape="rect" coords="242,24,272,40" href="viewmenu.html"> <area shape="rect" coords="204,24,239,39" href="toolsmenu.html" target="main" alt="tools menu" title="tools menu"> 
+      <area shape="rect" coords="140,24,201,41" href="opermenu.html"> <area shape="rect" coords="93,24,139,41" href="groumenu.html"> 
+      <area shape="rect" coords="37,25,92,39" href="automenu.html"> <area shape="rect" coords="5,25,33,40" href="filemenu.html"> 
+      <area shape="rect" coords="459,184,587,385" href="mousemenu.html" alt="popup menu" title="popup menu"> 
+    </map> 
+  </CENTER>
+
+    <P>
+
+    <A name="workingwith">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Working with the GDS-II tool</FONT>
+    </TD></TR></TABLE>
+    The GDS-II Postprocessing Tool can be used to modify GDS-II files. It's also
+    possible to save files in other formats. There are a few things that you
+    should know when working with the program.
+
+    <UL>
+    <LI>Frequently used functions can be called using the <A
+    href="mousemenu.html">mouse-menu</A>. To let
+    the mouse-menu popup, click with the right mouse button in the window.
+    <LI>You can zoom in on a drawing. To do so, click the left mouse
+    button, in the picture, after releasing it the program will zoom in at this spot.
+    The new zoomfactor is visible in the statusbar. Zooming can be done until a zoomfactor of
+    approximately 1:100000 is reached. Then the text "Out of range" is placed
+    in the statusbar, and the picture is not drawn. Currently the zooming factor is 16.
+    <LI>Another way of zooming into a drawing is dragging using your left mouse
+    button, in the picture. A rectangle will appear. When the mouse button is
+    released, the program will zoom in on this rectangle. The new zoomfactor
+    is visible in the statusbar. Zooming can be done until a zoomfactor of
+    approximately 1:100000 is reached. Then the text "Out of range" is placed
+    in the statusbar, and the picture is not drawn.
+    
+  <LI>Zoom out again using the mouse-menu are shorcut keys.
+  <LI>You can also zoom back one step using the mouse-menu are shortcut keys.
+  <LI>To select elements and structures, hold the control-key while clicking
+    with the left mouse button in the picture. When on a particular spot in the
+    picture there two or more elements are overlapping, the smallest is selected. A group
+    of elements / structures can also be selected. Drag using your left mouse
+    button and the control-key. All structures and elements completely in the
+    rectangle are selected.
+    <LI>Deselecting works almost the same. Instead of the control-key, use the
+    shift-key.
+    <LI>While drawing is in progress, clicking the mouse (any button) will stop the drawing process.
+        So a direct zoom in (rectangle or point) can follow.
+    <LI>Drawing on the canvas starts with outlines always, at the same time a second canvas is
+	maintained in memory. When the complete drawing is finished or the drawing process is 
+	interupted with the mouse, this memory canvas is copied to the screen.
+      The reason is that if overlapping windows are on top of boolean and later put in the back etc.
+	the redrawing is using the memory canvas to redraw the boolean window. This is fast.
+    </UL>
+
+    <A name="shortcuts">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR>
+    <TD valign=middle align=left> <FONT face="Impact, Arial, Helvetica" size=+2>Using 
+      shortcuts and Tools</FONT></TD>
+  </TR></TABLE>
+	
+<p>Interactive drawing and editing is organized around toolcontroller, the toolcontroller 
+  maintains a stack of initiated tools. Every new tool is added to this stack. 
+  This makes it possible to draw e.g. a polygon and in the mean time zoom in to 
+  a specific area and draw some more points of the polygon. In the status bar 
+  is shown which tool is active at the moment and how many commands are on the 
+  stack.There are two kinds of behaviour for the tools, the first is continuous, 
+  the other oneshot. For instance pressing 'm' will put the moving tool on the 
+  stack, left clicking on a selected items and draging the mouse will move all 
+  selected items.The move tool will stay active until <b>'esc' </b>is pressed 
+  or <b>endcommand</b> from the popup menu is pressed. If we are in the zoom tool 
+  (first level), left clicking in a selected element will intiate the move tool 
+  for moving the selected items, and after this remove the move tool from the 
+  stack in order to return to zooming mode.</p>
+<p>In all tools the shit and control keys will start the select and deselect tools 
+  for one shot. As soon as the key is released we return back to the previous 
+  tool. </p>
+<p>Depending on the active tool, mouse clicks work different. In general editing 
+  tools work on selected elements only and will start at a left click in/on a 
+  selected element.</p>
+<p>The following short cuts are defined for the canvas. </p>
+<p>Select/Deselect keys:</p>
+<ul>
+  <li><b>s</b> select tool started (continuous)<br>
+    Left Down Click followed by dragging the mouse select all in rectangle<br>
+    Left Down followed by Left Up, select element at cursor.<br>
+  </li>
+  <li><b>d</b> deselect tool started (continuous)<br>
+    Left Down Click followed by dragging the mouse deselect all in rectangle<br>
+    Left Down followed by Left Up, deselect element at cursor.</li>
+  <li><b>u</b> unselect all elements (one shot)</li>
+  <li><b>shit key</b> select tool becomes active until released (oneshot)</li>
+  <li><b>cntrl key</b> deselect tool becomes active until released (oneshot)</li>
+</ul>
+<p>Function keys:</p>
+<UL>
+  <LI> F5 to show the mouse pop up menu (not very usefull, just a right mouse 
+    click does the same) 
+  <LI> F6 zoom back
+  <LI> F7 zoom out
+  <LI> F8 set relative start 
+  <LI> F9 calculate distance
+</UL>
+<p>Drawing keys (to draw primitives on the current insert layer which is visible 
+  in the status bar):</p>
+<ul>
+  <li><b>p</b> insert a polygon (continuous)<br>
+    Left Down Click for every vertex to add, Double click for end of polygon. 
+    <br>
+    PopUp Menu Undo removes vertexes one by one. <br>
+  </li>
+  <li><b>l</b> insert a polyline (continuous)<br>
+    Left Down Click for every vertex to add, Double click for end of polygon. 
+    <br>
+    PopUp Menu Undo removes vertexes one by one.<br>
+  </li>
+  <li><b>r</b> insert rectangle (continuous) <br>
+    Left Down Click followed by dragging the mouse.<br>
+  </li>
+  <li><b>i</b> insert circle starting at contour (continuous)<br>
+    Left Down Click followed by dragging the mouse. <br>
+  </li>
+  <li><b>o</b> insert circle starting at middle (continuous)<br>
+    Left Down Click followed by dragging the mouse. </li>
+</ul>
+<p>Edit keys:</p>
+<ul>
+  <li><b>e</b> edit of selected element at a left mouse click (as for as supported 
+    for that element) (continuous)</li>
+  <li><b>k</b> delete selected element at a left mouse click (continuous)</li>
+  <li><b>m</b> move selected elements (continuous)</li>
+  <li><b>c </b>copy selected elements (continuous)</li>
+  <li><b>t </b>rotate selected elements (continuous)</li>
+  <li><b>q</b> add/change properties which are attached to elements (continuous)</li>
+</ul>
+<p>Zooming/scrolling keys:</p>
+<ul>
+  <li><b>cursor up</b> scroll up</li>
+  <li><b>cursor down</b> scroll down</li>
+  <li><b>cursor left</b> scroll left</li>
+  <li><b>cursor right</b> scroll right</li>
+  <li><b>numeric pad -</b> zoom back (oneshot)</li>
+  <li><b>numeric pad +</b> zoom in using mouse (oneshot)</li>
+  <li><b>numeric enter</b> zoom out to total (oneshot)</li>
+  <li><b>f</b> zoom out to total (oneshot)</li>
+  <li><b>z</b> zoom in using mouse (continuous)</li>
+</ul>
+<P>
+    <A name="speedbar">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Using the speedbar</FONT>
+    </TD></TR></TABLE>
+    
+<p>The speedbar can be used to quickly execute frequently used commands. </p>
+<CENTER>
+  <p><img src="pics/speedbar.gif" width="346" height="30"></p>
+  <p align="left">Speedbar for drawing primitives and editing those primitives.</p>
+  <p><img src="pics/speedbar2.gif" width="437" height="33"></p>
+</CENTER>
+
+    <P>
+
+    <A name="statusbar">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Using the statusbar</FONT>
+    </TD></TR></TABLE>
+    In the statusbar info about the program and current file is available. The
+    bar is split in five sections:
+    <UL>
+    <LI>Info about command / info about current operation
+    
+  <LI>Insert Layer or Recording is visible when a processfile is being recorded 
+  <LI>The name of the current file
+    <LI>The current zoomfactor
+    <LI>The coordinates of the current point
+    </UL>
+    <P>
+    <CENTER>
+    <TABLE border=5 cellspacing=0 cellpadding=5 bgcolor="#c6c6c6">
+    <TR>
+      <TD><IMG src="pics/statusbar.gif" width="809" height="31" alt="Statusbar"></TD>
+    </TR>
+    </TABLE>
+    </CENTER>
+    
+<P>&nbsp; 
+</BODY>
+</HTML>
+

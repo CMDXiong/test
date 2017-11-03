@@ -1,0 +1,59 @@
+<html>
+<body>
+<pre>
+<h1>ﾋﾞﾙﾄﾞのﾛｸﾞ</h1>
+<h3>
+--------------------構成: gds - Win32 Release--------------------
+</h3>
+<h3>ｺﾏﾝﾄﾞ ﾗｲﾝ</h3>
+一時ﾌｧｲﾙ "C:\DOCUME~1\yuda\LOCALS~1\Temp\RSP8B4.bat" を作成し、次の内容を記録します
+[
+@echo off
+start /wait hcw /C /E /M "hlp\gds.hpj"
+if errorlevel 1 goto :Error
+if not exist "hlp\gds.hlp" goto :Error
+copy "hlp\gds.hlp" .\Release
+goto :done
+:Error
+echo hlp\gds.hpj(1) : error:
+type "hlp\gds.log"
+:done
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "C:\DOCUME~1\yuda\LOCALS~1\Temp\RSP8B4.bat" の作成中
+<h3>ｱｳﾄﾌﾟｯﾄ ｳｨﾝﾄﾞｳ</h3>
+ﾍﾙﾌﾟ ﾌｧｲﾙを作成しています...
+        1 個のファイルをコピーしました。
+一時ﾌｧｲﾙ "C:\DOCUME~1\yuda\LOCALS~1\Temp\RSP8B5.bat" を作成し、次の内容を記録します
+[
+@echo off
+if not exist Distrib mkdir Distrib
+copy Res\ReadMe*.txt Distrib
+copy Release\*.exe Distrib
+copy Release\*.cnt Distrib
+copy Release\*.hlp Distrib
+if exist Debug copy Release\*.cnt Debug
+if exist Debug copy Release\*.hlp Debug
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "C:\DOCUME~1\yuda\LOCALS~1\Temp\RSP8B5.bat" の作成中
+
+Res\ReadMeEnglish.txt
+Res\ReadMeJapanese.txt
+        2 個のファイルをコピーしました。
+Release\gds.exe
+        1 個のファイルをコピーしました。
+Release\gds.cnt
+        1 個のファイルをコピーしました。
+Release\GDS.HLP
+        1 個のファイルをコピーしました。
+Release\gds.cnt
+        1 個のファイルをコピーしました。
+Release\GDS.HLP
+        1 個のファイルをコピーしました。
+
+
+
+<h3>結果</h3>
+gds.exe - ｴﾗｰ 0、警告 0
+</pre>
+</body>
+</html>

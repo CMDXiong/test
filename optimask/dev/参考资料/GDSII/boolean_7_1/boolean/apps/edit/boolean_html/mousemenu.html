@@ -1,0 +1,180 @@
+<HTML>
+  <HEAD>
+    <TITLE>GDS-II Postprocessing Tool Help: Mouse menu</TITLE>
+  </HEAD>
+
+  <BODY bgcolor="#66FFFF" text="#000000" link="#6666ff" alink="#999900" vlink="009999">
+
+    <A name="top"></A>
+
+    <TABLE width=100% border=0 cellpadding=6 cellspacing=2>
+    <TR><TD bgcolor="#000000" align=middle valign=top>
+    <FONT color="#FFFF00" size=+3 face="Impact, Arial, Helvetica">Mouse menu</FONT>
+    </TD></TR>
+    </TABLE>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Overview</FONT>
+    </TD></TR></TABLE>
+
+        The mouse-menu provides a quick call to some frequently used functions. 
+To popup the mouse-menu, right click with your mouse anywhere in the canvas. <map name="mainwindow">
+  <area shape="rect" coords="13,165,107,182" href="#calcdist">
+  <area shape="rect" coords="15,81,78,94" href="#zoomout">
+  <area shape="rect" coords="15,63,78,77" href="#zoomback">
+      
+  <area shape="rect" href="#viewstruct"      coords="14,105,90,119" OnMouseOver="window.status='Modify factor settings'; return true" OnMouseOut="window.status=''; return true" alt="Brings up factor dialog">
+      
+  <area shape="rect" href="#viewlayers"  coords="13,123,89,137" OnMouseOver="window.status='Save only visible layers'; return true" OnMouseOut="window.status=''; return true" alt="Saves only screen contents">
+      
+  <area shape="rect" href="#setstart"     coords="14,148,86,162" OnMouseOver="window.status='Draw grid on screen'; return true" OnMouseOut="window.status=''; return true" alt="Shows a grid on screen">
+    </map>
+
+    <CENTER>
+    <TABLE border=5 cellspacing=1 cellpadding=10 bgcolor="#FFFFFF">
+      <TR>
+      <TD align=middle valign=middle> <A name="prefmenu"> <IMG src="pics/mousemenu.gif" USEMAP="#mainwindow" width=127 height=186 border=0> 
+        </A> </TD>
+    </TR>
+    </TABLE>
+    </CENTER>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+    <A name="zoomback">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Zoom back</FONT>
+    </TD></TR></TABLE>
+
+        When you zoomed in on the picture, use this command to zoom back.
+        Everytime it is clicked, it zooms back one step. This is possible until
+        the zoomfactor is 1. The <B>Zoom back</B> option becomes unavaible then.
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A HREF="commands.html#T_zoomback">zoomback</A>
+    </TD></TR></TABLE>
+
+    
+<P> <!-- New header --------------------------------------------------> <a name="zoomout"> 
+  </a>
+<TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Zoom out</FONT>
+    </TD></TR></TABLE>
+
+        To view the complete drawing again, after zooming in, click <B>Zoom out</B>.
+        This option is unavaible when the zoomfactor is 1.
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A HREF="commands.html#T_zoomout">zoomout</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+    <A name="viewstruct">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>View structure</FONT>
+    </TD></TR></TABLE>
+
+        The <B>View structure</B> option is also available in the
+        <A href="viewmenu.html#viewstr"><B>View menu</B></A>. Please go
+        there for an explanation.
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+    <A name="viewlayers">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>View layers</FONT>
+    </TD></TR></TABLE>
+
+        The <B>View layers</B> option is also available in the
+        <A href="viewmenu.html#layprop"><B>View menu</B></A>. Please go
+        there for an explanation.
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+    <A name="setstart">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Set relative start</FONT>
+    </TD></TR></TABLE>
+
+        <B>Set relative start</B> defines the first point that is used for
+        calculating distances. The second point can be set with the next item
+        in the mouse-menu: <A href="#calcdist"><B>Calculate distance</B></A>.
+        <P>
+        The starting point is set at (0,0) when the program is started, and
+        when a new file is loaded.
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A HREF="commands.html#T_startpoint">startpoint</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+    <A name="calcdist">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Calculate distance</FONT>
+    </TD></TR></TABLE>
+
+        This item calculates the absolute distance, the distance in x,
+        the distance in y and the angle from the start point to the current
+        point.
+        <P>
+        If not present already, this item brings up the following dialog:
+        <P>
+
+        <CENTER>
+        <IMG src="pics/distdlg.gif" width="483" height="282">
+        </CENTER>
+        <P>
+        Clicking the <B>Clear</B> button will remove all relative points and
+        set the start point at (0,0).
+        <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A HREF="commands.html#T_relativepoint">relativepoint</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+
+<!-- New header -------------------------------------------------->
+
+    <P>
+
+    <TABLE width=100% border=0 cellpadding=6 cellspacing=0>
+    <TR>
+    <TD bgcolor="#000000" align=left valign=top>
+    <A href="index.html"><FONT size=+1 face="Impact, Arial, Helvetica">Index</FONT></A>
+    </TD>
+    <TD bgcolor="#000000" align=right valign=top>
+    <A href="#top"><FONT size=+1 face="Impact, Arial, Helvetica">Top of page</FONT></A>
+    </TD>
+    </TR>
+    </TABLE>
+  </BODY>
+</HTML>

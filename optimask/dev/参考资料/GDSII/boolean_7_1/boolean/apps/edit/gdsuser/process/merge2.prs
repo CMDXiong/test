@@ -1,0 +1,7 @@
+# Process file for GDS-II postprocessing tool
+# Copyright 1995 Hollandse Signaal Apparaten
+
+group_a 02 false
+group_b empty
+destination 00
+merge

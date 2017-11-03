@@ -1,0 +1,12 @@
+This directory contains the source of several classes that are hard to put in other source pools.
+
+All interfacing menus,dialogs etc.
+only produce ascii string that are pased to the commandhandlers of the boolean core code.
+
+SEE:
+chandbas.cpp
+chandler.cpp
+
+cparser: basic command parser class, other parsers are derived from this.
+
+matrix and gdsvec: for matrix calculation in general.

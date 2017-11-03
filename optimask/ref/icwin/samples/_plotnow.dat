@@ -1,0 +1,224 @@
+!***************************************************************************
+! $OLD tells MkMenu to generate a menu for ICED32 (DOS).  An OLD menu can
+!      be used by both ICED and ICED32 as a command menu but cannot be used 
+!      to set macro values.  Menus names in $OLD menus are case sensitive,
+!      that is PLOT_MENU and plot_menu are concidered distinct names.  This
+!      is not true for new menus.
+!***************************************************************************
+!
+$NO_TOP
+!
+!***************************************************************************
+! $NO_TOP implies there is no default top level menu and that the menu cannot 
+!      be used as a command menu. 
+!
+! It is an error to set both the $OLD and $NO_TOP options simultaneously.
+!***************************************************************************
+!
+$ROWS=27
+!
+!***************************************************************************
+! $ ROWS=max_row specifies that Menu rows are numbered 0 thru max_row.
+! The following keywords are obsolete but can still be used in place of the
+! $ROWS=max_row statement.
+! $ VGA    implies 640 by 450 VGA   --  Menu rows numbered 0 thru 27
+! $ SUPER  implies 800 by 600 VGA   --  Menu rows numbered 0 thru 34
+! $ R1024A implies 1024 by 768 VGA  --  Menu rows numbered 0 thru 45
+! Default: $ROWS=27
+!***************************************************************************
+!
+!************************************************************************
+!
+!                        REQUIRED TOP LEVEL MENUS
+!
+! Unless the $NO_TOP option is specified, all four top level submenus:
+!      "top_nosel_angles",
+!      "top_nosel_45",
+!      "top_sel_angles" and
+!      "top_sel_45"
+! must be defined.  However, one menu can be used to define more than one 
+! top level menu as follows:
+!      A menu named "top" defines all four top level menus.
+!      A menu named "top_nosel" defines "top_nosel_angles" and "top_nosel_45".
+!      A menu named "top_sel" defines "top_sel_angles" and "top_sel_45".
+!      A menu named "top_angles" defines "top_nosel_angles" and 
+!         "top_sel_angles".
+!      A menu named "top_45" defines "top_nosel_45" and "top_sel_45".
+!  
+! It is an error to use these names in a way that they define a top level 
+!      menu more than once.
+!
+!************************************************************************
+!
+!************************************************************************
+!
+!                            PLOT Command
+!
+!************************************************************************
+
+#begin plotter_list 4  PLOT
+* 0  5   "Nxt Page"
+* 2  0   "PLOTTER"
++ 4:-1    1   "$AUX\*.PDF"  ""  RET  
+* -0 5   "Nxt Page"
+#end
+
+#begin pattern_list 4  FILES
+* 0  5   "Nxt Page"
+* 2  0   "PAT'RN"
++ 4:-1    1   "$AUX\*.STI"  "pattern="  RET
+* -0 5   "Nxt Page"
+#end
+
+#begin dots_list 4
+* 0  0   "SUPER-"
+* 1  0   "   PIXEL"
+* 2  0   "MODE"
++ 4  1   "1 DOT " "dots=1"   RET
++ 5  1   "4 DOTS" "dots=4"   RET
++ 6  1   "DITHER" "dither"   RET
+#end
+
+#begin size_list 3 PSIZE
+*1  0    "SIZE"
++3:-0     1   "size="        RET
+#end
+
+#begin option_levels 3
+* 1  0   "OPTIONS"
++ 3  1   "   none"   "0"   RET
++ 4  1   "   some"   "1"   RET
++ 5  1   "   most"   "2"   RET
++ 6  1   "    all"   "3"   RET
+#end
+
+#begin plot_layer_names 6 LAY1
+* 0  1  " By # "   ""      plot_layer_nos
+* 1  1  "KeyBrd"   "%"     RET
+* 2  8  "SetAll"
+* 3  7  "ClrAll"
+* 4  6  "Invert"
+* 5  9  "Return"   ""      RET
+* 6  5  "Nxt Pg"
++ 7:-1  0          ""      RET
+*-0  5  "Nxt Pg"
+#end
+
+#begin plot_layer_nos 6 LAY#1
+* 0  1  "By Name"   ""     plot_layer_names
+* 1  1  "KeyBrd"    "%"    RET
+* 2  8  "SetAll"
+* 3  7  "ClrAll"
+* 4  6  "Invert"
+* 5  9  "Return"    ""     RET
+* 6  5  "Nxt Pg"
++ 7:-1  0           ""     RET
+*-0  5  "Nxt Pg"
+#end
+
+#begin plot_layers  3
+* 1  0   "LAYERS"
++ 3  1   "   all"   ""         RET
++ 4  1   "layers"   "layers="  plot_layer_names 
+#end
+
+#begin nx_ny   4
+* 2   0  "NX NY"    
+* 3   1  "KeyBrd" "nx=% ny=%"  RET
++ 4   1  " 1  1"  ""           RET
++ 5   1  " 1  2"  "ny=2"       RET
++ 6   1  " 1  3"  "ny=3"       RET
++ 7   1  " 1  4"  "ny=4"       RET
++ 9   1  " 2  1"  "nx=2"       RET
++10   1  " 2  2"  "nx=2 ny=2"  RET
++11   1  " 2  3"  "nx=2 ny=3"  RET
++12   1  " 2  4"  "nx=2 ny=4"  RET
++14   1  " 3  1"  "nx=3"       RET
++15   1  " 3  2"  "nx=3 ny=2"  RET
++16   1  " 3  3"  "nx=3 ny=3"  RET
++17   1  " 3  4"  "nx=3 ny=4"  RET
++19   1  " 4  1"  "nx=4"       RET
++20   1  " 4  2"  "nx=4 ny=2"  RET
++21   1  " 4  3"  "nx=4 ny=3"  RET
++22   1  " 4  4"  "nx=4 ny=4"  RET
+*23   1  "KeyBrd" "nx=% ny=%"  RET
+#end
+
+#begin halos  3
+* 0   0  "TEXT"
+* 1   0  "HALOS"
++ 3   1  "   on"    "text_highlights=on"   RET
++ 4   1  "  off"    "text_highlights=off"  RET
+#end
+
+#begin rotate 4
+* 0   0  "ROTATE"
++ 2   1  "  0"     "R0"        RET  
++ 3   1  "  1"     "R1"        RET 
++ 4   1  " best"   ""          RET
+#end
+
+#begin filter 4
+* 0   0  "FILTER"
+* 1   0  " SIZE"
+* 3   1  "KeyBrd"   "filter=%"      RET
++ 4   1  " none"    ""              RET
++ 5   1  "  1.0"    "filter=1.0"    RET
++ 6   1  "  2.0"    "filter=2.0"    RET
++ 7   1  "  5.0"    "filter=5.0"    RET
++ 8   1  " 10.0"    "filter=10.0"   RET
++ 9   1  " 20.0"    "filter=20.0"   RET
++ 10  1  " 50.0"    "filter=50.0"   RET
+* 11  1  "KeyBrd"   "filter=%"      RET
+#end
+
+#begin cell_depth  4  N
+* 0   0  " CELL"
+* 1   0  " DEPTH"
+* 2   0  " LIMIT"
++ 4   1  " none"    ""              RET  
++ 5:21 1 0:1:17     "depth="        RET
+#end
+
+#begin outline_depth  4  N
+* 0   0  " OUTLINE"
+* 1   0  " DEPTH"
+* 2   0  " LIMIT"
++ 4   1  " none"    ""              RET
++ 5:21 1 0:1:17     "out="          RET
+#end
+
+#begin array_mode  4
+* 0   0  "ARRAY"
+* 1   0  "MODE"
++ 3   1  "blank"    "array_mode=blank"   RET
++ 4   1  "sides"    "array_mode=sides"   RET
++ 5   1  " full"    "array_mode=full"    RET
+#end
+
+#begin text_orient 3
+* 0   0  "TEXT PLOT"
+* 1   0  "ORIENTAIONS"
++ 3   1  "2:vert+hori"        "text_orientations=2"   RET
++ 4   1  "4:all rot's"        "text_orientations=4"   RET
++ 5   1  "8:4+mirror"         "text_orientations=8"   RET
+#end
+
+#begin cell_labels 3
+* 0   0  " CELL"
+* 1   0  "LABELS"
++ 3   1  "    on"    "cell_labels=on"   RET
++ 4   1  "   off"    "cell_labels=off"  RET
+#end
+
+#begin scale 4
+* 2   0  "ALL"
++ 3   1  "  metric"  "  metric all=%"       RET
++ 4   1  " english"  "  english all=%"      RET
+* 6   0  "PRESCALE"
++ 7   1  "  metric"  "  metric prescale=%"  RET
++ 8   1  " english"  "  english prescale=%" RET
+*10   0  "SCALE" 
++11   1  "  metric"  "  metric scale=%"     RET
++12   1  " english"  "  english scale=%"    RET
+#end

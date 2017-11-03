@@ -1,0 +1,6073 @@
+<HTML>
+<HEAD>
+   <TITLE>Command Documentation</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#66FFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+    <A name="TOP" target="main"></A>
+
+    <TABLE width=100% border=0 cellpadding=6 cellspacing=2>
+    <TR><TD bgcolor="#000000" align=middle valign=top>
+    <FONT color="#FFFF00" size=+3 face="Impact, Arial, Helvetica">Command Documentation</FONT>
+    </TD></TR>
+    </TABLE>
+
+    
+<CENTER>
+  <p>&nbsp;</p>
+  <p align="left"><font color="#000000">This is the Command documentation. Ascii 
+    Commands are used by the graphical Interface to do almost anything.</font></p>
+  <p align="left"><font color="#000000">The same commands are used in the commandline 
+    version of Boolean to operate the program.<br>
+    Also the commands can be used in the execdialog in the <a href="automenu.html#execution" target="main">Graphical 
+    Version</a> to Operate the program.</font></p>
+</CENTER>
+<CENTER>
+  <TD valign=top>&nbsp; </TD>
+  <TR> 
+    <TD valign=top>&nbsp; </TD>
+    <TD valign=top>&nbsp; </TD>
+    <TD valign=top>&nbsp; </TD>
+  </TR>
+  <TR> 
+    <TD valign=top>&nbsp; </TD>
+    <TD valign=top>&nbsp; </TD>
+    <TD valign=top>&nbsp; </TD>
+  </TR>
+  <TR> 
+    <TD valign=top>&nbsp; </TD>
+    <TD valign=top>&nbsp; </TD>
+    <TD valign=top>&nbsp; </TD>
+  </TR>
+  <TR> 
+    <TD valign=top>&nbsp; </TD>
+  </TR>
+  <BR clear=all>
+</CENTER>
+<H2>
+<A NAME="commandbnf" target="main"></A>Command Parser BNF</H2>
+<PRE>
+&lt;commands>         ::= [&lt;blanks>] { { &lt;command> }* }
+
+&lt;command>          ::= [&lt;blanks>] {&lt;comment> | {&lt;word> {&lt;blanks> | &lt;endcommand}}* }*
+
+&lt;endcommand>       ::= {';' | '\n' | '\0' }
+
+&lt;word>             ::= { &lt;quotedstring> | &lt;bracedstring> | &lt;multipartword> }
+
+&lt;quotedstring>     ::= ('"') {CHAR | '\"' | '\\n' | aliasref | envref }* ('"')
+
+&lt;bracedstring>     ::= ('{') {CHAR | '\{' | '\}' | '\\n'}* ('}')
+
+&lt;multipartword>    ::= { &lt;aliasref> | &lt;envref> | {CHAR | '\\n'}* }*
+
+&lt;aliasref>         ::= ('%') { &lt;name> &lt;blank> | ('{') &lt;name> ('}') }
+
+&lt;envref>           ::= ('$') { &lt;name> &lt;blank> | ('{') &lt;name> ('}') }
+
+&lt;name>             ::= { LETTER | DIGIT | UNDERSCORE | MINUS }*
+
+&lt;blanks>           ::= { TAB | SPACE | '\\n'}*
+
+&lt;comment>          ::= # {CHAR}* ('\0')
+
+note:
+	[ ]	entity CAN occur zero or more times
+	( )	entity MUST occur
+	{ }	pick one of the entities within the braces
+	{ }*	entities within the braces CAN occur zero ore more times
+	{ }+	entities within the braces MUST occur one ore more times
+         |      OR
+</PRE>
+
+<HR size=3 noshade width=600 ALIGN=LEFT>
+
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#333333">
+<TR><TD align=middle valign=middle><FONT COLOR="#FFFF66"><H1>
+<A NAME="help" target="main"></A>Help
+</H1></FONT>
+<P align=right><A href="#TOP" target="main"><FONT COLOR="#FFFF66">Top</font></A></TD></TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_help" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>help</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Show help screen</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">help
+[&lt;command>]</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This command shows help on the available commands.
+    <BR>
+    Help without a command shows a list of all valid commands.
+    <BR>
+    Help with a command shows help on that command.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    help help (see this:)
+    <BR> 
+    help (see all commands)
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_showkeybnf" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>showkeybnf</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Show the Bachus Nauer Form of Key format</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">showkeybnf</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This command shows the Bachus Nauer Form of the Key format.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    showkeybnf
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_showprocessbnf" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>showprocessbnf</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Show Bachus Nauer Form of process files</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">showprocessbnf</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This command shows the Bachus Nauer Form of the process file format.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    showprocessbnf
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_showcommandbnf" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>showcommandbnf</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Show Bachus Nauer Form of commands</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">showcommandbnf</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This command shows the Bachus Nauer Form of the command structure.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    showcommandbnf
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<HR size=3 noshade width=600 align=left>
+
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#333333">
+<TR><TD align=middle valign=middle><H1><FONT COLOR="#FFFF66">
+<A NAME="aliases" target="main"></A>Global variables
+</FONT></H1>
+<P align=right><A href="#TOP" target="main"><FONT COLOR="#FFFF66">Top</font></A></TD></TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_aliasname" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>setalias</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set alias</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">setalias aliasname string</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Creates an internal alias "aliasname" with value "string"
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    setalias gdsuser %GDSROOT/gdsuser
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+     String can contain reference to other aliases and environment variables.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_subst_alias" target="main">%{}</A> for referencing an alias
+    <BR>  
+    <A HREF="#T_showalias" target="main">showalias</A> for displaying the alias list
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_env_var" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>setenv</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set environment-variable</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">setenv env-name string</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Creates an environment-variable "env-name" with value "string"
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+  setenv HOME .
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    The environment, from which the program was started, is only modified during execution.<BR>
+    String can contain reference to other aliases and environment variables.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_subst_env" target="main">${}</A> for usage of environment strings
+    <BR>
+    <A HREF="#T_showenv" target="main">showenv</A> for displaying environment-variable
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_subst_alias" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>%{} and %</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Use/Substitute alias</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">See <A href="#commandbnf" target="main">Command BNF</A></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Substitutes the internal alias "aliasname" with a string  assigned earlier to this alias.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    loadfile %{datadir}myfile.cal
+    <BR>
+    loadfile %{setupfile}
+    <BR>
+    loadfile %{GDSROOT}/%HOME/myfile.cal gds-ii
+    <BR>
+    %{COMMANDALIAS} arguments
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    An alias can contain an empty string, but the alias MUST exist.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_showalias" target="main">showalias</A> for displaying the alias list
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_subst_env" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>${} and $</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Use/Substitute environment-variable</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">See </FONT></I><A href="#commandbnf" target="main"><I><FONT COLOR="#CC0000">Command BNF</font></i>
+  </a></TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Substitutes environment-variable "envname" with the stored string
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    loadfile ${datadir}myfile.cal gds-ii
+    <BR>
+    loadfile $GDSROOT/${HOME}/myfile.cal gds-ii
+    <BR>
+    ${DOLLARVARIABLE} argument
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    An environment variable can contain an empty string, but the variable MUST exist.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_showalias" target="main">showenv</A> for displaying an environment-variable
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_showalias" target="main"></a>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>showalias</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Show alias</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">showalias [&lt;alias>]</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    The showalias command, without an alias(name), shows
+    all defined aliases. The showalias command with a name
+    shows that alias.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    showalias datadir
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_aliasname" target="main">setalias</A> and <A HREF="#T_subst_alias" target="main">%{}</A> for defining and substituting aliases
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_showenv" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>showenv</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Show environment variable (use capital letters for name)</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">showenv &lt;environment_variable></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    The showenv command shows the contents of the
+    &lt;environment_variable> variable.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    showenv HOME
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    Environment variables MUST be typed in CAPTAL letters.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_env_var" target="main">setenv</A> and <A HREF="#T_subst_env" target="main">${}</A> for defining and substituting environment variables.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<HR size=3 noshade width=600 align=left>
+
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#333333">
+<TR><TD align=middle valign=middle><H1><FONT COLOR="#FFFF66">
+<A NAME="dialog" target="main"></A>Input Dialogs
+</FONT></H1>
+<P align=right><A href="#TOP" target="main"><FONT COLOR="#FFFF66">Top</font></A></TD></TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_askfile" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>askfile</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Ask for a filename</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">askfile "&lt;TITLE> &lt;DIALOG-TYPE> &lt;FILE-MASKS> </FONT></I>
+<BR><I><FONT COLOR="#CC0000"> &lt;DEF-DIR> &lt;DEF-EXT> &lt;FILE-ALIAS>"</FONT></I>
+<BR><I><FONT COLOR="#CC0000"> Title
+Title of dialog box</FONT></I>
+<BR><I><FONT COLOR="#CC0000"> Dialog-type
+Type of dialog box (OPEN or SAVE)</FONT></I>
+<BR><I><FONT COLOR="#CC0000"> File-masks
+Mask for file listbox (All|*.*|Key-files|*.key)</FONT></I>
+<BR><I><FONT COLOR="#CC0000"> Def-dir
+Directory to start in</FONT></I>
+<BR><I><FONT COLOR="#CC0000"> Def-ext
+File-extention to show</FONT></I>
+<BR><I><FONT COLOR="#CC0000"> File-alias
+alias to put filename in</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Shows a dialog, with drive, directory and file boxes,
+    to select or enter a file. For the selected file an alias
+    is created (&lt;File-alias>) containing the file name.
+    <BR>
+    This mechanism is used to be able to load or save the file from
+    a process file by using the alias.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    askfile "Open GDS-II file OPEN GDS-II|*.gds;*.cal|All|*.*| C:\DATA\ CAL gdsfile"
+    <BR>
+    (followed by, for example, '<A HREF="#T_loadfile" target="main">loadfile</A> %{selectedfile}')
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Notes:
+  </TD>
+  <TD VALIGN=TOP>
+    Double-quotes are optional, use them when your string
+    contains special characters, such as ';' (end of command)
+    <BR>
+    All of the contents of the dialog apply to the window version,
+    the commandline version only shows the title and directory.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_ask" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>ask</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Ask</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">ask
+"&lt;TITLE> &lt;ALIAS>"</FONT></I>
+<BR><I><FONT COLOR="#CC0000"> Title
+Title of the input dialog</FONT></I>
+<BR><I><FONT COLOR="#CC0000"> Alias
+alias to put the input into</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Asks for input
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    ask "Please give me some input,inputdata"
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<HR size=3 noshade width=600 align=left>
+
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#333333">
+<TR><TD align=middle valign=middle><H1><FONT COLOR="#FFFF66">
+<A NAME="loadsave" target="main"></A>Load / Save Commands
+</FONT></H1>
+<P align=right><A href="#TOP" target="main"><FONT COLOR="#FFFF66">Top</font></A></TD></TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_showfilename" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>showfilename</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Show filename</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">showfilename</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Show the name of the file in memory.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    showfilename
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_savevisible" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>savevisible</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Only save visible structures</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">savevisible &lt;0>|&lt;1></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    When savevisible 1, only the layers visibile on screen are saved when using
+    the <A href="#T_savefile" target="main">savefile</A> command.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    savevisible 0
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    When writing to a file, the current file remains in memory, to prevent data-loss.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_loadfile" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>loadfile</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Load a file</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">loadfile &lt;FILENAME> &lt;FILETYPE></FONT></I>
+        <BR><I><FONT COLOR="#CC0000">
+        Filename Path + name of the file</FONT></I>
+        <BR><I><FONT COLOR="#CC0000">
+        Filetype Type of file (gds-ii, key or flash)</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Loads a file
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    loadfile %{datadir}one.lay key<BR>
+    loadfile /home/klaas/gdsuser/data/combiner.gds gds-ii
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    File type must be specified at all times. The extension can be anything at all.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_savefile" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>savefile</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Save a file</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">savefile &lt;FILENAME> &lt;FILETYPE></FONT></I>
+        <BR><I><FONT COLOR="#CC0000">
+        Filename Path + name of the file</FONT></I>
+        <BR><I><FONT COLOR="#CC0000"> Filetype
+        Filetype Type of file (gds-ii, key or flash)</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Saves a file
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    savefile %{datadir}one.lay key
+   <BR>
+   savefile /home/klaas/gdsuser/data/combiner.gds gds-ii
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    File type must be specified at all times. The extension can be anything at all.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_mergefile" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>mergefile</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Merge a file</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">mergefile &lt;FILENAME> &lt;FILETYPE></FONT></I>
+        <BR><I><FONT COLOR="#CC0000">
+        Filename Path + name of the file</FONT></I>
+        <BR><I><FONT COLOR="#CC0000">
+        Filetype Type of file (gds-ii, key or flash)</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Loads a file and merges it with the one in memory
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    mergefile %{datadir}one.lay key
+    <BR>
+    mergefile /home/klaas/gdsuser/data/combiner.gds gds-ii
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    File type must be specified at all times. The extension can be anything at all.
+    <BR>
+    This operation is only available when a file is in memory.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_closefile" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>closefile</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Close file</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">closefile</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Close the current (data)file
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_loadsetup" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>loadsetup</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Load setupfile</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">loadsetup &lt;file></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Load a setup or configuration file
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    loadsetup %{setupfile}
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    This function parses a setupfile like a processfile,
+    but other aliases are set
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_savesetup" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>savesetup</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Save setupfile</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">savesetup &lt;file></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Save a setup or configuration file
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    loadsetup %{setupdir}mysetup.set
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_loadprocess" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>loadprocess</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Load processing file</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">loadprocess
+&lt;file></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Execute a processing file. This is a file containing pre-recorded
+    commands and can be used as a macro.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    loadprocess %{procdir}automatic.prs
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    Settings may/can be changed during execution.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_record" target="main">record</A> for creating process files
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_record" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>record</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Start/Stop recording a processing file</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">record
+&lt;filename> (start)</FONT></I>
+<BR><I><FONT COLOR="#CC0000"> record
+(stop)</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Start/Stop process recording. This function is used to record
+    a macro file. While recording all (executed) actions are recorded
+    to the file.<BR>
+    When executing a process file, the record command will be ignored.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    record %{procdir}nothing.prs
+    <BR> 
+   record
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    This function rudely overwrites an existing file (if it can).
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_loadprocess" target="main">loadprocess</A> for executing process files
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<HR size=3 noshade width=600 align=left>
+
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#333333">
+<TR><TD align=middle valign=middle><H1><FONT COLOR="#FFFF66">
+<A NAME="keystrings" target="main"></A>Reading Key strings
+</FONT></H1>
+<P align=right><A href="#TOP" target="main"><FONT COLOR="#FFFF66">Top</font></A></TD></TR>
+</TABLE>
+
+<P>
+
+
+<A NAME="T_keystring" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>keystring</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Enables drawing with processfile</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">keystring '{' (&lt;key-file elements>)* '}'</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    For info, see the <A href="bnf.html#keybnf" target="main">Bachus Nauer Forms</A> for the Key format.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+<PRE>
+keystring {CIRCLE; LAYER 0;  WIDTH 0;  XY 1;\
+   X 620.714; Y  188.116;   RADIUS 156.3;\
+ENDEL;\
+BOX; LAYER 0;  BOXTYPE 0;  WIDTH 0;  XY 5;\
+   X 0;       Y 0;	X 500;	 Y 0;\
+   X 500;     Y 500;	X 0;     Y 500;\
+   X 0;       Y 0;  \
+ENDEL;\
+TEXT; LAYER 0; \
+TEXTTYPE 0; PRESENTATION 0,2,1; STRANS 0,0,0; MAG 400; \
+   XY 1; \
+   X   1030000.000; Y  329000.000; \
+STRING "here some text"; \
+ENDEL;\
+PATH; LAYER 0; DATATYPE 0; WIDTH 100000; \
+   XY 4; \
+   X  57000.000; Y  70000.000;   X  160000.000; Y  70000.000;   \
+   X 257000.000; Y 270000.000;   X 2160000.000; Y 270000.000;   \
+ENDEL;\
+BOUNDARY; LAYER 0;  DATATYPE 0; WIDTH 25000; \
+   XY 7; \
+   X   500000;  Y     89170;   X  500000; Y    0000;   \
+   X     0000;  Y      0000;   X    0000; Y  500000;   \
+   X   500000;  Y    500000;   X  500000; Y  287060;   \
+   XM  773100;  YM   222900;   XO 620834; YO 188115;   \
+   X   500000;  Y     89170; \
+ENDEL;}
+
+# Elements can be placed together in one key string like above, 
+# or seperate like below. Comment lines can also be added
+# (like this ;-)
+
+keystring {ARC; LAYER 0;  DATATYPE 0; WIDTH 100000;\
+   XY 2; \
+   X  1500000;  Y   287060; \
+   XM 1773100;  YM  222900;  XO  1620834; YO 188115;   \
+   X  1500000;  Y    89170; \
+ENDEL;}
+</PRE>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    Only the elements from Key files can be used inside a key string.<BR>
+    The key elements are seperated by a semi-colon or a backslash character to continue on the next line.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_defaultunit" target="main">defaultunit</A> for specifying the default unit.<BR>
+    <A HREF="#T_defaultaccur" target="main">defaultaccur</A> for specifying the default accuracy.<BR>
+    <A HREF="bnf.html#keybnf" target="main">Key Bachus Nauer</A>. 
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_defaultaccur" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>defaultaccur</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Sets the default accuracy</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">defaultaccur &lt;number></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Sets the default accuracy. This is used when a process file with key strings
+    is read. When a file is in memory, the accuracy from that file is used. If
+    not, the accuracy 'defaultaccur' will be used. Using a value of 0.01 means
+    that two figures behind the comma will be displayed.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+   defaultaccur 0.01
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    This value is only used when there's no file in memory.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_defaultunit" target="main">defaultunit</A> for specifying the default unit.<BR>
+    <A HREF="#T_keystring" target="main">keystring</A> for drawing with a process file.<BR>
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_defaultunit" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>defaultunit</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Sets the default unit</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">defaultunit &lt;unit>
+	<BR>&lt;unit> in: pm, nm, um, mm, cm, dm, m, e, inch, ft</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Sets the default unit. This is used when a process file with key strings
+    is read. The numbers in the file will be interpreted with 'defaultunit' as
+    multiplier instead of meters (=1).
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    defaultunit um
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_defaultaccur" target="main">defaultaccur</A> for specifying the default accuracy.<BR>
+    <A HREF="#T_keystring" target="main">keystring</A> for drawing with a process file.<BR>
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<HR size=3 noshade width=600 align=left>
+
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#333333">
+<TR><TD align=middle valign=middle><H1><FONT COLOR="#FFFF66">
+<A NAME="settings" target="main"></A>Setting Operation Parameters
+</FONT></H1>
+<P align=right><A href="#TOP" target="main"><FONT COLOR="#FFFF66">Top</font></A></TD></TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_selected" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>selected</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set Selected only flag</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">selected &lt;0>|&lt;1></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    When selected 1, the operations which don't need groups are performed only on selected
+    structures.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    selected 1
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A href="#T_delete" target="main">delete</A>, <A href="#T_flatten" target="main">flatten</A>, <A href="#T_validate" target="main">validate</A> and <A href="#T_transform" target="main">transform</A>.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_showfactors" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>showfactors</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Show factor settings</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">showfactors</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Shows the current factor settings
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    showfactors
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    Factors:
+    <A HREF="#T_selectmarge" target="main">selectmarge</A>,
+    <A HREF="#T_snapfactor" target="main">snapfactor</A>,
+    <A HREF="#T_correctionfactor" target="main">correctionfactor</A>,
+    <A HREF="#T_roundfactor" target="main">roundfactor</A>,
+    <A HREF="#T_correctionaber" target="main">correctionaber</A>,
+    <A HREF="#T_roundtype" target="main">roundtype</A>,
+    <A HREF="#T_toarcrmin" target="main">toarcrmin</A>,
+    <A HREF="#T_toarcrmax" target="main">toarcrmax</A>,
+    <A HREF="#T_arcaccur" target="main">arcaccur</A>,
+    <A HREF="#T_polyaccur" target="main">polyaccur</A>,
+    <A HREF="#T_smoothaccur" target="main">smoothaccur</A>,
+    <A HREF="#T_maxlinemerge" target="main">maxlinemerge</A>,
+    <A HREF="#T_displayaber" target="main">displayaber</A>,
+    <A HREF="#T_structhres" target="main">displayaber</A>,
+    <A HREF="#T_primthres" target="main">displayaber</A>
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_selectmarge" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>selectmarge</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set selectmarge</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">selectmarge &lt;number></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    The purpose of 'selectmarge' is that a user doesn't have to click
+    exactly on a polygon to select it. 'Selectmarge' defines the percentage
+    of the screenwidth a user can click next to a polygon and still select it.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    selectmarge 0.01
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_snapfactor" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>snapfactor</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set snapfactor</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">snapfactor &lt;number> [&lt;unit>]</FONT></I>
+    <BR><I><FONT COLOR="#CC0000"> &lt;unit> in: pm, nm, um, mm, cm, dm, m, e, inch, ft</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    At the beginning of a logical operation (i.e. AND, OR...)
+    polygon segments shorter than 'snapfactor' are removed.
+    Polygons that are closer to eachother than 'snapfactor'
+    are connected to eachother.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    snapfactor {1.0 um}<BR>
+    snapfactor 1.0um
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_correctionfactor" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>correctionfactor</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set correctionfactor</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">correctionfactor
+&lt;number> [&lt;unit>]</FONT></I>
+<BR><I><FONT COLOR="#CC0000"> &lt;unit> in: pm,
+nm, um, mm, cm, dm, m, e, inch, ft</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This variable is used by the correction and makering functions,    
+    which create a ring around the polygons. For correction, this
+    factor determines the width by which the polygon is enlarged
+    or shrinked. A positive correctionfactor enlarges the polygon
+    and a negative shrinks it. For makering, this factor determines
+    half the width (radius) of the ring. The boundaries of the ring
+    are this size smaller and larger than the original polygon.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    correctionfactor {5.5 um}<BR>
+    correctionfactor 5.5um
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_correctionaber" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>correctionaber</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set correctionaber</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">correctionaber &lt;number> [&lt;unit>]</FONT></I>
+<BR><I><FONT COLOR="#CC0000">
+&lt;unit> in: pm, nm, um, mm, cm, dm, m, e, inch, ft</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This variable is used when creating a ring around the boundaries
+    of a polygon. It determines the accuracy of the segments of the ring.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    correctionaber {1.0 um}<BR>
+    correctionaber 1.0um
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_roundfactor" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>roundfactor</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set roundfactor</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">roundfactor
+&lt;number></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This variable is used when rounding sharp corners. An arc is
+    calculated at the sharp edge of a polygon. If the distance
+    of the sharp edge to the midpoint of arc is longer than arc-
+    radius&nbsp;*&nbsp;roundfactor, then the edge is replaced by the arc.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    roundfactor 1.5
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_roundtype" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>roundtype</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set roundtype</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">roundtype &lt;circle>|&lt;medial></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This variable specifies the rounding type when creating a
+    ring around a sharp edge. The rounding type is used when
+    the distance of the new edge to the original is longer than
+    '<A HREF="#T_roundfactor" target="main">roundfactor</A>' * '<A HREF="#T_correctionfactor" target="main">correctionfactor</A>'. The circles must fit inside
+    the enlarged/shrinked polygon.
+    The Circle type creates a circle with the old edge as midpoint
+    and '<A HREF="#T_correctionfactor" target="main">correctionfactor</A>' as radius.
+    The Medial type creates a circle on the line between the old
+    and new edge. The far most crossing of this circle with this
+    help-line is laying at a distance of '<A HREF="#T_roundfactor" target="main">roundfactor</A>' *
+    '<A HREF="#T_correctionfactor" target="main">correctionfactor</A>' from the old edge.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    roundtype circle
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    ! This is NOT implemented yet ! Only Circle type is used !
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_toarcrmin" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>toarcrmin</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set toarcrmin</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">toarcrmin
+&lt;number> [&lt;unit>]</FONT></I>
+<BR><I><FONT COLOR="#CC0000">
+&lt;unit> in: pm, nm, um, mm, cm, dm, m, e, inch, ft</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This variable is used by the polygon to arc conversion
+    function, and specifies the minimum radius of an arc.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    toarcrmin {50 um}<BR>
+    toarcrmin 50um
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_toarcrmax" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>toarcrmax</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set toarcrmax</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">toarcrmax &lt;number> [&lt;unit>]</FONT></I>
+<BR><I><FONT COLOR="#CC0000">
+&lt;unit> in: pm, nm, um, mm, cm, dm, m, e, inch, ft</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This variable is used by the polygon to arc conversion
+    function, and specifies the maximum radius of an arc.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    toarcrmax {10 cm}<BR>
+    toarcrmax 10cm
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_arcaccur" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>arcaccur</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set arcaccur</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">arcaccur &lt;number> [&lt;unit>]</FONT></I>
+<BR><I><FONT COLOR="#CC0000">
+&lt;unit> in: pm, nm, um, mm, cm, dm, m, e, inch, ft</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This variable is used by the polygon to arc conversion
+    function, and specifies the maximum abberation of an arc
+    to the original line-pieces.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    arcaccur {25 um}<BR>
+    arcaccur 25um
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_polyaccur" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>polyaccur</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set polyaccur</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">polyaccur &lt;number> [&lt;unit>]</FONT></I>
+<BR><I><FONT COLOR="#CC0000">
+&lt;unit> in: pm, nm, um, mm, cm, dm, m, e, inch, ft</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This variable is used by the arc/circle to polygon conversion
+    function, and specifies the maximum abberation of a polygon
+    to the original arc/circle.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    polyaccur {1 um}<BR>
+    polyaccur 1um
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_smoothaccur" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>smoothaccur</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set smoothaccur</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">smoothaccur
+&lt;number> [&lt;unit>]</FONT></I>
+<BR><I><FONT COLOR="#CC0000">
+&lt;unit> in: pm, nm, um, mm, cm, dm, m, e, inch, ft</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This variable is used by the smoothen function, and specifies
+    the maximum abberation the new polygon may have to the original.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    smoothaccur {5 um}<BR>
+    smoothaccur 5um
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_maxlinemerge" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>maxlinemerge</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set maxlinemerge</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">maxlinemerge &lt;number> [&lt;unit>]</FONT></I>
+<BR><I><FONT COLOR="#CC0000">
+&lt;unit> in: pm, nm, um, mm, cm, dm, m, e, inch, ft</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This variable is used by the smoothen function, and specifies
+    the maximum length of a line-pieces where other lines may be
+    merged to.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    maxlinemerge {5000 um}<BR>
+    maxlinemerge 5000um
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_displayaber" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>displayaber</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set displayaber</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">displayaber &lt;number> [&lt;unit>]</FONT></I>
+<BR><I><FONT COLOR="#CC0000"> &lt;unit> in: pm, nm, um,
+mm, cm, dm, m, e, inch, ft</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This variable is used by the screendriver, and specifies
+    the accuracy of displayed arcs and circles. Internally
+    they are converted to line-pieces. This variable is the
+    display version of '<A HREF="#T_polyaccur" target="main">polyaccur</A>', which is the operation
+    version. Too see the effect of a change in value,
+    redraw the screen.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    displayaber {5 um}<BR>
+    displayaber 5um
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+<A NAME="T_structhres" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>structhres</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set structure drawing threshold</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">structhres &lt;number> </FONT></I>
+<BR><I><FONT COLOR="#CC0000">&lt;number> integer number specifying pixels</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This variable is used by the screendriver, and specifies when a structure will be drawn.
+	If the structure boundingbox on the screen is less then the given number of pixels on 
+	the screen, only the boundingbox will be drawn. For huge drawings this will increase the drawing speed.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    structhres 100<BR>
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+<A NAME="T_primthres" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>primthres</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set primitive drawing threshold</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+    <TD VALIGN=TOP> <I><FONT COLOR="#CC0000">primthres &lt;number &lt;true | false&gt;</FONT></I> 
+      <BR>
+      <I><FONT COLOR="#CC0000">&lt;number> integer number specifying pixels</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This variable is used by the screendriver, and specifies when a primitive will be drawn.
+	If the primitive boundingbox on the screen is less then the given number of pixels on 
+	the screen, only the boundingbox will be drawn if the second parameter is True.
+	If the second parameter is False nothing will be drawn.
+	 For huge drawings this will increase the drawing speed.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    primthres 5<BR>
+  </TD>
+</TR>
+</TABLE>
+
+
+<HR size=3 noshade width=600 align=left>
+
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#333333">
+<TR><TD align=middle valign=middle><H1><FONT COLOR="#FFFF66">
+<A NAME="transset" target="main"></A>Setting Transformation Parameters
+</FONT></H1>
+<P align=right><A href="#TOP" target="main"><FONT COLOR="#FFFF66">Top</font></A></TD></TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_mirrorx" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>mirrorx</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set mirror in X-axis on/off</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">mirrorx &lt;0>|&lt;1></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Mirrorx sets the option for the <A href="#T_transform" target="main">transform</A> and <A href="#T_transform_a" target="main">transform_a</A> operations to mirror structures in the X-axis.</TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    mirrorx 0
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    If the polygons are visible but not filled, check the fill-
+    color and pattern. This only applies to the window version.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_mirrory" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>mirrory</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set mirror in Y-axis on/off</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">mirrory &lt;0>|&lt;1></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Mirrory sets the option for the <A href="#T_transform" target="main">transform</A> and <A href="#T_transform_a" target="main">transform_a</A> operations to mirror structures in the Y-axis.</TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    mirrory 1
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    If the polygons are visible but not filled, check the fill-
+    color and pattern. This only applies to the window version.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_movehor" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>movehor</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set movehor amount</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">movehor
+        &lt;number> [&lt;unit>]
+	<BR>&lt;unit> in: pm, nm, um, mm, cm, dm, m, e, inch, ft</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Specifies the distance structures are moved horizontal when 
+    the <A href="#T_transform" target="main">transform</A> or <A href="#T_transform_a" target="main">transform_a</A> operation is performed.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    movehor {15 um}<BR>
+    movehor 15um
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_displayaber" target="main">displayaber</A>
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_movever" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>movever</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set movever amount</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">movever
+        &lt;number> [&lt;unit>]
+	<BR>&lt;unit> in: pm, nm, um, mm, cm, dm, m, e, inch, ft</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Specifies the distance structures are moved vertical when 
+    the <A href="#T_transform" target="main">transform</A> or <A href="#T_transform_a" target="main">transform_a</A> operation is performed.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    movever {0.3 mm}<BR>
+    movever 0.3mm
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_displayaber" target="main">displayaber</A>
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_scale" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>scale</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set scale factor</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">scale &lt;number></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Specifies the scale factor for the <A href="#T_transform" target="main">transform</A> and <A href="#T_transform_a" target="main">transform_a</A> operations.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    scale 2.0
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_displayaber" target="main">displayaber</A>
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_rotate" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>rotate</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set rotate amount</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">rotate &lt;number></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Specifies the rotation in degrees for the <A href="#T_transform" target="main">transform</A> and <A href="#T_transform_a" target="main">transform_a</A> operations.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    rotate 45
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_direction" target="main">direction</A>
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_direction" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>direction</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set rotate direction</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">direction &lt;Clockwise>|&lt;Counter clockwise></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Specifies the direction of the rotation for the <A href="#T_transform" target="main">transform</A> and <A href="#T_transform_a" target="main">transform_a</A> operations.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    direction Clockwise
+    direction {Counter clockwise}
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_rotate" target="main">rotate</A>
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<HR size=3 noshade width=600 align=left>
+
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#333333">
+<TR><TD align=middle valign=middle><H1><FONT COLOR="#FFFF66">
+<A NAME="groups" target="main"></A>Defining Operation Groups
+</FONT></H1>
+<P align=right><A href="#TOP" target="main"><FONT COLOR="#FFFF66">Top</font></A></TD></TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_showgroups" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>showgroups</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Show group settings (A, B and Destination)</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">showgroups</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Shows the layers in group A, B and destination. Groups A and B
+<BR>
+contains a list of layernumbers, destination contains only one layer.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    showgroups
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_group_a" target="main">group_a</A>, <A HREF="#T_group_b" target="main">group_b</A> and <A HREF="#T_destination" target="main">destination</A> for setting the layer groups
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_group_a" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>group_a</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set group A</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    to set group_a to (selected) elements on given layers:<BR>
+    <I><FONT COLOR="#CC0000">group_a &lt;layer_no> &lt;layer_no> &lt;layer_no> {True|False}</FONT></I>
+<BR>
+    <FONT COLOR="#CC0000"><I>&lt;layer_no> layer number (0-99)</I></FONT><BR>
+    to make group_a empty:<BR>
+    <FONT COLOR="#CC0000"><I>group_a empty</I></FONT><BR>
+    to set group_a to the selected elements:<BR> 
+    <FONT COLOR="#CC0000"><I>group_a selected</I></FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Fill/clear layer-group A
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    group_a 0 3 14 true<BR>
+    group_a empty<BR>
+    group_a selected
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_group_b" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>group_b</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set group B</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>  
+  <TD VALIGN=TOP>
+    to set group_b to (selected) elements on given layers:<BR>
+    <I><FONT COLOR="#CC0000">group_a &lt;layer_no> &lt;layer_no> &lt;layer_no> {True|False}</FONT></I>
+<BR>
+    <FONT COLOR="#CC0000"><I>&lt;layer_no> layer number (0-99)</I></FONT><BR>
+    to make group_b empty:<BR>
+    <FONT COLOR="#CC0000"><I>group_b empty</I></FONT><BR>
+    to set group_b to the selected elements:<BR> 
+    <FONT COLOR="#CC0000"><I>group_b selected</I></FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Fill/clear layer-group B
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    group_b 0 3 14 false<BR>
+    group_b empty<BR>
+    group_b selected
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_destination" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>destination</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set destination</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">destination &lt;layer_no></FONT></I>
+    <BR><I><FONT COLOR="#CC0000">&lt;layer_no> layer number (0-99) or empty for
+        none</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Fill/clear destination
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    destination 3
+    <BR>
+    destination empty
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<HR size=3 noshade width=600 align=left>
+
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#333333">
+<TR><TD align=middle valign=middle><H1><FONT COLOR="#FFFF66">
+<A NAME="operations" target="main"></A>Operations
+</FONT></H1>
+<P align=right><A href="#TOP" target="main"><FONT COLOR="#FFFF66">Top</font></A></TD></TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_flatten" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>flatten</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Flatten graphical structures</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">flatten</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    The datafile can consist of several structures and structure-references. 
+    Flatten expands all references in the visible structure to one (top)structure by copying the
+    elements inside referenced structures to that level. Empty structures will be removed.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    flatten
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    None.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    File may grow very large (in memory too)
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_delete" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>delete</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Delete selected elements</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">delete</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Deletes in Visible structure contents, elements that are selected.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    delete
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    A will be modified during this action, B and Destination are ignored.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    None.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    Only the elements inside the visible top structure are deleted.
+    Selected References are also deleted, by first exploding them to make them unique.
+    This may lead to empty structures.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_delete_a" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>delete_a</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Delete layer</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">delete_a</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Deletes in visible structure contents, elements specified in group A. Group A is specified
+    with the group_a command.
+    In case the onlyselected flag is set for group A, selected References are first exploded.
+    The command only deletes elements,this may result in empty structures
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    delete_a
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    A must be set. B and destination are ignored.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    None.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    Only the elements inside the visible structure are deleted, references
+    to other structures will be exploded first if onlyselected in the group is True.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_transform" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>transform</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Transform structures</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">transform</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Transforms structure contents visible on screen. Uses the <A href="#transset" target="main">transformation settings</A>.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    transform
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    None.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    None.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    Transformation can be undone with <A href="#T_undotrans" target="main">undotrans</A>.<BR>
+    <A href="#T_selected" target="main">Selected</A> flag can be set to transform only the selected elements (also structure references)
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A href="#T_transform_a" target="main">transform_a</A> for transforming structures in group A,
+    <A href="#T_mirrorx" target="main">mirrorx</A>, <A href="#T_mirrory" target="main">mirrory</A>, 
+    <A href="#T_movehor" target="main">movehor</A>, <A href="#T_movever" target="main">movever</A>, 
+    <A href="#T_scale" target="main">scale</A>, <A href="#T_rotate" target="main">rotate</A> and
+    <A href="#T_direction" target="main">direction</A> for transformation settings.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_undotrans" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>undotrans</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Undo transformation</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">undotrans</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Transforms structure back to old situation (before <A href="#T_transform" target="main">transform</A>).
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    undotrans
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    None.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    None.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    Transformation can only be undone immediately after the transformation itself. When first
+    an other command is chosen, 'undotrans' becomes unavailable.<BR>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A href="#T_transform" target="main">transform</A> for transforming structures and
+    <A href="#T_undotrans_a" target="main">undotrans_a</A> for undoing transformation on group A.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_transform_a" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>transform_a</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Transform structures in group A</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">transform_a</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Transforms in visible structure contents elements specified in group A. Uses the <A href="#transset" target="main">transformation settings</A>.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    transform_a
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    A must be set. B and destination are ignored
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    None.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    Transformation can be undone with <A href="#T_undotrans_a" target="main">undotrans_a</A>.<BR>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A href="#T_transform" target="main">transform</A> for transforming structures not in group A,
+    <A href="#T_mirrorx" target="main">mirrorx</A>, <A href="#T_mirrory" target="main">mirrory</A>, 
+    <A href="#T_movehor" target="main">movehor</A>, <A href="#T_movever" target="main">movever</A>,
+    <A href="#T_scale" target="main">scale</A>, <A href="#T_rotate" target="main">rotate</A> and 
+    <A href="#T_direction" target="main">direction</A> for transformation settings.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_undotrans_a" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>undotrans_a</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Undo transformation on group A</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">undotrans_a</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Transforms structure back to old situation (before <A href="#T_transform_a" target="main">transform_a</A>).
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    undotrans_a
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    A must be set. B and destination are ignored.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    None.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    Transformation can only be undone immediately after the transformation itself. When first
+    an other command is choosen, 'undotrans_a' becomes unavailable.<BR>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A href="#T_transform_a" target="main">transform_a</A> for transforming structures and
+    <A href="#T_undotrans" target="main">undotrans</A> for undoing transformation not on group A.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_makering" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>makering</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Create ring</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">makering</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Creates a ring around the boundaries of the polygons on elements defined in group A.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    makering
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    A and Desination set. B is ignored.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    '<A HREF="#T_correctionfactor" target="main">correctionfactor</A>' is the radius of the ring.
+    <BR>
+    '<A HREF="#T_correctionaber" target="main">correctionaber</A>' is the accuracy of the segments of the ring.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    All elements that have a surface are converted to polygons.
+    <BR>
+    (Text does not have a surface and is not converted.)
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_tolines" target="main">tolines</A> and <A HREF="#T_polyaccur" target="main">polyaccur</A> for conversion of Arcs and Circles.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_correction" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>correction</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Create ring</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">correction</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Creates a ring around the boundaries of the polygons on elements
+    defined in group A and merges it with the original polygons.
+    With a positive/negetive correction value you can enlarge/shrink
+    the drawing with that value.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    correction
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    A and Desination set. B is ignored.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    '<A HREF="#T_correctionfactor" target="main">correctionfactor</A>' is the radius of the ring.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    All elements that have a surface are converted to polygons.
+    <BR>
+    (Text does not have a surface and is not converted.)
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_tolines" target="main">tolines</A> and <A HREF="#T_polyaccur" target="main">polyaccur</A> for conversion of Arcs and Circles.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_copy" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>copy</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Copy elements/layer(s)</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">copy</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Duplicates elements from group A to the layer in destination.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    copy
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    None.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    A and Desination set. B is ignored.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_move" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>move</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Move elements/layers</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">move</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Changes the layer-numbers of the elements 
+    in group A to the layer in destination.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    move
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    A and Desination set. B is ignored.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_toarcs" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>toarcs</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Convert polygons to arcs</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">toarcs</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Detects arcs in polygons and replaces those segments.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    toarcs
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    A and Desination set. B is ignored.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    '<A HREF="#T_toarcrmax" target="main">toarcrmax</A>' and '<A HREF="#T_toarcrmin" target="main">toarcrmin</A>' as range for the radius.
+    '<A HREF="#T_arcaccur" target="main">arcaccur</A>' for maximum abberation between the arc
+    and the polygon segments.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_tolines" target="main">tolines</A> and <A HREF="#T_polyaccur" target="main">polyaccur</A>
+    for conversion of Arcs and Circles.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_tolines" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>tolines</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Convert arcs and circles to polygons</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">tolines</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Replaces arcs and circles, in a polygon, with line-pieces.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    tolines
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    A and Desination set. B is ignored.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    '<A HREF="#T_polyaccur" target="main">polyaccur</A>' determines the maximum
+    abberation that between the polygon segments and the arc/circle.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    All elements that have a surface are converted to polygons.
+    <BR>
+    (Text does not have a surface and is not converted.)
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A href="#T_toarcs" target="main">toarcs</A> and <A HREF="#T_arcaccur" target="main">arcaccur</A>
+    for conversion of lines to Arcs and Circles.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_smoothen" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>smoothen</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Smoothen the structure</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">smoothen</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Removes glitches and short lines from polygons.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    smoothen
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    A and Desination set. B is ignored.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    '<A HREF="#T_smoothaccur" target="main">smoothaccur</A>' for maximum abberation of the smoothed polygon-segments to the originals.
+    <BR>
+    '<A HREF="#T_maxlinemerge" target="main">maxlinemerge</A>' for maximum line-length to merge lines to.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    All elements that have a surface are converted to polygons. Polylines and
+    polygons containing arcsegments are also converted.
+    <BR>
+    (Text does not have a surface and is not converted.)
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_tolines" target="main">tolines</A> and <A HREF="#T_polyaccur" target="main">polyaccur</A> for conversion of Arcs and Circles.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_intersect" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>intersect</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Calculate intersections (Logical AND: A AND B)</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">intersect</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Calculate the intersections (overlappings) between the elements in group A and B.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    intersect
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    A or B and destination must be set.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    '<A HREF="#T_snapfactor" target="main">snapfactor</A>' determines the accuracy with which the calculations
+    are performed, and '<A HREF="#T_polyaccur" target="main">polyaccur</A>' for conversion of Arcs and Circles.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    All elements that have a surface are converted to polygons.
+    <BR>
+    (Text does not have a surface and is not converted.)
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_tolines" target="main">tolines</A> and <A HREF="#T_polyaccur" target="main">polyaccur</A> for conversion of Arcs and Circles.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_merge" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>merge</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Merges elements (Logical OR: A OR B)</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">merge</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Merges the elements in group A and B (Logical OR of A and B)
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    merge
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    A or B and destination must be set.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    '<A HREF="#T_snapfactor" target="main">snapfactor</A>' determines the accuracy with which the calculations
+    are performed, and '<A HREF="#T_polyaccur" target="main">polyaccur</A>' for conversion of Arcs and Circles.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    All elements that have a surface are converted to polygons.
+    <BR>
+    (Text does not have a surface and is not converted.)
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_tolines" target="main">tolines</A> and <A HREF="#T_polyaccur" target="main">polyaccur</A> for conversion of Arcs and Circles.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_a_subtract_b" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>a_subtract_b</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Subtraction (A - B)</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">a_subtract_b</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Subtracts the contents of group B from those of group A (A-B).
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    a_subtract_b
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    A or B and destination must be set.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    '<A HREF="#T_snapfactor" target="main">snapfactor</A>' determines the accuracy with which the calculations
+    are performed, and '<A HREF="#T_polyaccur" target="main">polyaccur</A>' for conversion of Arcs and Circles.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    All elements that have a surface are converted to polygons.
+    <BR>
+    (Text does not have a surface and is not converted.)
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_tolines" target="main">tolines</A> and <A HREF="#T_polyaccur" target="main">polyaccur</A> for conversion of Arcs and Circles.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_b_subtract_a" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>b_subtract_a</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Subtraction (B - A)</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">b_subtract_a</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Subtracts the contents of group A from those of group B (B-A).
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    b_subtract_a
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    A or B and destination must be set.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    '<A HREF="#T_snapfactor" target="main">snapfactor</A>' determines the accuracy with which the calculations
+    are performed, and '<A HREF="#T_polyaccur" target="main">polyaccur</A>' for conversion of Arcs and Circles.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    All elements that have a surface are converted to polygons.
+<BR>
+(Text does not have a surface and is not converted.)
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_tolines" target="main">tolines</A> and <A HREF="#T_polyaccur" target="main">polyaccur</A> for conversion of Arcs and Circles.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_exor" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>exor</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Exor (Logical EXOR: A EXOR B)</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">exor</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Performs an exclusive-or operation between the contents of
+    group A and B. This results in the differences between group 
+    A and B (i.e. overlappings are not copied).
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    exor
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Groups:
+  </TD>
+  <TD VALIGN=TOP>
+    A or B and destination must be set.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Parameters:
+  </TD>
+  <TD VALIGN=TOP>
+    '<A HREF="#T_snapfactor" target="main">snapfactor</A>' determines the accuracy with which the calculations
+    are performed, and '<A HREF="#T_polyaccur" target="main">polyaccur</A>' for conversion of Arcs and Circles.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    All elements that have a surface are converted to polygons.
+    <BR>
+    (Text does not have a surface and is not converted.)
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_tolines" target="main">tolines</A> and <A HREF="#T_polyaccur" target="main">polyaccur</A> for conversion of Arcs and Circles.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<HR size=3 noshade width=600 align=left>
+
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#333333">
+<TR><TD align=middle valign=middle><H1><FONT COLOR="#FFFF66">
+<A NAME="layersettings" target="main"></A>Changing Layer Settings
+</FONT></H1>
+<P align=right><A href="#TOP" target="main"><FONT COLOR="#FFFF66">Top</font></A></TD></TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_showlayers" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>showlayers</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Show available layers</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">showlayers</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Show the layers that are available in the current drawing.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    showlayers
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_setlayer" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>setlayer</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set current layer</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">setlayer &lt;layer_nr></FONT></I>
+<BR><I><FONT COLOR="#CC0000">
+&lt;layer_nr> is in [0..99]</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Select a layer. This is needed before changing layersettings.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    setlayer 0
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_name" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>name</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set layer name</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">name &lt;name> | "&lt;name>"</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Set the name of the selected layer.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    name "Wow, this is the most
+beautiful layer I have ever seen!"
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    First select a layer, with '<A HREF="#T_setlayer" target="main">setlayer</A>'.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_visible" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>visible</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set Layer Visibility On/Off</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">visible 1 | 0 [all]</FONT>
+  </i></TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Select if the selected layer/all layers is/are visible or not.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    visible 1<BR>
+    visible 1 all
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    First select a layer, with '<A HREF="#T_setlayer" target="main">setlayer</A>'.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_selectable" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>selectable</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set Layer Selectability On/Off</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">selectable 1 | 0 [all]</FONT>
+  </i></TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Select if the current layer/all layers is/are selectable or not.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    selectable 1<BR>
+    selectable 0 all
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    First select a layer, with '<A HREF="#T_setlayer" target="main">setlayer</A>'.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_bordercolor" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>bordercolor</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set layer border color</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">bordercolor &lt;r> &lt;g> &lt;b></FONT></I>
+<BR><I><FONT COLOR="#CC0000">
+&lt;r> &lt;g> and &lt;b> are in [0..255]</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Defines the border color of the selected layer. This determines
+    color of the borders around polygons and the color of text.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    bordercolor 0 0 0
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    First select a layer, with '<A HREF="#T_setlayer" target="main">setlayer</A>'.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_fillcolor" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>fillcolor</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set layer fill color</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">fillcolor &lt;r> &lt;g> &lt;b></FONT></I>
+<BR><I><FONT COLOR="#CC0000">
+&lt;r> &lt;g> and &lt;b> are in [0..255]</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Defines the fill color of the selected layer. This determines
+    the color with which polygons are filled.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    fillcolor 180 0 200
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    First select a layer, with '<A HREF="#T_setlayer" target="main">setlayer</A>'.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_brush" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>brush</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set layer brush</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">brush &lt;brush_nr></FONT></I>
+<BR><I><FONT COLOR="#CC0000">
+&lt;brush_nr> is in [0..15]</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Selects the fill pattern of the selected layer. This determines
+    how polygons are filled on the screen.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    brush 4
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    First select a layer, with '<A HREF="#T_setlayer" target="main">setlayer</A>'.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_order" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>order</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set layer order</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">order &lt;order_nr></FONT></I>
+<BR><I><FONT COLOR="#CC0000">
+&lt;order_nr> is in [0..99]</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Selects the order in which the layers are drawn on the screen.
+    <BR>
+    Lower numbers are more at the foreground than higher ones, 
+    so 0 is drawn on top of 1 and 99.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    order 0
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    First select a layer, with '<A HREF="#T_setlayer" target="main">setlayer</A>'.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<HR size=3 noshade width=600 align=left>
+
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#333333">
+<TR><TD align=middle valign=middle><H1><FONT COLOR="#FFFF66">
+<A NAME="structure" target="main"></A>Structure Commands
+</FONT></H1>
+<P align=right><A href="#TOP" target="main"><FONT COLOR="#FFFF66">Top</font></A></TD></TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_viewstructure" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>viewstructure</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set View Structure</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Viewstructure &lt;structure_name></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Select a structure to make visible on the screen. All operations work on the visible structure.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    viewstructure
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    A file must be in memory. This only applies to the window version.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<HR size=3 noshade width=600 align=left>
+
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#333333">
+<TR><TD align=middle valign=middle><H1><FONT COLOR="#FFFF66">
+<A NAME="displayoptions" target="main"></A>Display Options
+</FONT></H1>
+<P align=right><A href="#TOP" target="main"><FONT COLOR="#FFFF66">Top</font></A></TD></TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_drawoutline" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>drawoutline</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set fill polygons on/off</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">drawoutline &lt;0>|&lt;1></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Drawoutline sets the option to Draw-only the outlines of the drawing, i.e. not to fill the polygons.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    drawoutline 0
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    If the polygons are visible but not filled, check the fill-
+    color and pattern. This only applies to the window version.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_showcoords" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>showcoords</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set show coordinates on/off</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">showcoords &lt;0>|&lt;1></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Select if the mouse coordinates are shown in the statusbar.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    showcoords 1
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    This only applies to the window version.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_showgrid" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>showgrid</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Show grid on screen</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">showgrid &lt;0>|&lt;1></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Shows the grid on the screen using the gridsettings.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    showgrid 1
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    A file must be in memory. This only applies to the window version.
+  </TD>
+</TR>
+<TR>
+  <TD>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A href="#T_gridspace" target="main">gridspace</A>, <A href="#T_gridcolour" target="main">gridcolour</A> and 
+    <A href="#T_gridplacement" target="main">gridplacement</A> for specifying gridsettings.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_gridspace" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>gridspace</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Specify distance between grid points</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">gridspace &lt;number> [&lt;unit>]
+    <BR>&lt;unit> in: pm, nm, um, mm, cm, dm, m, e, inch, ft</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Specifies the distance between points, drawn as single pixels, horizontal and vertical.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    gridspace 5 mm
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    When <A href="#T_showgrid" target="main">showgrid</A> is on, call <A href="#T_draw" target="main">draw</A> to draw
+    grid with the new settings.
+  </TD>
+</TR>
+<TR>
+  <TD>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A href="#T_gridcolour" target="main">gridcolour</A> and 
+    <A href="#T_gridplacement" target="main">gridplacement</A> for specifying gridsettings.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_gridcolour" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>gridcolour</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Specify the colour of grid points</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">gridcolour &lt;r> &lt;g> &lt;b>
+    <BR>&lt;r> &lt;g> and &lt;b> are in [0..255]</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Specifies the colour of gridpoints on the screen on white background.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    gridcolour 0 255 125
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    When <A href="#T_showgrid" target="main">showgrid</A> is on, call <A href="#T_draw" target="main">draw</A> to draw
+    grid with the new settings.
+    <BR>
+    The gridcolour is drawn with the XOR function, which makes the grid visible on any
+    background.
+  </TD>
+</TR>
+<TR>
+  <TD>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A href="#T_gridspace" target="main">gridspace</A> and 
+    <A href="#T_gridplacement" target="main">gridplacement</A> for specifying gridsettings.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_gridplacement" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>gridplacement</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Specify the place of the grid</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">gridplacement &lt;0>|&lt;1>
+  </font></i></TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Specifies the place of the grid. When this value is 0, the grid is drawn on 
+    the background. When 1, the grid is drawn on the foreground.</TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    gridplacement 1
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    When <A href="#T_showgrid" target="main">showgrid</A> is on, call <A href="#T_draw" target="main">draw</A> to draw
+    grid with the new settings.
+  </TD>
+</TR>
+<TR>
+  <TD>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A href="#T_gridspace" target="main">gridspace</A> and 
+    <A href="#T_gridcolour" target="main">gridcolour</A> for specifying gridsettings.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<HR size=3 noshade width=600 align=left>
+
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#333333">
+<TR><TD align=middle valign=middle><H1><FONT COLOR="#FFFF66">
+<A NAME="displaycommands" target="main"></A>Display Commands
+</FONT></H1>
+<P align=right><A href="#TOP" target="main"><FONT COLOR="#FFFF66">Top</font></A></TD></TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_zoom" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>zoom</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Zoom</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">zoom &lt;x_min> &lt;y_min> &lt;x_max> &lt;y_max></FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Zoom to the selected window coordinates.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    zoom -1000 -1000 1000 1000
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    A file must be in memory. This only applies to the window version.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_zoomback" target="main">zoomback</A> and <A HREF="#T_zoomout" target="main">zoomout</A>.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_zoomback" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>zoomback</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Zoom back</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">zoomback</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Select the previous zooming coordinates from the zoom history.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    zoomback
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    A file must be in memory. This only applies to the window version.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_zoom" target="main">zoom</A> and <A HREF="#T_zoomout" target="main">zoomout</A>.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_zoomout" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>zoomout</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Zoom out</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">zoomout</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Select the first zooming coordinates from the zoom history,
+    this selects full view of the current structure.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    zoomout
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    A file must be in memory. This only applies to the window version.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_zoom" target="main">zoom</A> and <A HREF="#T_zoomback" target="main">zoomback
+  </a></TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_select" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>select</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Selects elements</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <FONT COLOR="#CC0000">To (de)select an area:<BR>
+    <FONT COLOR="#CC0000"><I>select &lt;x_min> &lt;y_min> &lt;x_max>&lt;y_max>&lt;mode></I><BR><BR>
+    To (de)select at a point:<BR>
+    <FONT COLOR="#CC0000"><I>select &lt;x> &lt;y> &lt;mode></I><BR><BR>
+    To (de)select all:<BR>
+    <FONT COLOR="#CC0000"><I>select all &lt;mode></I><BR><BR>
+    &lt;mode> = true : select mode<BR>
+    &lt;mode> = false: de-select mode<BR>
+  </font></font></font></font></TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Selects elements (also references) in specified area or at given point.<BR>
+    With point selection the elements are selected inside out (smallest first).<BR>
+    In deselection mode this is the same.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    select 0 0 1000 2000 true <BR>
+    select 1000 2000 false <BR>
+    select all false
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    A file must be in memory. Also works in commandline mode.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_selectmarge" target="main">selectmarge</A>
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_clearscreen" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>clearscreen</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Clear Screen</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">clearscreen &lt;rgb></FONT></I>
+<BR><I><FONT COLOR="#CC0000">
+&lt;rgb> is the color value</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Clearscreen fills the screen with color &lt;rgb>.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    clearscreen 16777215 (RRGGBB:
+0xFFFFFF) (white)
+<BR>
+clearscreen 0
+(RRGGBB: 0x000000) (black)
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    This only applies to the window version. The color must
+    be entered decimal and not hexadecimal, unfortunately.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_draw" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>draw</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Redraw Screen</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">draw</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Clear the screen and then redraws the drawing.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    draw
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    A file must be in memory. This only applies to the window version.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_print" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>print</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Print Screen</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">print</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Print what's on the screen.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    print
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    A file must be in memory. This only applies to the window version.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_startpoint" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>startpoint</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set startpoint</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">startpoint &lt;x> &lt;y>
+  </font></i></TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Sets the relative startpoint to the selected coordinates. Used for calculating
+    distance with <A href="#T_relativepoint" target="main">relative points</A>.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    startpoint  -1000 -1500
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    A file must be in memory. This only applies to the window version.
+    <BR>
+    When a new file is loaded, startpoint is set at (0,0)
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_relativepoint" target="main">relativepoint</A>
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_relativepoint" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>relativepoint</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Set relativepoint</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">relativepoint &lt;x> &lt;y>
+  </font></i></TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Sets the relative endpoint to the selected coordinates. Used for calculating
+    distance with <A href="#T_startpoint" target="main">start point</A>.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    relativepoint 1200 -1500
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    A file must be in memory. This only applies to the window version.
+    <BR>
+    When a relative point is defined, the 'distance' dialog appears (if
+    it's not on the screen already). The properties calculated are: dx, dy,
+    distance between start and endpoints and the angle of the line
+    between the points.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    See also:
+  </TD>
+  <TD VALIGN=TOP>
+    <A HREF="#T_startpoint" target="main">startpoint</A>
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<HR size=3 noshade width=600 align=left>
+
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#333333">
+<TR><TD align=middle valign=middle><H1><FONT COLOR="#FFFF66">
+<A NAME="filehist" target="main"></A>File History
+</FONT></H1>
+<P align=right><A href="#TOP" target="main"><FONT COLOR="#FFFF66">Top</font></A></TD></TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_addfile" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>addfile</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Add file</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">addfile
+&lt;filename>[ &lt;filetype>]</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This command adds a file to the file history. Maximum no. is 5 files, the 6th pushes out the 1st.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    addfile /usr/users/pc/guest/hahohihuhe.cal gds-ii
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Note:
+  </TD>
+  <TD VALIGN=TOP>
+    addfile is not implemented in the commandline version.
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<HR size=3 noshade width=600 align=left>
+
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#333333">
+<TR><TD align=middle valign=middle><H1><FONT COLOR="#FFFF66">
+<A NAME="message" target="main"></A>Message Dialog
+</FONT></H1>
+<P align=right><A href="#TOP" target="main"><FONT COLOR="#FFFF66">Top</font></A></TD></TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_pause" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>pause</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Show pause screen, enter for continue</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">pause [&lt;text>]</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    This function shows a dialog with a message. Pressing &lt;Enter>
+    continues processing. Pause without a text shows a default message.
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    pause This is a great opportunity to get a cup of java!
+    <BR>
+    pause %{message_inside_alias}
+  </TD>
+</TR>
+</TABLE>
+
+<P>
+
+<HR size=3 noshade width=600 align=left>
+
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#333333">
+<TR><TD align=middle valign=middle><H1><FONT COLOR="#FFFF66">
+<A NAME="exit" target="main"></A>Exit / Quit
+</FONT></H1>
+<P align=right><A href="#TOP" target="main"><FONT COLOR="#FFFF66">Top</font></A></TD></TR>
+</TABLE>
+
+<P>
+
+<A NAME="T_exit" target="main"></A>
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>exit</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Exit</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Exit</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Close data- and process-file(s) and exits program
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    Exit
+  </TD>
+</TR>
+</TABLE>
+
+<P> <A NAME="T_quit" target="main"></A> 
+<TABLE BORDER=5 CELLSPACING=2 CELLPADDING=2 WIDTH="600" BGCOLOR="#CCCCCC">
+<TR BGCOLOR="#333333">
+  <TH COLSPAN="2">
+    <FONT COLOR="#FFFF00" SIZE=+1>quit</FONT>
+  </TH>
+</TR>
+<TR BGCOLOR="#999999">
+  <TD VALIGN=TOP width="75">
+    <FONT COLOR="#666600">Goal:</FONT>
+  </TD>
+  <TD VALIGN=TOP width="525">
+    <FONT COLOR="#666600">Quit</FONT>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Syntax:</FONT></I>
+  </TD>
+  <TD VALIGN=TOP>
+    <I><FONT COLOR="#CC0000">Quit</FONT></I>
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Descr.:
+  </TD>
+  <TD VALIGN=TOP>
+    Close data- and process-file(s) and exits program
+  </TD>
+</TR>
+<TR>
+  <TD VALIGN=TOP>
+    Example:
+  </TD>
+  <TD VALIGN=TOP>
+    Quit
+  </TD>
+</TR>
+</TABLE>
+
+
+</BODY></HTML>

@@ -1,0 +1,9 @@
+2000-10-26  Norman Walsh  <ndw@nwalsh.com>
+
+	* chunk.pl: Changed to saxon; but note that the parameters are odd because I have a saxon shell script
+
+2000-10-09  Norman Walsh  <ndw@nwalsh.com>
+
+	* LostLog, chunk.pl, dbart.xml, dbchunk.xml, dbref.xml, dingbat.pl, docbook.pl, removexmlns.pl: 
+	New file.
+

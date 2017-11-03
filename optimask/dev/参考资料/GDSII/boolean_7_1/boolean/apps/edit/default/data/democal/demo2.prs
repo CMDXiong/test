@@ -1,0 +1,17 @@
+# Process file for GDS-II postprocessing tool
+
+record  @{processfile}
+startpoint  0.000000 0.000000
+loadfile  @{gdsroot}default/data/albert.cal gds-ii
+draw
+pause "hi how are you"
+startpoint  0.000000 0.000000
+loadfile  @{gdsroot}default/data/democal/demo2.cal gds-ii
+draw
+pause "hi how are you now"
+askfile {Open GDS-II file} OPEN {*.cal} @{file_path} @{file_ext} curfile
+startpoint  0.000000 0.000000
+loadfile  @{curfile} gds-ii
+zoomout
+
+

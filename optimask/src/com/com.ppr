@@ -1,0 +1,82 @@
+[Config]
+Compilator.SaveAll=0
+Compilator.Capture=0
+Compilator.HideOutput=0
+Compilator.LogType=0
+DefaultDir=C:\polylib\com
+DefaultCPIndex=0
+LogtoEnd=1
+DontOpen=0
+AbsolutePath=0
+FileFormat=0
+ProjectFilesOnly=0
+[Project tree]
+com
+	+com
+		acadpoly.c
+		calcarea.c
+		comcnst.h
+		comdefn.h
+		comgeom.h
+		commath.h
+		icedpoly.c
+		q1rim.c
+		qdcvx.c
+		qdrim.c
+		test.c
+[Open project files]
+0=icedpoly.c
+1=acadpoly.c
+2=calcarea.c
+3=commath.h
+4=comgeom.h
+5=qdrim.c
+6=q1rim.c
+7=qdcvx.c
+8=comdefn.h
+9=comcnst.h
+10=compoly.h
+11=\\mml350w08fsrv02\homes$\Henghua.Deng\MMI\datestamp.sty
+12=..\..\CTEX\MiKTeX\tex\latex\memoir\memoir.cls
+[Selected Project Files]
+Main=
+Selected=..\..\CTEX\MiKTeX\tex\latex\memoir\memoir.cls
+[icedpoly.c]
+TopLine=160
+Caret=34,177
+[acadpoly.c]
+TopLine=129
+Caret=1,123
+[calcarea.c]
+TopLine=1
+Caret=78,21
+[commath.h]
+TopLine=1122
+Caret=108,29
+[comgeom.h]
+TopLine=2346
+Caret=66,76
+[qdrim.c]
+TopLine=1
+Caret=32,11
+[q1rim.c]
+TopLine=42
+Caret=1,64
+[qdcvx.c]
+TopLine=29
+Caret=71,42
+[comdefn.h]
+TopLine=328
+Caret=61,307
+[comcnst.h]
+TopLine=63
+Caret=44,138
+[compoly.h]
+TopLine=11
+Caret=1,23
+[\\mml350w08fsrv02\homes$\Henghua.Deng\MMI\datestamp.sty]
+TopLine=57
+Caret=87,75
+[..\..\CTEX\MiKTeX\tex\latex\memoir\memoir.cls]
+TopLine=159
+Caret=59,24

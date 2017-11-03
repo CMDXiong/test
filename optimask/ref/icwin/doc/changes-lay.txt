@@ -1,0 +1,2670 @@
+11/8/05  UUNSTREAM version 1.23
+
+FIXED SERIOUS BUG INTRODUCED IN VERSION 1.22.  This bug would result in 
+translation errors if the stream file made use of non-zero data types.
+
+10/16/05 ICED version 4.88
+
+Fixed bug in SELECT TAG=* ... command.  This command is typically in macros 
+referenced through the DRC menus.  It is supposed to select items tag numbers 
+from 1 to 2**31-1.  In fact it selected items with tag numbers from 2 to 
+2**31-1.
+
+Replaced HDD32.EXE with a new version from eAladdin.com.  This new version 
+fixes certain installation problems on Windows Xp and makes HINST.EXE 
+obsolete.
+
+7/15/05 Unstream version 1.21  SFDMP version 4.04
+
+Fixed bug in UNSTREAM.  In ICED the maximum text height is 10,000,000 data 
+base units (typically 10,000 microns).  Unstream incorrectly limited the size 
+to approximately 162,760 data base units (typically 162.76 microns).  
+
+Added /T option to SFDMP.  This option causes SFDMP to dump data from the 
+Tail of a stream file.  To see the full syntax of the SFDMP utility type 
+SFDMP /h at the DOS command prompt.
+
+8/24/04  ICED version 4.87  RunMin version 0.01 and AllCells version 4.01
+UNSTREAM version 1.20, MKSTI 4.02, UNMKSTI 4.01, ICTREE 4.02, and MKPDF 4.04.
+
+MACRO STUFF: Fixed bug in exit codes.  (Exit codes are used in .BAT files to 
+check for errors.)  UNSTREAM did not return exit code 0 after sucessful 
+completion.  Fixed similar bugs in MKSTI, UNMKSTI, ICTREE, and MKPDF.
+
+Modified BATCH command line parameter by adding optional YES and NO keywords:
+
+              BATCH=[YES | NO]
+
+If BATCH=NO and ICED's window is minimized and ICED detects an error or 
+interactive input is required, ICED automatically restores its window.  If 
+BATCH=YES it exits and saves the .JOU file.  The exit code is set to 20 which 
+is the highest exit code ICED uses.  Unfortunately, the journal file will
+probably not contain the offending command, so you may have to rerun the
+batch file with BATCH=NO to figure out what happened.  
+
+If neither option is given the default is BATCH=NO.
+
+Modified PROMPT command so that it clears the log area when LOG SCREEN=OFF.
+The old behavior was to leave the message in the log area unchanged.  Since 
+this was usually the log of last command before the LOG SCREEN=OFF command,
+it was potentially confusing.
+
+Added RunMin utility, modified the AllCells utility and ICED so they all
+work together.  However, RUNMIN and ALLCELLS should only be used under 
+Windows /NT/2000/Xp.  They can cause real problems under Windows 95/98/Me.
+(Don't even try it!)  RunMin is meant to be used in .BAT files and launches a 
+program in a minimized window.  It has the following syntax:
+
+      RUNMIN program_name [program command line parameters]
+                      or
+      RUNMIN /?
+
+If program_name is a .EXE file, the .EXE is optional.  RUNMIN's exit code is 
+the same as program_name's exit code.  Program_name is normally ICED.  ICED 
+has been modified so that it is better behaved when running minimized.  If 
+it encounters an error or needs user input it should automatically restore 
+itself.  This is definitely a "first cut". If you see any bad behavior,
+please call technical support.
+
+The second form displays the version number and a "Help" message.  
+
+Fixed bug in PAUSE command that prevented colored prompts from working 
+properly. 
+
+Fixed bug in GRID command that inhibited the automatic redraw when changing 
+GRID STYLE's.
+
+MACRO STUFF: 
+
+Fixed bug in BACK_TO command that could cause ICED to crash when jumping 
+BACK_TO a label name that did not exist.  ICED now properly reports an error
+in this situation.
+
+Fixed bugs in VALID_CELL_NAME("string"), VALID_ITEM_NAME("string"), and 
+VALID_LIST_NAME("string") functions.  These functions incorrectly returned 1 
+(valid) if only the last character in string was illegal.
+
+Fixed bugs in LIB.n, LIB.TYPE.n, CELL.NAME.n, CELL.LIB.n, CELL.LIB.TYPE.n, 
+etc.
+
+5/28/04  ICED version 4.85
+
+MACRO STUFF: Added several macros to display the blank and protect state of
+layers.
+
+The following three macros evaluate to layer lists or (none).
+
+                  %BLANKED.ROOT.LAYERS
+                  %BLANKED.CELL.LAYERS
+                  %PROTECTED.LAYERS
+
+The following macros three evalute to 0 or 1 depending on the status of 
+layer layer_id (layer_id may be a number or existing layer name):
+
+                  %LAYER.BLANKED.ROOT.layer_id
+                  %LAYER.BLANKED.CELL.layer_id
+                  %LAYER.PROTECTED.layer_id
+
+When I implimented the SHOW SYSTEM_MACROS command I did it in a bad way.  As
+result, the command:
+
+                  SHOW SYSTEM_MACRO #LAYER.BLANKED.ROOT.5 
+
+will result in an error message to the effect that the macro doesn't exist.  
+This is true for all the system macros that have an something_id suffix.  
+
+3/24/04  ICED version 4.84
+
+Not generally distributed.
+
+11/25/03  ICED version 4.83
+
+Fixed long standing bug in ICED in the SHOW command's computation of area.
+The bug resulted in improper computations for certain polygons having sides
+at arbitrary angles (angles not a multiple of 45 degrees).  
+
+Modified ICED so that you can specify both a STARTUP and an ALWAYS command 
+file on your ICED command line.  (The always command file may be specified  
+using the ALWAYS, LEAVE, EXIT, or QUIT command line keyword.)  For a new cell,
+the startup command file is executed first followed by the always command 
+file.  If there is an error in the startup command file, the always command 
+file is NOT executed.  When opening an existing cell, only the always command 
+file is executed.  A typical usage would be to use the startup command file 
+to initialize the technology parameters and the always command file to set
+a group of macros that are not automatically saved in the .CEL file.
+
+The following other changes were made for consistency.  The @* command used 
+to run the startup command file.  Now it runs the startup command file and
+the always command file in that order.  The @* command may not be followed 
+by any addition keywords or commands.  (e.g. the command "@*; log off" is no 
+longer legal.)
+
+MACRO STUFF: Added the BACK_TO command.  
+
+Syntax:
+         BACK_TO label_name[:]
+
+The BACK_TO command causes ICED to back up whole command lines until it 
+reaches a command with label label_name.  
+
+Neither the SKIP_TO nor BACK_TO commands will jump into a block.  As an 
+example, consider the following fragment:
+
+         local #i=0;
+         local #j=10;
+         ABC: select layer %i all
+         if(%n.select > 0){
+             ABC: %i = 5;
+             delete
+         }
+         #i = {%i + 1}
+         if(%i!=%j) back_to ABC:
+
+In this sequence the BACK_TO command will cause ICED to skip to the "select
+layer %i" all command.
+
+There are now separate system macros for the startup and always command files:
+START.CMD and ALWAYS.CMD.  If one of the files is undefined the corrosponding 
+macros returns "DO_NOTHING".  The @ command has been modified so that  
+@DO_NOTHING or @"DO_NOTHING" does nothing.  Thus you can issue commands like 
+@ %always.cmd without checking the value of #always.cmd.  Note that DO_NOTHING
+is not treated as a keyword and cannot be abbreviated.  The @DO_NOTHING 
+command skips the entire command line.  Thus the command:
+
+            @DO_NOTHING; log screen=off
+
+also does nothing.
+
+6/27/03  MkPlot version 4.26
+
+Fixed bug in MkPlot's handling of colors in for .BMP files.  Bug appears to 
+have been introduced in version 4.25
+
+6/20/03  ICED version 4.82
+
+In Windows 2000 and Windows Xp, ICED would hang after returning from a DOS 
+command until you moved the mouse or hit a key.  This problem only arose in 
+Windows 2000 and Windows Xp.  (In my view this really means that the bug is
+in the operating system, not ICED.)   In any event a bug fix (or workaround) 
+has eliminated the problem.
+
+6/19/03  ICED version 4.81  UNSTREAM version 1.19
+
+Fixed two bugs in UNSTREAM.  
+
+Since UNSTREAM was first released it wrote an incorrect header on .CEL files 
+containing more than 512 Meg of data.  The results are disasterous but usually 
+obvious.  For instance, if the .CEL file had 540 Meg of data only 28 Meg would 
+be displayed.  (512 Meg of data would be ignored.)  The bug was not noticed 
+until now because single cells containing over 512 Meg of data are rare.  This
+bug was fixed by modifying both ICED and UNSTREAM.
+
+An error introduced in UNSTREAM version 1.18 broke the "optional suffix" code. 
+This error has been repaired.  If you didn't notice a problem, you don't care.
+
+5/7/03  ICED version 4.80  AllCells version 4.00
+
+Added 4 command line parameters:
+
+LIMIT=(ON | OFF)
+(EXIT | QUIT | LEAVE)=cmd_file_name
+
+LIMIT=ON means that when launch ICED, it comes up with the VIEW LIMIT enabled.
+If the root cell is new or freshly UNSTREAMed the VIEW LIMIT parameters are
+DEPTH=1 SCALE=.5.  Otherwise, the parameters are those that were in effect the
+last time you saved the cell.
+
+LIMIT=OFF has no effect.
+
+EXIT, QUIT and LEAVE are meant to aid in the automated processing of cell 
+files.  If you launch ICED with one of these parameters it always executes 
+the command file given by cmd_file_name.  When the command file completes 
+ICED executes the EXIT, QUIT, or LEAVE command.  Minor startup errors, like 
+missing pattern or menu files are ignored.  More important errors cause ICED 
+to write a message in the .JOU file and abort.  Manual intervention in the 
+form of closing a message box may or may not be required.
+
+The EXIT, QUIT, LEAVE, ALWAYS, and START keywords are mutually exclusive, 
+i.e. you should only use one of them in the ICED command line.
+
+In the belief that essentially all modern programs can handle stream layer 
+numbers in the range [0:255] (instead of [0:63]) we have changed the 
+default value of the MAX_LAYER parameter in the STREAM command to 255.
+
+Fixed bug in the LEAVE NOW command. (If the LEAVE command resulted in ICED 
+quitting a cell, it issued an error message because there is no "QUIT NOW" 
+command.)
+
+Added a new utility AllCells.exe for Windows /NT/2000/Xp only.  AllCells 
+creates a batch file (XCELLS.BAT) that can be used to edit every cell in the 
+current directory.  Running XCELLS.BAT will cause ICED to be invoked once for 
+each .CEL file.  This is surprisingly fast but can still eat up real time if a 
+directory has hundreds of cells.  Furthermore, ICED's behavior is such that 
+the computer will be unusable while the batch file is running.  Try running 
+AllCells in a directory containing cell files and then use a text editor to 
+look at XCELLS.BAT.
+
+4/23/03  ICED version 4.79  MkPlot version 4.25  UnStream version 1.18
+
+Fixed long standing bug in ICED's routine for drawing the outlines of complex 
+wires.  This bug caused ICED to crash when drawing some wires (usually DRC 
+output wires).
+
+Fixed bug in ICED's handling of NONE.STI (see 2/9/01).  Hopefully, it works 
+this time.
+
+Fixed bug in MkPlot involving BMP files in the 4-dot mode.
+
+In older versions of UNSTREAM, if two structures had the same default cell 
+name (e.g. Structures named FlipFlop and flipflop would both have default cell 
+name FLIPFLOP) the alias file prepared by pass 1 would not contain an error 
+message.  The error was caught in pass 2.  In this version the error is 
+flagged in pass 1.  This is of interest to people who are using automated 
+scripts to correct cell name errors.
+
+3/11/02  ICED version 4.78 ICICON, MKMENU version 4.03, and MKSTI version 4.01
+
+Fixed bug in ICED that could cause it to crash while executing a SHOW command.
+
+MKMENU and MKSTI have been modified so that they try to write their output 
+files to ICED's AUXIL subdirectory.  The mechanism by which they find the 
+AUXIL subdirectory is as follows.  ICICON was modified to set two "new" 
+environment variables, ICED_USER, and ICED_DIST.  For now, both environment 
+variables have the same value as ICED_HOME.  MKMENU and MKSTI have been 
+modified so that, if ICED_USER is defined, they write their outputs to the 
+iced_user\AUXIL where iced_user is the value of the ICED_USER.
+
+3/2/02 ICED version 4.77
+
+Modified ICED's embedded select command.  If you hold down the shift key 
+during an embedded select command, ICED will let you make multiple selects.  
+ICED checks the status of the shift key at the end of each select.  Thus, you 
+should release the shift key before your last select.  If you forget (I always 
+do) release the shift key and press the right mouse button or select a blank 
+area on the screen or reselect a component you already selected.
+
+1/24/02 ICED version 4.74-4.76 
+
+Fixed bug in introduced in 4.70.  The bug in 4.70 could corrupt certain wire 
+records.  An explanation follows:
+
+The coordinates of the center line of a wire (spine coordinates) are stored
+in a wire's component record.  ICED computes the outlines of wires that only 
+have sides at multiples of 45 degrees from these spine coordinates whenever
+they are needed.  The outlines of wires that have sides at arbitrary angles 
+are far more complicated to compute, and ICED saves time by storing both the 
+wire spine and outline coordinates in the component record.  As a result of 
+a bug, ICED computed some wire outlines incorrectly.  These incorrect outlines 
+were stored in the .CEL file when the cell was saved.  The result is that for 
+wires with sides at arbitrary angles, the wire outline you see on the screen 
+did not match the wire definition stored in the data base.  (The wire ends 
+were drawn incorrectly.)  The current version recomputes the outlines for the
+affected wires as it reads the .CEL file.  Since the spine coordinates were 
+not affected by the bug, this should be a complete fix.
+
+This is one of a series of bugs since 4.70 and you might reasonably wonder 
+what's going on.
+
+There was a subtle bug in the way ICED computed wire outlines.  This bug 
+was sufficiently subtle that it went unnoticed for at LEAST 5 years.  Alas, 
+someone finally created a data base in which it surfaced.  So I fixed it.  
+Unfortunately, the routines involved were called in a lot of places and,
+since I had not looked at this code for a long time, I had forgotten some of
+the issues involved.  My "fix" broke a lot of things having to do with
+the handling of wires and polygons with zero length or arbitrary angle sides.
+
+I hope, I finally got it right.
+
+Modified added MASKOP.CMD and modified DRC.MEN.  MASKOP.CMD uses the DRC to 
+perform masking operations (our equivalent of the Calma WinCut).   
+
+1/9/02 ICED version 4.73  UNSTREAM version 1.15
+
+Fixed bug arising when MOVE SIDE command resulted in 0-length segments.  This
+bug appears to have been introduced in version 4.70. 
+
+Made (hopefully) minor changes to the copy protection code for the HASP.
+
+Made (hopefully) minor changes to the mouse button handling to work around 
+a rare situation in which ICED would not respond to mouse clicks.
+
+Fixed bug in UNSTREAM's new (version 1.14) scaling snap feature.  In 
+UNSTREAM 1.14 the scale factor displayed on the screen was incorrect.  The 
+actual scaling appears to have been correct.  
+
+12/13/01 ICED version 4.72
+
+Fixed bug in DOS and SPAWN commands under Windows 95/98/Me.  In prior versions 
+you could not close the DOS window created by a DOS or SPAWN command by 
+clicking the close [X] button in the upper right hand corner of the window.  
+Now you can.  This always worked under Windows NT/2000/Xp.
+
+Adjusted menu position to provide more space between the top menu row and the 
+minimize-restore-close controls on the right hand side of the title bar.
+
+12/13/01 ICED version 4.71  UNSTREAM version 1.14  SFMAP version 1.01  
+       MKPLOT version 4.24     UNCIF version 1.03
+
+Fixed "configuration management" problems in ICED involving ICED/DRC 
+integration.  The tutorial was unusable because I did not include files (or
+included the wrong files) in several places.  The ICED/DRC integration effort
+relies on macros that the DRC includes in its output .CMD file.  DRC3-NT now
+includes outputs these macros.  As a result, various command files have been 
+updated to refer to DRC3-NT instead of DRC3-NTX.
+
+Worked around change in Windows Xp that prevented ICED's device_exists()
+routine from functioning properly.  This prevented PLOTNOW.CMD from working 
+properly under Windows Xp.
+
+Fixed bug in ICED that caused it to compute bad bounding boxes and outline
+coordinates for wires that included slant lines (lines at angles that are 
+not a multiple of 45 degrees).  This, in turn, could cause ICED to compute 
+a bad bounding box for the cell containing the wire.  The bad outlines and 
+bounding boxes were output to the DRC where they caused problems. 
+
+Fixed bug in ICED that could cause it to create a bad journal file entry for
+the VIEW LIMIT command.  This bad entry could make recovery from the journal
+file difficult.
+
+Fixed bug in ICED's GROUP command that caused it to assign bad id numbers to
+components in the grouped cell.
+
+Fixed minor bugs in ICED's text input routine for command status line.
+
+Fixed minor bug in cursor ICED's handling that could cause it to wait for you 
+to move the mouse or press a key before finishing a command.
+
+Fixed bug in UnCIF that made it mishandle cell names more than 10 characters 
+long.
+
+Both Unstream and SFMap have been modified to handle structure names up to
+100 characters long.  ICED cell names are still limited to 32 characters.
+
+Unstream has been modified to handle a -d (or /d) command line argument.  This
+argument tells unstream to use default option values instead of prompting you 
+for values.  It is particularly useful in batch files.
+
+            Examples:  UNSTREAM my_file -d  
+                       UNSTREAM /d
+
+In the second example UNSTREAM will prompt you for the stream file name and
+nothing else.
+
+Unstream has been modified to use the Calma array format when dealing with 
+stream revision number 88.  As far as I know, this revision number is only 
+used by MyCad.  
+
+Unstream has been modified to simplify its use in scaling designs and snapping 
+designs to grid.  Near the beginning of pass 2 it will ask :
+
+   "Are you using UNSTREAM to scale this design or snap it to grid [Ny]?".  
+
+If you answer Y, it will prompt you for the original and final feature sizes 
+and compute the scale factor accordingly.  (If you were going from a 1.2 
+micron process to a 0.8 micron process you would answer 1.2 and 0.8.)  Then
+UNSTREAM will ask you to:
+
+            "Enter snap grid size in microns: ".  
+
+If there is any chance that a scaled coordinate will wind up off grid, 
+UNSTREAM will prompt you for to:
+
+   "Enter the maximum allowable coordinate rounding error in microns: "
+
+We suggest that you run UNSTREAM twice.  The first time, enter 0 or a 
+small number.  This will result in UNSTREAM dropping all components were 
+off grid after scaling.  The .ERR file will contain a printed list of the
+locations of these components.  Save (rename) this file.  Then run pass 2 of 
+UNSTREAM a second time and enter a large value to guarantee that rounding 
+errors are ignored.  (Setting the maximum allowable coordinate rounding error
+equal to the snap grid size will do the trick.)  This time UNSTREAM will snap
+everything to grid.  The only components that will be lost are those that are
+snapped out of existence.  (For example, all four corners of a small box 
+might be snapped to a single point.)
+
+Fixed "crash or run right" bug in Unstream's handling blanks in structure 
+names.
+
+ICED has been modified so that after a successfully completed journal file 
+recovery, the journal file is renamed with a .JOX extension instead of being 
+deleted.
+
+On Sony portable computers pressing the two outside mouse buttons does not
+pass the correct signals to ICED.  To work around this problem, we have added
+a new command line parameter to ICED's command line: 
+
+                         CANCEL=Fnn
+
+where nn is in the range [1:12].  If you use the parameter CANCEL=Fnn, 
+pressing <Fnn> key while using the mouse to digitize coordinates will cancel 
+the command.  (In other situations you can use the <Esc> key to cancel the 
+command.)
+
+Example:
+  c:\icwin\iced %1 start=d:\work\cmos menu=* pause=0 max=yes win=500 cancel=f9
+
+ADDED LAYERS KEYWORD TO SHOW COMMAND
+
+ICED's SHOW command now supports an optional LAYERS=layer_list parameter.  If
+the LAYERS keyword is specified only those objects on the specified layers are
+shown.  In addition, the default mode keyword becomes ALL instead of SELECT.
+
+IMPROVED SUPPORT FOR HP LARGE FORMAT PLOTTERS
+
+MKPLOT has been modified to improve support for HP large format plotters, 
+especially the HP500/800/5000 series plotters.  Color control for these 
+plotters has been improved by adding certain HPPJL (HP Printer Job Language)
+commands to the beginning of the .DOT file.  We believe these commands will
+be ignored by any RTL compatible plotters that cannot process them correctly, 
+but if they cause a problem, please let us know.  
+
+Most HP large format plotters have an internal dithering algorithms that allow 
+them to approximate a continuum of colors.  (I believe the HP650C is the only
+exception.)  Dithering algorithms work well in photographic images.  They do 
+not work well for kind of plots ICED generates.  As a result, previous 
+versions of ICED did not support them.  We added the 4-dot mode instead.  The 
+HP5000 and HP500/800 series plotters can plot more than 8 pure colors per 
+pixel.  They use these addition colors to reduce the amount of dithering 
+required to approximate a continuum.  (There is no easy way to use more than 8 
+colors without getting at least some dithering.)  This is enough of an 
+improvement to make support for HP's internal dithering worth while.  This 
+involved modifying MKPLOT and adding the DITHER keyword to ICED's PLOT command.
+
+If the old PLOT command syntax was:
+
+              PLOT ...[DOTS=1 | DOTS=4]...
+
+the new syntax is:
+
+              PLOT ...[DOTS=1 | DOTS=4 | DITHER]...
+
+Note that at most one of the keywords, DOTS or DITHER, can be specified.  
+(The default is still DOTS=1.)  Recall that if you specify DOTS=1, MKPLOT 
+uses the colors set through the COLOR command's ONE_DOT parameter.  If you 
+use DOTS=4, MKPLOT uses "super pixels" made up of 4 plotter pixels.  The 
+colors of the 4 plotter pixels are set through the COLOR command's FOUR_DOT 
+parameter.  If you specify DITHER, MKPLOT uses the average of the FOUR_DOT 
+colors as the pixel color but does not generate "super pixels".  What the 
+plotter actually prints on the paper will depend on the color specified on
+details of the plotter's dithering algorithm.  Sometimes this works well, 
+sometimes it doesn't.
+
+4/13/01 SFMAP version 1.00, UNSTREAM version 1.11 and ICED version 4.69
+
+Added new utility SFMAP to rename structure names in a Stream file.  Modified
+UNSTREAM to accept a wider variety of structure names and create a map file 
+for use by SFMAP.
+
+Background:  ICED attempts to follow the original Calma-GDSII rules for naming
+cells.  (ICED cells correspond to Calma structures.)  Newer layout systems 
+tend to have less restrictive rules for structure names.  A common problem 
+occurs when a user imports a design from one of these systems.  He can use the
+alias file to create cells with names that ICED finds acceptable, but when he
+wants to export the cells to the original system, ICED creates a Stream file
+with the new cell names.  Until now, the user had to change these names on the
+original system.  SFMAP is designed to address this problem.
+
+UNSTREAM has been modified to create a map file of old and new names whenever
+a structure name is changed during the UNSTREAM process.  SFMAP can read this
+map file together with the Stream file created by ICED to create a new Stream 
+file with the original structure names.  SFMAP is described in detail in 
+\ICWIN\DOC\SFMAP.TXT.
+
+MACRO STUFF:  Added USE.WIRE.TYPE, USE.ARC.TYPE, USE.N.SIDES, USE.TEXT.JUST, 
+SPACER.TRACK.LAYERS and SPACER.STYLE macros that report the current values of 
+these parameters.
+
+4/2/01 ICED version 4.68
+
+Fixed bug that caused ICED to crash if you clicked on a menu line below the
+bottom of the menu.  This bug only affected Windows /95/98/Me.  
+
+Improved handling of the <Esc> key during redraw of arrays.  Recall that 
+pressing the <Esc> key during a draw prevents drawing of the contents of 
+subcells.  There was an unnecessary delay if you pressed <Esc> during the 
+redraw of very large arrays.  
+
+Modified the REDRAW command.  If you issue a REDRAW command right after using
+the <Esc> key to interrupt a draw, ICED will complete the interrupted draw.
+
+3/28/01 ICED version 4.67
+
+Changed maximum scale in PLOT command to 100000 (it was 10000) to accommodate
+plots of submicron devices.  (This change was supposed to be in 4.65.)
+
+3/21/01 ICED version 4.66  Mkplot version 4.23
+
+I made several errors in changing from the name.KMD to the _name.CMD notation 
+(see version 4.63).  These errors affected plotnow.cmd.  Fixing them required 
+changes in MkPlot, plotnow.cmd, and _get_dev.cmd.  These errors appeared in
+versions 4.63-4.65.  Someone finally told us.  One more time: "If we don't 
+know it's broken, we can't fix it".
+
+Fixed a bug in ERROR command that could lead to the wrong file name appearing 
+in some "posted" error messages.
+
+Fixed a cosmetic bug in ICED that could cause an "illegal character" error
+message at startup.
+
+Fixed a bug in ICED that affected Scandinavian keyboards.  Most customers 
+should not notice any change.  Scandinavian users should now be able to enter 
+a \ by typing <Alt Gr><+>.
+
+Fixed a bug in MkPlot that could cause the last row of pixels to be lost when 
+creating .BMP files.
+
+2/12/01 ICED version 4.65
+
+Oops!  Contrary to the documentation, the tutor subdirectory was not included 
+in icfull.exe.  This error has been corrected in the current icfull.exe.  
+
+Fixed bugs in redraw introduced in 4.63 and 4.64.
+
+Changed maximum scale in PLOT command to 100000 (it was 10000) to accommodate
+plots of submicron devices.
+
+2/12/01 ICED version 4.64
+
+Improved dot-cursor handling.  Background: When digitizing points its nice to 
+know two things: the current mouse position and the position to which it will 
+snap if you press the left mouse button.  That's easy if, for example, you 
+are digitizing the second corner of a box.  The cursor shows the current mouse 
+position and the box outline shows where the box will be if you press the 
+left mouse button.  It's not as easy when you are just digitizing a single 
+point, for example the first corner of a box .  Most users would prefer to see 
+the point to which the cursor will snap.  (That's the way it worked in the DOS 
+version.)  However, it turned out to be surprisingly difficult to snap the 
+cursor in the Windows version.  We have finally implemented this feature.  The
+cursor command has been modified to allow you to choose the cursor display 
+mode you prefer.  The new syntax is:
+
+            CURSOR [cursor_number] [SNAP=(ON|OFF)]
+
+The SNAP=OFF option specifies smooth (flicker free) mouse motion.  The SNAP=ON
+option causes the cursor to be drawn at the snapped mouse position.  The SNAP 
+values only affect the display when you are digitizing a point where the exact
+position is critical and there is no other way to tell the result of pressing 
+the left mouse button.  Thus, they do NOT affect cursor display during VIEW 
+commands or when digitizing the second coordinate for an ADD BOX command.  
+This minor improvement required many code changes to handle special 
+situations.  Please inform us if you notice any odd cursor behavior.  Please, 
+be especially vigilant when you are using nested VIEW and SELECT commands.  
+As usual, if we don't know it's broken, we won't fix it.
+
+Fixed bug in cursor handling and screen redraw during nested VIEW and SELECT
+commands.  This bug was introduced in version 4.63. 
+
+2/9/01 ICED version 4.63  ICTREE and ICLIST version 4.01  MKPLOT version 4.22
+
+*****************************************************************************
+*   This version introduces our first cut at integrating ICED and the DRC.  *
+*   DRC users should read the tutorial in ICED-DRC.TXT in their \ICWIN      *
+*   directory.                                                              *
+*****************************************************************************
+
+Fixed a design error in ICED/MKPLOT that defeated the purpose of NONE.STI.  
+MKPLOT used solid fill for all layers with PEN=1.  We also defined a NONE.STI 
+file with no patterns defined.  The intent was that choosing NONE for a plot's 
+PATTERN file would result in an outline plot (similar to FILL OFF in ICED).  
+However, layers with PEN=1 were plotted as solid.  MKPLOT has been changed so
+that components on layers with PEN=1 are drawn in outline mode if and only if
+no patterns are defined in the referenced .STI file.  If any patterns are 
+defined in the pattern file, components on layers with PEN=1 are still drawn
+with solid fill.
+
+Fixed bug in ICTREE and ICLIST that caused them to crash if there were too
+many missing cells.
+
+Fixed bug in processing @name files.  If you TYPED @name ICED was searching 
+the ICED_PATH instead of the ICED_CMD_PATH for name.CMD (or name.KMD).
+
+Fixed bug in command interpreter that could cause ICED to crash at the end of
+command files.
+
+Fixed bug associated with redraw of select marks at the end of a .CMD file.  
+It could result in select marks being drawn when no components were selected.
+
+Fixed bug associated with redraw of select marks after embedded select 
+commands.  It resulted in select marks not being drawn after embedded selects
+associated with certain commands like MERGE and DELETE.  This resulted in a 
+loss of visual feedback.  
+
+Fixed bug that caused the wrong cursor to be displayed after a nested VIEW 
+command.
+
+Fixed bug in log routines that could cause certain journal file entries to be 
+split into 2 lines making recovery difficult.
+
+Fixed bug in command history that prevented retrieval of some old commands.
+
+At a user's suggestion, the command history (up and down arrow keys) has been 
+modified so that repeated commands are only saved once.  Thus, if you enter
+the commands:
+                   ADD POLY
+                   MENU DRC
+                   ADD BOX
+                   ADD BOX
+                   VIEW ALL
+
+only one of the ADD BOX commands will be saved in the command history.  Users 
+are invited to comment.  (We can change it back.)
+
+Improved display of select count in ICED's command prompt.  Recall the command 
+prompt near the lower left corner of the ICED window is of the form:
+
+                   LAYER=layer_id; Sel=nnn>
+
+If nnn not equal to 0, it is now displayed in RED (as in the DOS version).
+
+Improved (I hope) handling of cursor after an embedded RULER command.  In the 
+"improved" version the cursor remains at the final ruler position after the
+embedded RULER command is complete.  If you don't like this behavior, now is
+the time to complain.
+
+Improved handling of pauses during ICED startup.
+
+Modified ICED's menu system so that it does not display file names (except 
+.CEL file names) starting with an underscore.  As .CMD files become more 
+common and complicated, there will be large numbers of special purpose files, 
+such as menu files, associated with them.  These files can cause severe 
+clutter in the menus.  To avoid cluttering the menus make sure the first 
+character in their names is an _.  This convention will also make the .KMD 
+extension unnecessary.  Support for .KMD files will be removed June 30, 2001
+unless there is a user revolt.  I think introducing it was a mistake.  It can
+lead to confusion if there are two files on the ICED_CMD_PATH with the same
+name but different extensions.
+
+Modified M1.DAT and M1.MEN.
+
+Modified [UN]SELECT command to add the TAG keyword.  
+
+BACKGROUND: The DRC attaches tags to objects output to ERROR LAYERS to help 
+identify the error being reported.  All versions of the DRC place a tags on 
+all the WIRES they output to error layers.  The DRC-NTX version 113.55 and 
+later places tags on WIRES, POLYGONS and BOXES output to ERROR LAYERS.
+
+If the old syntax for the [UN]SELECT command could be summarized as:
+
+    [UN]SELECT [IDS=id_list] ...
+
+The new syntax can be summarized as:
+
+    [UN]SELECT [IDS=id_list | TAGS=tag_list] ...
+
+where the tag_list has almost the same syntax as the id_list.  Notice that 
+you can not specify both the TAGS and IDS keyword in the same command.  The 
+syntax for the tag_list is:
+
+ [* | tag_no0 tag_no1...tag_nox | BEFORE tag_no | UP_TO tag_no | AFTER tag_no]
+
+The special case [UN]SELECT TAG=0 ... [un]selects untagged items while 
+[UN]SELECT TAG=* ... [un]selects all tagged items.  (IDS=* is not valid.  This 
+is the only difference between the tag_list and id_list syntaxes.)
+
+EXAMPLES:
+
+The following command selects all tagged components, that is all wires, 
+polygons or boxes output to DRC error layers.
+
+    SELECT TAGS=* ALL 
+
+The following command selects all untagged components:
+
+    SELECT TAG=0 ALL
+
+Added new .CMD files and menus that enable use to run the DRC from inside 
+ICED and aid in correcting the errors it reports.  These files make use of 
+"interface features" that have been incorporated in DRC3-NTX version 113.55.
+If the NTX version is well received, the required new features will appear 
+in a DRC3-NT update soon.
+
+Modified the MENU command to change the meaning of MENU * and allow temporary
+top level menus.
+
+New MENU command syntax:
+
+             MENU 
+             MENU (menu_name | *)
+             MENU (menu_name | *):submenu_name
+
+The first form of the command merely echoes the name of the current menu in
+ICED's status box and log file.  
+
+In the remaining two forms, a * represents the name of the current menu (if 
+there is one) or the name of the default menu (in the rare case that there 
+isn't).  This is a change from previous versions where a * always represented 
+the name of the default menu.
+
+The second form of the command loads menu menu_name.MEN and displays its main
+menu.  The file menu_name.MEN must already be in the aux directory (usually
+C:\ICWIN\AUXIL).
+
+The third form of the command loads menu menu_name.MEN but inserts submenu 
+submenu_name in front of its main menus.  This allows command files to post 
+special purpose menus without making the normal main menus completely 
+inaccessible.  Submenu_name must be the name of a submenu in menu menu_name.  
+Menu menu_name.MEN must have been compiled by mkmenu version 4.02 or later.
+
+MACRO STUFF:
+
+Fixed bug in DEFAULT (LOCAL | GLOBAL) #macro_name command that could cause 
+ICED to crash.
+
+Fixed bug in CELL(cell_name) function that would cause it to evaluate as -1 
+when a cell existed but was not loaded.  It now evaluates as 0 as intended.
+
+***************************************************************************
+* WARNING: ITEM COMMAND MODIFIED IN A WAY THAT WILL BREAK EXISTING MACROS *
+***************************************************************************
+
+Modified ITEM command.  The ITEM name command creates a series of user macros 
+of the form name.xxx that describe a selected component.  You can change the
+value of one or more of these macros and then use the ADD.name macro which 
+creates a command string that can be used to ADD the modified component.
+
+Added LIST command and modified SELECT commands.  The LIST command allows you 
+to form a list of selected components.  The SELECT LIST command allows you to 
+step through that list selecting one component at a time.  These commands are 
+described in LIST.TXT.  
+
+Modified the PAUSE command so that it will accept real numbers for the
+pause time.  
+
+                   EXAMPLE: PAUSE 0.5
+
+ICED now checks for the existence of two sets of 3 special purpose macros when 
+entering or leaving cells.
+
+When you exit ICED using an EXIT command (or a LEAVE command that results in 
+saving the root cell), ICED first checks to see if the macro EXIT.ROOT exists.
+If it does, ICED will execute the command %EXIT.ROOT, before exiting.  
+Typically, EXIT.ROOT will have been defined by a command like:
+
+       GLOBAL #EXIT.ROOT="@_EXIT_ROOT.CMD"
+or
+       GLOBAL #EXIT.ROOT="SHOW USER * FILE=%CELL^.MAC"
+
+Similarly, when you exit a subcell, using an EXIT command (or a LEAVE command 
+that results in saving the subcell), ICED first checks to see if the macro 
+EXIT.SUBCELL exists.  If it does, ICED will execute the command %EXIT.SUBCELL 
+before exiting.  
+
+The EXIT and LEAVE commands have been modified to accept the NOW keyword.
+The EXIT NOW and LEAVE NOW commands do not check for either the EXIT.ROOT or
+EXIT.SUBCELL macros.
+
+The EDIT commands (EDIT, P_EDIT and T_EDIT) have been modified to check for 
+the ENTER.SUBCELL macro.  If it exists, ICED executes the %ENTER.SUBCELL 
+command after entering the cell.  The EDIT commands also recognizes the NOW 
+keyword.  The EDIT NOW, P_EDIT NOW and T_EDIT NOW commands do not check for 
+the ENTER.SUBCELL macro.
+
+A second similar set of three macros is reserved for use by IC Editors, Inc.  
+They are: ICED.EXIT.ROOT, ICED.EXIT.SUBCELL, and ICED.ENTER.SUBCELL.  The 
+following example defines the order of execution when both the user and ICED.
+versions of these macros exist.
+
+If you type the commands:
+            
+             EDIT CELL NAND
+                ...
+             EXIT CELL NAND
+
+ICED will actually execute the commands:
+
+             EDIT NOW CELL NAND
+                %ICED.ENTER.SUBCELL
+                %ENTER.SUBCELL
+                   ...
+                %EXIT.SUBCELL
+                %ICED.EXIT.SUBCELL
+             EXIT NOW
+
+Added APPEND keyword to SHOW command.  If you use the APPEND keyword, the 
+data will be written at the end of file specified in the last 
+SHOW ... FILE=file_name command.  Existing data in file file_name name will 
+not be destroyed.
+
+EXAMPLE:
+
+The commands:
+
+      SHOW SYS=#RES.* FILE=EXAMPLE
+      SHOW SYS=#SNAP.* APPEND 
+
+lead to a file like the one shown below:
+
+!    Name         Value               Description
+$ RES.STEP     0.5                 Resolution step size
+$ RES.MODE     SOFT                Resolution mode
+
+!    Name         Value               Description
+$ SNAP.ANGLE   45                  Snap angle
+$ SNAP.OFFSET  (0.0, 0.0)          Snap offset
+$ SNAP.STEP    (0.5, 0.5)          Snap step size
+
+Note that the output file is opened and closed for each show command.  This
+can lead to efficiency problems if you use too many APPENDs.  Also notice 
+that there is a blank line between the two blocks of output data.
+
+Modified PAUSE command.  The new syntax is:
+
+          PAUSE [secs] ["[+|-|*]string"]
+
+Recall that when ICED executes a PAUSE command in a .CMD file, it pauses secs 
+seconds.  If secs=0, ICED pauses until you press a key or mouse button.  When 
+the new PAUSE command is executed the "string" is displayed in the color 
+indicated by the optional color code character.  If the color code is:
+
+          + the color is green
+          - the color is red
+          * (or unspecified) the color is white
+
+The color code itself is not displayed.  The quotes are only necessary if 
+there is some chance ICED will become confused, e.g. if secs is omitted and 
+the string starts with a digit, if the string contains a semicolon (;) or
+exclamation point (!), ends in an ampersand (&), etc.  
+
+Added SHELL command, modified RETURN command.  Occasionally it is desirable 
+allow the user to temporarily replace the menu or generate commands without 
+exiting a .CMD file.  A new  version of LOOP.CMD provides an example.  It is 
+designed to step through all direct-edit subcells in a design and uses the 
+SHELL command to allow the user to examine each subcell and perform whatever 
+actions he sees fit.  
+
+The SHELL command syntax is:
+
+         SHELL [MENU=(menu_name | *)[:submenu_name]] [NAME=shell_name]
+
+After the SHELL command is executed, ICED accepts commands from the keyboard 
+or menus (including @cmd_file commands) until the user enters a RETURN 
+command.  If the optional MENU parameter is specified, MENU name is loaded.  
+The meaning of menu_name, * and submenu_name are the same as in the MENU 
+command.  The original menu is reloaded after the user enters RETURN.  If the 
+optional [NAME=shell_name] parameter is specified and another SHELL with the 
+same name is still active ICED will report an error.  This mechanism can be 
+used to prevent the user from accidentally launching the same SHELL twice 
+without RETURNing.  When a SHELL is active, the phrase Shell=n (where n is 
+the number of active shells) appears in ICED's command prompt, i.e. the 
+command prompt takes the form: Shell=n; LAYER=layer_id; Sel=nnn>
+
+For convenience in typing, the SHOW command was modified so that:
+
+                   SHOW #name_with_wildcards 
+
+"shows" all user macros, system macros, and lists matching name_with_wildcards.
+
+8/21/00 ICED version 4.61  MkPlot version 4.20
+
+We were forced to rename GET_DEVICE.KMD GET_DEV.KMD to avoid problems with 
+long file names.  The version of PkZip we are using truncates file names to 
+the DOS 8.3 format.  We are going to try WinZip while learning about newer
+versions of PkZip.  
+
+Fixed bug introduced in 4.57 that could cause ICED to crash and/or create a
+bad journal file.  Bug showed up in the @ed.cmd.  
+
+Fixed bug in TEMPLATE command that output the wrong syntax for the SPACER 
+TRACK_LAYERS parameter.
+
+Fixed long standing bugs in CURSOR command.  Cursor 3 and cursor 4 were 
+interchanged and cursor 2 was offset from its hot-point.  (It was like this 
+for at least 18 months.  Surely someone noticed.  But no one told me until 
+now.  Come on guys, when you see something wrong report it!)
+
+MACRO STUFF:
+
+Fixed bug in scanner that resulted in commands like DRC386 and LAYER5 being
+misinterpreted in command files.  This bug was introduced in 4.57 along with
+statement labels.
+
+Fixed bug in scanner that deleted too many blanks for continuation lines.  
+Example:  
+
+ADD&
+ BOX
+
+was interpreted as ADDBOX instead of ADD BOX.
+
+Added a DEVICE_EXISTS("dev_name") function and used it to improve PLOTNOW.CMD.
+DEVICE_EXISTS returns 1 if the device dev_name exists and 0 if it does not.
+It does not work properly in Windows 2000.  In Windows 2000, if "dev_name" is
+in use by another process, DEVICE_EXISTS will return 1 even if dev_name is 
+not the name of a device (e.g. dev_name is actually a file name).
+
+Modified the ICED, MKPLOT, and the ICED-MKPLOT interface so that MKPLOT's /i
+option causes MKPLOT to save the device name in the settings directory AFTER 
+THE PLOT HAS COMPLETED.  This information is used by PLOTNOW.CMD to track a
+a separate "default device" for each PDF file name.
+
+8/09/00 ICED version 4.60
+
+Never released.
+
+7/21/00 ICED version 4.59
+
+Fixed bug in initializing palette values for non-default colors.  If you  
+opened a cell, changed the palette values for a color, exited the ICED, and 
+then reopened the cell the modified color would not be correctly displayed.
+
+7/19/00 ICED version 4.58
+
+Changed menu M1 to include SPACER command (bottom of third top level menu) 
+and SPACE parameter in LAYER command.  No changes were made in executable 
+programs or version numbers.
+
+7/18/00 ICED version 4.58
+
+Fixed bug in SPACER LAYER=* command.  (It set the spacing to the wrong value).
+
+7/17/00 ICED version 4.57
+
+Added the SPACER command.  This command can be used to tell ICED to draw one 
+of several styles of spacing cursor when adding WIRE, BOX or POLYGON 
+components.  The spacing cursors can make it much easier to add components
+at a given separation from other components.  (With thanks/apologies to 
+Cherie Cushner of Aetherwire who suggested this improvement a long time ago.)
+
+Modified the LAYER command to add a SPACE=space parameter.  This SPACE 
+parameter provides a default SPACER size for each layer.  (See below.)
+
+SPACER command syntax:
+
+(1)    SPACER [ON | OFF] [STYLE=style_no] [SPACE=space] ...
+       ... [TRACK_LAYERS=[ON | OFF]] [LAYER=(layer_id | *)]
+                         or
+(2)    SPACER space
+                         or
+(3)    SPACER 
+
+The parameters in form (1) have the following meanings:
+
+If the ON/OFF parameter is OFF, the spacer is not drawn.  If it is ON the 
+spacer is drawn when you are digitizing points for the ADD WIRE, ADD BOX or 
+ADD POLYGON commands.  It is not drawn otherwise.
+
+The STYLE can be set to an integer in the range [1:4].  Style 1 is just a 
+circle.  In style 2, the circle is drawn with a square around it.  Styles 3 
+and 4 indicate more complex cursors that can be very useful when you need 
+them but equally annoying when you don't.  They generate slightly different 
+cursors depending on whether you are ADDing an extended end WIRE or a flush 
+end WIRE, or a BOX or POLYGON.  Try them and see how they work.
+
+The SPACE parameter sets the size of the spacer.  If SPACE=0 or space 
+translates into fewer than 3 screen pixels, the SPACER is not drawn.  If
+the current SNAP setting (in either the x or y directions) translates into
+fewer than 1.5 screen pixels, only the circular core of the SPACER is 
+displayed.  This is intended to prevent the illusion that you can measure 
+spacings and digitize coordinates more accurately than the screen resolution 
+allows.
+
+Drawing of very large SPACER's (greater than 8000 screen pixels) is inhibited 
+for technical reasons.  
+
+When TRACKing is ON, and you CHANGE the default layer using the USE or LAYER
+commands, the SPACE parameter is set to the default spacing for that layer.
+You can still change the SPACE value, but when you change the default layer 
+it will be reset.
+
+The LAYER=layer_id sets the SPACE parameter to the default spacing for 
+layer_id.  LAYER=* sets it to the default spacing for the current default 
+layer.
+
+In form (1), unspecified parameters are unchanged.
+
+Form (2), "SPACER spacing", is equivalent to "SPACER ON SPACE=spacing" but is 
+easier to type.
+
+Form (3), just "SPACER", toggles the SPACER's ON/OFF state without changing 
+any of the other parameters.
+
+Three new system MACROs have been added: LAYER.SPACE.layer_id which reports 
+the value of layer layer_id's SPACE parameter and SPACER.ON and SPACE.SPACE 
+which report the SPACER's ON/OFF state and current SPACING parameter.
+
+Editorial comments:  In testing, I found the SPARER very useful when I needed 
+it.  It allowed me to add complicated intercell wiring accurately without 
+constantly zooming in and out.  However, I also found it very annoying when 
+editing small cells where the view scale allowed me to determine spacings 
+easily.  My suggestion is to define a function key:
+
+                    GLOBAL #key.ss="spacer"
+
+so that typing ss toggles the spacer on and off.  
+
+This is not the final word on spacers.  There is still a lot of room for 
+improvement in the spacer graphics.  However, there are more pressing issues
+and those improvements will have to wait.
+
+MACRO STUFF:
+
+Added the ability to label and SKIP_TO command lines. 
+
+Commands in command files may be labeled using the following syntax:
+
+           label_name: [cmd]
+
+The label_name must me the first token in the command line and may not be 
+the result of a macro evaluation.  Thus, a line of the form:
+
+           %label: layer 1  !  ******** NOT VALID *******
+
+is an error.
+
+A label_name can be up to 32 characters long.  It must start with a letter.
+The remaining characters may be letters, digits, #, _, or $.
+
+The SKIP_TO command causes ICED to keep skipping whole command lines until it
+reaches a command with label label_name.  
+
+Syntax:
+         SKIP_TO label_name[:]
+
+ICED will not skip into a block.  As an example, consider the following 
+fragment:
+
+         skip_to ABC:
+         if(%n.select > 0){
+             ABC: layer 7
+             skip_to end:
+         }
+         else{
+             ABC: layer 8
+             skip_to end:
+         }
+         ABC: layer 1
+         end:
+
+In this sequence the SKIP_TO command will cause ICED to skip to the LAYER 1 
+command.
+
+Added a facility to improve error handling in command files.  Modified the
+ERROR and PAUSE commands to support this facility.
+
+In previous versions of ICED, if ICED encountered an error in a command file 
+it reported the error and then exited the command file.  If the offending 
+command file was called by another command file, ICED also exited the calling 
+command file(s).  
+
+In the current version of ICED, before exiting a command file ICED checks to 
+see if a LOCAL macro named ERROR.CMD is defined.  If it is ICED treats its 
+value %ERROR.CMD as a command line which it executes instead of exiting the 
+command file.  When ICED executes this line it also erases the ERROR.CMD 
+macro.  This prevents an infinite loop if there is an error in the ERROR.CMD 
+macro itself.  If the LOCAL macro ERROR.CMD is not defined, ICED behaves the 
+way it did in previous versions.
+
+Example:
+
+       LOCAL #ERROR.CMD="SKIP_TO FAIL"
+       ...normal commands...
+       RETURN; $IT WORKED
+       FAIL:
+       ...error recovery commands...
+
+If something goes wrong during execution of the "normal commands", ICED will 
+SKIP_TO FAIL and execute the "error recovery commands".  Unfortunately, this
+prevents the user from seeing the original error message.  The ERROR and 
+PAUSE commands have been modified to alleviate this problem.
+
+The ERROR command now has two forms with very different meanings:
+
+                   (1) ERROR string
+                   (2) ERROR
+
+Form (1) creates an error using string as an error message.  ICED performs
+normal macro substitution in string before reporting the error.
+
+Form (2) can only be used in command files.  It "posts" the last error in the
+on the status area at the bottom of the screen.  Furthermore, the error
+remains posted until ICED:
+
+1) executes a $-comment command,
+2) executes a RETURN string command (see below),
+3) executes a PROMPT command,
+4) executes an interactive command that requires use of the status lines,
+5) encounters another error, or 
+6) completes the command file(s) and returns to keyboard/menu input mode.  
+
+The PAUSE command has been modified so it does not "unpost" errors.  This 
+permits command files of the form:
+
+           #local failed=0
+           #local error.cmd="failed=1"
+
+           ...normal commands...
+
+           if(failed==0) return; $ It worked
+
+           error ! post error
+           pause ! allow user to study error
+           ...ask user what he wants to do...
+
+ED.CMD has been modified to use this error handling facility and serves as a 
+more detailed (if complicated) example.
+
+Modified the RETURN command.  Its syntax is:
+
+          RETURN [string]
+
+When the optional string is supplied, ICED displays it in the status area at
+the bottom of the screen.  The advantage of this form is that ICED performs
+macro substitution in string using the macros defined in the command file.
+
+7/05/00 ICED version 4.56  MkPlot version 4.19  MkMenu version 4.01
+
+Fixed bug ICED that prevented the <Esc> key from truncating the initial draw
+of a large chip.
+
+Fixed a bug in the PLOT command that caused incorrect journal file entries 
+for STRIP plots.  The bug made it impossible to reproduce the plots from the 
+journal file.
+
+Fixed bug DEFAULT LOCAL command that caused incorrect journal file entries 
+making crash recovery difficult.
+
+Fixed error in several .PDF files that incorrectly set the default STRIP mode
+to Yes instead of No.  This would result in off center plots and make 
+multipage plotting difficult.
+
+Added PLOTNOW.CMD and PLOTNOW.MEN files which allow you to make plots without 
+leaving ICED.  These files also serve as an elaborate example of how to use
+menus to set macro values (see below).  Note: running MkPlot as a background
+job will make large plots take longer to finish. However, you can continue
+to work while MkPlot is running.
+
+MACRO STUFF:
+
+Fixed bug in SHOW USER command that caused it to list SYSTEM as well as 
+USER macros.  Bug was introduced in version 4.48.
+
+Fixed bug in MACRO value input parser that could cause a crash if you entered 
+an empty string.
+
+Statement labels and a SKIP_TO command should be ready for the next release.
+In preparation, I have modified ICED's command parser to support statement 
+labels.  I hope no one will be able to detect these modifications.  On the 
+other hand, if I've broken one of your .CMD/.KMD files, please let me know!
+
+Added mechanism to use menus to set macro values.  The syntax looks like:
+
+             #macro_name = $MENU menu_name[:submenu_name]
+
+The macro value is constructed from the menus in the same way the command
+line is constructed from the menus.  Menu_name is the name of a menu and
+submenu_name is the name of the submenu that is initially displayed.  If the
+:submenu is not specified, the top level menu is initially displayed.  You
+can see the submenu names for M1.MEN by looking in M1.DAT.  
+
+Example: 
+             LOCAL #layer = $MENU M1:LAYER_NAMES_1
+
+This mechanism required a new .MEN file format and a new MkMenu version. 
+Only menus compiled in the new format using MkMenu version 4.01 or higher can 
+be used to set macro values.  Old menus can still be used as command menus.  
+If you have menus that are used for ICED32 (for DOS) you should set the $OLD 
+option near the beginning of the menu.  The new format does not distinguish 
+between cases in submenu names, the old format did.  Thus, certain existing 
+menu files may have to be modified to compile in the new format.
+
+Modified MkPlot's /i option (indicates MkPlot was launched from ICED) so that
+when plots are sent directly to a device or port:
+
+1) The .VEC file is deleted after the plot has been successfully completed.
+2) MkPlot waits for a busy port instead of just crashing.
+3) MkPlot does not exit until 20 seconds after it completes its work.  This
+gives you time to restore MkPlot's window (when launched by ICED it's normally 
+run minimized) and view any messages.
+
+These changes allow you to use PLOTNOW.CMD to start several plots without 
+waiting for the first plot to finish.  They do NOT guarantee that the plots
+will be completed in the order submitted.
+
+Some users may want to create fairly elaborate .BAT files to launch ICED, 
+carry out specific tasks, and exit.  In some instances, this may involve 
+writing a .BAT file that calls another .BAT file that launches ICED.  There
+were two known problems with doing this.  First, the DOS command interpreter
+does not pass the = character in command line arguments to batch files.  
+Second certain command line warnings cause ICED to wait until the user presses 
+<Enter> before continuing.  To avoid these problems we have added a BATCH 
+keyword to the ICED command line.  After encountering the BATCH keyword, ICED
+will interpret unquoted # characters as ='s.  The batch keyword also inhibits
+infinite pauses before ICED goes into graphics mode.  (It does NOT inhibit the
+".JOU file exists do you want to recover?" dialog.)
+
+Example:  
+   c:\icwin\iced %1 start=c:\icwin\new32 menu=m1 maximize=yes batch win#500 
+
+Improved ICED's handling of the VIEW ON/OFF state in .CMD files.  In older 
+versions ICED redrew the screen whenever it left the VIEW OFF state (e.g. when
+it exited a .CMD file or executed a VIEW ON command) even if nothing in the
+.CMD file changed what was on the screen.  ICED has been modified so it tries
+avoid logically unnecessary redraws.  The new version also automatically 
+enables VIEW refresh during commands that require mouse input.
+
+6/20/00 ICED version 4.55
+
+Corrected bug in ICED's journal file entry for the COLOR command using the
+NO_NAME parameter.  This bug would make crash recovery from the journal file 
+difficult.
+
+6/15/00 ICED version 4.54
+
+Improved cell list menus.  
+
+Corrected error in WIN2000.TXT which contains instructions for installing
+the Windows 2000 dongle drivers.  At one point it told you to run WIN2000
+instead of W00SETUP.
+
+Corrected bug in ICED that allowed you to use libraries with .L, .C or .V
+extensions as working directories.
+
+6/7/00 ICED version 4.53
+
+Improved handling of 32-bit dongle driver for Windows 2000.
+
+5/30/00 ICED version 4.52
+
+Improved CIF flush end wire warning message.  Improved (I hope) handling of 
+hourglass busy cursor.  This is more complicated than it sounds.  Please 
+report any sightings of inappropriate cursors.
+
+Fixed error in the "EDIT CELL" menu entry that limited cells you could select
+to "cells-in-use".  Corrected M1.MEN and M1.DAT files are included in this 
+distribution.
+
+Made temporary provisions to bypass security key (dongle) problems under 
+Windows 2000.  This fix may also help certain users who are having trouble 
+with dongles under Windows /NT4.0 -- i.e. very long (10 second) delays on 
+startup or intermittent security key errors.  Use of this patch requires a new 
+key program iced4aux.exe that replaces iced3aux.exe.  You can get a copy of
+iced4aux.exe by calling technical support or emailing a request to 
+connie@iceditors.com.  Include your serial number, which is written on your
+dongle, in your email.
+
+5/25/00 ICED version 4.51  MkPlot version 4.18
+
+Fixed bugs in ICED's output routine for .VEC and .POK files.  (The same 
+routine handles both file types.)  The bugs could result in ICED crashing 
+during output of long text strings or wires with more than 125 legs.  Because 
+fixing these bugs in ICED required changing certain header files that are 
+also used in MkPlot, we have incremented the MkPlot version number as well.  
+In theory, there is no functional change in MkPlot.exe.
+
+Improved ICED's handling "quiet" 16-bit tasks under Windows 95/98.  The 
+
+                     DOS "^cmd_line" and 
+                     SPAWN "^cmd_line" 
+
+commands under Windows 95/98 now run as quietly as they did under Windows NT.
+ICED's call to ICED3AUX during startup is also quieter.
+
+Increased ICED's maximum screen height to 8192 pixels.
+
+MACRO STUFF
+
+Added or modified the following macros:
+
+      LIB.n            Where n is an integer in the range [1:%N.LIBS].
+                       %LIB.n is the name of the n-th directory on the ICED
+                       path.  This name always ends in a \ to make it easy
+                       to form complete path names.
+
+      LIB.TYPE.n       Where n is an integer in the range [1:%N.LIBS].
+                       %LIB.TYPE.n is a type code for the n-th directory on
+                       the ICED path (see below).
+
+      CELL.NAME.n      Where n is an integer in the range [1:%MAX.CELL].
+                       %CELL.NAME.n is the cell name for the n-th cell in 
+                       the cell table. [Recall that the function 
+                       CELL("cell_name") returns the cell table position for 
+                       cell cell_name].
+        
+      CELL.LIB.n       Where n is an integer in the range [1:%MAX.CELL].
+                       %CELL.LIB.n is the library number for the library
+                       containing the n-th cell in the cell table.  
+        
+      CELL.LIB.TYPE.n  Where n is an integer in the range [1:%MAX.CELL].
+                       %CELL.LIB.TYPE.n is a type code for the library 
+                       containing the n-th cell in the cell table (see below).
+
+We are getting ready to modify ICED's directory structure to assist workgroups 
+working on a network (see TREES.TXT in ICED's DOC directory).  The following 
+changes are part of that effort.
+
+      N.HOME           Number of directories on the ICED_HOME path.
+
+      HOME.n           Where n is an integer in the range [1:%N.HOME].
+                       %HOME.n is the name of the n-th directory on the 
+                       ICED_HOME path.  This name always ends in a \ to make 
+                       it easy to form complete path names.
+                      
+      HOME             %HOME = %HOME.1 -- for backwards compatibility.
+
+The following macros have been modified to allow default values for "n".
+
+    LIB                %LIB = %LIB.1
+
+    CELL.BOX           %CELL.BOX = %CELL.BOX.n where n is the cell table 
+                       position of the cell you are editing.
+
+    CELL.NAME.n        %CELL.NAME.n = %CELL.NAME.n = %CELL where n is the 
+                       cell table position of the cell you are editing.
+
+    CELL.LIB.NUMBER.n  %CELL.LIB.NUMBER=%CELL.LIB.NUMBER.n = %CELL where n is 
+                       the cell table position of the cell you are editing.
+
+    CELL.LIB.TYPE.n    %CELL.LIB.TYPE=%CELL.LIB.TYPE.n = %CELL where n is 
+                       the cell table position of the cell you are editing.
+
+We are also getting ready to release a librarian.  The librarian will
+require a new library type /L (in addition to /C and /D).  The new library
+type requires new type code for the SUBCELL.EDIT.n, CELL.EDIT.n, LIB.TYPE.n
+and CELL.LIB.TYPE.n macros.  The for these macros are:
+
+                 1   => View only library    (Default)
+                 2   => Copy edit library    (/C)
+                 2.5 => Lib edit library.    (/L)
+                 3   => Direct edit library  (/D)
+
+2.5 is the only new code.  This unesthetic code was chosen for backwards 
+compatibility with the codes used by SUBCELL.EDIT.n and CELL.EDIT.n macros.
+(SUBCELL.EDIT.n returns code 0 if cell n is not a subcell of the cell you 
+editing.  CELL.EDIT.n returns code 0 if you cannot edit cell n, because you 
+are already editing it or a cell it contains.)
+        
+5/16/00 ICED version 4.50
+
+Fixed bug in ICED that could cause ICED to crash during startup when using 
+16 or 24 bit color modes.
+
+****************************** WARNING ***********************************
+
+Newer video card drivers allow you to change display modes without rebooting.  
+ICED cannot handle a change in color mode while it is running.  So if you 
+are going to change video modes, exit ICED first, change modes, and then 
+restart ICED in the new mode.
+
+5/12/00 ICED version 4.49
+
+Fixed bug in ICED that prevented the SELECT PARTS ALL command from working. 
+I believe the bug was introduced in version 4.42.
+
+5/9/00 ICED version 4.48   UNSTREAM version 1.10
+
+Fixed bug in UNSTREAM handling structure names that contain a '?'.  This 
+bug resulted in UNSTREAM writing a bad alias (.ALI) file during pass 1.
+
+Corrected version number in version 4.48, it was claiming to be 4.46 -- Oops.
+
+5/5/00 ICED version 4.48   MkPlot version 4.17
+
+CAUTION: We are in the process of upgrading our MS C/C++ compilers from 
+version 4.2 to version 6.0.  Please use extra care in using this version.  
+An improper selection of code optimizations can lead to errors that corrupt 
+databases.  I don't think the probability is large but, if you don't have 
+backups, the cost of this type of bug can be very high.  I hope the only 
+visible change will be about a 20% reduction in running time.
+
+Fixed bug in handling of very large (greater than about 512 MByte) data bases.  
+Subcell edits could result in a corrupted data base.  ("Why is 512 Meg a magic 
+number?", you ask.  ICED stores the cell data base in 8 Kbyte pages.  A data 
+base with 65536 8 KByte pages is 512 Meg.  There was a place where ICED stored 
+certain page numbers as 16 bit unsigned integers which have a maximum value of 
+65535.)
+
+Fixed bug in processing the cell name in the iced command line.  The bug
+prevented you from opening a cell using a relative path name of the form
+"d:cell_name".
+
+Fixed bug in MkPlot that could cause it to stop processing an array before the
+last array element was plotted.
+
+Implemented hourglass busy cursor.  This was more complicated than it sounds.
+Please report any sightings of inappropriate cursors.
+
+Added support for 32768 and 16777216 color modes. 
+
+4/16/00 ICED version 4.47
+
+Modified code for setting color registers.  I hope this will eliminate the
+
+    "Could not load color registers" and
+    "Could not allocate consecutive palette registers"
+
+startup errors under windows NT.  If you get either of these messages with 
+the new version, please call tech support.
+
+4/5/00 ICED version 4.46
+
+Fixed bug in handling of ICED_PATH.  ICED will now only allow a maximum 250 
+libraries on the ICED_PATH.
+
+Fixed bug in the TEMPLATE command which was not reporting the current values 
+of the AUTOPAN SECONDS and PIXELS parameters.
+
+Fixed bug in the DOS command which was waiting for an "event", such as your 
+moving the mouse, before it realized that the dos program had finished.  If 
+you didn't move the mouse it could wait forever.  
+
+Modified DOS and SPAWN commands:
+
+The syntax of the DOS and SPAWN commands is:
+
+          (DOS | SPAWN) "[-][^][command_line]"
+
+If you include optional ^, command_line will be run minimized.  
+
+The inner workings of the DOS and SPAWN commands have been changed so that you 
+should use the optional - sign if, and ONLY if, you know that command_line 
+specifies a windows-GUI (Graphical User Interface) program.  A character based
+program (one that runs in a DOS window) may not run properly if the optional - 
+is set.  A windows program will run even if you don't set the optional -.  
+However, windows programs will create an ugly extra DOS window.
+
+The reasons for the changes involve programming details that are difficult to 
+explain to non-programmers.
+
+MACRO STUFF:
+
+Added ERROR command.  The command syntax is:
+
+                     ERROR ["string"]
+
+The command displays ERROR: in red followed by the optional string in the 
+status area.  Then it causes an error exit from the .CMD/.KMD file you are in.
+Before this command was added the same line would do about the same thing.
+The command parser would not recognize the ERROR keyword and it would generate
+an "Unrecognizable command" error.  The advantage of the new version is that 
+macros in string will be replaced by their values and that the on screen error 
+message will be slightly more readable to novice users.
+
+4/3/00 UNSTREAM version 1.09 -- removed excessive warnings about layer 
+datatype and layer texttype pairs not being defined in an alias file.
+
+3/31/00  ICED version 4.45  MKPLOT version 4.16  UNSTREAM version 1.08
+
+Fixed "obscure" bug in SELECT NEW command.  (I say obscure because this bug
+goes back at LEAST 6 years and has just been reported.)  If you do a SELECT 
+SIDE IN command followed by a SELECT NEW command, then the SELECT NEW command 
+should fully select any components whose select status was changed by the 
+SELECT SIDE IN command.  However, the SELECT NEW command was selecting any 
+WIRE, LINE, or POLYGON whose bounding box overlapped the select box (from the 
+SELECT SIDE IN command) even if its select status had not been changed.
+
+The following change only affects MKPLOT's handling of the HP1120C which can 
+print on B size paper:  MKPLOT has been modified so that it does not prompt 
+you for a size code.  Instead MKPLOT now sends size code 101 to the plotter.  
+(101 is HP's code for custom sizes.) Added HP1120C.PDF to the distribution.
+
+Fixed bug in the way UNSTREAM wrote alias files with cell name extensions.
+UNSTREAM was adding the extension to both the structure name and cell name
+instead of just the cell name.  This bug was introduced in version 1.07.
+
+3/25/00  ICED version 4.44  MKPLOT version 4.15
+
+Modified OUTLINER.EXE and N*.CMD files
+
+Fixed bug in ICED that caused the bottom pixel of status line text to be lost
+when using small fonts.
+
+Fixed bug in MKPLOT 4.14 that caused it to prompt for the plotter resolution
+unnecessarily.
+
+The Outliner was recompiled to run as a Windows program.  This means it can
+now handle .P9K and .P8K files with long cell names.  N0.CMD, N1.CMD, NN.CMD, 
+and NODES.CMD were all modified to take advantage of this feature.  A bug was
+fixed in N0.CMD.
+
+3/24/00  ICED version 4.44  MKPLOT version 4.14  MKPDF version 4.03
+
+Fixed bug that caused ICED to write bad .VEC files for strip plots.  
+
+Added capability to create color and monochrome Microsoft Windows Bitmap 
+(.BMP) files.  These files can be used to import ICED graphics into a Word97
+and other word processor software.  It may be possible to use a paint program
+to output the .BMP file to an unsupported printer.  Adding this capability 
+required modifications to ICED, MKPLOT, and MKPDF.  New BMPCOLOR.PDF and 
+BMPMONO.PDF files have been added to the distribution.  MKPLOT will prompt 
+you for the bitmap resolution in dots per inch unless you use MKPLOT's new 
+/r:dpi option flag.  Using of the DOTS=4 parameter in the PLOT command is NOT 
+recommended when generating bitmap output.
+
+Comment: Word processors face serious problems dealing with high resolution
+bitmaps.  They must display the bitmap on a monitor with 50 to 150 dpi 
+resolution.  Then they must print the bitmap on a printer with anywhere from
+75 to 720 dpi resolution.  In general neither the screen nor printer 
+resolution will match the nominal resolution of the bitmap.  You can make it 
+easier for your word processor by using a low bitmap resolution that is also 
+a submultiple of your printer's resolution.  Thus for you might use /r:100 
+and /r:120 for HP and Epson printers respectively.
+
+3/15/00  ICED version 4.43
+
+Fixed bug that caused ICED to crash when ICED_PATH was undefined.
+
+Modified cell menus.  When you choose a command like SELECT CELL % ALL from 
+the menus, ICED brings up a series of cell list menus so that you can choose 
+a cell name.  The first menu is a list of cells in use.  The remaining menus
+are lists of cells in each library directory.  You rotate through the series
+by clicking the NextPath entry near the top of the menu.  The first menu has
+been changed so it only lists cells that are placed on the top level of the
+cell you are editing.  It no longer lists cells which are only placed in 
+subcells of subcells.  This change is meant to be an improvement in the user 
+interface.  If you don't like it, complain.
+
+ICED initializes the list of cells on top when you edit a cell.  It updates
+the list every time you add a cell but it does not remove cells from the list 
+when you delete them.  Thus, the list of cells on top can contain some cells 
+that are no longer there.
+
+3/13/00  UNSTREAM version 1.07
+
+UNSTREAM was modified to issue a warning if it encounters an array with a 
+negative step vector.  This usually means that you gave the wrong answer to 
+the pass 2 question:
+
+           Use Calma outform 3 array format (Y or N)?
+
+Improved handling of blanks and other illegal characters in structure names.
+
+3/6/00  ICED version 4.42
+
+Oops! I accidentally left a debug statement in ICED.  It forced ICED to 
+incorrectly state that:
+
+          "ICED could not set its ICED_HOME environment string.
+           This may prevent some .CMD files from running properly."
+
+and pause until you hit <Enter>.  Its been fixed.
+
+Added command line parameter TIME_OUT for use if copy protection tests fail.  
+For reasons I don't understand, ICED3AUX.EXE can take a variable time to run 
+the key checks.  I've observed times as short as 1 second to over 10 seconds.
+Until now, ICED (which launches ICED3AUX) gave up ("timed out") after 10 
+seconds.  If ICED3AUX was running slowly, this meant ICED would report a 
+security error.  ICED has been modified to allow up to 20 seconds on NT 
+platforms and 10 seconds for Windows 95/98 platforms.  A command line option 
+TIME_OUT=nn has also been added.  This sets the timeout interval to nn 
+seconds.  If you've been having intermittent problems with ICED3AUX, please 
+let me know what happens.  (donald@iceditors.com)
+
+2/27/00  ICED version 4.41
+
+Fixed bug in layer list parser that caused commands using layer lists that 
+included a term of the form nnn:* generate a bad .JOU file entry.  The bad 
+entry could interfere with data recovery after a crash.  (This bug was also
+in ICED32.)
+
+Modified AUTOPAN command.  
+
+In DOS the cursor position could go off screen.  Thus, it was possible to say 
+that autopan would be triggered if you moved the cursor more than n pixels 
+beyond the border of the graphics area.
+
+Windows will report cursor positions outside an applications window, but will 
+not allow the cursor to go off screen.  This is a problem when ICED's window 
+is maximized.  When maximized, ICED's graphics area extends to the left side 
+of the screen and to the narrow header on the top of the screen.  The AUTOPAN
+command has been modified to handle this problem.  The new AUTOPAN syntax is:
+
+              AUTOPAN [ON|OFF] [PIXELS=n] [SECONDS=sec]
+
+AUTOPAN is triggered when it is ON and
+
+     you move the cursor more than n pixels outside the graphics area
+                               or
+            you move the cursor to the edge of the screen 
+                 and leave it there for sec seconds.
+
+Entering the AUTOPAN command without ANY keywords toggles the ON/OFF state.
+Otherwise, unspecified parameters remain unchanged.  At startup, PIXELS=20 
+and SECONDS=0.2.
+
+Modified DISPLAY command so it no longer supports the TEXT_ORIGINS keyword.
+(Use the TEXT command to set this parameter.)
+
+Modified TEMPLATE command.  The TEMPLATE command is used both to create 
+startup command files and view parameters.  Among these are the MENU, DISPLAY 
+CELL_DEPTH, and KEEP_LIBRARY_CELLS parameters that can be set on the ICED 
+command line.  If these parameters appear in the startup command file, the
+command line parameters will be overwritten when it is executed.  ICED
+automatically executes the startup command file whenever you open a new cell; 
+specify the ALWAYS command line parameter; or load a cell written by UNSTREAM, 
+UNCIF, or an obsolete version of ICED.  To avoid situations where these 
+command line parameters are automatically overwritten, the corresponding 
+commands are "commented out" of files generated by the modified TEMPLATE 
+command. (They appear on one line near the beginning of the command file.  
+You can restore them by using a text editor to remove the $ from the beginning 
+of the line.)  
+
+2/24/00 UNSTREAM version 1.05
+
+Improved (I hope) accuracy of file positions in bad record error reports.
+
+2/17/00 ICED version 4.40  
+
+Fixed bug in handling of embedded select commands that could cause ICED to 
+undo the wrong operations when a later (possibly much later) command was 
+canceled.
+
+Fixed bug that caused ICED and ICED32 to generate bad .JOU file entries for 
+the COLOR command.
+
+Fixed bug that caused ICED and ICED32 to generate bad .JOU file entries when
+UNDOing a LAYER * command.
+
+Fixed bug in the way ICED read directory names in the ICED_PATH.  ICED 
+interpreted everything following the last . in a directory name as a file
+extension.  This is wrong in names like "..\name" or "c:\work.amp\lib".
+Such names caused ICED to complain about an invalid extension.
+
+These bad entries could interfere with data recovery from the .JOU file.
+
+Added new  utility: ICTOP.  ICTOP lists all possible top level cells in a 
+directory.
+
+2/8/00  ICED version 4.39  MKPLOT version 4.13  ICTOP version 4.00
+
+Fixed bug in menus that caused mishandling cell names that are also reserved 
+file names like CON, NUL, COM, etc.
+
+Fixed long standing bug in ICED that could cause it to crash when loading a
+stipple pattern file.
+
+Fixed bugs in ICED and ICED32 that made it impossible to use a P_EDIT NEAR 
+command to edit certain array elements.  
+
+Fixed bug in MKPLOT that prevented Epson EscP/2 driver from working with on
+large pages (Epson 1520).
+
+Fixed bug in MKPLOT that could cause it to go into an infinite loop when 
+plotting arrays of cells containing arrays.
+
+Added utility ICTOP which searches a directory for possible top level cells.
+
+Modified ICED to allow root directories in the ICED_PATH and ICED_HOME
+environment variables.
+
+Modified ICED so that both .CMD and .KMD extensions can be used on command 
+files.  We have begun distributing command files that are meant to be called
+from inside other command files.  These command files severely clutter the 
+@%.cmd menus making it difficult to select the command file you really want.
+To combat this problem, ICED now recognizes 2 default extensions on command
+files: .CMD and .KMD.  When ICED is executing an @file_name command and 
+file_name does not include an explicit extension, ICED searches the first 
+directory on the command search path for file_name.CMD.  If it does not find 
+file_name.CMD it looks for file_name.KMD.  If it does not find either file 
+ICED searches the next directory on the command search path and so on.  The
+menu system lists .CMD files and ignores .KMD files.  
+
+Modified search path for .CMD/.KMD files.  When ICED executes an @file_name 
+command where file_name does not include an explicit path, ICED searches for 
+the file in the directories on the command search path.  In older versions of 
+ICED these directories consisted of the root cell directory (usually the 
+same as the current directory), the directories specified in the ICED_PATH 
+environment variable, and the AUX directory respectively.  This long search 
+path has the potential to add a large overhead to the search of network 
+drives.  By default, ICED now searches the root cell directory and then the 
+AUXIL subdirectories.  This default can be overridden by setting the 
+ICED_CMD_PATH environment variable.
+
+The ICED_CMD_PATH environment variable uses the same syntax as the ICED_PATH 
+and ICED_HOME environment variables.  If this environment variable is defined 
+the command search path is the root cell directory, the directories on the 
+ICED_CMD_PATH, and then the AUXIL subdirectories.  You can obtain the old 
+search path by making your ICED_CMD_PATH the same as your ICED_PATH.  If
+your icwin.bat file contains lines like:
+
+             SET ICED_PATH=path1;path2 +
+             SET ICED_PATH_1=path3
+             SET ICED_PATH_2=
+
+you can do this by adding the following lines:
+
+             SET ICED_CMD_PATH=%ICED_PATH%
+             SET ICED_CMD_PATH_1=%ICED_PATH_1%
+             SET ICED_CMD_PATH_2=
+
+after the SET ICED_PATH_n lines.  This is generally more convenient than 
+including:
+
+             SET ICED_CMD_PATH=path1;path2 +
+             SET ICED_CMD_PATH_1=path3
+             SET ICED_CMD_PATH_2=
+
+but does not save environment space.
+
+1/17/00  ICED version 4.38
+
+Previous versions of ICED only displayed text origins for selected text.  ICED 
+has been changed to OPTIONALLY display text origins of unselected text.  This 
+feature was requested to aid in placing LVS labels where the position of the 
+text origin determines which polygon is being labeled.  Unfortunately,
+displaying the text origin makes center justified text much harder to read.
+
+The TEXT command can be used to enable display of text origins.  (Recall that 
+both the TEXT commands can be used to set multiple parameters.)  The added 
+syntax for the TEXT command is:
+
+                 TEXT [ORIGINS=ON|OFF] [OTHER_KEYWORDS=values]
+
+DISPLAY_ORIGINS is a synonym for ORIGINS in the TEXT command (i.e. the two
+keywords can be used interchangeably.)  As with most ICED commands, ENABLED, 
+YES, and TRUE are synonyms for ON and DISABLED, NO, and FALSE are synonyms 
+for OFF.
+
+MACRO STUFF Windows/NT Only
+
+ICED has been modified so that it adds its HOME directories to the system PATH
+prior to executing the DOS or SPAWN command.  If your system PATH is 
+path1;path2;...pathn and your ICED_HOME path is home1;home2;home3 then 
+the modified system PATH is path1;path2;...pathn;home1;home2;home3;  To see 
+the results of this operation type DOS at the ICED command prompt.  Then type 
+PATH at the DOS prompt.  The new path will be displayed.  Type EXIT to return 
+to ICED.
+
+In addition ICED sets the PATHEXT=.COM;.EXE;.BAT.  This is done to prevent 
+Windows/NT from treating .CMD files as .BAT files.
+
+The preceding changes are "local".  They only affect programs which are 
+launched from inside ICED.
+
+MACRO STUFF Windows/95/98 Only
+
+The method ICED uses to pass environment variables to the Console (DOS box)
+doesn't work in Windows/95/98.  As a workaround, the DOS and SPAWN commands 
+have been modified to create a .BAT file (W95$ENV.BAT) in your TMP directory 
+and then launch it.  The file contains lines to SET various environment 
+variables and to execute your DOS command.  The advantage of this procedure 
+is that it sets the environment variables properly.  The disadvantage is that 
+it adds some overhead and offers another chance for things to go wrong.  You 
+can prevent the DOS command from using a .BAT file by using a - prefix to the 
+command string.  (You can combine - and ^ prefixes in either order.)
+Examples:
+
+                          DOS -
+                          DOS 
+
+Both commands will create a DOS window.  The first command will be slightly 
+faster.  However, if you try to use a program that looks for the ICED_PATH 
+environment variable (such as ICTREE), it won't be there.  If you use the 
+second command it will.  W95$ENV.BAT is a small file.  ICED does not delete 
+it so you can look at its contents.
+
+There appear to be some odd effects which cause the "wrong" windows to pop to 
+the top.  Please inform me of any you can reproduce.  It is unclear whether or 
+not we can eliminate them.  It appears that multitasking is not nearly as 
+well implemented in Windows/95/98 as it is in Windows/NT.
+
+When running under Windows/NT, ICED never creates a .BAT file, and the - is 
+ignored.
+
+1/9/00  ICED version 4.37
+
+Fixed three bugs in the ICED user interface:
+
+1) The escape key did not bring up VIEW menu during an embedded SELECT command.
+2) Cancelling an embedded SELECT command could cause the screen to shift.
+3) Could not cancel a command by clicking the two outside mouse buttons when
+ICED was waiting for keyboard data.  (Actually you could if you clicked in
+the proper screen location.)
+
+*****************************************************************************
+Many users must have noticed problems 1 and 2.  Nobody reported them.  One 
+user reported problem 3.  IF I DON'T KNOW SOMETHING IS BROKEN IT WON'T GET
+FIXED - REPORT ICED BUGS TO donald@iceditors.com
+*****************************************************************************
+
+1/4/00 MKPLOT version 4.12
+
+*****************************************************************************
+** If you are using an HP compatible large format plotter read this notice **
+*****************************************************************************
+
+On some network installations HP large format plotters (such as the HP750C)
+with PostScript SIMMs would attempt to interpret ICED's .DOT files as 
+PostScript files.  It wouldn't work.  To get around this problem, MKPLOT has 
+been modified so that the .DOT file includes HP-PJL commands that force the 
+plotter to interpret the .DOT file as an HPGL2/RTL file.  We don't think that 
+this will cause problems for any HP large format plotters.  However, we're 
+not so sure about HP compatibles. 
+
+In any event, if the new MKPLOT causes your large format plotter to stop
+working, give us a call.  We'll explain how to modify your HP650C.PDF (or
+equivalent) file to disable this feature. 
+
+1/3/00  ICED version 4.36
+
+Fixed bug in PRESCALE option of PLOT command that prevented ICED from asking:
+"Do you want to reposition window?"
+
+1/3/00 MKPLOT version 4.11 and MKPDF version 4.02
+
+Added support for Epson EscP2 printers.
+
+12/31/99  Utilities version 4.00
+
+Recompiled MKSTI, UNMKSTI and SFDMP for windows.  
+
+MKSTI and UNMKSTI have been modified so that they always write their outputs 
+to the current directory.
+
+SFDMP has been modified to except a /p:pos option.  This option limits the
+output to a region of roughly 4 Kbytes positioned around "pos".  SFDMP has 
+also been modified to allow you to specify an extension on the input .SF 
+file.  (SFDMP used to require that the input extension be .SF.  Now this
+is just the default.)
+
+Example:  SFDMP TOPCELL /p:12949
+
+Reads TOPCELL.SF and dumps records starting between file positions 10901 and
+14997.  Output is written to TOPCELL.DMP in the current directory.
+
+12/25/99  MKPLOT version 4.10
+
+Fixed bug that caused MKPLOT to crash for very large plots (over 1 billion
+pixels).  Added new options
+
+12/23/99  ICED version 4.35
+
+NOTE: Version 4.34 was never posted on our website -- so read the changes 
+for that version as well!
+
+Added windows versions of ICLIST and ICTREE. 
+
+In previous versions of ICED, when you executed the CIF, STREAM, PLOT, or DRC 
+commands during a subcell edit, their output files were written to the 
+directory in which the subcell was stored -- even if this directory was a 
+"view-only" or "copy edit" library.  Now they are only written to the subcell
+directory if it is a "direct edit" library.  If the subcell directory is a 
+"view-only", "copy edit" or "library edit" library the outputs are written
+to your working directory.  The new behavior is judged better for groups 
+sharing read-only libraries on networks.  (Documentation for "Library edit" 
+directories is not yet available.)
+
+Fixed bug in the GROUP command that could cause ICED improperly save a
+grouped cell when a cell with the same name already existed in a subdirectory.
+
+Fixed bug in the way ICED wrote the journal file.  The bug caused ICED to 
+insert a bad command in the journal file when a command was executed with 
+XSEL=OFF and no components were selected.  The bad command prevented a ICED 
+from executing the journal file unless it was removed with a text editor.
+This bug was also in the DOS version.
+
+Fixed bug in ICED that caused it to crash when used with a 2400 line display.
+
+Fixed bug in ICED that cause it to crash with .CMD files that used the GROUP 
+command at the "wrong" time.  If ICED didn't crash it ran correctly.
+
+Improved (I hope) handling of cursor after VIEW changes and nested VIEW 
+commands.
+
+Modified .POK and .VEC output routines to avoid problems with DRC, NLE, and
+MkPlot.  We hope this will prevent problems when files are output during
+subcell edits.
+
+ICED now warns you if the cell name you specify at startup does not exist in
+your working directory (usually the current directory) but does exist in 
+another directory on the ICED_PATH.  This is meant to prevent you from 
+ACCIDENTALLY creating two cells with the same name. 
+
+By default, the DRC386 command now generates a .POK file using the full cell 
+name of the cell you were in when you issued the command.  Since this name 
+may be more than 8 characters long it can cause the DOS versions of the DRC 
+and NLE to crash.  You can download the Windows/NT/95/98 versions of the DRC 
+and NLE from our website.  If you prefer to continue using the DOS versions, 
+type DRC DOS instead of DRC 386.  You can also select DRC DOS from the menus.
+
+MACRO STUFF:
+
+Fixed bug in ICED that caused it to handle %- improperly.
+
+Modified return values of CELL(cell_name) function.  The CELL(cell_name) 
+function normally returns the cell table entry number for cell cell_name.  
+Before this modification, if cell_name did not appear in the cell table
+CELL(cell_name) returned -1.  Now it returns 0 if cell_name exists in 
+any directory on the ICED_PATH and returns -1 if it does not.
+
+9/15/99  UNSTREAM version 1.04
+
+Fixed bug that caused UNSTREAM to crash when there was an empty LIBNAME 
+record.  (If you don't know what I'm talking about you don't care.)
+
+7/30/99  ICED version 4.34 + MKPLOT version 4.09
+
+MkPlot4w is now called Mkplot.  Too many tech support calls came from users
+who forgot the 4w suffix.  
+
+Fixed bug in MkPlot that caused it to crash while creating monochrome plots.
+
+Added 16 color plotting and other capabilities to MkPlot.  Modified the ICED
+PLOT and COLOR commands, ICED menus, and the MkPDF utility and some .PDF 
+files to support these capabilities.  See PLOT.DOC (in the "Technical Notes"
+section of our website) for details.
+
+Fixed bug that prevented ICED from properly saving .CEL files more than 
+512 Meg long.  Such large single cells occasionally arise when one flattens
+a large data base. 
+
+CIF and STREAM commands now create files using the full cell name.  The
+file names used to be truncated to 8 characters + extension (.SF or .CIF).
+
+Fixed bug in array draw program.  ICED was drawing the contents of one 
+dimensional arrays even when the ARRAY DRAW_MODE=BLANK.  This problem has
+been fixed.
+
+MACRO STUFF:
+
+Added two new system macros:
+
+LAST.RULER.POS.0 = initial point for last completed ruler command
+LAST.RULER.POS.1 = final point for last completed ruler command
+
+6/10/99  ICED version 4.33 + MKPLOT4W version 4.07
+
+Fixed a bug in ICED that caused it to report an error if you used an EDIT 
+command to create a new cell, and the cell's cell table entry number was a 
+multiple of 128.  This situation can arise in .CMD files that create a long 
+list of cells.
+
+Fixed performance bug in MKPLOT/MKPLOT4W.  Plots of large data bases should
+run noticeably faster.
+
+MKPLOT4W now has an optional second parameter.  The old command line syntax 
+was:
+             MKPLOT4W [vec_file_name] 
+
+The new syntax is:
+
+             MKPLOT4W [vec_file_name [device_name]] 
+
+The device name may be a port (e.g. LPT2) or a network UNC device name (e.g.
+\\tuna\bigplots).  
+
+The primary advantage of using a device name is that MKPLOT4W will send the 
+data directly to the plotter without making a large (possibly VERY large) 
+.DOT file on the disk.  
+
+There are two possible disadvantages.  When writing directly to a device, 
+MKPLOT4W computes a slice then sends the data for the slice to the plotter, 
+then it computes another slice, and so on.  Thus, the data is sent in blocks 
+with a pause between blocks while MKPLOT4W computes the next slice.  The 
+network software MAY assume this pause is a sign of trouble and interrupt the 
+plot with possible bazaar results (like a few feet of black output).  Thus, 
+if you want to use this option you should watch the first few plots 
+carefully.  The second problem is that the plotter will be busy for the sum 
+of the computation and plot times instead of just the plot time.  This may 
+make you unpopular with anyone else who uses the plotter.  (Fortunately, the 
+computation time is generally short compared to the plot time.)
+
+NOTE FOR HP1050C USERS:
+
+There is a new PDF file for the HP1050C.  It is posted on our website.  It 
+is not distributed with the release in order to force you to read the 
+documentation that comes with it.  DO NOT MAKE PLOTS USING HP650C.PDF UNTIL
+YOU HAVE READ THIS DOCUMENTATION.
+
+4/23/99  ICED version 4.32 + MKPLOT4W version 4.05
+
+Some users are getting intermittent "Security errors" when ICED starts up. 
+I think (actually GUESS) this is a timing problem with the way ICED calls
+the copy protected file ICED3AUX.EXE.  I changed the library routine ICED 
+uses to make this call so that I could get ICED3AUX.EXE to come up minimized.  
+Unfortunately this change seems to have caused the intermittent problems on 
+some machines.  Users who are experiencing problems should try adding the
+option KEY=OLD to the ICED command line in their icwin.bat file.  If you use
+this option, please let me know how it works out.  I do not see this problem 
+on my machines so I need the feedback!
+
+Fixed a bug in the interface between ICED and MKPLOT4W that could cause 
+MKPLOT4W to crash.  The bug had to do with the handling of unplotted layers, 
+and if you haven't noticed it you don't care.
+
+MACRO STUFF:
+
+Fixed bug in ROUND1(x).  (It was returning the wrong value for negative 
+numbers.)
+
+Fixed bug in MARK_SUBCELLS command.  (It was not marking subcells that did
+not contain components other than cells and arrays.)
+
+The above bug highlights an important point.  The command:
+
+                 MARK_SUBCELLS LAYER=layer_list 
+
+only marks subcells which DIRECTLY contain components on the listed layers.
+Thus, a cell can contain a marked subcell without being marked itself.
+
+4/14/99  UNCIF version 1.01
+
+Corrected a long standing bug in UNCIF that prevented it from accepting
+any input (except <Enter>) at the:
+
+        "Enter prefix for default ICED cell names [SYMBOL]:"
+
+prompt.  This bug was over a year old.  It would appear that no one is using 
+UNCIF.  Please correct me if I'm wrong.
+
+4/7/99  ICED version 4.31
+
+Modified ICED exit code.  (I hope this will not be visible to users.)
+
+Minor bug fix.  About two years ago I changed the way ICED read color and
+layer names so that underscores (other than initial underscores) were 
+ignored in matching names.  Thus, the commands:
+
+              COLOR DIM_RED LEVEL=3   and
+              COLOR DIMRED LEVEL=3
+
+have the same effect.  But NOT:
+
+              COLOR _DIMRED LEVEL=3
+
+The bug was that ICED would accept the following two commands.
+
+              COLOR 9 NAME="DIMRED"   and
+              COLOR 10 NAME="DIM_RED"
+
+without complaining that name DIMRED had already been assigned to color 9.
+If you then typed:
+
+              COLOR DIM_RED LEVEL=5
+
+you would change the level of color 9 not color 10.  The same bug also applied
+to layer names.  This bug has been fixed.  ICED will no longer allow two 
+colors (or two layers) to be assigned matching names.
+
+3/30/99 ICED version 4.30
+
+Modified UNDO command.  It used to be that after you executed a command 
+file, executing the UNDO command would undo the last command in the command 
+file.  I believe this feature caused more confusion than it was worth.  The
+UNDO command has been changed so that if you execute it immediately after
+exiting a command file ICED will respond: "Cannot UNDO".  The same change
+was made in the DOS version some time ago.
+
+3/21/99 ICED version 4.29
+
+MACRO LANGUAGE STUFF
+
+Improved argument passing.  You could pass arguments when you invoked a 
+command file by entering something like:
+
+       @file_name; LOCAL #layer=M1; LOCAL #width=10; ...
+
+The LOCAL #arg commands create macros that are LOCAL to "file_name" rather 
+than the calling file.
+
+ICED has been modified so that in this context, and this context only, #arg
+means the same thing as LOCAL #arg.  Thus, the preceding line can now be 
+entered as:
+
+       @file_name; #layer=M1; #width=10; ...
+
+Modified certain functions so that when they are called without an argument
+they return 0 instead of an error that crashes the command file.  The modified
+functions are: VALID_INT(), VALID_CELL(), VALID_LAYER(), VALID_REAL(), 
+MACRO_EXISTS(), and LEN().
+
+Added the function STD_COORD("string") that converts an input string of the 
+form: "...x...y..." (where x and y are numbers and ... represents any 
+combination of blanks, commas, open, and close parentheses) into a string of 
+the form "(x, y)".  If the input string is not of the correct form, STD_COORD
+return "BAD".  This function is primarily intended to process user input.
+Example:
+           local #valid=0
+           while(%valid==0){
+              local #disp = $Prompt="Enter displacement:"
+              #disp = {std_coord("%disp")}
+              #valid = {cmp("%disp","BAD")}
+              if(%valid==0){
+                 $ Invalid input -- Press <Esc> to quit or <Enter> to try again
+                 pause 0
+              }
+           }
+
+Note that the "'s around %disp in std_coord("%disp") and cmp("%disp","BAD") 
+are particularly important in this context since, the open parenthesis, close 
+parenthesis, and comma have special meaning to the expression parser.  They 
+will be included in almost anything the user is likely to enter and will 
+always be included in a valid output string.
+
+3/15/99 ICED version 4.29 + MKPLOT version 4.04
+
+Fixed long standing bug in ICED and ICED32 that caused a false "Too many 
+coordinates" error to be posted if you added a polygon with 199 sides and 
+specified 200 vertexes (i.e. the first and last vertexes were the same.)  
+This bug only affected command file inputs.  It did NOT affect UNSTR32
+(This bug was also in ICED32.)
+
+Fixed bug in ICED and MKPLOT that made it impossible to turn off cell 
+outlines by using the LAYER 0 NO_PEN command.  This bug involved an 
+uninitialized variable, so the program appeared to work at some times and 
+not at others.  (This bug was also in ICED32.)
+
+Fixed bug in scan logic. When a command file encountered a $-comment with 
+the LOG OFF, ICED would crash.
+
+MACRO LANGUAGE STUFF
+
+Added new keywords to the LOG command. Syntax:
+
+        LOG OFF   
+or
+        LOG [SCREEN=(ON|OFF)] [LEVEL=(BRIEF|NORMAL|DEBUG)]
+
+Notice that the OFF keyword can not be used with any of the other keywords.
+
+In many .CMD files, most the execution time is spent writing the LOG entry
+to the screen.  The SCREEN=OFF parameter prevents log entries (other than 
+$-comments) from being written to the screen.  $-comments are still displayed
+to allow progress reports.
+
+If a .CMD file contains a loop, it is likely that the journal file will 
+contain many !-comments such as "! LOCAL #abc=7".  The LEVEL=BRIEF parameter
+removes all !-comments from the journal file.  It can often halve the size of 
+the journal file.  If SCREEN=OFF, it has little effect on execution speed. 
+
+The LEVEL=DEBUG parameter results in extra !-comments being inserted in the
+journal file for WHILE and IF statements.  On rare occasions these comments
+may be useful in debugging .CMD files.
+
+These settings behave like the VIEW (ON|OFF) settings with respect to their 
+lifetimes.  
+
+LOG OFF vs LOG SCREEN=OFF
+
+If you use a LOG OFF command in a .CMD file that prompts you for input or is
+passed parameters using @-line argument passing, you will not be able to use 
+the .JOU file to recover from system crashes or other errors.  The following
+@-line is an example of @-line argument passing to of #fmag and #offset to 
+char0.cmd:
+
+       @char0; log off; local #fmag=2; local #offset=(3.1, 5.0).)
+
+The LOG SCREEN=OFF command does not suffer from this defect.  Thus, although
+execution is slower with LOG SCREEN=OFF than LOG OFF (writing log entries to
+the journal file does take some time), we consider LOG SCREEN=OFF better for
+most applications.
+
+
+3/7/99 ICED version 4.28
+
+MACRO LANGUAGE STUFF
+
+Added system macro EXEC.DIR.  This macro is the name of the directory 
+(including a final \) containing the .CMD file you are currently executing.  
+If you are entering commands from the keyboard this macro is "UNDEFINED".  
+Many .CMD files use the DOS command to launch programs (.EXE files) or call 
+other .CMD files.  You may want to keep these files in the same directory.  
+On the other hand, you may not want to add the directory to the DOS path.  
+This macro allows you to explicitly insert the directory name in the DOS 
+command.  Example:
+
+                 DOS "%exec.dir^prog_name"
+
+3/10/99 ICED version 4.27
+
+Fixed bug in ARRAY command that occasionally prevented screen from being
+redrawn immediately after command was issued.  This was also a bug in ICED32.
+
+MACRO LANGUAGE STUFF
+
+Added the following system macros:
+
+                    LAYER.BLANKED.ROOT.layer_id
+                    LAYER.BLANKED.CELL.layer_id
+                    LAYER.PROTECTED.layer_id
+
+The are 0 or 1 depending on the layer_id's status.
+
+2/26/99 ICED version 4.26
+
+Fixed bug introduced 1/15/99 when code was modified so that pressing the 
+<Esc> key "stopped" a long draw.  ICED confused the <Esc> meaning execute an 
+embedded view command with <Esc> meaning stop drawing.  The result was 
+incomplete redraws in embedded view commands.
+
+2/22/99 ICED version 4.25
+
+Fixed trivial bug in display of PAUSE countdown during ICED's startup.
+
+Improved, I hope, handling of status windows (text windows at bottom of 
+screen).  When executing a .CMD file with VIEW ON, the command line window 
+is updated for each command.  With VIEW OFF it is not.
+
+MACRO LANGUAGE STUFF
+
+Added PROMPT command.  Syntax: PROMPT="string".  This command causes ICED
+to print "string>" instead of the normal command prompt: "Layer id; Sel=n>" 
+for the next command.  (Only the first 50 characters of "string" are used.)  
+The prompt returns to normal after one command.  The PROMPT command is useful 
+in .CMD files that ask the user for interactive mouse input.  
+Example:
+
+                   PROMPT "Add wire outlining bus"
+                   ADD WIRE LAYER 250 
+
+Prompt replacement is disabled when a .CMD file is run with VIEW OFF.
+
+2/18/99 UNSTREAM version 1.03
+
+Fixed bug in UNSTREAM that created a bad record in the output .CEL file when 
+a structure contained a text placement with an empty string.  (A text 
+placement with an empty string is normally a mistake.) This bad record could 
+cause ICED to crash when the cell was drawn.  (I believe this is the first
+report of a Windows version bug that affected a .CEL file.  All other bugs
+were in the user interface or caused ICED to crash.)
+
+2/17/99 ICED version 4.24
+
+MACRO LANGUAGE STUFF
+
+Fixed bug in SHOW command that caused LOCAL macros to be shown as GLOBAL.
+
+Added ITEM command to both DOS and Windows versions.
+Syntax:
+              ITEM #item_name
+              ITEM GLOBAL [#]item_name
+              ITEM LOCAL [#]item_name
+
+This command creates a series of macros describing a single selected 
+component.  All the macros start with item_name.  The macros created depend 
+on the type of the selected component, e.g. if the component is a WIRE, 
+item_name.width will be created but not if it is an ARRAY.  To see how this
+works I suggest adding a wire to a cell, selecting it, and then typing the 
+command: "ITEM #JUNK".  Finally, to see the macros, type the command:
+"SHOW USER=JUNK.*".
+
+2/12/99 ICED version 4.23
+
+Fixed bug in DOS command for Windows 95/98.  The DOS command properly launched
+a new CMD shell in Windows NT.  Unfortunately it also tried to launch a CMD 
+shell in Windows 95/98 where it doesn't exist.  (The nearest equivalent is a 
+COMMAND shell.)  The DOS command now launches the shell specified by the 
+COMSPEC environment variable.  This should work in all Windows versions.
+
+Added SPAWN command.  The SPAWN command is similar to the DOS command, except 
+that it creates an independent task that runs in parallel with ICED i.e. you
+can continue to issue ICED commands before the spawned task is complete.
+
+2/10/99 ICED Version 4.22
+
+Fixed bug introduced in version 4.21 that caused iced to crash during startup
+on many other peoples Windows 95/98 machines (but not mine).
+
+Modified the SHOW command so that you can stop an overlong screen output by 
+pressing the <Esc> key.
+
+2/04/99 ICED Version 4.21
+
+Fixed bug in ADD WIRE command that could cause traces of a sketched wire to
+appear on screen after an embedded VIEW command.  Bug affected esthetics
+only.
+
+MACRO LANGUAGE STUFF
+
+Added DEFAULT.WIRE.TYPE system macro. %DEFAULT.WIRE.TYPE is the default wire 
+type set by the USE command and used by ADD command.
+
+Improved macro argument passing. Now same as DOS version.
+
+1/27/99 ICED Version 4.20
+
+Fixed bug in KEY command.  This bug prevented delayed evaluation of macro's
+in the KEY command.  For example, consider the command:  
+
+         KEY F1="ADD TEXT % AT %%LAST.POS"
+
+Fixed bug in macro substitution of KEY macros.  This bug prevented the final
+& in a KEY macro string from being deleted when a KEY macro was invoked while
+typing a command line.
+
+%%LAST.POS was being evaluated at the time the key command was entered 
+instead of being evaluated at the time the <F1> key was pressed.  
+
+Fixed bug in parsing macro values.  This bug caused ICED to crash if a macro
+value was between 6000 and 6900 characters long.  (6900 is the maximum length 
+for a macro value.  
+
+Added MAXIMIZE=(YES | NO) command line parameter.  MAXIMIZE=YES means that 
+ICED will maximize its window just before entering its graphics mode.  
+MAXIMIZE=NO is the default.
+
+Made several esthetic changes in the startup sequence.
+
+Modified the DOS command.  The command   DOS "prog_name options"  runs 
+program 'prog_name' with command line options 'options' (same as before).  
+The command:  DOS "^prog_name options"  runs the same program minimized (new).
+
+MACRO LANGUAGE STUFF
+
+Altered remove command for consistency with recommended programing style.
+REMOVE macro_name and REMOVE #macro_name are now both acceptable.
+
+
+2/2/99 Unstream version 1.02
+
+Modified code so that boundaries and paths with more that 199 sides are
+treated as simple errors, i.e. they are dropped and an ELEMENT LOST
+message is printed on the screen and in the .ERR file.  In older versions
+objects with too many sides cause UNSTR32 or UNSTR33 to abort during 
+pass 1.
+
+1/25/99 ICED Version 4.19
+
+Fixed bug that caused parameters for unnamed layers not to be loaded at 
+startup.
+
+1/25/99 MKPLOT Version 4.03
+
+Fixed obscure bug in argument passing that could cause MKPLOT to crash.  (If 
+it doesn't crash on your plots you don't care.)
+
+1/15/99 ICED Version 4.18
+
+Fixed bug in menus for plot command.  Layers with PEN=* did not show up on 
+plot layers submenu.
+
+You can now press <Esc> to "stop" a long redraw (same as in DOS version).  
+This actually prevents ICED from redrawing components in cells.  It does not 
+prevent redrawing of components on the top level of the hierarchy, so it does 
+no good with large flat designs.
+
+Improved (I hope) handling of <Esc> key during startup.
+
+Implemented PAUSE command. (Same meaning as ICED32.)
+
+MACRO LANGUAGE STUFF
+
+Added the following functions to check user input: VALID_INT("string"), 
+VALID_REAL("string"), VALID_CELL_NAME("string"), and VALID_LAYER("string").
+Each function takes a quoted string as an argument and returns 1 if the named 
+condition is true and 0 if it is false.  
+
+Also added function MACRO_EXISTS(macro_name).  MACRO_EXISTS(macro_name) 
+returns one of the following three values:
+
+      2 => macro_name is defined as a local macro in the current .CMD file.
+      1 => macro_name is a global macro. 
+      0 => macro_name does not exist or is only defined as a local macro in 
+           another .CMD file.
+
+If both statements 1 and 2 are true, the return value is 2.
+
+Changed how ROUND(x) and ROUND(x, y) functions behave for values exactly half 
+way between resolution grid points.  New behavior will be explained in manual.
+
+
+1/5/99 ICED Version 4.17
+
+Fixed bug that prevented ICED from recognizing root directories in cell names.
+For example, if you typed "icwin d:\lib\nand" iced would start properly, but 
+if you typed "icwin d:\nand" it would give an error message and abort.
+ 
+12/28/98 Version 4.16
+
+MACRO LANGUAGE STUFF:
+
+Fixed bug in MARK_SUBCELLS [LAYER=layer_list] command.  The bug caused the
+LAYER=layer_list to be effectively ignored.
+
+Added function CELL(cell_name) where cell_name is a string.  The function
+returns the cell table entry number for cell_name if an entry exists or -1
+if cell_name is not a valid cell name or if no entry exists.  Only cells that 
+have been accessed during the current editing session (this includes any 
+subcells of cells you have edited) have cell table entries.
+
+12/17/98 Version 4.15
+
+Added UNCIF.EXE version 1.00.  This is a windows version of UNCIF32.  Its only
+advantage over the DOS version is that it handles long (up to 32 character) 
+cell names.
+
+12/16/98 ICED Version 4.15  UNSTREAM Version 1.01
+
+Changed default value for ICED command line parameter WINDOWS from 2000 to
+200 MBytes.  This parameter sets the size of the largest data base ICED can 
+handle.  The lower value is required for systems with limited swap space, 
+typically old machines and portables.  Improved associated error messages.
+
+Fixed memory allocation bug in UNSTREAM that cause it to crash in pass 1.
+
+12/8/98 Version 4.14
+
+Added UNSTREAM.EXE version 1.00.  This is a windows version of UNSTR32 - 
+UNSTR33.  (UNSTR33 is a DOS beta-test version of UNSTR32 -- see below).  
+
+The chief differences between UNSTREAM and UNSTR33 are:
+
+   UNSTREAM requires Windows 95, 98, or NT.
+   UNSTREAM only generates .CEL files (no .DEL files) since Windows can 
+      handle long file names.
+   UNSTREAM can handle STREAM files containing 64000 structure names.  
+
+The chief differences between UNSTR33 and UNSTR32 are:
+
+   The UNSTR33 alias file allows you to determine the ICED layer of an 
+      object by its STREAM layer and data type OR text type.  This means
+      that there is a separate layer mapping for data typed objects (paths
+      and boundaries) and text typed objects (text placements).  UNSTR32 
+      only allowed you to ignore the text type or treat it as a data type.
+      There are new instructions in the alias file that cover these issues.
+
+   The UNSTR33 utility allows you to automatically add a suffix to each
+      cell name.  This should be useful to people creating multi-chip
+      modules.  Assume that one has several separate chip designs that one
+      wants to combine into one mask set.  It is possible that each design
+      will have a cell named NAND and that all the NAND cells will 
+      be slightly different.  By adding a suffix to each cell name, say "#1",
+      "#2", ..., one can avoid cell name collisions in the merged design.  
+      (A similar undocumented feature existed in UNSTR32.)
+
+MACRO LANGUAGE STUFF:
+
+   Bug fix to undocumented macro LAST.DISP.  This macro was returning the
+   wrong sign for the result, e.g. (-1,-2) instead of (1,2).  This bug was
+   also in the DOS version.
+
+   RETURN statement (for use in .CMD files) implemented.   
+
+
+10/29/98 Version 4.13
+
+Minor improvements in cursor handling.
+
+MACRO LANGUAGE STUFF:
+
+   Removed SUBCELLS macro (Problem arose because NT version allows 64000 
+      different subcells -- DOS version only allows 3000)
+   Added MARK_SUBCELLS command (for use in macros)
+
+   Fixed bug in logging "DEFAULT GLOBAL macro_name=macro_value" and "DEFAULT 
+   LOCAL macro_name=macro_value" commands.  The old software was logging these 
+   commands as: "GLOBAL DEFAULT macro_name=macro_value" and "LOCAL DEFAULT 
+   macro_name=macro_value", i.e. the DEFAULT and LOCAL or GLOBAL keywords were 
+   logged in the wrong order.  (This bug was also in the DOS version.)
+
+   Fixed two bugs associated with zero-length macro strings.  Bugs resulted
+   in cursor being misplaced after macro substitution.
+
+   The following .CMD file now works:
+
+      GLOBAL ANS=$PROMPT "Enter value for answer: "
+      IF(CMP("%ANS", "")==0) #ANS="Default answer"
+      $ %ANS
+
+10/24/98 Version 4.12
+
+Fixed bug that caused ICED to crash when the VIEW_ONLY=ON/OFF or BEEP=ON/OFF 
+command line options were used. 
+
+Changed behavior of ARROW MODE command and arrow, page up, and page down keys 
+to more closely match their behavior in ICED32.  
+
+I think I understand what's happening with the function keys (see below).  I 
+believe they are now working.  If you see any problems please report them.
+
+Explanation: Windows does not treat all function keys in the same way.  Keys 
+<F1> thru <F9>, <F11>, and <F12> generate one pattern of messages, while key 
+<F10> generates a slightly different pattern.  Furthermore, key <F10> may 
+lock the keyboard until you press it again or you press <Enter>.  (I believe 
+this is Microsoft's way of reserving key <F10> for use by the system.)  None 
+of this odd behavior appears to be documented.  (The KEYLOOK program from 
+chapter 5 of PETZOLD's "Programming Windows 95" verifies this behavior so 
+its not just ICED.)  
+
+The <Alt><Fn> keys are normally used by the system.  Defining a macro for an 
+<Alt><Fn> key combination "blocks" that key's system function.  For example,
+<Alt><F4> normally terminates a task.  If you have defined a macro for key 
+<Alt><F4> pressing <Alt><F4> executes that macro.  If not, pressing <Alt><F4> 
+terminates ICED.
+
+10/13/98  Version 4.11
+
+The following bug was found in the journal file.  If you changed the VIEW 
+window using an nested VIEW command and cancelled the command it was nested
+in then the view change was not logged in the journal file.  This could cause 
+trouble when recovering from the journal file since the size of the "near box" 
+depends on the size of the view window.  Commands such as SELECT NEAR are
+actually logged in the journal file as the equivalent SELECT IN command to
+avoid this problem.  However, the EDIT NEAR, P_EDIT NEAR, and T_EDIT NEAR
+commands were recorded using the NEAR keyword.
+
+The problem has been fixed twice.  Nested VIEW commands are now logged even
+if you cancel the command they were nested in.  Furthermore, EDIT commands
+now accept the IN keyword so that the EDIT NEAR, P_EDIT NEAR, and T_EDIT NEAR 
+are logged using the equivalent EDIT IN, P_EDIT IN, and T_EDIT IN commands.  
+
+10/11/98  Version 4.10
+
+Fixed bug in redraw of RULER cursor after pan or autopan.
+
+The journal file is now opened and closed each time ICED writes to it.  
+This is done to force the system to write the journal entry to the disk.
+It is likely to be unacceptably slow on network drives.  If you have this
+problem use the LOG=n command line option to tell ICED to accumulate n 
+commands before writing to the journal file.  
+
+Note:  IC Editors, Inc. does not run on a network.  Even if we did, it 
+would be configured differently from your network.  So, if you have 
+performance or other problems on a networked computer please tell us.
+(If we don't know its broken we can't fix it!)
+
+10/11/98  Version 4.08/4.09
+
+Note: I forgot to update the version number when I released 4.09 -- When
+4.09 comes up it will claim to be 4.08.
+
+9/21/98  MkPlot Version 4.01
+
+Fixed bug in Mkplot that caused fill patterns to be mirrored on landscape 
+plots.  This bug was also in the DOS version.
+
+9/12/98  Version 4.09
+
+Fixed all known bugs in code that displays partially digitized components 
+during nested VIEW commands.
+
+9/6/98   Version 4.08
+
+Fixed bug that prevented space-bar from ending keyboard macros. (If you don't
+know what this means you don't care.)
+
+Fixed bug that made it impossible to cancel a nested VIEW command.
+
+Fixed some (but not all) bugs in code that displays partially digitized 
+components during nested VIEW commands.
+
+Modified handling of system palette -- hopefully eliminating some bad 
+behavior.  
+
+I am having problems handling the system palette.  (The system palette is a 
+group of 256 hardware registers that translate 8-bit pixel values into 
+colors.  Since there is only one set of registers for the VGA card, they 
+must shared among all tasks having windows.  Windows provides an elaborate 
+(but ineffective) interface by which individual tasks may reserve and use 
+these registers.)  Unfortunately, while users are reporting real problems, I 
+cannot duplicate them on my computer.  As a result, I need your help.  This 
+version of ICED includes code that can log the events leading up to palette 
+failures.  If you get improper colors WHILE ICED IS IN THE FOREGROUND or if 
+you get one of the following "evil" messages please call us for information 
+on how to turn on event logging.  The evil messages are:
+
+          "Could not load color registers" and
+          "Could not allocate consecutive palette registers"
+
+ICED may not display correct colors when it is running in the background, i.e.
+when another window has the keyboard focus.  It will never be possible to 
+completely eliminate this problem since the foreground task has (and needs) 
+primary control of the system palette.  However, Windows supports a mechanism
+whereby a background task can use any palette registers not used by the 
+foreground task.  I hope to make use of this mechanism in the future.
+
+6/21/98 MKPLOT4W 4.01
+
+Bug fixed that caused program to crash with certain combinations of 
+options for cell outlines. (Full version only.)
+
+5/13/98  Version 4.07 (No changes to ICED.EXE)
+
+The version of ICFULL.EXE posted on 5/6/98 contained an incorrect version of
+mkplot.exe.  The current version of ICFULL.EXE contains the correct file --
+mkplot4w.exe (mkplot 4 windows).
+
+5/6/98  Version 4.07
+
+Fixed bug in causing interaction between manual (arrow-key) pan and autopan.
+Fixed bug handling of long cell names. Bug resulted in corruption of command 
+   parser tables and inability to execute any commands.
+Fixed bug in command parser handling of TEXT command.
+Improved (I hope) logic controlling when ICED will accept commands from the 
+   command line or menus.
+Name of subcell being edited now appears on title bar.
+ICED now requests user confirmation when you click on the upper right corner
+   X control to end an ICED session.  This is meant to help prevent accidental
+   closure of the window.
+
+4/25/98  Version 4.06
+
+Fixed bug that caused ICED to draw chip twice during startup.  Initial draw
+    times (visible as the pause between the time ICED finishes loading cells
+    and the time it paints the chip on the screen) should be noticeably 
+    shorter for large chips.
+Minor improvements in the way ICED redraws menus when main window is NOT 
+    maximized.
+Forced CIF, SF, and POK file names to conform to 8.3 DOS naming convention 
+    (as in ICED32).  Use of long file names for these files was a mistake.
+Added MkPlot4W to ICFULL.  This file is NOT included in ICDEMO.
+
+4/14/98  Version 4.05
+
+Fixed bug (uninitialized variable) that caused random crashes while digitizing 
+    points.
+Fixed bug in handling right mouse button while digitizing MOVE displacement.
+
+4/13/98  Version 4.04
+
+First copy-protected version (saves work)
+Fixed bug resulting in incomplete erasure of wide menus
+Fixed bugs in handling right mouse button
+Fixed bugs in command parser that caused crash or errors in block-if's
+
+4/8/98  Version 4.03
+
+Fixed bug in handling function and arrow keys.
+
+4/6/98  Version 4.02
+
+Added facility to handle very large swap files.
+
+4/3/98  Version 4.01  (no changes in ICED.EXE)
+
+Added DEL2CEL utility.
+
+4/2/98  Version 4.01
+
+Improved handling of menu cursor.
+Fixed bug in Crash dialog box.
+

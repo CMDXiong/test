@@ -1,0 +1,1444 @@
+
+/*
+
+  KLayout Layout Viewer
+  Copyright (C) 2006-2016 Matthias Koefferlein
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+*/
+
+
+#ifdef HAVE_PYTHON
+//  For PY_MAJOR_VERSION
+#include <Python.h>
+#endif
+
+#include "gsiDecl.h"
+
+#include "tlVariant.h"
+#include "tlString.h"
+
+#include <string>
+#include <vector>
+#include <memory>
+#include <cstdio>
+
+#include <QtGui/QDialog>
+#include <QtGui/QApplication>
+
+// ----------------------------------------------------------------------
+//  Classes to export to RBA
+
+static int a_count = 0;
+
+struct PYT_A
+  : public gsi::ObjectBase
+{
+  PYT_A() { 
+    ++a_count;
+    n = 17; 
+  }
+
+  PYT_A(int nn) { 
+    ++a_count;
+    n = nn; 
+  }
+
+  PYT_A(const PYT_A &a)
+  {
+    ++a_count;
+    m_d = a.m_d;
+    n = a.n;
+  }
+
+  ~PYT_A() { 
+    if (a_inst.get () == this) {
+      a_inst.release ();
+    }
+    --a_count;
+  }
+
+  static const char *a_static () { return "static_a"; }
+  const char *a () { return "a"; }
+
+  static int a0 () {
+    return a_count;
+  }
+  int a1 () { 
+    return n; 
+  }
+  int a1c () const { 
+    return n; 
+  }
+  void a2 () const { }
+  int a3 (const std::string &x) { 
+    return x.size (); 
+  }
+  double a4 (const std::vector<double> &d) { 
+    m_d = d;
+    return d.back (); 
+  }
+  void a5 (int nn) { 
+    n = nn; 
+  }
+  std::vector<double>::iterator a6b () {
+    return m_d.begin ();
+  }
+  std::vector<double>::iterator a6e () {
+    return m_d.end ();
+  }
+  double *a7b () {
+    return &*m_d.begin ();
+  }
+  double *a7e () {
+    return a7b () + m_d.size ();
+  }
+  const double *a8b () const {
+    return &*m_d.begin ();
+  }
+  const double *a8e () const {
+    return a8b () + m_d.size ();
+  }
+
+  bool a9a (int i) const { return i == 5; }
+  int a9b (bool f) const { return f ? 5 : -5; }
+
+  std::string a10_d (double f) { return tl::to_string(f); }
+  std::string a10_f (float f) { return tl::to_string(f); }
+  std::string a10_fptr (float *f) { if (f) { *f += 5; return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_dptr (double *f) { if (f) { *f += 6; return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_iptr (int *f) { if (f) { *f += 7; return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_bptr (bool *f) { if (f) { *f = true; return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_uiptr (unsigned int *f) { if (f) { *f += 10; return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_ulptr (unsigned long *f) { if (f) { *f += 11; return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_lptr (long *f) { if (f) { *f += 12; return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_llptr (long long *f) { if (f) { *f += 13; return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_ullptr (unsigned long long *f) { if (f) { *f += 14; return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_cfptr (const float *f) { if (f) { return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_cdptr (const double *f) { if (f) { return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_ciptr (const int *f) { if (f) { return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_cbptr (const bool *f) { if (f) { return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_cuiptr (const unsigned int *f) { if (f) { return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_culptr (const unsigned long *f) { if (f) { return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_clptr (const long *f) { if (f) { return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_cllptr (const long long *f) { if (f) { return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_cullptr (const unsigned long long *f) { if (f) { return tl::to_string(*f); } else { return "nil"; } }
+  std::string a10_sptr (std::string *f) { if (f) { *f += "x"; return *f; } else { return "nil"; } }
+  std::string a10_csptr (const std::string *f) { if (f) { return *f; } else { return "nil"; } }
+  std::string a10_fref (float &f) { f += 10; return tl::to_string(f); }
+  std::string a10_dref (double &f) { f += 11; return tl::to_string(f); }
+  std::string a10_iref (int &f) { f += 12; return tl::to_string(f); }
+  std::string a10_bref (bool &f) { f = true; return tl::to_string(f); }
+  std::string a10_uiref (unsigned int &f) { f += 14; return tl::to_string(f); }
+  std::string a10_ulref (unsigned long &f) { f += 15; return tl::to_string(f); }
+  std::string a10_lref (long &f) { f += 16; return tl::to_string(f); }
+  std::string a10_llref (long long &f) { f += 17; return tl::to_string(f); }
+  std::string a10_ullref (unsigned long long &f) { f += 18; return tl::to_string(f); }
+  std::string a10_sref (std::string &f) { f += "y"; return f; }
+  std::string a10_cfref (const float &f) { return tl::to_string(f); }
+  std::string a10_cdref (const double &f) { return tl::to_string(f); }
+  std::string a10_ciref (const int &f) { return tl::to_string(f); }
+  std::string a10_cbref (const bool &f) { return tl::to_string(f); }
+  std::string a10_cuiref (const unsigned int &f) { return tl::to_string(f); }
+  std::string a10_culref (const unsigned long &f) { return tl::to_string(f); }
+  std::string a10_clref (const long &f) { return tl::to_string(f); }
+  std::string a10_cllref (const long long &f) { return tl::to_string(f); }
+  std::string a10_cullref (const unsigned long long &f) { return tl::to_string(f); }
+  std::string a10_csref (const std::string &f) { return f; }
+
+  const char *a_vp1 (void *s) { return (const char *)s; }
+  void *a_vp2 () { return (void *)"abc"; }
+
+  static void a20 (PYT_A *ptr)
+  { 
+    if (a_inst.get () != ptr) {
+      delete a_inst.release (); 
+      a_inst.reset (ptr);
+    }
+  }
+
+  static PYT_A *a20_get () { return a_inst.get (); }
+
+  std::vector<double> m_d;
+  int n;
+
+  static std::auto_ptr<PYT_A> a_inst;
+};
+
+std::auto_ptr<PYT_A> PYT_A::a_inst;
+
+struct PYT_A_NC
+  : public PYT_A
+{
+  PYT_A_NC () : PYT_A () { }
+  PYT_A_NC (int nn) : PYT_A (nn) { }
+  
+private:
+  friend class PYT_B;
+
+  PYT_A_NC (const PYT_A_NC &a) : PYT_A (a) { }
+  PYT_A_NC &operator= (const PYT_A_NC &);
+};
+
+template<class Iter>
+struct ValueIter
+{
+public:
+  typedef typename std::iterator_traits<Iter> it_traits;
+  typedef typename it_traits::value_type value_type;
+  typedef std::forward_iterator_tag iterator_category;
+  typedef value_type reference;
+  typedef void pointer;
+  typedef void difference_type;
+  
+  ValueIter (Iter i) : iter(i) { }
+
+  value_type operator*() const
+  {
+    return *iter;
+  }
+  
+  ValueIter &operator++() 
+  {
+    ++iter;
+    return *this;
+  }
+  
+  bool operator== (const ValueIter &d) const
+  {
+    return iter == d.iter;
+  }
+  
+private:
+  Iter iter;
+};
+
+template<class Iter>
+struct FreeIter
+{
+public:
+  typedef typename std::iterator_traits<Iter> it_traits;
+  typedef typename it_traits::value_type value_type;
+  typedef std::forward_iterator_tag iterator_category;
+  typedef value_type reference;
+  typedef void pointer;
+  typedef void difference_type;
+  
+  FreeIter (Iter b, Iter e) : mb(b), me(e) { }
+
+  value_type operator*() const
+  {
+    return *mb;
+  }
+  
+  FreeIter &operator++() 
+  {
+    ++mb;
+    return *this;
+  }
+  
+  bool operator== (const FreeIter &d) const
+  {
+    return mb == d.mb;
+  }
+
+  bool at_end () const
+  {
+    return mb == me;
+  }
+  
+private:
+  Iter mb, me;
+};
+
+template<class Iter>
+struct FreeIterUseRef
+{
+public:
+  typedef typename std::iterator_traits<Iter> it_traits;
+  typedef typename it_traits::value_type value_type;
+  typedef std::forward_iterator_tag iterator_category;
+  typedef typename it_traits::reference reference;
+  typedef void pointer;
+  typedef void difference_type;
+  
+  FreeIterUseRef (Iter b, Iter e) : mb(b), me(e) { }
+
+  reference operator*() const
+  {
+    return *mb;
+  }
+  
+  FreeIterUseRef &operator++() 
+  {
+    ++mb;
+    return *this;
+  }
+  
+  bool operator== (const FreeIterUseRef &d) const
+  {
+    return mb == d.mb;
+  }
+
+  bool at_end () const
+  {
+    return mb == me;
+  }
+  
+private:
+  Iter mb, me;
+};
+
+template<class Iter>
+struct FreeIterUsePtr
+{
+public:
+  typedef typename std::iterator_traits<Iter> it_traits;
+  typedef typename it_traits::pointer value_type;
+  typedef std::forward_iterator_tag iterator_category;
+  typedef typename it_traits::pointer reference;
+  typedef void pointer;
+  typedef void difference_type;
+  
+  FreeIterUsePtr (Iter b, Iter e) : mb(b), me(e) { }
+
+  reference operator*() const
+  {
+    return &*mb;
+  }
+  
+  FreeIterUsePtr &operator++() 
+  {
+    ++mb;
+    return *this;
+  }
+  
+  bool operator== (const FreeIterUsePtr &d) const
+  {
+    return mb == d.mb;
+  }
+
+  bool at_end () const
+  {
+    return mb == me;
+  }
+  
+private:
+  Iter mb, me;
+};
+
+struct PYT_B;
+struct PYT_B *b_inst = 0;
+
+struct PYT_B
+{
+  PYT_B() { 
+    av.push_back (PYT_A (100));
+    av.push_back (PYT_A (121));
+    av.push_back (PYT_A (144));
+    avc_nc.push_back (new PYT_A_NC (-3100));
+    avc_nc.push_back (new PYT_A_NC (-3121));
+    av_nc.push_back (new PYT_A_NC (7100));
+    av_nc.push_back (new PYT_A_NC (7121));
+    av_nc.push_back (new PYT_A_NC (7144));
+    av_nc.push_back (new PYT_A_NC (7169));
+  }
+
+  PYT_B(const PYT_B &d)
+  {
+    operator=(d);
+  }
+
+  PYT_B &operator=(const PYT_B &d) 
+  {
+    if (&d == this) {
+      return *this;
+    }
+
+    m = d.m;
+    a = d.a;
+    bv = d.bv;
+    av = d.av;
+    while (! av_nc.empty ()) {
+      delete av_nc.back ();
+      av_nc.pop_back ();
+    }
+    for (std::vector <PYT_A_NC *>::const_iterator i = d.av_nc.begin (); i != d.av_nc.end (); ++i) {
+      av_nc.push_back (new PYT_A_NC (**i));
+    }
+    while (! avc_nc.empty ()) {
+      delete const_cast<PYT_A_NC *> (avc_nc.back ());
+      avc_nc.pop_back ();
+    }
+    for (std::vector <const PYT_A_NC *>::const_iterator i = d.avc_nc.begin (); i != d.avc_nc.end (); ++i) {
+      avc_nc.push_back (new PYT_A_NC (**i));
+    }
+    m_var = d.m_var;
+    m_vars = d.m_vars;
+    m_map2 = d.m_map2;
+
+    return *this;
+  }
+
+  ~PYT_B() {
+    while (! av_nc.empty ()) {
+      delete av_nc.back ();
+      av_nc.pop_back ();
+    }
+    while (! avc_nc.empty ()) {
+      delete const_cast<PYT_A_NC *> (avc_nc.back ());
+      avc_nc.pop_back ();
+    }
+    if (b_inst == this) {
+      b_inst = 0;
+    }
+  }
+
+  static void set_inst (PYT_B *b) { b_inst = b; }
+  static void del_inst () { delete b_inst; }
+  static PYT_B *inst () { return b_inst; }
+  static bool has_inst () { return b_inst != 0; }
+
+  std::string addr () const 
+  {
+    char c[50];
+    sprintf (c, "(%p)", (void *)this);
+    return c;
+  }
+
+  int b1 () const { 
+    return 5; 
+  }
+
+  const std::string &b2 () const { 
+    return m; 
+  }
+
+  int b3 (PYT_A *aptr) const { 
+    return aptr->n; 
+  }
+
+  std::string b4 (const PYT_A &aref) { 
+    return tl::sprintf ("b4_result: %d", aref.n); 
+  }
+
+  void b5 (const char *p) { 
+    m = p; 
+  }
+
+  void b5b (const char *p1, const char *p2) { 
+    m = p1; 
+    m += p2;
+  }
+
+  const char *b5a () const {
+    return m.c_str ();
+  }
+
+  PYT_A b6 (int n) { 
+    return PYT_A(n);
+  }
+
+  //  can't be a const &, because that would return a copy
+  const PYT_A *b7 () { 
+    return &a;
+  }
+
+  void b8 (int n) { 
+    a.n = n;
+  }
+
+  int b9 (PYT_A a) { 
+    return a.n;
+  }
+
+  void b8cref (const int &n) { 
+    a.n = n;
+  }
+
+  const int &b9cref (const PYT_A &a) { 
+    return a.n;
+  }
+
+  std::vector <PYT_A>::const_iterator b10b () const
+  {
+    return av.begin ();
+  }
+
+  std::vector <PYT_A>::const_iterator b10e () const
+  {
+    return av.end ();
+  }
+
+  std::vector <PYT_A>::iterator b10b_nc ()
+  {
+    return av.begin ();
+  }
+
+  std::vector <PYT_A>::iterator b10e_nc ()
+  {
+    return av.end ();
+  }
+
+  ValueIter<std::vector <PYT_A>::const_iterator> b11b () const
+  {
+    return ValueIter<std::vector <PYT_A>::const_iterator> (av.begin ());
+  }
+
+  ValueIter<std::vector <PYT_A>::const_iterator> b11e () const
+  {
+    return ValueIter<std::vector <PYT_A>::const_iterator> (av.end ());
+  }
+
+  std::vector <PYT_A_NC *>::const_iterator b12b () const
+  {
+    return av_nc.begin ();
+  }
+
+  std::vector <PYT_A_NC *>::const_iterator b12e () const
+  {
+    return av_nc.end ();
+  }
+
+  std::vector <const PYT_A_NC *>::const_iterator b13b () const
+  {
+    return avc_nc.begin ();
+  }
+
+  std::vector <const PYT_A_NC *>::const_iterator b13e () const
+  {
+    return avc_nc.end ();
+  }
+
+  PYT_A *b14a (bool nn) 
+  {
+    return nn ? &a : 0;
+  }
+
+  PYT_A *b14b () { 
+    return &a;
+  }
+
+  bool b15 (PYT_A *a)
+  {
+    return a != 0;
+  }
+
+  std::vector <PYT_A> b16a () const
+  {
+    return av;
+  }
+
+  const std::vector <PYT_A> &b16b () const
+  {
+    return av;
+  }
+
+  std::vector <PYT_A> &b16c ()
+  {
+    return av;
+  }
+
+  void b17a (const std::vector <PYT_A> &v)
+  {
+    av = v;
+  }
+
+  void b17b (std::vector <PYT_A> &v)
+  {
+    av = v;
+  }
+
+  void b17c (std::vector <PYT_A> v)
+  {
+    av = v;
+  }
+
+  FreeIter<std::vector <PYT_A>::const_iterator> b18 () const
+  {
+    return FreeIter<std::vector <PYT_A>::const_iterator> (av.begin (), av.end ());
+  }
+
+  FreeIterUseRef<std::vector <PYT_A>::const_iterator> b18b () const
+  {
+    return FreeIterUseRef<std::vector <PYT_A>::const_iterator> (av.begin (), av.end ());
+  }
+
+  FreeIterUsePtr<std::vector <PYT_A>::const_iterator> b18c () const
+  {
+    return FreeIterUsePtr<std::vector <PYT_A>::const_iterator> (av.begin (), av.end ());
+  }
+
+  bool b20a (const tl::Variant &var) const { return var.is_nil (); }
+  bool b20b (tl::Variant &var) const { return var.is_double (); }
+  bool b20c (tl::Variant var) const { return var.is_longlong (); }
+  bool b20d (const tl::Variant &var) const { return var.is_a_string (); }
+  bool b20e (const tl::Variant &var) const { return var.is_bool (); }
+
+  std::string b21a (const tl::Variant &var) const { return var.to_string (); }
+  double b21b (const tl::Variant &var) const { return var.to_double (); }
+  long b21c (const tl::Variant &var) const { return var.to_long (); }
+
+  long b22a (const std::vector<tl::Variant> &vars) {
+    if (vars.empty ()) {
+      m_var = tl::Variant ();
+    } else {
+      m_var = vars.back ();
+    }
+    m_vars = vars;
+    return vars.size ();
+  }
+  tl::Variant b22b () const { return tl::Variant (); }
+  const tl::Variant &b22c () const { return m_var; }
+  tl::Variant &b22d () { return m_var; }
+
+  std::vector<tl::Variant> b23a () { return m_vars; }
+  const std::vector<tl::Variant> &b23b () const { return m_vars; }
+  std::vector<tl::Variant> &b23c () { return m_vars; }
+  tl::Variant b23d () { return tl::Variant (m_vars.begin (), m_vars.end ()); }
+  const std::vector<tl::Variant> *b23e () const { return &m_vars; }
+  const std::vector<tl::Variant> *b23e_null () const { return 0; }
+  std::vector<tl::Variant> *b23f () { return &m_vars; }
+  std::vector<tl::Variant> *b23f_null () { return 0; }
+
+  std::vector<tl::Variant>::const_iterator b24b () { return m_vars.begin (); }
+  std::vector<tl::Variant>::const_iterator b24e () { return m_vars.end (); }
+
+  int b30 () const { return 17; }
+  const char *b31 (int) const { return "xz"; }
+  const char *b33 (const PYT_A &a) const { return "aref"; }
+  double b32 (const char *, int) const { return 20.5; }
+
+  void insert_map1 (int k, const std::string &v) { m_map1[k] = v; }
+  std::map<int, std::string> map1 () const { return m_map1; }
+  const std::map<int, std::string> &map1_cref () const { return m_map1; }
+  const std::map<int, std::string> *map1_cptr () const { return &m_map1; }
+  const std::map<int, std::string> *map1_cptr_null () const { return 0; }
+  std::map<int, std::string> &map1_ref () { return m_map1; }
+  std::map<int, std::string> *map1_ptr () { return &m_map1; }
+  std::map<int, std::string> *map1_ptr_null () { return 0; }
+  void set_map1_cref (const std::map<int, std::string> &m) { m_map1 = m; }
+  void set_map1_ref (std::map<int, std::string> &m) { m_map1 = m; }
+  void set_map1_cptr (const std::map<int, std::string> *m) { if (m) { m_map1 = *m; } }
+  void set_map1_ptr (std::map<int, std::string> *m) { if (m) { m_map1 = *m; } }
+  void set_map1 (std::map<int, std::string> m) { m_map1 = m; }
+
+  void insert_map2 (const tl::Variant &k, const tl::Variant &v) { m_map2[k] = v; }
+  const std::map<tl::Variant, tl::Variant> *map2 () const { return &m_map2; }
+  const std::map<tl::Variant, tl::Variant> *map2_null () const { return 0; }
+  void set_map2 (const std::map<tl::Variant, tl::Variant> &m) { m_map2 = m; }
+
+  FreeIter<std::vector <PYT_B>::const_iterator> each_b_copy () const
+  {
+    return FreeIter<std::vector <PYT_B>::const_iterator> (bv.begin (), bv.end ());
+  }
+
+  FreeIterUseRef<std::vector <PYT_B>::const_iterator> each_b_cref () const
+  {
+    return FreeIterUseRef<std::vector <PYT_B>::const_iterator> (bv.begin (), bv.end ());
+  }
+
+  FreeIterUsePtr<std::vector <PYT_B>::const_iterator> each_b_cptr () const
+  {
+    return FreeIterUsePtr<std::vector <PYT_B>::const_iterator> (bv.begin (), bv.end ());
+  }
+
+  FreeIterUseRef<std::vector <PYT_B>::iterator> each_b_ref () 
+  {
+    return FreeIterUseRef<std::vector <PYT_B>::iterator> (bv.begin (), bv.end ());
+  }
+
+  FreeIterUsePtr<std::vector <PYT_B>::iterator> each_b_ptr ()
+  {
+    return FreeIterUsePtr<std::vector <PYT_B>::iterator> (bv.begin (), bv.end ());
+  }
+
+  void push_b (const PYT_B &b) { bv.push_back (b); }
+
+  std::string m;
+  PYT_A a;
+  std::vector <PYT_B> bv;
+  std::vector <PYT_A> av;
+  std::vector <PYT_A_NC *> av_nc;
+  std::vector <const PYT_A_NC *> avc_nc;
+  tl::Variant m_var;
+  std::vector<tl::Variant> m_vars;
+  std::map<int, std::string> m_map1;
+  std::map<tl::Variant, tl::Variant> m_map2;
+};
+
+//  external method
+int b3_ext (const PYT_B *b, PYT_A *aptr) { 
+  return b->b3 (aptr);
+}
+
+//  constructor
+PYT_A *a_ctor (int i) { 
+  return new PYT_A (i);
+}
+
+namespace tl
+{
+  template <> struct type_traits<PYT_A_NC> : public type_traits<void> {
+    typedef tl::false_tag has_copy_constructor;
+  };
+}
+
+//  external iterator methods
+std::vector <PYT_A>::const_iterator b10b_ext (const PYT_B *b) { return b->b10b (); }
+std::vector <PYT_A>::const_iterator b10e_ext (const PYT_B *b) { return b->b10e (); }
+const PYT_A *b10bp_ext (const PYT_B *b) { return &*(b->b10b ()); }
+const PYT_A *b10ep_ext (const PYT_B *b) { return &*(b->b10e ()); }
+
+
+class PYT_C
+{
+public:
+  virtual ~PYT_C () { }
+
+  virtual unsigned int f (const std::string &s) const
+  {
+    return 1977;
+  }
+
+  unsigned int g (const std::string s) const
+  {
+    return f(s);
+  }
+
+  static int s1 () { return 4451; }
+  static std::vector<int>::const_iterator s1a () { return m_v.begin (); }
+  static std::vector<int>::const_iterator s1b () { return m_v.end (); }
+  static void s2 (double x) 
+  { 
+    for (int i = 0; i < int (x + 0.5); ++i) {
+      m_v.push_back (i);
+    }
+  }
+  static void s2clr () { m_v.clear(); }
+  static std::string s3 (double x) { return tl::sprintf ("%.3f", x); }
+
+  static std::vector<int> m_v;
+};
+
+std::vector<int> PYT_C::m_v;
+
+class PYT_C_P
+  : public PYT_C
+{
+public:
+  virtual unsigned int f (const std::string &s) const
+  {
+    return f_cb.can_issue () ? f_cb.issue<PYT_C, unsigned int, const std::string &> (&PYT_C::f, s) : PYT_C::f (s);
+  }
+
+  gsi::Callback f_cb;
+};
+
+struct PYT_E 
+  : public gsi::ObjectBase
+{
+  PYT_E();
+  ~PYT_E();
+  void s1() { ev0(); }
+  void s2() { ev1(this); }
+  void s3() { ev2(18, "hallo"); }
+  int s1r(const std::string &s) { return ev0r(s); }
+  void bindme() const { }
+  static const PYT_E *ic();
+  static PYT_E *inc();
+  static const PYT_E &icref();
+  static PYT_E &incref();
+  void set_x(int i) { x = i; }
+  int get_x() const { return x; }
+  static int inst_count();
+
+  int x;
+  gsi::Event ev0;
+  gsi::event<PYT_E *> ev1;
+  gsi::event<int, const std::string &> ev2;
+  gsi::event_with_return<int, const std::string &> ev0r;
+};
+
+static std::auto_ptr<PYT_E> e_inst;
+static int e_count = 0;
+
+PYT_E::PYT_E() : x(0)
+{
+  e_count++;
+}
+
+PYT_E::~PYT_E()
+{
+  --e_count;
+}
+
+int PYT_E::inst_count()
+{
+  return e_count;
+}
+
+const PYT_E &PYT_E::icref() 
+{ 
+  //  late initialisation is required because otherwise no binding happens
+  if (! e_inst.get ()) { 
+    e_inst.reset (new PYT_E ()); 
+  } 
+  return *e_inst.get (); 
+}
+
+PYT_E &PYT_E::incref() 
+{ 
+  //  late initialisation is required because otherwise no binding happens
+  if (! e_inst.get ()) { 
+    e_inst.reset (new PYT_E ()); 
+  }
+  return *e_inst.get (); 
+}
+
+const PYT_E *PYT_E::ic() 
+{ 
+  //  late initialisation is required because otherwise no binding happens
+  if (! e_inst.get ()) { 
+    e_inst.reset (new PYT_E ()); 
+  } 
+  return e_inst.get (); 
+}
+
+PYT_E *PYT_E::inc() 
+{ 
+  //  late initialisation is required because otherwise no binding happens
+  if (! e_inst.get ()) { 
+    e_inst.reset (new PYT_E ()); 
+  }
+  return e_inst.get (); 
+}
+
+//  Same as "E", but not based on ObjectBase
+struct PYT_F 
+{
+  PYT_F() : x(0) { }
+  static const PYT_F *ic();
+  static PYT_F *inc();
+  static const PYT_F &icref();
+  static PYT_F &incref();
+  void set_x(int i) { x = i; }
+  int get_x() const { return x; }
+
+  int x;
+};
+
+static std::auto_ptr<PYT_F> f_inst;
+
+const PYT_F &PYT_F::icref() 
+{ 
+  //  late initialisation is required because otherwise no binding happens
+  if (! f_inst.get ()) { 
+    f_inst.reset (new PYT_F ()); 
+  } 
+  return *f_inst.get (); 
+}
+
+PYT_F &PYT_F::incref() 
+{ 
+  //  late initialisation is required because otherwise no binding happens
+  if (! f_inst.get ()) { 
+    f_inst.reset (new PYT_F ()); 
+  }
+  return *f_inst.get (); 
+}
+
+const PYT_F *PYT_F::ic() 
+{ 
+  //  late initialisation is required because otherwise no binding happens
+  if (! f_inst.get ()) { 
+    f_inst.reset (new PYT_F ()); 
+  } 
+  return f_inst.get (); 
+}
+
+PYT_F *PYT_F::inc() 
+{ 
+  //  late initialisation is required because otherwise no binding happens
+  if (! f_inst.get ()) { 
+    f_inst.reset (new PYT_F ()); 
+  }
+  return f_inst.get (); 
+}
+
+struct PYT_G
+{
+  PYT_G () : m_iv (0) { }
+  int iv() const { return m_iv; }
+  std::string sv() const { return m_sv; }
+
+  void set_iv (int v) { m_iv = v; }
+  void set_sv1 (const char *s) { m_sv = s; }
+  void set_sv2 (const std::string &s) { m_sv = s; }
+  void set_vv (int i, const std::string &s) { m_iv = i; m_sv = s; }
+
+  int m_iv;
+  std::string m_sv;
+};
+
+// ----------------------------------------------------------------------------------
+
+#include "pya.h"
+#include "gsiDecl.h"
+
+#ifdef HAVE_PYTHON
+
+#include "utHead.h"
+
+#include <stdlib.h>
+#include <stdio.h>
+
+// GSI declarations
+
+namespace gsi
+{
+
+gsi::Class<PYT_A> decl_a ("PA", 
+  gsi::constructor ("new_a", &a_ctor) +
+  gsi::method ("aa", &PYT_A::a) +
+  gsi::method ("aa", &PYT_A::a_static) +
+  gsi::method ("a0", &PYT_A::a0) +
+  gsi::method ("a1", &PYT_A::a1) +
+  gsi::method ("a1c", &PYT_A::a1c) +
+  gsi::method ("a2", &PYT_A::a2) +
+  gsi::method ("a3", &PYT_A::a3) +
+  gsi::method ("a4", &PYT_A::a4) +
+  gsi::method ("a5", &PYT_A::a5) +
+  gsi::method ("a10_d", &PYT_A::a10_d) +
+  gsi::method ("*a10_prot", &PYT_A::a10_d) +
+  gsi::method ("a10_f", &PYT_A::a10_f) +
+  gsi::method ("a10_fptr", &PYT_A::a10_fptr) +
+  gsi::method ("a10_dptr", &PYT_A::a10_dptr) +
+  gsi::method ("a10_iptr", &PYT_A::a10_iptr) +
+  gsi::method ("a10_bptr", &PYT_A::a10_bptr) +
+  gsi::method ("a10_uiptr", &PYT_A::a10_uiptr) +
+  gsi::method ("a10_ulptr", &PYT_A::a10_ulptr) +
+  gsi::method ("a10_lptr", &PYT_A::a10_lptr) +
+  gsi::method ("a10_llptr", &PYT_A::a10_llptr) +
+  gsi::method ("a10_ullptr", &PYT_A::a10_ullptr) +
+  gsi::method ("a10_cfptr", &PYT_A::a10_cfptr) +
+  gsi::method ("a10_cdptr", &PYT_A::a10_cdptr) +
+  gsi::method ("a10_ciptr", &PYT_A::a10_ciptr) +
+  gsi::method ("a10_cbptr", &PYT_A::a10_cbptr) +
+  gsi::method ("a10_cuiptr", &PYT_A::a10_cuiptr) +
+  gsi::method ("a10_culptr", &PYT_A::a10_culptr) +
+  gsi::method ("a10_clptr", &PYT_A::a10_clptr) +
+  gsi::method ("a10_cllptr", &PYT_A::a10_cllptr) +
+  gsi::method ("a10_cullptr", &PYT_A::a10_cullptr) +
+  gsi::method ("a10_sptr", &PYT_A::a10_sptr) +
+  gsi::method ("a10_csptr", &PYT_A::a10_csptr) +
+  gsi::method ("a10_fref", &PYT_A::a10_fref) +
+  gsi::method ("a10_dref", &PYT_A::a10_dref) +
+  gsi::method ("a10_iref", &PYT_A::a10_iref) +
+  gsi::method ("a10_bref", &PYT_A::a10_bref) +
+  gsi::method ("a10_uiref", &PYT_A::a10_uiref) +
+  gsi::method ("a10_ulref", &PYT_A::a10_ulref) +
+  gsi::method ("a10_lref", &PYT_A::a10_lref) +
+  gsi::method ("a10_llref", &PYT_A::a10_llref) +
+  gsi::method ("a10_ullref", &PYT_A::a10_ullref) +
+  gsi::method ("a10_sref", &PYT_A::a10_sref) +
+  gsi::method ("a10_cfref", &PYT_A::a10_cfref) +
+  gsi::method ("a10_cdref", &PYT_A::a10_cdref) +
+  gsi::method ("a10_ciref", &PYT_A::a10_ciref) +
+  gsi::method ("a10_cbref", &PYT_A::a10_cbref) +
+  gsi::method ("a10_cuiref", &PYT_A::a10_cuiref) +
+  gsi::method ("a10_culref", &PYT_A::a10_culref) +
+  gsi::method ("a10_clref", &PYT_A::a10_clref) +
+  gsi::method ("a10_cllref", &PYT_A::a10_cllref) +
+  gsi::method ("a10_cullref", &PYT_A::a10_cullref) +
+  gsi::method ("a10_csref", &PYT_A::a10_csref) +
+  gsi::method ("a_vp1", &PYT_A::a_vp1) +
+  gsi::method ("a_vp2", &PYT_A::a_vp2) +
+  gsi::method ("a9a", &PYT_A::a9a) +
+  gsi::method ("a9b", &PYT_A::a9b) +
+  gsi::method ("a20", &PYT_A::a20) +
+  gsi::method ("a20_get", &PYT_A::a20_get) +
+  gsi::iterator ("a6", &PYT_A::a6b, &PYT_A::a6e) +
+  gsi::iterator ("a7", &PYT_A::a7b, &PYT_A::a7e) +
+  gsi::iterator ("a8", &PYT_A::a8b, &PYT_A::a8e)
+);
+
+gsi::Class<PYT_A_NC> decl_a_nc (decl_a, "PA_NC"); 
+
+gsi::Class<PYT_B> decl_b ("PB", 
+  gsi::method ("inst", &PYT_B::inst) +
+  gsi::method ("has_inst", &PYT_B::has_inst) +
+  gsi::method ("set_inst", &PYT_B::set_inst) +
+  gsi::method ("del_inst", &PYT_B::del_inst) +
+  gsi::method ("addr", &PYT_B::addr) +
+  gsi::method ("b1", &PYT_B::b1) +
+  gsi::method ("b2", &PYT_B::b2) +
+  gsi::method_ext ("b3", &b3_ext) +
+  gsi::method ("b4", &PYT_B::b4) +
+  gsi::method ("b5", &PYT_B::b5) +
+  gsi::method ("b5a", &PYT_B::b5a) +
+  gsi::method ("b5b", &PYT_B::b5b) +
+  gsi::method ("b6", &PYT_B::b6) +
+  gsi::method ("b7", &PYT_B::b7) +
+  gsi::method ("b8", &PYT_B::b8) +
+  gsi::method ("b9", &PYT_B::b9) +
+  gsi::method ("b8cref", &PYT_B::b8) +
+  gsi::method ("b9cref", &PYT_B::b9) +
+  //  implemented by extension below:
+  // gsi::iterator_ext ("b10", &b10b_ext, &b10e_ext) +
+  gsi::iterator ("b10_nc", &PYT_B::b10b_nc, &PYT_B::b10e_nc) +
+  gsi::iterator ("b11", &PYT_B::b11b, &PYT_B::b11e) +
+  gsi::iterator ("b12", &PYT_B::b12b, &PYT_B::b12e) +
+  gsi::iterator ("b13", &PYT_B::b13b, &PYT_B::b13e) +
+  gsi::method ("b14a", &PYT_B::b14a) +
+  gsi::method ("b14b", &PYT_B::b14b) +
+  gsi::method ("b15", &PYT_B::b15) +
+  gsi::method ("b16a", &PYT_B::b16a) +
+  gsi::method ("b16b", &PYT_B::b16b) +
+  gsi::method ("b16c", &PYT_B::b16c) +
+  gsi::method ("b17a", &PYT_B::b17a) +
+  gsi::method ("b17b", &PYT_B::b17b) +
+  gsi::method ("b17c", &PYT_B::b17c) +
+  gsi::iterator ("b18", &PYT_B::b18) +
+  gsi::iterator ("b18b", &PYT_B::b18b) +
+  gsi::iterator ("b18c", &PYT_B::b18b) +
+  gsi::method ("b20a", &PYT_B::b20a) +
+  gsi::method ("b20b", &PYT_B::b20b) +
+  gsi::method ("b20c", &PYT_B::b20c) +
+  gsi::method ("b20d", &PYT_B::b20d) +
+  gsi::method ("b20e", &PYT_B::b20e) +
+  gsi::method ("b21a", &PYT_B::b21a) +
+  gsi::method ("b21b", &PYT_B::b21b) +
+  gsi::method ("b21c", &PYT_B::b21c) +
+  gsi::method ("b22a", &PYT_B::b22a) +
+  gsi::method ("b22b", &PYT_B::b22b) +
+  gsi::method ("b22c", &PYT_B::b22c) +
+  gsi::method ("b22d", &PYT_B::b22d) +
+  gsi::method ("b23a", &PYT_B::b23a) +
+  gsi::method ("b23b", &PYT_B::b23b) +
+  gsi::method ("b23c", &PYT_B::b23c) +
+  gsi::method ("b23d", &PYT_B::b23d) +
+  gsi::method ("b23e", &PYT_B::b23e) +
+  gsi::method ("b23e_null", &PYT_B::b23e_null) +
+  gsi::method ("b23f", &PYT_B::b23f) +
+  gsi::method ("b23f_null", &PYT_B::b23f_null) +
+  gsi::iterator ("b24", &PYT_B::b24b, &PYT_B::b24e) +
+  gsi::method ("#b30|bx", &PYT_B::b30) +
+  gsi::method ("#b31|bx|by", &PYT_B::b31) +
+  gsi::method ("bx|#b32", &PYT_B::b32) +
+  gsi::method ("#b33|bx", &PYT_B::b33) + 
+  gsi::method ("insert_map1", &PYT_B::insert_map1) +
+  gsi::method ("map1", &PYT_B::map1) +
+  gsi::method ("map1_cref", &PYT_B::map1_cref) +
+  gsi::method ("map1_ref", &PYT_B::map1_ref) +
+  gsi::method ("map1_cptr", &PYT_B::map1_cptr) +
+  gsi::method ("map1_cptr_null", &PYT_B::map1_cptr_null) +
+  gsi::method ("map1_ptr", &PYT_B::map1_ptr) +
+  gsi::method ("map1_ptr_null", &PYT_B::map1_ptr_null) +
+  gsi::method ("map1=|set_map1_cref", &PYT_B::set_map1_cref) +
+  gsi::method ("set_map1_ref", &PYT_B::set_map1_ref) +
+  gsi::method ("set_map1_cptr", &PYT_B::set_map1_cptr) +
+  gsi::method ("set_map1_ptr", &PYT_B::set_map1_ptr) +
+  gsi::method ("set_map1", &PYT_B::set_map1) +
+  gsi::method ("insert_map2", &PYT_B::insert_map2) +
+  gsi::method ("map2", &PYT_B::map2) +
+  gsi::method ("map2_null", &PYT_B::map2_null) +
+  gsi::method ("map2=", &PYT_B::set_map2) +
+  gsi::iterator ("each_b_copy", &PYT_B::each_b_copy) +
+  gsi::iterator ("each_b_ref", &PYT_B::each_b_ref) +
+  gsi::iterator ("each_b_ptr", &PYT_B::each_b_ptr) +
+  gsi::iterator ("each_b_cref", &PYT_B::each_b_cref) +
+  gsi::iterator ("each_b_cptr", &PYT_B::each_b_cptr) +
+  gsi::method ("push_b", &PYT_B::push_b)  
+);
+
+//  extending B
+gsi::ClassExt<PYT_B> b_ext ( 
+  gsi::iterator_ext ("b10", &b10b_ext, &b10e_ext) +
+  gsi::iterator_ext ("b10p", &b10bp_ext, &b10ep_ext) 
+);
+
+
+gsi::Class<PYT_C_P> decl_c ("PC", 
+  gsi::callback ("f", &PYT_C_P::f, &PYT_C_P::f_cb) +
+  gsi::method ("g", &PYT_C_P::g) +
+  gsi::method ("s1", &PYT_C::s1) +
+  gsi::method ("s2", &PYT_C::s2) +
+  gsi::method ("s2clr", &PYT_C::s2clr) +
+  gsi::method ("s3", &PYT_C::s3) +
+  gsi::iterator ("each", &PYT_C::s1a, &PYT_C::s1b) 
+);
+
+gsi::Class<PYT_E> decl_e ("PE",
+  gsi::event_decl ("e0", &PYT_E::ev0) +
+  gsi::event_decl ("e1", &PYT_E::ev1) +
+  gsi::event_decl ("e2", &PYT_E::ev2) +
+  gsi::event_decl ("e0r", &PYT_E::ev0r) +
+  gsi::method ("s1", &PYT_E::s1) +
+  gsi::method ("s2", &PYT_E::s2) +
+  gsi::method ("s3", &PYT_E::s3) +
+  gsi::method ("s1r", &PYT_E::s1r) +
+  gsi::method ("ic", &PYT_E::ic) +
+  gsi::method ("inc", &PYT_E::inc) +
+  gsi::method ("icref", &PYT_E::icref) +
+  gsi::method ("incref", &PYT_E::incref) +
+  gsi::method ("x=", &PYT_E::set_x) +
+  gsi::method ("x", &PYT_E::get_x) +
+  gsi::method ("bindme", &PYT_E::bindme) +
+  gsi::method ("inst_count", &PYT_E::inst_count) 
+);
+
+gsi::Class<PYT_F> decl_f ("PF",
+  gsi::method ("ic", &PYT_F::ic) +
+  gsi::method ("inc", &PYT_F::inc) +
+  gsi::method ("icref", &PYT_F::icref) +
+  gsi::method ("incref", &PYT_F::incref) +
+  gsi::method ("x=", &PYT_F::set_x) +
+  gsi::method ("x", &PYT_F::get_x) 
+);
+
+gsi::Class<PYT_G> decl_g ("PG",
+  gsi::method ("iv", &PYT_G::iv) +
+  gsi::method ("sv", &PYT_G::sv) +
+  gsi::method ("set_iva", &PYT_G::set_iv, gsi::arg ()) +
+  gsi::method ("set_ivb", &PYT_G::set_iv, gsi::arg ("", 1)) +
+  gsi::method ("set_sv1a", &PYT_G::set_sv1, gsi::arg ()) +
+  gsi::method ("set_sv1b", &PYT_G::set_sv1, gsi::arg ("name", "value")) +
+  gsi::method ("set_sv2a", &PYT_G::set_sv2, gsi::arg ()) +
+  gsi::method ("set_sv2b", &PYT_G::set_sv2, gsi::arg ("", "value")) +
+  gsi::method ("set_vva", &PYT_G::set_vv) + 
+  gsi::method ("set_vvb", &PYT_G::set_vv, gsi::arg (), gsi::arg ("", "value")) +
+  gsi::method ("set_vvc", &PYT_G::set_vv, gsi::arg ("", 1), gsi::arg ("", "value")) 
+);
+
+}
+
+class PYT_X
+  : public gsi::ObjectBase
+{
+public:
+  PYT_X () { }
+  PYT_X (const char *x) : m_s(QString::fromAscii(x)) { }
+  virtual ~PYT_X () { }
+
+  static PYT_X a, b;
+
+  static void init()
+  {
+    a = PYT_X("PYT_X::a");
+    b = PYT_X("PYT_X::b");
+  }
+
+  static const PYT_X *x_cptr() 
+  {
+    return &a;
+  }
+    
+  static PYT_X *x_ptr() 
+  {
+    return &a;
+  }
+    
+  static std::vector<PYT_X> vx() 
+  {
+    std::vector<PYT_X> r;
+    r.push_back(a);
+    r.push_back(b);
+    return r;
+  }
+    
+  static std::vector<const PYT_X *> vx_cptr() 
+  {
+    std::vector<const PYT_X *> r;
+    r.push_back(&a);
+    r.push_back(&b);
+    return r;
+  }
+    
+  static std::vector<PYT_X *> vx_ptr() 
+  {
+    std::vector<PYT_X *> r;
+    r.push_back(&a);
+    r.push_back(&b);
+    return r;
+  }
+
+  virtual QString cls_name() const { return QString::fromAscii("PYT_X"); }
+  QString s() const { return m_s; }
+  void set_s(const QString &s) { m_s = s; }
+  void set_si(int v) { m_s = QString::number (v + 1); }
+
+protected:
+  QString m_s;
+};
+
+PYT_X PYT_X::a("PYT_X::a");
+PYT_X PYT_X::b("PYT_X::b");
+
+static PYT_X *make_x (const char *x) { return new PYT_X(x); }
+    
+class PYT_Y
+  : public PYT_X
+{
+public:
+  PYT_Y () : c(0) { ++dyn_count; }
+  PYT_Y (const char *x) : PYT_X(x), c(0) { ++dyn_count; }
+  ~PYT_Y () { --dyn_count; }
+
+  static PYT_Y a, b;
+  static int dyn_count;
+  PYT_Y *c;
+
+  static void init()
+  {
+    a = PYT_Y("PYT_Y::a");
+    b = PYT_Y("PYT_Y::b");
+  }
+
+  static const PYT_X *y_cptr() 
+  {
+    return &a;
+  }
+    
+  static PYT_X *y_ptr() 
+  {
+    return &a;
+  }
+    
+  int vx_dyn_count()
+  {
+    return dyn_count;
+  }
+
+  void vx_dyn_make()
+  {
+    c = new PYT_Y();
+  }
+
+  void vx_dyn_destroy()
+  {
+    delete c;
+  }
+
+  std::vector<PYT_X *> vx_dyn() 
+  {
+    std::vector<PYT_X *> r;
+    r.push_back(c);
+    return r;
+  }
+    
+  static std::vector<const PYT_X *> vyasx_cptr() 
+  {
+    std::vector<const PYT_X *> r;
+    r.push_back(&a);
+    r.push_back(&b);
+    return r;
+  }
+    
+  static std::vector<PYT_X *> vyasx_ptr() 
+  {
+    std::vector<PYT_X *> r;
+    r.push_back(&a);
+    r.push_back(&b);
+    return r;
+  }
+    
+  static std::vector<const PYT_Y *> vy_cptr() 
+  {
+    std::vector<const PYT_Y *> r;
+    r.push_back(&a);
+    r.push_back(&b);
+    return r;
+  }
+    
+  static std::vector<PYT_Y *> vy0_ptr() 
+  {
+    std::vector<PYT_Y *> r;
+    r.push_back(0);
+    return r;
+  }
+
+  static std::vector<PYT_Y *> vy_ptr() 
+  {
+    std::vector<PYT_Y *> r;
+    r.push_back(&a);
+    r.push_back(&b);
+    return r;
+  }
+
+  virtual QString cls_name() const { return QString::fromAscii("PYT_Y"); }
+  int i() const { return (int)m_s.size(); }
+};
+    
+class PYT_YY : public PYT_Y
+{
+public:
+  PYT_YY () : PYT_Y() { }
+  PYT_YY (const char *x) : PYT_Y(x) { }
+  virtual QString cls_name() const { return QString::fromAscii("PYT_YY"); }
+};
+
+class PYT_Z
+{
+public:
+  PYT_Z () { }
+  virtual ~PYT_Z () { }
+
+  virtual std::string f (PYT_X *x) { return x ? tl::to_string (x->s ()) : "(nil)"; }
+};
+    
+class PYT_Z_P
+  : public PYT_Z
+{
+public:
+  virtual std::string f (PYT_X *x)
+  {
+    return f_cb.issue<PYT_Z, std::string, PYT_X *> (&PYT_Z::f, x);
+  }
+
+  std::string f_org (PYT_X *x)
+  {
+    return PYT_Z::f (x);
+  }
+
+  std::string f_with_x (const std::string &s)
+  {
+    PYT_X x(s.c_str());
+    return f (&x);
+  }
+
+  std::string f_with_y (const std::string &s)
+  {
+    PYT_Y y(s.c_str());
+    return f (&y);
+  }
+
+  std::string f_with_yy (const std::string &s)
+  {
+    PYT_YY yy(s.c_str());
+    return f (&yy);
+  }
+
+  gsi::Callback f_cb;
+};
+
+PYT_Y PYT_Y::a("PYT_Y::a");
+PYT_Y PYT_Y::b("PYT_Y::b");
+int PYT_Y::dyn_count = 0;
+
+static PYT_Y *make_y (const char *x) { return new PYT_Y(x); }
+
+namespace gsi
+{
+
+gsi::Class<PYT_X> decl_x ("PX",
+  gsi::constructor ("new", &make_x) + 
+  gsi::method ("x_ptr", &PYT_X::x_ptr) +
+  gsi::method ("x_cptr", &PYT_X::x_cptr) +
+  gsi::method ("vx", &PYT_X::vx) +
+  gsi::method ("vx_ptr", &PYT_X::vx_ptr) +
+  gsi::method ("vx_cptr", &PYT_X::vx_cptr) +
+  gsi::method ("cls_name", &PYT_X::cls_name) +
+  gsi::method ("init", &PYT_X::init) +
+  gsi::method ("s", &PYT_X::s) +
+  gsi::method ("s=", &PYT_X::set_s) +
+  gsi::method ("s=", &PYT_X::set_si)
+);
+
+gsi::Class<PYT_Y> decl_y (decl_x, "PY",
+  gsi::constructor ("new", &make_y) + 
+  gsi::method ("y_ptr", &PYT_Y::y_ptr) +
+  gsi::method ("y_cptr", &PYT_Y::y_cptr) +
+  gsi::method ("vy_ptr", &PYT_Y::vy_ptr) +
+  gsi::method ("vy0_ptr", &PYT_Y::vy0_ptr) +
+  gsi::method ("vy_cptr", &PYT_Y::vy_cptr) +
+  gsi::method ("vyasx_ptr", &PYT_Y::vyasx_ptr) +
+  gsi::method ("vyasx_cptr", &PYT_Y::vyasx_cptr) +
+  gsi::method ("init", &PYT_Y::init) +
+  gsi::method ("i", &PYT_Y::i) +
+  gsi::method ("vx_dyn_count", &PYT_Y::vx_dyn_count) +
+  gsi::method ("vx_dyn_make", &PYT_Y::vx_dyn_make) +
+  gsi::method ("vx_dyn_destroy", &PYT_Y::vx_dyn_destroy) +
+  gsi::method ("vx_dyn", &PYT_Y::vx_dyn)
+);
+
+gsi::Class<PYT_Z_P> decl_z ("PZ",
+  gsi::method ("f", &PYT_Z_P::f_org) +
+  gsi::callback ("f", &PYT_Z_P::f, &PYT_Z_P::f_cb) +
+  gsi::method ("f_with_x", &PYT_Z_P::f_with_x) +
+  gsi::method ("f_with_y", &PYT_Z_P::f_with_y) +
+  gsi::method ("f_with_yy", &PYT_Z_P::f_with_yy) 
+);
+
+}
+
+TEST (1)
+{
+  EXPECT_EQ (gsi::has_class ("Value"), true);
+  EXPECT_EQ (gsi::has_class ("DoesNotExist"), false);
+#if defined(HAVE_QTBINDING)
+  EXPECT_EQ (gsi::has_class ("QDialog"), true);
+  EXPECT_EQ (gsi::has_class ("QApplication"), true);
+#endif
+
+  bool err = false;
+  try {
+    ut::python_interpreter ()->eval_string ("raise Exception(\"an error\")");
+  } catch (gsi::RuntimeError &ex) {
+    EXPECT_EQ (ex.basic_msg (), std::string ("an error"));
+#if PY_MAJOR_VERSION < 3
+    EXPECT_EQ (ex.cls (), std::string ("exceptions.Exception"));
+#else
+    EXPECT_EQ (ex.cls (), std::string ("Exception"));
+#endif
+    err = true;
+  }
+
+  EXPECT_EQ (err, true);
+
+  err = false;
+  try {
+    ut::python_interpreter ()->eval_string ("Quatsch");
+  } catch (gsi::RuntimeError &ex) {
+    EXPECT_EQ (ex.basic_msg (), std::string ("name 'Quatsch' is not defined"));
+#if PY_MAJOR_VERSION < 3
+    EXPECT_EQ (ex.cls (), std::string ("exceptions.NameError"));
+#else
+    EXPECT_EQ (ex.cls (), std::string ("NameError"));
+#endif
+    err = true;
+  }
+
+  EXPECT_EQ (err, true);
+
+  std::string fn (ut::testsrc ());
+  fn += "/testdata/python/basic.py";
+  try {
+    ut::python_interpreter ()->load_file (fn.c_str ());
+  } catch (gsi::ExitException &ex) {
+    EXPECT_EQ (ex.status (), 0);
+  } catch (...) {
+    throw;
+  }
+
+  e_inst.reset (0);
+}
+
+#else
+// at least utHead is required because of "main" symbol:
+#include "utHead.h"
+#endif
+

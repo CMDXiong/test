@@ -1,0 +1,14 @@
+input layer 1 a; 2 b
+output layer 3 too_close
+badpoly 0
+too_close=minspacing(a/out, b/in, 10);
+!      Look toward the OUTSIDE of layer A polygons.  Look toward the INSIDE 
+! of layer B polygons.  
+!      For the errors marked on the example, you can see the error
+! mark on A ! looking IN from the error mark on B.  You can see the 
+! error mark on B looking OUT from the error mark on A.
+!      Note the box in layer A to the far left.  With simple 
+! (non-directional) spacing, it would have been marked as an error.  
+! Also, no error is flagged for the box in A that goes outside B.
+3ONLY
+ ALL_SAFE

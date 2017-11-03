@@ -1,0 +1,492 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class Command"
+>
+
+<META-DATA>
+	<NAME>Command</NAME>
+	<AUTHOR>klaas</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Thu Oct 21  9:44:19 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>misc.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>matrix.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>tool.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>command.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> commands are normally based to CommandHandler by ASCII strings, the command string is stored as Command in the commandhistory. If needed information is added to be able to undo the command. If possible the command undo is based on the eventstamp, given to the command when it was executed. E.g for a copy of primitives, the eventstamp is used to to find the elements that resulted from the copy. Those elements will have the same eventstamp as the command. Those elements will be removed to undo the command.</PARA>
+</DESCRIPTION>
+
+
+
+
+
+<RELATED-TYPES>
+	<RELATED-TYPE TYPE="class">
+		<NAME>BaseTool</NAME>
+	</RELATED-TYPE>
+	<RELATED-TYPE TYPE="class">
+		<NAME>CommandHandler</NAME>
+	</RELATED-TYPE>
+</RELATED-TYPES>
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="Command()"
+		INLINE="NO"
+	>
+		<NAME>Command</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~Command()"
+		INLINE="NO"
+	>
+		<NAME>~Command</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" char*	"
+		DECLARATION=" char*	Get_Keyword()"
+		INLINE="YES"
+	>
+		<NAME>Get_Keyword</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the keyword of the command string</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void Set_Keyword(char* a_keyword)"
+		INLINE="YES"
+	>
+		<NAME>Set_Keyword</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the keyword of the command string</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" char*	"
+		DECLARATION=" char*	Get_Command()"
+		INLINE="YES"
+	>
+		<NAME>Get_Command</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get the command string</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL	"
+		DECLARATION="G_BOOL	Set_Command(char* Format,...)"
+		INLINE="NO"
+	>
+		<NAME>Set_Command</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the command string</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" G_BOOL	"
+		DECLARATION=" G_BOOL	Get_Undo()"
+		INLINE="YES"
+	>
+		<NAME>Get_Undo</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>is undo possible</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void Set_Undo(G_BOOL possible)"
+		INLINE="YES"
+	>
+		<NAME>Set_Undo</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set if undo possible</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" ElementList* "
+		DECLARATION=" ElementList* Get_ElementList()"
+		INLINE="YES"
+	>
+		<NAME>Get_ElementList</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get elements list for undo using it</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void Set_ElementList(ElementList* a_elementlist)"
+		INLINE="YES"
+	>
+		<NAME>Set_ElementList</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set elements list for undo using it</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" Element* "
+		DECLARATION=" Element* Get_Element()"
+		INLINE="YES"
+	>
+		<NAME>Get_Element</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get element for undo using it</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void Set_Element(Element* a_element)"
+		INLINE="YES"
+	>
+		<NAME>Set_Element</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set element for undo using it</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" Structure* "
+		DECLARATION=" Structure* Get_Structure()"
+		INLINE="YES"
+	>
+		<NAME>Get_Structure</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get structure for undo using it</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void Set_Structure(Structure* a_structure)"
+		INLINE="YES"
+	>
+		<NAME>Set_Structure</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set structure for undo using it</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" long "
+		DECLARATION=" long Get_Long()"
+		INLINE="YES"
+	>
+		<NAME>Get_Long</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get long number for undo</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void Set_Long(long a_long)"
+		INLINE="YES"
+	>
+		<NAME>Set_Long</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set long number for undo</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void Set_Tool(ToolSet a_tool)"
+		INLINE="YES"
+	>
+		<NAME>Set_Tool</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get tool for undo using it</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" ToolSet	"
+		DECLARATION=" ToolSet	Get_Tool()"
+		INLINE="YES"
+	>
+		<NAME>Get_Tool</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set tool for undo using it</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" long "
+		DECLARATION=" long Get_EventStamp()"
+		INLINE="YES"
+	>
+		<NAME>Get_EventStamp</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get eventstamp for undo using it</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void Set_EventStamp(long a_long)"
+		INLINE="YES"
+	>
+		<NAME>Set_EventStamp</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set eventstamp for undo using it</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" Matrix<double>* "
+		DECLARATION=" Matrix&lt;double&gt;* Get_Matrix()"
+		INLINE="YES"
+	>
+		<NAME>Get_Matrix</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>get matrix for undo using it</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void Set_Matrix(Matrix&lt;double&gt;* _undo_trans_matrix)"
+		INLINE="YES"
+	>
+		<NAME>Set_Matrix</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set matrix for undo using it</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL _undo"
+	>
+		<NAME>_undo</NAME>
+		<DESCRIPTION>
+			<PARA>command maintains undo information</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char* "
+		DECLARATION="char* _commandstring"
+	>
+		<NAME>_commandstring</NAME>
+		<DESCRIPTION>
+			<PARA>the complete command string</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="char* "
+		DECLARATION="char* _keyword"
+	>
+		<NAME>_keyword</NAME>
+		<DESCRIPTION>
+			<PARA>only the keyword of the command</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="long "
+		DECLARATION="long _eventstamp"
+	>
+		<NAME>_eventstamp</NAME>
+		<DESCRIPTION>
+			<PARA>eventstamp of this command</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PRIVATE"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="ToolSet "
+		DECLARATION="ToolSet _tool"
+	>
+		<NAME>_tool</NAME>
+		<DESCRIPTION>
+			<PARA>tool in use</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+
+
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

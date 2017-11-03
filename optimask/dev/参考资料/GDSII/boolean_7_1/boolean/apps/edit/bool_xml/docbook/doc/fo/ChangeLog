@@ -1,0 +1,8 @@
+2000-10-17  Norman Walsh  <ndw@nwalsh.com>
+
+	* Makefile: Documentation system updates
+
+2000-10-16  Norman Walsh  <ndw@nwalsh.com>
+
+	* .cvsignore, Makefile: New file.
+

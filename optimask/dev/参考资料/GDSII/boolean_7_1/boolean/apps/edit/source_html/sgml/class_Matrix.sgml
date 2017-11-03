@@ -1,0 +1,730 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="YES"
+	DECLARATION="template &lt;class Type&gt; class Matrix"
+>
+
+<META-DATA>
+	<NAME>Matrix</NAME>
+	<AUTHOR></AUTHOR>
+	<VERSION></VERSION>
+	<DATE>Thu Oct 21 14:44:19 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME></NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME></NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+<DESCRIPTION>
+	<PARA></PARA>
+</DESCRIPTION>
+
+
+
+<FRIEND-CLASSES>
+	<FRIEND-CLASS><NAME>operator<<</NAME></FRIEND-CLASS>
+	<FRIEND-CLASS><NAME>operator>></NAME></FRIEND-CLASS>
+</FRIEND-CLASSES>
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="Matrix(int M, int N)"
+		INLINE="NO"
+	>
+		<NAME>Matrix</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> constructors and destructors create M (rows) * N (columns) matrix</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="Matrix(const Matrix&amp;)"
+		INLINE="NO"
+	>
+		<NAME>Matrix</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> copy constructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~Matrix()"
+		INLINE="NO"
+	>
+		<NAME>~Matrix</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> destructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix& "
+		DECLARATION="Matrix&amp; operator=(const Matrix&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator=</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> operators assignment operator</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Vector<Type>& "
+		DECLARATION="Vector&lt;Type&gt;&amp; operator[](int row)"
+		INLINE="NO"
+	>
+		<NAME>operator[]</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> index operator. read & write</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Vector<Type>&	"
+		DECLARATION="Vector&lt;Type&gt;&amp;	elem(int row)"
+		INLINE="NO"
+	>
+		<NAME>elem</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> index operator. read only</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix& "
+		DECLARATION="Matrix&amp; operator*=(const Matrix&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator*=</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> matrix changing operators</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix& "
+		DECLARATION="Matrix&amp; operator/=(const Type&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator/=</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix& "
+		DECLARATION="Matrix&amp; operator+=(const Matrix&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator+=</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix& "
+		DECLARATION="Matrix&amp; operator-=(const Matrix&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator-=</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix& "
+		DECLARATION="Matrix&amp; operator*=(const Matrix&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator*=</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> matrix changing operators</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix "
+		DECLARATION="Matrix operator*(const Matrix&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator*</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> constant operators</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix "
+		DECLARATION="Matrix operator/(const Type&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator/</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>	Matrix operator*(const Type&, const Matrix&);</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix "
+		DECLARATION="Matrix operator+(const Matrix&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator+</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix "
+		DECLARATION="Matrix operator-(const Matrix&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator-</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix "
+		DECLARATION="Matrix operator*(const Matrix&amp;)"
+		INLINE="NO"
+	>
+		<NAME>operator*</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> constant operators</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix "
+		DECLARATION="Matrix operator-()"
+		INLINE="NO"
+	>
+		<NAME>operator-</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int rows()"
+		INLINE="NO"
+	>
+		<NAME>rows</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> support functions</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int cols()"
+		INLINE="NO"
+	>
+		<NAME>cols</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Type	"
+		DECLARATION="Type	min()"
+		INLINE="NO"
+	>
+		<NAME>min</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Type	"
+		DECLARATION="Type	max()"
+		INLINE="NO"
+	>
+		<NAME>max</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Type	"
+		DECLARATION="Type	mean()"
+		INLINE="NO"
+	>
+		<NAME>mean</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	nElems()"
+		INLINE="NO"
+	>
+		<NAME>nElems</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL make_identity()"
+		INLINE="NO"
+	>
+		<NAME>make_identity</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL is_identity()"
+		INLINE="NO"
+	>
+		<NAME>is_identity</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix&	"
+		DECLARATION="Matrix&amp;	Rotate2D(const float &amp;r, const Type &amp;x, const Type &amp;y)"
+		INLINE="NO"
+	>
+		<NAME>Rotate2D</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> graphic functions</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix&	"
+		DECLARATION="Matrix&amp;	Rotate3D(const float &amp;r_x, const float &amp;r_y, const float &amp;r_z, const Type &amp;x, const Type &amp;y, const Type &amp;z)"
+		INLINE="NO"
+	>
+		<NAME>Rotate3D</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix&	"
+		DECLARATION="Matrix&amp;	Translate2D(const Type &amp;x, const Type &amp;y)"
+		INLINE="NO"
+	>
+		<NAME>Translate2D</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix&	"
+		DECLARATION="Matrix&amp;	Translate3D(const Type &amp;x, const Type &amp;y, const Type &amp;z)"
+		INLINE="NO"
+	>
+		<NAME>Translate3D</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix&	"
+		DECLARATION="Matrix&amp;	Scale2D(const Type &amp;x_fac, const Type &amp;y_fac, const Type &amp;x_cen, const Type &amp;y_cen)"
+		INLINE="NO"
+	>
+		<NAME>Scale2D</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix&	"
+		DECLARATION="Matrix&amp;	Scale3D(const Type &amp;x_fac, const Type &amp;y_fac, const Type &amp;z_fac, const Type &amp;x_cen, const Type &amp;y_cen, const Type &amp;z_cen)"
+		INLINE="NO"
+	>
+		<NAME>Scale3D</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix&	"
+		DECLARATION="Matrix&amp;	Mirror(const Type &amp;x = -1, const Type &amp;y = 0, const Type &amp;z = 0)"
+		INLINE="NO"
+	>
+		<NAME>Mirror</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> mirror matrix: by default a x_mirror</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix&	"
+		DECLARATION="Matrix&amp;	Inverse()"
+		INLINE="NO"
+	>
+		<NAME>Inverse</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix&	"
+		DECLARATION="Matrix&amp;	Transpond()"
+		INLINE="NO"
+	>
+		<NAME>Transpond</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Matrix&	"
+		DECLARATION="Matrix&amp;	CoFactor()"
+		INLINE="NO"
+	>
+		<NAME>CoFactor</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="Type	"
+		DECLARATION="Type	det()"
+		INLINE="NO"
+	>
+		<NAME>det</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="double	"
+		DECLARATION="double	Get(int x,int y)"
+		INLINE="NO"
+	>
+		<NAME>Get</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double Get_scale()"
+		INLINE="NO"
+	>
+		<NAME>Get_scale</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="int	"
+		DECLARATION="int	equal_size(const Matrix&lt;Type&gt;&amp;, const Matrix&lt;Type&gt;&amp; )"
+		INLINE="NO"
+	>
+		<NAME>equal_size</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="typedef Vector<Type> *"
+		DECLARATION="typedef Vector&lt;Type&gt; *VectorPtr"
+	>
+		<NAME>VectorPtr</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="VectorPtr	*"
+		DECLARATION="VectorPtr	*v"
+	>
+		<NAME>v</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int size"
+	>
+		<NAME>size</NAME>
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

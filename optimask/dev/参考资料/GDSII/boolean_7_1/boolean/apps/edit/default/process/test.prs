@@ -1,0 +1,14 @@
+# Process file for GDS-II postprocessing tool
+
+record  @{processfile}
+askfile {Open GDS-II file} OPEN {*.cal} @{file_path} @{file_ext} curfile
+startpoint  0.000000 0.000000
+loadfile  @{curfile} gds-ii
+draw
+zoom 23200000.000000 13783333.333333 37333333.333333 24383333.333333
+draw
+zoomout
+draw
+startpoint  0.000000 0.000000
+loadfile  @{gdsroot}default/data/democal/dem_a-b.cal gds-ii
+draw

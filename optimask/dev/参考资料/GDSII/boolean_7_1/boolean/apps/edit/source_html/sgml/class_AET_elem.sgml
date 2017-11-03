@@ -1,0 +1,228 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="NO"
+	DECLARATION="class AET_elem"
+>
+
+<META-DATA>
+	<NAME>AET_elem</NAME>
+	<AUTHOR>klaasje</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Thu Oct 14 16:53:43 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>_lnk_itr.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>drivout.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>lsetup.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>matrix.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>bbox.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>shape.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>polyline.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME></NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+<DESCRIPTION>
+	<PARA> Active Edge Table Class this is used in drawing fill lines</PARA>
+</DESCRIPTION>
+
+
+
+
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="AET_elem(TDLI&lt;Segment&gt;* one)"
+		INLINE="NO"
+	>
+		<NAME>AET_elem</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>one</NAME>
+				<DESCRIPTION><PARA>a polygon segment</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>Public membersConstruct a AET_elem using a segment of a polygon</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="AET_elem::~AET_elem()"
+		INLINE="NO"
+	>
+		<NAME>AET_elem::~AET_elem</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA></PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void calculate_lineparameters(Segment* p1, Segment* p2)"
+		INLINE="YES"
+	>
+		<NAME>calculate_lineparameters</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>p1</NAME>
+				<DESCRIPTION><PARA>First Point</PARA></DESCRIPTION>
+			</PARAMETER>
+			<PARAMETER>
+				<NAME>p2</NAME>
+				<DESCRIPTION><PARA>Second Point</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>calculation of lineparameters given two points in polygon</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void calculate_XS(PointType Y)"
+		INLINE="YES"
+	>
+		<NAME>calculate_XS</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>Y</NAME>
+				<DESCRIPTION><PARA>Given this Y line, hwat is XS</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>calculation of intersection point with horizontal scanline</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL Horizontal"
+	>
+		<NAME>Horizontal</NAME>
+		<DESCRIPTION>
+			<PARA>true if segment is horizontal</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double BdivA, CdivA"
+	>
+		<NAME>BdivA, CdivA</NAME>
+		<DESCRIPTION>
+			<PARA>normalized lineparameters</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="TDLI<Segment>* "
+		DECLARATION="TDLI&lt;Segment&gt;* Index"
+	>
+		<NAME>Index</NAME>
+		<DESCRIPTION>
+			<PARA>iterator for Segment contained in this AET_elem</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int Direction"
+	>
+		<NAME>Direction</NAME>
+		<DESCRIPTION>
+			<PARA>direction (towards or from scanline)</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="double "
+		DECLARATION="double XS"
+	>
+		<NAME>XS</NAME>
+		<DESCRIPTION>
+			<PARA> XS is the intersectionpoint in X</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+
+
+
+
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

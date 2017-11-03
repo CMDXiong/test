@@ -1,0 +1,143 @@
+%% Main UI of Optimask Layout Software
+%% Created: 2017-05-15; Updated: 2017-07-15;
+%% by Henghua DENG, hdeng@optixera.com
+
+\resetdatestamp %Date Stamp--Only use when custom package datestamp.sty is used.
+
+%\part{Optimask Layout Design} \label{PartMaskDesign}
+%本部分介绍Optimask版图设计软件基本框架，具体功能实现，主要界面，命令行及编程输入等等。
+
+\chapter{Optimask基本界面} \label{ChMaskMainUI}
+%======================================================================
+%Heading Settings:
+\markboth{Chapter~\thechapter.~Design~Architecture}{} %\leftmark calls #1 parameter
+%\markright{ } % new right header. Only used for two-side documents.
+
+\pagestyle{fancy}
+\fancyhead[RO,RE]{}
+\fancyhead[LE]{\MakeUppercase{\leftmark}}
+\fancyhead[LO]{\MakeUppercase{\rightmark}}
+\fancyfoot[C]{\thepage}
+%%\fancyfoot[L]{\today}
+
+目前我们的基本框架已经定型如下。
+各区域缺省设置如上图。用户可在设置界面关闭或者取消指定区域，且可自由移动、放大和缩小区域。
+具体到每个子区：
+
+%======================================================================
+\section{菜单栏（Menu）} \label{SectMaskMenus}
+%======================================================================
+% \OptiXera\Develop\optixera\Docs\软件开发代码规范.txt Optixera版图软件开发进阶.docx 
+
+菜单栏包括通常的文件输入输出，程序设置，版图绘制，浏览编辑，程序调试，辅助工具，视窗选择，使用帮助等类别功能。
+
+\subsection{文件（File）} \label{SectMaskMenuFile} 
+程序的第一步操作是文件操作。
+试验创建、打开、关闭文件。
+试验导入导出“GDSII”文件。实例GDSII文档在
+\begin{verbatim} \optixera\optimask\src\File\GDSII_Test_File \end{verbatim} 目录和
+\begin{verbatim} \klayout-0.24.8\testdata\gds \end{verbatim} 目录。
+试验导入导出“OASIS”文件。如下图所示。实例GDSII文档在
+\begin{verbatim} \klayout-0.24.8\testdata\oasis \end{verbatim} 目录。OASIS文档和GDSII文档可以互相转换。
+\subsubsection{File --> Import GDSII }
+\begin{enumerate}
+	\item 测试单个构元，单层。单个构元有多重部件。
+	\item 测试单个构元，但是多层。
+	\item 测试多个构元，而且多层。
+\end{enumerate}
+
+\subsection{编辑（Edit）} \label{SectMaskMenuEdit} 
+\subsection{视图（View）} \label{SectMaskMenuView} 
+\subsection{绘制（Draw）} \label{SectMaskMenuDraw} 
+
+%i.	Polygon, Circle, Wire（用户可简单通过界面画图，鼠标或键盘。这是目前软件都可以做到的基本功能）
+%ii.	Input by Matrix, or calculate polygon points.（这是目前所有版图软件无法独立做到的地方。） 
+%iii.	扫描图形Scan Picture（这是目前版图软件比较难做到的地方）。也可扫描条形码，和二维码。算法存下的文件必须精确，且文件尺寸小。
+%iv.	图形库（我们慢慢建立）。
+%v.	字库。可引入任意字库（C:\Windows\Fonts）字体如上图例（而非限于仅有几个难看的字）。 
+
+\subsection{变化（Alter）} \label{SectMaskMenuAlter} 
+\subsection{构元（Cell）} \label{SectMaskMenuCell}
+\subsection{构层（Layer）} \label{SectMaskMenuLayer}
+\subsection{编程（Script, Code, Macro, Programming）} \label{SectMaskMenuCode} 
+\subsection{配置（Config）} \label{SectMaskMenuCnfg} 
+\subsection{工具（Tool）} \label{SectMaskMenuTool}
+\subsection{窗口（Window）} \label{SectMaskMenuWndw} 
+\subsection{帮助（Help）} \label{SectMaskMenuHelp}
+
+%======================================================================
+\section{工具条（Toolbar）} \label{SectMaskToolbar}
+%======================================================================
+工具条主要是对应菜单栏的所有功能。需要每个功能有对应的图标。每一个菜单栏所有的功能集中在同一个工具条上。
+
+%======================================================================
+\section{构层面板（Layer Panel）和构层配置（Layer Palette）} \label{SectMaskLayers}
+%======================================================================
+构层区和层设置区（Layers Palette）缺省随主界面，但是允许用户自由移动和关闭。（当层设置好后，有时用户需要大窗口进行绘图）
+
+\subsection{构层面板（Layer Panel）} \label{SectMaskLayerPanel} 
+构层面板（Layer Panel）主要是构层的列表。
+其中表头分别为: Group， LAYER， Lock， Hide， Protect，Fill， GDSII Number（\#）， GDSII Data Type （DT），Note。
+表格数据为版图文件所真实包含的构层列表。对于每一构层，如果有对应表头的数据，那么就显示；如果没有表头对应的数据项，那么就显示为空即可。上图显示的表格数据只是一个虚例，真正的显示需要根据版图文件对应显示。
+表格数据每一行对应一个构层。关于表头具体到单项：
+\subsubsection{构层组群（Layer Group）或类别（Category）或排序（Order）}
+构层组群（Layer Group）或类别（Category）或排序（Order）可以方便用户对多层组织，比如上图的群A有Chip和Mark两层。当然用户可以不组群，此时用户也可以通过这一栏设定特定的值来进行排序。
+这里举个K-Layout参考示例 。对层群的操作需要传递到其从属的所有构层。
+\subsubsection{构层名称（Layer Name）}
+构层名称（Layer Name）记录构层的名称（必须有）。如果用户不给构层命名，那么程序可以自动设置构层名称为GDSII\#对应（读入GDSII文件一定有GDSII\#）。 比如Layer\#005（如果GDSII\#为5）。当然也有另外一种情况，有构层名称，但没有GDSII\#，这时表示该层不会输出到GDSII文件格式中去。
+\subsubsection{锁定（Lock）}
+是否锁定（LOCK=1加锁, UNLOCK=0解锁）。锁定某构层表示该构层不会被修改，即使用户修改了该层的物件，也不会允许被保存文件（此时可以弹出警告框提示）。锁定可以防止对指定层的误操作。所有可以修改的构层必须在解锁状态。
+\subsubsection{隐藏（Hide）}
+是否隐藏（HIDE=1=UNSHOW隐藏, UNHIDE=0=SHOW显示）。隐藏某构层时，在工作窗口上不会显示该层的任何图像。构层被隐藏时，也同时不可以被选中（即，同时处于PROTect状态）。
+\subsubsection{保护（PROTect）}
+是否保护（PROTect=1=Unselectable不可选中, UNPROT=0=Selectable可选中）。
+\subsubsection{填充（Fill）}
+是否填充（FILL=1实心, UNFILL=0空心）。选定是该构层的图形全部实心显示，否则空心显示。
+\subsubsection{GDSII 层号Number （\#）}
+导入导出时对应的GDSII构层号码。导入GDSII文件一定有GDSII\#。如果有构层名称，但没有GDSII\#，这时表示该层不会输出到GDSII文件格式中去。
+\subsubsection{GDSII 数据类型（Data Type，DT）}
+GDSII数据类型。
+\subsubsection{注释（Note）}
+对构层的注释（如果有必要）。可以为空白。
+
+\subsection{构层配置（Layer Palette）} \label{SectMaskLayerPalette} 
+构层配置（色板,格纹,动画,样式,能见度）基本套用KLayout 。其中（Optimask ：KLayout）名字对应为： Fill Color = Color, Frame Color = Frame color, Pattern = Stipple; 其他不变。
+构层色板（Layer Palette）包括下面子部分：
+\subsubsection{构层格纹（Stipple, Pattern）}
+\subsubsection{构层动画（Animation）}
+\subsubsection{构层样式（Style）}
+\subsubsection{构层能见度（Visibility）}
+
+%======================================================================
+\section{构元结构面板（Cell Structure Panel）} \label{SectMaskCellDock}
+%======================================================================
+CellDock构元结构面板（Cell Structure Tree Panel）, 构元组织（Cell Hierarchy），模块树和组织结构区。显示各结构之间的从属关系。双击特定某个构元时，打开一个新工作窗口来显示该构元图形。
+
+%======================================================================
+\section{版图主视图区（Work Panel）} \label{SectMaskWorkDock}
+%======================================================================
+WorkDock版图主视图区 ---- 主要版图设计工作区。结构的绘图，调用，几何运算，显示等等。允许多重工作区域（Workspace, Work Panel）。
+
+%======================================================================
+\section{视图导航区域 （Navigator, Aerial View）} \label{SectMaskNaviDock}
+%======================================================================
+NaviDock视图导航区域 （Navigator, Aerial View） （导航区，鸟瞰区，第二视图区，辅助视图区）--- 显示当前结构在整个Wafer组装之后的位置等等。鼠标选中对应的位置时，主工作区可以显示该地方的详尽图；反之亦然。
+
+%======================================================================
+\section{编程区域（Command, Script, Macro, Code, Programming）} \label{SectMaskCodeDock}
+%======================================================================
+CodeDock编程区域（Command, Script, Macro, Code, Programming）---编程产生结构，以及结构组合宏命令（比如Assembling)上。
+
+%======================================================================
+\section{信息输出栏（Information, Status, Result, Output）} \label{SectMaskInfoDock}
+%======================================================================
+InfoDock信息输出栏（Information, Status, Result, Output） --- 显示程序运行时必要的显示信息，输出结果等等。显示当前结构的统计信息，比如多少层，多少多边型，多少精度等等。
+
+%======================================================================
+\section{提示报警栏（Hint, Error, Warning, Issue）} \label{SectMaskHintDock}
+%======================================================================
+HintDock提示报警栏（Hint, Error, Warning, Issue）报错和提示区---如果程序出错，提示如何纠正。
+
+%%\pagestyle{empty}
+%%\cleardoublepage
+%%to generates one blank page for the next chapter to be on an odd page

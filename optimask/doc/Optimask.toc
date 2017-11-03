@@ -1,0 +1,116 @@
+\contentsline {chapter}{Abstract}{ii}
+\contentsline {chapter}{Acknowledgements}{iii}
+\contentsline {chapter}{List of Tables}{ix}
+\contentsline {chapter}{List of Figures}{xi}
+\contentsline {chapter}{List of Acronyms}{xiii}
+\contentsline {section}{\numberline {0.1}代码规范总则}{1}
+\contentsline {section}{\numberline {0.2}代码规范细则}{2}
+\contentsline {section}{\numberline {0.3}统一路径}{2}
+\contentsline {section}{\numberline {0.4}代码上传}{3}
+\contentsline {part}{I\hspace {1em}Optimask Layout Design}{5}
+\contentsline {chapter}{\numberline {1}Optimask Architecture 版图基本框架}{9}
+\contentsline {section}{\numberline {1.1}总体描述}{9}
+\contentsline {subsection}{\numberline {1.1.1}架构示意图}{9}
+\contentsline {subsection}{\numberline {1.1.2}目前存在的问题}{9}
+\contentsline {section}{\numberline {1.2}基础数据结构模块}{10}
+\contentsline {section}{\numberline {1.3}版图文件读写模块}{10}
+\contentsline {subsection}{\numberline {1.3.1}版图数据类结构描述图样}{10}
+\contentsline {subsection}{\numberline {1.3.2}注意点描述}{10}
+\contentsline {section}{\numberline {1.4}功能清单Function CheckList}{14}
+\contentsline {section}{\numberline {1.5}功能描述Function Description}{14}
+\contentsline {subsection}{\numberline {1.5.1}完善版图基础图元数据结构}{14}
+\contentsline {subsection}{\numberline {1.5.2}实现基本图元的绘制数据}{15}
+\contentsline {subsection}{\numberline {1.5.3}在Qt中实现版图基本图元自画}{15}
+\contentsline {subsection}{\numberline {1.5.4}在Qt中实现自画基本图元的选取}{17}
+\contentsline {subsection}{\numberline {1.5.5}对自画图元的平移旋转等基本操作}{18}
+\contentsline {subsection}{\numberline {1.5.6}彻底替换以前的采用Qt预定义图元操作以及文档中的场景数据}{18}
+\contentsline {chapter}{\numberline {2}Optimask基本界面}{19}
+\contentsline {section}{\numberline {2.1}菜单栏（Menu）}{19}
+\contentsline {subsection}{\numberline {2.1.1}文件（File）}{19}
+\contentsline {subsubsection}{\numberline {2.1.1.1}File --> Import GDSII }{19}
+\contentsline {subsection}{\numberline {2.1.2}编辑（Edit）}{20}
+\contentsline {subsection}{\numberline {2.1.3}视图（View）}{20}
+\contentsline {subsection}{\numberline {2.1.4}绘制（Draw）}{20}
+\contentsline {subsection}{\numberline {2.1.5}变化（Alter）}{20}
+\contentsline {subsection}{\numberline {2.1.6}构元（Cell）}{20}
+\contentsline {subsection}{\numberline {2.1.7}构层（Layer）}{20}
+\contentsline {subsection}{\numberline {2.1.8}编程（Script, Code, Macro, Programming）}{20}
+\contentsline {subsection}{\numberline {2.1.9}配置（Config）}{20}
+\contentsline {subsection}{\numberline {2.1.10}工具（Tool）}{20}
+\contentsline {subsection}{\numberline {2.1.11}窗口（Window）}{20}
+\contentsline {subsection}{\numberline {2.1.12}帮助（Help）}{20}
+\contentsline {section}{\numberline {2.2}工具条（Toolbar）}{20}
+\contentsline {section}{\numberline {2.3}构层面板（Layer Panel）和构层配置（Layer Palette）}{20}
+\contentsline {subsection}{\numberline {2.3.1}构层面板（Layer Panel）}{20}
+\contentsline {subsubsection}{\numberline {2.3.1.1}构层组群（Layer Group）或类别（Category）或排序（Order）}{21}
+\contentsline {subsubsection}{\numberline {2.3.1.2}构层名称（Layer Name）}{21}
+\contentsline {subsubsection}{\numberline {2.3.1.3}锁定（Lock）}{21}
+\contentsline {subsubsection}{\numberline {2.3.1.4}隐藏（Hide）}{21}
+\contentsline {subsubsection}{\numberline {2.3.1.5}保护（PROTect）}{21}
+\contentsline {subsubsection}{\numberline {2.3.1.6}填充（Fill）}{21}
+\contentsline {subsubsection}{\numberline {2.3.1.7}GDSII 层号Number （\#）}{21}
+\contentsline {subsubsection}{\numberline {2.3.1.8}GDSII 数据类型（Data Type，DT）}{21}
+\contentsline {subsubsection}{\numberline {2.3.1.9}注释（Note）}{21}
+\contentsline {subsection}{\numberline {2.3.2}构层配置（Layer Palette）}{22}
+\contentsline {subsubsection}{\numberline {2.3.2.1}构层格纹（Stipple, Pattern）}{22}
+\contentsline {subsubsection}{\numberline {2.3.2.2}构层动画（Animation）}{22}
+\contentsline {subsubsection}{\numberline {2.3.2.3}构层样式（Style）}{22}
+\contentsline {subsubsection}{\numberline {2.3.2.4}构层能见度（Visibility）}{22}
+\contentsline {section}{\numberline {2.4}构元结构面板（Cell Structure Panel）}{22}
+\contentsline {section}{\numberline {2.5}版图主视图区（Work Panel）}{22}
+\contentsline {section}{\numberline {2.6}视图导航区域 （Navigator, Aerial View）}{22}
+\contentsline {section}{\numberline {2.7}编程区域（Command, Script, Macro, Code, Programming）}{22}
+\contentsline {section}{\numberline {2.8}信息输出栏（Information, Status, Result, Output）}{22}
+\contentsline {section}{\numberline {2.9}提示报警栏（Hint, Error, Warning, Issue）}{23}
+\contentsline {chapter}{\numberline {3}Optimask Commands and Scripts}{25}
+\contentsline {section}{\numberline {3.1}命令和脚本的基本原则}{25}
+\contentsline {subsection}{\numberline {3.1.1}实时输入和文件运行}{26}
+\contentsline {subsection}{\numberline {3.1.2}命令注释}{26}
+\contentsline {subsection}{\numberline {3.1.3}命令解析}{26}
+\contentsline {subsubsection}{\numberline {3.1.3.1}模糊识别和自动输入}{26}
+\contentsline {subsubsection}{\numberline {3.1.3.2}基本格式和变形格式}{27}
+\contentsline {subsubsection}{\numberline {3.1.3.3}复合格式}{27}
+\contentsline {subsection}{\numberline {3.1.4}参数惯例}{27}
+\contentsline {section}{\numberline {3.2}命令总览}{28}
+\contentsline {subsection}{\numberline {3.2.1}编辑（Edit）}{28}
+\contentsline {subsection}{\numberline {3.2.2}基本图形（Element）}{29}
+\contentsline {subsubsection}{\numberline {3.2.2.1}添加图元（Add）}{29}
+\contentsline {subsubsection}{\numberline {3.2.2.2}编辑图元（Edit）}{30}
+\contentsline {subsubsection}{\numberline {3.2.2.3}删除图元（Delete）}{31}
+\contentsline {subsubsection}{\numberline {3.2.2.4}选择图元（Select）}{31}
+\contentsline {subsection}{\numberline {3.2.3}构层（Layer）}{31}
+\contentsline {subsection}{\numberline {3.2.4}构元（Cell）}{32}
+\contentsline {subsubsection}{\numberline {3.2.4.1}新建构元（Add Cell）}{32}
+\contentsline {subsubsection}{\numberline {3.2.4.2}编辑构元（Edit Cell）}{32}
+\contentsline {subsubsection}{\numberline {3.2.4.3}复制构元（Copy Cell）}{32}
+\contentsline {subsubsection}{\numberline {3.2.4.4}重命名构元（Rename Cell）}{33}
+\contentsline {subsubsection}{\numberline {3.2.4.5}引用构元（Instance Cell）}{33}
+\contentsline {subsubsection}{\numberline {3.2.4.6}交换构元（Exchange Cell）}{33}
+\contentsline {subsubsection}{\numberline {3.2.4.7}替换构元（Replace Cell）}{33}
+\contentsline {subsubsection}{\numberline {3.2.4.8}弄平构元（Flatten Cell）}{33}
+\contentsline {subsubsection}{\numberline {3.2.4.9}制造构元（Fabricate Cell）}{33}
+\contentsline {subsubsection}{\numberline {3.2.4.10}构元信息（Info Cell）}{34}
+\contentsline {subsection}{\numberline {3.2.5}视图（View）}{34}
+\contentsline {subsubsection}{\numberline {3.2.5.1}屏幕设置（Screen）}{34}
+\contentsline {subsubsection}{\numberline {3.2.5.2}边框显示（Frame/Outline）}{35}
+\contentsline {subsubsection}{\numberline {3.2.5.3}标尺（Ruler）}{35}
+\contentsline {subsubsection}{\numberline {3.2.5.4}层级深度（Level）}{35}
+\contentsline {subsubsection}{\numberline {3.2.5.5}转至（GoTo）}{36}
+\contentsline {subsubsection}{\numberline {3.2.5.6}缩放（Zoom）}{36}
+\contentsline {subsubsection}{\numberline {3.2.5.7}平移（Pan）}{36}
+\contentsline {subsubsection}{\numberline {3.2.5.8}倾斜（Tilt）}{37}
+\contentsline {subsubsection}{\numberline {3.2.5.9}格点（Grid）}{37}
+\contentsline {subsubsection}{\numberline {3.2.5.10}对格（Snap）}{37}
+\contentsline {subsubsection}{\numberline {3.2.5.11}过滤（Filter）}{38}
+\contentsline {subsubsection}{\numberline {3.2.5.12}刷新（Refresh）}{38}
+\contentsline {subsection}{\numberline {3.2.6}属性（Object Property））}{38}
+\contentsline {subsection}{\numberline {3.2.7}变化（Alter）}{38}
+\contentsline {subsection}{\numberline {3.2.8}注意}{38}
+\contentsline {chapter}{\numberline {4}Optimask Data Structure}{39}
+\contentsline {section}{\numberline {4.1}Optimask数据结构基本构架}{39}
+\contentsline {section}{\numberline {4.2}Optimask基本图元（Element）数据结构}{39}
+\contentsline {subsection}{\numberline {4.2.1}绘制（Plot）}{40}
+\contentsline {subsection}{\numberline {4.2.2}多边形（Polygon）}{40}
+\contentsline {subsection}{\numberline {4.2.3}端口（Port）}{40}
+\contentsline {subsection}{\numberline {4.2.4}标注（Note）}{40}
+\contentsline {section}{\numberline {4.3}Optimask构元引用（Cell Reference）数据结构}{40}

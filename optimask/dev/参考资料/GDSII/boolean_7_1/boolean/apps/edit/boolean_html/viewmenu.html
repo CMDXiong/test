@@ -1,0 +1,203 @@
+<HTML>
+  <HEAD>
+    <TITLE>GDS-II Postprocessing Tool Help: View menu</TITLE>
+  </HEAD>
+
+  <BODY bgcolor="#66FFFF" text="#000000" link="#6666ff" alink="#999900" vlink="009999">
+
+    <A name="top"></A>
+
+    <TABLE width=100% border=0 cellpadding=6 cellspacing=2>
+    <TR><TD bgcolor="#000000" align=middle valign=top>
+    <FONT color="#FFFF00" size=+3 face="Impact, Arial, Helvetica">View menu</FONT>
+    </TD></TR>
+    </TABLE>
+
+
+<!-- New header -------------------------------------------------->
+
+
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Overview</FONT>
+    </TD></TR></TABLE>
+
+    With the <I>View</I> menu can be defined how and which structures and
+    layers are drawn. Click on one of the commands in the figure below
+    for an explanation of it.
+
+
+    <map name="mainwindow">
+      <area shape="rect" href="#layprop"   coords="40, 44 161, 58" OnMouseOver="window.status='Modify layer properties'; return true" OnMouseOut="window.status=''; return true" alt="Brings up layer properties dialog">
+      <area shape="rect" href="#layorder"  coords="40, 62 161, 76" OnMouseOver="window.status='Modify layer order'; return true" OnMouseOut="window.status=''; return true" alt="Brings up layer order dialog">
+      <area shape="rect" href="#viewstr"   coords="40, 88 161,101" OnMouseOver="window.status='View one of the structures'; return true" OnMouseOut="window.status=''; return true" alt="View one of the structures">
+      <area shape="rect" href="#drawoutl"  coords="40,104 161,118" OnMouseOver="window.status='Draw only outlines'; return true" OnMouseOut="window.status=''; return true" alt="Draw all elements as outlines">
+      <area shape="rect" href="#viewcoord" coords="40,131 161,145" OnMouseOver="window.status='View the coordinates of the current position'; return true" OnMouseOut="window.status=''; return true" alt="View coordinates in statusbar">
+    </map>
+
+    <CENTER>
+    <TABLE border=5 cellspacing=1 cellpadding=10 bgcolor="#FFFFFF">
+      <TR><TD align=middle valign=middle>
+
+      <A name="viewmenu">
+        <IMG src="pics/viewmenu.gif" USEMAP="#mainwindow" width=206 height=173 border=0>
+      </A>
+
+    </TD></TR>
+    </TABLE>
+    </CENTER>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="layprop">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Layer Properties</FONT>
+    </TD></TR></TABLE>
+
+        When this item is clicked the dialog in the picture below appears.<BR>
+        <CENTER>
+        <IMG src="pics/layprop.gif" width="678" height="307"><BR>
+        </CENTER>
+        It can be used to alter the layer properties. Layers can be given
+        other names, fill-colors, border-colors and patterns. The visibility
+        can be turned on or off, just like the option wether or not a layer
+        is selectable. The availability cannot be altered; this box is
+        automatically checked when a layer contains elements.
+        <P>
+        The name of a layer can be changed by clicking in the corresponding
+        editbox, containing the current name. The name you type in the box
+        will be the name of this layer.
+        <P>
+        To make a layer visible or unvisible, check or uncheck the box in the
+        <B>Visible</B> column. All layers can be made hidden at once clicking
+        the <B>Hide All</B> button on the right side of the dialog. When this
+        button is clicked, the caption is changed into <B>Show All</B>.
+        Clicking this button again will make all layers visible. When a layer
+        is unvisible, doesn't always mean operations are not performed on this
+        layer.
+        <P>
+        To change the color with which the elements are drawn, click in one
+        of the colored boxes in the columns <B>Fill Color</B> or <B>Border</B>.
+        The dialog below will appear. You can choose a color and click OK to
+        assign this color to a the elements on a layer.<BR>
+        <CENTER>
+        <IMG src="pics/colordlg.jpg" width="453" height="324"><BR>
+        </CENTER>
+        You can also add a pattern to a layer. Click in one of the boxes in the
+        column <B>Pattern</B> to modify the current pattern. The dialog in the
+        picture below will appear. Click one of the patterns to select it. If
+        you want a layer not to have a pattern, click the black box in the upper
+        left corner of the Patterns dialog.<BR>
+        <CENTER>
+    <IMG src="pics/patterndlg.gif"><BR>
+        </CENTER>
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="layorder">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Layer Order</FONT>
+    </TD></TR></TABLE>
+
+        To change the order in which the layers are drawn, use the
+        Layer Order Dialog in the image below. Select a layer in the
+        listbox, and click the up or down button to move it up or down
+        in the listbox order.
+        <P>
+        Layers on top of the listbox will be on top in the drawing.
+
+        <CENTER>
+    <IMG src="pics/layerorder.gif"><BR>
+        </CENTER>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="viewstr">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>View Structure</FONT>
+    </TD></TR></TABLE>
+
+        When a file is loaded, all structures are drawn on the screen. It's
+        also possible to view the structures seperately. When the menu-item
+        <B>View Structure</B> in the View menu or mouse menu is clicked,
+        the dialog below appears. Select one of the structures and click
+        <B>Ok</B> to view this structure.
+
+        <CENTER>
+  <IMG src="pics/viewstruct.gif"><BR>
+        </CENTER>
+
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_viewstructure">viewstructure</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="drawoutl">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>Draw only outlines</FONT>
+    </TD></TR></TABLE>
+
+        To improve drawing speed, you can specify that only the outlines
+        of elements are drawn. When <B>Draw only outlines</B> is clicked,
+        a checkmark is placed in the menu which means this option is selected.
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_drawoutline">drawoutline</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+
+    <A name="viewcoord">
+    </A>
+    <TABLE bgcolor="#66FF66" border=0 cellspacing=1 cellpadding=5 width=50%><TR><TD valign=middle align=left>
+    <FONT face="Impact, Arial, Helvetica" size=+2>View Coordinates</FONT>
+    </TD></TR></TABLE>
+
+        The coordinates in the statusbar can be switched off using this command.
+        A checkmark will be placed in the menu when this option is turned on.
+    <P>
+
+    <TABLE bgcolor="#FFFF66" border=1 cellspacing=1 cellpadding=5><TR><TD valign=middle>
+    <A href="commands.html#T_showcoords">showcoords</A>
+    </TD></TR></TABLE>
+
+    <P>
+
+<!-- New header -------------------------------------------------->
+
+    <P>
+
+    <TABLE width=100% border=0 cellpadding=6 cellspacing=0>
+    <TR>
+    <TD bgcolor="#000000" align=left valign=top>
+    <A href="index.html"><FONT size=+1 face="Impact, Arial, Helvetica">Index</FONT></A>
+    </TD>
+    <TD bgcolor="#000000" align=right valign=top>
+    <A href="#top"><FONT size=+1 face="Impact, Arial, Helvetica">Top of page</FONT></A>
+    </TD>
+    </TR>
+    </TABLE>
+  </BODY>
+</HTML>
+

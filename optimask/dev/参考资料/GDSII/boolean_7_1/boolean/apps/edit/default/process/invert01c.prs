@@ -1,0 +1,12 @@
+# invert01c.prs: inverts layer 01 with respect to frame on layer 0 and puts 
+# the result in layer 01.
+# no other layers used.
+# Process file for GDS-II postprocessing tool
+# R.C. Strijbos TU Eindhoven 05/11/00
+
+group_a empty
+group_a 01 false
+group_b empty
+group_b 00 false
+destination 01
+exor

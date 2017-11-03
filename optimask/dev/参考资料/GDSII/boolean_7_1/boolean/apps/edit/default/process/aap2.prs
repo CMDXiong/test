@@ -1,0 +1,8 @@
+# Aap2 Process file for GDS-II postprocessing tool
+
+startpoint  0.000000 0.000000
+loadfile  $GDSROOT/default/data/bigthree.cal gds-ii
+draw
+setcontinue false
+loadfile  $GDSROOT/default/data/bignext.cal gds-ii
+draw

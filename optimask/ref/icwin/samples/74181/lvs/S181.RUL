@@ -1,0 +1,58 @@
+input layer{
+   2 n0_diff;
+   3 p0_diff;
+  41 p_well;
+  46 poly_in;
+  47 cont_to_poly;
+  48 cont_to_active;
+  49 metal1_in;
+  50 via;
+  51 metal2_in;
+  60 n_text_in;
+};
+
+scratch layer{
+  n_well;  p_diff;  n_diff;  metal1; metal2; poly; n_text;
+}
+
+no_ecc;
+
+metal1 = metal1_in;
+metal2 = metal2_in;
+poly = poly_in;
+n_text = n_text_in;
+
+output layer{
+   100 p_gate;  101 n_gate;  
+}
+
+output layer{
+   110 bad_p_gate;  111 bad_n_gate;
+}
+
+n_well = not p_well;
+
+p_diff = p0_diff and not poly;
+n_diff = n0_diff and not poly;
+p_gate = p0_diff and poly;
+n_gate = n0_diff and poly;
+
+attach text n_text n_well;
+connect p_diff p_well; 
+connect n_diff n_well; 
+connect poly metal1 by cont_to_poly;
+connect metal1 p_diff by cont_to_active;
+connect metal1 n_diff by cont_to_active;
+connect metal1 metal2 by via;
+
+transistor pmos id=p_gate, err=bad_p_gate{
+   gate=poly;
+   s$d=p_diff /poly;
+   bulk=n_well;
+}
+
+transistor nmos id=n_gate, err=bad_n_gate{
+   gate=poly;
+   s$d=n_diff /poly;
+   bulk=p_well;
+}

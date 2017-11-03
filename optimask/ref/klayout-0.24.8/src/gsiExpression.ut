@@ -1,0 +1,1012 @@
+
+/*
+
+  KLayout Layout Viewer
+  Copyright (C) 2006-2016 Matthias Koefferlein
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+*/
+
+
+#include "gsiExpression.h"
+#include "gsiDecl.h"
+#include "dbBox.h"
+#include "dbEdge.h"
+
+#include "utHead.h"
+
+#include <stdlib.h>
+#include <math.h>
+
+// ----------------------------------------------------------------------
+//  Classes to export to RBA
+
+static int a_count = 0;
+
+struct EXPRT_A
+  : public gsi::ObjectBase
+{
+  EXPRT_A() { 
+    ++a_count;
+    n = 17; 
+  }
+
+  EXPRT_A(int nn) { 
+    ++a_count;
+    n = nn; 
+  }
+
+  EXPRT_A(const EXPRT_A &a)
+  {
+    ++a_count;
+    m_d = a.m_d;
+    n = a.n;
+  }
+
+  ~EXPRT_A() { 
+    --a_count;
+  }
+
+  const char *a () { return "a"; }
+  static const char *a_static () { return "a_static"; }
+  static int a0 () {
+    return a_count;
+  }
+  int a1 () { 
+    return n; 
+  }
+  int a1c () const { 
+    return n; 
+  }
+  void a2 () const { }
+  int a3 (const std::string &x) { 
+    return x.size (); 
+  }
+  double a4 (const std::vector<double> &d) { 
+    m_d = d;
+    return d.back (); 
+  }
+  void a5 (int nn) { 
+    n = nn; 
+  }
+  std::vector<double>::iterator a6b () {
+    return m_d.begin ();
+  }
+  std::vector<double>::iterator a6e () {
+    return m_d.end ();
+  }
+  double *a7b () {
+    return &*m_d.begin ();
+  }
+  double *a7e () {
+    return a7b () + m_d.size ();
+  }
+  const double *a8b () const {
+    return &*m_d.begin ();
+  }
+  const double *a8e () const {
+    return a8b () + m_d.size ();
+  }
+
+  std::string to_s () const { return tl::sprintf("XA: %d", n); }
+
+  std::vector<double> m_d;
+  int n;
+};
+
+struct EXPRT_A_NC
+  : public EXPRT_A
+{
+  EXPRT_A_NC () : EXPRT_A () { }
+  EXPRT_A_NC (int nn) : EXPRT_A (nn) { }
+  
+private:
+  friend struct EXPRT_B;
+  EXPRT_A_NC (const EXPRT_A_NC &a) : EXPRT_A (a) { }
+  EXPRT_A_NC &operator= (const EXPRT_A_NC &a) { EXPRT_A::operator=(a); return *this; }
+};
+
+template<class Iter>
+struct ValueIter
+{
+public:
+  typedef typename std::iterator_traits<Iter> it_traits;
+  typedef typename it_traits::value_type value_type;
+  typedef std::forward_iterator_tag iterator_category;
+  typedef value_type reference;
+  typedef void pointer;
+  typedef void difference_type;
+  
+  ValueIter (Iter i) : iter(i) { }
+
+  value_type operator*() const
+  {
+    return *iter;
+  }
+  
+  ValueIter &operator++() 
+  {
+    ++iter;
+    return *this;
+  }
+  
+  bool operator== (const ValueIter &d) const
+  {
+    return iter == d.iter;
+  }
+  
+private:
+  Iter iter;
+};
+
+template<class Iter>
+struct FreeIter
+{
+public:
+  typedef typename std::iterator_traits<Iter> it_traits;
+  typedef typename it_traits::value_type value_type;
+  typedef std::forward_iterator_tag iterator_category;
+  typedef value_type reference;
+  typedef void pointer;
+  typedef void difference_type;
+  
+  FreeIter (Iter b, Iter e) : mb(b), me(e) { }
+
+  value_type operator*() const
+  {
+    return *mb;
+  }
+  
+  FreeIter &operator++() 
+  {
+    ++mb;
+    return *this;
+  }
+  
+  bool operator== (const FreeIter &d) const
+  {
+    return mb == d.mb;
+  }
+
+  bool at_end () const
+  {
+    return mb == me;
+  }
+  
+private:
+  Iter mb, me;
+};
+
+struct EXPRT_B
+{
+  EXPRT_B() { 
+    m_av.push_back (EXPRT_A (100));
+    m_av.push_back (EXPRT_A (121));
+    m_av.push_back (EXPRT_A (144));
+    m_avc_nc.push_back (new EXPRT_A_NC (-3100));
+    m_avc_nc.push_back (new EXPRT_A_NC (-3121));
+    m_av_nc.push_back (new EXPRT_A_NC (7100));
+    m_av_nc.push_back (new EXPRT_A_NC (7121));
+    m_av_nc.push_back (new EXPRT_A_NC (7144));
+    m_av_nc.push_back (new EXPRT_A_NC (7169));
+  }
+
+  ~EXPRT_B() {
+    while (! m_av_nc.empty ()) {
+      delete m_av_nc.back ();
+      m_av_nc.pop_back ();
+    }
+    while (! m_avc_nc.empty ()) {
+      delete const_cast<EXPRT_A_NC *> (m_avc_nc.back ());
+      m_avc_nc.pop_back ();
+    }
+  }
+
+  int always_5 () const { return 5; }
+
+  void set_str (const char *p) { m_m = p; }
+  const std::string &str () { return m_m; }
+  const char *str_ccptr () const { return m_m.c_str (); }
+
+  void set_str_combine (const char *p1, const char *p2) 
+  { 
+    m_m = p1; 
+    m_m += p2;
+  }
+
+  int aptr_to_n (EXPRT_A *aptr) const { return aptr->n; }
+  std::string aref_to_s (const EXPRT_A &aref) { return tl::sprintf ("aref_to_s_result: %d", aref.n); }
+
+  EXPRT_A make_a (int n) { return EXPRT_A(n); }
+  EXPRT_A &amember_ref () { return m_a; }
+  const EXPRT_A &amember_cref () { return m_a; }
+
+  void set_an (int n) { m_a.n = n; }
+  int an (EXPRT_A a) { return m_a.n; }
+  void set_an_cref (const int &n) { m_a.n = n; }
+  const int &an_cref (const EXPRT_A &a) { return m_a.n; }
+
+  std::vector <EXPRT_A>::const_iterator av_citer_begin () const { return m_av.begin (); }
+  std::vector <EXPRT_A>::const_iterator av_citer_end () const { return m_av.end (); }
+
+  std::vector <EXPRT_A>::iterator av_nciter_begin () { return m_av.begin (); }
+  std::vector <EXPRT_A>::iterator av_nciter_end () { return m_av.end (); }
+
+  ValueIter<std::vector <EXPRT_A>::const_iterator> av_iter2_begin () const { return ValueIter<std::vector <EXPRT_A>::const_iterator> (m_av.begin ()); }
+  ValueIter<std::vector <EXPRT_A>::const_iterator> av_iter2_end () const { return ValueIter<std::vector <EXPRT_A>::const_iterator> (m_av.end ()); }
+
+  FreeIter<std::vector <EXPRT_A>::const_iterator> av_iter () const { return FreeIter<std::vector <EXPRT_A>::const_iterator> (m_av.begin (), m_av.end ()); }
+
+  std::vector <EXPRT_A_NC *>::const_iterator avptr_iter_begin () const { return m_av_nc.begin (); }
+  std::vector <EXPRT_A_NC *>::const_iterator avptr_iter_end () const { return m_av_nc.end (); }
+
+  std::vector <const EXPRT_A_NC *>::const_iterator avcptr_begin () const { return m_avc_nc.begin (); }
+  std::vector <const EXPRT_A_NC *>::const_iterator avcptr_end () const { return m_avc_nc.end (); }
+
+  EXPRT_A *amember_or_nil (bool nn) { return nn ? &m_a : 0; }
+  EXPRT_A *amember_ptr () { return &m_a; }
+  const EXPRT_A *amember_cptr () { return &m_a; }
+
+  bool arg_is_not_nil (EXPRT_A *a) { return a != 0; }
+
+  std::vector <EXPRT_A> av () const { return m_av; }
+  const std::vector <EXPRT_A> &av_cref () const { return m_av; }
+  std::vector <EXPRT_A> &av_ref () { return m_av; }
+
+  void set_av_cref (const std::vector <EXPRT_A> &v) { m_av = v; }
+  void set_av_ref (std::vector <EXPRT_A> &v) { m_av = v; }
+  void set_av_cptr (const std::vector <EXPRT_A> *v) { if (v) { m_av = *v; } }
+  void set_av_ptr (std::vector <EXPRT_A> *v) { if (v) { m_av = *v; } }
+  void set_av (std::vector <EXPRT_A> v) { m_av = v; }
+
+  bool var_is_nil (const tl::Variant &var) const { return var.is_nil (); }
+  bool var_is_double (tl::Variant &var) const { return var.is_double (); }
+  bool var_is_long (tl::Variant var) const { return var.is_long (); }
+  bool var_is_string (const tl::Variant &var) const { return var.is_a_string (); }
+
+  std::string var_to_string (const tl::Variant &var) const { return var.to_string (); }
+  double var_to_double (const tl::Variant &var) const { return var.to_double (); }
+  long var_to_long (const tl::Variant &var) const { return var.to_long (); }
+
+  long set_vars (const std::vector<tl::Variant> &vars) 
+  {
+    m_vars = vars;
+    return vars.size ();
+  }
+
+  tl::Variant var () const { return m_vars.back (); }
+  const tl::Variant &var_cref () const { return m_vars.back (); }
+  const tl::Variant *var_cptr () const { return m_vars.empty () ? 0 : &m_vars.back (); }
+  tl::Variant &var_ref () { return m_vars.back (); }
+  tl::Variant *var_ptr () { return m_vars.empty () ? 0 : &m_vars.back (); }
+
+  std::vector<tl::Variant> vars () { return m_vars; }
+  const std::vector<tl::Variant> &vars_cref () const { return m_vars; }
+  std::vector<tl::Variant> &vars_ref () { return m_vars; }
+  const std::vector<tl::Variant> *vars_cptr () const { return &m_vars; }
+  const std::vector<tl::Variant> *vars_cptr_null () const { return 0; }
+  std::vector<tl::Variant> *vars_ptr () { return &m_vars; }
+  std::vector<tl::Variant> *vars_ptr_null () { return 0; }
+  tl::Variant vars_as_var () { return tl::Variant (m_vars.begin (), m_vars.end ()); }
+
+  std::vector<tl::Variant>::const_iterator vars_begin () { return m_vars.begin (); }
+  std::vector<tl::Variant>::const_iterator vars_end () { return m_vars.end (); }
+
+  int always_17 () const { return 17; }
+  const char *always_xz_sig_i (int) const { return "xz"; }
+  const char *always_aref_sig_a (const EXPRT_A &a) const { return "aref"; }
+  double always_20_5_sig_si (const char *, int) const { return 20.5; }
+
+  void insert_map1 (int k, const std::string &v) { m_map1[k] = v; }
+  std::map<int, std::string> map1 () const { return m_map1; }
+  const std::map<int, std::string> &map1_cref () const { return m_map1; }
+  const std::map<int, std::string> *map1_cptr () const { return &m_map1; }
+  const std::map<int, std::string> *map1_cptr_null () const { return 0; }
+  std::map<int, std::string> &map1_ref () { return m_map1; }
+  std::map<int, std::string> *map1_ptr () { return &m_map1; }
+  std::map<int, std::string> *map1_ptr_null () { return 0; }
+  void set_map1_cref (const std::map<int, std::string> &m) { m_map1 = m; }
+  void set_map1_ref (std::map<int, std::string> &m) { m_map1 = m; }
+  void set_map1_cptr (const std::map<int, std::string> *m) { if (m) { m_map1 = *m; } }
+  void set_map1_ptr (std::map<int, std::string> *m) { if (m) { m_map1 = *m; } }
+  void set_map1 (std::map<int, std::string> m) { m_map1 = m; }
+
+  void insert_map2 (const tl::Variant &k, const tl::Variant &v) { m_map2[k] = v; }
+  const std::map<tl::Variant, tl::Variant> *map2 () const { return &m_map2; }
+  const std::map<tl::Variant, tl::Variant> *map2_null () const { return 0; }
+  void set_map2 (const std::map<tl::Variant, tl::Variant> &m) { m_map2 = m; }
+
+  EXPRT_B &operator=(const EXPRT_B &b) 
+  {
+    if (&b != this) {
+      m_m = b.m_m;
+      m_a = b.m_a;
+      m_av = b.m_av;
+      while (! m_av_nc.empty ()) {
+        delete m_av_nc.back ();
+        m_av_nc.pop_back ();
+      }
+      while (! m_avc_nc.empty ()) {
+        delete const_cast<EXPRT_A_NC *> (m_avc_nc.back ());
+        m_avc_nc.pop_back ();
+      }
+      for (std::vector <EXPRT_A_NC *>::const_iterator a = b.m_av_nc.begin(); a != b.m_av_nc.end(); ++a) {
+        m_av_nc.push_back (new EXPRT_A_NC (**a));
+      }
+      for (std::vector <const EXPRT_A_NC *>::const_iterator a = b.m_avc_nc.begin(); a != b.m_avc_nc.end(); ++a) {
+        m_avc_nc.push_back (new EXPRT_A_NC (**a));
+      }
+      m_vars = b.m_vars;
+      m_map1 = b.m_map1;
+      m_map2 = b.m_map2;
+    }
+    return *this;
+  }
+
+  EXPRT_B (const EXPRT_B &b) 
+  {
+    operator= (b);
+  }
+
+private:
+  std::string m_m;
+  EXPRT_A m_a;
+  std::vector <EXPRT_A> m_av;
+  std::vector <EXPRT_A_NC *> m_av_nc;
+  std::vector <const EXPRT_A_NC *> m_avc_nc;
+  std::vector<tl::Variant> m_vars;
+  std::map<int, std::string> m_map1;
+  std::map<tl::Variant, tl::Variant> m_map2;
+};
+
+//  external method
+static int aptr_to_n_ext (const EXPRT_B *b, EXPRT_A *aptr) { 
+  return b->aptr_to_n (aptr);
+}
+
+//  constructor
+static EXPRT_A *a_ctor (int i) { 
+  return new EXPRT_A (i);
+}
+
+namespace tl
+{
+  template <> struct type_traits<EXPRT_A_NC> : public type_traits<void> {
+    typedef tl::false_tag has_copy_constructor;
+  };
+}
+
+//  external iterator methods
+static std::vector <EXPRT_A>::const_iterator av_citer_begin_ext (const EXPRT_B *b) { return b->av_citer_begin (); }
+static std::vector <EXPRT_A>::const_iterator av_citer_end_ext (const EXPRT_B *b) { return b->av_citer_end (); }
+static const EXPRT_A *av_piter_begin_ext (const EXPRT_B *b) { return &*(b->av_citer_begin ()); }
+static const EXPRT_A *av_piter_end_ext (const EXPRT_B *b) { return &*(b->av_citer_end ()); }
+
+
+class EXPRT_C
+{
+public:
+  virtual ~EXPRT_C () { }
+
+  virtual unsigned int f (const std::string &s) const
+  {
+    return 1977;
+  }
+
+  unsigned int g (const std::string s) const
+  {
+    return f(s);
+  }
+
+  static int s1 () { return 4451; }
+  static std::vector<int>::const_iterator s1a () { return m_v.begin (); }
+  static std::vector<int>::const_iterator s1b () { return m_v.end (); }
+  static void s2 (double x) 
+  { 
+    for (int i = 0; i < int (x + 0.5); ++i) {
+      m_v.push_back (i);
+    }
+  }
+  static void s2clr () { m_v.clear(); }
+  static std::string s3 (double x) { return tl::sprintf ("%.3f", x); }
+
+  static std::vector<int> m_v;
+};
+
+std::vector<int> EXPRT_C::m_v;
+
+class EXPRT_C_P
+  : public EXPRT_C
+{
+public:
+  virtual unsigned int f (const std::string &s) const
+  {
+    return f_cb.can_issue () ? f_cb.issue<EXPRT_C, unsigned int, const std::string &> (&EXPRT_C::f, s) : EXPRT_C::f (s);
+  }
+
+  gsi::Callback f_cb;
+};
+
+struct EXPRT_E 
+  : public gsi::ObjectBase
+{
+  void s1() { ev0(); }
+  void s2() { ev1(this); }
+  void s3() { ev2(18, "hallo"); }
+
+  gsi::Event ev0;
+  gsi::event<EXPRT_E *> ev1;
+  gsi::event<int, const std::string &> ev2;
+};
+
+struct EXPRT_F
+{
+  EXPRT_F () : m_iv (0) { }
+  int iv() const { return m_iv; }
+  std::string sv() const { return m_sv; }
+
+  void set_iv (int v) { m_iv = v; }
+  void set_sv1 (const char *s) { m_sv = s; }
+  void set_sv2 (const std::string &s) { m_sv = s; }
+  void set_vv (int i, const std::string &s) { m_iv = i; m_sv = s; }
+
+  int m_iv;
+  std::string m_sv;
+};
+
+struct EXPRT_X
+{
+  int x1() const { return 17; }
+  int x2() const { return 42; }
+};
+
+struct EXPRT_Y : public EXPRT_X
+{
+  int x1() const { return 1; }
+  int y1() const { return 117; }
+};
+
+// GSI declarations
+
+gsi::Class<EXPRT_X> decl_XX ("XX", 
+  gsi::method ("x1", &EXPRT_X::x1) +
+  gsi::method ("x2", &EXPRT_X::x2)
+);
+
+gsi::Class<EXPRT_Y> decl_XY (decl_XX, "XY", 
+  gsi::method ("x1", &EXPRT_Y::x1) +
+  gsi::method ("y1", &EXPRT_Y::y1)
+);
+
+gsi::Class<EXPRT_A> decl_XA ("XA", 
+  gsi::constructor ("new", &a_ctor) +
+  gsi::method ("a", &EXPRT_A::a) +
+  gsi::method ("a", &EXPRT_A::a_static) +
+  gsi::method ("a0", &EXPRT_A::a0) +
+  gsi::method ("a1", &EXPRT_A::a1) +
+  gsi::method ("a1c", &EXPRT_A::a1c) +
+  gsi::method ("a2", &EXPRT_A::a2) +
+  gsi::method ("a3", &EXPRT_A::a3) +
+  gsi::method ("a4", &EXPRT_A::a4) +
+  gsi::method ("a5", &EXPRT_A::a5) +
+  gsi::method ("n=", &EXPRT_A::a5) +
+  gsi::iterator ("a6", &EXPRT_A::a6b, &EXPRT_A::a6e) +
+  gsi::iterator ("a7", &EXPRT_A::a7b, &EXPRT_A::a7e) +
+  gsi::iterator ("a8", &EXPRT_A::a8b, &EXPRT_A::a8e) +
+  gsi::method ("to_s", &EXPRT_A::to_s)
+);
+
+gsi::Class<EXPRT_A_NC> decl_XA_NC (decl_XA, "XA_NC"); 
+
+gsi::Class<EXPRT_B> decl_XB ("XB", 
+  gsi::method ("always_5", &EXPRT_B::always_5) +
+  gsi::method ("str", &EXPRT_B::str) +
+  gsi::method_ext ("aptr_to_n", &aptr_to_n_ext) +
+  gsi::method ("aref_to_s", &EXPRT_B::aref_to_s) +
+  gsi::method ("set_str", &EXPRT_B::set_str) +
+  gsi::method ("str_ccptr", &EXPRT_B::str_ccptr) +
+  gsi::method ("set_str_combine", &EXPRT_B::set_str_combine) +
+  gsi::method ("make_a", &EXPRT_B::make_a) +
+  gsi::method ("amember_ref", &EXPRT_B::amember_ref) +
+  gsi::method ("amember_cref", &EXPRT_B::amember_cref) +
+  gsi::method ("set_an", &EXPRT_B::set_an) +
+  gsi::method ("an", &EXPRT_B::an) +
+  gsi::method ("set_an_cref", &EXPRT_B::set_an) +
+  gsi::method ("an_cref", &EXPRT_B::an) +
+  //  implemented by extension below:
+  // gsi::iterator_ext ("av_citer", &av_citer_begin_ext, &av_citer_end_ext) +
+  gsi::iterator ("av_nciter", &EXPRT_B::av_nciter_begin, &EXPRT_B::av_nciter_end) +
+  gsi::iterator ("av_iter2", &EXPRT_B::av_iter2_begin, &EXPRT_B::av_iter2_end) +
+  gsi::iterator ("avptr_iter", &EXPRT_B::avptr_iter_begin, &EXPRT_B::avptr_iter_end) +
+  gsi::iterator ("avcptr_iter", &EXPRT_B::avcptr_begin, &EXPRT_B::avcptr_end) +
+  gsi::method ("amember_or_nil", &EXPRT_B::amember_or_nil) +
+  gsi::method ("amember_ptr", &EXPRT_B::amember_ptr) +
+  gsi::method ("amember_cptr", &EXPRT_B::amember_cptr) +
+  gsi::method ("arg_is_not_nil", &EXPRT_B::arg_is_not_nil) +
+  gsi::method ("av", &EXPRT_B::av) +
+  gsi::method ("av_cref", &EXPRT_B::av_cref) +
+  gsi::method ("av_ref", &EXPRT_B::av_ref) +
+  gsi::method ("av_cref=", &EXPRT_B::set_av_cref) +
+  gsi::method ("av_ref=", &EXPRT_B::set_av_ref) +
+  gsi::method ("av_cptr=", &EXPRT_B::set_av_cptr) +
+  gsi::method ("av_ptr=", &EXPRT_B::set_av_ptr) +
+  gsi::method ("av=", &EXPRT_B::set_av) +
+  gsi::iterator ("av_iter", &EXPRT_B::av_iter) +
+  gsi::method ("var_is_nil", &EXPRT_B::var_is_nil) +
+  gsi::method ("var_is_double", &EXPRT_B::var_is_double) +
+  gsi::method ("var_is_long", &EXPRT_B::var_is_long) +
+  gsi::method ("var_is_string", &EXPRT_B::var_is_string) +
+  gsi::method ("var_to_string", &EXPRT_B::var_to_string) +
+  gsi::method ("var_to_double", &EXPRT_B::var_to_double) +
+  gsi::method ("var_to_long", &EXPRT_B::var_to_long) +
+  gsi::method ("set_vars", &EXPRT_B::set_vars) +
+  gsi::method ("var", &EXPRT_B::var) +
+  gsi::method ("var_cref", &EXPRT_B::var_cref) +
+  gsi::method ("var_cptr", &EXPRT_B::var_cptr) +
+  gsi::method ("var_ref", &EXPRT_B::var_ref) +
+  gsi::method ("var_ptr", &EXPRT_B::var_ptr) +
+  gsi::method ("vars", &EXPRT_B::vars) +
+  gsi::method ("vars_cref", &EXPRT_B::vars_cref) +
+  gsi::method ("vars_cptr", &EXPRT_B::vars_cptr) +
+  gsi::method ("vars_cptr_null", &EXPRT_B::vars_cptr_null) +
+  gsi::method ("vars_ref", &EXPRT_B::vars_ref) +
+  gsi::method ("vars_ptr", &EXPRT_B::vars_ptr) +
+  gsi::method ("vars_ptr_null", &EXPRT_B::vars_ptr_null) +
+  gsi::method ("vars_as_var", &EXPRT_B::vars_as_var) +
+  gsi::iterator ("var_iter", &EXPRT_B::vars_begin, &EXPRT_B::vars_end) +
+  gsi::method ("#always_17|bx", &EXPRT_B::always_17) +
+  gsi::method ("#always_xz_sig_i|bx|by", &EXPRT_B::always_xz_sig_i) +
+  gsi::method ("bx|#always_20_5_sig_si", &EXPRT_B::always_20_5_sig_si) +
+  gsi::method ("#always_aref_sig_a|bx", &EXPRT_B::always_aref_sig_a) 
+);
+
+//  extending B
+gsi::ClassExt<EXPRT_B> b_ext ( 
+  gsi::iterator_ext ("av_citer", &av_citer_begin_ext, &av_citer_end_ext) +
+  gsi::iterator_ext ("av_piter", &av_piter_begin_ext, &av_piter_end_ext) +
+  gsi::method ("insert_map1", &EXPRT_B::insert_map1) +
+  gsi::method ("map1", &EXPRT_B::map1) +
+  gsi::method ("map1_cref", &EXPRT_B::map1_cref) +
+  gsi::method ("map1_ref", &EXPRT_B::map1_ref) +
+  gsi::method ("map1_cptr", &EXPRT_B::map1_cptr) +
+  gsi::method ("map1_cptr_null", &EXPRT_B::map1_cptr_null) +
+  gsi::method ("map1_ptr", &EXPRT_B::map1_ptr) +
+  gsi::method ("map1_ptr_null", &EXPRT_B::map1_ptr_null) +
+  gsi::method ("map1=|set_map1_cref", &EXPRT_B::set_map1_cref) +
+  gsi::method ("set_map1_ref", &EXPRT_B::set_map1_ref) +
+  gsi::method ("set_map1_cptr", &EXPRT_B::set_map1_cptr) +
+  gsi::method ("set_map1_ptr", &EXPRT_B::set_map1_ptr) +
+  gsi::method ("set_map1", &EXPRT_B::set_map1) +
+  gsi::method ("insert_map2", &EXPRT_B::insert_map2) +
+  gsi::method ("map2", &EXPRT_B::map2) +
+  gsi::method ("map2_null", &EXPRT_B::map2_null) +
+  gsi::method ("map2=", &EXPRT_B::set_map2) 
+);
+
+
+gsi::Class<EXPRT_C_P> decl_XC ("XC", 
+  gsi::callback ("f", &EXPRT_C_P::f, &EXPRT_C_P::f_cb) +
+  gsi::method ("g", &EXPRT_C::g) +
+  gsi::method ("s1", &EXPRT_C::s1) +
+  gsi::method ("s2", &EXPRT_C::s2) +
+  gsi::method ("s2clr", &EXPRT_C::s2clr) +
+  gsi::method ("s3", &EXPRT_C::s3) +
+  gsi::iterator ("each", &EXPRT_C::s1a, &EXPRT_C::s1b) 
+);
+
+gsi::Class<EXPRT_E> decl_XE ("XE",
+  gsi::event_decl ("e0", &EXPRT_E::ev0) +
+  gsi::event_decl ("e1", &EXPRT_E::ev1) +
+  gsi::event_decl ("e2", &EXPRT_E::ev2) +
+  gsi::method ("s1", &EXPRT_E::s1) +
+  gsi::method ("s2", &EXPRT_E::s2) +
+  gsi::method ("s3", &EXPRT_E::s3)
+);
+
+gsi::Class<EXPRT_F> decl_XF ("XF",
+  gsi::method ("iv", &EXPRT_F::iv) +
+  gsi::method ("sv", &EXPRT_F::sv) +
+  gsi::method ("set_iva", &EXPRT_F::set_iv, gsi::arg ()) +
+  gsi::method ("set_ivb", &EXPRT_F::set_iv, gsi::arg ("", 1)) +
+  gsi::method ("set_sv1a", &EXPRT_F::set_sv1, gsi::arg ()) +
+  gsi::method ("set_sv1b", &EXPRT_F::set_sv1, gsi::arg ("name", "value")) +
+  gsi::method ("set_sv2a", &EXPRT_F::set_sv2, gsi::arg ()) +
+  gsi::method ("set_sv2b", &EXPRT_F::set_sv2, gsi::arg ("", "value")) +
+  gsi::method ("set_vva", &EXPRT_F::set_vv) + 
+  gsi::method ("set_vvb", &EXPRT_F::set_vv, gsi::arg (), gsi::arg ("", "value")) +
+  gsi::method ("set_vvc", &EXPRT_F::set_vv, gsi::arg ("", 1), gsi::arg ("", "value")) 
+);
+
+// ----------------------------------------------------------------------
+//  Tests
+
+// basics
+TEST(1) 
+{
+  tl::Eval e;
+  tl::Variant v;
+
+  v = e.parse ("XA.a0").execute ();
+  int base_insts = v.to_int ();
+  EXPECT_EQ (base_insts, 0);
+
+  v = e.parse ("XA.new(35).to_s").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("XA: 35"));
+
+  // mapping of to_string to to_s method
+  v = e.parse ("XA.new(35)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("XA: 35"));
+
+  // static and non-static methods can have the same name:
+  v = e.parse ("XA.new.a").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("a"));
+  v = e.parse ("XA.a").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("a_static"));
+
+  v = e.parse ("XA.new.a1").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("17"));
+  v = e.parse ("var a=XA.new").execute ();
+  v = e.parse ("a.a5(-5); a.a1").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("-5"));
+
+  //  mapping of property assignment to method
+  v = e.parse ("a.n = -177; a.a1").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("-177"));
+  bool error = false;
+  try {
+    v = e.parse ("a.unknown").execute ();
+  } catch (...) {
+    //  invalid method
+    error = true;
+  }
+  EXPECT_EQ (error, true);
+
+  error = false;
+  try {
+    v = e.parse ("a.a5").execute ();
+    EXPECT_EQ (false, true);
+  } catch (...) {
+    //  invalid number of arguments
+    error = true;
+  }
+  EXPECT_EQ (error, true);
+
+  v = e.parse ("a.a3('a')").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("1"));
+  v = e.parse ("a.a3('ab')").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("2"));
+  v = e.parse ("a.a3('')").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("0"));
+  v = e.parse ("a.a4([1])").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("1"));
+  v = e.parse ("a.a4([1, 125e-3])").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("0.125"));
+  v = e.parse ("a.a4([5, 1, -1.25])").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("-1.25"));
+  v = e.parse ("XA.a0").execute ();
+  EXPECT_EQ (v.to_int (), base_insts + 1);   //  one instance more
+  v = e.parse ("a=1; XA.a0").execute ();
+  EXPECT_EQ (v.to_int (), base_insts);   //  remaining instances 
+  v = e.parse ("XA.a0").execute ();
+  EXPECT_EQ (v.to_int (), base_insts);   //  remaining instances 
+
+  v = e.parse ("var a1=XA.new; a1.a5(-15); var a2=a1.dup; a2.a5(107); a1.a1").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("-15"));
+  v = e.parse ("var a1=XA.new; a1.a5(-15); var a2=a1.dup; a2.a5(107); a2.a1").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("107"));
+}
+
+TEST(2) 
+{
+  tl::Eval e;
+  tl::Variant v;
+
+  v = e.parse ("var b=XB.new; b.always_5").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("5"));
+  v = e.parse ("var b=XB.new; var a1=XA.new(-17); var a2=XA.new(42); b.av = [ a1, a2 ]; to_s(b.av)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("XA: -17,XA: 42"));
+  v = e.parse ("var b=XB.new; var a1=XA.new(-17); var a2=XA.new(1); b.av_cref = [ a1, a2 ]; to_s(b.av_cref)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("XA: -17,XA: 1"));
+  v = e.parse ("var b=XB.new; b.av = [ XA.new(-13) ]; b.av_cptr = nil; to_s(b.av)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("XA: -13"));
+  v = e.parse ("var b=XB.new; b.av = [ XA.new(13) ]; b.av_ptr = nil; to_s(b.av)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("XA: 13"));
+  v = e.parse ("var b=XB.new; var a1=XA.new(17); b.av_ref = [ a1 ]; to_s(b.av_ref)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("XA: 17"));
+  v = e.parse ("var b=XB.new; b.arg_is_not_nil(nil)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("false"));
+  v = e.parse ("var b=XB.new; b.arg_is_not_nil(XA.new)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("true"));
+  v = e.parse ("var b=XB.new; b.bx").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("17"));
+  v = e.parse ("var b=XB.new; b.bx(-1)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("xz"));
+  v = e.parse ("var b=XB.new; b.bx('hello', 1)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("20.5"));
+  v = e.parse ("var b=XB.new; var a=XA.new; b.bx(a)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("aref"));
+  v = e.parse ("var b=XB.new; b.var_is_nil(1)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("false"));
+  v = e.parse ("var b=XB.new; b.var_is_nil(nil)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("true"));
+  v = e.parse ("var b=XB.new; b.set_vars([])").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("0"));
+  v = e.parse ("var b=XB.new; b.set_vars([]); b.vars").execute ();
+  EXPECT_EQ (v.to_string (), std::string (""));
+  v = e.parse ("var b=XB.new; b.set_vars([true, 'hello']); b.vars").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("true,hello"));
+  v = e.parse ("var b=XB.new; b.set_vars([1, 'hello']); b.vars_ref").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("1,hello"));
+  v = e.parse ("var b=XB.new; b.set_vars([17, 1]); b.vars_cref").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("17,1"));
+  v = e.parse ("var b=XB.new; b.set_vars([nil,nil]); b.vars_cptr").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("nil,nil"));
+  v = e.parse ("var b=XB.new; b.set_vars([1,2,3]); b.vars_cptr_null").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("nil"));
+  v = e.parse ("var b=XB.new; b.set_vars([27, 1]); b.vars_ref").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("27,1"));
+  v = e.parse ("var b=XB.new; b.set_vars([1.5]); b.vars_ptr").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("1.5"));
+  v = e.parse ("var b=XB.new; b.set_vars([-1.5]); b.vars_ptr_null").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("nil"));
+  v = e.parse ("var b=XB.new; b.set_vars([nil])").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("1"));
+  v = e.parse ("var b=XB.new; b.set_vars([17, 21])").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("2"));
+  v = e.parse ("var b=XB.new; b.set_vars([17, 21]); b.var").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("21"));
+  v = e.parse ("var b=XB.new; b.set_vars([-2]); b.var_cref").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("-2"));
+  v = e.parse ("var b=XB.new; b.set_vars([17, 22]); b.var_cptr").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("22"));
+  v = e.parse ("var b=XB.new; b.set_vars([]); b.var_cptr").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("nil"));
+  v = e.parse ("var b=XB.new; b.set_vars(['hello']); b.var_ref").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("hello"));
+  v = e.parse ("var b=XB.new; b.set_vars([27]); b.var_ptr").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("27"));
+  v = e.parse ("var b=XB.new; b.set_vars([]); b.var_ptr").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("nil"));
+  v = e.parse ("var a=XA.new; a.a5(22); var b=XB.new; b.aptr_to_n(a)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("22"));
+  v = e.parse ("var a=XA.new; a.a5(22); var b=XB.new; b.aref_to_s(a)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("aref_to_s_result: 22"));
+  v = e.parse ("var a=XA.new; a.a5(22); var b=XB.new; a.a5(-6); b.aptr_to_n(a)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("-6"));
+  v = e.parse ("var a=XA.new; a.a5(22); var b=XB.new; a.a5(-6); b.aref_to_s(a)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("aref_to_s_result: -6"));
+  v = e.parse ("var b=XB.new; b.aref_to_s(XA.new)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("aref_to_s_result: 17"));
+
+  v = e.parse ("b.amember_ref.a5(177)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("nil"));
+
+  bool error = false;
+  try {
+    tl::Expression ex;
+    e.parse(ex, "b.amember_cref.a5(177)");
+    v = ex.execute ();
+  } catch (...) {
+    //  can't call non-const method on const ref
+    error = true;
+  }
+  EXPECT_EQ (error, true);
+
+  //  references
+  v = e.parse ("b.amember_or_nil(true)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("XA: 177"));
+  v = e.parse ("b.amember_or_nil(false)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("nil"));
+  v = e.parse ("b.amember_ptr.a5(177); b.amember_ref.a1").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("177"));
+  v = e.parse ("b.amember_ref.a1c").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("177"));
+  v = e.parse ("b.amember_cref.a1c").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("177"));
+  error = false;
+  try {
+    v = e.parse ("b.amember_cref.a1").execute ();
+  } catch (...) {
+    //  can't call non-const method on const ref
+    error = true;
+  }
+  EXPECT_EQ (error, true);
+
+  //  references: storage in variables
+  v = e.parse ("var aref = b.amember_ptr").execute ();
+  v = e.parse ("aref.n = 178").execute ();
+  v = e.parse ("aref.a1").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("178"));
+  v = e.parse ("aref.a1 == 178").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("true"));
+  v = e.parse ("b.amember_ref.a1").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("178"));
+
+  //  references: storage in variables
+  v = e.parse ("var aref = b.amember_cptr").execute ();
+  v = e.parse ("aref.a1c").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("178"));
+  error = false;
+  try {
+    v = e.parse ("aref.n = 179").execute ();
+  } catch (...) {
+    //  can't call non-const method on const ref
+    error = true;
+  }
+  EXPECT_EQ (error, true);
+}
+
+TEST(3) 
+{
+  tl::Eval e;
+  tl::Variant v;
+
+  v = e.parse ("var c=XC.new; c.g('hallo')").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("1977"));
+  //  Currently there is no way to override virtual methods in expressions so we can't check much else.
+}
+
+TEST(4) 
+{
+  tl::Eval e;
+  tl::Variant v;
+  bool error;
+
+  v = e.parse ("var f=XF.new; f.iv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("0"));
+  v = e.parse ("var f=XF.new; f.set_iva(2); f.iv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("2"));
+  v = e.parse ("var f=XF.new; f.set_ivb(3); f.iv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("3"));
+  v = e.parse ("var f=XF.new; f.set_ivb; f.iv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("1"));
+  v = e.parse ("var f=XF.new; f.set_sv1a('hallo'); f.sv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("hallo"));
+  error = false;
+  try {
+    v = e.parse ("var f=XF.new; f.set_sv1a; f.sv").execute ();
+  } catch (...) {
+    error = true;
+  }
+  EXPECT_EQ (error, true);
+  v = e.parse ("var f=XF.new; f.set_sv1b('world'); f.sv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("world"));
+  v = e.parse ("var f=XF.new; f.set_sv1b; f.sv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("value"));
+  v = e.parse ("var f=XF.new; f.set_sv2a('hallo'); f.sv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("hallo"));
+  error = false;
+  try {
+    v = e.parse ("var f=XF.new; f.set_sv2a; f.sv").execute ();
+  } catch (...) {
+    error = true;
+  }
+  EXPECT_EQ (error, true);
+  v = e.parse ("var f=XF.new; f.set_sv2b('world'); f.sv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("world"));
+  v = e.parse ("var f=XF.new; f.set_sv2b; f.sv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("value"));
+  v = e.parse ("var f=XF.new; f.set_vva(17, 'c'); f.iv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("17"));
+  v = e.parse ("var f=XF.new; f.set_vva(17, 'c'); f.sv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("c"));
+  v = e.parse ("var f=XF.new; f.set_vvb(11); f.iv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("11"));
+  v = e.parse ("var f=XF.new; f.set_vvb(11); f.sv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("value"));
+  v = e.parse ("var f=XF.new; f.set_vvb(11, 'nix'); f.iv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("11"));
+  v = e.parse ("var f=XF.new; f.set_vvb(11, 'nix'); f.sv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("nix"));
+  v = e.parse ("var f=XF.new; f.set_vvc(11); f.iv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("11"));
+  v = e.parse ("var f=XF.new; f.set_vvc; f.iv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("1"));
+  v = e.parse ("var f=XF.new; f.set_vvc(17, 'nix'); f.iv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("17"));
+  v = e.parse ("var f=XF.new; f.set_vvc(11); f.sv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("value"));
+  v = e.parse ("var f=XF.new; f.set_vvc; f.sv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("value"));
+  v = e.parse ("var f=XF.new; f.set_vvc(17, 'nix'); f.sv").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("nix"));
+}
+
+TEST(5) 
+{
+  tl::Eval e;
+  tl::Variant v;
+
+  //  derived classes
+  v = e.parse ("var o=XX.new; o.x1").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("17"));
+  v = e.parse ("var o=XX.new; o.x2").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("42"));
+  v = e.parse ("var o=XY.new; o.x1").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("1"));
+  v = e.parse ("var o=XY.new; o.x2").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("42"));
+  v = e.parse ("var o=XY.new; o.y1").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("117"));
+}
+
+TEST(6) 
+{
+  tl::Eval e;
+  tl::Variant v;
+
+  v = e.parse ("var o=Box.new(1, 2, 11, 12); var p=Box.new(5, 6, 15, 16); (o*p).to_s").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("(6,8;26,28)"));
+  v = e.parse ("var o=Box.new(1, 2, 11, 12); var p=Box.new(5, 6, 15, 16); (o&p).to_s").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("(5,6;11,12)"));
+  v = e.parse ("var o=Box.new(1, 2, 11, 12); var p=Box.new(5, 6, 15, 16); (o+p).to_s").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("(1,2;15,16)"));
+  v = e.parse ("var o=Box.new(1, 2, 11, 12); var p=Box.new(5, 6, 15, 16); o<p").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("true"));
+  v = e.parse ("var o=Box.new(1, 2, 11, 12); var p=Box.new(5, 6, 15, 16); p<o").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("false"));
+  v = e.parse ("var o=Box.new(1, 2, 11, 12); var p=Box.new(5, 6, 15, 16); o<o").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("false"));
+  v = e.parse ("var o=Box.new(1, 2, 11, 12); var p=Box.new(5, 6, 15, 16); p==o").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("false"));
+  v = e.parse ("var o=Box.new(1, 2, 11, 12); var p=Box.new(5, 6, 15, 16); o==o").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("true"));
+  v = e.parse ("var o=Box.new(1, 2, 11, 12); var p=Box.new(5, 6, 15, 16); p!=o").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("true"));
+  v = e.parse ("var o=Box.new(1, 2, 11, 12); var p=Box.new(5, 6, 15, 16); o!=o").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("false"));
+}
+
+TEST(7) 
+{
+  tl::Eval e;
+  tl::Variant v;
+
+  v = e.parse ("var o=XB.new(); to_s(o.map1_cptr_null)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("nil"));
+  v = e.parse ("var o=XB.new(); to_s(o.map1_ptr_null)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("nil"));
+  v = e.parse ("var o=XB.new(); o.insert_map1(1, 'hello'); to_s(o.map1)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("1=>hello"));
+  v = e.parse ("var o=XB.new(); o.insert_map1(2, 'hello'); to_s(o.map1_cref)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("2=>hello"));
+  v = e.parse ("var o=XB.new(); o.insert_map1(3, 'hello'); to_s(o.map1_cptr)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("3=>hello"));
+  v = e.parse ("var o=XB.new(); o.insert_map1(2, 'hello'); to_s(o.map1_ref)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("2=>hello"));
+  v = e.parse ("var o=XB.new(); o.insert_map1(3, 'hello'); to_s(o.map1_ptr)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("3=>hello"));
+  v = e.parse ("var o=XB.new(); o.map1 = { 42 => 1, -17 => true }; to_s(o.map1)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("-17=>true,42=>1"));
+  v = e.parse ("var o=XB.new(); o.set_map1({ 42 => 1, -17 => true }); to_s(o.map1)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("-17=>true,42=>1"));
+  v = e.parse ("var o=XB.new(); o.set_map1_cref({ 42 => 1, -17 => true }); to_s(o.map1)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("-17=>true,42=>1"));
+  v = e.parse ("var o=XB.new(); o.set_map1_cptr({ 42 => 1, -17 => true }); to_s(o.map1)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("-17=>true,42=>1"));
+  v = e.parse ("var o=XB.new(); o.set_map1_cptr(nil); to_s(o.map1)").execute ();
+  EXPECT_EQ (v.to_string (), std::string (""));
+  v = e.parse ("var o=XB.new(); o.set_map1_ref({ 42 => 1, -17 => true }); to_s(o.map1)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("-17=>true,42=>1"));
+  v = e.parse ("var o=XB.new(); o.set_map1_ptr({ 42 => 1, -17 => true }); to_s(o.map1)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("-17=>true,42=>1"));
+  v = e.parse ("var o=XB.new(); o.set_map1_ptr(nil); to_s(o.map1)").execute ();
+  EXPECT_EQ (v.to_string (), std::string (""));
+  v = e.parse ("var o=XB.new(); o.map2 = { 'xy' => 1, -17 => true }; to_s(o.map2)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("-17=>true,xy=>1"));
+  v = e.parse ("var o=XB.new(); to_s(o.map2_null)").execute ();
+  EXPECT_EQ (v.to_string (), std::string ("nil"));
+}

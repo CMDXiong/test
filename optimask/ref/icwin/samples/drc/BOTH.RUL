@@ -1,0 +1,13 @@
+input layer 1 a;
+output layer 2 b;
+badpoly 0
+
+286only
+resolution=5
+
+b=a;
+
+aaonly toend
+cutresolution=5
+b=snap(b, 5);
+endaa

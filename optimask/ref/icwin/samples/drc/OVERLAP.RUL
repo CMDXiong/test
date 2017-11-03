@@ -1,0 +1,12 @@
+input layer 5 poly; 2 n;
+output layer 1 short_gate 
+badpoly 20
+short_gate=minspacing(poly/in, n/out, 10);
+! Look toward the INSIDE of POLY layer polygons, for the OUTSIDE of N layer
+! polygons.  For the errors marked on the example, note that you can see
+! the error mark on POLY by looking from the error mark on N to the OUTSIDE
+! of the N polygon.  You can see the error mark on N by looking to the 
+! INSIDE of the POLY polygon.
+
+3ONLY
+ALL_SAFE

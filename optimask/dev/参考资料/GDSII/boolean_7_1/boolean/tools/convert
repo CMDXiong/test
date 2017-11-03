@@ -1,0 +1,11 @@
+cd ../src
+for i in *
+do
+	if test -d $i
+	then
+		cd $i
+		$GDSROOT/tools/omzet-d2u
+		$GDSROOT/tools/convert
+		cd ..
+	fi
+done

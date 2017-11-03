@@ -1,0 +1,22 @@
+# Process file for GDS-II postprocessing tool
+# Copyright 1998 Hollandse Signaal Apparaten
+
+keystring {BOUNDARY; LAYER 0;  DATATYPE 0;  \
+   XY 5; \
+   X      -83750.000; Y      -322700.000;   X       73550.000; Y      -322700.000;   \
+   X       73550.000; Y       371700.000;   X      -83750.000; Y       371700.000;   \
+   X      -83750.000; Y      -322700.000; \
+ENDEL;}
+
+group_a 0 false
+group_b empty
+destination 4
+copy_a
+mirrorx  0
+mirrory  0
+movehor  {0mm}
+movever  {0mm}
+scale  .99
+rotate  .89
+direction  Clockwise
+transform

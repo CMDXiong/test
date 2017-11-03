@@ -1,0 +1,18 @@
+; This file is maintained by HCW. Do not modify this file directly.
+
+[OPTIONS]
+COMPRESS=2 phrase
+OLDKEYPHRASE=Yes
+DBCS=Yes
+LCID=0x409 0x0 0x0 ; âpåÍ (ïƒçë)
+REPORT=Yes
+CONTENTS=main_index
+TITLE=GDSII Viewer help
+CNT=gds.cnt
+HLP=gds.hlp
+
+[FILES]
+GDSIIviewer.rtf
+
+[CONFIG]
+CreateButton("Execute","Exit(&E)","Exit()")

@@ -1,0 +1,83 @@
+# Process file for GDS-II postprocessing tool
+
+#askfile {Open GDS-II file} OPEN {*.cal} %{gdsroot} cal curfile
+#loadfile  @{curfile} gds-ii
+
+loadfile  @{gdsroot}default/data/democal/demo2.cal gds-ii
+
+startpoint  0.000000 0.000000
+startpoint  0.000000 0.000000
+draw
+zoom -2207925.000000 -1627680.791139 -1429267.025316 -1585591.170886
+draw
+
+#merge
+draw
+group_a 01 False
+group_b 06 False
+destination 00
+merge
+group_a 00 False
+group_b empty
+destination empty
+mirrorx  0
+mirrory  0
+movehor  {0um}
+movever  {-6000um}
+scale  1
+rotate  0
+direction  {Clockwise}
+transform_a
+group_a 00 False
+group_b empty
+destination 2
+copy_a
+zoomout
+
+#a-b
+group_a 01 False
+group_b 06 False
+destination 00
+b_subtract_a
+group_a 00 False
+group_b empty
+destination empty
+mirrorx  0
+mirrory  0
+movehor  {0um}
+movever  {-12000um}
+scale  1
+rotate  0
+direction  {Clockwise}
+transform_a
+draw
+group_a 00 False
+group_b empty
+destination 2
+copy_a
+zoomout
+
+#b-a
+draw
+group_a 01 False
+group_b 06 False
+destination 00
+b_subtract_a
+group_a 00 False
+group_b empty
+destination empty
+mirrorx  0
+mirrory  0
+movehor  {0um}
+movever  {-12000um}
+scale  1
+rotate  0
+direction  {Clockwise}
+transform_a
+draw
+group_a 00 False
+group_b empty
+destination 2
+copy_a
+zoomout
+

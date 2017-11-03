@@ -1,0 +1,142 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "klayout", "klayout.vcxproj", "{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "klayout_app", "klayout_app.vcxproj", "{C118FB6F-A481-46FE-A62B-1E42F86B70DC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8A279720-F088-4FA6-9401-013828290B6C} = {8A279720-F088-4FA6-9401-013828290B6C}
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD} = {81C3C99E-9E15-4BD3-A7C4-5B73819632CD}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unit_tests", "unit_tests.vcxproj", "{B104E0E5-9118-4845-A096-240627417DBE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8A279720-F088-4FA6-9401-013828290B6C} = {8A279720-F088-4FA6-9401-013828290B6C}
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD} = {C118FB6F-A481-46FE-A62B-1E42F86B70DD}
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD} = {81C3C99E-9E15-4BD3-A7C4-5B73819632CD}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "klayout_vo_app", "klayout_vo_app.vcxproj", "{3BD1F473-686F-41FF-8C78-C5990647D36E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8A279720-F088-4FA6-9401-013828290B6C} = {8A279720-F088-4FA6-9401-013828290B6C}
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD} = {81C3C99E-9E15-4BD3-A7C4-5B73819632CD}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "klayout_gsi", "klayout_gsi.vcxproj", "{8A279720-F088-4FA6-9401-013828290B6C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD} = {81C3C99E-9E15-4BD3-A7C4-5B73819632CD}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug No Qt Binding STLPort|Win32 = Debug No Qt Binding STLPort|Win32
+		Debug No Qt Binding STLPort|x64 = Debug No Qt Binding STLPort|x64
+		Debug STLPort|Win32 = Debug STLPort|Win32
+		Debug STLPort|x64 = Debug STLPort|x64
+		Release No Qt Binding STLPort|Win32 = Release No Qt Binding STLPort|Win32
+		Release No Qt Binding STLPort|x64 = Release No Qt Binding STLPort|x64
+		Release STLPort|Win32 = Release STLPort|Win32
+		Release STLPort|x64 = Release STLPort|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}.Debug No Qt Binding STLPort|Win32.ActiveCfg = Debug No Qt Binding STLPort|Win32
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}.Debug No Qt Binding STLPort|Win32.Build.0 = Debug No Qt Binding STLPort|Win32
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}.Debug No Qt Binding STLPort|x64.ActiveCfg = Debug No Qt Binding STLPort|x64
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}.Debug No Qt Binding STLPort|x64.Build.0 = Debug No Qt Binding STLPort|x64
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}.Debug STLPort|Win32.ActiveCfg = Debug STLPort|Win32
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}.Debug STLPort|Win32.Build.0 = Debug STLPort|Win32
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}.Debug STLPort|x64.ActiveCfg = Debug STLPort|x64
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}.Debug STLPort|x64.Build.0 = Debug STLPort|x64
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}.Release No Qt Binding STLPort|Win32.ActiveCfg = Release No Qt Binding STLPort|Win32
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}.Release No Qt Binding STLPort|Win32.Build.0 = Release No Qt Binding STLPort|Win32
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}.Release No Qt Binding STLPort|x64.ActiveCfg = Release No Qt Binding STLPort|x64
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}.Release No Qt Binding STLPort|x64.Build.0 = Release No Qt Binding STLPort|x64
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}.Release STLPort|Win32.ActiveCfg = Release STLPort|Win32
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}.Release STLPort|Win32.Build.0 = Release STLPort|Win32
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}.Release STLPort|x64.ActiveCfg = Release STLPort|x64
+		{81C3C99E-9E15-4BD3-A7C4-5B73819632CD}.Release STLPort|x64.Build.0 = Release STLPort|x64
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DC}.Debug No Qt Binding STLPort|Win32.ActiveCfg = Debug No Qt Binding STLPort|Win32
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DC}.Debug No Qt Binding STLPort|Win32.Build.0 = Debug No Qt Binding STLPort|Win32
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DC}.Debug No Qt Binding STLPort|x64.ActiveCfg = Debug No Qt Binding STLPort|x64
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DC}.Debug No Qt Binding STLPort|x64.Build.0 = Debug No Qt Binding STLPort|x64
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DC}.Debug STLPort|Win32.ActiveCfg = Debug STLPort|Win32
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DC}.Debug STLPort|Win32.Build.0 = Debug STLPort|Win32
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DC}.Debug STLPort|x64.ActiveCfg = Debug STLPort|x64
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DC}.Debug STLPort|x64.Build.0 = Debug STLPort|x64
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DC}.Release No Qt Binding STLPort|Win32.ActiveCfg = Release No Qt Binding STLPort|Win32
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DC}.Release No Qt Binding STLPort|Win32.Build.0 = Release No Qt Binding STLPort|Win32
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DC}.Release No Qt Binding STLPort|x64.ActiveCfg = Release No Qt Binding STLPort|x64
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DC}.Release No Qt Binding STLPort|x64.Build.0 = Release No Qt Binding STLPort|x64
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DC}.Release STLPort|Win32.ActiveCfg = Release STLPort|Win32
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DC}.Release STLPort|Win32.Build.0 = Release STLPort|Win32
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DC}.Release STLPort|x64.ActiveCfg = Release STLPort|x64
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DC}.Release STLPort|x64.Build.0 = Release STLPort|x64
+		{B104E0E5-9118-4845-A096-240627417DBE}.Debug No Qt Binding STLPort|Win32.ActiveCfg = Debug No Qt Binding STLPort|Win32
+		{B104E0E5-9118-4845-A096-240627417DBE}.Debug No Qt Binding STLPort|Win32.Build.0 = Debug No Qt Binding STLPort|Win32
+		{B104E0E5-9118-4845-A096-240627417DBE}.Debug No Qt Binding STLPort|x64.ActiveCfg = Debug No Qt Binding STLPort|x64
+		{B104E0E5-9118-4845-A096-240627417DBE}.Debug No Qt Binding STLPort|x64.Build.0 = Debug No Qt Binding STLPort|x64
+		{B104E0E5-9118-4845-A096-240627417DBE}.Debug STLPort|Win32.ActiveCfg = Debug STLPort|Win32
+		{B104E0E5-9118-4845-A096-240627417DBE}.Debug STLPort|Win32.Build.0 = Debug STLPort|Win32
+		{B104E0E5-9118-4845-A096-240627417DBE}.Debug STLPort|x64.ActiveCfg = Debug STLPort|x64
+		{B104E0E5-9118-4845-A096-240627417DBE}.Debug STLPort|x64.Build.0 = Debug STLPort|x64
+		{B104E0E5-9118-4845-A096-240627417DBE}.Release No Qt Binding STLPort|Win32.ActiveCfg = Release No Qt Binding STLPort|Win32
+		{B104E0E5-9118-4845-A096-240627417DBE}.Release No Qt Binding STLPort|Win32.Build.0 = Release No Qt Binding STLPort|Win32
+		{B104E0E5-9118-4845-A096-240627417DBE}.Release No Qt Binding STLPort|x64.ActiveCfg = Release No Qt Binding STLPort|x64
+		{B104E0E5-9118-4845-A096-240627417DBE}.Release No Qt Binding STLPort|x64.Build.0 = Release No Qt Binding STLPort|x64
+		{B104E0E5-9118-4845-A096-240627417DBE}.Release STLPort|Win32.ActiveCfg = Release STLPort|Win32
+		{B104E0E5-9118-4845-A096-240627417DBE}.Release STLPort|Win32.Build.0 = Release STLPort|Win32
+		{B104E0E5-9118-4845-A096-240627417DBE}.Release STLPort|x64.ActiveCfg = Release STLPort|x64
+		{B104E0E5-9118-4845-A096-240627417DBE}.Release STLPort|x64.Build.0 = Release STLPort|x64
+		{3BD1F473-686F-41FF-8C78-C5990647D36E}.Debug No Qt Binding STLPort|Win32.ActiveCfg = Debug No Qt Binding STLPort|Win32
+		{3BD1F473-686F-41FF-8C78-C5990647D36E}.Debug No Qt Binding STLPort|Win32.Build.0 = Debug No Qt Binding STLPort|Win32
+		{3BD1F473-686F-41FF-8C78-C5990647D36E}.Debug No Qt Binding STLPort|x64.ActiveCfg = Debug No Qt Binding STLPort|x64
+		{3BD1F473-686F-41FF-8C78-C5990647D36E}.Debug No Qt Binding STLPort|x64.Build.0 = Debug No Qt Binding STLPort|x64
+		{3BD1F473-686F-41FF-8C78-C5990647D36E}.Debug STLPort|Win32.ActiveCfg = Debug STLPort|Win32
+		{3BD1F473-686F-41FF-8C78-C5990647D36E}.Debug STLPort|Win32.Build.0 = Debug STLPort|Win32
+		{3BD1F473-686F-41FF-8C78-C5990647D36E}.Debug STLPort|x64.ActiveCfg = Debug STLPort|x64
+		{3BD1F473-686F-41FF-8C78-C5990647D36E}.Debug STLPort|x64.Build.0 = Debug STLPort|x64
+		{3BD1F473-686F-41FF-8C78-C5990647D36E}.Release No Qt Binding STLPort|Win32.ActiveCfg = Release No Qt Binding STLPort|Win32
+		{3BD1F473-686F-41FF-8C78-C5990647D36E}.Release No Qt Binding STLPort|Win32.Build.0 = Release No Qt Binding STLPort|Win32
+		{3BD1F473-686F-41FF-8C78-C5990647D36E}.Release No Qt Binding STLPort|x64.ActiveCfg = Release No Qt Binding STLPort|x64
+		{3BD1F473-686F-41FF-8C78-C5990647D36E}.Release No Qt Binding STLPort|x64.Build.0 = Release No Qt Binding STLPort|x64
+		{3BD1F473-686F-41FF-8C78-C5990647D36E}.Release STLPort|Win32.ActiveCfg = Release STLPort|Win32
+		{3BD1F473-686F-41FF-8C78-C5990647D36E}.Release STLPort|Win32.Build.0 = Release STLPort|Win32
+		{3BD1F473-686F-41FF-8C78-C5990647D36E}.Release STLPort|x64.ActiveCfg = Release STLPort|x64
+		{3BD1F473-686F-41FF-8C78-C5990647D36E}.Release STLPort|x64.Build.0 = Release STLPort|x64
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD}.Debug No Qt Binding STLPort|Win32.ActiveCfg = Debug No Qt Binding STLPort|Win32
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD}.Debug No Qt Binding STLPort|Win32.Build.0 = Debug No Qt Binding STLPort|Win32
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD}.Debug No Qt Binding STLPort|x64.ActiveCfg = Debug No Qt Binding STLPort|x64
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD}.Debug No Qt Binding STLPort|x64.Build.0 = Debug No Qt Binding STLPort|x64
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD}.Debug STLPort|Win32.ActiveCfg = Debug STLPort|Win32
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD}.Debug STLPort|Win32.Build.0 = Debug STLPort|Win32
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD}.Debug STLPort|x64.ActiveCfg = Debug STLPort|x64
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD}.Debug STLPort|x64.Build.0 = Debug STLPort|x64
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD}.Release No Qt Binding STLPort|Win32.ActiveCfg = Release No Qt Binding STLPort|Win32
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD}.Release No Qt Binding STLPort|Win32.Build.0 = Release No Qt Binding STLPort|Win32
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD}.Release No Qt Binding STLPort|x64.ActiveCfg = Release No Qt Binding STLPort|x64
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD}.Release No Qt Binding STLPort|x64.Build.0 = Release No Qt Binding STLPort|x64
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD}.Release STLPort|Win32.ActiveCfg = Release STLPort|Win32
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD}.Release STLPort|Win32.Build.0 = Release STLPort|Win32
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD}.Release STLPort|x64.ActiveCfg = Release STLPort|x64
+		{C118FB6F-A481-46FE-A62B-1E42F86B70DD}.Release STLPort|x64.Build.0 = Release STLPort|x64
+		{8A279720-F088-4FA6-9401-013828290B6C}.Debug No Qt Binding STLPort|Win32.ActiveCfg = Debug No Qt Binding STLPort|Win32
+		{8A279720-F088-4FA6-9401-013828290B6C}.Debug No Qt Binding STLPort|Win32.Build.0 = Debug No Qt Binding STLPort|Win32
+		{8A279720-F088-4FA6-9401-013828290B6C}.Debug No Qt Binding STLPort|x64.ActiveCfg = Debug No Qt Binding STLPort|x64
+		{8A279720-F088-4FA6-9401-013828290B6C}.Debug No Qt Binding STLPort|x64.Build.0 = Debug No Qt Binding STLPort|x64
+		{8A279720-F088-4FA6-9401-013828290B6C}.Debug STLPort|Win32.ActiveCfg = Debug STLPort|Win32
+		{8A279720-F088-4FA6-9401-013828290B6C}.Debug STLPort|Win32.Build.0 = Debug STLPort|Win32
+		{8A279720-F088-4FA6-9401-013828290B6C}.Debug STLPort|x64.ActiveCfg = Debug STLPort|x64
+		{8A279720-F088-4FA6-9401-013828290B6C}.Debug STLPort|x64.Build.0 = Debug STLPort|x64
+		{8A279720-F088-4FA6-9401-013828290B6C}.Release No Qt Binding STLPort|Win32.ActiveCfg = Release No Qt Binding STLPort|Win32
+		{8A279720-F088-4FA6-9401-013828290B6C}.Release No Qt Binding STLPort|Win32.Build.0 = Release No Qt Binding STLPort|Win32
+		{8A279720-F088-4FA6-9401-013828290B6C}.Release No Qt Binding STLPort|x64.ActiveCfg = Release No Qt Binding STLPort|x64
+		{8A279720-F088-4FA6-9401-013828290B6C}.Release No Qt Binding STLPort|x64.Build.0 = Release No Qt Binding STLPort|x64
+		{8A279720-F088-4FA6-9401-013828290B6C}.Release STLPort|Win32.ActiveCfg = Release STLPort|Win32
+		{8A279720-F088-4FA6-9401-013828290B6C}.Release STLPort|Win32.Build.0 = Release STLPort|Win32
+		{8A279720-F088-4FA6-9401-013828290B6C}.Release STLPort|x64.ActiveCfg = Release STLPort|x64
+		{8A279720-F088-4FA6-9401-013828290B6C}.Release STLPort|x64.Build.0 = Release STLPort|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

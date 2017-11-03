@@ -1,0 +1,198 @@
+ % LaTeX (version 2e) source for Optimask Documentation
+ % IF USE CHINESE Language PACKAGES, THEN MUST USE XeLaTeX to COMPILE !!!
+ % Ref.: \OptiXera\Develop\Docs\LaTeX, or \OptiXera\Develop\optixera\optimask\dev\LaTeX\
+ % by hdeng@optixera.com
+% Created: 2016-12-17; Updated: 2017-05-15;
+
+%======================================================================
+%   P R E A M B L E
+%======================================================================
+
+%%THIS for pdf Latex with .pdf figures%%%%%%%%%%%%%%
+
+% memoir style %Books split into Volumns
+%\documentclass[12pt,twoside]{book}
+\documentclass[10pt,twoside]{book}
+%\documentclass[journal,twoside]{IEEEtran}
+
+%\documentclass[pdftex]{report}
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage[dvips]{graphicx}
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage{watermark}; %\usepackage{everypage}; %\usepackage{draftwatermark}; %\usepackage{ncccropmark}
+
+\usepackage{fancyhdr} %fancy headings
+\usepackage{amsmath}
+\usepackage{cite}
+\usepackage{notoccite} %Prevent erroneous numbering of cites when using BibTeX/unsrt
+%\usepackage[dvips=true,bookmarks=true]{hyperref} %only needed for PDF generation
+%\usepackage{makeidx} %if need an index
+\usepackage[printonlyused]{acronym} %\usepackage{acronym} %if need list of acronyms
+%\usepackage{nomencl}
+%\usepackage{stfloats}
+%\usepackage{float}
+\usepackage{subfigure}
+%\usepackage{array}
+%\usepackage{psfrag}
+\usepackage{color}
+\usepackage{listings}
+%\usepackage[normalem]{ulem}  %to underline serveral lines; NO underline for \emph{}!!
+
+%Custom packages:
+%\usepackage[first]{datestamp} %first, all, off.
+\usepackage[all]{datestamp}
+%Datestamp on first page of each chapter
+%\usepackage{glosstex} %preparation of glossaries, lists of acronyms or sorted lists in general
+
+% *** CHINESE Language PACKAGES (Select One of These Methods)***
+%% !! MUST USE XeLaTeX to COMPILE !!! OTHERWISE, WILL HAVE ERROR!
+%
+%% Method 1: Refer to testXeTeX.tex, use XeLaTex+fontspec package
+%\usepackage{fontspec, xunicode, xltxtra}
+%\XeTeXlinebreaklocale "zh"
+%\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+%\setmainfont{SimSun} %新宋体 %{FZShuTi}字体不存在，用{FZShuTi}字体编译出错。
+% 
+%\setmainfont{Times}
+%
+%% Method 2: Refer to testXeCJK.tex, use XeLaTex+XeCJK package
+\usepackage{xeCJK} % 调用 xeCJK 宏包
+\setCJKmainfont{SimSun} % 设置 CJK 主字体为 SimSun （宋体）
+%TeX default font: Computer Modern Roman, size: 10pt.
+
+%----------------------------------------------------------------------
+%\makeindex % activate index-making
+%\makeglossary %activate nomencl (list of symbols) making
+
+%----------------------------------------------------------------------
+% Set "1.2" as the line spacing throughout the thesis for readability (optional).
+\renewcommand{\baselinestretch}{1.2}
+
+%----------------------------------------------------------------------
+% Reset page margins properly (commented is for doublesided pages)
+\setlength{\marginparwidth}{0pt}
+\setlength{\marginparsep}{0pt}
+\setlength{\oddsidemargin}{0.125in}
+\setlength{\evensidemargin}{0.125in}
+\setlength{\textwidth}{6.375in}
+\raggedbottom
+%----------------------------------------------------------------------
+%My own command & environment definitions (More in course.tex of Waterloo's source.zip):
+%Some Latin abbreviations in italic (\MakeLowercase{\textit{et al.}}; space after "\" produces a space):
+\newcommand{\eg}{\textit{e.g.}}      %e.g. = exempli gratia = for example
+\newcommand{\ie}{\textit{i.e.}}      %i.e. = id est = that is
+\newcommand{\cf}{\textit{c.f.}}      %c.f. = confer = compare
+\newcommand{\etc}{\textit{etc}.\@}    %etc = et cetera = and the rest
+\newcommand{\etal}{\textit{et~al}.\@} %et al = et alia = and other
+%\newcommand{\degree}{^\circ}
+
+
+%%Define own words
+ \def\InP{$\mathrm{InP}$}
+ \def\InGaAsP{$\mathrm{InGaAsP}$}
+ \def\InGaAsPxy{$\mathrm{In_{1-x}Ga_{x}As_{y}P_{1-y}}$}
+ \def\um{$\mu\mathrm{m}$}
+ \def\nm{$\mathrm{nm}$}
+
+%----------------------------------------------------------------------
+%%%to include subsubsections in the table of contents
+%%%%%\renewcommand*\thesubsubsection{\Roman{subsubsection}.} %\arabic{},\alph{},\roman{},\Alph{},\Roman{}
+\setcounter{secnumdepth}{3} %%add numbering depth
+\setcounter{tocdepth}{3}
+
+%======================================================================
+%   L O G I C A L    D O C U M E N T
+%======================================================================
+\begin{document}
+
+%----------------------------------------------------------------------
+% FRONT MATERIAL
+%----------------------------------------------------------------------
+\include{./Ch00Front/Frontmatter}
+% Title page, declaration, borrowers' page, abstract, acknowledgements,
+% dedication, table of contents, list of tables, list of figures,
+% and List of Acronyms (by input{ListAcronyms} 20041216)
+
+\include{./Ch00Front/Ch_CodeRule}
+
+%----------------------------------------------------------------------
+% MAIN BODY AND CHAPTERS
+%----------------------------------------------------------------------
+% Put the document title and page numbers in the header
+%\pagestyle{myheadings}
+% Put title on left & chapter heading goes on right by default
+%plain--Just a plain page number; empty--empty heads and feet, no page numbers;
+%headings--headings on each page; myheadings--specify with \markboth or \markright commands.
+%fancy--fancy headings, must have \usepackage{fancyhdr}, example here:
+%\pagestyle{fancy} \fancyhead[LE,RO]{\thepage}
+%\fancyhead[LO]{\bfseries \MakeUppercase{\leftmark}} \fancyhead[RE]{\rightmark}
+%\fancyfoot[C]{\thepage} %L:left, R:right, O:odd, E:even; H:head; F:foot;
+%\rightmark, \leftmark, \thepage, \lhead{}, \chead, \rhead{}, \lfoot{}, \cfoot{}, \rfoot{}
+%See McECEthesis.sty by Peter Kabal of McGill Univ.
+%\markboth{SOI PR with FEM}{} %\leftmark calls #1 parameter
+
+% Go to normal sized type
+\normalsize
+
+%----------------------------------------------------------------------
+% Chapters
+%----------------------------------------------------------------------
+% Include your "sub" source files here (must have extension .tex but do NOT write file name type)
+%%\include{./Ch_DesignCharts/Ch_DesignCharts} for files in a directory.
+%\include{./Ch_Intro}
+%\include{./Ch_Prncpl}
+%\include{./Ch_InitPopu}
+%\include{./Ch_Optimum}
+%\include{./Ch_Conclusion}
+%\include{./Ch_MMI/Ch_MMI_Intro}
+
+%%----------------------------------------------------------------------
+%% Appendices
+%%----------------------------------------------------------------------
+%% Designate with \appendix declaration which just changes numbering style from here on
+\appendix
+%\include{./Apdx_CodeScript}
+
+%----------------------------------------------------------------------
+% Bibliography
+%----------------------------------------------------------------------
+% If done using the BibTeX program, use
+%\bibliographystyle{plain} % sorted alphabetically, labeled with numbers
+%\bibliography{keylatex} % names file keylatex.bib as my bibliography file
+% OR, do it "by hand" inside a "thebibliography" environment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{IEEEtran}  %{IEEEtran.bst} %{IEEEtranS.bst} %plain, unsrt, abbrv, alpha
+%\renewcommand\bibname{References} %\bibname for book-classes; %or \refname for article-classes.
+\addcontentsline{toc}{chapter}{\bibname}
+
+%\bibliography{../IEEE/IEEEabrv,../Deng,../AWG,../BOOK,../SIMU,../MGVI,../PRW,../SOI,../SPR,../THz}
+%\bibliography{IEEEabrv,./biblib/AWG}
+%\bibliography{IEEEabrv,./biblib/MMI}
+%DO NOT INCLUDE FILE TYPE NAME!! %%NO SPACES BETWEEN DIFFERENT FILE NAMES!!
+
+%----------------------------------------------------------------------
+% END MATERIAL
+%----------------------------------------------------------------------
+% Glossary
+% You could use a \begin{description} ... \end{description} for this
+%\include{glossary}
+
+% Index
+% Put a \makeindex command in the Preamble if you use MakeIndex program
+% and put
+% \printindex % here
+% OR, do it "by hand" inside \begin{theindex} ... \end{theindex}
+%----------------------------------------------------------------------
+
+%----------------------------------------------------------------------
+% Curriculum Vitae %Optional
+%----------------------------------------------------------------------
+
+%----------------------------------------------------------------------
+
+\end{document}

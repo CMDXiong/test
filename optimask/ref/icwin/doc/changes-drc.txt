@@ -1,0 +1,1274 @@
+Version 113.99:
+Fixes confusing messages from MIN_FILL when extent of an empty
+layer was used for the bounding box.
+------------------------------------------------------------------
+Version 3.50:
+Bring in EXTENT, EXTENT_IN, and improved MIN_FILL introduced to
+beta version in Version 113.94.   Syntax is:
+
+1) "extent boxes."  These 2 rules create bounding boxes on a result layer.  
+
+     A = EXTENT_IN
+set A as a bounding box for all the INPUT layers mentioned in
+the rules file, whether the layers are used in the rules or not.
+     Only boxes and polygons are use in setting the box; text
+and lines are not. 
+     This differs from input layer zero in that layer zero
+includes text, lines and layers not mentioned in the rules.
+ 
+     A = EXTENT(B)
+sets A as the bounding box of layer B.
+
+*** WARNING ***  
+    Suppose you have a statement like:
+        A = NOT B
+    What is the bounding box of A?  In the DRC, it is an
+arbitrary distance far enough from the edges of the original
+chip so no calculation touches the edges.  The program will
+allow you to use EXTENT(A), but it will not have any physical
+significance. 
+
+2) The MIN_FILL rule is revised to add an additional parameter.
+The problem was: minimum fraction of what area?  MIN_FILL used to
+always use the ICED cell bounding box.  This had no physical
+significance.  For example, it included text outside the actual
+chip.   Now there are options.  The new syntax is:
+
+    <output layer> = MIN_FILL {<input layer> [,] <minimum fraction filled> [,]
+       [<border spec>] [,]
+       [TEXT_SIZE = <text size for error messages, in ICED units>] [,] 
+       [XP = <panel size, X direction>] [,]
+       [DX = <Spacing between panel left edges>] [,] Must be <= XP
+       [YP = <panel size, Y direction>][,]
+       [DY = <Spacing between panel top edges>] [,]  Must be <= XP
+*** HERE is the new part:
+       [<bounding box option>]
+       }  
+
+The choices for <bounding box option> are:
+     ICED:     ICED cell bounding box, as before. This is used by default.
+     EXTENT_IN: bounding box of all input layers in the rule set.
+     SELF:     the bounding box of the <input layer>
+     EXTENT [=] <layer name>: the bounding box of some other layer. 
+     For example, you can draw the corners of the
+     bounding box you want to use on some other layer.  
+
+Remember: Except for the ICED option, TEXT DOESN'T COUNT.  LINES
+DON'T COUNT. If you draw in corners just to set the bounding
+box, make them small boxes.  
+
+In all cases, all area on <input layer> outside of the bounding box
+is not counted in the MIN_FILL calculations.  If there is
+a MIN_FILL violation, the bounding box used is output along with 
+the error message on the <output layer>.
+
+     <border spec> set margins around the chosen bounding box.
+These margins default to zero.
+     
+     MARGIN [=] <distance> adds a non-negative margin around the
+bounding box.  MARGIN = 0 is the default.
+
+To specify different margins on various edges, use the syntax:   
+     LEFT_MARGIN [=] <distance>
+     RIGHT_MARGIN [=] <distance>
+     TOP_MARGIN [=] <distance>
+     BOTTOM_MARGIN [=] <distance>
+You must use all four parameters or none.
+------------------------------------------------------------------
+Version 113.98:
+Fixes bug in MIN_FILL that caused some errors to be counted twice.
+------------------------------------------------------------------
+Version 3.49, 113.97:
+Fixes bug in MIN_FILL.  A necessary condition for the bug was
+that the input layer was not an input from the chip.
+------------------------------------------------------------------
+Version 3.48, 113.96:
+Fixes bug introduced in versions 3.47 and 113.95, involving ATTACH_TEXT.
+------------------------------------------------------------------
+Version 3.47, 113.95:
+1)  Fixes bug in the rules compiler that led to information being
+overwritten.  This was NOT a crash-or-run-right bug.
+Necessary conditions for the bug were:
+   --The same scratch layer name was reused for different purposes.
+   --The scratch layer mentioned above was used more than once
+in operations performed in subcells.
+
+Sufficient conditions were more complicated.
+
+2) Fixes unhelpful error message in BRIDGE operations.
+------------------------------------------------------------------
+Version 3.46
+There are two changes:
+
+1) Fixes bug in rules compiler that allowed a layer to be
+altered after being used to stamp another layer.
+
+2) Requires a minimum memory to run.  This defaults to 32 Meg.
+
+You can override this minimum memory requirement in 2 ways:
+    -Use the HOG parameter to specify the memory allocation directly.
+    -Use the new MIN_MEMORY specification.
+
+The MIN_MEMORY specification changes only the minimum memory required.
+The actual amount of memory allocated depends on the system and may
+be quite a bit larger.
+
+MIN_MEMORY can be specified in 2 ways.  
+    -On the command line.
+    -In the rules file.
+In either case the syntax is:
+MIN_MEMORY=<memory, in Meg>
+
+This is an attempt to stop the confusing error messages that
+occur when someone attempts to run the DRC with very little
+memory.  (Of course, this won't help if the program is run with
+too little memory to get to the check.)   
+Version 113.94
+
+There are five changes.  The first two are the same as for the
+released version, discussed above.
+
+1) Fixes bug in rules compiler that allowed a layer to be
+altered after being used to stamp another layer.
+
+2) Requires a minimum memory to run.  This defaults to 32 Meg.
+
+You can override this minimum memory requirement in 2 ways:
+    -Use the HOG parameter to specify the memory allocation directly.
+    -Use the new MIN_MEMORY specification.
+
+The MIN_MEMORY specification changes only the minimum memory required.
+The actual amount of memory allocated depends on the system and may
+be quite a bit larger.
+
+MIN_MEMORY can be specified in 2 ways.  
+    -On the command line.
+    -In the rules file.
+In either case the syntax is:
+MIN_MEMORY=<memory, in Meg>
+
+This is an attempt to stop the confusing error messages that
+occur when someone attempts to run the DRC with very little
+memory.  (Of course, this won't help if the program is run with
+too little memory to get to the check.)   
+
+3) Introduces "extent boxes."  These 2 new rules create bounding boxes
+on a result layer.  
+
+     A = EXTENT_IN
+set A as a bounding box for all the INPUT layers mentioned in
+the rules file, whether the layers are used in the rules or not.
+     Only boxes and polygons are use in setting the box; text
+and lines are not. 
+     This differs from input layer zero in that layer zero
+includes text, lines and layers not mentioned in the rules.
+ 
+     A = EXTENT(B)
+sets A as the bounding box of layer B.
+
+*** WARNING ***  
+    Suppose you have a statement like:
+        A = NOT B
+    What is the bounding box of A?  In the DRC, it is an
+arbitrary distance far enough from the edges of the original
+chip so no calculation touches the edges.  The program will
+allow you to use EXTENT(A), but it will not have any physical
+significance. 
+
+4) The MIN_FILL rule is revised to add an additional parameter.
+The problem was: minimum fraction of what area?  MIN_FILL used to
+always use the ICED cell bounding box.  This had no physical
+significance.  For example, it included text outside the actual
+chip.   Now there are options.  The new syntax is:
+
+    <output layer> = MIN_FILL {<input layer> [,] <minimum fraction filled> [,]
+       [<border spec>] [,]
+       [TEXT_SIZE = <text size for error messages, in ICED units>] [,] 
+       [XP = <panel size, X direction>] [,]
+       [DX = <Spacing between panel left edges>] [,] Must be <= XP
+       [YP = <panel size, Y direction>][,]
+       [DY = <Spacing between panel top edges>] [,]  Must be <= XP
+*** HERE is the new part:
+       [<bounding box option>]
+       }  
+
+The choices for <bounding box option> are:
+     ICED:     ICED cell bounding box, as before. This is used by default.
+     EXTENT_IN: bounding box of all input layers in the rule set.
+     SELF:     the bounding box of the <input layer>
+     EXTENT [=] <layer name>: the bounding box of some other layer. 
+     For example, you can draw the corners of the
+     bounding box you want to use on some other layer.  
+
+Remember: Except for the ICED option, TEXT DOESN'T COUNT.  LINES
+DON'T COUNT. If you draw in corners just to set the bounding
+box, make them small boxes.  
+
+In all cases, all area on <input layer> outside of the bounding box
+is not counted in the MIN_FILL calculations.  If there is
+a MIN_FILL violation, the bounding box used is output along with 
+the error message on the <output layer>.
+
+     <border spec> set margins around the chosen bounding box.
+These margins default to zero.
+     
+     MARGIN [=] <distance> adds a non-negative margin around the
+bounding box.  MARGIN = 0 is the default.
+
+To specify different margins on various edges, use the syntax:   
+     LEFT_MARGIN [=] <distance>
+     RIGHT_MARGIN [=] <distance>
+     TOP_MARGIN [=] <distance>
+     BOTTOM_MARGIN [=] <distance>
+You must use all four parameters or none.
+
+5) Introduces a SIDE_COUNT rule.  Syntax is:
+
+<output layer> = [NOT] SIDE_COUNT (<input layer> [,] 
+     N= <min sides> [:<max sides>] [,] <holes_type>
+     ) [NOT = <second output layer>]
+
+Polygons are classified by the number of sides.  Remember that
+overlapping shapes are merged before the rules are processed.
+
+At most one NOT can be used.
+
+If <max sides> is not given, it is assumed equal to <min sides>.
+
+<holes_type> specifies how polygons with holes are treated.  Choices are:
+    NO_HOLES: polygons with holes are always in the NOT catagory.
+    IGNORE_HOLES: holes are ignored; sides in the outer perimeter are counted.
+    INCLUDE_HOLES: sides in outer perimeter and holes are counted.
+
+------------------------------------------------------------------
+Version 113.93
+--Fixes bug in rules compiler that allowed illegal NODE rule syntax.  (The DRC
+would later crash.)
+--The NODE rule (see Version 113.84 in this file) now allows wild card node
+names.  Wild card rules are the same as wild card rules elsewhere in the
+program. 
+*********WARNING:  There is in incompatibility with earlier versions.  The
+characters "*" and "|" can no longer appear in node names.
+--A NODE_WITH rule, similar to the NODE rule, is added. Syntax is
+     <output layer> = NODE_WITH(<needed layer>, <input layer>);
+All polygons and text in <input layer> on the same nodes as a <needed layer>
+polygon are copied to <output layer>.
+------------------------------------------------------------------
+Version 3.45, 113.92
+    Changes maximum subcell depth from 16 (an old ICED limit) to 36 (the 
+current ICED limit).
+------------------------------------------------------------------
+Version 3.44, 113.91
+     Increases maximum number of layers (including scratch) used in rule set to
+5000. 
+     Fixes bug in which overlap by sharp points was sometime not detected.
+------------------------------------------------------------------
+Version 3.43, 113.90
+Fixes bug in rules compiler that garbled the .TAG file.
+Version 113.90 only: blocks use of BLOATXY and SHRINKXY rule introduced in
+version 113.72.  These were found to have a bug.
+------------------------------------------------------------------
+Version 3.42, 113.89
+1)  Fixed bug in STAMP rules when items stamped were not in main cell.  The
+fix forces the FLATTEN option when a STAMP is in the rule set.  This can be
+costly in disk space with large chips.  A future release will use a more
+efficient algorithm.
+2)  Fixed error in acute angle warning tag and mislabeled STAMP rule tags. This
+did not effect any actual answers, but caused confusion when looking at errors
+in ICED. 
+------------------------------------------------------------------
+Version 3.41, 113.88
+Bad attempt at 3.42 and 113.88, above.
+------------------------------------------------------------------
+Version 113.87
+     Classifies polygons by number of vertices.  The Syntax is:
+         <output layer 1> = [NOT] VERTEX_COUNT(<input layer>, 
+            <min vertices[:<max vertices>]) [NOT = <output layer 2>]
+
+    Polygons in the input layer are copied to one of the output layers
+according to the number of vertices in the polygon.  As usual, only one of the
+optional NOTs may be used in any one rule.
+     If the maximum vertex count is not used, it is the same as the minimum.
+Examples:
+     B = VERTEX_COUNT(A, 3) 
+Sets B as all the triangles in A.
+     B = NOT VERTEX_COUNT(A, 3:4) 
+Sets B as all the polygons in a which do NOT have 3 or 4 vertices.
+     B = VERTEX_COUNT(A, 10:1000000) NOT = C 
+Sets layer B to all polygons in A with between 10 and a million vertices and
+layer C to polygons on A with 9 or fewer vertices.
+
+     Polygons are physical polygons.  All overlapping polygons (including those
+in different sub-cells) are merged before the count is made.  If the polygon
+has holes, the vertices defining the holes do count.
+------------------------------------------------------------------
+Version 3.40, 113.86
+    Fixes rules compiler bug which allowed CONNECT rules after a STAMP rule and
+would sometimes do a STAMP before all the connections were done.
+Version 3.39, 113.85
+    Fixes rules compiler bug which allowed layers with error wires (for
+example, the output of a MINSPACING rule) to be used on the right side of an
+= sign.  Such layers were later treated as empty by the DRC.
+------------------------------------------------------------------
+Version 3.38, 113.84 (There was no version 113.83)
+    1) Fixes bug involving the NOT of layers with polygons touching the edge of
+the main cell.  The is NOT a crash-or-run-right bug.  Loss of data, and
+overlooking errors, was possible.
+    2) Fixes crash-or-run-right bug in rules compiler.
+----------
+Version 113.84 Only
+    Adds processing based on text labels.  This is the first time the DRC
+has considered text on the chip.  New rules are:
+     <output layer> = NODE("<label>", <input layer>);
+The quotation marks are required.
+     The output layer consists of all polygons from layer <input layer> on a
+node labeled "<label>".  The label can be anywhere on the node, not necessarily
+the <input layer>.
+     Note that this is a subset of the syntax allowed for the NLE NODE rule.
+Example:
+     This uses the NODE rule to check the distance between power and ground
+wires:
+GROUND_WIRE = NODE("GND:", WIRES);
+POWER_WIRE = NODE("PWR:", WIRES);
+ERR= MINSPACING(POWER_WIRE, GROUND_WIRE, 10);
+
+     <output layer> = LABELED("<label>", <input label>);
+
+     The output layer consists of all polygons from layer <input layer> labeled
+with "<label>".  Note that "polygon" means a physical polygon.  See the
+definition of "same polygon" below.
+Example: HAS_LABEL = LABELED("HERE:", A);
+
+     <output layer> = SAME_POLYGON((<x>, <y>), <input layer>)
+     Polygons that form the same polygon with a polygon and (x,y) on <input
+layer> are output.  "Same polygon" means overlapping or touching along a
+non-zero interval.  (Like colored squares on a checkerboard do not form the
+same polygon). In a complex chip, where a polygon may be split by construction
+lines, and part may be in subcells, it is not always easy to see which polygons
+are actually the same physical polygon.
+Example: EXTENDED_POLYGON = SAME_POLYGON((75, 90), A);
+
+     All 3 rules have two optional NOT parameters, of which at most one can be
+used on a single rule.  The syntax is the same as, for example, the TOUCHING
+rule. 
+
+Examples:
+     NO_LABEL = NOT LABELED("HERE:", A);
+All polygons on layer A NOT labeled with "HERE:" are copied to layer NO_LABEL
+
+     GROUND_WIRE = NODE("GND:", WIRES) NOT = NOT_GROUNDED;
+All polygons on layer WIRES on nodes labeled "GND:" are copied to GROUND_WIRE;
+all other polygons on WIRES are copied to NOT_GROUNDED;
+
+** THIS FEATURE IS IN EARLY BETA TEST.  CHECK YOUR ANSWERS AS FAR AS POSSIBLE **
+------------------------------------------------------------------
+Version 3.37
+     1) Fixes crash-or-run-right bug in rules compiler.
+     2) Executable names have changed.  This is to clear up confusion between
+current names and documentation, some of which dates back to the DOS version.
+the names are:
+     Old           New
+     ------------  ------------
+     D3RUL-NT.EXE  D3RULES.EXE
+     DRC3-NT.EXE   DRC3.EXE
+Dummy routines with the old name (which just call the new names) are available
+from IC Editors.
+------------------------------------------------------------------
+Version 113.82
+1) Executable names have changed.  This is to clear up confusion between
+current names and documentation, some of which dates back to the DOS version.
+the names are:
+     Old           New
+     ------------  ------------
+     D3RU-NTX.EXE  D3RULESX.EXE
+     DRC3-NTX.EXE  DRC3X.EXE
+Dummy routines with the old name (which just call the new names) are available
+from IC Editors.
+
+2) The MIN_FILL operation is extended to check that each "panel" meets the
+minimum fill criteria.  The new parameters are optional; if they are not used,
+the MIN_FILL operation reverts to the previous version.  The panels discussed
+in this rule are completely independent of the panel size used by the DRC.
+They don't have to be the same size.  The program will figure it out.
+** THIS FEATURE IS IN EARLY BETA TEST.  CHECK YOUR ANSWERS AS FAR AS POSSIBLE **
+
+The New syntax is:
+(as before)
+    <output layer> = MIN_FILL {<input layer> [,] <minimum fraction filled [,]
+        [<border spec>]
+(new and optional)
+        TEXT_SIZE = <text size for error messages, in ICED units>  If this is
+not given, the program will work something out, as before.
+       XP = <panel size, X direction>
+       DX = <Spacing between panel left edges>  Must be <= XP
+       YP = <panel size, Y direction>
+       DY = <Spacing between panel top edges>  Must be <= XP
+All or none of XP, DX, YP, DY must be given.
+(closing }, as before)
+       }  
+The relationship between XP and DX (and YP and DY) may require further
+explanation.  In general, the panels can overlap.  You can check that every 100
+by 100 panel meets the MIN_FILL requirement, but start the panels every 50
+units. If the chip is not an even number of panels, the right hand column of
+panels (and the bottom row of panels) will have a right (or bottom) edge along
+the right edge (or bottom) of the chip, thus overlapping the previous column
+(or row) more than usually.
+
+Example:
+     XP=100, DX=50, Chip left=0, Right=210;
+Columns of panels are
+     Left  Right
+     ----  -----
+       0   100
+      50   150
+     100   200
+     110   210     
+
+
+In the old version, any error messages were written on the lower left corner of
+the chip.  Now, for the new form, that will be written at the lower left corner
+of the effected panel.  In addition, there will be an outline of the erroneous
+panel on the error layer. 
+------------------------------------------------------------------
+Version 3.36, 113.81
+     Fixes bug involving HOLE_AREA_FRACTION in which data could be lost when
+output was used as input to further rules on the same pass.
+     This was NOT a crash-or-run-right bug.  Inconspicuous loss of data was
+possible.     
+------------------------------------------------------------------
+Version 3.35, 113.80
+1)  Fixes bug involving INCELL input layer specification in rules files.  This
+was NOT a crash-or-run-right bug, but the results were likely to be
+spectacularly wrong.
+2)  Fixes bug in OFF_GRID rule which caused false alarms at panel boundaries.
+3)  Fixes display problem with Windows XP and LONGCASE command line option.
+------------------------------------------------------------------
+Version 3.34, 113.79
+Changes maximum number of scratch directories to 50.  This allows for up to
+200 Gig total scratch files.
+------------------------------------------------------------------
+Version 3.33, 113.78
+     Fixes bug involving MIN_FILL rul and panel size.  This was a 
+crash-or-run-right bug.
+     Fixes crash-or-run-right bug in rules compiler.
+------------------------------------------------------------------
+Version 3.32, 113.77
+Fixes bug that lost errors if a large number of unflattened cells was combined
+with a large panel border.
+------------------------------------------------------------------
+Version 3.31, 113.76
+Fixes bug that sometimes allocates too little memory if the USE parameter
+is used instead of the HOG parameter.  This was a crash-or-run-right bug.
+------------------------------------------------------------------
+Version 113.72
+Introduces anisotropic BLOAT/SHRINK.  The syntax is:
+                 SHRINKXY
+<output layer> = BLOATXY  (<input layer>, <bx>, <by>)
+
+where <bx> and <by> are the bloats (or shrinks) in the X and Y directions.
+
+Vertical sides are bloated <bx>.
+Horizontal sides are bloated <by>.
+
+Slant sides are bloated by b = sqrt((<bx>cos(A))**2 +(<by>sin(A))**2)
+where A and the angle between a perpendicular to the side and the X axis.
+------------------------------------------------------------------
+Version 3.30, 113.71
+The command NO_LOG_ACUTE suppresses the description to acute angle output on
+the log (.DLO) file.  Acute angles are still marked with error wires.
+------------------------------------------------------------------
+Version 3.29, 113.70
+Fixes bug which can cause the whole chip not to be processed in run with more
+than 20 passes.  This was NOT a crash-or-run-right bug.
+------------------------------------------------------------------
+Version 3.28, 113.69
+Fixes bug involving large number of panels.  This was NOT a crash or run right
+bug.  Errors could be missed along the edge of the chip.
+------------------------------------------------------------------
+Version 3.27:
+1) Fixed output bug in which rules file output sometime contained empty
+connection groups.  This was a cosmetic problem; answers were not affected.
+2) Copy protection change allowing the use of HASP dongles with the NT version.
+3) Eliminates false warning message about panel size.  This did not effect
+answers.
+------------------------------------------------------------------
+Version 113.68
+1) Minor adjustment in ICED interface. (Windows version only.)
+2) Wire width in .CMD output can now be specified.
+    The syntax is:
+    WIRE_WIDTH = <value>
+This can appear in the .RUL file or the command line.
+3) Constants can now appear in E format. Example: 1.5E3 for 1500.0
+Some rules:
+    No blanks in number
+    Number must begin with a digit. Example: 1.E3, NOT E3
+------------------------------------------------------------------
+Version 3.26
+1) Minor adjustment in ICED interface. (Windows version only.)
+2) Wire width in .CMD output can now be specified.
+    The syntax is:
+    WIRE_WIDTH = <value>
+This can appear in the .RUL file or the command line.    
+------------------------------------------------------------------
+Version 3.25, 113.67:
+1) Adds "OBSOLETE" command line parameter to run DRC with old version of ICED.
+2) Allows panel size specification on DRC command line.
+3) Fixes crash-or-run-right bug involving large number of passes.
+4) Allows PAUSE on rules command line.
+------------------------------------------------------------------
+Version 3.23, 113.66
+1)  Allows /~CONN or /CONN option in MIN_SPACING rules to be used on stamped
+layers. 
+2)  Fixes bug which could cause infinite loops if some rules were run on a
+subset of the chip.
+3)  Fixes crash-or-run-right bug involving slant line intersection panel
+boundaries. 
+4)  Fixes bug in which "construction lines" used to split up polygons with too
+many vertices were not on CUT_RESOLUTION.
+------------------------------------------------------------------
+Version 113.65
+Adds away angle.  See separate documentation.
+This new capability required a change in the MIN_SPACING algorithm.  CHECK ALL
+MIN_SPACING RESULTS AGAINST PERVIOUS VERSIONS OF THE PROGRAM.
+------------------------------------------------------------------
+Version 3.22
+1)  Fixes bug in stamp rule, having to do with item in higher level cell being
+stamped by subcell.  This was NOT a crash-or-run-right bug.
+2)  Fixes crash-or-run-right bug in which memory was not deallocated properly.
+------------------------------------------------------------------
+Version 3.21
+Fixes bug in which the DOS version outputs Windows version data in the output
+.CMD file.  The Windows version is not affected, but the version number is
+changed for consistency.
+------------------------------------------------------------------
+Version 3.20
+     Fixes bug INPUT LAYER .. NOT INCELL specification.
+     This was NOT a crash-or-run-right bug, but the results are so obviously
+wrong it was unlikely to be overlooked.
+------------------------------------------------------------------
+Version 3.19
+Fixes 2 bugs found in DANGER specifications:
+--When bloats in subcells were done dangerously, the border of the main cell
+could be corrupted, resulting in incomplete processing.
+--DANGER_LAYER specifications could be ignored.
+------------------------------------------------------------------
+Version 3.18
+Fixes bug in BLOAT/SHRINK
+------------------------------------------------------------------
+Version 3.17
+Fixes bug in STAMP rule.
+------------------------------------------------------------------
+Version 3.16
+Fixes bug in DRC_PATH  (This was a crash-or-run-right bug.)
+------------------------------------------------------------------
+Version 3.15
+    Fixes bug in which MIN_FILL did not work for the DOS version.  The NT
+version is not affected.  However, the NT version number is changed to keep
+version numbers consistent.
+------------------------------------------------------------------
+Version 3.14
+
+     The default panel size is changed.  In previous versions, not entering
+PANEL_X and PANEL_Y caused the DRC to process the chip as one panel.  With
+large chips, this resulted in panel failures and/or very long running time,
+causing numerous technical support calls from people who apparently didn't
+read the manual section on panel size.  A new way of specifying panel size is:
+     PANEL_VERTICES = <n>
+Where n is the APPROXIMATE number of input vertices per panel per megabyte of
+memory used as "main memory". n defaults to 5000, eliminating the unfortunate
+behavior when nothing about panel size is specified IN MOST CASES.  However,
+manual intervention may still be required.
+     By default, "main memory" is half the memory available, to a maximum of
+128 Meg. 
+     This modification is not intended to improve on carefully optimized panel
+sizes; just to provide a reasonable default.  However, you might try the
+default if:
+          --You optimized your panel size some time ago, using a computer with
+     less memory than you are using now.
+          --You are dealing with a design with a different density than you are
+     used to, and you don't know where to start.
+However, understand that the default may be just a starting point for a new
+optimization.
+------------------------------------------------------------------
+Version 3.13
+Fixes bug that caused rules compiler to reject stamp rules.
+
+Fixes bug the causes /LENGTH parameter in MIN_NOTCH rule not to print on .RLO
+file.
+
+Fixes bug that sometimes crashed while printing DANGER messages.
+------------------------------------------------------------------
+Version 3.12
+Brings beta test improvements up to version 113.64 into released version.
+------------------------------------------------------------------
+Version 113.64
+Same bug fixes as 3.11, below.
+------------------------------------------------------------------
+Version 3.11
+Fixes bug involving connections between subcell and main cell.  This was NOT a
+crash-or-run-right bug, although it apparently seldom occurs in practice.
+Necessary conditions are:
+     --There is a rule of the form CONNECT A B BY C
+     --There are panels in which layer A or B (but not both) are empty.
+     --Layer C is later used in a MIN_SPACING check.
+     
+Fixes bug in which an error file can be overwritten if there are bad polygons
+in both the main cell and a subcell.
+------------------------------------------------------------------
+Version 113.63
+Introduces a MIN_FILL rule.
+
+This rule states that a specified fraction of a specified layer must be filled
+in; that is, occupied with polygons.
+The syntax is:
+    <output layer> = MIN_FILL {<input layer> [,] <minimum fraction filled [,]
+        [<border spec>]
+        }
+     
+Since there is no particular polygon to mark as an error, the error output will
+be text at the lower left corner of the chip.  Errors will also be mentioned in
+the log (.DLO) file.
+
+In specifying a fraction of area, the question arises as to what area.  That is
+the border spec, and which may be specified 3 ways: 
+    
+     1) By default, the area is the chip, as determined by ICED.
+
+     2) MARGIN [=] <distance> means add a non-negative margin around the cell
+boundaries. MARGIN = 0 is equivalent to the default.
+     
+     3) LEFT_MARGIN [=] <distance>
+        RIGHT_MARGIN [=] <distance>
+        TOP_MARGIN [=] <distance>
+        BOTTOM_MARGIN [=] <distance>
+adds margins of different widths at each edge.
+     
+Example:
+INPUT LAYER 1 A;
+OUTPUT LAYER 99 ERR;
+
+ERR = MIN_FILL {A, .5, MARGIN 2}
+ALL_SAFE
+------------------------------------------------------------------
+Version 113.62
+"Rough draft" of 113.63, above
+------------------------------------------------------------------
+Version 113.61
+Fixes bug in rules program that allowed the meaningless parameters /DET and
+/LENGTH in MAX_SPACING rules.
+------------------------------------------------------------------
+Version 113.60
+Introduces a new syntax rule for continuation lines.  
+
+A line ending with " &" marks the next line as a continuation of the current
+line.  This makes splitting a line valid, even if when the rules require
+something be written on one line.  
+
+Details:
+     The "&" must be a word by itself.  That is, it must be separated by at
+least one blank from the preceding part of the line.
+     The & must be the last non-blank, non-comment character on the line.  
+An ! (making the rest of the line a comment) IS allowed after the &.
+     After encountering a continuation &, the rules program skips over blank
+and comment lines to find the next line of data, which is considered the
+continuation. 
+
+Examples:
+
+INPUT LAYER 1 A; & 2 B;
+--ILLEGAL, the & must be the last non-comment character.
+
+INPUT LAYER 1 A; 2 B&
+--ILLEGAL, there must be a blank before the &      
+
+INPUT LAYER 1 A;
+OUTPUT LAYER 3 C; 4 D;
+C = IS_BOX(A, (4,5)) & !This is legal, although the rules syntax requires 
+!the trailing NOT on the same line as the closing )
+
+!and there are both blank and comment lines intervening.  
+NOT = D;
+ALL_SAFE
+
+------------------------------------------------------------------
+Version 3.10
+Fixes warning spurious-error-or-run-right bug in rules program.
+
+The default for flagging acute angles in output layers
+(which may give trouble in mask making) is changed.  Previous
+versions defaulted to no flagging.  The new version defaults to
+flagging acute angles in output on layer 99.
+
+NO_WARN_ACUTE in the rules files suppresses flagging acute angles.
+
+WARN_ACUTE = 0 means acute angles in output are described in the
+log (.DLO) file, but not flagged in the output .CMD file.
+------------------------------------------------------------------
+Version 3.09, 113.59:
+Fixes error that caused crash if an auxiliary file is in a directory containing
+blanks.  This was a crash-or-run-right bug.  Only Windows versions are
+effected.
+------------------------------------------------------------------
+Version 113.58:
+Fixes  spurious-error-or-run-right bug in rules program.  Only beta test 
+versions were effected.
+------------------------------------------------------------------
+Version 3.08, 113.57:
+Fixes failure to detect obsolete .BB file.  This was a mysterious-error-or-
+run-right bug effecting only running DRC from within ICED.
+------------------------------------------------------------------
+Version 113.56:
+Fixes crash-or-run-right false error message in rules program.
+Fixes bug involving running DRC from within ICED.
+------------------------------------------------------------------
+Version 3.07
+Fixes crash-or-run-right false error message in rules program.
+------------------------------------------------------------------
+Version 3.06
+Fixed crash-or-run-right involving bounding boxes for empty cells.
+------------------------------------------------------------------
+Version 113.55:
+Extensive changes for working with ICED in-line capabilities.  Using the new
+capabilities requires ICED version 4.63 or higher.  (Older versions will still
+work; they just can't use the new capabilities.)
+
+Fixed crash-or-run-right involving bounding boxes for empty cells.
+
+Version 113.54:
+Changes are:
+
+     1)  A crash-or-run-right bug involving cross-panel results
+is fixed.  The run may still abort, but the will be a coherent
+error message with instructions on how to adjust the command
+parameters.
+
+     2) The windows version now uses the system virtual memory.
+
+     3) The default for the FILE_SIZE parameter is changed.
+
+     4) The default for handling acute angles is changed.
+
+     5) Changes to the output .CMD file, to improve interface
+with ICED.
+
+Details:
+
+     1) Crash-or-run-right bug.
+     After recognizing devices panel by panel, with some shape
+recognition rules, the DRC must deal polygons the cross panel
+boundaries separately.  The DRC tries -- usually successfully --
+to deal with all the cross-panel polygons at once.  If the DRC
+is run with too little memory, it must abort.  (The old version
+gave a confusing error message.)
+
+     If you encounter this abort, do one or more of the following:
+     --FIRST, check to see if the free memory given near the top of your log
+file is as much as you would expect given the memory in your machine.  If not,
+reboot and/or exit all other tasks if you are in a multi-tasking OS.
+     --In Windows, increase the HOG parameter on the command line.  
+     --Use the command line parameter MULTI_REPASS. This is new parameter.  It
+tells the program to handle inter-panel repasses by doubling the panel area
+(again and again until the "panel" is the whole chip.  Hence MULTI_REPASS.)
+     --In the windows version, use the HOG parameter to use more system virtual memory. 
+     --Use the command line parameter MAIN_MEMORY =<x>, where <x> is something
+over .5, to allocate more memory for computation and less memory for avoiding
+disk swaps.  (.5 is the default.)    For machines with more than 256Meg, you
+also need to set MAIN_HOG to something more than 128. 
+
+
+     2) System virtual memory.  (Windows version only.)   THIS
+IS INCOMPATIBLE WITH QEMM.   The behavior of the HOG parameter has changed. By
+default, the program allocates no more than the physical memory available when
+it starts, and uses disc swapping to store data out of memory.
+     The command line parameter HOG = <memory to be used, in Meg> allocates the
+value given, whether physical memory is available or not.  A large HOG is not
+necessarily "free."  It is not yet known whether the system's virtual memory
+makes for faster or slower runs than the DRC's own disk swapping scheme.
+     The new command line parameter NO_VIRTUAL_MEMORY reverts the program to
+the old version's behavior.  This is for QEMM, or if you discover some other
+reason the new version doesn't work.  (If the latter, TELL US.)
+
+     3)  The FILE_SIZE parameter gave the maximum total scratch files size the
+program initialized itself the handle.  (If you use multiple scratch
+directories, this would be the sum of the sizes of all the scratch files.)
+     The old default was 2000 Meg.  The new default is 2048*<n>, where <n> is
+the number of directories in the SCRATCH command line parameter.  As before,
+the default may be overridden with FILE_SIZE = <value, in Meg> on the command
+line. 
+
+     4)  The default for flagging acute angles in output layers
+(which may give trouble in mask making) is changed.  Previous
+versions defaulted to no flagging.  The new version defaults to
+flagging acute angles in output on layer 99.
+
+NO_WARN_ACUTE in the rules files suppresses flagging acute angles.
+
+WARN_ACUTE = 0 means acute angles in output are described in the
+log (.DLO) file, but not flagged in the output .CMD file.
+
+     5) Output CMD changes.
+     The output .CMD file gives the command VIEW OFF and LOG
+SCREEN OFF at the beginning (and turns both back on at the end.)
+This greatly speeds up incorporating large .CMD files in a cell.
+
+     Global macros are defined which simplify calling the DRC from
+within ICED.  ICED version 4.63 or higher is required.  (The
+.CMD will work with earlier versions of ICED; you just won't be
+able to use the new capabilities.)
+
+------------------------------------------------------------------
+Version 113.53:
+Version 3.05:
+Internal changes for new copy protection method.   These changes
+are invisible to the user in the DOS version.  They are
+invisible in the Windows version to those not using the new copy
+protection method.
+------------------------------------------------------------------
+Version 113.52:
+Fixes bug described in version 3.04 in the beta test version.
+Version 3.04
+Fixes bug in which errors were not computed after MAX_COUNT, even though the
+program  kept running.
+------------------------------------------------------------------
+Version 113.51:
+Fixes bug described in version 3.03 in the beta test version.
+------------------------------------------------------------------
+Version 3.03
+Fixes bug involving electrical connections between subcells.
+
+This is NOT a crash-or-run right bug.  It apparently seldom occurs, since it
+evaded detection so long.  The result can be either missed errors or spurious
+errors.  (The latter is how it came to be discovered.)
+
+NECESSARY conditions for the bug to appear are a connection rule involving
+layers generated on different passes of the DRC or NLE for example:
+
+CONNECT A B BY CONTACT
+
+where A was generated on pass 1 and B was generated on pass 3.
+
+Sufficient conditions are more complicated.
+
+The expanded INCELL specification of version 113.50 are still in beta test and
+is NOT included in this version.
+------------------------------------------------------------------
+Version 113.50:
+Three things:
+1) Change in file naming conventions for beta test versions.
+2) Fixes crash-or-run-right bug, requiring change in default behavior.
+3) Expended INCELL specification for input layers.
+
+Details:
+
+1)  Staring now, Version 3.xx will be the released version of DRC3.  Version
+1x3.xx will be the beta test version.
+
+The files for the beta test versions will be named D3RULESX, DRC3X, D3RU-NTX,
+and DRC3-NTX for the DOS and NT versions.  This will allow users to keep both
+the released and beta test versions on the same machine.
+
+2) Fixes crash-or-run-right bug involving air bridges.
+
+Fixing this bug required a change in the default operation of the program,
+which should be invisible to most users.
+
+Air bridge recognition has a tolerance parameter, which gives permissible
+misalignment between components that are SUPPOSED to touch along an edge.   IN
+PREVIOUS VERSIONS this defaulted to zero.  IN THE NEW version, it defaults to a
+"smoothing tolerance" computed by the program.  This is usually .001 ICED
+units, but can be larger for very large chips.  The command line parameter
+SHOW_SCALES will print the smoothing tolerance on your log (.DLO) file. 
+
+3)  The INCELL specification for INPUT LAYER has be expanded to up to 50 
+multiple specifications.  
+
+The syntax:
+     INPUT LAYER <iced layer number> NOT INCELL <cell specification> <layer name>
+Is unchanged from the previous version.
+     
+The new syntax is:
+     INPUT LAYER <iced layer number> INCELL <cell specification 1> <layer name>
+[INCELL <cell specifications> <layer name> .. (up to a total of 50  
+specifications)] [NOT  <cell specification> <layer name>]
+
+Example:
+    INPUT LAYER 1 INCELL A* A INCELL *B* B NOT C;
+
+Input layer 1 will be divided as follows:
+     Layer 1 from all cells beginning with A will go to DRC layer B
+     Layer 1 from all cells with a B somewhere in the name will go to 
+DRC layer B
+     The rest of layer 1 in the chip will go to DRC layer C.
+
+     Layer 1 from, for example, AB, will go the DRC layer A, the first
+specification AB meets.  A warning message will be printed on the log (.DLO)
+file as follows:
+
+*****WARNING*****WARNING*****WARNING*****WARNING*****WARNING***
+*****WARNING*****WARNING*****WARNING*****WARNING*****WARNING***
+*****WARNING*****WARNING*****WARNING*****WARNING*****WARNING***
+Cell AB meets multiple IN_CELL specifications for ICED layer 1.
+Layer A from spec A* will be used.
+    Also meets specification *B* for layer B.
+
+------------------------------------------------------------------
+Version 3.02:
+
+     Fixes bug that allowed SHRINK operations to be done in flattened
+sub-cells, where they should have been done in the main cell.  This was NOT a
+crash-or-run-right bug, although no errors are known to have been caused by it.
+(Wrong answers would require shrinking an object with a sharp-pointed notch in
+just the wrong place.  The bug was discovered while examining code due to
+another problem.)
+
+     Generates a warning message when the HIERARCHICAL command line parameter
+is used with rules and/or command line parameter that at least partly negates
+the hierarchical output.
+
+------------------------------------------------------------------
+Version 3.01:
+Version 3 becomes the released (rather than beta test) version.  Functionally
+the same as 113.49.
+------------------------------------------------------------------
+Version 113.49:
+Fixes crash-or-run right bug involving dangerous operations.
+------------------------------------------------------------------
+Version 113.48:
+
+Allows for very long command lines under Windows 95/98/NT
+
+Allows @MAIN for the main cell in the IN_CELL specification for INPUT LAYERS.
+------------------------------------------------------------------
+Version 113.47:
+
+Fixes bug that crashed if MAX_SPACING rule was used on an empty layer.  This
+was a crash-or-run-right bug.
+
+Adds command line parameter PAUSE.
+    PAUSE = ALWAYS means the DRC pauses and waits for a <Return> after
+termination. 
+    PAUSE = CRASH  means the DRC pauses and waits for a <Return> after
+an abnormal termination.  
+    PAUSE = NEVER (default) means no pause. 
+------------------------------------------------------------------
+Version 113.46:
+
+Fixes bug that sometimes produced massive output on .DLO file.  This was a
+fill-up-your-disk or run right bug.
+------------------------------------------------------------------
+Version 113.45:
+
+1)  Fixes bugs in shrink/bloat operations.  The bugs were:
+    a)  When small figures or holes with 45 degrees angles were shrunk or
+bloated out of existence, a "phantom" figure or hole appeared nearby.  This was
+NOT a crash-or-run-right bug.
+    b)  When sharp points were blunted for shrink or bloat, the distance from
+the point to the flattened edge was further than the shrink distance.
+
+2)  Fixes what was APPARENTLY a crash or run right bug, involving
+mis-addressed memory.
+--------------------------------------------------
+Version 113.44:
+Experimental only.  Not released.
+----------------------------------------------------------------
+Version 113.43:
+
+1)  Fixes bug in MIN_SIDE rule.
+
+2)  Fixes bug in rules compiler that allowed FLATTEN{} or NOFLATTEN{} with no
+cell names.
+----------------------------------------------------------------
+Version 113.42:
+Experimental only.  Not released.
+----------------------------------------------------------------
+Version 113.41:
+
+1)  Fixes two bugs that cause spurious discontinuities at panel boundaries.
+There were NOT crash-or-run-right bugs, but apparently appeared very seldom.
+
+2)  Fixes bug that sometimes caused layer not to be read when running a subset
+of rules. (DO=... on command line.)  The bug occurred when the layer in
+question appeared only as the 3rd input layer on a CONNECT rule.
+
+----------------------------------------------------------------
+Version 113.40:
+
+The NT/W95/W98 version 113.39 functioned under W95/W98 but not NT.  DOS version
+is the same as 113.39
+
+----------------------------------------------------------------
+Version 113.39:
+
+1)  The DOS version aborts with a meaningful error message when confronted
+with long file names.  The NT/W95/W98 version allows long file names.
+
+2)  Fixes problem in which one error layer is sometimes not labeled an error
+layer.  Output was not effected; just the tabulation at the end of the .DLO
+file. 
+
+----------------------------------------------------------------
+Version 113.38:
+
+1)  Fixes bug that caused .POK files to be misread when .POK file was generated
+from a subcell, and/or subcells had recently been deleted.  This bug had been
+present in Versions 113.35 to 113.37.
+
+2)  Checks to prevent running DRC3 with .BB files from D3RUL-NT, or DRC3-NT
+with BB files from D3RULES.  (The .BB files are not compatible.  Previous
+versions gave a meaningless error message.)
+----------------------------------------------------------------
+Version 113.37:
+
+Crash-or-run-right bug fix.
+----------------------------------------------------------------
+Version 113.36:
+
+1)  Changes behavior of MAX_SPACING when polygon are exactly the parameter
+distance apart.
+
+2)  Clarifies error message if auxiliary file does not execute properly.
+
+3)  Minor changes in display behavior.
+
+4)  Minor code changes for compatibility with NT version.
+----------------------------------------------------------------
+Version 113.35:
+1)  Fixes bug that effected running the DRC from inside ICED.  This was a
+crash-or-run right bug.
+
+2)  Clarifies error message if auxiliary file not found.
+----------------------------------------------------------------
+Version 113.34:
+
+1)  Fixes bug that unnecessarily limited panel size in many cases.  Answers
+were not affected, but previous versions may have required smaller panels than
+the corrected version.
+
+2)  Fixed a crash-or-run right bug involving the SECOND_CELL parameter.  If you
+didn't see it, you have nothing to worry about.
+
+3)  Introduces 3 new rules:
+
+--------------MAX_SPACING
+
+The MAX_SPACING syntax is:
+
+<output layer 1> = [NOT] MAX_SPACING(<input layer 1>, <input
+layer 2>, distance) [NOT = <output layer 2>]
+
+At most one of the optional NOTs may be used.
+
+The syntax is best explained by simpler examples.
+
+Example 1:
+X = MAX_SPACING(A, B, 10.0)
+
+Layer X will be all polygons on layer A more than 10.0 units from any polygon
+on layer B.
+
+Example 2:
+X = NOT MAX_SPACING(A, B, 10.0)
+
+Layer X will be all polygons on layer A NOT more than 10.0 units from any
+polygon on layer B; that is 10.0 units of less from some polygon on B.
+
+Example 3:
+X = MAX_SPACING(A, B, 10.0) NOT = Y
+
+Layer X will be all polygons on layer B more than 10.0 units from any polygon
+on layer B.  Layer Y will be all polygons on layer B NOT more than 10.0 units
+from any polygon on layer B; that is 10.0 units of less from some polygon on B.
+
+All the options for MIN_SPACING may be used in MAX_SPACING.  Internally, the
+DRC finds polygons that fail the MIN_SPACING constraints; those that don't meet
+the MAX_SPACING criteria.
+
+
+-----HOLE FRACTION
+This rule classifies polygons by dividing the area covered by holes in the
+polygon by the area covered by its outline.  The constraint is that the
+resulting fraction falls in a certain range. 
+
+The syntax is:
+
+<output layer> = [NOT] HOLE_AREA_FRACTION(<input layer>, <min fraction>, 
+    <max fraction> [/BORDER=<border>]) [NOT =<second output layer>]
+
+The BORDER defaults to zero.
+
+If the BORDER is non-zero, it should be the longest dimension of anything in
+the input layer.  ANYTHING LONGER CAN BE MIS-CLASSIFIED AT A PANEL BOUNDARY.
+If the dimension is small, or other rules require a larger border, this way can
+be faster.
+
+Again, only one of the optional NOTs can be used.
+
+Example 1:
+
+X = HOLE_AREA_FRACTION(A, 0.1, 0.25)
+
+X is set to all polygons in A whose holes cover 1/10 to 1/4 of its outline.  
+
+Example 2:
+
+X = NOT HOLE_AREA_FRACTION(A, 0.1, 0.25)
+
+X is set to all polygons in A whose holes do NOT cover 1/10 to 1/4 of its
+outline.
+
+Example 3:
+
+X = HOLE_AREA_FRACTION(A, 0.1, 0.25) NOT =Y
+
+X is set to all polygons in A whose holes cover 1/10 to 1/4 of its outline.   
+Y is set to all polygons in A whose holes do NOT cover 1/10 to 1/4 of its
+outline.
+
+---------------IS_CIRCLE
+This rules find polygons that are (or are not) circles approximated by a
+polygon. 
+
+The syntax is:
+
+<output layer> = [NOT] IS_CIRCLE(<input layer> [,] 
+R= <min radius> : <max radius>[,]
+N= <min sides> [:<max sides>] [,]
+EPS = <tolerance> [,]
+[POLY_INSIDE] [POLY_OUTSIDE] [,]
+) [NOT = <second output layer>]
+
+At most one optional NOT may be used.
+
+Polygons are classified by whether they are circles whose radius is within a
+given range, approximated by a polygon of at least <min sides> sides.
+
+If max_sides is omitted, it is taken as very large. (2,147,483,647).
+
+Circles can be approximated by polygons drawn inside or outside the circle.
+POLY_INSIDE or POLY_OUTSIDE refer to which approximation is used.
+POLY_OUTSIDE, the default, is the way ICED approximates a circle.
+
+EPS is roughly the distance a point on the approximating distance can be from
+where is would be on a perfect circle.  It is important to use a range of radii
+and a non-zero EPS; grid resolution will almost always displace point a little.
+Something like X= IS_CIRCLE(A, R=5.0:5.0, N=8, EPS = 0) is unlikely to find
+anything.
+
+You may start is new line where ever there is an optional comma.  The
+second NOT, if used, must be on the same line as the ")".
+
+
+Example 1:
+
+X  = IS_CIRCLE(A , R=4.99: 5.01, N=8, EPS = .01)
+
+X will be all polygons on layer A that use at least 8 sides to approximate a
+circle of radius 4.99 to 5.01.
+
+Example 2:
+
+X  = NOT IS_CIRCLE(A , R=4.99: 5.01, N=8, EPS = .01)
+
+X will be all polygons on layer A that do NOT use at least 8 sides to
+approximate a circle of radius 4.99 to 5.01.
+
+Example 3:
+
+X  = IS_CIRCLE(A , R = 4.99: 5.01, N = 8, EPS = .01) NOT = Y
+
+X will be all polygons on layer A that use at least 8 sides to approximate a
+circle of radius 4.99 to 5.01.
+
+Y will be all polygons on layer A that do NOT use at least 8 sides to
+approximate a circle of radius 4.99 to 5.01.
+
+---------------------------------------------
+Version 113.33:
+
+Fixes crash-or-run-right bug.  If you didn't see it, you have nothing to worry
+about.
+
+---------------------------------------------
+Version 113.32:
+
+1) Changes on-screen progress report.  Current operations will no longer
+"flash by" quickly; progress report lines ending with "operation...",
+"Output", or "Connections" will be suppressed if:
+    --The number of panels in the cell times the number of rules in the rule
+set is 100,000 or more.  (10,000 in the future NT version.)
+    --It has been less than 2 seconds since the last report.
+
+This is because, in some very large cases with many panels, writing to the
+screen was taking a significant amount of time.   In a test case with 160,000
+panels and 17 rules, the "flash display" added 15 minutes to a 7 hour run.
+
+The 100,000 panels can be changed with "NO_FLASH_PANELS =<number of panels>" on
+the DRC command line.
+
+The 2 seconds can be changed with "DISPLAY_OPERATIONS =
+<min time between displays, in seconds>" on the DRC command line.
+
+"DISPLAY_OPERATIONS = 0" returns the display to previous versions.
+
+2) The RULES program produces a new output file, <rules root name>.TAG.  This
+file is for future improvements in ICED; ignore it for now.
+
+-------------------------------
+Version 113.31:
+
+1) Prints warning message, and asks whether to proceed, if the QUICKPASS
+option deletes BRIDGE, ISLANDS, TOUCHING, or OVERLAP rules. The question can be
+avoided with ALLOW_QUICK in the rules file or on the command line.
+
+2) Small code changes for compatibility with future Windows NT version.
+
+3) Internal checks on deallocating storage.
+
+4) Fixes bug in cleaning up that caused crashes after some panel failures.
+This was a crash-or-run-right bug; if you didn't see it, it didn't effect you.
+
+5) Improved intermediate data storage requires less disk swapping with very
+large  cells.
+
+6) By default, the memory used as "main memory" is now only 128 Meg for
+machines over 256 Meg.
+
+The DRC has always divided memory into "main memory", used for
+computations, and "swap memory", used to avoid disk swapping.  By default, the
+memory was divided half and half between both uses.  The can be changed with
+the command line parameter MAIN_MEMORY =<Main memory/total memory ratio>
+
+Starting with Version 113.31, main memory is restricted to 128 Meg by
+default.  (On machines with less than 256 Meg, it is still half the memory.)
+This can be changed with the command line parameter
+    MAIN_USE =<main memory, in K)
+or
+    MAIN_HOG =<main memory, in Meg>
+when MAIN_MEMORY and MAIN_USE give conflicting values, the lesser value will be
+used.
+
+
+-------------------------------
+Version 113.30:
+
+Fixes bug in deallocating storage that caused crashes on some cells.  This
+was a crash-or-run-right bug; if you didn't see it, it didn't effect you.
+
+-------------------------------
+Version 113.29:
+
+1) Maximum number of layers increased to 2100.
+
+2) Number of acute angle warnings given near end of .DLO file
+
+3) The line NO_RUL in the rules file serves the same purpose as the DRC3
+command line parameter NO_RUL
+
+4) INPUT layers not used in rules are checked for bad polygons, unless the
+line NO_CHECK_INPUT appears in the rules file.
+
+5) DRC3 and D3RULES allow USE =<memory, in Kbytes> in place of
+HOG =<memory, in Meg>.  This is for consistency with ICED.  Note that USE
+specifies memory in KILObytes, HOG in MEGAbytes.
+
+

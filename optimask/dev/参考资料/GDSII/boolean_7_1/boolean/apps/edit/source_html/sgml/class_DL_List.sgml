@@ -1,0 +1,358 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="YES"
+	DECLARATION="template &lt;class Dtype&gt; class DL_List"
+>
+
+<META-DATA>
+	<NAME>DL_List</NAME>
+	<AUTHOR>klaasje</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Wed Oct 20  9:03:04 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>stdlib.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>misc.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>gdsmes.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>_dl_itr.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> Template class DL_List class is the base class for implementing a double linked list. The Root node marks the begining and end of the list. The lists consists of nodes double linked with a next and previous pointer DL_Node The nodes are cyclic connected to the root node. The list is meant to be used with an iterator class, to traverse the nodes. More then 1 iterator can be attached to the list. The list keeps track of the number of iterators that are attached to it. Depending on this certain operations are allowed are not. For instance a node can only be deleted if there is only one iterator attached to the list. class </PARA>
+			<PARA> Dtype </PARA>
+			<PARA> Object contaning List Nodes</PARA>
+</DESCRIPTION>
+
+
+
+<FRIEND-CLASSES>
+	<FRIEND-CLASS><NAME>DL_Iter</NAME></FRIEND-CLASS>
+	<FRIEND-CLASS><NAME>DL_SortIter</NAME></FRIEND-CLASS>
+</FRIEND-CLASSES>
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DL_List()"
+		INLINE="NO"
+	>
+		<NAME>DL_List</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>!ConstructorConstruct a list object!tcarg class </PARA>
+			<PARA> Dtype </PARA>
+			<PARA> list object</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~DL_List()"
+		INLINE="NO"
+	>
+		<NAME>~DL_List</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>destructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Error(char* function,Lerror a_error)"
+		INLINE="NO"
+	>
+		<NAME>Error</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>function</NAME>
+				<DESCRIPTION><PARA>function string that generated this error</PARA></DESCRIPTION>
+			</PARAMETER>
+			<PARAMETER>
+				<NAME>a_error</NAME>
+				<DESCRIPTION><PARA>error code to generate a message for</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>Report off List Errors</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" int "
+		DECLARATION=" int count()"
+		INLINE="YES"
+	>
+		<NAME>count</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Number of items in the list</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" G_BOOL "
+		DECLARATION=" G_BOOL empty()"
+		INLINE="YES"
+	>
+		<NAME>empty</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Empty List?</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insend(Dtype n)"
+		INLINE="NO"
+	>
+		<NAME>insend</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>n</NAME>
+				<DESCRIPTION><PARA>an object for which the template list was generated</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>insert the object given at the end of the list, after tail</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insbegin(Dtype n)"
+		INLINE="NO"
+	>
+		<NAME>insbegin</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>n</NAME>
+				<DESCRIPTION><PARA>an object for which the template list was generated</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>insert the object given at the begin of the list, before head</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void removehead()"
+		INLINE="NO"
+	>
+		<NAME>removehead</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>remove the object at the begin of the list (head)</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void removetail()"
+		INLINE="NO"
+	>
+		<NAME>removetail</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> remove the object at the end of the list (tail)</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void remove_all()"
+		INLINE="NO"
+	>
+		<NAME>remove_all</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>remove all objects from the list</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" Dtype "
+		DECLARATION=" Dtype headitem()"
+		INLINE="YES"
+	>
+		<NAME>headitem</NAME>
+		
+		<RETURN-VALUE-DESCRIPTION>
+			<PARA> Dtype: returns the object at the head of the list</PARA>		
+		</RETURN-VALUE-DESCRIPTION>
+		<DESCRIPTION>
+			<PARA>Get the item at the head of the list</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" Dtype "
+		DECLARATION=" Dtype tailitem()"
+		INLINE="YES"
+	>
+		<NAME>tailitem</NAME>
+		
+		<RETURN-VALUE-DESCRIPTION>
+			<PARA> Dtype: returns the object at the tail of the list</PARA>		
+		</RETURN-VALUE-DESCRIPTION>
+		<DESCRIPTION>
+			<PARA>Get the item at the tail of the list</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void takeover(DL_List&lt;Dtype&gt;* otherlist)"
+		INLINE="NO"
+	>
+		<NAME>takeover</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>otherlist</NAME>
+				<DESCRIPTION><PARA>the list to take the items from</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>to move all objects in a list to this list.</PARA>
+		</DESCRIPTION>
+		<COMMENTS>
+			<COMMENT>
+				<PARA> The iterator level must be zero to be able to use this function, else an error will be generated </PARA>
+			<PARA> The list may not be the same list as this list</PARA>
+			</COMMENT>
+		</COMMENTS>
+	</MEMBER-FUNCTION>
+
+
+
+
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="DL_Node<Dtype>* "
+		DECLARATION="DL_Node&lt;Dtype&gt;* _root"
+	>
+		<NAME>_root</NAME>
+		<DESCRIPTION>
+			<PARA>the root node pointer of the list, the first and last node in the list are connected to the root node. The root node is used to detect the end / beginning of the list while traversing it.</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="int "
+		DECLARATION="int _nbitems"
+	>
+		<NAME>_nbitems</NAME>
+		<DESCRIPTION>
+			<PARA>the number of items in the list, if empty list it is 0</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="short int	"
+		DECLARATION="short int	_iterlevel"
+	>
+		<NAME>_iterlevel</NAME>
+		<DESCRIPTION>
+			<PARA>number of iterators on the list, Attaching or instantiating an iterator to list, will increment this member, detaching and destruction of iterator for a list will decrement this number</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+
+
+
+
+</MEMBERS>
+
+
+</CLASS>
+</CXXDOC>
+

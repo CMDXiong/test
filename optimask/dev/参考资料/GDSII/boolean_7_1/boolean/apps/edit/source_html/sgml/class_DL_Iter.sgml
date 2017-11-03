@@ -1,0 +1,1057 @@
+<!DOCTYPE CXXDOC SYSTEM "cxxdoc.dtd">
+<CXXDOC>
+
+<CLASS 
+	TYPE="NORMAL"
+	TEMPLATE="YES"
+	DECLARATION="template &lt;class Dtype&gt; class DL_Iter"
+>
+
+<META-DATA>
+	<NAME>DL_Iter</NAME>
+	<AUTHOR>klaasje</AUTHOR>
+	<VERSION>1.0</VERSION>
+	<DATE>Wed Oct 20  9:03:04 MET 1999</DATE>
+	<REVISION-HISTORY>
+		<REVISION>
+			<AUTHOR></AUTHOR>
+			<VERSION></VERSION>
+			<DATE></DATE>
+		</REVISION>
+	</REVISION-HISTORY>
+</META-DATA>
+
+
+
+<HEADER-FILES>
+	<HEADER-FILE>
+		<NAME>stdlib.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>misc.h</NAME>
+	</HEADER-FILE>
+	<HEADER-FILE>
+		<NAME>gdsmes.h</NAME>
+	</HEADER-FILE>
+</HEADER-FILES>
+
+
+<CODE-FILES>
+	<CODE-FILE>
+		<NAME>_dl_itr.cpp</NAME>
+	</CODE-FILE>
+</CODE-FILES>
+
+
+<DESCRIPTION>
+	<PARA> class for iterator on DL_List </PARA>
+			<PARA> template iterator for any list/node type </PARA>
+			<PARA> This class is the base class to attach/instantiate an iterator on a double linked list. </PARA>
+			<PARA> DL_List The iterator is used to traverse and perform functions on the nodes of a list.  </PARA>
+			<PARA> More then 1 iterator can be attached to a list. The list keeps track of the number of iterators that are attached to it. </PARA>
+			<PARA> Depending on this certain operations are allowed are not. For instance a node can only be deleted if there is only one iterator attached to the list. </PARA>
+			<PARA> class </PARA>
+			<PARA> Dtype </PARA>
+			<PARA> Object for traversing a DL_List of the same Dtype</PARA>
+</DESCRIPTION>
+
+
+
+
+
+
+
+<MEMBER-FUNCTIONS>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DL_Iter(DL_List&lt;Dtype&gt;* newlist)"
+		INLINE="NO"
+	>
+		<NAME>DL_Iter</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>newlist</NAME>
+				<DESCRIPTION><PARA>list for the iterator</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>Construct an iterator object for a given list of type Dtype</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DL_Iter(DL_Iter* otheriter)"
+		INLINE="NO"
+	>
+		<NAME>DL_Iter</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>otheriter</NAME>
+				<DESCRIPTION><PARA>other iterator on same list</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>Constructor of iterator for the same list as another iterator</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="DL_Iter()"
+		INLINE="NO"
+	>
+		<NAME>DL_Iter</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Constructor without an attached list</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="NONE"
+		DECLARATION="~DL_Iter()"
+		INLINE="NO"
+	>
+		<NAME>~DL_Iter</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>destructor</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Error(char* function,Lerror a_error)"
+		INLINE="NO"
+	>
+		<NAME>Error</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>function</NAME>
+				<DESCRIPTION><PARA>function string that generated this error</PARA></DESCRIPTION>
+			</PARAMETER>
+			<PARAMETER>
+				<NAME>a_error</NAME>
+				<DESCRIPTION><PARA>error code to generate a message for</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>Report off Iterator ErrorsError report for list error inside DL_Iter classthe error function is used internally in the iterator class to report errors,the function will generate a message based on the error code.Then an exception will be generated using the global _messagehandler class instance.</PARA>
+			<PARA></PARA>
+		</DESCRIPTION>
+		<EXAMPLE>
+			<PARA> to call error from inside an DL_List class</PARA>
+			<PARA></PARA>
+			<CODE> Error&amp;&amp;BRAKO&amp;&amp;QUOTDremove_all&amp;&amp;QUOTD,ITER_GT_O&amp;&amp;BRAKC&amp;&amp;SEMI
+</CODE>
+		</EXAMPLE>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Attach(DL_List&lt;Dtype&gt;* newlist)"
+		INLINE="NO"
+	>
+		<NAME>Attach</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>newlist</NAME>
+				<DESCRIPTION><PARA>the list to attached the iterator to</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>This attaches an iterator to a list of a given type, the list must exist.This way an iterator to a specific list can be madestatic to a class, and can be used for several lists at the same time.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void Detach()"
+		INLINE="NO"
+	>
+		<NAME>Detach</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>This detaches an iterator from a list of a given type, the list must exist.This way an iterator to a specific list can be made static to a class,and can be used for several lists at the same time.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void foreach_f(void &amp;&amp;BRAKO*fp&amp;&amp;BRAKC &amp;&amp;BRAKODtype n&amp;&amp;BRAKC )"
+		INLINE="NO"
+	>
+		<NAME>foreach_f</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>execute given function for each item in the list/iterator</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insend(Dtype n)"
+		INLINE="NO"
+	>
+		<NAME>insend</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> list mutationsinsert after tail item</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insbegin(Dtype n)"
+		INLINE="NO"
+	>
+		<NAME>insbegin</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>insert before head item</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insbefore(Dtype n)"
+		INLINE="NO"
+	>
+		<NAME>insbefore</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>insert before current iterator position</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void insafter(Dtype n)"
+		INLINE="NO"
+	>
+		<NAME>insafter</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>insert after current iterator position</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void takeover(DL_List&lt;Dtype&gt;* otherlist)"
+		INLINE="NO"
+	>
+		<NAME>takeover</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>otherlist</NAME>
+				<DESCRIPTION><PARA>the list to take the items from</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>to move all objects in a list to the list of the iterator.</PARA>
+		</DESCRIPTION>
+		<COMMENTS>
+			<COMMENT>
+				<PARA> The iterator level must be one to be able to use this function, else an error will be generated </PARA>
+			<PARA> The list may not be the same list as the iterator list</PARA>
+			</COMMENT>
+		</COMMENTS>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void takeover(DL_Iter* otheriter)"
+		INLINE="NO"
+	>
+		<NAME>takeover</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>otheriter</NAME>
+				<DESCRIPTION><PARA>the iterator to take the items from</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>to move all objects in a list (using iterator of that list) to the list of the iterator.</PARA>
+		</DESCRIPTION>
+		<COMMENTS>
+			<COMMENT>
+				<PARA> The iterator level for both iterators must be one to be able to use this function, else an error will be generated </PARA>
+			<PARA> The list may not be the same list as the iterator list</PARA>
+			</COMMENT>
+		</COMMENTS>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void takeover(DL_Iter* otheriter, int maxcount)"
+		INLINE="NO"
+	>
+		<NAME>takeover</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>otheriter</NAME>
+				<DESCRIPTION><PARA>the iterator to take the items from</PARA></DESCRIPTION>
+			</PARAMETER>
+			<PARAMETER>
+				<NAME>maxcount</NAME>
+				<DESCRIPTION><PARA>maximum number of objects to take over</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>to move maxcount objects in a list (using iterator of that list) to the list of the iterator.</PARA>
+		</DESCRIPTION>
+		<COMMENTS>
+			<COMMENT>
+				<PARA> The iterator level for both iterators must be one to be able to use this function, else an error will be generated </PARA>
+			<PARA> The list may not be the same list as the iterator list </PARA>
+			<PARA> If less then maxcount objects are available in the source iterator, all of them are taken and no error will accur.</PARA>
+			</COMMENT>
+		</COMMENTS>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void remove()"
+		INLINE="NO"
+	>
+		<NAME>remove</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>remove object at current iterator position from the list.</PARA>
+		</DESCRIPTION>
+		<COMMENTS>
+			<COMMENT>
+				<PARA> The object itself is not deleted, only removed from the list. The user is responsible for memory management. </PARA>
+			<PARA> The iterator level must be one to be able to use this function, else an error will be generated </PARA>
+			<PARA> The list must contain an object at the current iterator position, else an error will be generated. </PARA>
+			<PARA></PARA>
+			</COMMENT>
+		</COMMENTS>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void removehead()"
+		INLINE="NO"
+	>
+		<NAME>removehead</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Remove head item</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void removetail()"
+		INLINE="NO"
+	>
+		<NAME>removetail</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Remove tail item</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void remove_all()"
+		INLINE="NO"
+	>
+		<NAME>remove_all</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>Remove all items</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" G_BOOL "
+		DECLARATION=" G_BOOL empty()"
+		INLINE="YES"
+	>
+		<NAME>empty</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>is list empty (contains items or not)?</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" G_BOOL "
+		DECLARATION=" G_BOOL hitroot()"
+		INLINE="YES"
+	>
+		<NAME>hitroot</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>is iterator at root node (begin or end)?</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" G_BOOL "
+		DECLARATION=" G_BOOL athead()"
+		INLINE="YES"
+	>
+		<NAME>athead</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>is iterator at head/first node?</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" G_BOOL "
+		DECLARATION=" G_BOOL attail()"
+		INLINE="YES"
+	>
+		<NAME>attail</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>is iterator at tail/last node?</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL has(Dtype otheritem)"
+		INLINE="NO"
+	>
+		<NAME>has</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>otheritem</NAME>
+				<DESCRIPTION><PARA>item to search for</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>is given item member of the list</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" int "
+		DECLARATION=" int count()"
+		INLINE="YES"
+	>
+		<NAME>count</NAME>
+		
+		<RETURN-VALUE-DESCRIPTION>
+			<PARA> number of objects stored in the list.</PARA>		
+		</RETURN-VALUE-DESCRIPTION>
+		<DESCRIPTION>
+			<PARA>Number of items in the list</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void totail()"
+		INLINE="YES"
+	>
+		<NAME>totail</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>go to last item, if list is empty goto hite</PARA>
+		</DESCRIPTION>
+		<COMMENTS>
+			<COMMENT>
+				<PARA> If there are no elements in the list, the position will be set to the root object.</PARA>
+			</COMMENT>
+		</COMMENTS>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void tohead()"
+		INLINE="YES"
+	>
+		<NAME>tohead</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>go to first item, if list is empty goto hite</PARA>
+		</DESCRIPTION>
+		<COMMENTS>
+			<COMMENT>
+				<PARA> If there are no elements in the list, the position will be set to the root object.</PARA>
+			</COMMENT>
+		</COMMENTS>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void toroot()"
+		INLINE="YES"
+	>
+		<NAME>toroot</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the iterator position to the root (empty dummy) object in the list.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void operator++(void)"
+		INLINE="YES"
+	>
+		<NAME>operator++</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA> set the iterator position to next object in the list ( can be the root also).</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void operator++(int)"
+		INLINE="YES"
+	>
+		<NAME>operator++</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set iterator to next item (pre fix)</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void operator--(void)"
+		INLINE="YES"
+	>
+		<NAME>operator--</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the iterator position to previous object in the list ( can be the root also)(postfix).</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void operator--(int)"
+		INLINE="YES"
+	>
+		<NAME>operator--</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the iterator position to previous object in the list ( can be the root also)(pre fix).</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void operator&gt;&gt;(int)"
+		INLINE="YES"
+	>
+		<NAME>operator&gt;&gt;</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the iterator position n objects in the next direction ( can be the root also).</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void operator&lt;&lt;(int)"
+		INLINE="YES"
+	>
+		<NAME>operator&lt;&lt;</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the iterator position n objects in the previous direction ( can be the root also).</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void next_wrap()"
+		INLINE="YES"
+	>
+		<NAME>next_wrap</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the iterator position to next object in the list, if this would be the root object,then set the iterator at the head object</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void prev_wrap()"
+		INLINE="YES"
+	>
+		<NAME>prev_wrap</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the iterator position to previous object in the list, if this would be the root object,then set the iterator at the tail object</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void reset_tail()"
+		INLINE="YES"
+	>
+		<NAME>reset_tail</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>move root in order to make the current node the tailput the iterator root object after the current iterator position in the list.The current object will become the new tail of the list.</PARA>
+		</DESCRIPTION>
+		<COMMENTS>
+			<COMMENT>
+				<PARA> The iterator level must be one to be able to use this function, else an error will be generated</PARA>
+			</COMMENT>
+		</COMMENTS>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void reset_head()"
+		INLINE="YES"
+	>
+		<NAME>reset_head</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>move root in order to make the current node the headput the iterator root object before the current iterator position in the list.The current object will become the new head of the list.</PARA>
+		</DESCRIPTION>
+		<COMMENTS>
+			<COMMENT>
+				<PARA> The iterator level must be one to be able to use this function, else an error will be generated</PARA>
+			</COMMENT>
+		</COMMENTS>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL toitem(Dtype)"
+		INLINE="NO"
+	>
+		<NAME>toitem</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>put the iterator at the position of the given object in the list.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void toiter(DL_Iter* otheriter)"
+		INLINE="NO"
+	>
+		<NAME>toiter</NAME>
+		<PARAMETERS>
+			<PARAMETER>
+				<NAME>otheriter</NAME>
+				<DESCRIPTION><PARA>other iterator to let this iterator point to</PARA></DESCRIPTION>
+			</PARAMETER>
+		</PARAMETERS>
+		
+		<DESCRIPTION>
+			<PARA>put the iterator at the same position as the given iterator in the list.</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL tonode(DL_Node&lt;Dtype&gt;*)"
+		INLINE="NO"
+	>
+		<NAME>tonode</NAME>
+		
+		<RETURN-VALUE-DESCRIPTION>
+			<PARA> returns true if the node was in the list, else false</PARA>		
+		</RETURN-VALUE-DESCRIPTION>
+		<DESCRIPTION>
+			<PARA>put the iterator at the position of the given node in the list.</PARA>
+		</DESCRIPTION>
+		<COMMENTS>
+			<COMMENT>
+				<PARA> DO NOT use this function. Normally you will not be able to address the nodes in a list.</PARA>
+			</COMMENT>
+		</COMMENTS>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="G_BOOL "
+		DECLARATION="G_BOOL iterate(void)"
+		INLINE="NO"
+	>
+		<NAME>iterate</NAME>
+		
+		<RETURN-VALUE-DESCRIPTION>
+			<PARA> returns True if not at the end/root of the list else False.</PARA>		
+		</RETURN-VALUE-DESCRIPTION>
+		<DESCRIPTION>
+			<PARA>iterate through all items of the listadvance the iterator one position in the next direction in the list.</PARA>
+		</DESCRIPTION>
+		<COMMENTS>
+			<COMMENT>
+				<PARA> This function combines iteration and testing for the end of the list in one. </PARA>
+			<PARA> Therefore we do not have to advance the iterator ourselves. </PARA>
+			<PARA> The iterator is first put to the next object, before testing for the end of the list. </PARA>
+			<PARA> This is why we need to start at the root element in general usage. </PARA>
+			<PARA></PARA>
+			</COMMENT>
+		</COMMENTS>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" Dtype "
+		DECLARATION=" Dtype item()"
+		INLINE="YES"
+	>
+		<NAME>item</NAME>
+		
+		<RETURN-VALUE-DESCRIPTION>
+			<PARA> returns the object where the iterator is pointing to at the moment.</PARA>		
+		</RETURN-VALUE-DESCRIPTION>
+		<DESCRIPTION>
+			<PARA>To get the item at the current iterator position</PARA>
+		</DESCRIPTION>
+		<COMMENTS>
+			<COMMENT>
+				<PARA> If the iterator is at the root of the list an error will be generated, since there is no item there.</PARA>
+			</COMMENT>
+		</COMMENTS>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void mergesort(int &amp;&amp;BRAKO*fcmp&amp;&amp;BRAKC &amp;&amp;BRAKODtype, Dtype&amp;&amp;BRAKC)"
+		INLINE="NO"
+	>
+		<NAME>mergesort</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>sort list with mergesort</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PUBLIC"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void "
+		DECLARATION="void cocktailsort(int &amp;&amp;BRAKO*&amp;&amp;BRAKC&amp;&amp;BRAKODtype,Dtype&amp;&amp;BRAKC, void &amp;&amp;BRAKO*&amp;&amp;BRAKC&amp;&amp;BRAKODtype,Dtype&amp;&amp;BRAKC=NULL)"
+		INLINE="NO"
+	>
+		<NAME>cocktailsort</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>sort list with cocktailsort</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+
+
+
+
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	mergesort_rec(int &amp;&amp;BRAKO*fcmp&amp;&amp;BRAKC&amp;&amp;BRAKODtype,Dtype&amp;&amp;BRAKC, DL_Node&lt;Dtype&gt; *RT1,int n)"
+		INLINE="NO"
+	>
+		<NAME>mergesort_rec</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>sort list with mergesort</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME="void	"
+		DECLARATION="void	mergetwo(int &amp;&amp;BRAKO*fcmp&amp;&amp;BRAKC&amp;&amp;BRAKODtype,Dtype&amp;&amp;BRAKC, DL_Node&lt;Dtype&gt; *RT1,DL_Node&lt;Dtype&gt; *RT2)"
+		INLINE="NO"
+	>
+		<NAME>mergetwo</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>sort list with mergesort</PARA>
+		</DESCRIPTION>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void next()"
+		INLINE="YES"
+	>
+		<NAME>next</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the iterator position to next object in the list ( can be the root also).</PARA>
+		</DESCRIPTION>
+		<COMMENTS>
+			<COMMENT>
+				<PARA> Use this function inside a new class derived from DL_Iter.</PARA>
+			</COMMENT>
+		</COMMENTS>
+	</MEMBER-FUNCTION>
+	<MEMBER-FUNCTION
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		PURPOSE="NORMAL"
+		TYPE="BASIC"
+		TYPENAME=" void "
+		DECLARATION=" void prev()"
+		INLINE="YES"
+	>
+		<NAME>prev</NAME>
+		
+		
+		<DESCRIPTION>
+			<PARA>set the iterator position to previous object in the list ( can be the root also).</PARA>
+		</DESCRIPTION>
+		<COMMENTS>
+			<COMMENT>
+				<PARA> Use this function inside a new class derived from DL_Iter.</PARA>
+			</COMMENT>
+		</COMMENTS>
+	</MEMBER-FUNCTION>
+</MEMBER-FUNCTIONS>
+
+<MEMBERS>
+
+
+
+
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="DL_List<Dtype> *"
+		DECLARATION="DL_List&lt;Dtype&gt; *_list"
+	>
+		<NAME>_list</NAME>
+		<DESCRIPTION>
+			<PARA>the list for this iterator</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+	<MEMBER
+		SCOPE="PROTECTED"
+		VIRTUAL="STANDARD"
+		TYPE="BASIC"
+		TYPENAME="DL_Node<Dtype> *"
+		DECLARATION="DL_Node&lt;Dtype&gt; *_current"
+	>
+		<NAME>_current</NAME>
+		<DESCRIPTION>
+			<PARA>the current position of the iterator</PARA>
+		</DESCRIPTION>
+	</MEMBER>
+</MEMBERS>
+
+<EXAMPLE>
+	<PARA>   to insert integer a and b into list and remove_all directly using an iterator
+</PARA>
+	<CODE>
+     DL_List&lt;int&gt;* a_list = new DL_List&lt;int&gt;(); // declaration and allocation
+
+     int a=123;
+
+     int b=345;
+
+     {
+
+             DL_Iter&lt;int&gt;*  a_listiter=new DL_Iter&lt;int&gt;(a_list);
+
+             a_listiter-&gt;insbegin(a)
+
+             a_listiter-&gt;insbegin(b)
+
+             a_listiter-&gt;remove_all()
+
+     } //to destruct the iterator before the list is deleted
+
+     delete a_list; #delete it (must have no iterators attached to it)
+</CODE>
+</EXAMPLE>
+</CLASS>
+</CXXDOC>
+

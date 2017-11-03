@@ -1,0 +1,515 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#99CCFF">
+<p><a href="commands.html#commandbnf" target="main">Command Parser BNF</a></p>
+<table border=5 cellspacing=2 cellpadding=2 width="200" bgcolor="#CCCCCC">
+  <tr bgcolor="#CC66CC" valign="top"> 
+    <td align=middle height="50"> <a href="commands.html#help" target="main"><font size=+1>Help<br>
+      </font></a></td>
+  </tr>
+  <tr valign="top"> 
+    <td><a href="commands.html#T_help" target="main">help</a></td>
+  </tr>
+  <tr valign="top"> 
+    <td><a href="commands.html#T_showkeybnf" target="main">showkeybnf</a></td>
+  </tr>
+  <tr valign="top"> 
+    <td><a href="commands.html#T_showprocessbnf" target="main">showprocessbnf</a></td>
+  </tr>
+  <tr valign="top"> 
+    <td><a href="commands.html#T_showcommandbnf" target="main">showcommandbnf</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p><table border=5 cellspacing=2 cellpadding=2 width="200" bgcolor="#CCCCCC" align=LEFT>
+  <tr bgcolor="#CC66CC"> 
+    <td align=middle valign=middle height="50"> <a href="commands.html#aliases" target="main"><font size=+1>Global 
+      variables</font></a> </td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_aliasname" target="main">setalias</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_env_var" target="main">setenv</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_subst_alias" target="main">%{} and %</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_subst_env" target="main">${} and $</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_showalias" target="main">showalias</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_showenv" target="main">showenv</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table border=5 cellspacing=2 cellpadding=2 width="200" bgcolor="#CCCCCC" align=left>
+  <tr bgcolor="#CC66CC"> 
+    <td align=middle valign=middle height="50"> <a href="commands.html#dialog" target="main"><font size=+1>Input 
+      Dialogs</font></a> </td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_askfile" target="main">askfile</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_ask" target="main">ask</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table border=5 cellspacing=2 cellpadding=2 width="200" bgcolor="#CCCCCC" align=LEFT>
+  <tr bgcolor="#CC66CC"> 
+    <td align=middle valign=middle height="50"> <a href="commands.html#loadsave" target="main"><font size=+1>Load 
+      / Save Commands</font></a> </td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_showfilename" target="main">showfilename</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_savevisible" target="main">savevisible</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_loadfile" target="main">loadfile</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_savefile" target="main">savefile</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_mergefile" target="main">mergefile</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_closefile" target="main">closefile</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_loadsetup" target="main">loadsetup</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_savesetup" target="main">savesetup</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_loadprocess" target="main">loadprocess</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_record" target="main">record</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table border=5 cellspacing=2 cellpadding=2 width="200" bgcolor="#CCCCCC" align=LEFT>
+  <tr bgcolor="#CC66CC"> 
+    <td align=middle valign=middle height="50"> <a href="commands.html#keystrings" target="main"><font size=+1>Reading 
+      Key strings</font></a> 
+  <tr> 
+    <td><a href="commands.html#T_keystring" target="main">keystring</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_defaultaccur" target="main">defaultaccur</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_defaultunit" target="main">defaultunit</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table border=5 cellspacing=2 cellpadding=2 width="200" bgcolor="#CCCCCC" align=LEFT>
+  <tr bgcolor="#CC66CC"> 
+    <td align=middle valign=middle height="50"> <a href="commands.html#settings" target="main"><font size=+1>Setting 
+      Operation Parameters</font></a> </td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_selected" target="main">selected</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_showfactors" target="main">showfactors</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_selectmarge" target="main">selectmarge</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_snapfactor" target="main">snapfactor</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_correctionfactor" target="main">correctionfactor</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_correctionaber" target="main">correctionaber</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_roundfactor" target="main">roundfactor</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_roundtype" target="main">roundtype</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_toarcrmin" target="main">toarcrmin</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_toarcrmax" target="main">toarcrmax</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_arcaccur" target="main">arcaccur</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_polyaccur" target="main">polyaccur</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_smoothaccur" target="main">smoothaccur</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_maxlinemerge" target="main">maxlinemerge</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_displayaber" target="main">displayaber</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_structhres" target="main">structhres</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_primthres" target="main">primthres</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table border=5 cellspacing=2 cellpadding=2 width="200" bgcolor="#CCCCCC" align=LEFT>
+  <tr bgcolor="#CC66CC"> 
+    <td align=middle valign=middle height="50"> <a href="commands.html#transset" target="main"><font size=+1>Setting 
+      Transformation Parameters</font></a> </td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_mirrorx" target="main">mirrorx</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_mirrory" target="main">mirrory</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_movehor" target="main">movehor</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_scale" target="main">scale</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_rotate" target="main">rotate</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_direction" target="main">direction</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table border=5 cellspacing=2 cellpadding=2 width="200" bgcolor="#CCCCCC" align=LEFT>
+  <tr bgcolor="#CC66CC"> 
+    <td align=middle valign=middle height="50"> <a href="commands.html#groups" target="main"><font size=+1>Defining 
+      Operation Groups</font></a> </td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_showgroups" target="main">showgroups</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_group_a" target="main">group_a</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_group_b" target="main">group_b</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_destination" target="main">destination</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table border=5 cellspacing=2 cellpadding=2 width="200" bgcolor="#CCCCCC" align=LEFT>
+  <tr bgcolor="#CC66CC"> 
+    <td align=middle valign=middle height="50"> <a href="commands.html#operations" target="main"><font size=+1>Operations</font></a> 
+    </td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_flatten" target="main">flatten</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_delete" target="main">delete</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_delete_a" target="main">delete_a</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_transform" target="main">transform</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_undotrans" target="main">undotrans</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_transform_a" target="main">transform_a</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_undotrans_a" target="main">undotrans_a</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_makering" target="main">makering</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_correction" target="main">correction</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_copy" target="main">copy</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_move" target="main">move</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_toarcs" target="main">toarcs</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_tolines" target="main">tolines</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_smoothen" target="main">smoothen</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_intersect" target="main">intersect</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_merge" target="main">merge</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_a_subtract_b" target="main">a_subtract_b</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_b_subtract_a" target="main">b_subtract_a</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_exor" target="main">exor</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table border=5 cellspacing=2 cellpadding=2 width="200" bgcolor="#CCCCCC" align=LEFT>
+  <tr bgcolor="#CC66CC"> 
+    <td align=middle valign=middle height="50"> <a href="commands.html#layersettings" target="main"><font size=+1>Change 
+      Layer Settings</font></a> </td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_showlayers" target="main">showlayers</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_setlayer" target="main">setlayer</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_name" target="main">name</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_visible" target="main">visible</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_selectable" target="main">selectable</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_bordercolor" target="main">bordercolor</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_fillcolor" target="main">fillcolor</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_brush" target="main">brush</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_order" target="main">order</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table border=5 cellspacing=2 cellpadding=2 width="200" bgcolor="#CCCCCC" align=LEFT>
+  <tr bgcolor="#CC66CC"> 
+    <td align=middle valign=middle height="50"> <a href="commands.html#structure" target="main"><font size=+1>Structure 
+      Commands</font></a> </td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_viewstructure" target="main">viewstructure</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table border=5 cellspacing=2 cellpadding=2 width="200" bgcolor="#CCCCCC" align=LEFT>
+  <tr bgcolor="#CC66CC"> 
+    <td align=middle valign=middle height="50"> <a href="commands.html#displayoptions" target="main"><font size=+1>Display 
+      Options</font></a> </td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_drawoutline" target="main">drawoutline</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_showcoords" target="main">showcoords</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_showgrid" target="main">showgrid</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_gridspace" target="main">gridspace</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_gridcolour" target="main">gridcolour</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_gridplacement" target="main">gridplacement</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table border=5 cellspacing=2 cellpadding=2 width="200" bgcolor="#CCCCCC" align=LEFT>
+  <tr bgcolor="#CC66CC"> 
+    <td align=middle valign=middle height="50"> <a href="commands.html#displaycommands" target="main"><font size=+1>Display 
+      Commands</font></a> </td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_zoom" target="main">zoom</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_zoomback" target="main">zoomback</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_zoomout" target="main">zoomout</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_select" target="main">select</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_clearscreen" target="main">clearscreen</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_draw" target="main">draw</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_print" target="main">print</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_startpoint" target="main">startpoint</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_relativepoint" target="main">relativepoint</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table border=5 cellspacing=2 cellpadding=2 width="200" bgcolor="#CCCCCC" align=LEFT>
+  <tr bgcolor="#CC66CC"> 
+    <td align=middle valign=middle height="50"> <a href="commands.html#filehist" target="main"><font size=+1>File 
+      History</font></a> </td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_addfile" target="main">addfile</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table border=5 cellspacing=2 cellpadding=2 width="200" bgcolor="#CCCCCC" align=LEFT>
+  <tr bgcolor="#CC66CC"> 
+    <td align=middle valign=middle height="50"> <a href="commands.html#message" target="main"><font size=+1>Message 
+      Dialog</font></a> </td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_pause" target="main">pause</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table border=5 cellspacing=2 cellpadding=2 width="200" bgcolor="#CCCCCC" align=LEFT>
+  <tr bgcolor="#CC66CC"> 
+    <td align=middle valign=middle height="50"> <a href="commands.html#exit" target="main"><font size=+1>Exit 
+      / Quit</font></a> </td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_exit" target="main">exit</a></td>
+  </tr>
+  <tr> 
+    <td><a href="commands.html#T_quit" target="main">quit</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

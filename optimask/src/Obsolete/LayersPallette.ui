@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DockWidget</class>
+ <widget class="QDockWidget" name="DockWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>990</width>
+    <height>455</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>DockWidget</string>
+  </property>
+  <widget class="QWidget" name="dockWidgetContents">
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>921</width>
+      <height>401</height>
+     </rect>
+    </property>
+    <row>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Name</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>#</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Lock/Unlock</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Hide/Unhide</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Select/Unsel</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Fill/Unfill</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Purpose</string>
+     </property>
+    </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string>_NOTE_</string>
+     </property>
+    </item>
+    <item row="0" column="1">
+     <property name="text">
+      <string>-1</string>
+     </property>
+    </item>
+    <item row="0" column="2">
+     <property name="text">
+      <string>No</string>
+     </property>
+    </item>
+    <item row="0" column="3">
+     <property name="text">
+      <string>No</string>
+     </property>
+    </item>
+    <item row="0" column="4">
+     <property name="text">
+      <string>Yes</string>
+     </property>
+    </item>
+    <item row="0" column="5">
+     <property name="text">
+      <string>No</string>
+     </property>
+    </item>
+    <item row="0" column="6">
+     <property name="text">
+      <string>Notes, Comments, Hints, etc.</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>60</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>CheckBox</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_2">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>60</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>CheckBox</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_3">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>60</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>CheckBox</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_4">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>60</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>CheckBox</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

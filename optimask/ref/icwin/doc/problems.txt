@@ -1,0 +1,42 @@
+DISPLAY MODES:
+
+Newer video card drivers allow you to change display modes without rebooting.  
+ICED cannot handle a change in video modes while it is running.  So if you 
+are going to change video modes, exit ICED first, change modes, and then 
+restart ICED in the new mode.
+
+VIRTUAL MEMORY:
+
+ICED makes most efficient use of RAM if it relies on Windows to supply virtual
+memory support.  Unfortunately, the virtual memory space is limited to 
+2048 Meg (2 Gig) in both Windows 95 and Windows NT.  For a variety of reasons, 
+ICED limits the size of the data base to 1536 Meg (1.5 Gig) when relying on 
+Windows' virtual memory.  Thus, some work-around is required for large data 
+bases.
+
+The following option should only be used for very large data bases.  It will
+reduce ICED's efficiency.  So if you are using Windows 95 and your data base
+is less than 200 Meg or you are using Windows NT and your data base is less
+than 1.5 Gig DO NOT USE THESE OPTION!
+
+In icwin.bat on the ICED command line, include the following option:
+
+ICED=size 
+
+The ICED keyword tells ICED to create one or more page swapping files in the
+tmp directory.  The size parameter is the maximum size of the data base in
+M-Bytes.
+
+FURTHER COMMENTS:
+
+There appears to be a bug in Windows/95/98/Me (but not Windows/NT/2000) 
+associated with allocating very large blocks of virtual memory.  It appears 
+to be triggered when a single block of memory grows passed 256 Meg.  
+
+I have observed strange behavior in ICED when the Window's NT or Window's 95
+virtual memory file is nearly full.  I believe, but am not certain, this is
+a windows problem.  In any event, the solution is to make sure that the 
+Windows virtual memory files are large enough so that they won't have to be 
+extended during an ICED run.
+
+Don
